@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel">
 <meta property="og:locale" content="zh_CN">
@@ -95,12 +95,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -108,10 +108,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -126,7 +126,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -193,7 +193,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -372,17 +372,17 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="18-指针数组指向相应tcb"><a class="markdownIt-Anchor" href="#18-指针数组指向相应tcb"></a> 1.8. 指针数组(指向相应TCB)</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="19-状态的转换"><a class="markdownIt-Anchor" href="#19-状态的转换"></a> 1.9. 状态的转换</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="110-任务就绪表"><a class="markdownIt-Anchor" href="#110-任务就绪表"></a> 1.10. 任务就绪表</h2>
 <ol>
 <li>每个任务的就绪态标志放⼊在就绪表中，就绪表中有两个变量OSRdyGrp和OSRdyTbl[]。</li>
 <li>在OSRdyGrp中，任务按优先级分组，8个任务为⼀组。OSRdyGrp中的每⼀位表⽰8组任务中每⼀组中是否有进⼊就绪态的任务。任务进⼊就绪态时，就绪表OSRdyTbl[]中的相应元素的相应位也置位。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>(0, 0)是优先级最高的任务，(7, 7)是优先级最低的</li>
 </ul>
@@ -451,7 +451,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="113-任务调度器"><a class="markdownIt-Anchor" href="#113-任务调度器"></a> 1.13. 任务调度器</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OSSched</span> <span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>  INT8U y;<br>  <span class="hljs-built_in">OS_ENTER_CRITICAL</span>();<br>  <span class="hljs-comment">// 检查是否中断调⽤和允许任务调⽤</span><br>  <span class="hljs-keyword">if</span> ((OSLockNesting | OSIntNesting) == <span class="hljs-number">0</span>) &#123;<br>    y = OSUnMapTbl[OSRdyGrp];<br>    <span class="hljs-comment">// 找到优先级最⾼的任务</span><br>    OSPrioHighRdy = (INT8U)((y &lt;&lt; <span class="hljs-number">3</span>) + OSUnMapTbl[OSRdyTbl[y]]);<br>    <span class="hljs-comment">// 该任务是否正在运行</span><br>    <span class="hljs-keyword">if</span> (OSPrioHighRdy != OSPrioCur) &#123;<br>      OSTCBHighRdy=OSTCBPrioTbl[OSPrioHighRdy];<br>      OSCtxSwCtr++;<br>      <span class="hljs-built_in">OS_TASK_SW</span>();<br>    &#125;<br>  &#125;<br>  <span class="hljs-built_in">OS_EXIT_CRITICAL</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="114-源代码中使用了查表法"><a class="markdownIt-Anchor" href="#114-源代码中使用了查表法"></a> 1.14. 源代码中使用了查表法</h2>
@@ -465,7 +465,7 @@
 </li>
 </ol>
 <h2 id="115-优先级判定表osunmaptbl256"><a class="markdownIt-Anchor" href="#115-优先级判定表osunmaptbl256"></a> 1.15. 优先级判定表OSUnMapTbl[256]</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>=</mo><mn>256</mn></mrow><annotation encoding="application/x-tex">2^8 = 256</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span></span></span></span>:一共有256种情况，查表解释即可</li>
 <li>空间换时间，用来快速查找当前优先级最高的部分</li>
@@ -498,9 +498,9 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/7.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/8.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/9.png" srcset="/img/loading.gif" lazyload alt="" /></td>
 </tr>
 </tbody>
 </table>
@@ -578,7 +578,7 @@
 <ol>
 <li>在动态分配中，可能存在内存碎片问题。特别是当用户反复地建立和删除任务时，内存堆中可能会出现⼤量的碎⽚，导致没有⾜够⼤的⼀块连续内存区域可⽤作任务栈，这时malloc()便⽆法成功地为任务分配栈空间。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="1188-栈的增长方向"><a class="markdownIt-Anchor" href="#1188-栈的增长方向"></a> 1.18.8. 栈的增长方向</h3>
 <ol>
 <li>栈的增长方向的设置
@@ -647,7 +647,7 @@
 <li>恢复所有CPU寄存器；</li>
 <li>执⾏中断返回指令。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="231-osintenter"><a class="markdownIt-Anchor" href="#231-osintenter"></a> 2.3.1. OSIntEnter()</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/* 在调⽤本函数之前必须先将中断关闭 */</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OSIntEnter</span> <span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (OSRunning == TRUE) &#123;<br>      <span class="hljs-keyword">if</span> (OSIntNesting &lt; <span class="hljs-number">255</span>) &#123;<br>         OSIntNesting++;<br>      &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="232-osintexit"><a class="markdownIt-Anchor" href="#232-osintexit"></a> 2.3.2. OSIntExit()</h3>
@@ -663,7 +663,7 @@
 </li>
 </ol>
 <h3 id="234-调用中断切换函数osintctxsw-后的堆栈情况"><a class="markdownIt-Anchor" href="#234-调用中断切换函数osintctxsw-后的堆栈情况"></a> 2.3.4. 调用中断切换函数OSIntCtxSw() 后的堆栈情况</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="24-时钟节拍"><a class="markdownIt-Anchor" href="#24-时钟节拍"></a> 2.4. 时钟节拍</h2>
 <ol>
 <li>时钟节拍是⼀种特殊的中断；</li>
@@ -673,7 +673,7 @@
 <h3 id="241-时钟节拍isr"><a class="markdownIt-Anchor" href="#241-时钟节拍isr"></a> 2.4.1. 时钟节拍ISR</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OSTickISR</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>  <span class="hljs-comment">//(1)保存处理器寄存器的值；</span><br>  <span class="hljs-comment">//(2)调⽤OSIntEnter()或将OSIntNesting加1;</span><br>  <span class="hljs-comment">//(3)调⽤OSTimeTick(); /*检查每个任务的时间延时*/</span><br>  <span class="hljs-comment">//(4)调⽤OSIntExit();</span><br>  <span class="hljs-comment">//(5)恢复处理器寄存器的值;</span><br>  <span class="hljs-comment">//(6)执⾏中断返回指令;</span><br>｝<br></code></pre></td></tr></table></figure>
 <h3 id="242-时钟节拍函数-ostimetick"><a class="markdownIt-Anchor" href="#242-时钟节拍函数-ostimetick"></a> 2.4.2. 时钟节拍函数 OSTimetick()</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="25-时间管理"><a class="markdownIt-Anchor" href="#25-时间管理"></a> 2.5. 时间管理</h2>
 <ol>
 <li>与时间管理相关的系统服务:
@@ -710,9 +710,9 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/14.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/15.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/16.png" srcset="/img/loading.gif" lazyload alt="" /></td>
 </tr>
 </tbody>
 </table>
@@ -772,7 +772,7 @@
 <li>OSInit()建立空闲任务OSTaskIdle()，该任务总是处于就绪状态，其优先级⼀般被设成最低，即OS_LOWEST_PRIO；如果需要，OSInit()还建⽴统计任务OSTaskStat()，并让其进⼊就绪状态；</li>
 <li>OSInit()还初始化了4个空数据结构缓冲区：空闲TCB链表OSTCBFreeList、空闲事件链表OSEventFreeList、空闲队列链表OSQFreeList和空闲存储链表OSMemFreeList。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="26-μcos-ii的启动"><a class="markdownIt-Anchor" href="#26-μcos-ii的启动"></a> 2.6. μC/OS-II的启动</h2>
 <ol>
 <li>多任务的启动是⽤户通过调⽤OSStart()实现的。然⽽，启动μC/OS-Ⅱ之前，⽤户⾄少要建⽴⼀个应⽤任务。</li>
@@ -782,8 +782,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OSStart</span> <span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>  INT8U Y;<br>  INT8U X;<br>  <span class="hljs-keyword">if</span> (OSRunning == FALSE) &#123;<br>      y = OSUnMapTbl[OSRdyGrp];<br>      x = OSUnMapTbl[OSRdyTbl[y]];<br>      OSPrioHighRdy = (INT8U)((Y&lt;&lt;<span class="hljs-number">3</span>) + X);<br>      OSPrioCur = OSPrioHighRdy;<br>      OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];<br>      OSTCBCur = OSTCBHighRdy;<br>      <span class="hljs-built_in">OSStartHighRdy</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="262-统计任务初始化函数-osstatinit-void"><a class="markdownIt-Anchor" href="#262-统计任务初始化函数-osstatinit-void"></a> 2.6.2. 统计任务初始化函数 OSStatInit (void)</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">OSStatInit</span> <span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>  <span class="hljs-built_in">OSTimeDly</span>(<span class="hljs-number">2</span>);<br>  <span class="hljs-built_in">OS_ENTER_CRITICAL</span>();<br>  OSIdleCtr = <span class="hljs-number">0L</span>;<br>  <span class="hljs-built_in">OS_EXIT_CRITICAL</span>();<br>  <span class="hljs-built_in">OSTimeDly</span>(OS_TICKS_PER_SEC);<br>  <span class="hljs-built_in">OS_ENTER_CRITICAL</span>();<br>  OSIdleCtrMax = OSIdleCtr;<br>  OSStatRdy = TRUE;<br>  <span class="hljs-built_in">OS_EXIT_CRITICAL</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/18.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/18.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="3-任务之间的通信与同步"><a class="markdownIt-Anchor" href="#3-任务之间的通信与同步"></a> 3. 任务之间的通信与同步</h1>
 <ol>
 <li>任务间通信的管理：事件控制块ECB</li>
@@ -806,7 +806,7 @@
 事件控制块(ECB)来管理每⼀个具体事件。</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// ECB数据结构</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> &#123;<br>  <span class="hljs-type">void</span> *OSEventPtr; <span class="hljs-comment">/*指向消息或消息队列列的指针*/</span><br>  INT8U OSEventTbl[OS_EVENT_TBL_SIZE];<span class="hljs-comment">//等待任务列列表</span><br>  INT16U OSEventCnt; <span class="hljs-comment">/*计数器器(当事件是信号量量时)*/</span><br>  INT8U OSEventType; <span class="hljs-comment">/*事件类型：信号量量、邮箱等*/</span><br>  INT8U OSEventGrp; <span class="hljs-comment">/*等待任务组*/</span><br>&#125; OS_EVENT;<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="32-任务和isr之间的通信方式"><a class="markdownIt-Anchor" href="#32-任务和isr之间的通信方式"></a> 3.2. 任务和ISR之间的通信方式</h2>
 <ol>
 <li>一个任务或ISR可以通过事件控制块ECB(信号量、邮箱或消息队列)向另外的任务发信号；</li>
@@ -818,7 +818,7 @@
 <li>每个正在等待某个事件的任务被加⼊到该事件的ECB的等待任务列表中，该列表包含两个变量OSEventGrp和OSEventTbl[]。</li>
 <li>在OSEventGrp中，任务按优先级分组，8个任务为⼀组，共8组，分别对应OSEventGrp 当中的8位。当某组中有任务处于等待该事件的状态时，对应的位就被置位。同时， OSEventTbl[]中的相应位也被置位。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="34-使任务进入入脱离等待状态"><a class="markdownIt-Anchor" href="#34-使任务进入入脱离等待状态"></a> 3.4. 使任务进⼊入/脱离等待状态</h2>
 <ol>
 <li>将⼀个任务插⼊到事件的等待任务列表中</li>
@@ -839,7 +839,7 @@
 <li>在调⽤OSInit()初始化系统时，所有的ECB被链接成⼀个单向链表——空闲事件控制块链表；</li>
 <li>每当建⽴⼀个信号量、邮箱或消息队列时，就从该链表中取出⼀个空闲事件控制块，并对它进⾏初始化。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="37-ecb的基本操作"><a class="markdownIt-Anchor" href="#37-ecb的基本操作"></a> 3.7. ECB的基本操作</h2>
 <ol>
 <li>OSEventWaitListInit()
@@ -870,7 +870,7 @@
 <li>μC/OS定义两个宏(macros)来开关中断，即：OS_ENTER_CRITICAL()和OS_EXIT_CRITICAL()；</li>
 <li>这两个宏的定义取决于所⽤的微处理器，每种微处理器都有⾃⼰的OS_CPU.H⽂件。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="39-μcos-ii中开关中断的方法"><a class="markdownIt-Anchor" href="#39-μcos-ii中开关中断的方法"></a> 3.9. μC/OS-II中开关中断的方法</h2>
 <ol>
 <li>当处理临界段代码时，需要关中断，处理完毕后，再开中断；</li>
@@ -914,7 +914,7 @@
 </li>
 </ol>
 <h2 id="312-任务-isr和信号量的关系"><a class="markdownIt-Anchor" href="#312-任务-isr和信号量的关系"></a> 3.12. 任务、ISR和信号量的关系</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="3121-创建一个信号量"><a class="markdownIt-Anchor" href="#3121-创建一个信号量"></a> 3.12.1. 创建一个信号量</h3>
 <ol>
 <li>OSSemCreate()
@@ -1028,7 +1028,7 @@
 </li>
 </ol>
 <h2 id="318-任务-isr和消息邮箱的关系"><a class="markdownIt-Anchor" href="#318-任务-isr和消息邮箱的关系"></a> 3.18. 任务、ISR和消息邮箱的关系</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="319-邮箱的系统服务"><a class="markdownIt-Anchor" href="#319-邮箱的系统服务"></a> 3.19. 邮箱的系统服务</h2>
 <ol>
 <li>OSMboxCreate()：创建⼀个邮箱
@@ -1078,21 +1078,21 @@
 </li>
 </ol>
 <h2 id="321-消息队列列的体系结构"><a class="markdownIt-Anchor" href="#321-消息队列列的体系结构"></a> 3.21. 消息队列列的体系结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="322-队列列控制块"><a class="markdownIt-Anchor" href="#322-队列列控制块"></a> 3.22. 队列列控制块</h2>
 <ol>
 <li>队列控制块数据结构</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">os_q</span> &#123;<br>   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">os_q</span> *OSQPtr;<span class="hljs-comment">//空闲队列控制块指针</span><br>   <span class="hljs-type">void</span> **OSQStart; <span class="hljs-comment">//指向消息队列的起始地址</span><br>   <span class="hljs-type">void</span> **OSQEnd; <span class="hljs-comment">//指向消息队列的结束地址</span><br>   <span class="hljs-type">void</span> **OSQIn; <span class="hljs-comment">//指向消息队列中下⼀个插⼊消息的位置</span><br>   <span class="hljs-type">void</span> **OSQOut;<span class="hljs-comment">//指向消息队列中下⼀个取出消息的位置</span><br>   INT16U OSQSize; <span class="hljs-comment">//消息队列中总的单元数</span><br>   INT16U OSQEntries; <span class="hljs-comment">//消息队列中当前的消息数量</span><br>&#125; OS_EVENT;<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="323-空闲队列控制块的管理"><a class="markdownIt-Anchor" href="#323-空闲队列控制块的管理"></a> 3.23. 空闲队列控制块的管理</h2>
 <ol>
 <li>每⼀个消息队列都要⽤到⼀个队列控制块。在μC/OS中，队列控制块的总数由OS_CFG.H中的常量OS_MAX_QS定义。</li>
 <li>在系统初始化时，所有的队列控制块被链接成⼀个单向链表——空闲队列控制块链表OSQFreeList。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="324-消息缓冲区"><a class="markdownIt-Anchor" href="#324-消息缓冲区"></a> 3.24. 消息缓冲区</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="325-创建一个消息队列列"><a class="markdownIt-Anchor" href="#325-创建一个消息队列列"></a> 3.25. 创建一个消息队列列</h2>
 <ol>
 <li>OSQCreate()
@@ -1111,7 +1111,7 @@
 </li>
 </ol>
 <h2 id="326-队列列控制块与事件控制块"><a class="markdownIt-Anchor" href="#326-队列列控制块与事件控制块"></a> 3.26. 队列列控制块与事件控制块</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="327-请求消息队列列中的消息"><a class="markdownIt-Anchor" href="#327-请求消息队列列中的消息"></a> 3.27. 请求消息队列列中的消息</h2>
 <ol>
 <li>OSQPend()：等待⼀个消息队列中的消息
@@ -1170,7 +1170,7 @@
 <li>在ANSI C中可以⽤malloc()和free()两个函数动态地分配内存和释放内存。在嵌⼊式实时操作系统中，容易产⽣碎⽚。</li>
 <li>由于内存管理算法的原因，malloc()和free()函数执⾏时间是不确定的。μC/OS-II 对malloc()和free()函数进⾏了改进，使得它们可以分配和释放固定⼤⼩的内存块。这样⼀来，malloc()和free()函数的执⾏时间也是固定的了</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="43-μcos中的存储管理理"><a class="markdownIt-Anchor" href="#43-μcos中的存储管理理"></a> 4.3. μC/OS中的存储管理理</h2>
 <ol>
 <li>μC/OS采⽤的是固定分区的存储管理⽅法
@@ -1181,7 +1181,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="44-内存控制块"><a class="markdownIt-Anchor" href="#44-内存控制块"></a> 4.4. 内存控制块</h2>
 <ol>
 <li>为了便于管理，在μC/OS中使用内存控制块MCB(Memory Control Block)来跟踪每⼀个内存分区，系统中的每个内存分区都有它自己的 MCB。</li>
@@ -1191,7 +1191,7 @@
 <ol>
 <li>如果要在μC/OS-II中使用内存管理，需要在OS_CFG.H⽂件中将开关量OS_MEM_EN设置为1。这样μC/OS-II 在系统初始化OSInit()时就会调⽤OSMemInit()，对内存管理器进⾏初始化，建⽴空闲的内存控制块链表。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/33.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="46-创建一个内存分区"><a class="markdownIt-Anchor" href="#46-创建一个内存分区"></a> 4.6. 创建一个内存分区</h2>
 <ol>
 <li>OSMemCreate()</li>
@@ -1210,7 +1210,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/34.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/34.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="47-分配一个内存块"><a class="markdownIt-Anchor" href="#47-分配一个内存块"></a> 4.7. 分配一个内存块</h2>
 <ol>
 <li><code>void *OSMemGet(OS_MEM *pmem, INT8U *err);</code></li>
@@ -1234,13 +1234,13 @@
 <ol>
 <li>三种pvPortMalloc()和vPortFree()的实现范例</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/35.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/35.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="411-heap_1c"><a class="markdownIt-Anchor" href="#411-heap_1c"></a> 4.11. Heap_1.c</h2>
 <ol>
 <li>其实现了⼀个⾮常基本的pvPortMalloc()版本，⽽没有实现vPortFree()。如果应⽤程序不需要删除任务，队列或者信号量，则其具有使⽤heap_1的潜质。其具有确定性。</li>
 <li>这种分配⽅案将FreeRTOS的内存堆空间堪称⼀个简单的数组。当调⽤pvPortMalloc()时，则将数组又简单的细分成为更⼩的内存块。数组⼤⼩在FreeRTOSConfig.h中由configTOTAL_HEAP_SIZE定义。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/36.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="412-heap_2c"><a class="markdownIt-Anchor" href="#412-heap_2c"></a> 4.12. Heap_2.c</h2>
 <ol>
 <li>其采⽤了⼀个最佳匹配算法来分配内存，并⽀持内存释放。由于声明了⼀个静态数组，所以会让整个应⽤程序看起来耗费了很多内存，即使是在数组没有进⾏任何实际分配之前。</li>
@@ -1252,7 +1252,7 @@
 </li>
 <li>Heap_2.c不会把相邻的空闲块合并成⼀个更⼤的内存块，所以会产⽣内存碎⽚如果分配和释放的总是相同⼤⼩的内存块，则内存碎⽚不会称为⼀个问题。所以Heap_2.c适合于那些重复创建与删除具有相同空间任务的应⽤程序。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/37.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec7/37.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="413-heap_3c"><a class="markdownIt-Anchor" href="#413-heap_3c"></a> 4.13. Heap_3.c</h2>
 <ol>
 <li>简单的调⽤了标准库malloc()和free()，但是通过暂时挂起调度器使得函数调⽤具备了线程安全特性。</li>
@@ -1274,7 +1274,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2020-Introduction-to-Embedded-Systems/" class="category-chain-item">2020-Introduction-to-Embedded-Systems</a>
+  <a href="/categories/2020-Introduction-to-Embedded-Systems/" class="category-chain-item">2020-Introduction-to-Embedded-Systems</a>
   
   
 
@@ -1289,13 +1289,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E4%BC%98%E5%85%88%E7%BA%A7/">#优先级</a>
+        <a href="/tags/%E4%BC%98%E5%85%88%E7%BA%A7/">#优先级</a>
       
-        <a href="/project/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/">#嵌入式系统导论</a>
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/">#嵌入式系统导论</a>
       
-        <a href="/project/tags/%E5%86%85%E5%AD%98/">#内存</a>
+        <a href="/tags/%E5%86%85%E5%AD%98/">#内存</a>
       
     </div>
   
@@ -1308,7 +1308,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/</div>
+      <div>http://example.com/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/</div>
     </div>
     <div class="license-meta">
       
@@ -1350,7 +1350,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec08-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/" title="2020-Introduction-to-Embedded-Systems-lec08-嵌入式系统建模">
+                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec08-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E6%A8%A1/" title="2020-Introduction-to-Embedded-Systems-lec08-嵌入式系统建模">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec08-嵌入式系统建模</span>
                         <span class="visible-mobile">上一篇</span>
@@ -1360,7 +1360,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Hw01-Homework%20for%20uC%20OS-II/" title="2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II">
+                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Hw01-Homework%20for%20uC%20OS-II/" title="2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II">
                         <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1508,7 +1508,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -1537,12 +1537,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1714,9 +1714,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1724,7 +1724,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

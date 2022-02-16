@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Database-Development-Lec3-索引结构及使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Database-Development-Lec3-索引结构及使用">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Database-Development-Lec3-索引结构及使用">
 <meta property="og:locale" content="zh_CN">
@@ -71,12 +71,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -84,10 +84,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -102,7 +102,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -121,7 +121,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -295,7 +295,7 @@
 </ol>
 <h1 id="1-b树索引的结构和应用"><a class="markdownIt-Anchor" href="#1-b树索引的结构和应用"></a> 1. B树索引的结构和应用</h1>
 <h2 id="11-b树b树的结构"><a class="markdownIt-Anchor" href="#11-b树b树的结构"></a> 1.1. B树(B+树)的结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>B树索引是很多主流关系型数据库的缺省索引类型，B是平衡树索引，方框是一个块(页)。</li>
 <li>B树是一块一块的将数据读取到内存，哪怕访问的是一条，也会把该条所在的块读入到内存，一般是4K一个块。</li>
@@ -328,7 +328,7 @@
 <li>数据库是可以使用硬件等方式来弥补不足。</li>
 <li>磁盘空间的开销</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>磁盘空间的开销、处理Oracle
 <ol>
@@ -338,11 +338,11 @@
 </li>
 <li>有触发器的数据库被称为主动数据库。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>数据库系统处理的开销：触发器来记录logo，过多的索引会导致锁的争用。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="4">
 <li>那么不管怎么样，但，它至少能够提升查询效率不是吗?不一定</li>
 <li>思考题
@@ -394,7 +394,7 @@
 <li>胖表和瘦表影响了一个块中可以存放的记录个数，一般胖表支持索引的个数多于10%，而瘦表一般为5%(瘦表一个块能存储的记录个数多，导致索引的使用效果更差)</li>
 </ol>
 <h2 id="15-只使用索引不使用表"><a class="markdownIt-Anchor" href="#15-只使用索引不使用表"></a> 1.5. 只使用索引，不使用表</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>复合键索引，本质上索引是按照排名第一的字段进行的索引</li>
 </ol>
@@ -411,7 +411,7 @@
 </li>
 <li>开发和生成环境的不同？开发生成的是连续的，但是生产中可能是不连续的</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="17-索引无论怎么样都是数据库的重要组成部分"><a class="markdownIt-Anchor" href="#17-索引无论怎么样都是数据库的重要组成部分"></a> 1.7. 索引无论怎么样，都是数据库的重要组成部分</h2>
 <ol>
 <li>索引始终是数据库中极重要的组成部分
@@ -438,7 +438,7 @@
 <ol>
 <li>哈希索引结构：所有的都是等长的数值</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>根据结构，你能告诉我哈希索引做什么不能做什么？碰撞率的问题：一般是使用10倍的范围
 <ol>
@@ -466,19 +466,19 @@
 </li>
 <li>对于写入很不友好：会全表锁定</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="221-什么是位图索引"><a class="markdownIt-Anchor" href="#221-什么是位图索引"></a> 2.2.1. 什么是位图索引</h3>
 <ol>
 <li>相异基数(distinct cardinality)低：字段可以取的值比较少</li>
 <li>大量临时查询的聚合</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="23-位图联结索引bitmap-join-index"><a class="markdownIt-Anchor" href="#23-位图联结索引bitmap-join-index"></a> 2.3. 位图联结索引(Bitmap join index)</h2>
 <ol>
 <li>允许使用<strong>另外某个表的列</strong>对一个给定表建立索引。</li>
 <li>实际上，这就是允许对一个索引结构(而不是表本身)中的数据进行逆规范化。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="24-mysql怎么办"><a class="markdownIt-Anchor" href="#24-mysql怎么办"></a> 2.4. MySQL怎么办？</h2>
 <ol>
 <li>MySQL没有位图索引
@@ -556,7 +556,7 @@
 </li>
 </ol>
 <h4 id="2711-字符串和日期的例子"><a class="markdownIt-Anchor" href="#2711-字符串和日期的例子"></a> 2.7.1.1. 字符串和日期的例子</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>B树索引只能进行前缀查询</li>
 </ol>
@@ -571,7 +571,7 @@
 </li>
 <li>建立索引必须有理由：无论是对外键，或是其他字段都是如此</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="273-同一字段多个索引"><a class="markdownIt-Anchor" href="#273-同一字段多个索引"></a> 2.7.3. 同一字段，多个索引</h3>
 <ol>
 <li>如果系统为外键自动增加索引，常常会导致同一字段属于多个索引的情况
@@ -581,7 +581,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec3/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>为每个外键建立索引，可能会导致多余索引：字段的顺序对索引很重要</li>
 </ol>
@@ -646,7 +646,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Database-Development/" class="category-chain-item">2021-Database-Development</a>
+  <a href="/categories/2021-Database-Development/" class="category-chain-item">2021-Database-Development</a>
   
   
 
@@ -661,13 +661,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
       
-        <a href="/project/tags/%E6%9F%A5%E8%AF%A2/">#查询</a>
+        <a href="/tags/%E6%9F%A5%E8%AF%A2/">#查询</a>
       
-        <a href="/project/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
+        <a href="/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
       
     </div>
   
@@ -680,7 +680,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Database-Development-Lec3-索引结构及使用</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/</div>
+      <div>http://example.com/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/</div>
     </div>
     <div class="license-meta">
       
@@ -722,7 +722,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec2-%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A6%81%E7%82%B9/" title="2021-Database-Development-Lec2-开发数据库的要点">
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec2-%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A6%81%E7%82%B9/" title="2021-Database-Development-Lec2-开发数据库的要点">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Database-Development-Lec2-开发数据库的要点</span>
                         <span class="visible-mobile">上一篇</span>
@@ -732,7 +732,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec6-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/" title="2021-Database-Development-Lec6-数据库模式设计之层次结构">
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec6-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/" title="2021-Database-Development-Lec6-数据库模式设计之层次结构">
                         <span class="hidden-mobile">2021-Database-Development-Lec6-数据库模式设计之层次结构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -880,7 +880,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -909,12 +909,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1086,9 +1086,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1096,7 +1096,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

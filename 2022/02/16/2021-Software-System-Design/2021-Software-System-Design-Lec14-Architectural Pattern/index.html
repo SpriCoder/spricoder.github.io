@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec14-Architectural Pattern">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec14-Architectural Pattern">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec14-Architectural Pattern">
 <meta property="og:locale" content="zh_CN">
@@ -90,12 +90,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -103,10 +103,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -121,7 +121,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -164,7 +164,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -176,7 +176,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -188,7 +188,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -217,7 +217,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -313,7 +313,7 @@
 <li>体系结构模式与DSSA相似，但适用于较低级别，范围更窄。Architectural patterns are similar to I SSAs but applied at a lower level&quot; and within a much narrower scope.</li>
 <li>课本227页</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="1-领域特定的软件体系结构-domain-specific-software-architecture"><a class="markdownIt-Anchor" href="#1-领域特定的软件体系结构-domain-specific-software-architecture"></a> 1. 领域特定的软件体系结构 Domain-Specific Software Architecture</h1>
 <ol>
 <li>领域特定的软件体系结构(DSSA)是软件组件的组合 Domain- Specific Software Architectures (DSSA) isan assemblage ot sottware components
@@ -351,16 +351,16 @@
 <h2 id="22-分层模式-layered-pattern"><a class="markdownIt-Anchor" href="#22-分层模式-layered-pattern"></a> 2.2. 分层模式 Layered Pattern</h2>
 <p>对应4+1视图中的逻辑视图</p>
 <h3 id="221-解决方案"><a class="markdownIt-Anchor" href="#221-解决方案"></a> 2.2.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>层间的访问必须按照逐层进行访问</li>
 </ol>
 <h3 id="222-堆栈符号"><a class="markdownIt-Anchor" href="#222-堆栈符号"></a> 2.2.2. 堆栈符号</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="223-基于分层模式的系统"><a class="markdownIt-Anchor" href="#223-基于分层模式的系统"></a> 2.2.3. 基于分层模式的系统</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="224-分层模式变体"><a class="markdownIt-Anchor" href="#224-分层模式变体"></a> 2.2.4. 分层模式变体</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>上面的A、B、C：不是一种分层模式
 <ol>
@@ -393,9 +393,9 @@
 <li>Broker可以理解为中间人，撮合双方达成交易。</li>
 </ol>
 <h3 id="231-解决方案"><a class="markdownIt-Anchor" href="#231-解决方案"></a> 2.3.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="232-概述图"><a class="markdownIt-Anchor" href="#232-概述图"></a> 2.3.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="233-质量属性体现模式的优缺点"><a class="markdownIt-Anchor" href="#233-质量属性体现模式的优缺点"></a> 2.3.3. 质量属性体现模式的优缺点</h3>
 <ol>
 <li>优点
@@ -436,9 +436,9 @@
 <li>model -&gt; controller 不会产生通信</li>
 </ol>
 <h3 id="241-解决方案"><a class="markdownIt-Anchor" href="#241-解决方案"></a> 2.4.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="242-概述图"><a class="markdownIt-Anchor" href="#242-概述图"></a> 2.4.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="25-pipe-and-filter-pattern-管道和过滤模式"><a class="markdownIt-Anchor" href="#25-pipe-and-filter-pattern-管道和过滤模式"></a> 2.5. Pipe-and-Filter Pattern 管道和过滤模式</h2>
 <ol>
 <li>filter：相当于component，起到数据处理、计算作用，每个filter有input和多个output，数据处理后传递给后续的部分。</li>
@@ -447,9 +447,9 @@
 <li>场景应用在科学计算的场景中，需要避免出现环形的filter，不适用于有很多交互产生的场景。</li>
 </ol>
 <h3 id="251-解决方案"><a class="markdownIt-Anchor" href="#251-解决方案"></a> 2.5.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="252-概述图"><a class="markdownIt-Anchor" href="#252-概述图"></a> 2.5.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>每一组件表示filter，连接两个组件的部分是pipe(类似于queue交易任务的排队等待处理)</li>
 <li>任何一个filter都依赖于前一个filter的输出，中间没有机会接收外部的交互来改变严格定义好的流程。</li>
@@ -465,9 +465,9 @@
 <li>Server可能单点失效，但是broker可以控制</li>
 </ol>
 <h3 id="261-解决方案"><a class="markdownIt-Anchor" href="#261-解决方案"></a> 2.6.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="262-概述图"><a class="markdownIt-Anchor" href="#262-概述图"></a> 2.6.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>ATM验证身份，某一个server会给很多设备提供服务。</li>
 <li>ATM操作安全监控、盗刷之类，通过monitoring 发现问题找到记录</li>
@@ -492,9 +492,9 @@
 <li>对每一个peer可能会给他一个规定对的连接数</li>
 </ol>
 <h3 id="271-解决方案"><a class="markdownIt-Anchor" href="#271-解决方案"></a> 2.7.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="272-概述图"><a class="markdownIt-Anchor" href="#272-概述图"></a> 2.7.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>可能安全性不受保障，因为节点既是Client又是Server，被攻击可能性提高了，attack、surface受攻击面变大</li>
 <li>数据分布在不同的节点上，相同数据多处拷贝，如果要的话，可能会导致数据不一致(数据一致性难度更大)，不能保证数据一定可用，数据可用性不能百分之百保证。</li>
@@ -518,9 +518,9 @@
 </li>
 </ol>
 <h3 id="281-解决方案"><a class="markdownIt-Anchor" href="#281-解决方案"></a> 2.8.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="282-概述图"><a class="markdownIt-Anchor" href="#282-概述图"></a> 2.8.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>旅行社有一系列需求</li>
 <li>真正提供服务的是酒店、导游之类的，系统需要通过Web Service Broker连接到不同的真正提供者。下单：商家发货。</li>
@@ -546,7 +546,7 @@
 <li>某一个publiser发布自己的消息可能订阅其他消息（朋友圈微博）</li>
 </ol>
 <h3 id="291-解决方案"><a class="markdownIt-Anchor" href="#291-解决方案"></a> 2.9.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>传统操作系统也是通过事件驱动方式来管理的</li>
 <li>IDE环境注册后就行结构发布的事件</li>
@@ -556,13 +556,13 @@
 <li>发布者不关心每个订阅者都收到不是guarantee</li>
 </ol>
 <h3 id="292-概述图"><a class="markdownIt-Anchor" href="#292-概述图"></a> 2.9.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="210-shared-data-pattern-共享数据模式3"><a class="markdownIt-Anchor" href="#210-shared-data-pattern-共享数据模式3"></a> 2.10. Shared-Data Pattern 共享数据模式3</h2>
 <ol>
 <li>中间安全数据会被很多人共享登录访问</li>
 </ol>
 <h3 id="2101-解决方案"><a class="markdownIt-Anchor" href="#2101-解决方案"></a> 2.10.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>这样一个系统模式有什么问题嘛？</li>
 <li>单点失效性能瓶颈问题（都要对它操作） 安全性（攻击中心点有风险）对安全性数据来说强调强一致性如果有副本有一段时间才能到其他副本上更（可能成为漏洞任何时刻访问数据都必须一致）</li>
@@ -575,7 +575,7 @@
 </li>
 </ol>
 <h3 id="2102-概述图"><a class="markdownIt-Anchor" href="#2102-概述图"></a> 2.10.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>既有读又有写</li>
 </ol>
@@ -588,7 +588,7 @@
 <li>reduce进行合并产出想要的答案</li>
 </ol>
 <h3 id="2111-解决方案"><a class="markdownIt-Anchor" href="#2111-解决方案"></a> 2.11.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>map reduce部署在不同的地方</li>
 <li>词频分析案例大量数据</li>
@@ -599,7 +599,7 @@
 <li>最后进行排序</li>
 </ol>
 <h3 id="2112-概述图"><a class="markdownIt-Anchor" href="#2112-概述图"></a> 2.11.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="212-multi-tier-pattern-多层模式"><a class="markdownIt-Anchor" href="#212-multi-tier-pattern-多层模式"></a> 2.12. Multi-Tier Pattern 多层模式</h2>
 <ol>
 <li>部署的环境划分</li>
@@ -608,13 +608,13 @@
 <li>不同的部署环境里面分层不同但是软件完成内容一样</li>
 </ol>
 <h3 id="2121-解决方案"><a class="markdownIt-Anchor" href="#2121-解决方案"></a> 2.12.1. 解决方案</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>旅行社例子</li>
 <li>tier只是部署方案决定并没有改变代码本身</li>
 </ol>
 <h3 id="2122-概述图"><a class="markdownIt-Anchor" href="#2122-概述图"></a> 2.12.2. 概述图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>三大类：modular类、runtime process动态类、软件和非软件环境关系（部署关系）11个架构模式</li>
 </ol>
@@ -641,19 +641,19 @@
 <li>tactic是设计最小粒度tactic进行组合一个tactic是为了某一个质量属性也会影响其他属性（正面、负面）</li>
 <li>针对某一个质量属性Modifiablity 相关的tactic 和pattern之间的关系是否涉及到</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>设计深度问题</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/27.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/27.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>椭圆形——某一个tactic 如ping/Echo</li>
 <li>可用性有贡献但是可能会产生其他影响（系统复杂度、资源影响、性能）</li>
 <li>如果性能很在意就对它单独进行设计成本、增加资源利用率问题</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>为了提高利用率需要引入调度机制</li>
 <li>最终判断是ASR
@@ -664,9 +664,9 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="4-reading-materials"><a class="markdownIt-Anchor" href="#4-reading-materials"></a> 4. Reading Materials</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec14/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 
               
             </div>
@@ -684,7 +684,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -699,13 +699,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
-        <a href="/project/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+        <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
       
     </div>
   
@@ -718,7 +718,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec14-Architectural Pattern</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/</div>
     </div>
     <div class="license-meta">
       
@@ -760,7 +760,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec04-Creational/" title="2021-Software-System-Design-Lec04-Creational">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec04-Creational/" title="2021-Software-System-Design-Lec04-Creational">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Lec04-Creational</span>
                         <span class="visible-mobile">上一篇</span>
@@ -770,7 +770,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/" title="2021-Software-System-Design-Lec15-Design">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/" title="2021-Software-System-Design-Lec15-Design">
                         <span class="hidden-mobile">2021-Software-System-Design-Lec15-Design</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -918,7 +918,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -947,12 +947,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1124,9 +1124,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1134,7 +1134,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

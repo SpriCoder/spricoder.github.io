@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec19-Microservice Architecture">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec19-Microservice Architecture">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec19-Microservice%20Architecture/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec19-Microservice%20Architecture/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec19-Microservice Architecture">
 <meta property="og:locale" content="zh_CN">
@@ -71,12 +71,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -84,10 +84,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -102,7 +102,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -121,7 +121,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -306,7 +306,7 @@
 <li>单体(Monolithic)应用的全部功能被<strong>集成</strong>在一起作为一个<strong>单一</strong>的单元。</li>
 <li>单体架构更多地作为应用的<strong>部署架构</strong>，即只要它部署在同一台(虚拟)机器上，运行于同一进程中，而无论应用内部如何模块化，服务化或者分层。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="22-分层架构"><a class="markdownIt-Anchor" href="#22-分层架构"></a> 2.2. 分层架构</h2>
 <ol>
 <li><strong>关注点分离</strong>原则</li>
@@ -329,14 +329,14 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="23-面向服务架构soa"><a class="markdownIt-Anchor" href="#23-面向服务架构soa"></a> 2.3. 面向服务架构(SOA)</h2>
 <ol>
 <li>面向服务架构(SOA)：是一个<strong>分布式</strong>组件的集合，这些组件为其它组件<strong>提供</strong>服务(provider)，或者<strong>消费</strong>其它组件所提供的服务(consumer)，而无需知道其它组件的实现细节。</li>
 <li>企业服务总线(ESB)：为服务间的<strong>相互调用</strong>提供支持环境，<strong>路由</strong>服务间的消息，并对消息和数据进行必要的<strong>转换</strong>。</li>
 <li>服务编排引擎(Orchestration Engine)：可以根据预先定义的<strong>脚本</strong>对服务消费者与服务提供者之间的交互进行<strong>指挥</strong>。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="4">
 <li>面向服务架构的特点:
 <ol>
@@ -362,7 +362,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="24-构建云原生应用saas的12要素"><a class="markdownIt-Anchor" href="#24-构建云原生应用saas的12要素"></a> 2.4. 构建云原生应用(SaaS)的12要素</h2>
 <ol>
 <li><strong>基准代码</strong>:一份基准代码，多份部署。基准代码和应用之间总是保持一一对应的关系。所有部署的基准代码相同，但每份部署可以使用其不同的版本。</li>
@@ -443,7 +443,7 @@
 </li>
 </ol>
 <h2 id="33-微服务架构与传统架构比较"><a class="markdownIt-Anchor" href="#33-微服务架构与传统架构比较"></a> 3.3. 微服务架构与传统架构比较</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>《Microservice Architecture in Reality: An Industrial Inquir》</li>
 </ul>
@@ -459,7 +459,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>API网关
 <ol>
@@ -484,7 +484,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>熔断器
 <ol>
@@ -505,9 +505,9 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="35-微服务架构的实现"><a class="markdownIt-Anchor" href="#35-微服务架构的实现"></a> 3.5. 微服务架构的实现</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="36-微服务技术选型轻量级"><a class="markdownIt-Anchor" href="#36-微服务技术选型轻量级"></a> 3.6. 微服务技术选型(轻量级)</h2>
 <ol>
 <li>微服务技术选型(轻量级)
@@ -520,7 +520,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="4-小结"><a class="markdownIt-Anchor" href="#4-小结"></a> 4. 小结</h1>
 <ol>
 <li>什么是软件架构(体系结构) ?
@@ -550,7 +550,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec19/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 
               
             </div>
@@ -568,7 +568,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -583,17 +583,17 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+        <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
       
-        <a href="/project/tags/%E6%9C%8D%E5%8A%A1/">#服务</a>
+        <a href="/tags/%E6%9C%8D%E5%8A%A1/">#服务</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
-        <a href="/project/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+        <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
       
-        <a href="/project/tags/%E7%BB%84%E4%BB%B6/">#组件</a>
+        <a href="/tags/%E7%BB%84%E4%BB%B6/">#组件</a>
       
     </div>
   
@@ -606,7 +606,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec19-Microservice Architecture</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec19-Microservice%20Architecture/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec19-Microservice%20Architecture/</div>
     </div>
     <div class="license-meta">
       
@@ -648,7 +648,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec9-SVD/" title="2020-Big-data-analysis-Tec9-SVD">
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec9-SVD/" title="2020-Big-data-analysis-Tec9-SVD">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2020-Big-data-analysis-Tec9-SVD</span>
                         <span class="visible-mobile">上一篇</span>
@@ -658,7 +658,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec6-%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/" title="2020-Big-data-analysis-Tec6-文本预处理与关键词提取">
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec6-%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96/" title="2020-Big-data-analysis-Tec6-文本预处理与关键词提取">
                         <span class="hidden-mobile">2020-Big-data-analysis-Tec6-文本预处理与关键词提取</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -806,7 +806,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -835,12 +835,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1012,9 +1012,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1022,7 +1022,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

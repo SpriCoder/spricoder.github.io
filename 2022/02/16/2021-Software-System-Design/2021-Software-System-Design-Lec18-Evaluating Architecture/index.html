@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec18-Evaluating Architecture">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec18-Evaluating Architecture">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec18-Evaluating Architecture">
 <meta property="og:locale" content="zh_CN">
@@ -68,12 +68,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -81,10 +81,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -99,7 +99,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -118,7 +118,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -130,7 +130,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -142,7 +142,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -154,7 +154,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -166,7 +166,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -195,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,7 +287,7 @@
               
               <h2 id="lec18-evaluating-architecture"><a class="markdownIt-Anchor" href="#lec18-evaluating-architecture"></a> lec18-Evaluating Architecture</h2>
 <h1 id="1-architecture-process"><a class="markdownIt-Anchor" href="#1-architecture-process"></a> 1. Architecture Process</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="11-why-to-evaluate-architecture"><a class="markdownIt-Anchor" href="#11-why-to-evaluate-architecture"></a> 1.1. Why to evaluate architecture?</h2>
 <ol>
 <li>大型项目经常延迟交付和超出预算 Large projects often delivered late and over-budget
@@ -401,7 +401,7 @@
 <li>所做的权衡和支持它们的理由可以适当地记录下来以备将来参考 Tradeoffs made and rationale underpinning them can appropriately be documented for future reference</li>
 </ol>
 <h2 id="16-评价分析方法-analysis-methods-for-evaluation"><a class="markdownIt-Anchor" href="#16-评价分析方法-analysis-methods-for-evaluation"></a> 1.6. 评价分析方法 Analysis Methods for Evaluation</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="17-评估格式-evaluate-forms"><a class="markdownIt-Anchor" href="#17-评估格式-evaluate-forms"></a> 1.7. 评估格式 Evaluate Forms</h2>
 <ol>
 <li><strong>设计师</strong>在设计过程中评估 Evaluation by designers within the design process
@@ -471,7 +471,7 @@
 <li>审查结束后，将报告提交给委托评估的人。After the review, the report is delivered to whom commissioned the evaluation.</li>
 </ol>
 <h3 id="215-atam阶段总结-summary-of-atam-phases"><a class="markdownIt-Anchor" href="#215-atam阶段总结-summary-of-atam-phases"></a> 2.1.5. ATAM阶段总结 Summary of ATAM phases</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="22-第一阶段的步骤-steps-of-phase-1"><a class="markdownIt-Anchor" href="#22-第一阶段的步骤-steps-of-phase-1"></a> 2.2. 第一阶段的步骤 Steps of Phase-1</h2>
 <h3 id="221-第一步介绍atam-step1-present-the-atam"><a class="markdownIt-Anchor" href="#221-第一步介绍atam-step1-present-the-atam"></a> 2.2.1. 第一步：介绍ATAM Step1 - Present the ATAM</h3>
 <ol>
@@ -542,7 +542,7 @@
 <li>评估团队与项目决策者合作，确定、确定和优化系统最重要的质量属性目标。The evaluation team works with the project decision makers to identify, prioritize and refine the system’s most important quality attribute goals.</li>
 <li>质量属性目标通过质量属性效用树详细阐述，该树通过精确定义相关质量属性需求使需求具体化。The quality attribute goals are articulated in detail via quality attribute utility tree that makes the requirements concrete by defining precisely the relevant quality attribute requirements.</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="226-第六步分析架构方法-step6-analyze-architectural-approaches"><a class="markdownIt-Anchor" href="#226-第六步分析架构方法-step6-analyze-architectural-approaches"></a> 2.2.6. 第六步：分析架构方法 Step6 - Analyze Architectural Approaches</h3>
 <ol>
 <li>目标是让评估团队确信该方法的实例化适合满足特定于属性的要求。The goal is for the evaluation team to be convinced that the instantiation of the approach is appropriate for meeting the attribute-specific requirements.</li>
@@ -551,9 +551,9 @@
 <li>分析是为了引出足够的架构信息，以在已经做出的架构决策和需要满足的质量属性之间建立某种联系。The analysis is to elicit sufficient architectural information to establish some link between the architectural decisions that have been made and quality attributes that need to be satisfied.</li>
 <li>在这一步结束时，评估团队应该清楚地了解整个架构的最重要方面、关键设计决策的基本原理以及风险、非风险、敏感点和权衡点的列表。At the end of this step, the evaluation team should have a clear picture of the most important aspects of the entire architecture, the rationale for key design decisions, and a list of risks, nonrisks, sensitivity points, and tradeoff points.</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="227-atam-第-1-天的示例议程-example-agenda-for-day-1-for-atam"><a class="markdownIt-Anchor" href="#227-atam-第-1-天的示例议程-example-agenda-for-day-1-for-atam"></a> 2.2.7. ATAM 第 1 天的示例议程 Example Agenda for Day 1 for ATAM</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="23-阶段2的步骤-steps-of-phase-2"><a class="markdownIt-Anchor" href="#23-阶段2的步骤-steps-of-phase-2"></a> 2.3. 阶段2的步骤 Steps of phase-2</h2>
 <h3 id="231-第一步展示atam和之前的结果-step-1-present-the-atam-previous-results"><a class="markdownIt-Anchor" href="#231-第一步展示atam和之前的结果-step-1-present-the-atam-previous-results"></a> 2.3.1. 第一步：展示ATAM和之前的结果 Step-1: Present the ATAM &amp; Previous Results</h3>
 <ol>
@@ -589,7 +589,7 @@
 </li>
 </ol>
 <h2 id="24-summary-of-atam-phases"><a class="markdownIt-Anchor" href="#24-summary-of-atam-phases"></a> 2.4. Summary of ATAM Phases</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="25-atam输出总结-summary-of-atam-outputs"><a class="markdownIt-Anchor" href="#25-atam输出总结-summary-of-atam-outputs"></a> 2.5. ATAM输出总结 Summary of ATAM Outputs</h2>
 <ol>
 <li>架构的简明展示 A concise presentation of the architecture</li>
@@ -603,7 +603,7 @@
 <li>最终的评估报告 Final evaluation report</li>
 </ol>
 <h2 id="26-lightweight-architecture-evaluation"><a class="markdownIt-Anchor" href="#26-lightweight-architecture-evaluation"></a> 2.6. Lightweight Architecture Evaluation</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 
               
             </div>
@@ -621,7 +621,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -636,17 +636,17 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
+        <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
       
-        <a href="/project/tags/%E8%AF%84%E4%BC%B0/">#评估</a>
+        <a href="/tags/%E8%AF%84%E4%BC%B0/">#评估</a>
       
-        <a href="/project/tags/%E8%B4%A8%E9%87%8F/">#质量</a>
+        <a href="/tags/%E8%B4%A8%E9%87%8F/">#质量</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
-        <a href="/project/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+        <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
       
     </div>
   
@@ -659,7 +659,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec18-Evaluating Architecture</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/</div>
     </div>
     <div class="license-meta">
       
@@ -701,7 +701,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec10-Defensive%20Programming/" title="2021-Software-System-Design-Lec10-Defensive Programming">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec10-Defensive%20Programming/" title="2021-Software-System-Design-Lec10-Defensive Programming">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Lec10-Defensive Programming</span>
                         <span class="visible-mobile">上一篇</span>
@@ -711,7 +711,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-OS/2020-OS-Exam1-%E5%A4%8D%E4%B9%A0/" title="2020-OS-Exam1-复习">
+                      <a href="/2022/02/16/2020-OS/2020-OS-Exam1-%E5%A4%8D%E4%B9%A0/" title="2020-OS-Exam1-复习">
                         <span class="hidden-mobile">2020-OS-Exam1-复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -859,7 +859,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -888,12 +888,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1065,9 +1065,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1075,7 +1075,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

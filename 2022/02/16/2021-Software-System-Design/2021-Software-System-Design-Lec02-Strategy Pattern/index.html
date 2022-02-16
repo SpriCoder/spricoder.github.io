@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec02-Strategy Pattern">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec02-Strategy Pattern">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec02-Strategy Pattern">
 <meta property="og:locale" content="zh_CN">
@@ -78,12 +78,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -91,10 +91,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -109,7 +109,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -128,7 +128,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -164,7 +164,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -176,7 +176,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -205,7 +205,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -298,15 +298,15 @@
               <h2 id="lec02-策略模式"><a class="markdownIt-Anchor" href="#lec02-策略模式"></a> lec02-策略模式</h2>
 <h1 id="1-策略模式引入鸭子"><a class="markdownIt-Anchor" href="#1-策略模式引入鸭子"></a> 1. 策略模式引入：鸭子</h1>
 <h2 id="11-从simuduck应用程序开始"><a class="markdownIt-Anchor" href="#11-从simuduck应用程序开始"></a> 1.1. 从SimUDuck应用程序开始</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>我们需要添加功能使得鸭子可以飞</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>简单的修改鸭子父类，我们可以发现这样子橡皮鸭也可以飞</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>我们需要意识到不是所有的鸭子都会飞</li>
 <li>考虑继承
@@ -317,11 +317,11 @@
 </ol>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>如果我们使用接口呢？</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>其实并没有真正解决这个问题：导致代码无法复用</li>
 <li>没有重复的代码
@@ -355,7 +355,7 @@
 <li>我们知道fly()和quack()是Duck类的一部分，它们在鸭子之间有所不同</li>
 <li>为了将这些行为与Duck类分开，我们将把这两种方法都从Duck类中拉出，并创建一组新的类来表示每种行为</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="22-设计鸭子行为"><a class="markdownIt-Anchor" href="#22-设计鸭子行为"></a> 2.2. 设计鸭子行为</h2>
 <ol>
 <li>我们想要
@@ -388,11 +388,11 @@
 </li>
 <li>变量的声明类型应该是超类型，通常是接口的抽象类，以便分配给这些变量的对象可以是超类型的任何具体实现，这意味着声明它们的类不必知道实际的对象类型！</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="4">
 <li>我们将行为抽象出来，同时分别具体了两个子类(实现了依赖倒转)，并且是完整的封装</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="33-在这个设计过程中"><a class="markdownIt-Anchor" href="#33-在这个设计过程中"></a> 3.3. 在这个设计过程中</h2>
 <ol>
 <li>其他类型的对象可以重用我们的fly和quack行为，因为这些行为不再隐藏在我们的Duck类中</li>
@@ -410,35 +410,35 @@
 <li>委托是调用另一个部分的方法</li>
 </ol>
 <h2 id="41-1-首先我们将两个实例变量添加到duck类中"><a class="markdownIt-Anchor" href="#41-1-首先我们将两个实例变量添加到duck类中"></a> 4.1. (1) 首先，我们将两个实例变量添加到Duck类中</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="42-2-现在我们实现performquack"><a class="markdownIt-Anchor" href="#42-2-现在我们实现performquack"></a> 4.2. (2) 现在我们实现performQuack()</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="43-3-如何设置飞行行为和叫行为实例变量"><a class="markdownIt-Anchor" href="#43-3-如何设置飞行行为和叫行为实例变量"></a> 4.3. (3) 如何设置飞行行为和叫行为实例变量</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="5-鸭子测试代码-testing-the-code"><a class="markdownIt-Anchor" href="#5-鸭子测试代码-testing-the-code"></a> 5. 鸭子测试代码 Testing the code</h1>
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/12.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/13.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/14.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/15.png" srcset="/img/loading.gif" lazyload alt="" /></td>
 </tr>
 </tbody>
 </table>
 <h2 id="51-动态设置行为-setting-behavior-dynamically"><a class="markdownIt-Anchor" href="#51-动态设置行为-setting-behavior-dynamically"></a> 5.1. 动态设置行为 Setting behavior dynamically</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="52-制作新的鸭子类型-make-a-new-duck-type"><a class="markdownIt-Anchor" href="#52-制作新的鸭子类型-make-a-new-duck-type"></a> 5.2. 制作新的鸭子类型 Make a new Duck type</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="53-制作新的flybehavior类型-make-a-new-flybehavior-type"><a class="markdownIt-Anchor" href="#53-制作新的flybehavior类型-make-a-new-flybehavior-type"></a> 5.3. 制作新的FlyBehavior类型 Make a new FlyBehavior type</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="54-使modelduck具有火箭功能-make-the-modelduck-rocket-enabled"><a class="markdownIt-Anchor" href="#54-使modelduck具有火箭功能-make-the-modelduck-rocket-enabled"></a> 5.4. 使ModelDuck具有火箭功能 Make the ModelDuck rocket-enabled</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/19.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/19.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="6-has-a可以比is-a更好"><a class="markdownIt-Anchor" href="#6-has-a可以比is-a更好"></a> 6. HAS-A可以比IS-A更好</h1>
 <blockquote>
 <p>优先考虑组成而不是继承</p>
@@ -457,7 +457,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="71-模式描述"><a class="markdownIt-Anchor" href="#71-模式描述"></a> 7.1. 模式描述</h2>
 <ol>
 <li>名称：策略模式 Strategy Pattern</li>
@@ -592,7 +592,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -607,11 +607,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
     </div>
   
@@ -624,7 +624,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec02-Strategy Pattern</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/</div>
     </div>
     <div class="license-meta">
       
@@ -666,7 +666,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Exam2-%E6%A8%A1%E5%BC%8F%E9%80%89%E6%8B%A9/" title="2021-Software-System-Design-Exam2-模式选择">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Exam2-%E6%A8%A1%E5%BC%8F%E9%80%89%E6%8B%A9/" title="2021-Software-System-Design-Exam2-模式选择">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Exam2-模式选择</span>
                         <span class="visible-mobile">上一篇</span>
@@ -676,7 +676,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/" title="2021-Software-System-Design-Lec11-Table-Driven Methods">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/" title="2021-Software-System-Design-Lec11-Table-Driven Methods">
                         <span class="hidden-mobile">2021-Software-System-Design-Lec11-Table-Driven Methods</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -824,7 +824,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -853,12 +853,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1030,9 +1030,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1040,7 +1040,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

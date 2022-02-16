@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec11-Table-Driven Methods">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec11-Table-Driven Methods">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec11-Table-Driven Methods">
 <meta property="og:locale" content="zh_CN">
@@ -63,12 +63,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -76,10 +76,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -94,7 +94,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -190,7 +190,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -323,9 +323,9 @@
 </li>
 </ol>
 <h4 id="1221-消息的存储方式"><a class="markdownIt-Anchor" href="#1221-消息的存储方式"></a> 1.2.2.1. 消息的存储方式</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="1222-消息的格式细节"><a class="markdownIt-Anchor" href="#1222-消息的格式细节"></a> 1.2.2.2. 消息的格式细节</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="1223-基于逻辑的方法"><a class="markdownIt-Anchor" href="#1223-基于逻辑的方法"></a> 1.2.2.3. 基于逻辑的方法</h4>
 <ol>
 <li>读取每一条消息，检查其ID，然后调用一个用来阅读、解释以 及打印一种消息的子程序
@@ -349,7 +349,7 @@
 </ol>
 <figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-keyword">While</span> more messages <span class="hljs-keyword">to</span> <span class="hljs-keyword">read</span><br>  <span class="hljs-keyword">Read</span> a <span class="hljs-keyword">message</span> header<br>  Decode the <span class="hljs-keyword">message</span> ID from the <span class="hljs-keyword">message</span> header<br>  <span class="hljs-keyword">If</span> the <span class="hljs-keyword">message</span> header <span class="hljs-keyword">is</span> <span class="hljs-keyword">type</span> <span class="hljs-number">1</span> <span class="hljs-keyword">then</span><br>    Instantiate a <span class="hljs-keyword">type</span> <span class="hljs-number">1</span> <span class="hljs-keyword">message</span> <span class="hljs-keyword">object</span><br>  <span class="hljs-keyword">Else</span> <span class="hljs-keyword">if</span> the <span class="hljs-keyword">message</span> header <span class="hljs-keyword">is</span> <span class="hljs-keyword">type</span> <span class="hljs-number">2</span> <span class="hljs-keyword">then</span><br>    Instantiate a <span class="hljs-keyword">type</span> <span class="hljs-number">2</span> <span class="hljs-keyword">message</span> <span class="hljs-keyword">object</span><br>  ...<br>  <span class="hljs-keyword">Else</span> <span class="hljs-keyword">if</span> the <span class="hljs-keyword">message</span> header <span class="hljs-keyword">is</span> <span class="hljs-keyword">type</span> <span class="hljs-number">19</span> <span class="hljs-keyword">then</span><br>    Instantiate a <span class="hljs-keyword">type</span> <span class="hljs-number">19</span> <span class="hljs-keyword">message</span> <span class="hljs-keyword">object</span><br>  <span class="hljs-keyword">Else</span> <span class="hljs-keyword">if</span> the <span class="hljs-keyword">message</span> header <span class="hljs-keyword">is</span> <span class="hljs-keyword">type</span> <span class="hljs-number">20</span> <span class="hljs-keyword">then</span><br>    Instantiate a <span class="hljs-keyword">type</span> <span class="hljs-number">20</span> <span class="hljs-keyword">message</span> <span class="hljs-keyword">object</span><br>  <span class="hljs-keyword">End</span> <span class="hljs-keyword">if</span><br>  <span class="hljs-keyword">End</span> <span class="hljs-keyword">While</span><br></code></pre></td></tr></table></figure>
 <h4 id="1226-读取和打印浮标温度消息子程序"><a class="markdownIt-Anchor" href="#1226-读取和打印浮标温度消息子程序"></a> 1.2.2.6. 读取和打印浮标温度消息子程序</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="123-表驱动法"><a class="markdownIt-Anchor" href="#123-表驱动法"></a> 1.2.3. 表驱动法</h3>
 <ol>
 <li>消息阅读子程序由一个循环组成，该循环负责读入每一个消息头，对其ID解码，在Message 数组中查询其消息描述，然后每次都调用同一个子程序来解释该消息</li>
@@ -362,7 +362,7 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++示例：定义消息数据类型</span><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">FieldType</span> &#123;<br>  FieldType_FloatingPoint,<br>  FieldType_Integer,<br>  FieldType_String,<br>  FieldType_TimeOfDay,<br>  FieldType_Boolean,<br>  FieldType_BitField,<br>  FieldType_Last = FieldType_BitField<br>&#125;;<br></code></pre></td></tr></table></figure>
 <h3 id="125-消息的表记录-浮标温度消息"><a class="markdownIt-Anchor" href="#125-消息的表记录-浮标温度消息"></a> 1.2.5. 消息的表记录-浮标温度消息</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="126-表驱动法代码"><a class="markdownIt-Anchor" href="#126-表驱动法代码"></a> 1.2.6. 表驱动法代码</h3>
 <ol>
 <li>表驱动法中最上层循环的伪代码：这部分的代码与前面的方法差别不大</li>
@@ -397,7 +397,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="132-索引访问技术的主要优点"><a class="markdownIt-Anchor" href="#132-索引访问技术的主要优点"></a> 1.3.2. 索引访问技术的主要优点：</h3>
 <ol>
 <li>如果主查询表中的每一条记录都很大，那么索引数组就<br />
@@ -424,7 +424,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec11/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="141-使用阶梯方法"><a class="markdownIt-Anchor" href="#141-使用阶梯方法"></a> 1.4.1. 使用阶梯方法</h3>
 <ol>
 <li>把每一区间的上限写入一张表里， 然后写一个循环，按照各区间的上限来检查分数
@@ -459,7 +459,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -474,11 +474,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
-        <a href="/project/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8/">#表驱动</a>
+        <a href="/tags/%E8%A1%A8%E9%A9%B1%E5%8A%A8/">#表驱动</a>
       
     </div>
   
@@ -491,7 +491,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec11-Table-Driven Methods</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec11-Table-Driven%20Methods/</div>
     </div>
     <div class="license-meta">
       
@@ -533,7 +533,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/" title="2021-Software-System-Design-Lec02-Strategy Pattern">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec02-Strategy%20Pattern/" title="2021-Software-System-Design-Lec02-Strategy Pattern">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Lec02-Strategy Pattern</span>
                         <span class="visible-mobile">上一篇</span>
@@ -543,7 +543,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec17-Document/" title="2021-Software-System-Design-Lec17-Document">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec17-Document/" title="2021-Software-System-Design-Lec17-Document">
                         <span class="hidden-mobile">2021-Software-System-Design-Lec17-Document</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -691,7 +691,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -720,12 +720,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -897,9 +897,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -907,7 +907,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

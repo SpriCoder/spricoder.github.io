@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2020-Fundamentals-of-Data-Management-ch07-完整性、视图、安全和目录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2020-Fundamentals-of-Data-Management-ch07-完整性、视图、安全和目录">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch07-%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%81%E8%A7%86%E5%9B%BE%E3%80%81%E5%AE%89%E5%85%A8%E5%92%8C%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch07-%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%81%E8%A7%86%E5%9B%BE%E3%80%81%E5%AE%89%E5%85%A8%E5%92%8C%E7%9B%AE%E5%BD%95/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2020-Fundamentals-of-Data-Management-ch07-完整性、视图、安全和目录">
 <meta property="og:locale" content="zh_CN">
@@ -78,12 +78,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -91,10 +91,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -109,7 +109,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -128,7 +128,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -164,7 +164,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -176,7 +176,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -205,7 +205,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -315,7 +315,7 @@
 </li>
 </ol>
 <h2 id="11-create-table命令的使用方法"><a class="markdownIt-Anchor" href="#11-create-table命令的使用方法"></a> 1.1. Create Table命令的使用方法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="12-列完整性约束"><a class="markdownIt-Anchor" href="#12-列完整性约束"></a> 1.2. 列完整性约束</h2>
 <ol>
 <li>单列完整性约束
@@ -340,11 +340,11 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>多列完整性约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>候选键约束:UNIQUE &amp; NOT NULL</li>
 <li>constraint是声明约束
@@ -357,22 +357,22 @@
 <ol>
 <li>正常的值约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>外键约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="14-外键foreign-key"><a class="markdownIt-Anchor" href="#14-外键foreign-key"></a> 1.4. 外键(Foreign key)</h2>
 <ol>
 <li>如果要求任一行中F的值的组合至少包含一个空值，或者匹配一组P的值组合，则将表T1中的一组F列定义为T1的外键 表示参考表T2的候选或主键。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>外键的正确性保证</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/7.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/8.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/7.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/8.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="15-参照完整性"><a class="markdownIt-Anchor" href="#15-参照完整性"></a> 1.5. 参照完整性</h2>
 <ol>
 <li>T1的任何行中的F列必须满足下列条件之一：
@@ -399,16 +399,16 @@
 </li>
 </ol>
 <h3 id="171-数据库触发器的定义"><a class="markdownIt-Anchor" href="#171-数据库触发器的定义"></a> 1.7.1. 数据库触发器的定义</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/10.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="172-update触发器类型"><a class="markdownIt-Anchor" href="#172-update触发器类型"></a> 1.7.2. Update触发器类型</h3>
 <ol>
 <li>行级别触发器:在行的任何列值更改之前或之后执行</li>
 <li>列级别触发器:在指定列更改之前或之后执行此操作</li>
 </ol>
 <h3 id="173-触发器例子"><a class="markdownIt-Anchor" href="#173-触发器例子"></a> 1.7.3. 触发器例子</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/11.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/11.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="2-视图view"><a class="markdownIt-Anchor" href="#2-视图view"></a> 2. 视图(View)</h1>
 <ol>
 <li>Create View：在执行Create View的语句时，没有数据被检索或存储，但是视图对象作为一个对象被存放在系统目录中。</li>
@@ -449,7 +449,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="4">
 <li>视图的创建的执行:
 <ol>
@@ -480,8 +480,8 @@
 </li>
 </ol>
 <h2 id="25-视图的查询过程"><a class="markdownIt-Anchor" href="#25-视图的查询过程"></a> 2.5. 视图的查询过程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/14.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/14.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="26-删除视图"><a class="markdownIt-Anchor" href="#26-删除视图"></a> 2.6. 删除视图</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> &#123; <span class="hljs-keyword">TABLE</span> table_name <span class="hljs-operator">|</span> <span class="hljs-keyword">VIEW</span> view_name &#125;<br>  &#123; CASCADE <span class="hljs-operator">|</span> RESTRICT &#125;;<br></code></pre></td></tr></table></figure>
 <ol>
@@ -501,7 +501,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="28-视图的值"><a class="markdownIt-Anchor" href="#28-视图的值"></a> 2.8. 视图的值</h2>
 <ol>
 <li>视图提供了一种使复杂的，通常发出的查询更易于编写的方法。</li>
@@ -547,7 +547,7 @@
 </li>
 <li>数据库管理员访问其他站点，会通过查看系统目录(元数据)来查看表是否存在，表中有什么列</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="5-注"><a class="markdownIt-Anchor" href="#5-注"></a> 5. 注</h1>
 <ol>
 <li>修改视图可以影响表，修改表也会影响视图</li>
@@ -569,7 +569,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2020-Fundamentals-of-Data-Management/" class="category-chain-item">2020-Fundamentals-of-Data-Management</a>
+  <a href="/categories/2020-Fundamentals-of-Data-Management/" class="category-chain-item">2020-Fundamentals-of-Data-Management</a>
   
   
 
@@ -584,17 +584,17 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
       
-        <a href="/project/tags/%E5%AE%8C%E6%95%B4%E6%80%A7/">#完整性</a>
+        <a href="/tags/%E5%AE%8C%E6%95%B4%E6%80%A7/">#完整性</a>
       
-        <a href="/project/tags/%E8%A7%86%E5%9B%BE/">#视图</a>
+        <a href="/tags/%E8%A7%86%E5%9B%BE/">#视图</a>
       
-        <a href="/project/tags/%E5%AE%89%E5%85%A8/">#安全</a>
+        <a href="/tags/%E5%AE%89%E5%85%A8/">#安全</a>
       
-        <a href="/project/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/">#触发器</a>
+        <a href="/tags/%E8%A7%A6%E5%8F%91%E5%99%A8/">#触发器</a>
       
     </div>
   
@@ -607,7 +607,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2020-Fundamentals-of-Data-Management-ch07-完整性、视图、安全和目录</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch07-%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%81%E8%A7%86%E5%9B%BE%E3%80%81%E5%AE%89%E5%85%A8%E5%92%8C%E7%9B%AE%E5%BD%95/</div>
+      <div>http://example.com/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch07-%E5%AE%8C%E6%95%B4%E6%80%A7%E3%80%81%E8%A7%86%E5%9B%BE%E3%80%81%E5%AE%89%E5%85%A8%E5%92%8C%E7%9B%AE%E5%BD%95/</div>
     </div>
     <div class="license-meta">
       
@@ -649,7 +649,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-4%20%E4%BC%B0%E7%AE%97%E3%80%81%E8%AE%A1%E5%88%92%E5%92%8C%E8%B7%9F%E8%B8%AA/" title="2021-software-quality-management-Lec-4 估算、计划和跟踪">
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-4%20%E4%BC%B0%E7%AE%97%E3%80%81%E8%AE%A1%E5%88%92%E5%92%8C%E8%B7%9F%E8%B8%AA/" title="2021-software-quality-management-Lec-4 估算、计划和跟踪">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-software-quality-management-Lec-4 估算、计划和跟踪</span>
                         <span class="visible-mobile">上一篇</span>
@@ -659,7 +659,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-6%20%E5%9B%A2%E9%98%9F%E5%B7%A5%E7%A8%8B%E5%BC%80%E5%8F%91/" title="2021-software-quality-management-Lec-6 团队工程开发">
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-6%20%E5%9B%A2%E9%98%9F%E5%B7%A5%E7%A8%8B%E5%BC%80%E5%8F%91/" title="2021-software-quality-management-Lec-6 团队工程开发">
                         <span class="hidden-mobile">2021-software-quality-management-Lec-6 团队工程开发</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -807,7 +807,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -836,12 +836,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1013,9 +1013,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1023,7 +1023,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

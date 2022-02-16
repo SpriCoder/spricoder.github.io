@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Database-Development-Lec4-SQL优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Database-Development-Lec4-SQL优化">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec4-SQL%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Database-Development/2021-Database-Development-Lec4-SQL%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Database-Development-Lec4-SQL优化">
 <meta property="og:locale" content="zh_CN">
@@ -86,12 +86,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -99,10 +99,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -117,7 +117,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -136,7 +136,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -148,7 +148,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -160,7 +160,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -172,7 +172,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -184,7 +184,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -213,7 +213,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -327,21 +327,21 @@
 </li>
 <li>如果将所有的路径全部遍历完会有比较大的代价，同时还要对知识、应用环境的现在、未来、时间空间分布有了解。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="12-关系代数使数据库变成了科学而不是艺术"><a class="markdownIt-Anchor" href="#12-关系代数使数据库变成了科学而不是艺术"></a> 1.2. 关系代数使数据库变成了科学而不是艺术</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>查询优化器完成具体查询的优化</p>
 <h2 id="13-sql与查询优化器"><a class="markdownIt-Anchor" href="#13-sql与查询优化器"></a> 1.3. SQL与查询优化器</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>优化器借助关系理论提供的语义无误的原始查询进行<strong>有效的等价变换</strong>，优化在<strong>发生查询</strong>的时候才发生。</li>
 <li>优化器根据数据库的实际实现情况对理论上等价的不同优化方案做出<strong>权衡</strong></li>
 <li>产生可能的最优查询执行方案</li>
 <li>排序、统计等不是在关系代数中完成的，而是在SQL中完成的。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="14-sql的执行顺序"><a class="markdownIt-Anchor" href="#14-sql的执行顺序"></a> 1.4. SQL的执行顺序</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>SQL语句首先通过语义和语法检查，进入查询环节，进行解析，是整个SQL优化最消耗资源的环节。</li>
 <li>之后对于每一个表达式的等价变化生成解析树，然后进行评估。由优化器选择一个最满意的执行路径来生成执行计划(plan和二进制的执行代码)</li>
@@ -353,7 +353,7 @@
 </li>
 <li>软解析的问题：目前主流的还是采用硬解析的方式，尽量避免出现SQL注入的问题</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="16-优化器只能对关系领域进行优化"><a class="markdownIt-Anchor" href="#16-优化器只能对关系领域进行优化"></a> 1.6. 优化器只能对关系领域进行优化</h2>
 <ol>
 <li>忽略这点很可能出现错误</li>
@@ -470,7 +470,7 @@
 <li>高效过滤条件是查询的主要驱动力</li>
 </ol>
 <h2 id="34-来去买bmw"><a class="markdownIt-Anchor" href="#34-来去买bmw"></a> 3.4. 来，去买BMW</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>找出最近6个月住在nanjing，购买了BMW的所有客户</li>
 <li>按照下面的方式先连接再使用条件查询的方式会避免遗漏</li>
@@ -519,9 +519,9 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="311-多表关联的不同优化器的策略"><a class="markdownIt-Anchor" href="#311-多表关联的不同优化器的策略"></a> 3.11. 多表关联的不同优化器的策略</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="312-思考题"><a class="markdownIt-Anchor" href="#312-思考题"></a> 3.12. 思考题</h2>
 <ol>
 <li>你可以比较两个查询，在MySQL的Sakila示例数据库中分析不同查询的差异</li>
@@ -556,7 +556,7 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* 1 √ */</span><br><span class="hljs-keyword">set</span> <span class="hljs-type">time</span> <span class="hljs-keyword">on</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> cteated<span class="hljs-operator">&gt;=</span>to_date(<span class="hljs-string">&#x27;2019-04-20 00:00:00&#x27;</span>,<span class="hljs-string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>)<br>  <span class="hljs-keyword">and</span> created<span class="hljs-operator">&lt;</span>to_date(<span class="hljs-string">&#x27;2019-04-21 00:00:00&#x27;</span>,<span class="hljs-string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>)<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> owner;<br><span class="hljs-comment">/* 2 × */</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> to_char(created,<span class="hljs-string">&#x27;yyyy-mm-dd&#x27;</span>)<span class="hljs-operator">=</span><span class="hljs-string">&#x27;2019-04-20&#x27;</span><br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> owner;<br><span class="hljs-comment">/* 3 × */</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> to_char(created,<span class="hljs-string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>)<span class="hljs-operator">&gt;=</span><span class="hljs-string">&#x27;2019-04-20 00:00:00&#x27;</span><br>  <span class="hljs-keyword">and</span> to_char(created,,<span class="hljs-string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>)<span class="hljs-operator">&lt;=</span> <span class="hljs-string">&#x27;2019-04-20 23:59:59&#x27;</span><br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> owner<br></code></pre></td></tr></table></figure>
 <h2 id="42-比较运算符的转化"><a class="markdownIt-Anchor" href="#42-比较运算符的转化"></a> 4.2. 比较运算符的转化</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="43-大数据量查询"><a class="markdownIt-Anchor" href="#43-大数据量查询"></a> 4.3. 大数据量查询</h2>
 <ol>
 <li>越快剔除不需要的数据，查询的后续阶段必须处理的数据量就越少，查询效率就越高</li>
@@ -620,8 +620,8 @@
 <li>问题：把EMP表中的ENAME=KING的字符串拆开显示为4行，每行一个字符</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> substr(e.ename,iter.pos,<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> C<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> ename <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> ename <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;KING&#x27;</span>) e,<br><span class="hljs-number">3</span>   (<span class="hljs-keyword">select</span> id <span class="hljs-keyword">as</span> pos <span class="hljs-keyword">from</span> t10) iter<br><span class="hljs-number">4</span> <span class="hljs-keyword">where</span> iter.pos <span class="hljs-operator">&lt;=</span> length(e.ename)<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/10.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="522-嵌入引号"><a class="markdownIt-Anchor" href="#522-嵌入引号"></a> 5.2.2. 嵌入引号</h3>
 <ol>
 <li>如果想在字符串常量中嵌入引号，并且希望使用SQL产生如下所示的结果</li>
@@ -636,7 +636,7 @@
 <li>问题：如何统计HELLO HELLO中出现了多少个LL</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span><br>  (length(<span class="hljs-string">&#x27;HELLO HELLO&#x27;</span>)<span class="hljs-operator">-</span><br>  length(replace(<span class="hljs-string">&#x27;HELLO HELLO&#x27;</span>,<span class="hljs-string">&#x27;LL&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)))<span class="hljs-operator">/</span>length(<span class="hljs-string">&#x27;LL&#x27;</span>)<br>  <span class="hljs-keyword">as</span> correct_cnt,<br>  (length(<span class="hljs-string">&#x27;HELLO HELLO&#x27;</span>)<span class="hljs-operator">-</span><br>  length(replace(<span class="hljs-string">&#x27;HELLO HELLO&#x27;</span>,<span class="hljs-string">&#x27;LL&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>))) <span class="hljs-keyword">as</span> incorrect_cnt<br><span class="hljs-keyword">from</span> t1<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>除法运算是得到“次数”这类运算正确答案必须使用的运算手段</li>
 </ol>
@@ -644,7 +644,7 @@
 <ol>
 <li>问题：从数据里删除指定的字符，从左边的结果集中的数据里删除所有的0和元音字母，并将删除后的值显示在STRIPPED1列和STRIPPED2列中，形成右边的结果集形态</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>先用TRANSLATE函数把元音字母替换成一个特殊的字符，然后使用REPLACE函数删除这个特殊字符</li>
 </ol>
@@ -657,7 +657,7 @@
 <ol>
 <li>问题：把数据中的数字数据和字符数据分开，怎么办？</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>MySQL只用REPLACE怎么办？</li>
 </ol>
@@ -667,7 +667,7 @@
 <li>问题：从表里筛选出部分行数据，筛选条件是只包含字母和数字字符</li>
 <li>视图V</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* MySQL */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> data<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> V<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> data regexp <span class="hljs-string">&#x27;[^0-9a-zA-Z]&#x27;</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span><br><span class="hljs-comment">/* Oracle */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> data<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> V<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> <span class="hljs-built_in">translate</span>(<span class="hljs-built_in">lower</span>(data), <span class="hljs-string">&#x27;0123456789abcdefghijklmnopqrstuvwxyz&#x27;</span>,rpad(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-number">36</span>,<span class="hljs-string">&#x27;a&#x27;</span>))<br><span class="hljs-number">4</span>     <span class="hljs-operator">=</span> rpad(<span class="hljs-string">&#x27;a&#x27;</span>,length(data),<span class="hljs-string">&#x27;a&#x27;</span>)<br></code></pre></td></tr></table></figure>
 <h3 id="527-提取姓名的首字母"><a class="markdownIt-Anchor" href="#527-提取姓名的首字母"></a> 5.2.7. 提取姓名的首字母</h3>
 <ol>
@@ -685,10 +685,10 @@
 <li>把行数据变成以某种符号分割符的列表，比如逗号</li>
 <li>可以使用聚合函数完成的业务都不要到业务逻辑(前端和后端)来处理</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="53-数值处理"><a class="markdownIt-Anchor" href="#53-数值处理"></a> 5.3. 数值处理</h2>
 <h3 id="531-示例使用的相关表和数据"><a class="markdownIt-Anchor" href="#531-示例使用的相关表和数据"></a> 5.3.1. 示例使用的相关表和数据</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="532-计算平均值"><a class="markdownIt-Anchor" href="#532-计算平均值"></a> 5.3.2. 计算平均值</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">avg</span>(sal) <span class="hljs-keyword">as</span> avg_sal<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><br>AVG_SAL<br><span class="hljs-comment">----------</span><br><span class="hljs-number">2073.21429</span><br></code></pre></td></tr></table></figure>
 <ul>
@@ -713,9 +713,9 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(comm)<br>  <span class="hljs-keyword">from</span> emp<br><br><span class="hljs-built_in">COUNT</span>(COMM)<br><span class="hljs-comment">-----------</span><br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 <h3 id="536-累计求和running-total"><a class="markdownIt-Anchor" href="#536-累计求和running-total"></a> 5.3.6. 累计求和(Running Total)</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* Oracle and DB2(MySQL已经支持了) */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> ename, sal,<br><span class="hljs-number">2</span>   <span class="hljs-built_in">sum</span>(sal) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> sal,empno)<br><span class="hljs-number">3</span>     <span class="hljs-keyword">as</span> running_total<br><span class="hljs-number">4</span> <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">5</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* MySQL and PostgreSQL and SQL Server */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> e.ename, e.sal,<br><span class="hljs-number">2</span>   (<span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(d.sal) <span class="hljs-keyword">from</span> emp d<br><span class="hljs-number">3</span>   <span class="hljs-keyword">where</span> d.empno <span class="hljs-operator">&lt;=</span> e.empno) <span class="hljs-keyword">as</span> running_total<br><span class="hljs-number">4</span>  <span class="hljs-keyword">from</span> emp e<br><span class="hljs-number">5</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="537-计算众数"><a class="markdownIt-Anchor" href="#537-计算众数"></a> 5.3.7. 计算众数</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sal<br>    <span class="hljs-keyword">from</span> emp<br>  <span class="hljs-keyword">where</span> deptno <span class="hljs-operator">=</span> <span class="hljs-number">20</span><br>    <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> sal<br><br>SAL<br><span class="hljs-comment">----------</span><br><span class="hljs-number">800</span><br><span class="hljs-number">1100</span><br><span class="hljs-number">2975</span><br><span class="hljs-number">3000</span><br><span class="hljs-number">3000</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* Oracle */</span><br><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(sal)<br><span class="hljs-number">2</span>     keep(dense_rank <span class="hljs-keyword">first</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> cnt <span class="hljs-keyword">desc</span>) sal<br><span class="hljs-number">3</span>   <span class="hljs-keyword">from</span> (<br><span class="hljs-number">4</span>     <span class="hljs-keyword">select</span> sal, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) cnt<br><span class="hljs-number">5</span>       <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">6</span>       <span class="hljs-keyword">where</span> deptno<span class="hljs-operator">=</span><span class="hljs-number">20</span><br><span class="hljs-number">7</span>       <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> sal<br><span class="hljs-number">8</span>   )<br><br><span class="hljs-comment">/* MySQL and PostgreSQL */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> sal<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> deptno <span class="hljs-operator">=</span> <span class="hljs-number">20</span><br><span class="hljs-number">4</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> sal<br><span class="hljs-number">5</span> <span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;=</span> <span class="hljs-keyword">all</span> ( <span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br><span class="hljs-number">6</span>                           <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">7</span>                           <span class="hljs-keyword">where</span> deptno <span class="hljs-operator">=</span> <span class="hljs-number">20</span><br><span class="hljs-number">8</span>                           <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> sal )<br></code></pre></td></tr></table></figure>
@@ -734,7 +734,7 @@
 <li>问题，你想依据另一列的值来修改累计值。有这样一个场景，你希望显示一个信用卡账户的交易历史，并显示每一笔交易完成后的余额。</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> V (id,amt,trx)<br>  <span class="hljs-keyword">as</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>, <span class="hljs-number">100</span>, <span class="hljs-string">&#x27;PR&#x27;</span> <span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">2</span>, <span class="hljs-number">100</span>, <span class="hljs-string">&#x27;PR&#x27;</span> <span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">3</span>, <span class="hljs-number">50</span>, <span class="hljs-string">&#x27;PY&#x27;</span> <span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">4</span>, <span class="hljs-number">100</span>, <span class="hljs-string">&#x27;PR&#x27;</span> <span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">5</span>, <span class="hljs-number">200</span>, <span class="hljs-string">&#x27;PY&#x27;</span> <span class="hljs-keyword">from</span> t1 <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-number">6</span>, <span class="hljs-number">50</span>, <span class="hljs-string">&#x27;PY&#x27;</span> <span class="hljs-keyword">from</span> t1<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* DB2 and Oracle */</span><br><span class="hljs-number">1</span>   <span class="hljs-keyword">select</span> <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> trx <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-number">2</span>         <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;PAYMENT&#x27;</span><br><span class="hljs-number">3</span>         <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;PURCHASE&#x27;</span><br><span class="hljs-number">4</span>       <span class="hljs-keyword">end</span> trx_type,<br><span class="hljs-number">5</span>       amt,<br><span class="hljs-number">6</span>       <span class="hljs-built_in">sum</span>(<br><span class="hljs-number">7</span>         <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> trx <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-number">8</span>           <span class="hljs-keyword">then</span> <span class="hljs-operator">-</span>amt <span class="hljs-keyword">else</span> amt<br><span class="hljs-number">9</span>       <span class="hljs-keyword">end</span><br><span class="hljs-number">10</span>      ) <span class="hljs-keyword">over</span> (<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> id,amt) <span class="hljs-keyword">as</span> balance<br><span class="hljs-number">11</span> <span class="hljs-keyword">from</span> V<br><br><span class="hljs-comment">/* MySQL, PostgreSQL, and SQL Server */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> v1.trx <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;PAYMENT&#x27;</span><br><span class="hljs-number">3</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;PURCHASE&#x27;</span><br><span class="hljs-number">4</span> <span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> trx_type,<br><span class="hljs-number">5</span> v1.amt,<br><span class="hljs-number">6</span> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(<br><span class="hljs-number">7</span> <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> v2.trx <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-number">8</span> <span class="hljs-keyword">then</span> <span class="hljs-operator">-</span>v2.amt <span class="hljs-keyword">else</span> v2.amt<br><span class="hljs-number">9</span> <span class="hljs-keyword">end</span><br><span class="hljs-number">10</span> )<br><span class="hljs-number">11</span> <span class="hljs-keyword">from</span> V v2<br><span class="hljs-number">12</span> <span class="hljs-keyword">where</span> v2.id <span class="hljs-operator">&lt;=</span> v1.id) <span class="hljs-keyword">as</span> balance<br><span class="hljs-number">13</span> <span class="hljs-keyword">from</span> V v1<br></code></pre></td></tr></table></figure>
 <h3 id="5312-思考题"><a class="markdownIt-Anchor" href="#5312-思考题"></a> 5.3.12. 思考题</h3>
 <ol>
@@ -776,7 +776,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* MySQL */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> ename<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> monthname(hiredate) <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;February&#x27;</span>,<span class="hljs-string">&#x27;December&#x27;</span>)<br><span class="hljs-number">4</span>   <span class="hljs-keyword">or</span> dayname(hiredate) <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Tuesday&#x27;</span><br><br><span class="hljs-comment">/* Oracle */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> ename<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> rtrim(to_char(hiredate,<span class="hljs-string">&#x27;month&#x27;</span>)) <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;february&#x27;</span>,<span class="hljs-string">&#x27;december&#x27;</span>)<br><span class="hljs-number">4</span>   <span class="hljs-keyword">or</span> rtrim(to_char(hiredate,<span class="hljs-string">&#x27;day&#x27;</span>)) <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;tuesday&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="549-识别重叠的日期区间"><a class="markdownIt-Anchor" href="#549-识别重叠的日期区间"></a> 5.4.9. 识别重叠的日期区间</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp_project<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* MySQL */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> a.empno,a.ename,<br><span class="hljs-number">2</span>   concat(<span class="hljs-string">&#x27;project &#x27;</span>,b.proj_id,<br><span class="hljs-number">3</span>     <span class="hljs-string">&#x27; overlaps project &#x27;</span>,a.proj_id) <span class="hljs-keyword">as</span> msg<br><span class="hljs-number">4</span>   <span class="hljs-keyword">from</span> emp_project a,<br><span class="hljs-number">5</span>     emp_project b<br><span class="hljs-number">6</span>  <span class="hljs-keyword">where</span> a.empno <span class="hljs-operator">=</span> b.empno<br><span class="hljs-number">7</span>   <span class="hljs-keyword">and</span> b.proj_start <span class="hljs-operator">&gt;=</span> a.proj_start<br><span class="hljs-number">8</span>   <span class="hljs-keyword">and</span> b.proj_start <span class="hljs-operator">&lt;=</span> a.proj_end<br><span class="hljs-number">9</span>   <span class="hljs-keyword">and</span> a.proj_id <span class="hljs-operator">!=</span> b.proj_id<br><br><span class="hljs-comment">/* Oracle, PostgreSQL, and DB2 */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> a.empno,a.ename,<br><span class="hljs-number">2</span>   <span class="hljs-string">&#x27;project &#x27;</span><span class="hljs-operator">||</span>b.proj_id<span class="hljs-operator">||</span><br><span class="hljs-number">3</span>   <span class="hljs-string">&#x27; overlaps project &#x27;</span><span class="hljs-operator">||</span>a.proj_id <span class="hljs-keyword">as</span> msg<br><span class="hljs-number">4</span> <span class="hljs-keyword">from</span> emp_project a,<br><span class="hljs-number">5</span>   emp_project b<br><span class="hljs-number">6</span> <span class="hljs-keyword">where</span> a.empno <span class="hljs-operator">=</span> b.empno<br><span class="hljs-number">7</span>   <span class="hljs-keyword">and</span> b.proj_start <span class="hljs-operator">&gt;=</span> a.proj_start<br><span class="hljs-number">8</span>   <span class="hljs-keyword">and</span> b.proj_start <span class="hljs-operator">&lt;=</span> a.proj_end<br><span class="hljs-number">9</span>   <span class="hljs-keyword">and</span> a.proj_id <span class="hljs-operator">!=</span> b.proj_id<br></code></pre></td></tr></table></figure>
 <h3 id="5410-思考题"><a class="markdownIt-Anchor" href="#5410-思考题"></a> 5.4.10. 思考题</h3>
 <ol>
@@ -795,7 +795,7 @@
 <li>如果需要显示EMP表中部门ID等于10的信息以及DEPT表中各个部门的名称和编号</li>
 <li>将不相关内容放到一个表中</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> ename <span class="hljs-keyword">as</span> ename_and_dname, deptno<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> deptno <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br><span class="hljs-number">4</span>   <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-number">5</span> <span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;----------&#x27;</span>, <span class="hljs-keyword">null</span><br><span class="hljs-number">6</span>   <span class="hljs-keyword">from</span> t1<br><span class="hljs-number">7</span>   <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-number">8</span> <span class="hljs-keyword">select</span> dname, deptno<br><span class="hljs-number">9</span>   <span class="hljs-keyword">from</span> dept<br></code></pre></td></tr></table></figure>
 <ol>
 <li>必须保证类型相同和字段数要相同</li>
@@ -813,7 +813,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> deptno<br>  <span class="hljs-keyword">from</span> dept<br><span class="hljs-keyword">where</span> deptno <span class="hljs-keyword">in</span> ( <span class="hljs-number">10</span>,<span class="hljs-number">50</span>, <span class="hljs-keyword">null</span>)<br><br>DEPTNO<br><span class="hljs-comment">-------</span><br><span class="hljs-number">10</span><br><br><span class="hljs-keyword">select</span> deptno<br>  <span class="hljs-keyword">from</span> dept<br><span class="hljs-keyword">where</span> (deptno<span class="hljs-operator">=</span><span class="hljs-number">10</span> <span class="hljs-keyword">or</span> deptno<span class="hljs-operator">=</span><span class="hljs-number">50</span> <span class="hljs-keyword">or</span> deptno<span class="hljs-operator">=</span><span class="hljs-keyword">null</span>)<br><br>DEPTNO<br><span class="hljs-comment">-------</span><br><span class="hljs-number">10</span><br><br><span class="hljs-keyword">select</span> deptno<br>  <span class="hljs-keyword">from</span> dept<br><span class="hljs-keyword">where</span> deptno <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> ( <span class="hljs-number">10</span>,<span class="hljs-number">50</span>,<span class="hljs-keyword">null</span> )<br><br>(<span class="hljs-keyword">no</span> <span class="hljs-keyword">rows</span>)<br><br><span class="hljs-keyword">select</span> deptno<br>  <span class="hljs-keyword">from</span> dept<br><span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> (deptno<span class="hljs-operator">=</span><span class="hljs-number">10</span> <span class="hljs-keyword">or</span> deptno<span class="hljs-operator">=</span><span class="hljs-number">50</span> <span class="hljs-keyword">or</span> deptno<span class="hljs-operator">=</span><span class="hljs-keyword">null</span>)<br><br>(<span class="hljs-keyword">no</span> <span class="hljs-keyword">rows</span>)<br><br><br>(<span class="hljs-literal">false</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">false</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">null</span>)<br>(<span class="hljs-literal">false</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">null</span>)<br><span class="hljs-keyword">null</span><br></code></pre></td></tr></table></figure>
 <h3 id="553-从一个表检索另一个表不相关的行外连接"><a class="markdownIt-Anchor" href="#553-从一个表检索另一个表不相关的行外连接"></a> 5.5.3. 从一个表检索另一个表不相关的行(外连接)</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sql">DEPTNO      DNAME             LOC<br><span class="hljs-comment">----------  ----------------- -------------</span><br><span class="hljs-number">40</span>          OPERATIONS        BOSTON<br><br><br><span class="hljs-comment">/* DB2, MySQL, PostgreSQL, SQL Server, Oracle */</span><br><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> d.<span class="hljs-operator">*</span><br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> dept d <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> emp e<br><span class="hljs-number">3</span>     <span class="hljs-keyword">on</span> (d.deptno <span class="hljs-operator">=</span> e.deptno)<br><span class="hljs-number">4</span> <span class="hljs-keyword">where</span> e.deptno <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span><br><br><span class="hljs-comment">/* Oracle */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> d.<span class="hljs-operator">*</span><br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> dept d, emp e<br><span class="hljs-number">3</span> <span class="hljs-keyword">where</span> d.deptno <span class="hljs-operator">=</span> e.deptno (<span class="hljs-operator">+</span>)<br><span class="hljs-number">4</span>   <span class="hljs-keyword">and</span> e.deptno <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span><br><br><span class="hljs-keyword">select</span> e.ename, e.deptno <span class="hljs-keyword">as</span> emp_deptno, d.<span class="hljs-operator">*</span><br>  <span class="hljs-keyword">from</span> dept d <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> emp e<br>    <span class="hljs-keyword">on</span> (d.deptno <span class="hljs-operator">=</span> e.deptno)<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="554-确定两个表是否有相同的数据"><a class="markdownIt-Anchor" href="#554-确定两个表是否有相同的数据"></a> 5.5.4. 确定两个表是否有相同的数据</h3>
 <ol>
 <li>问题：想知道两个表是否有相同的数据</li>
@@ -822,19 +822,19 @@
 <ol start="2">
 <li>希望返回如下结果集</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* Oracle */</span><br><span class="hljs-number">1</span>   (<br><span class="hljs-number">2</span>     <span class="hljs-keyword">select</span> empno,ename,job,mgr,hiredate,sal,comm,deptno,<br><span class="hljs-number">3</span>       <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">4</span>       <span class="hljs-keyword">from</span> V<br><span class="hljs-number">5</span>     <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,sal,comm,deptno<br><span class="hljs-number">6</span>     minus<br><span class="hljs-number">7</span>     <span class="hljs-keyword">select</span> empno,ename,job,mgr,hiredate,sal,comm,deptno,<br><span class="hljs-number">8</span>       <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">9</span>       <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">10</span>    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,sal,comm,deptno<br><span class="hljs-number">11</span>  )<br><span class="hljs-number">12</span>  <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-number">13</span>  (<br><span class="hljs-number">14</span>    <span class="hljs-keyword">select</span> empno,ename,job,mgr,hiredate,sal,comm,deptno,<br><span class="hljs-number">15</span>      <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">16</span>      <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">17</span>    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,sal,comm,deptno<br><span class="hljs-number">18</span>    minus<br><span class="hljs-number">19</span>    <span class="hljs-keyword">select</span> empno,ename,job,mgr,hiredate,sal,comm,deptno,<br><span class="hljs-number">20</span>      <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">21</span>      <span class="hljs-keyword">from</span> v<br><span class="hljs-number">22</span>    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,sal,comm,deptno<br><span class="hljs-number">23</span>  )<br><br><span class="hljs-comment">/* MySQL and SQL Server */</span><br><span class="hljs-number">1</span>   <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-number">2</span>     <span class="hljs-keyword">from</span> (<br><span class="hljs-number">3</span>       <span class="hljs-keyword">select</span> e.empno,e.ename,e.job,e.mgr,e.hiredate,<br><span class="hljs-number">4</span>         e.sal,e.comm,e.deptno, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">5</span>       <span class="hljs-keyword">from</span> emp e<br><span class="hljs-number">6</span>       <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,<br><span class="hljs-number">7</span>         sal,comm,deptno<br><span class="hljs-number">8</span>     ) e<br><span class="hljs-number">9</span>   <span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> (<br><span class="hljs-number">10</span>  <span class="hljs-keyword">select</span> <span class="hljs-keyword">null</span><br><span class="hljs-number">11</span>    <span class="hljs-keyword">from</span> (<br><span class="hljs-number">12</span>      <span class="hljs-keyword">select</span> v.empno,v.ename,v.job,v.mgr,v.hiredate,<br><span class="hljs-number">13</span>        v.sal,v.comm,v.deptno, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">14</span>      <span class="hljs-keyword">from</span> v<br><span class="hljs-number">15</span>      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,<br><span class="hljs-number">16</span>        sal,comm,deptno<br><span class="hljs-number">17</span>    ) v<br><span class="hljs-number">18</span>  <span class="hljs-keyword">where</span> v.empno <span class="hljs-operator">=</span> e.empno<br><span class="hljs-number">19</span>    <span class="hljs-keyword">and</span> v.ename <span class="hljs-operator">=</span> e.ename<br><span class="hljs-number">20</span>    <span class="hljs-keyword">and</span> v.job <span class="hljs-operator">=</span> e.job<br><span class="hljs-number">21</span>    <span class="hljs-keyword">and</span> v.mgr <span class="hljs-operator">=</span> e.mgr<br><span class="hljs-number">22</span>    <span class="hljs-keyword">and</span> v.hiredate <span class="hljs-operator">=</span> e.hiredate<br><span class="hljs-number">23</span>    <span class="hljs-keyword">and</span> v.sal <span class="hljs-operator">=</span> e.sal<br><span class="hljs-number">24</span>    <span class="hljs-keyword">and</span> v.deptno <span class="hljs-operator">=</span> e.deptno<br><span class="hljs-number">25</span>    <span class="hljs-keyword">and</span> v.cnt <span class="hljs-operator">=</span> e.cnt<br><span class="hljs-number">26</span>    <span class="hljs-keyword">and</span> <span class="hljs-built_in">coalesce</span>(v.comm,<span class="hljs-number">0</span>) <span class="hljs-operator">=</span> <span class="hljs-built_in">coalesce</span>(e.comm,<span class="hljs-number">0</span>)<br><span class="hljs-number">27</span>  )<br><span class="hljs-number">28</span>  <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-number">29</span>  <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-number">30</span>    <span class="hljs-keyword">from</span> (<br><span class="hljs-number">31</span>      <span class="hljs-keyword">select</span> v.empno,v.ename,v.job,v.mgr,v.hiredate,<br><span class="hljs-number">32</span>        v.sal,v.comm,v.deptno, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">33</span>      <span class="hljs-keyword">from</span> v<br><span class="hljs-number">34</span>      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,<br><span class="hljs-number">35</span>        sal,comm,deptno<br><span class="hljs-number">36</span>    ) v<br><span class="hljs-number">37</span>  <span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> (<br><span class="hljs-number">38</span>    <span class="hljs-keyword">select</span> <span class="hljs-keyword">null</span><br><span class="hljs-number">39</span>      <span class="hljs-keyword">from</span> (<br><span class="hljs-number">40</span>        <span class="hljs-keyword">select</span> e.empno,e.ename,e.job,e.mgr,e.hiredate,<br><span class="hljs-number">41</span>          e.sal,e.comm,e.deptno, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">as</span> cnt<br><span class="hljs-number">42</span>        <span class="hljs-keyword">from</span> emp e<br><span class="hljs-number">43</span>        <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> empno,ename,job,mgr,hiredate,<br><span class="hljs-number">44</span>          sal,comm,deptno<br><span class="hljs-number">45</span>      ) e<br><span class="hljs-number">46</span>    <span class="hljs-keyword">where</span> v.empno <span class="hljs-operator">=</span> e.empno<br><span class="hljs-number">47</span>      <span class="hljs-keyword">and</span> v.ename <span class="hljs-operator">=</span> e.ename<br><span class="hljs-number">48</span>      <span class="hljs-keyword">and</span> v.job <span class="hljs-operator">=</span> e.job<br><span class="hljs-number">49</span>      <span class="hljs-keyword">and</span> v.mgr <span class="hljs-operator">=</span> e.mgr<br><span class="hljs-number">50</span>      <span class="hljs-keyword">and</span> v.hiredate <span class="hljs-operator">=</span> e.hiredate<br><span class="hljs-number">51</span>      <span class="hljs-keyword">and</span> v.sal <span class="hljs-operator">=</span> e.sal<br><span class="hljs-number">52</span>      <span class="hljs-keyword">and</span> v.deptno <span class="hljs-operator">=</span> e.deptno<br><span class="hljs-number">53</span>      <span class="hljs-keyword">and</span> v.cnt <span class="hljs-operator">=</span> e.cnt<br><span class="hljs-number">54</span>      <span class="hljs-keyword">and</span> <span class="hljs-built_in">coalesce</span>(v.comm,<span class="hljs-number">0</span>) <span class="hljs-operator">=</span> <span class="hljs-built_in">coalesce</span>(e.comm,<span class="hljs-number">0</span>)）<br></code></pre></td></tr></table></figure>
 <h3 id="555-从多个表中返回缺失值全外连接"><a class="markdownIt-Anchor" href="#555-从多个表中返回缺失值全外连接"></a> 5.5.5. 从多个表中返回缺失值（全外连接）</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* FULL OUTER JOIN */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> d.deptno,d.dname,e.ename<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> dept d <span class="hljs-keyword">full</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> emp e<br><span class="hljs-number">3</span>     <span class="hljs-keyword">on</span> (d.deptno<span class="hljs-operator">=</span>e.deptno)<br><br><span class="hljs-comment">/* union */</span><br><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> d.deptno,d.dname,e.ename<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> dept d <span class="hljs-keyword">right</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> emp e<br><span class="hljs-number">3</span>     <span class="hljs-keyword">on</span> (d.deptno<span class="hljs-operator">=</span>e.deptno)<br><span class="hljs-number">4</span> <span class="hljs-keyword">union</span><br><span class="hljs-number">5</span> <span class="hljs-keyword">select</span> d.deptno,d.dname,e.ename<br><span class="hljs-number">6</span>   <span class="hljs-keyword">from</span> dept d <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> emp e<br><span class="hljs-number">7</span>     <span class="hljs-keyword">on</span> (d.deptno<span class="hljs-operator">=</span>e.deptno)<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="556-连接和聚合函数的使用"><a class="markdownIt-Anchor" href="#556-连接和聚合函数的使用"></a> 5.5.6. 连接和聚合函数的使用</h3>
 <ol>
 <li>考虑新增一张bonus表，注意，存在重复记录</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp_bonus<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> e.empno,<br>  e.ename,<br>  e.sal,<br>  e.deptno,<br>  e.sal<span class="hljs-operator">*</span><span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.1</span><br>      <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.2</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-number">.3</span><br>    <span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> bonus<br>  <span class="hljs-keyword">from</span> emp e, emp_bonus eb<br><span class="hljs-keyword">where</span> e.empno <span class="hljs-operator">=</span> eb.empno<br>  <span class="hljs-keyword">and</span> e.deptno <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> deptno,<br>    <span class="hljs-built_in">sum</span>(sal) <span class="hljs-keyword">as</span> total_sal,<br>    <span class="hljs-built_in">sum</span>(bonus) <span class="hljs-keyword">as</span> total_bonus<br>  <span class="hljs-keyword">from</span> (<br>    <span class="hljs-keyword">select</span> e.empno,<br>      e.ename,<br>      e.sal,<br>      e.deptno,<br>      e.sal<span class="hljs-operator">*</span><span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.1</span><br>        <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.2</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-number">.3</span><br>      <span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> bonus<br>  <span class="hljs-keyword">from</span> emp e, emp_bonus eb<br>  <span class="hljs-keyword">where</span> e.empno <span class="hljs-operator">=</span> eb.empno<br>    <span class="hljs-keyword">and</span> e.deptno <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>  ) x<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptno<br><br>DEPTNO   TOTAL_SAL   TOTAL_BONUS<br><span class="hljs-comment">------   ------      ------</span><br><span class="hljs-number">10</span>       <span class="hljs-number">10050</span>        <span class="hljs-number">2135</span><br><br><span class="hljs-comment">/* 单独计算一下金额，问题？部分员工被计算了2次 */</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(sal) <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> deptno<span class="hljs-operator">=</span><span class="hljs-number">10</span><br><br><span class="hljs-built_in">SUM</span>(SAL)<br><span class="hljs-comment">----------</span><br><span class="hljs-number">8750</span><br><br><span class="hljs-keyword">select</span> e.ename,<br>    e.sal<br>  <span class="hljs-keyword">from</span> emp e, emp_bonus eb<br><span class="hljs-keyword">where</span> e.empno <span class="hljs-operator">=</span> eb.empno<br>  <span class="hljs-keyword">and</span> e.deptno <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br><br>ENAME       SAL<br><span class="hljs-comment">----------  ----------</span><br>CLARK       <span class="hljs-number">2450</span><br>KING        <span class="hljs-number">5000</span><br>MILLER      <span class="hljs-number">1300</span><br>MILLER      <span class="hljs-number">1300</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>但是这个查询中，部门为10的所有人都有奖金</li>
@@ -846,7 +846,7 @@
 <li>请计算出部门编号为10的员工的工资总额和奖金总额</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp_bonus<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* 错误的示范 少算 */</span><br><span class="hljs-keyword">select</span> deptno,<br>  <span class="hljs-built_in">sum</span>(sal) <span class="hljs-keyword">as</span> total_sal,<br>  <span class="hljs-built_in">sum</span>(bonus) <span class="hljs-keyword">as</span> total_bonus<br>  <span class="hljs-keyword">from</span> (<br>  <span class="hljs-keyword">select</span> e.empno,<br>    e.ename,<br>    e.sal,<br>    e.deptno,<br>    e.sal<span class="hljs-operator">*</span><span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.1</span><br>      <span class="hljs-keyword">when</span> eb.type <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-number">.2</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-number">.3</span> <span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> bonus<br>  <span class="hljs-keyword">from</span> emp e, emp_bonus eb<br>  <span class="hljs-keyword">where</span> e.empno <span class="hljs-operator">=</span> eb.empno<br>    <span class="hljs-keyword">and</span> e.deptno <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>  )<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptno<br><br>DEPTNO TOTAL_SAL TOTAL_BONUS<br><span class="hljs-comment">------ ---------- -----------</span><br><span class="hljs-number">10</span> <span class="hljs-number">2600</span> <span class="hljs-number">390</span><br></code></pre></td></tr></table></figure>
               
             </div>
@@ -864,7 +864,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Database-Development/" class="category-chain-item">2021-Database-Development</a>
+  <a href="/categories/2021-Database-Development/" class="category-chain-item">2021-Database-Development</a>
   
   
 
@@ -879,11 +879,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
       
-        <a href="/project/tags/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/">#查询优化</a>
+        <a href="/tags/%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96/">#查询优化</a>
       
     </div>
   
@@ -896,7 +896,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Database-Development-Lec4-SQL优化</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec4-SQL%E4%BC%98%E5%8C%96/</div>
+      <div>http://example.com/2022/02/16/2021-Database-Development/2021-Database-Development-Lec4-SQL%E4%BC%98%E5%8C%96/</div>
     </div>
     <div class="license-meta">
       
@@ -938,7 +938,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec5-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0/" title="2021-Database-Development-Lec5-数据表的物理实现">
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec5-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0/" title="2021-Database-Development-Lec5-数据表的物理实现">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Database-Development-Lec5-数据表的物理实现</span>
                         <span class="visible-mobile">上一篇</span>
@@ -948,7 +948,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-summary-%E9%87%8D%E7%82%B9/" title="2020-Software-Engineering-and-Computing-II-summary-重点">
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-summary-%E9%87%8D%E7%82%B9/" title="2020-Software-Engineering-and-Computing-II-summary-重点">
                         <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-summary-重点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1096,7 +1096,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -1125,12 +1125,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1302,9 +1302,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1312,7 +1312,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

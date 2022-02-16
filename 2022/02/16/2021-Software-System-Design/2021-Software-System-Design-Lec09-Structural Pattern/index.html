@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec09-Structural Pattern">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec09-Structural Pattern">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec09-Structural Pattern">
 <meta property="og:locale" content="zh_CN">
@@ -77,12 +77,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -90,10 +90,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -108,7 +108,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -127,7 +127,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -139,7 +139,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -151,7 +151,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -163,7 +163,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -175,7 +175,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -204,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -297,7 +297,7 @@
               <h2 id="lec09-structual-pattern"><a class="markdownIt-Anchor" href="#lec09-structual-pattern"></a> Lec09-Structual Pattern</h2>
 <h1 id="1-外观模式"><a class="markdownIt-Anchor" href="#1-外观模式"></a> 1. 外观模式</h1>
 <h2 id="11-模式动机"><a class="markdownIt-Anchor" href="#11-模式动机"></a> 1.1. 模式动机</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>引入外观角色之后，<strong>用户只需要直接与外观角色交互，用户与子系统之间的复杂关系由外观角色来实现</strong>，从而降低了系统的耦合度。外观模式</li>
 </ol>
@@ -321,7 +321,7 @@
 </li>
 <li>使用的设计思想：迪米特法则</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="14-模式分析"><a class="markdownIt-Anchor" href="#14-模式分析"></a> 1.4. 模式分析</h2>
 <ol>
 <li>根据“单一职责原则”，<strong>在软件中将一个系统划分为若干个子系统有利于降低整个系统的复杂性</strong>，一个常见的设计目标是使子系统间的通信和相互依赖关系达到最小，而达到该目标的途径之一就是<strong>引入一个外观对象</strong>，它<strong>为子系统的访问提供了一个简单而单一的入口</strong>。</li>
@@ -337,12 +337,12 @@
 <ol>
 <li>现在考察一个电源总开关的例子，以便进一步说明外观模式。为了使用方便，一个电源总开关可以控制四盏灯、一个风扇、一台空调和一台电视机的启动和关闭。通过该电源总开关可以同时控制上述所有电器设备，使用外观模式设计该系统。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="152-实例二文件加密"><a class="markdownIt-Anchor" href="#152-实例二文件加密"></a> 1.5.2. 实例二：文件加密</h3>
 <ol>
 <li>某系统需要提供一个文件加密模块，加密流程包括三个操作，分别是读取源文件、加密、保存加密之后的文件。读取文件和保存文件使用流来实现，这三个操作相对独立，其业务代码封装在三个不同的类中。现在需要提供一个统一的加密外观类，用户可以直接使用该加密外观类完成文件的读取、加密和保存三个操作，而不需要与每一个类进行交互，使用外观模式设计该加密模块。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>可以使用模板方法模式实现嘛？子类提供不同的实现，复用父类方法的步骤</li>
 <li>什么时候外观？如果每一个部分都不变，只是提供接口</li>
@@ -379,7 +379,7 @@
 <ol start="2">
 <li>Session外观模式是外观模式在Java EE框架中的应用。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="18-模式扩展"><a class="markdownIt-Anchor" href="#18-模式扩展"></a> 1.8. 模式扩展</h2>
 <h3 id="181-一个系统有多个外观类"><a class="markdownIt-Anchor" href="#181-一个系统有多个外观类"></a> 1.8.1. 一个系统有多个外观类</h3>
 <ol>
@@ -397,7 +397,7 @@
 <ol>
 <li>外观模式最大的缺点在于违背了“开闭原则”，<strong>当增加新的子系统或者移除子系统时需要修改外观类，可以通过引入抽象外观类在一定程度上解决该问题，客户端针对抽象外观类进行编程</strong>。对于新的业务需求，不修改原有外观类，而对应增加一个新的具体外观类，由新的具体外观类来关联新的子系统对象，同时通过修改配置文件来达到不修改源代码并更换外观类的目的。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="19-小结"><a class="markdownIt-Anchor" href="#19-小结"></a> 1.9. 小结</h2>
 <ol>
 <li>在外观模式中，外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。</li>
@@ -428,7 +428,7 @@
 <li>面向对象技术可以很好地解决一些灵活性或可扩展性问题，但在很多情况下需要在系统中增加类和对象的个数。<strong>当对象数量太多时，将导致运行代价过高，带来性能下降等问题</strong>。</li>
 <li><strong>享元模式</strong>正是为解决这一类问题而诞生的。<strong>享元模式通过共享技术实现相同或相似对象的重用</strong>。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>在享元模式中<strong>可以共享的相同内容称为内部状态</strong>(Intrinsic State)，而那些<strong>需要外部环境来设置的不能共享的内容称为外部状态</strong>(Extrinsic State)，由于区分了内部状态和外部状态，因此可以通过设置不同的外部状态使得相同的对象可以具有一些不同的特征，而相同的内部状态是可以共享的。</li>
 <li>在享元模式中通常会出现工厂模式，需要<strong>创建一个享元工厂来负责维护一个享元池(Flyweight Pool)用于存储具有相同内部状态的享元对象</strong>。</li>
@@ -440,7 +440,7 @@
 <li>Flyweight Pattern: Use sharing to support large  numbers of fine-grained objects efficiently.</li>
 </ol>
 <h2 id="23-模式结构"><a class="markdownIt-Anchor" href="#23-模式结构"></a> 2.3. 模式结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>享元工厂和原型管理器非常相似</li>
 <li>享元模式包含如下角色：
@@ -453,7 +453,7 @@
 </li>
 <li>享元模式是一个考虑系统性能的设计模式，通过使用享元模式可以节约内存空间，提高系统的性能。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>享元模式的核心在于<strong>享元工厂类</strong>，<strong>享元工厂类的作用在于提供一个用于存储享元对象的享元池</strong>，用户需要对象时，首先从享元池中获取，<strong>如果享元池中不存在，则创建一个新的享元对象返回给用户，并在享元池中保存该新增对象</strong>。</li>
 <li>比较原型管理模式和享元工厂模型</li>
@@ -478,13 +478,13 @@
 <ol>
 <li>很多网络设备都是支持共享的，如交换机、集线器等，多台终端计算机可以连接同一台网络设备，并通过该网络设备进行数据转发，如图所示，现用享元模式模拟共享网络设备的设计原理。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="252-实例二共享网络设备有外部状态"><a class="markdownIt-Anchor" href="#252-实例二共享网络设备有外部状态"></a> 2.5.2. 实例二：共享网络设备（有外部状态）</h3>
 <ol>
 <li>虽然网络设备可以共享，但是分配给每一个终端计算机的端口(Port)是不同的，因此多台计算机虽然可以共享同一个网络设备，但必须使用不同的端口。我们可以将端口从网络设备中抽取出来作为外部状态，需要时再进行设置。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="26-模式优缺点"><a class="markdownIt-Anchor" href="#26-模式优缺点"></a> 2.6. 模式优缺点</h2>
 <h3 id="261-享元模式的优点"><a class="markdownIt-Anchor" href="#261-享元模式的优点"></a> 2.6.1. 享元模式的优点</h3>
 <ol>
@@ -517,11 +517,11 @@
 <ol>
 <li><strong>单纯享元模式</strong>：在单纯享元模式中，<strong>所有的享元对象都是可以共享的</strong>，即所有抽象享元类的子类都可共享，不存在非共享具体享元类。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li><strong>复合享元模式</strong>：将一些单纯享元使用组合模式加以组合，可以形成复合享元对象，这样的复合享元对象本身不能共享，但是它们可以分解成单纯享元对象，而后者则可以共享。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="292-享元模式与其他模式的联用"><a class="markdownIt-Anchor" href="#292-享元模式与其他模式的联用"></a> 2.9.2. 享元模式与其他模式的联用</h3>
 <ol>
 <li>在享元模式的享元工厂类中通常<strong>提供一个静态的工厂方法用于返回享元对象</strong>，使用简单工厂模式来生成享元对象。</li>
@@ -560,8 +560,8 @@
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/15.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/16.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
 <tbody></tbody>
@@ -576,7 +576,7 @@
 <li>思想简单，但是变体很多</li>
 </ol>
 <h2 id="33-模式结构"><a class="markdownIt-Anchor" href="#33-模式结构"></a> 3.3. 模式结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>代理模式包含如下角色：
 <ol>
@@ -603,7 +603,7 @@
 <ol>
 <li>模拟应用远程代理来访问另外一个应用程序域中的对象，如果在远程实现了加减乘除等运算，在本地需要调用，那么可以考虑在本地设置一个代理。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="36-模式优缺点"><a class="markdownIt-Anchor" href="#36-模式优缺点"></a> 3.6. 模式优缺点</h2>
 <h3 id="361-代理模式的优点"><a class="markdownIt-Anchor" href="#361-代理模式的优点"></a> 3.6.1. 代理模式的优点</h3>
 <ol>
@@ -640,7 +640,7 @@
 <ol>
 <li>Java RMI (Remote Method Invocation，远程方法调用)。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li><strong>EJB、Web Service等分布式技术都是代理模式的应用</strong>。在EJB中使用了RMI机制，远程服务器中的企业级Bean在本地有一个桩代理，客户端通过桩来调用远程对象中定义的方法，而无须直接与远程对象交互。在EJB的使用中需要提供一个公共的接口，客户端针对该接口进行编程，无须知道桩以及远程EJB的实现细节。</li>
 </ol>
@@ -652,7 +652,7 @@
 的远程业务对象是局域的而不是远程的，而远程代理对<br />
 象承担了大部分的网络通信工作。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li><strong>虚拟代理</strong>：当一个对象的加载十分耗费资源的时候，虚拟代理的优势就非常明显地体现出来了。<strong>虚拟代理模式是一种内存节省技术</strong>，那些占用大量内存或处理复杂的对象将推迟到使用它的时候才创建。</li>
 <li>在应用程序启动的时候，可以用代理对象代替真实对象初始化，节省了内存的占用，并大大加速了系统的启动时间。</li>
@@ -696,7 +696,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -711,11 +711,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
     </div>
   
@@ -728,7 +728,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec09-Structural Pattern</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/</div>
     </div>
     <div class="license-meta">
       
@@ -770,7 +770,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec20-Software%20System%20Design(Architecture)/" title="2021-Software-System-Design-Lec20-Software System Design(Architecture)">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec20-Software%20System%20Design(Architecture)/" title="2021-Software-System-Design-Lec20-Software System Design(Architecture)">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Lec20-Software System Design(Architecture)</span>
                         <span class="visible-mobile">上一篇</span>
@@ -780,7 +780,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec16-Description/" title="2021-Software-System-Design-Lec16-Description">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec16-Description/" title="2021-Software-System-Design-Lec16-Description">
                         <span class="hidden-mobile">2021-Software-System-Design-Lec16-Description</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -928,7 +928,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -957,12 +957,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1134,9 +1134,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1144,7 +1144,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
-  <link rel="icon" href="/project/img/avatar.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="2021-Software-System-Design-Lec15-Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-Software-System-Design-Lec15-Design">
-<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/index.html">
+<meta property="og:url" content="http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Software-System-Design-Lec15-Design">
 <meta property="og:locale" content="zh_CN">
@@ -90,12 +90,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/project/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -103,10 +103,10 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/project/js/utils.js" ></script>
-  <script  src="/project/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 6.0.0"></head>
@@ -121,7 +121,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/project/">
+    <a class="navbar-brand" href="/">
       <strong>SpriCoder的博客</strong>
     </a>
 
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -164,7 +164,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -176,7 +176,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -188,7 +188,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/project/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -217,7 +217,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -449,7 +449,7 @@
 <li>模式之间的<strong>结合</strong>程度如何？ How well do the patterns combine with each other?</li>
 <li>是否有任何模式<strong>互斥</strong>？ Are any patterns mutually exclusive?</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="2244-步骤44确定模式策略与asr之间的关系-step-44-determine-relationship-between-patterns-tactics-and-asrs"><a class="markdownIt-Anchor" href="#2244-步骤44确定模式策略与asr之间的关系-step-44-determine-relationship-between-patterns-tactics-and-asrs"></a> 2.2.4.4. 步骤4.4：确定模式/策略与ASR之间的关系 Step 4.4: Determine relationship between patterns/ tactics and ASRs</h4>
 <ol>
 <li>考虑到目前为止确定的<strong>模式/策略</strong>，我决定它们<strong>之间的关系</strong>。Consider the patterns/ tactics identified so far and decide how they relate to each other. The combination of the selected patterns may result in a new pattern.</li>
@@ -489,7 +489,7 @@
 <li>将分配给子元素的所有<strong>职责转换</strong>为各个元素的<strong>功能需求</strong>。Translate any responsibilities assigned to child elements into functional requirements for the individual elements.</li>
 </ol>
 <h3 id="228-步骤8重复进行直到满足所有asr-step-8-repeat-until-all-the-asrs-have-been-satisfied"><a class="markdownIt-Anchor" href="#228-步骤8重复进行直到满足所有asr-step-8-repeat-until-all-the-asrs-have-been-satisfied"></a> 2.2.8. 步骤8：重复进行，直到满足所有ASR Step 8: Repeat until all the ASRs have been satisfied</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="23-add的输出-outputs-of-add"><a class="markdownIt-Anchor" href="#23-add的输出-outputs-of-add"></a> 2.3. ADD的输出 Outputs of ADD</h2>
 <ol>
 <li><strong>软件元素</strong>：履行各种角色和<strong>职责</strong>，具有预定<strong>属性</strong>并与其他软件元素相关以组成系统架构的计算或开发工件 software element: a computational or developmental artifact that fulills various roles and responsibilities, has defined properties, and re elates to other software elements to compose the architecture of a system</li>
@@ -500,7 +500,7 @@
 </ol>
 <h1 id="3-基于add进行系统架构设计的实例"><a class="markdownIt-Anchor" href="#3-基于add进行系统架构设计的实例"></a> 3. 基于ADD进行系统架构设计的实例</h1>
 <h2 id="31-系统的功能视角-system-functional-overview"><a class="markdownIt-Anchor" href="#31-系统的功能视角-system-functional-overview"></a> 3.1. 系统的功能视角 System Functional Overview</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="32-系统的相关需求-约束和质量属性需求"><a class="markdownIt-Anchor" href="#32-系统的相关需求-约束和质量属性需求"></a> 3.2. 系统的相关需求、约束和质量属性需求</h2>
 <h3 id="321-实例的功能需求"><a class="markdownIt-Anchor" href="#321-实例的功能需求"></a> 3.2.1. 实例的功能需求</h3>
 <ol>
@@ -518,16 +518,16 @@
 <li><strong>两个副本</strong>：为了满足可用性和可靠性要求，已经进行了可靠性，可用性和可维护性(RMA)研究，并且在正常情况下，Track Manager和永久性存储元素都应具有两个副本。two replicas: To satisfy the availability and reliability requirements, a Reliability, Availability, and Maintainability (RMA) study has been conducted, and the Track Manager and persistent storage elements shall all have two replicas operating during normal circumstances.</li>
 </ol>
 <h3 id="323-实例的质量属性需求-quality-attribute-requirements"><a class="markdownIt-Anchor" href="#323-实例的质量属性需求-quality-attribute-requirements"></a> 3.2.3. 实例的质量属性需求 Quality Attribute Requirements</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="33-步骤-1confirm-there-is-sufficient-requirements-information"><a class="markdownIt-Anchor" href="#33-步骤-1confirm-there-is-sufficient-requirements-information"></a> 3.3. 步骤 1：Confirm there is sufficient requirements information</h2>
 <h3 id="331-第一次迭代的原始元素视图"><a class="markdownIt-Anchor" href="#331-第一次迭代的原始元素视图"></a> 3.3.1. 第一次迭代的原始元素视图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="332-第一次迭代的结果-results-from-iteration1"><a class="markdownIt-Anchor" href="#332-第一次迭代的结果-results-from-iteration1"></a> 3.3.2. 第一次迭代的结果 Results from Iteration1</h3>
 <ol>
 <li>该设计使用客户端-服务器模型，其中Track Manager为更新和查询客户端提供服务。The design uses a client-server model where the Track Manager provides services to the update and query clients.</li>
 <li>Track Manager分为两个元素：A和B。此分解允许两种部署策略：The Track Manager has been broken into two elements: A and B. This decomposition allows two deployment strategies:</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="3">
 <li>更新和查询客户端与Track Manager之间的<strong>通信机制</strong>不同：The communication mechanisms between the update and query clients and the Track Manager differ:
 <ol>
@@ -537,7 +537,7 @@
 </li>
 <li>元素A和B都包含状态数据，必须将其保存为永久存储中的检查点。Elements A and B both contain state data that must be saved as a checkpoint in persistent storage.</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="5">
 <li>中间件<strong>Naming Service</strong>接受<strong>请求的服务</strong>的名称，并返回该服务的访问代码。A middleware naming service accepts the name of a requested service and returns an access code tor the service.</li>
 <li>如果提供中间件<strong>注册服务</strong>会导致<strong>持久性存储超出</strong>其备用<strong>容量</strong>限制，则该中间件注册服务将拒绝为新客户端提供服务。A middleware registration service refuses service to new clients if providing it would cause persistent storage to exceed its spare capacity limit.</li>
@@ -547,9 +547,9 @@
 <li>当<strong>查询客户端</strong>发出<strong>请求</strong>时，该请求直接从A或B到达<strong>同步</strong>通信服务，然后再到达<strong>命名服务</strong>以获取该服务的<strong>句柄</strong>。When a query client is making the request, the request goes directly trom Aor B to the synchronous communication service and then to the naming service to get the handle for the service.</li>
 <li>团队决定由一位容错专家来完善容错占位符。The team decides to have a fault-tolerance expert refine the fault-tolerance placeholder.</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="34-步骤-2choose-an-element-of-system-to-decompose"><a class="markdownIt-Anchor" href="#34-步骤-2choose-an-element-of-system-to-decompose"></a> 3.4. 步骤 2：Choose an Element of system to decompose</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>我们选择Fault-Tolerance Service作为设计焦点</li>
 </ul>
@@ -557,7 +557,7 @@
 <ol>
 <li>识别出架构上重要的要求，如下图所示 Architectually Significant Requirements</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
 <li>从初始<strong>体系结构要求</strong>中识别出<strong>7</strong>个ASR。7 ASRs are identified from the initial architecture requirements.</li>
 <li>从ADD的第一次迭代产生的<strong>设计约束</strong>中识别出<strong>3</strong>个ASR。3 ASRs are identified from the design constraints resulting from the first iteration of ADD.</li>
@@ -576,12 +576,12 @@
 <li><strong>故障检测</strong>：此问题包括与<strong>检测</strong>故障并<strong>通知</strong>要处理该故障的元素有关的策略。fault detection: This concern consists of the tactics associated with detecting the fault and notifying an element to deal with the fault.</li>
 <li><strong>故障恢复</strong>：此问题解决了在<strong>瞬态</strong>情况下的操作，在故障<strong>发生</strong>和<strong>恢复</strong>正常操作之间的时间段。fault recovery:This concern addresses operations during a transient condition —— the time period between the fault occurrence and the restoration ot normal operation.</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="4">
 <li>4个分支是4个关注点，我们选择Detect Faults作为关注点</li>
 </ol>
 <h4 id="3612-设计考量可能的策略"><a class="markdownIt-Anchor" href="#3612-设计考量可能的策略"></a> 3.6.1.2. 设计考量(可能的策略)</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="362-步骤-42-list-alternative-patternstactics-for-subordinate-concerns"><a class="markdownIt-Anchor" href="#362-步骤-42-list-alternative-patternstactics-for-subordinate-concerns"></a> 3.6.2. 步骤 4.2: List alternative patterns/tactics for subordinate concerns</h3>
 <h4 id="3621-可替代的重启策略-alternative-restart-tactics"><a class="markdownIt-Anchor" href="#3621-可替代的重启策略-alternative-restart-tactics"></a> 3.6.2.1. 可替代的重启策略 Alternative Restart Tactics</h4>
 <ol>
@@ -592,7 +592,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3622-可替代的部署策略"><a class="markdownIt-Anchor" href="#3622-可替代的部署策略"></a> 3.6.2.2. 可替代的部署策略</h4>
 <ol>
 <li>区分参数：Discriminating parameters:
@@ -602,20 +602,20 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3623-可替代的数据集成策略"><a class="markdownIt-Anchor" href="#3623-可替代的数据集成策略"></a> 3.6.2.3. 可替代的数据集成策略</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3624-可替代的生命检测策略"><a class="markdownIt-Anchor" href="#3624-可替代的生命检测策略"></a> 3.6.2.4. 可替代的生命检测策略</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3625-可替代的透明策略"><a class="markdownIt-Anchor" href="#3625-可替代的透明策略"></a> 3.6.2.5. 可替代的透明策略</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="363-步骤-43-select-patternstactics-from-the-list"><a class="markdownIt-Anchor" href="#363-步骤-43-select-patternstactics-from-the-list"></a> 3.6.3. 步骤 4.3: Select patterns/tactics from the list</h3>
 <h4 id="3631-可选重启策略-alternative-restart-tactics"><a class="markdownIt-Anchor" href="#3631-可选重启策略-alternative-restart-tactics"></a> 3.6.3.1. 可选重启策略 Alternative Restart Tactics</h4>
 <ol>
 <li>区分参数：故障后可以容忍的停机时间（方案1）Discriminating parameters: the downtime that can be tolerated after failure(scenario 1)</li>
 <li>系统在故障时间前后的时间间隔内处理服务请求的方式； 例如，它满足它们并降低了响应时间，或者丢弃了它们（方案1） the manner in which the system treats requests for services in the time interval around the failure time; for example, it it honors them and degrades the responsetime or it drops them (scenario 1)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>推理 Reasoning
 <ol>
@@ -640,7 +640,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>推理 Reasoning
 <ol>
@@ -657,7 +657,7 @@
 </li>
 </ol>
 <h4 id="3633-选择数据集成策略-alternative-data-integrity-tactics"><a class="markdownIt-Anchor" href="#3633-选择数据集成策略-alternative-data-integrity-tactics"></a> 3.6.3.3. 选择数据集成策略 Alternative Data Integrity Tactics</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>推理 Reasoning
 <ol>
@@ -683,7 +683,7 @@
 </li>
 </ol>
 <h4 id="3634-alternative-health-monitoring-tactics"><a class="markdownIt-Anchor" href="#3634-alternative-health-monitoring-tactics"></a> 3.6.3.4. Alternative Health Monitoring Tactics</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>推理 Reasoning：
 <ol>
@@ -701,7 +701,7 @@
 </li>
 </ol>
 <h4 id="3635-alternative-transparency-tactics-选择透明策略"><a class="markdownIt-Anchor" href="#3635-alternative-transparency-tactics-选择透明策略"></a> 3.6.3.5. Alternative Transparency Tactics 选择透明策略</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>推理 Reasoning
 <ol>
@@ -725,17 +725,17 @@
 <ul>
 <li>策略和ASR之间的映射 Mapping between Patterns/Tactics and ASRs</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="365-步骤-45-capture-preliminary-architectural-viewg"><a class="markdownIt-Anchor" href="#365-步骤-45-capture-preliminary-architectural-viewg"></a> 3.6.5. 步骤 4.5: Capture preliminary architectural viewg</h3>
 <h4 id="3651-元素表-element-table"><a class="markdownIt-Anchor" href="#3651-元素表-element-table"></a> 3.6.5.1. 元素表 Element Table</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3652-架构元素视图-architectual-element-view"><a class="markdownIt-Anchor" href="#3652-架构元素视图-architectual-element-view"></a> 3.6.5.2. 架构元素视图 Architectual Element View</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3653-顺序图-sequence-diagram"><a class="markdownIt-Anchor" href="#3653-顺序图-sequence-diagram"></a> 3.6.5.3. 顺序图 Sequence Diagram</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="366-步骤-46-evaluate-and-resolve-inconsistencies"><a class="markdownIt-Anchor" href="#366-步骤-46-evaluate-and-resolve-inconsistencies"></a> 3.6.6. 步骤 4.6: Evaluate and resolve inconsistencies</h3>
 <h4 id="3661-时间模型-timing-model"><a class="markdownIt-Anchor" href="#3661-时间模型-timing-model"></a> 3.6.6.1. 时间模型 Timing Model</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h4 id="3662-顺序发生的事件events-occuring-in-sequence"><a class="markdownIt-Anchor" href="#3662-顺序发生的事件events-occuring-in-sequence"></a> 3.6.6.2. 顺序发生的事件Events Occuring in Sequence</h4>
 <ol>
 <li>保存对持久性日志文件的状态更新。A save is made of state updates to the persistent LogFile.</li>
@@ -769,10 +769,10 @@
 <li>通过在重新启动时重新计算一些状态数据来减少要为组件A和B保存的状态的大小。Reduce the size of the state to be saved for components A and B by recomputing some state data on restart.</li>
 </ol>
 <h4 id="3665-时间决策-timing-decisions"><a class="markdownIt-Anchor" href="#3665-时间决策-timing-decisions"></a> 3.6.6.5. 时间决策 Timing Decisions</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="37-步骤-5-instantiate-architectural-elements-and-allocate-responsibilities"><a class="markdownIt-Anchor" href="#37-步骤-5-instantiate-architectural-elements-and-allocate-responsibilities"></a> 3.7. 步骤 5: Instantiate architectural elements and allocate responsibilities</h2>
 <h3 id="371-分配职责给每一个元素"><a class="markdownIt-Anchor" href="#371-分配职责给每一个元素"></a> 3.7.1. 分配职责给每一个元素</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="372-解释1"><a class="markdownIt-Anchor" href="#372-解释1"></a> 3.7.2. 解释1</h3>
 <ol>
 <li>A接收来自查询和更新客户端的消息。 它根据更新客户端消息更新其状态，并回复查询客户端的查询。A receives messages from both query and update clients. It updates its state based on the update client messages and replies to queries from the query clients.</li>
@@ -804,14 +804,14 @@
 <ul>
 <li>接口总结 Summary of Interfaces</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="39-步骤-7verify-and-refine-requirements-and-make-them-constraints-for-instantiated-elements"><a class="markdownIt-Anchor" href="#39-步骤-7verify-and-refine-requirements-and-make-them-constraints-for-instantiated-elements"></a> 3.9. 步骤 7：Verify and refine requirements and make them constraints for instantiated elements</h2>
 <ul>
 <li>架构上重要的要求 Architectually Significant Requirements<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/26.png" srcset="/img/loading.gif" lazyload alt="" /></li>
 </ul>
 <h1 id="4-阅读材料"><a class="markdownIt-Anchor" href="#4-阅读材料"></a> 4. 阅读材料</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 
               
             </div>
@@ -829,7 +829,7 @@
     
       <span class="category-chain">
         
-  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  <a href="/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
   
   
 
@@ -844,13 +844,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/project/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
       
-        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
-        <a href="/project/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+        <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
       
     </div>
   
@@ -863,7 +863,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-Software-System-Design-Lec15-Design</div>
-      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/</div>
+      <div>http://example.com/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec15-Design/</div>
     </div>
     <div class="license-meta">
       
@@ -905,7 +905,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/" title="2021-Software-System-Design-Lec14-Architectural Pattern">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec14-Architectural%20Pattern/" title="2021-Software-System-Design-Lec14-Architectural Pattern">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2021-Software-System-Design-Lec14-Architectural Pattern</span>
                         <span class="visible-mobile">上一篇</span>
@@ -915,7 +915,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec05-State&amp;Command/" title="2021-Software-System-Design-Lec05-State&amp;Command">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec05-State&amp;Command/" title="2021-Software-System-Design-Lec05-State&amp;Command">
                         <span class="hidden-mobile">2021-Software-System-Design-Lec05-State&amp;Command</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -1063,7 +1063,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>京公网安备12345678号</span>
         </a>
@@ -1092,12 +1092,12 @@
 
 <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/project/js/events.js" ></script>
-<script  src="/project/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   
-    <script  src="/project/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1269,9 +1269,9 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/project/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
-  <script defer src="/project/js/leancloud.js" ></script>
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
@@ -1279,7 +1279,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/project/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
