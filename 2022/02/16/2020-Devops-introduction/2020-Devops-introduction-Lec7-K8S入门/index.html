@@ -1,0 +1,962 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Devops-introduction-Lec7-K8S入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Devops-introduction-Lec7-K8S入门">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec7-K8S%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Devops-introduction-Lec7-K8S入门">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/9.png">
+<meta property="article:published_time" content="2022-02-16T11:09:44.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:50:45.274Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="容器">
+<meta property="article:tag" content="K8S">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/1.png">
+  
+  
+  <title>2020-Devops-introduction-Lec7-K8S入门 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Devops-introduction-Lec7-K8S入门</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec7-k8s入门"><a class="markdownIt-Anchor" href="#lec7-k8s入门"></a> Lec7-K8S入门</h2>
+<h1 id="1-为什么需要k8s"><a class="markdownIt-Anchor" href="#1-为什么需要k8s"></a> 1. 为什么需要K8S？</h1>
+<h2 id="11-容器是什么"><a class="markdownIt-Anchor" href="#11-容器是什么"></a> 1.1. 容器是什么？</h2>
+<ol>
+<li>容器是资源精细化编排的代表。</li>
+<li>容器通常指在一个隔离的环境中运行的进程以及进程所依赖的环境的总称。
+<ol>
+<li>隔离：借助于linux的namespace机制</li>
+<li>资源限制：可以基于linux的cgroup计算对容器所能使用的资源做限制，主要指cpu、内存资</li>
+<li>进程：linux进程</li>
+<li>依赖环境：进程运行所依赖的库、以及其他的资源</li>
+</ol>
+</li>
+<li>容器的优点
+<ol>
+<li>更轻量</li>
+<li>资源利用更高效</li>
+<li>以应用为中心的管理</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-为什么需要k8s"><a class="markdownIt-Anchor" href="#12-为什么需要k8s"></a> 1.2. 为什么需要K8S</h2>
+<ol>
+<li>需要一个系统来管理集群上的大量容器。</li>
+<li>用于完成容器的编排，目前K8S已经是容器编排领域事实上的标准。</li>
+</ol>
+<h1 id="2-什么是k8s"><a class="markdownIt-Anchor" href="#2-什么是k8s"></a> 2. 什么是K8S</h1>
+<ol>
+<li>K8S是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。</li>
+<li>能力
+<ol>
+<li>支持不同的底层资源平台</li>
+<li>自动弹性伸缩</li>
+<li>高可靠性</li>
+</ol>
+</li>
+</ol>
+<h2 id="21-k8s逻辑架构"><a class="markdownIt-Anchor" href="#21-k8s逻辑架构"></a> 2.1. K8S逻辑架构</h2>
+<ol>
+<li>Master节点
+<ol>
+<li>API Server</li>
+<li>Schuduler</li>
+<li>Controller</li>
+<li>etcd</li>
+</ol>
+</li>
+<li>Node节点
+<ol>
+<li>pod</li>
+<li>docker</li>
+<li>kubelet</li>
+<li>kube-proxy</li>
+<li>fluentd</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-k8s组件"><a class="markdownIt-Anchor" href="#22-k8s组件"></a> 2.2. K8S组件</h2>
+<ol>
+<li>控制平面：对集群做出全局决策，以及检查和响应集群时间(例如，当不满足部署的replicas字段时，启动新的pod)
+<ol>
+<li>kube-apiserver</li>
+<li>kube-scheduler</li>
+<li>kube-controller-manager</li>
+<li>cloud-controller-manager</li>
+<li>etcd</li>
+</ol>
+</li>
+<li>计算平面
+<ol>
+<li>计算平面由Node节点组成</li>
+<li>运行组件
+<ol>
+<li>Kubelet</li>
+<li>Kube-proxy</li>
+<li>容器运行时(Container Runtime)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>插件(Addons)
+<ol>
+<li>DNS</li>
+<li>Dashboard</li>
+<li>容器资源监控</li>
+<li>日志</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-k8s重要概念"><a class="markdownIt-Anchor" href="#23-k8s重要概念"></a> 2.3. K8S重要概念</h2>
+<h3 id="231-pod"><a class="markdownIt-Anchor" href="#231-pod"></a> 2.3.1. POD</h3>
+<ol>
+<li>POD是K8S的最小资源管理单位，POD有点脆弱。</li>
+<li>POD中包含资源
+<ol>
+<li>一个或多个应用程序容器</li>
+<li>存储卷</li>
+<li>网络地址，如IP地址、端口等</li>
+</ol>
+</li>
+</ol>
+<h3 id="232-workload-工作负载"><a class="markdownIt-Anchor" href="#232-workload-工作负载"></a> 2.3.2. Workload 工作负载</h3>
+<ol>
+<li>工作负载是在K8S上运行的应用程序，K8S主要支持
+<ol>
+<li>Deployment</li>
+<li>Statefulset</li>
+<li>Damonset</li>
+<li>Job</li>
+<li>CronJob</li>
+</ol>
+</li>
+</ol>
+<h3 id="233-service"><a class="markdownIt-Anchor" href="#233-service"></a> 2.3.3. Service</h3>
+<ol>
+<li>Service定义了POD提供给外部应用的方式</li>
+<li>为什么引入Service?</li>
+<li>Service怎么和Pod关联起来？</li>
+<li>Service有哪些类型
+<ol>
+<li>ClusterIP</li>
+<li>NodePort</li>
+<li>LoadBalancer</li>
+<li>ExternalName</li>
+</ol>
+</li>
+</ol>
+<h3 id="234-label"><a class="markdownIt-Anchor" href="#234-label"></a> 2.3.4. label</h3>
+<ol>
+<li>label是<code>key/value</code>键值对，用来识管理和识别资源。</li>
+<li>Node、Pod、工作负载、密钥、configmap、service等等所有资源都可以增加标签</li>
+<li>签通常用来识别资源，一般和标签选择器配合使用。</li>
+</ol>
+<h1 id="3-k8s实操"><a class="markdownIt-Anchor" href="#3-k8s实操"></a> 3. K8S实操</h1>
+<ol>
+<li>实操会覆盖一个应用的完整的生命周期</li>
+<li>实验操作地址：<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/">https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/</a></li>
+</ol>
+<h2 id="31-创建集群"><a class="markdownIt-Anchor" href="#31-创建集群"></a> 3.1. 创建集群</h2>
+<ol>
+<li>本次实验使用Minikube</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cat</span> /etc/lsb-release<br><span class="hljs-built_in">hostname</span><br>hostnamectl <span class="hljs-keyword">set</span>-<span class="hljs-built_in">hostname</span> yanwei<br>minikube start	<br>kubectl <span class="hljs-keyword">version</span><br>kubectl cluster-info<br>kubectl <span class="hljs-built_in">get</span> nodes<br>kubectl <span class="hljs-built_in">get</span> pod -n kube-<span class="hljs-built_in">system</span><br>systemctl status kubelet    思考题：kubelet可以放在容器中吗？<br><br>kubectl <span class="hljs-built_in">get</span> pod --<span class="hljs-keyword">no</span>-headers --<span class="hljs-keyword">all</span>-namespaces |wc -<span class="hljs-keyword">l</span><br>docker <span class="hljs-keyword">ps</span> -<span class="hljs-keyword">a</span> |<span class="hljs-keyword">grep</span> -v NAMES |wc -<span class="hljs-keyword">l</span><br><br>pause容器即infra容器，主要负责为POD准备网络和存储，其他的容器和Pause容器共享网络和存储。<br>docker inspect <br><br>kubectl <span class="hljs-built_in">get</span> nodes --show-labels<br>kubectl label nodes <span class="hljs-symbol">&lt;your-node-name&gt;</span> disktype=ssd<br></code></pre></td></tr></table></figure>
+<h2 id="32-部署应用"><a class="markdownIt-Anchor" href="#32-部署应用"></a> 3.2. 部署应用</h2>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">kubectl <span class="hljs-built_in">get</span> nodes<span class="hljs-comment"> //等待节点变成ready状态</span><br>kubectl <span class="hljs-built_in">create</span> deployment yanwei.app <span class="hljs-comment">--image=gcr.io/google-samples/kubernetes-bootcamp:v1</span><br>kubectl <span class="hljs-built_in">get</span> pod -o wide<br>kubectl label pod yanwei.app<span class="hljs-number">-65</span>ddbc7454<span class="hljs-number">-8</span>fm8g transwarp.io/name=yanwei<br></code></pre></td></tr></table></figure>
+<h2 id="33-expose应用"><a class="markdownIt-Anchor" href="#33-expose应用"></a> 3.3. expose应用</h2>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">kubectl delete deployment kubernetes-bootcamp<br>kubectl create deployment yanwei<span class="hljs-selector-class">.app</span> <span class="hljs-attr">--image</span>=gcr.io/google-samples/kubernetes-bootcamp:v1<br>kubectl scale deployments/yanwei<span class="hljs-selector-class">.app</span> <span class="hljs-attr">--replicas</span>=<span class="hljs-number">3</span><br>kubectl expose deployment/yanwei<span class="hljs-selector-class">.app</span> <span class="hljs-attr">--type</span>=<span class="hljs-string">&quot;NodePort&quot;</span> <span class="hljs-attr">--port</span> <span class="hljs-number">8080</span>  <span class="hljs-attr">--name</span> yanwei<br><br>访问service，多次访问service，是从不同的pod中返回的。<br>curl $(minikube ip):<span class="hljs-number">31172</span><br><br>kubectl exec -ti <span class="hljs-variable">$POD_NAME</span> -- /bin/bash<br>ps -elf<br>more server.js<br></code></pre></td></tr></table></figure>
+<h2 id="34-扩容缩容应用"><a class="markdownIt-Anchor" href="#34-扩容缩容应用"></a> 3.4. 扩容缩容应用</h2>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros">kubectl <span class="hljs-built_in">get</span> deployments   <br>kubectl <span class="hljs-built_in">get</span> rs<br>kubectl delete deployments kubernetes-bootcamp<br>kubectl create deployment yanwei.app <span class="hljs-attribute">--image</span>=gcr.io/google-samples/kubernetes-bootcamp:v1<br><br>kubectl <span class="hljs-built_in">get</span> deployments   <br>kubectl scale deployments/yanwei.app <span class="hljs-attribute">--replicas</span>=4<br>kubectl scale deployments/yanwei.app <span class="hljs-attribute">--replicas</span>=2<br></code></pre></td></tr></table></figure>
+<h2 id="35-滚动升级"><a class="markdownIt-Anchor" href="#35-滚动升级"></a> 3.5. 滚动升级</h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs awk">kubectl <span class="hljs-keyword">delete</span> deployments kubernetes-bootcamp<br>kubectl <span class="hljs-keyword">delete</span> service kubernetes-bootcamp<br>kubectl create deployment yanwei.app --image=gcr.io<span class="hljs-regexp">/google-samples/</span>kubernetes-bootcamp:v1<br><br>kubectl scale deployments/yanwei.app --replicas=<span class="hljs-number">3</span><br>kubectl expose deployment/yanwei.app --type=<span class="hljs-string">&quot;NodePort&quot;</span> --port <span class="hljs-number">8080</span>  --name yanwei<br><br>curl $(minikube ip):<span class="hljs-number">31120</span>  <span class="hljs-regexp">//</span>执行多次 <br>kubectl set image deployments<span class="hljs-regexp">/yanwei.app kubernetes-bootcamp=jocatalin/</span>kubernetes-bootcamp:v2<br>curl $(minikube ip):<span class="hljs-number">31120</span>  <span class="hljs-regexp">//</span>执行多次 升级前后查看版本<br><br>kubectl rollout status deployments/yanwei.app<br><br>升级失败<br>kubectl set image deployments<span class="hljs-regexp">/yanwei.app kubernetes-bootcamp=gcr.io/g</span>oogle-samples/kubernetes-bootcamp:v10<br><br>kubectl get pod -o wide  <span class="hljs-regexp">//</span> 有pod镜像下载失败<br><br>kubectl describe pod<br><br>kubectl rollout undo deployments/yanwei.app<br></code></pre></td></tr></table></figure>
+<h2 id="36-k8s学习建议"><a class="markdownIt-Anchor" href="#36-k8s学习建议"></a> 3.6. K8S学习建议</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-k8s进阶"><a class="markdownIt-Anchor" href="#4-k8s进阶"></a> 4. K8S进阶</h1>
+<h2 id="41-设计模式-k8s设计模式"><a class="markdownIt-Anchor" href="#41-设计模式-k8s设计模式"></a> 4.1. 设计模式-K8S设计模式</h2>
+<ol>
+<li>控制器模式：面向期望状态的编程模式
+<ol>
+<li>一个控制器至少管理一种类型的K8S资源。</li>
+<li>每个资源对象都有一个代表期望状态的spec字段。</li>
+<li>该资源的控制器负责确保当前状态趋近期望状态</li>
+</ol>
+</li>
+<li>推荐阅读：《Kubernetes 设计模式》</li>
+</ol>
+<h2 id="42-设计模式-插件模式"><a class="markdownIt-Anchor" href="#42-设计模式-插件模式"></a> 4.2. 设计模式-插件模式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="43-存储"><a class="markdownIt-Anchor" href="#43-存储"></a> 4.3. 存储</h2>
+<h3 id="431-k8s存储架构"><a class="markdownIt-Anchor" href="#431-k8s存储架构"></a> 4.3.1. K8S存储架构</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="432-csi架构"><a class="markdownIt-Anchor" href="#432-csi架构"></a> 4.3.2. CSI架构</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="44-网络"><a class="markdownIt-Anchor" href="#44-网络"></a> 4.4. 网络</h2>
+<h3 id="441-pod之间通信"><a class="markdownIt-Anchor" href="#441-pod之间通信"></a> 4.4.1. POD之间通信</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="442-kube-proxy-kube-dns"><a class="markdownIt-Anchor" href="#442-kube-proxy-kube-dns"></a> 4.4.2. kube-proxy &amp; kube-dns</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="443-flannel"><a class="markdownIt-Anchor" href="#443-flannel"></a> 4.4.3. flannel</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="45-调度"><a class="markdownIt-Anchor" href="#45-调度"></a> 4.5. 调度</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="46-容器运行时"><a class="markdownIt-Anchor" href="#46-容器运行时"></a> 4.6. 容器运行时</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec7/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Devops-introduction/" class="category-chain-item">2020-Devops-introduction</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/DevOps/">#DevOps</a>
+      
+        <a href="/project/tags/%E5%AE%B9%E5%99%A8/">#容器</a>
+      
+        <a href="/project/tags/K8S/">#K8S</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Devops-introduction-Lec7-K8S入门</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec7-K8S%E5%85%A5%E9%97%A8/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec6-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8C%96%E4%B8%8E%E6%9C%80%E6%96%B0%E8%BF%9B%E5%B1%95/" title="2020-Devops-introduction-Lec6-软件架构演化与最新进展">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec6-软件架构演化与最新进展</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec9-%E6%8E%A2%E7%B4%A2%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" title="2020-Devops-introduction-Lec9-探索可观测性的技术原理">
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec9-探索可观测性的技术原理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

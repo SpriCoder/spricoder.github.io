@@ -1,0 +1,1214 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2019-Data-Structure-数据结构4.1-specific Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-Data-Structure-数据结构4.1-specific Tree">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844.1-specific%20Tree/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2019-Data-Structure-数据结构4.1-specific Tree">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/41.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/42.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/43.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/44.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/45.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/38.png">
+<meta property="article:published_time" content="2022-02-16T11:09:52.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:51:28.439Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="二叉搜索树">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/1.png">
+  
+  
+  <title>2019-Data-Structure-数据结构4.1-specific Tree - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          101 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2019-Data-Structure-数据结构4.1-specific Tree</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="41-搜索树"><a class="markdownIt-Anchor" href="#41-搜索树"></a> 4.1 搜索树</h2>
+<h1 id="1-二叉搜索树"><a class="markdownIt-Anchor" href="#1-二叉搜索树"></a> 1. 二叉搜索树</h1>
+<ol>
+<li>Definition: A binary search tree is a binary tree that may be empty. A nonempty binary search tree satisfies the following properties:(二叉搜索树是一个可以为空的二叉树。一个非空的二叉树都满足如下性质)
+<ol>
+<li>Every element has a key and no two elements have the same key; therefore,all keys are distinct. (每一个元素都含有一个关键字，并且每一个元素都有独一无二的关键字)</li>
+<li>The keys(if any)in the left subtree of the root are smaller than the key in the root.(一个树的左子树的关键字小于根中的关键字)</li>
+<li>The keys(if any)in the right subtree of the root are larger than the key in the root.(一个树的右子树的关键字大于根中的关键字)</li>
+<li>The left and right subtrees of the root are also binary search trees.(根的左右子树还是二叉搜索树)</li>
+</ol>
+</li>
+<li>二叉搜索树需要满足的事情:在很大的数据量下，要能够很快的进行增删查改。这也就是二叉搜索树的优越性。</li>
+</ol>
+<h2 id="11-二叉搜索树的结构"><a class="markdownIt-Anchor" href="#11-二叉搜索树的结构"></a> 1.1. 二叉搜索树的结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="111-二叉搜索树的实现java"><a class="markdownIt-Anchor" href="#111-二叉搜索树的实现java"></a> 1.1.1. 二叉搜索树的实现(java)</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BinaryNode</span> &#123;<br>    BinaryNode( Comparable theElement ) &#123;<br>        <span class="hljs-built_in">this</span>( theElement, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span> );<span class="hljs-comment">//调用本类中的其他构造方法</span><br>    &#125;<br>    BinaryNode( Comparable  theElement,  BinaryNode lt,BinaryNode rt ) &#123;<br>        element = <span class="hljs-type">theElement</span><br>        <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> lt;<br>        right = rt;<br>    &#125;<br>    Comparable element;<br>    BinaryNode left;<br>    BinaryNode right;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="112-二叉搜索树需要实现的方法"><a class="markdownIt-Anchor" href="#112-二叉搜索树需要实现的方法"></a> 1.1.2. 二叉搜索树需要实现的方法</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//二叉搜素树的实现</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BinarySearchTree</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BinarySearchTree</span><span class="hljs-params">()</span>&#123; root = <span class="hljs-literal">null</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">()</span>&#123; root = <span class="hljs-literal">null</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">()</span>&#123; <span class="hljs-type">return</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span>= <span class="hljs-literal">null</span>;&#125;<br>    <br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">find</span><span class="hljs-params">( Comparable x )</span><br>    &#123;<span class="hljs-keyword">return</span> elementAt( find( x, root));&#125;<br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">findMin</span><span class="hljs-params">()</span><br>    &#123;<span class="hljs-keyword">return</span> elementAt( findMin( root ) );&#125;<br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">findMax</span><span class="hljs-params">()</span><br>    &#123;<span class="hljs-keyword">return</span> elementAt( findMax( root ) );<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x )</span><br>    &#123;root = insert(  x, root );&#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( Comparable x )</span> &#123;root = remove( x, root ); &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printTree</span><span class="hljs-params">()</span><span class="hljs-comment">//都是外部接口</span><br>    <br>    <span class="hljs-keyword">private</span> BinaryNode root;<br>    <span class="hljs-keyword">private</span> Comparable <span class="hljs-title function_">elementAt</span><span class="hljs-params">( BinaryNode t )</span>&#123; <span class="hljs-type">return</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span>= <span class="hljs-literal">null</span> ? Null : t.element; &#125;<br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">find</span><span class="hljs-params">( Comparable x, BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMin</span><span class="hljs-params">( BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMax</span><span class="hljs-params">( BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x, BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">remove</span><span class="hljs-params">( Comparable x, BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">removeMin</span><span class="hljs-params">( BinaryNode t )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printTree</span><span class="hljs-params">( BinaryNode t )</span><br>&#125;<br><span class="hljs-comment">//查找某个元素的算法</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">find</span><span class="hljs-params">( Comparable x, BinaryNode t )</span> &#123;<br>    <span class="hljs-keyword">if</span>( t == <span class="hljs-literal">null</span> )<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &lt; <span class="hljs-number">0</span> )<br>        <span class="hljs-keyword">return</span> find( x, t.left );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &gt; <span class="hljs-number">0</span> )<br>        <span class="hljs-keyword">return</span> find( x, t.right );<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> t;<span class="hljs-comment">//Match </span><br>&#125;<br><span class="hljs-comment">//查找值最小的结点</span><br><span class="hljs-comment">//使用递归查找结点</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMin</span><span class="hljs-params">( BinaryNode t )</span> &#123;  <br>    <span class="hljs-keyword">if</span>( t == <span class="hljs-literal">null</span> )<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( t.left == <span class="hljs-literal">null</span> )<br>        <span class="hljs-keyword">return</span> t;<br>    <span class="hljs-keyword">return</span> findMin( t.left );<br>&#125;<br><span class="hljs-comment">//迭代找最小结点</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMin</span><span class="hljs-params">(BinaryNode t)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t != <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">while</span>(t.left != <span class="hljs-literal">null</span>)&#123;<br>            t = t.left;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br><span class="hljs-comment">//递归找到最大结点</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMax</span><span class="hljs-params">( BinaryNode t)</span>&#123;<br>    <span class="hljs-keyword">if</span>(t == <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t.right == <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span> t;<br>    &#125;<br>    <span class="hljs-keyword">return</span> findMax(t.right);<br>&#125;<br><span class="hljs-comment">//迭代找到最大结点</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">findMax</span><span class="hljs-params">( BinaryNode t )</span> &#123; <br>    <span class="hljs-keyword">if</span>( t != <span class="hljs-literal">null</span> )<br>        <span class="hljs-keyword">while</span>( t.right != <span class="hljs-literal">null</span> )<br>            t = t.right;<br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br><span class="hljs-comment">//将数值插入固定位置的算法</span><br><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x, BinaryNode t )</span> &#123;<br>    <span class="hljs-comment">//先查找一次，如果找到了就不用进行查找</span><br>    <span class="hljs-keyword">if</span>( t == <span class="hljs-literal">null</span> )<br>        t = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BinaryNode</span>( x, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span> );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &lt; <span class="hljs-number">0</span> )<br>        t.left = insert( x, t.left );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &gt; <span class="hljs-number">0</span> )<br>        t.right = insert( x, t.right );<br>    <span class="hljs-keyword">else</span> ;<span class="hljs-comment">//duplicate; do nothing</span><br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br><span class="hljs-comment">//compareTo()方法如果小于返回负数，大于返回正数</span><br></code></pre></td></tr></table></figure>
+<h2 id="删除算法"><a class="markdownIt-Anchor" href="#删除算法"></a> 删除算法</h2>
+<ol>
+<li>如果结点本身不在树内，那么不需要删除</li>
+<li>如果结点本身在树里面，删除需要分类
+<ol>
+<li>无子树:删除叶节点</li>
+<li>一颗子树:直接连接</li>
+<li>两颗子树:可以选择左子树的最大结点作为新结点</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BinaryNode <span class="hljs-title function_">remove</span><span class="hljs-params">( Comparable x, BinaryNode t )</span> &#123;<br>    <span class="hljs-keyword">if</span>( t == <span class="hljs-literal">null</span> )<br>        <span class="hljs-keyword">return</span> t;<br>    <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &lt; <span class="hljs-number">0</span> )<br>        t.left = remove( x, t.left );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( x.compareTo( t.element ) &gt; <span class="hljs-number">0</span> )<br>        t.right = remove( x, t.right );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( t.left != <span class="hljs-literal">null</span> &amp;&amp; t.right != <span class="hljs-literal">null</span> ) &#123;<br>        t.element = findMin( t.right ).element;<span class="hljs-comment">//把右树最小的复制给t</span><br>        t.right = remove( t.element , t.right );<span class="hljs-comment">//递归的删除</span><br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        t = ( t.left != <span class="hljs-literal">null</span> ) ? t.left : t.right;<span class="hljs-comment">//一颗子树的情况</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="高度"><a class="markdownIt-Anchor" href="#高度"></a> 高度</h2>
+<ol>
+<li>The height of a binary search tree has influence directly on the time complexity of operations like searching, insertion and deletion. 二叉搜索树的高度会影响搜索，插入和删除算法的搜索度</li>
+<li>Worst case: add an ordered elements{1,2,3…n} into an empty binary search tree. 最坏的情况就是把一个有序的数列添加进入到空的二叉搜索树中去。</li>
+</ol>
+<h2 id="二叉搜索树的算法复杂度"><a class="markdownIt-Anchor" href="#二叉搜索树的算法复杂度"></a> 二叉搜索树的算法复杂度</h2>
+<ol>
+<li>二叉搜索树以上的所有操作都和二叉搜索树的深度有关，所以在生成二叉树的时候我们需要保证二叉搜索树的平衡性，(如果一开始输入最小的，树严重失衡，如果一开始输入中等，树基本平衡)</li>
+<li>Best Case:O(log<sub>2</sub>n)</li>
+</ol>
+<h2 id="12-索引二叉树"><a class="markdownIt-Anchor" href="#12-索引二叉树"></a> 1.2. 索引二叉树</h2>
+<ol>
+<li>An indexed binary search tree is derived from an ordinary binary search tree by adding the field  leftSize to each tree node. 索引二叉搜索树是通过将字段leftSize添加到每个树节点，从普通二叉搜索树派生而来的。</li>
+<li>Value in Leftsize field=number of the elements in the node’s left subtree +1(leftsize = 左子树大小 + 1)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>Eg.</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-avl-tree自平衡的二叉搜索树"><a class="markdownIt-Anchor" href="#2-avl-tree自平衡的二叉搜索树"></a> 2. AVL Tree(自平衡的二叉搜索树)</h1>
+<ol>
+<li>目的:the AVL tree was introduced to increase the efficiency of searching a binary search tree, and to decrease the average search length. AVL树是一个用来增加二叉搜索树的平衡性并且减小平均搜索高度</li>
+<li>AVL的高度是O(log<sub>2</sub>n)的，所以对应的算法复杂度也是这样的。</li>
+</ol>
+<h2 id="21-什么是avl树"><a class="markdownIt-Anchor" href="#21-什么是avl树"></a> 2.1. 什么是AVL树</h2>
+<ol>
+<li>AVL树是一个二叉搜索树</li>
+<li>AVL树的每一个节点满足|hL-hR|&lt;=1 where hL and hR are the heights of TL(left subtree) and TR(right subtree),respectively.对于每一个结点，其左子树和右子树的高度之差不超过1</li>
+<li>注:树叶之间之差未必小于一，但是一个节点的左右子树的高度不能大于一</li>
+</ol>
+<h2 id="22-avl树的基本概念"><a class="markdownIt-Anchor" href="#22-avl树的基本概念"></a> 2.2. AVL树的基本概念</h2>
+<ol>
+<li>AVL树高:the longest path from the root to each leaf node(从根节点到每一个叶节点之间的所有路径的最长的一条)</li>
+<li>Balance factor bf(x) of a node x : height of right subtree of x – height of left subtree of x 节点x的平衡因子 = x的右树的高度-x的左树的高度</li>
+</ol>
+<h2 id="23-avl树的结点的实现"><a class="markdownIt-Anchor" href="#23-avl树的结点的实现"></a> 2.3. AVL树的结点的实现</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="24-avl树的实现"><a class="markdownIt-Anchor" href="#24-avl树的实现"></a> 2.4. AVL树的实现</h2>
+<ol>
+<li>这个例子里每个结点中存储着树高</li>
+<li>树高之差就是平衡因子</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">AVLNode</span> &#123;<br>    AVLNode(Comparable theElement) &#123;<br>        <span class="hljs-built_in">this</span>( theElement, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);<br>    &#125;<br>    AVLNode(Compalable theElement, AVLNode lt, AVLNode rt) &#123;<br>        element = theElement;<br>        left = lt;<br>        right = rt;<br>        height = <span class="hljs-number">0</span>;<br>    &#125;<br>    Comparable element;<br>    AVLNode left;<br>    AVLNode right;<br>    <span class="hljs-type">int</span> height;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">height</span><span class="hljs-params">( AVLNode t )</span> &#123;   <br>    <span class="hljs-type">return</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span>s= <span class="hljs-literal">null</span> ? –<span class="hljs-number">1</span> : t. height;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="25-avl树的基本操作"><a class="markdownIt-Anchor" href="#25-avl树的基本操作"></a> 2.5. AVL树的基本操作</h2>
+<h3 id="251-avl树的查询"><a class="markdownIt-Anchor" href="#251-avl树的查询"></a> 2.5.1. AVL树的查询</h3>
+<p>查询过程和正常的二叉搜索树是相同的，其算法复杂度和正常二叉搜索树的搜索算法的复杂度是相同的。</p>
+<h3 id="252-avl树的插入"><a class="markdownIt-Anchor" href="#252-avl树的插入"></a> 2.5.2. AVL树的插入</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>简单来看，每一个子树都可以被看为如上的图</li>
+<li>算法流程:是递归从下向上进行旋转处理，先看子树。</li>
+</ol>
+<h2 id="插入c的右子树e外侧结点"><a class="markdownIt-Anchor" href="#插入c的右子树e外侧结点"></a> 插入C的右子树E(外侧结点)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>只需要进行一次左单旋转即可</li>
+<li>左单旋转过程如上</li>
+</ol>
+<h2 id="插入c的左子树d内侧结点"><a class="markdownIt-Anchor" href="#插入c的左子树d内侧结点"></a> 插入C的左子树D(内侧结点)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>需要进行一次双旋转(先右后左)</li>
+</ol>
+<h2 id="插入其他地方树不需要转"><a class="markdownIt-Anchor" href="#插入其他地方树不需要转"></a> 插入其他地方，树不需要转</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>一直到5的时候，树的平衡性才受到影响</li>
+<li>插入后，树的平衡性没有被破坏显然不用旋转</li>
+<li>调整只要在包含插入结点的最小不平衡子树中进行，即从到达插入结点的路径上，离插入结点最近的，并且平衡系数!=0的<strong>结点为根的子树</strong>.</li>
+</ol>
+<h2 id="算法思想与总结"><a class="markdownIt-Anchor" href="#算法思想与总结"></a> 算法思想与总结</h2>
+<ol>
+<li>
+<p>算法思想:插入一个新结点后，需要从插入位置沿通向根的路径回溯，检查各结点左右子树的高度差，如果发现某点高度不平衡则停止回溯。</p>
+<ul>
+<li>先确定节点是在外侧还是内侧,决定是单旋还是双旋</li>
+</ul>
+</li>
+<li>
+<p>单旋转：<strong>外侧</strong>—从不平衡结点沿刚才回溯的路径取直接下两层如果三个结点处于一直线A，C，E</p>
+</li>
+<li>
+<p>双旋转：<strong>内侧</strong>—从不平衡结点沿刚才回溯的路径取直接下两层如果三个结点处于一折线A，C，D</p>
+</li>
+<li>
+<p>以上以右外侧，右内侧为例，左外侧，左内侧是对称的。与前面对称的情况：左外侧，左内侧 左外侧</p>
+<ul>
+<li>右下旋 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+<li>左下旋 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+<li>右内侧 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+<li>左内侧 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+</ul>
+</li>
+<li>
+<p>插入:</p>
+<ol>
+<li>首先要找到正确的位置进行插入</li>
+<li>找到有可能发生不平衡的最小不平衡子树</li>
+<li>判别插入在不平衡子树的外侧还是内侧</li>
+<li>根据3的判别结果,再进行单旋还是双旋</li>
+</ol>
+</li>
+</ol>
+<h2 id="例子从空的avl树建树的算法"><a class="markdownIt-Anchor" href="#例子从空的avl树建树的算法"></a> 例子(从空的AVL树建树的算法)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>右双旋转：先变成ACZ，再把AC旋转下去。</li>
+<li>左子树的左子树是左外侧，左子树的右子树是左外侧，右子树的左子树是右内侧，右子树的右子树是右外侧
+<ul>
+<li>判断内侧外侧只从被破坏根节点向下2层。<br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></li>
+</ul>
+</li>
+</ol>
+<h2 id="插入算法代码"><a class="markdownIt-Anchor" href="#插入算法代码"></a> 插入算法代码</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> AVLNode <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x, AVLNode t )</span> &#123;<br>    <span class="hljs-keyword">if</span> (t == <span class="hljs-literal">null</span>)<br>        t = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AVLNode</span>( x, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span> );<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( x.compareTo(t.element) &lt; <span class="hljs-number">0</span> )&#123;<br>        t.left = insert(x, t.left);<span class="hljs-comment">//不仅x插入左子树，而其左子树已经调平衡了，也就会子树已经旋转过了</span><br>        <span class="hljs-keyword">if</span>(height(t.left) – height(t.right) == <span class="hljs-number">2</span> )<br>            <span class="hljs-keyword">if</span>(x.compareTo(t.left.element)&lt;<span class="hljs-number">0</span>)<br>                <span class="hljs-comment">//根据大小进行调整</span><br>                t = rotateWithLeftChild (t);<span class="hljs-comment">//左子树的左子树，只要做一次左向单旋</span><br>            <span class="hljs-type">else</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> doubleWithLeftChild(t);<span class="hljs-comment">//左子树的右子树，需要做一次左向双选</span><br>    <span class="hljs-comment">//下面是对称的插入在右子树上</span><br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(x.compareTo(t.element)&gt;<span class="hljs-number">0</span>) &#123; <br>        t.right = insert(x, t.right );<br>        <span class="hljs-keyword">if</span>( height(t.right)–height(t.left)== <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">if</span>(x.compareTo(t.right.element)&gt;<span class="hljs-number">0</span>)<br>                t = rotateWithRightChild(t);<br>            <span class="hljs-type">else</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> doubleWithRightChild(t)<br>    &#125;<span class="hljs-keyword">else</span>;<br>    t.height = max(height(t.left), height(t.right)) + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> t;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>右下旋</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-type">static</span> AVLNode <span class="hljs-title">rotateWithLeftChild</span><span class="hljs-params">( AVLNode k2 )</span> </span>&#123;<br>    AVLNode k1 = k2.left;<span class="hljs-comment">//k1持有k2的左子树</span><br>    k2.left = k1.right;<span class="hljs-comment">//k1的右子树挂到k2的左子树上</span><br>    k1.right = k2;<span class="hljs-comment">//把k2自己挂到k1的右子树上</span><br>    k2.height = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(k2.left), <span class="hljs-built_in">height</span>(k2.right)) + <span class="hljs-number">1</span> ;<br>    k1.height = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(k1.left), k2.height) + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> k1;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>左下旋</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-type">static</span> AVLNode <span class="hljs-title">rotateWithRightChild</span><span class="hljs-params">(AVLNode k2)</span></span>&#123;<br>    AVLNode k1 = k2.right;<span class="hljs-comment">//k1持有k2的右子树</span><br>    k2.right = k1.left;<span class="hljs-comment">//k2的右子树挂到k1的左子树上</span><br>    k1.left = k2;<span class="hljs-comment">//把k2自己挂到k1的左子树上</span><br>    k2.height = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">height</span>(k2.left),<span class="hljs-built_in">height</span>(k2.right)) + <span class="hljs-number">1</span>;<br>    k1.height = <span class="hljs-built_in">max</span>(k2.height,k1.right) + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> k1;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>右内侧</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">private</span>  <span class="hljs-type">static</span> AVLNode <span class="hljs-title">doubleWithLeftChild</span><span class="hljs-params">( AVLNode k3 )</span> </span>&#123;<br>    k3.left = <span class="hljs-built_in">rotateWithRightChild</span>(k3.left);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">rotateWithLeftChild</span>( k3 );<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>左内侧</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-type">static</span> AVLNode <span class="hljs-title">doubleWithRightChild</span><span class="hljs-params">(AVLNode k3)</span></span>&#123;<br>    k3.right = <span class="hljs-built_in">rotateWithLeftChild</span>(k3.right);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">rotateWithRightChild</span>( k3 );<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="253-avl树的删除"><a class="markdownIt-Anchor" href="#253-avl树的删除"></a> 2.5.3. AVL树的删除</h3>
+<ol>
+<li>方法和二叉搜索树的删除方法一样</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>需要找到被删除顶点的中序后继。</li>
+<li>等待再看一下。</li>
+</ol>
+<h2 id="例子"><a class="markdownIt-Anchor" href="#例子"></a> 例子</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/14.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="254-算法复杂度分析不做要求"><a class="markdownIt-Anchor" href="#254-算法复杂度分析不做要求"></a> 2.5.4. 算法复杂度分析(不做要求)</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/16.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/17.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-b-trees"><a class="markdownIt-Anchor" href="#3-b-trees"></a> 3. B-TREES</h1>
+<h2 id="31-m叉搜索树"><a class="markdownIt-Anchor" href="#31-m叉搜索树"></a> 3.1. m叉搜索树</h2>
+<h3 id="311-m叉搜索树的定义"><a class="markdownIt-Anchor" href="#311-m叉搜索树的定义"></a> 3.1.1. m叉搜索树的定义</h3>
+<ol>
+<li>Definition: An m-way search tree may be empty. If it is not empty, it is a tree that satisfies the following properties: m-way搜索树可能为空。如果是一个非空的树，则为满足以下属性的树：
+<ol>
+<li>In the corresponding extended search tree(obtained by replacing zero pointer with external nodes), each internal node has up to m children and between 1 and m-1 elements.(在相应的扩展搜索树(用外部节点替换零指针获得)中，每个内部节点最多有m个子节点，在1和m-1元素之间。)</li>
+<li>Every node with p elements has exactly p+1 children.(每个具有p元素的节点正好有p+1子节点。)</li>
+<li>Consider any node with p elements:<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/19.png" srcset="/project/img/loading.gif" lazyload alt="" /> k1 &lt; k2 &lt;……&lt; kp,  c0,c1,……,cp be the p+1 children of the node 假设任何节点都有p个元素，那么C0 - Cp是他们对应的p+1个子元素。</li>
+</ol>
+</li>
+<li>对于<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/19.png" srcset="/project/img/loading.gif" lazyload alt="" />中的节点:
+<ul>
+<li>C<sub>0</sub>: The elements in the subtree with root c<sub>0</sub> have  keys smaller than k<sub>1</sub>(在以C<sub>0</sub>为根的所有子树中的结点的值都小于k<sub>1</sub>)</li>
+<li>C<sub>p</sub>: Elements in the subtree with root c<sub>p</sub> have keys larger than k<sub>p</sub>(在以C<sub>p</sub>为根的子树中的所有子树的值都大于K<sub>p</sub>)</li>
+<li>C<sub>i</sub>: Elements in the subtree with root c<sub>i</sub> have keys larger than ki but smaller than k<sub>i+1</sub>, 1&lt;=i&lt;=p.</li>
+</ul>
+</li>
+<li>m叉搜索树的例子:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>m叉搜索树是可以存入磁盘的。</li>
+</ol>
+<h3 id="312-操作"><a class="markdownIt-Anchor" href="#312-操作"></a> 3.1.2. 操作</h3>
+<h2 id="插入操作"><a class="markdownIt-Anchor" href="#插入操作"></a> 插入操作</h2>
+<ol>
+<li>如果一层没有满，就在同一级进行插入。(针对的是m叉的情况)</li>
+<li>如果这一层已经满了，那么在下一层进行插入。</li>
+<li>例子</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/39.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/40.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/41.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>注:n叉搜索树，每一层一个结点最多有n-1个元素</li>
+</ol>
+<h2 id="删除操作"><a class="markdownIt-Anchor" href="#删除操作"></a> 删除操作</h2>
+<ol>
+<li>
+<p>删除元素不会影响树的叉数，物理层次影响叉数。</p>
+</li>
+<li>
+<p>类型一:同一层还有节点，直接删除没有影响<br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/42.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+</li>
+<li>
+<p>类型二:本层删除后没有节点，所以需要把底下能合适的最大(最小)的进行提升<br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/43.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/44.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/45.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+</li>
+</ol>
+<h2 id="查找m叉搜索树的行高"><a class="markdownIt-Anchor" href="#查找m叉搜索树的行高"></a> 查找m叉搜索树的行高</h2>
+<ol>
+<li>Height of an m-way search tree(m叉二叉树的行高)
+<ol>
+<li>An m-way search tree of height h may have as few as h elements(one node per level), as many as m<sup>h</sup>-1 elements.(一个高为h的m路搜索树最少有h个结点(每一层只有一个结点)，最多有m<sup>h</sup>-1个结点)</li>
+<li>The height of a m-way search tree with n elements is between log<sub>m</sub>(n+1) and n</li>
+<li>n: 200<sup>5</sup>-1 =32*10<sup>10</sup>-1</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-平衡的m路搜索树b树"><a class="markdownIt-Anchor" href="#32-平衡的m路搜索树b树"></a> 3.2. 平衡的m路搜索树——B树</h2>
+<ol>
+<li>Definition : A Btree of order m is an m-way search tree. If the Btree is not empty, the corresponding extended tree satisfies the following properties:m阶的B树是一个m叉搜索树。如果B树不为空，则B树有相应的扩展属性:
+<ol>
+<li>the root has at least <strong>two</strong> children(每个根结点至少有两个子女)</li>
+<li>all internal nodes other than the root have at least m/2(向上取整) children(所有内节点都至少有m/2(向上取整)个子结点)</li>
+<li>all external nodes are at the same level(所有的外节点必须都在同一层)</li>
+</ol>
+</li>
+<li>Eg.</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>早一点的数据库用的是B树，现在大数据数据库是B+树。</li>
+<li>Eg1. In a Btree of order 2, each internal node has at least 2 children, and all external nodes must be on the same level, so a Btree of order 2 is full binary trees (在二阶B树中，每一个内部节点都有至少2个子女，并且所有的外部节点都必须在同一级上，所以2阶B树是满阶二叉树)</li>
+<li>Eg2. In a Btree of order 3(sometimes also called 2-3 tree), each internal node has 2 or 3 children(在三阶B树中(通常被我们叫做2-3树)，每一个内部节点有2个或者3个子女)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="321-b树性质"><a class="markdownIt-Anchor" href="#321-b树性质"></a> 3.2.1. B树性质</h3>
+<ol>
+<li>外节点个数是总共的k值加一</li>
+<li>all external nodes are on the same level(所有的外部结点都有相同的层数)</li>
+<li>number of external nodes = number of keywords + 1(外部节点的个数等于关键字个数+1)
+<ul>
+<li>证明:b1(第一层节点数，不分内外) = k0 + 1,  b2 = k1 + b1,b3 = k2 + b2, …… , 外部结点=k<sub>h-1</sub>+k<sub>h-2</sub>+…+k<sub>1</sub>+k<sub>0</sub>+1=n+1</li>
+<li>总的来说就是使用归纳的方法来做</li>
+</ul>
+</li>
+</ol>
+<h3 id="322-b树搜索算法"><a class="markdownIt-Anchor" href="#322-b树搜索算法"></a> 3.2.2. B树搜索算法</h3>
+<ol>
+<li>A Btree is searched using the same algorithm as used for an m-way search tree. B树的搜索算法和m叉搜索树的搜索算法是一样的。</li>
+<li>Algorithm analysis:(算法分析)
+<ul>
+<li>the number of disk access is at most h(h is the height of the BTree).(对于高度为h的B树，访问磁盘的次数最多为h次)</li>
+<li>proof: T is a BTree of order m with height h, number of elements in T is n, each time we read a node into memory. The n+1 external nodes are on level h.(T是m阶高度为h的B树，在T中的结点个数为n，每一次我们把一个结点读入内存。那么n+1个外部结点在第h层)</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>考虑最坏情况下的B树的搜索算法</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="323-b树插入算法"><a class="markdownIt-Anchor" href="#323-b树插入算法"></a> 3.2.3. B树插入算法</h3>
+<ol>
+<li>B树的插入问题经常发生在外部结点的上一层</li>
+</ol>
+<h2 id="算法思想"><a class="markdownIt-Anchor" href="#算法思想"></a> 算法思想</h2>
+<ol>
+<li>做插入的时候优先插入叶节点:
+<ul>
+<li>如果叶节点还没有满的时候，直接插入即可</li>
+<li>如果叶节点已经满了的时候，会进行分类，将中间节点的一个值拉到上级结点(这个结点在中间)。</li>
+</ul>
+</li>
+<li>Insert into a node with m children (also called a full node), like insert 25 into the BTree in the last example, the full node is split into two nodes.(插入到一个有m个子结点的节点中，比如25插入上面那个例子中，满了的节点会分裂成两个节点,就是把<strong>中间的提升，将剩下的裂开</strong>)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>A new pointer will be added to the parent of the full node.(一个新的指针会被添加指向满了的结点的父结点)</li>
+<li>Because k<sub>m/2(向上取整)</sub> is inserted into parent node, it may cause new split. If the root is split,the height of the tree will increased by 1.(因为k<sub>m/2(向上取整)</sub>)</li>
+</ol>
+<h2 id="算法分析"><a class="markdownIt-Anchor" href="#算法分析"></a> 算法分析</h2>
+<ol>
+<li>If the insert operation causes s node to split, the number of disk access is h (to read in the nodes on the search path) +2s (to write out the two split parts of each   node that is split) +1 (to write the new node).</li>
+<li>如果插入操作会导致s个结点进行分裂，那么磁盘查找次数为 树高h(在搜索路径上读，查找)+2s(写入2s次的分裂)+1(有可能是创建新的结点，也可能是修改一个节点)</li>
+</ol>
+<h3 id="324-b树的删除算法"><a class="markdownIt-Anchor" href="#324-b树的删除算法"></a> 3.2.4. B树的删除算法</h3>
+<ol>
+<li>首先判断删除的关键码是否都在B树中，不在的话直接退出。</li>
+<li>case1:The element to be deleted is in a node whose children are external nodes(i.e.the element is in a leaf)(将要被删除的元素的关键码的子节点是外部结点[小正方形])
+<ul>
+<li>如果有超过(m/2)(向上取整)个关键码，直接删除</li>
+<li>如果关键码个数不足(m/2)(向上取整)个，那么向邻居<strong>借关键码</strong>，如果够借，那么进行调整。如果不够借，那么合并邻居与此节点(还要拉下来一个上级节点的关键码)，这样子也可能会导致上级节点的关键码不足，如果根节点合并，则其高度被减少1。</li>
+</ul>
+</li>
+<li>case2: The element is to be deleted from a nonleaf. (要被删除的结点是一个非叶节点)
+<ul>
+<li>删除这个节点</li>
+<li>把这个节点替换成右子树中的最小关键码(或者左子树中的最大关键码)</li>
+<li>因为相当于删除了右子树的最小关键码(或者左子树中的最大关键码)，所以重复删除叶结点关键码的操作。</li>
+</ul>
+</li>
+<li>找邻居借关键码的例子:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
+<li>删除后两部分合并的例子:
+<ul>
+<li>向邻居借关键码，347 -&gt; 353,353 -&gt; 下面</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/33.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-b树的实现"><a class="markdownIt-Anchor" href="#33-b树的实现"></a> 3.3. B树的实现</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>S is the number of elements in the node(是节点的元素的个数)</li>
+<li>e<sub>i</sub> are the elements in ascending order of key(将元素按照键值升序排列)</li>
+<li>C<sub>i</sub> are children pointers(子树结点)</li>
+</ol>
+<h1 id="4-bsupsup-tree"><a class="markdownIt-Anchor" href="#4-bsupsup-tree"></a> 4. B<sup>+</sup> tree</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/34.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>和B树不同的地方:
+<ol>
+<li>关键码的分布，只分布在叶结点上</li>
+<li>叶结点的定义,不一定符合m阶，它依赖于关键码字节数与指针字节数而为m1</li>
+</ol>
+</li>
+</ol>
+<h2 id="41-bsupsup-tree的定义"><a class="markdownIt-Anchor" href="#41-bsupsup-tree的定义"></a> 4.1. B<sup>+</sup> tree的定义</h2>
+<ol>
+<li>树中每个非叶结点最多有m棵子树</li>
+<li>根结点(非叶结点)至少有2棵子树</li>
+<li>除根结点外，每个非叶结点至少有(m/2)(向上取整)棵子树；有n棵子树的非叶结点有n-1个关键码</li>
+<li>所有叶结点都处于同一层次上，包含了全部关键码及指向相应数据对象存放地址，关键码按关键码从小到大顺序链接</li>
+<li>每个叶结点中子树棵树n可以＞m，也可以＜m。 假设叶结点可容纳的最大关键码数为m1，则指向对象的指针数也有m1，这时子树棵数n应满足((m1/2)(向上取整)，m1)</li>
+<li>根结点本身又是叶结点，则结点格式同叶结点</li>
+</ol>
+<h2 id="42-bsupsup-tree的特点"><a class="markdownIt-Anchor" href="#42-bsupsup-tree的特点"></a> 4.2. B<sup>+</sup> tree的特点</h2>
+<ol>
+<li>有两个头指针</li>
+<li>一个指向B+树的根结点，可以进行自顶向下的随机搜索</li>
+<li>一个指向关键码最小的叶结点，进行顺序搜索；</li>
+<li>保证树过深，用来进行平衡</li>
+</ol>
+<h2 id="43-bsupsup-tree的运算"><a class="markdownIt-Anchor" href="#43-bsupsup-tree的运算"></a> 4.3. B<sup>+</sup> tree的运算</h2>
+<h2 id="搜索算法"><a class="markdownIt-Anchor" href="#搜索算法"></a> 搜索算法</h2>
+<p>基本上同B树，所不同的是一直查到叶结点上的这个关键码为止</p>
+<h2 id="插入算法"><a class="markdownIt-Anchor" href="#插入算法"></a> 插入算法</h2>
+<ol>
+<li>仅在叶结点上进行。每插入一关键码，判别子树棵树＞m1，如果大于，则将该结点分裂：((m1+1)/2)(向上取整)，((m1+1)/2)(向上取整)</li>
+<li>问题变为传递到索引结点上可能的分裂，这时上限以m来确定(同B-树)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/35.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/36.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="删除算法-2"><a class="markdownIt-Anchor" href="#删除算法-2"></a> 删除算法</h2>
+<ol>
+<li>在叶结点上删除一个关键码后要保证结点中的子树棵数仍然不小 于(m1/2)(向上取整).</li>
+<li>删除操作与B树类似，但上层索引中的关键码可保留，作为引导搜索的&quot;分界关键码&quot;的作用.</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/37.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt6/38.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="5-题目"><a class="markdownIt-Anchor" href="#5-题目"></a> 5. 题目</h1>
+<ol>
+<li>第9题:
+<ul>
+<li>邻居的60及它左侧的55被一同借过去</li>
+<li>20和30成为一个节点，同级的有55，上层50</li>
+<li>直接删除40,60((50((20,30),55)),80(70,95))</li>
+</ul>
+</li>
+</ol>
+<h1 id="6-其他参考以及扩展学习"><a class="markdownIt-Anchor" href="#6-其他参考以及扩展学习"></a> 6. 其他参考以及扩展学习</h1>
+<ol>
+<li><a href = "https://mp.weixin.qq.com/s/9dRBJRCudGv11F7rSaqJEQ">掌握此文，面试再也不怕红黑树！</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2019-Data-Structure/" class="category-chain-item">2019-Data-Structure</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/project/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">#二叉搜索树</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2019-Data-Structure-数据结构4.1-specific Tree</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844.1-specific%20Tree/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%847.1-The%20Disjoint%20Set/" title="2019-Data-Structure-数据结构7.1-The Disjoint Set">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构7.1-The Disjoint Set</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%847.0-%E6%8E%92%E5%BA%8F/" title="2019-Data-Structure-数据结构7.0-排序">
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构7.0-排序</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

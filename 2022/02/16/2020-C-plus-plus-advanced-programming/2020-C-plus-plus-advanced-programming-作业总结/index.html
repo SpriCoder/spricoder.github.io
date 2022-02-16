@@ -1,0 +1,1101 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-C-plus-plus-advanced-programming-作业总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-C-plus-plus-advanced-programming-作业总结">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-%E4%BD%9C%E4%B8%9A%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-C-plus-plus-advanced-programming-作业总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/11.png">
+<meta property="article:published_time" content="2022-02-16T11:09:56.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:16:19.441Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="作业">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/1.png">
+  
+  
+  <title>2020-C-plus-plus-advanced-programming-作业总结 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          70 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-C-plus-plus-advanced-programming-作业总结</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="1-第一次作业总结"><a class="markdownIt-Anchor" href="#1-第一次作业总结"></a> 1. 第一次作业总结</h1>
+<h2 id="11-最大的罗马数字"><a class="markdownIt-Anchor" href="#11-最大的罗马数字"></a> 1.1. 最大的罗马数字</h2>
+<ol>
+<li>需要进行临近的两个数字的比较</li>
+<li>先前看或者先后看一个都是可以的</li>
+</ol>
+<h2 id="12-x的y次方"><a class="markdownIt-Anchor" href="#12-x的y次方"></a> 1.2. X的Y次方</h2>
+<ol>
+<li>如何判断越界了
+<ol>
+<li>使用一个更大的数据类型可以处理</li>
+<li>使用MAX_INT/x &lt; now ?如果满足则会溢出</li>
+<li>如果溢出的话会直接截取其低32位:我们可以先做，然后再逆运算看能不能回去(如果不能，则为已经溢出了)</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; y; i ++)&#123;<br>    <span class="hljs-type">int</span> temp = z;<br>    z = z * x;<br>    <span class="hljs-keyword">if</span>(temp != z/x)&#123;<br>        cout &lt;&lt; <span class="hljs-number">-1</span>;<br>        print = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="13-生成字符集的子集"><a class="markdownIt-Anchor" href="#13-生成字符集的子集"></a> 1.3. 生成字符集的子集</h2>
+<ol>
+<li>找到包含对应的字母的所有子集</li>
+</ol>
+<h3 id="131-递归方法获取所有子集"><a class="markdownIt-Anchor" href="#131-递归方法获取所有子集"></a> 1.3.1. 递归方法(获取所有子集)</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solution</span><span class="hljs-params">(<span class="hljs-type">char</span>* string,<span class="hljs-type">char</span> a)</span></span>&#123;<span class="hljs-comment">//string已经升序</span><br>    <span class="hljs-keyword">if</span>(string == null)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    vector&lt;<span class="hljs-type">char</span>&gt; result;<br>    <span class="hljs-type">int</span> length = <span class="hljs-built_in">strlen</span>(string);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt;= length; i ++)&#123;<br>        <span class="hljs-comment">//i是字符集中字符个数</span><br>        <span class="hljs-built_in">combination</span>(string,i,result,a,length)<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">combination</span><span class="hljs-params">(<span class="hljs-type">char</span>* string,<span class="hljs-type">int</span> number, vector&lt;<span class="hljs-type">char</span>&gt; &amp;result,<span class="hljs-type">char</span> a,<span class="hljs-type">int</span> totallenth)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(string == <span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(number == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-type">static</span> <span class="hljs-type">int</span> index = <span class="hljs-number">1</span>;<br>        vector&lt;<span class="hljs-type">char</span>&gt;::iterator iter = result.<span class="hljs-built_in">begin</span>();<br>        vector&lt;<span class="hljs-type">char</span>&gt;::iterator it;<br>        it = <span class="hljs-built_in">find</span>(result.<span class="hljs-built_in">begin</span>(),result.<span class="hljs-built_in">end</span>(),a);<span class="hljs-comment">//查找是否包含</span><br>        <span class="hljs-keyword">if</span>(it != result.<span class="hljs-built_in">end</span>())&#123;<br>            <span class="hljs-comment">//输出</span><br>        &#125;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    result.<span class="hljs-built_in">push_back</span>(*string);<span class="hljs-comment">//当前字符</span><br>    <span class="hljs-built_in">combination</span>(string + <span class="hljs-number">1</span>,number - <span class="hljs-number">1</span>,result,a,totallenth);<br>    result.<span class="hljs-built_in">pop_back</span>();<span class="hljs-comment">//删除那个制度</span><br>    <span class="hljs-built_in">combination</span>(string + <span class="hljs-number">1</span>,number,result,a,totallenth);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="132-排序"><a class="markdownIt-Anchor" href="#132-排序"></a> 1.3.2. 排序</h3>
+<ol>
+<li>cmp+sort</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">sort</span>(first_pointer,second_pointer,cmp);<br><span class="hljs-comment">//cmp(a,b)可以自定义</span><br><span class="hljs-comment">//返回1表示a在b前，返回0表示a在b后面</span><br></code></pre></td></tr></table></figure>
+<h3 id="133-位操作"><a class="markdownIt-Anchor" href="#133-位操作"></a> 1.3.3. 位操作</h3>
+<ol>
+<li>例如{a,b,c}的子集，{a,b}可以是表示为110</li>
+<li>长度为n的集合，就遍历长度为n的二进制数字来遍历</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">possibleSubsets</span><span class="hljs-params">(<span class="hljs-type">char</span> A[],<span class="hljs-type">char</span> a,<span class="hljs-type">int</span> N)</span></span>&#123;<br>    string out;<br>    <span class="hljs-type">int</span> c;<br>    vector&lt;string&gt; strset;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; N;++i)&#123;<br>        <span class="hljs-keyword">if</span>(A[i] == a)&#123;<br>            c = i;<span class="hljs-comment">//找到对应字符</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; (<span class="hljs-number">1</span> &lt;&lt; N); ++ i)&#123;<span class="hljs-comment">//1左移N位</span><br>        <span class="hljs-keyword">if</span>((i&gt;&gt;c)&amp;<span class="hljs-number">1</span>)&#123;<span class="hljs-comment">//判断字符是否在子集中</span><br>            string substring = <span class="hljs-string">&quot;&quot;</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span> ;j &lt; N; ++j)&#123;<br>                <span class="hljs-keyword">if</span>(i &amp;(<span class="hljs-number">1</span> &lt;&lt; j))&#123;<br>                    <span class="hljs-comment">//遍历N为，判断某一位是否被选中</span><br>                    substring.<span class="hljs-built_in">push_back</span>(A[j]);<br>                    substring += <span class="hljs-string">&quot;,&quot;</span>;<br>                &#125;<br>            &#125;<br>            substring = substring.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,substring.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>            strset.<span class="hljs-built_in">push_back</span>(substring + <span class="hljs-string">&quot;&#125;&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="14-秘钥字符串格式化"><a class="markdownIt-Anchor" href="#14-秘钥字符串格式化"></a> 1.4. 秘钥字符串格式化</h2>
+<ol>
+<li>思路:倒排序</li>
+</ol>
+<h2 id="15-素数之和"><a class="markdownIt-Anchor" href="#15-素数之和"></a> 1.5. 素数之和</h2>
+<ol>
+<li>逐步优化</li>
+<li>第一步优化:小于这个数的所有的数不可以被整除</li>
+<li>第二步优化:只需要处理到&lt;= sqrt(这个数)的情况</li>
+<li>第三步优化:任何一个质数都是6x + 1或者 6x - 1//增加过滤条件</li>
+</ol>
+<h2 id="16-计算二进制中1的个数"><a class="markdownIt-Anchor" href="#16-计算二进制中1的个数"></a> 1.6. 计算二进制中1的个数</h2>
+<ol>
+<li>方法一:直接用位运算可以
+<ol>
+<li>但是最好要确定遍历次数，而不仅仅是0，因为-1等负数会出现问题</li>
+</ol>
+</li>
+<li>方法二:使用n &amp; (n-1):统计n变为0有多少次操作
+<ol>
+<li>如果输入-1呢?是正确的</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numberOfOne</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-type">int</span> ones = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(num)&#123;<br>        ones += <span class="hljs-number">1</span><br>        num &amp;= (num - <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ones;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="17-字符统计"><a class="markdownIt-Anchor" href="#17-字符统计"></a> 1.7. 字符统计</h2>
+<ol>
+<li>大写变小写，小写变大写: ch ^= 32</li>
+<li>全部变小写: ch |= 32</li>
+<li>全部变大写: ch &amp;= 32(不可用)</li>
+</ol>
+<h2 id="18-三角形种类判断"><a class="markdownIt-Anchor" href="#18-三角形种类判断"></a> 1.8. 三角形种类判断</h2>
+<ol>
+<li>判断5中三角形</li>
+<li>判断是否构成三角形:<code>bool isValid = (y2-y1)*(x3-x1) != (x2-x1)*(y3-y1)</code>:二维空间中只可能相同(斜率同)</li>
+</ol>
+<h2 id="19-一年中的第几天"><a class="markdownIt-Anchor" href="#19-一年中的第几天"></a> 1.9. 一年中的第几天</h2>
+<ol>
+<li>使用表驱动等等</li>
+<li>进行微调</li>
+</ol>
+<h2 id="110-笨阶乘"><a class="markdownIt-Anchor" href="#110-笨阶乘"></a> 1.10. 笨阶乘</h2>
+<h3 id="1101-常规法"><a class="markdownIt-Anchor" href="#1101-常规法"></a> 1.10.1. 常规法</h3>
+<ol>
+<li>直接循环进行计算就行</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> rate = N;<br><span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = N - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>;i--)&#123;<br>    <span class="hljs-keyword">if</span>(index == <span class="hljs-number">0</span>)&#123;<br>        rate *= i;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index == <span class="hljs-number">1</span>)&#123;<br>        rate /= i;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index == <span class="hljs-number">2</span>)&#123;<br>        res = res + rate + i;<br>        rate = <span class="hljs-number">0</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index == <span class="hljs-number">3</span>)&#123;<br>        rate-= i;<br>    &#125;<br>    index = (index + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>;<br>&#125;<br>res = res + rate;<br></code></pre></td></tr></table></figure>
+<h3 id="1102-找规律"><a class="markdownIt-Anchor" href="#1102-找规律"></a> 1.10.2. 找规律</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">long</span> N;<br>cin &gt;&gt; N;<br><span class="hljs-type">static</span> <span class="hljs-type">int</span> a[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">-1</span>&#125;;<br><span class="hljs-keyword">if</span>(N &gt; <span class="hljs-number">4</span>)&#123;<br>    cout &lt;&lt; N + a[N % <span class="hljs-number">4</span>];<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(N &gt; <span class="hljs-number">2</span>)&#123;<br>    cout &lt;&lt; <span class="hljs-number">3</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    cout &lt;&lt; N;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="2-第二次作业"><a class="markdownIt-Anchor" href="#2-第二次作业"></a> 2. 第二次作业</h1>
+<h2 id="21-第一题四数之和"><a class="markdownIt-Anchor" href="#21-第一题四数之和"></a> 2.1. 第一题:四数之和</h2>
+<ol>
+<li>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。</li>
+</ol>
+<h3 id="211-解法一简单的多重循环-结果排序"><a class="markdownIt-Anchor" href="#211-解法一简单的多重循环-结果排序"></a> 2.1.1. 解法一:简单的多重循环 + 结果排序</h3>
+<ol>
+<li>计算的时间复杂度过高</li>
+</ol>
+<h3 id="212-优化启动"><a class="markdownIt-Anchor" href="#212-优化启动"></a> 2.1.2. 优化启动！</h3>
+<h3 id="213-两数之和启发"><a class="markdownIt-Anchor" href="#213-两数之和启发"></a> 2.1.3. 两数之和启发</h3>
+<ol>
+<li>如果数组有序就不用多重循环了</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="214-三数之和"><a class="markdownIt-Anchor" href="#214-三数之和"></a> 2.1.4. 三数之和</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="215-结论"><a class="markdownIt-Anchor" href="#215-结论"></a> 2.1.5. 结论</h3>
+<ol>
+<li>去重，如果相邻的数相同，需要跳过</li>
+<li>如果最小的数已经比target大 那么就没有答案</li>
+</ol>
+<h2 id="22-第二题删除重复数字"><a class="markdownIt-Anchor" href="#22-第二题删除重复数字"></a> 2.2. 第二题:删除重复数字</h2>
+<ol>
+<li>给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间(包括 1 和 n)，可知至少存在一个重复的整数。</li>
+<li>你需要原地删除重复出现的元素，使得每个元素只出现一次不要使用额外的数组空间，必须修改原输入数组并在使用O(1)额外空间的条件下完成。</li>
+</ol>
+<h3 id="221-判断重复数字的一般思路"><a class="markdownIt-Anchor" href="#221-判断重复数字的一般思路"></a> 2.2.1. 判断重复数字的一般思路</h3>
+<ol>
+<li>排序</li>
+<li>Hash结构 使用额外空间</li>
+<li>类似抽屉原理:二分</li>
+</ol>
+<h3 id="222-重复后修改"><a class="markdownIt-Anchor" href="#222-重复后修改"></a> 2.2.2. 重复后修改</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="223-抽屉原因针对只有一个重复数字"><a class="markdownIt-Anchor" href="#223-抽屉原因针对只有一个重复数字"></a> 2.2.3. 抽屉原因:针对只有一个重复数字</h3>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs excel"><span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">5</span>的数组 <span class="hljs-built_in">n</span>=<span class="hljs-number">7</span><br>先取中位数 (<span class="hljs-built_in">mid</span>=(<span class="hljs-built_in">left</span>+<span class="hljs-built_in">right</span>)/<span class="hljs-number">2</span>) <br>遍历数组查找小于等于<span class="hljs-number">4</span>的数字个数<br>按照抽屉原理来说 <br>如果该数量大于中位数<span class="hljs-number">4</span> 则重复数在左 <span class="hljs-built_in">right</span>=<span class="hljs-built_in">mid</span><br>相反 则在右侧 <span class="hljs-built_in">left</span>=<span class="hljs-built_in">mid</span>+<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<h2 id="23-第三题字符串压缩"><a class="markdownIt-Anchor" href="#23-第三题字符串压缩"></a> 2.3. 第三题:字符串压缩</h2>
+<ol>
+<li>给定一个字符串，按照重复进行压缩，如果比原来长不压缩</li>
+</ol>
+<h3 id="231-代码实现"><a class="markdownIt-Anchor" href="#231-代码实现"></a> 2.3.1. 代码实现</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="24-第四题矩阵旋转"><a class="markdownIt-Anchor" href="#24-第四题矩阵旋转"></a> 2.4. 第四题:矩阵旋转</h2>
+<ol>
+<li>将矩阵进行旋转</li>
+<li>思路就是，将矩阵旋转90度，其他情况都可以认为是90度的变形。</li>
+</ol>
+<h3 id="241-暴力法"><a class="markdownIt-Anchor" href="#241-暴力法"></a> 2.4.1. 暴力法</h3>
+<ol>
+<li>构造一个新的矩阵，然后将旋转后对应位置的数据放在当前位置，比如示例中的7应该放在1的位置。matrix_new[col][n-row-1] = matrix[i][j]</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="242-原地旋转"><a class="markdownIt-Anchor" href="#242-原地旋转"></a> 2.4.2. 原地旋转</h3>
+<ol>
+<li>原地旋转：根据上述规律对空间复杂度进行优化</li>
+<li>考虑一个元素的联动性，比如上述示例中的1,3,7,9为一个联动，所以在一次循环中，我们做的事情就是将联动的值进行旋转。这样只需要O(1)的空间复杂度</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="25-第五题柱状图的最大矩形面积"><a class="markdownIt-Anchor" href="#25-第五题柱状图的最大矩形面积"></a> 2.5. 第五题:柱状图的最大矩形面积</h2>
+<ol>
+<li>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子中矩形的最大面积。</li>
+</ol>
+<h3 id="251-题目思路"><a class="markdownIt-Anchor" href="#251-题目思路"></a> 2.5.1. 题目思路</h3>
+<ol>
+<li>对每根柱子，都找到高为柱子高度的面积最大的长方形</li>
+<li>比较所有长方形的大小，找出最大的长方形</li>
+<li>怎么找到高为柱子高度的最大的长方形？</li>
+<li>找到柱子左右两边第一个高度比柱子低的柱子，这两根柱子之间的宽度就是面积最大的长方形的宽</li>
+</ol>
+<h3 id="252-暴力法解决"><a class="markdownIt-Anchor" href="#252-暴力法解决"></a> 2.5.2. 暴力法解决</h3>
+<ol>
+<li>对于每一根柱子，都分别向左向右遍历，找到第一根小于当前柱子高度的柱子，记录其序号。</li>
+<li>当前最大面积:S=(right-left+1)*height</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; lenth; i++) &#123;<br>	<span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>	<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) &#123;<br>        left = <span class="hljs-number">0</span>;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t = i; t &gt; <span class="hljs-number">0</span>; t--) &#123;<br>			<span class="hljs-keyword">if</span> (nums[t] &lt; nums[i]) &#123;left = t + <span class="hljs-number">1</span>;<span class="hljs-keyword">break</span>;&#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (i == lenth - <span class="hljs-number">1</span>) &#123;<br>        right = lenth - <span class="hljs-number">1</span>;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t = i; t &lt;lenth; t++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[t] &lt; nums[i]) &#123;right=t<span class="hljs-number">-1</span>;<span class="hljs-keyword">break</span>;&#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> sum = (right - left + <span class="hljs-number">1</span>)*nums[i];<br>    <span class="hljs-keyword">if</span> (maxsum &lt; sum) &#123;maxsum = sum;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="253-递增栈"><a class="markdownIt-Anchor" href="#253-递增栈"></a> 2.5.3. 递增栈</h3>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs axapta">遍历所有的柱子，<span class="hljs-keyword">index</span>记录的是索引<br>如果：<br><span class="hljs-number">1.</span>栈空 <br><span class="hljs-number">2.</span>栈顶索引的柱子高度相遇当前索引的柱子高度<br>则当前索引入栈<br>否则一直弹出栈顶的元素直到满足上述两个条件<br>然后，当前索引入栈<br>每次弹出栈顶元素的时，计算出以弹出元素为高的最大长方形<br>如果弹出元素后，栈不为空，其右边界就是当前索引，左边界是栈顶元素索引<br>即lenth=i-<span class="hljs-keyword">index</span>.top()<span class="hljs-number">-1</span><br>如果栈为空，就说明右边界是当前索引，左边界是<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">largestRectangleArea</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; heights)</span> </span>&#123;<br>	<span class="hljs-type">int</span> n = heights.<span class="hljs-built_in">size</span>();<br>	stack&lt;<span class="hljs-type">int</span>&gt; index;<br>	<span class="hljs-type">int</span> area = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; heights.<span class="hljs-built_in">size</span>(); i++) &#123;<br>	    <span class="hljs-keyword">if</span> (index.<span class="hljs-built_in">empty</span>() || heights[index.<span class="hljs-built_in">top</span>()] &lt; heights[i]) &#123;index.<span class="hljs-built_in">push</span>(i);&#125;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">while</span> (!index.<span class="hljs-built_in">empty</span>() &amp;&amp; heights[index.<span class="hljs-built_in">top</span>()] &gt;= heights[i]) &#123;<br>            <span class="hljs-type">int</span> tmp = index.<span class="hljs-built_in">top</span>();<br>            index.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-type">int</span> lenth = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">if</span> (index.<span class="hljs-built_in">empty</span>()) lenth = i;<br>            <span class="hljs-keyword">else</span> lenth = i - index.<span class="hljs-built_in">top</span>() - <span class="hljs-number">1</span>;<br>            area = <span class="hljs-built_in">max</span>(area, lenth*heights[tmp]);<br>        &#125;<br>        index.<span class="hljs-built_in">push</span>(i);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="26-第六第七题"><a class="markdownIt-Anchor" href="#26-第六第七题"></a> 2.6. 第六第七题</h2>
+<ol>
+<li>简单省略</li>
+</ol>
+<h2 id="27-第八题统计单词的覆盖次数"><a class="markdownIt-Anchor" href="#27-第八题统计单词的覆盖次数"></a> 2.7. 第八题:统计单词的覆盖次数</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/6.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/7.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="28-第九题最长连续子序列"><a class="markdownIt-Anchor" href="#28-第九题最长连续子序列"></a> 2.8. 第九题:最长连续子序列</h2>
+<ol>
+<li>给定无序数组nums，求nums的最长连续序列的长度。</li>
+</ol>
+<h3 id="281-暴力法"><a class="markdownIt-Anchor" href="#281-暴力法"></a> 2.8.1. 暴力法</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="282-排序-遍历计数"><a class="markdownIt-Anchor" href="#282-排序-遍历计数"></a> 2.8.2. 排序、遍历计数</h3>
+<ol>
+<li>对所有数字进行排序(无需剔除重复数)<br />
+从最小的开始遍历，和前一个数连续(即等于前一个数加1)则计数加1，不连续则判断是否是最长连续，并重新开始计数</li>
+</ol>
+<h2 id="29-第十题有效的数独"><a class="markdownIt-Anchor" href="#29-第十题有效的数独"></a> 2.9. 第十题:有效的数独</h2>
+<ol>
+<li>检查数独的有效性</li>
+</ol>
+<h3 id="291-暴力法"><a class="markdownIt-Anchor" href="#291-暴力法"></a> 2.9.1. 暴力法</h3>
+<ol>
+<li>分别在每行、每列、每个block内对于每个数字判断有无重复出现</li>
+<li>用count记录数字出现次数，大于1返回false</li>
+<li>三重循环，时间复杂度O(n^3)，空间复杂度O(1)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/13.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="292-用数组记录hash表"><a class="markdownIt-Anchor" href="#292-用数组记录hash表"></a> 2.9.2. 用数组记录(hash表)</h3>
+<ol>
+<li>对于每行、每列、每个block用一个数组记录每个数字是否出现</li>
+<li>出现过的数字在数组内记为1，再出现就返回false,二重循环，时间复杂度O(n^2)，空间复杂度O(n)</li>
+</ol>
+<h1 id="3-第三次作业"><a class="markdownIt-Anchor" href="#3-第三次作业"></a> 3. 第三次作业</h1>
+<h2 id="31-第一题重排链表"><a class="markdownIt-Anchor" href="#31-第一题重排链表"></a> 3.1. 第一题:重排链表</h2>
+<ol>
+<li>给定 n个数字(n未知)组成一个链表，然后给定一个 x 作为基准(x 不一定在链表中)。你需要对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。</li>
+<li>你应当保留两个分区中每个节点的初始相对位置。</li>
+</ol>
+<h3 id="311-实现结构"><a class="markdownIt-Anchor" href="#311-实现结构"></a> 3.1.1. 实现结构</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/4.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="32-第二题加密计算接口"><a class="markdownIt-Anchor" href="#32-第二题加密计算接口"></a> 3.2. 第二题:加密计算接口</h2>
+<ol>
+<li>现在我们需要对外提供一个加密接口以满足定制系统的特殊计算任务。该接口为 int encrypt(func,int,int) ，其中 func 是外部调用函数，传入encrypt的一个函数指针typedef int(*func)(int, int)该接口的作用对外部提供的计算进行参数的调整加密(实际上外部调用者并不知道内部加密实现)，并返回各种计算指令的结果。</li>
+</ol>
+<h3 id="321-具体实现"><a class="markdownIt-Anchor" href="#321-具体实现"></a> 3.2.1. 具体实现</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/9.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/hw/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-第三题合并k个链表"><a class="markdownIt-Anchor" href="#33-第三题合并k个链表"></a> 3.3. 第三题:合并k个链表</h2>
+<ol>
+<li>给定k个升序链表，使用链表的结构将其合并</li>
+<li>每行输入对应一个排过序的链表数据，输出合并后的升序序列</li>
+</ol>
+<h3 id="331-基本思路"><a class="markdownIt-Anchor" href="#331-基本思路"></a> 3.3.1. 基本思路</h3>
+<ol>
+<li>思路一：第一次把两个链表合并为ans,接下去把ans和剩余链表中的一个合并，最后ans就是答案</li>
+<li>思路二：同时合并所有链表，比较所有链表当前位置中的所有节点大小，选取一个放入ans，直到所有链表中的节点都被选用了</li>
+<li>读取链表：一次getline之后去分割 或者 用cin一个一个读取</li>
+</ol>
+<h3 id="332-两两合并"><a class="markdownIt-Anchor" href="#332-两两合并"></a> 3.3.2. 两两合并</h3>
+<ol>
+<li>第一种合并:</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">这个合并已经把两个链表拆散了<br>要记得判断一个链表为空的情况<br>合并的时候比较两个链表当前节点的大小，选择小的节点加入结果<br>最后可能有一个链表还有剩余的元素，要记得加入其中<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//拆开两个链表</span><br><span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode *a, ListNode *b)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ((!a) &amp;&amp; b) &#123;<span class="hljs-keyword">return</span> b;&#125;<br>    <span class="hljs-keyword">if</span> ((!b) &amp;&amp; a) &#123;<span class="hljs-keyword">return</span> a;&#125;<br>    ListNode head, *tail = &amp;head, *aPtr = a, *bPtr = b;<br>    <span class="hljs-keyword">while</span> (aPtr &amp;&amp; bPtr) &#123;<br>        <span class="hljs-keyword">if</span> (aPtr-&gt;val &lt; bPtr-&gt;val) &#123;<br>            tail-&gt;next = aPtr; aPtr = aPtr-&gt;next;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            tail-&gt;next = bPtr; bPtr = bPtr-&gt;next;<br>        &#125;<br>        tail = tail-&gt;next;<br>    &#125;<br>    <span class="hljs-keyword">if</span>((!aPtr)&amp;&amp;bPtr)&#123;tail-&gt;next=bPtr;&#125;<br>    <span class="hljs-keyword">if</span>((!bPtr)&amp;&amp;aPtr)&#123;tail-&gt;next=aPtr;&#125;<br>    <span class="hljs-keyword">return</span> head.next;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>用分治的思想合并所有的链表</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ListNode* <span class="hljs-title">merge</span><span class="hljs-params">(vector &lt;ListNode*&gt; &amp;lists, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (l == r) <span class="hljs-keyword">return</span> lists[l];<br>    <span class="hljs-keyword">if</span> (l &gt; r) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    <span class="hljs-type">int</span> mid = (l + r)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">mergeTwoLists</span>(<span class="hljs-built_in">merge</span>(lists, l, mid), <span class="hljs-built_in">merge</span>(lists, mid + <span class="hljs-number">1</span>, r));<br>&#125;<br><span class="hljs-function">ListNode* <span class="hljs-title">mergeKLists</span><span class="hljs-params">(vector&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">merge</span>(lists, <span class="hljs-number">0</span>, lists.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="333-同时合并最小堆"><a class="markdownIt-Anchor" href="#333-同时合并最小堆"></a> 3.3.3. 同时合并(最小堆)</h3>
+<ol>
+<li>先把所有链表的第一个元素放入最小堆</li>
+<li>每次弹出最小堆堆顶的元素</li>
+<li>再把堆顶元素的下一个元素放入最小堆</li>
+<li>直到堆中没有元素</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//自定义优先队列比较的函数</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span><br>priority_queue&lt;Type, Container, Functional&gt;<br><span class="hljs-comment">//Type数据类型，Container容器类型，Functional比较函数</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">cmp</span>&#123;     <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(ListNode *a,ListNode *b)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> a-&gt;val &gt; b-&gt;val;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="34-第四题双向链表"><a class="markdownIt-Anchor" href="#34-第四题双向链表"></a> 3.4. 第四题:双向链表</h2>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs perl">给定一个序列，实现双向链表数据结构的添加、查找、删除、统计、翻转操作 输入由两部分组成，<br>原始创建链表数据和依次执行的操作 执行的操作包括addbegin、addend、addmid、search、<br><span class="hljs-keyword">delete</span>、count、<span class="hljs-keyword">reverse</span>,每个操作打印对应输出 addbegin val，在序列开头插入val，打印新链表<br>addend val，在序列末尾插入val，打印新链表<br>addmid val <span class="hljs-keyword">pos</span>，在序列<span class="hljs-keyword">pos</span>位置插入val，打印新链表，<span class="hljs-keyword">pos</span>从<span class="hljs-number">0</span>开始计数，不会有超出链表长度的<br><span class="hljs-keyword">pos</span><br>search val，查找val的位置，打印位置<span class="hljs-keyword">pos</span>，如果有链表中有多个相同值，打印第一个值，如链表为<br><span class="hljs-number">111</span>，search <span class="hljs-number">1</span>，则输出<span class="hljs-number">0</span><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">pos</span>，删除<span class="hljs-keyword">pos</span>位置的节点，打印新链表，不会有超出链表长度的<span class="hljs-keyword">pos</span><br>count，打印链表元素个数<br><span class="hljs-keyword">reverse</span>，翻转整个链表<br></code></pre></td></tr></table></figure>
+<h3 id="341-具体实现"><a class="markdownIt-Anchor" href="#341-具体实现"></a> 3.4.1. 具体实现</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>&#123;<br>    <span class="hljs-type">int</span> val;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>* next;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>* prev;<br>    <span class="hljs-built_in">Node</span>(<span class="hljs-type">int</span> x) : <span class="hljs-built_in">val</span>(x), <span class="hljs-built_in">next</span>(<span class="hljs-literal">NULL</span>), <span class="hljs-built_in">prev</span>(<span class="hljs-literal">NULL</span>) &#123;&#125;;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print</span><span class="hljs-params">(Node* head)</span> </span>&#123;<br>	Node* p = head-&gt;next;<br>	<span class="hljs-keyword">while</span> (p-&gt;next != <span class="hljs-literal">NULL</span>) &#123;<br>		cout &lt;&lt; p-&gt;val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		p = p-&gt;next;<br>	&#125;<br>	cout &lt;&lt; p-&gt;val &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>详细见PPT</li>
+</ol>
+<h2 id="35-第五题矩阵乘法"><a class="markdownIt-Anchor" href="#35-第五题矩阵乘法"></a> 3.5. 第五题:矩阵乘法</h2>
+<h3 id="351-解决方案"><a class="markdownIt-Anchor" href="#351-解决方案"></a> 3.5.1. 解决方案</h3>
+<ol>
+<li>输入的处理
+<ol>
+<li>对于所有的输入先按照字符型矩阵来进行输入，因为可能会因为第二个矩阵为非数值型矩阵需要继续转化为字符型矩阵</li>
+</ol>
+</li>
+<li>矩阵乘法处理
+<ol>
+<li>分别对应两个处理办法</li>
+<li>一个处理数值型矩阵的乘法，一个处理字符型矩阵的乘法(或者是构造元素之间的乘法和加法)</li>
+<li>值得注意的是按照数值型处理的过程结束之后，整型的数据要转化为整型</li>
+</ol>
+</li>
+<li>输出处理
+<ol>
+<li>对于输出的处理就直接按照字符型矩阵进行处理即可</li>
+</ol>
+</li>
+</ol>
+<h3 id="352-详见文件"><a class="markdownIt-Anchor" href="#352-详见文件"></a> 3.5.2. 详见文件</h3>
+<h1 id="4-第四次作业"><a class="markdownIt-Anchor" href="#4-第四次作业"></a> 4. 第四次作业</h1>
+<ol>
+<li>面向对象编程</li>
+</ol>
+<h2 id="41-简单工厂"><a class="markdownIt-Anchor" href="#41-简单工厂"></a> 4.1. 简单工厂</h2>
+<ol>
+<li>使用虚函数</li>
+</ol>
+<h2 id="42-汉堡问题装饰者模式"><a class="markdownIt-Anchor" href="#42-汉堡问题装饰者模式"></a> 4.2. 汉堡问题:装饰者模式</h2>
+<ol>
+<li>具体重载一个类</li>
+</ol>
+<h2 id="43-擂台赛"><a class="markdownIt-Anchor" href="#43-擂台赛"></a> 4.3. 擂台赛</h2>
+<ol>
+<li>纯虚函数定义方法</li>
+<li>pk()作为友元函数可以访问所有的内部的变量</li>
+</ol>
+<h2 id="44-第四题xo题"><a class="markdownIt-Anchor" href="#44-第四题xo题"></a> 4.4. 第四题:XO题</h2>
+<ol>
+<li>局部性检查即可</li>
+</ol>
+<h2 id="45-第五题汽车调研题"><a class="markdownIt-Anchor" href="#45-第五题汽车调研题"></a> 4.5. 第五题:汽车调研题</h2>
+<ol>
+<li>设计一下类的情况</li>
+</ol>
+<h2 id="46-停车场问题"><a class="markdownIt-Anchor" href="#46-停车场问题"></a> 4.6. 停车场问题</h2>
+<ol>
+<li>可以想象成一个内存分配的问题</li>
+</ol>
+<h2 id="47-银行账户模拟"><a class="markdownIt-Anchor" href="#47-银行账户模拟"></a> 4.7. 银行账户模拟</h2>
+<ol>
+<li>开闭原则和设计</li>
+</ol>
+<h2 id="48-商品每日销售额"><a class="markdownIt-Anchor" href="#48-商品每日销售额"></a> 4.8. 商品每日销售额</h2>
+<ol>
+<li>折扣需要注意</li>
+</ol>
+<h2 id="49-mystring类"><a class="markdownIt-Anchor" href="#49-mystring类"></a> 4.9. MyString类</h2>
+<h2 id="410-tomandjerry"><a class="markdownIt-Anchor" href="#410-tomandjerry"></a> 4.10. TomAndJerry</h2>
+<ol>
+<li>简单的设计一下即可</li>
+</ol>
+<h1 id="5-第一次考试"><a class="markdownIt-Anchor" href="#5-第一次考试"></a> 5. 第一次考试</h1>
+<ol>
+<li>long long ll :运行中越界</li>
+<li>反复进行套娃操作</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-C-plus-plus-advanced-programming/" class="category-chain-item">2020-C-plus-plus-advanced-programming</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E4%BD%9C%E4%B8%9A/">#作业</a>
+      
+        <a href="/project/tags/C/">#C++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-C-plus-plus-advanced-programming-作业总结</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-%E4%BD%9C%E4%B8%9A%E6%80%BB%E7%BB%93/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%BB%A7%E6%89%BF/" title="2020-C-plus-plus-advanced-programming-C++ 继承">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 继承</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E5%A4%9A%E6%80%81/" title="2020-C-plus-plus-advanced-programming-C++ 多态">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 多态</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

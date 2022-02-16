@@ -1,0 +1,1262 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec3-%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95-Scrum/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/15.png">
+<meta property="article:published_time" content="2022-02-16T11:09:44.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:49:48.420Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="敏捷">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/1.png">
+  
+  
+  <title>2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          74 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec03-敏捷软件开发方法-scrum"><a class="markdownIt-Anchor" href="#lec03-敏捷软件开发方法-scrum"></a> Lec03-敏捷软件开发方法 Scrum</h2>
+<h1 id="1-scrum历史"><a class="markdownIt-Anchor" href="#1-scrum历史"></a> 1. Scrum历史</h1>
+<ol>
+<li>Scrum在英语是橄榄球运动中争球的意思。</li>
+<li>1986年，“The New New product Development Game” 竹内弘高和野中郁次郎阐述了一种新的整体性的方法，该方法能够提高商业新产品开发的速度和灵活性：他们将这种新的整体性方法与橄榄球相比较，前者各阶段相互重叠，并且由一个跨职能团队在不同的阶段完成整个过程，而团队&quot;作为一个整体前进，把球传来传去&quot;。</li>
+<li>1995年，在奥斯汀举办的OOPSLA’95上，Sutherland和Schwaber联合发表了论文首次提出了Scrum概念。</li>
+<li>Schwaber还设计课程来认证个体对scrum的理解，认证Scrum-Master (CSM) 称号应运而生，随后是认证Scrum产品负责人(CSPO)、认证Scrum 实践者(CSP)、认证Scrum培训师(CST)和认证Scrum教练(CSC)。</li>
+<li>大多数scrum实践者认定Ken Schwaber的早期版本就是scrum的事实标准。</li>
+<li>没有人拥有scrum，没有 scrum 标准。</li>
+</ol>
+<h1 id="2-scrum"><a class="markdownIt-Anchor" href="#2-scrum"></a> 2. Scrum</h1>
+<ol>
+<li>Scrum 不是构建产品的一种过程或一项技术，是<strong>一个框架</strong>，在这个框架里可以应用各种流程和技术。Scrum 能使产品管理和开发实践的相对功效显现出来，以便随时改进。</li>
+<li>Scrum以整体的形式存在，才能作为其他技术、方法论和实践的容器良好运作。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="21-scrum-3355"><a class="markdownIt-Anchor" href="#21-scrum-3355"></a> 2.1. Scrum 3355</h2>
+<ol>
+<li>三个角色
+<ol>
+<li>Scrum Master</li>
+<li>Product Owner(产品负责人)</li>
+<li>Team(团队)</li>
+</ol>
+</li>
+<li>三个工件
+<ol>
+<li>Product Backlog(产品待办事项)</li>
+<li>Sprint Backlog(Sprint 待办事项)</li>
+<li>可交付产品增量(也有说是燃尽图)</li>
+</ol>
+</li>
+<li>五大仪式(事件)
+<ol>
+<li>Sprint(冲刺)</li>
+<li>Sprint Planning(Sprint规划)</li>
+<li>Sprint Daily Standup(每日站会)</li>
+<li>Sprint Review(Sprint 评审)</li>
+<li>Sprint Retrospective(回顾)</li>
+</ol>
+</li>
+<li>五大价值观
+<ol>
+<li>Coverage(勇气)</li>
+<li>Openness(开放)</li>
+<li>Focus(专注)</li>
+<li>Commitment(承诺)</li>
+<li>Respect (尊重)</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-scrum角色"><a class="markdownIt-Anchor" href="#22-scrum角色"></a> 2.2. Scrum角色</h2>
+<ol>
+<li>Scrum团队里的人们多来自传统领域，头衔可能各不相同，例如架构师、业务分析师、设计师、软件开发者、测试人员、文档专家、产品经理、项目经理等等。<br />
+所有这些技能集scrum团队都需要，但 scrum只承认三个互不相同的角色：Scrum Master、Product Owner(产品负责人)、Team(团队)</li>
+</ol>
+<h3 id="221-product-owner-产品负责人"><a class="markdownIt-Anchor" href="#221-product-owner-产品负责人"></a> 2.2.1. Product Owner 产品负责人</h3>
+<ol>
+<li>产品负责人负责<strong>最大化产品以及开发团队工作的价值</strong>。产品负责人是<strong>唯一</strong>有权要求团队做事以及改变列表条目优先级的人。
+<ol>
+<li>持有产品愿景</li>
+<li>代表业务(the business)</li>
+<li>代表客户</li>
+<li>拥有产品列表</li>
+<li>划定故事优先级</li>
+<li>设立故事的接收标准</li>
+<li>有空回答团队成员们的问题。</li>
+</ol>
+</li>
+<li>产品负责人和团队其他人之间有一层天生的紧张关系，产品负责人总想要更多，而团队则必须维护可持续的速率。只要不是单方面说了算，这层紧张关系就还是有益的。</li>
+<li>不要合并产品负责人和Scrum Master。</li>
+<li>产品负责人是管理产品待办事项列表的唯一责任人。产品待办事项列表的管理包括:
+<ol>
+<li>清晰地表达产品代办事项列表条目</li>
+<li>对产品代办事项列表中的条目进行排序，最好地实现目标和使命</li>
+<li>确保开发团队所执行工作的价值</li>
+<li>确保产品代办事项列表对所有人可见、透明、清晰,并且显示Scrum团队的下一步工作</li>
+<li>确保开发团队对产品代办事项列表中的条目达到一定程度的理解</li>
+</ol>
+</li>
+</ol>
+<h3 id="222-scrum-master"><a class="markdownIt-Anchor" href="#222-scrum-master"></a> 2.2.2. Scrum Master</h3>
+<ol>
+<li>Scrum Master负责确保Scrum被理解并实施。</li>
+<li>Scrum master担当教练角色，引领团队达到更高级的凝聚力、自组织和表现。Scrum Master 以各种方式服务于开发团队,包括:
+<ol>
+<li>指导开发团队自组织和跨功能</li>
+<li>教导并领导开发团队创造高价值的产品</li>
+<li>移除开发团队进展过程中的障碍</li>
+<li>按需推动Scrum事件</li>
+<li>在Scrum还未完全被采纳和理解的组织环境下指导开发团队</li>
+<li>Coach and Teacher</li>
+</ol>
+</li>
+<li>Scrum master也有可能一并担当直接贡献的责任。这种情况下我们称之为工作型(working) scrum master，或贡献型(contributor) scrum master。</li>
+</ol>
+<h3 id="223-team团队"><a class="markdownIt-Anchor" href="#223-team团队"></a> 2.2.3. Team(团队)</h3>
+<ol>
+<li>自组织团队选择如何最好地完成他们的工作，而不是由团队外的其他人来指使他们。</li>
+<li>全功能团队拥有完成工作所需要的全部技能，不需要依赖团队外部的人(特性团队)。</li>
+<li>通常是七个人，再或多或少两个人，也就是说，五个到九个人。 一共11人。</li>
+</ol>
+<h4 id="2231-全功能团队-特性团队"><a class="markdownIt-Anchor" href="#2231-全功能团队-特性团队"></a> 2.2.3.1. 全功能团队、特性团队</h4>
+<ol>
+<li>全功能团队
+<ol>
+<li>全功能团队是具有不同职能专业或多学科技能的团队。当一个团队拥有满足需求的所有技能和资源时，就称为真正的跨职能。这意味着它不依赖于跟其他团队的工作交接，也不用等待其他团队的工作。</li>
+<li>反例：职能团队，U I团队、业务逻辑团队、测试团队和数据团队等等。团队等待，责任扯皮，交流沟通成本剧增。</li>
+</ol>
+</li>
+<li>特性团队
+<ol>
+<li>一种组建跨职能团队的常见方式是让团队对某个特性负责。有些人将其称之为特性团队。这个团队对于某个特性从开始到结束全程负责。</li>
+<li>反例：组件团队，即只是负责数据访问层或用户接口层的团队。当按照这种方式组建团队时，就要承担开发特性时一个团队等待另一个团队的风险。</li>
+</ol>
+</li>
+</ol>
+<h4 id="2232-自组织团队"><a class="markdownIt-Anchor" href="#2232-自组织团队"></a> 2.2.3.2. 自组织团队</h4>
+<ol>
+<li>《为什么我们需要自组织团队》提出必须让团队竭尽他们所有的专业能力，不仅仅是完成他们的工作任务，还要自我监督和控制，自己做决定，甚至设计自己的流程。</li>
+<li>自组织性高的团队往往也能够比其他团队带来更多的好处，比如能够传递更多的商业价值、更加高效地协同工作以及学的更快等。</li>
+<li><strong>降低管理成本！</strong></li>
+<li>Hackman权利矩阵</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2233-猪与鸡的比喻"><a class="markdownIt-Anchor" href="#2233-猪与鸡的比喻"></a> 2.2.3.3. 猪与鸡的比喻</h4>
+<ol>
+<li>猪角色被认为是团队中的核心成员,在一个团队中产品的负责人和Scrum主管和开发团队就是&quot;猪&quot;角色。鸡角色不是Scrum的一部分,但必须要考虑他们，用户，客户或提供商，经理等扮演着&quot;鸡&quot;角色!</li>
+<li><strong>把有兴趣关心，并无利益或价值牵扯的人，排除在项目决策团队以外！</strong></li>
+</ol>
+<h2 id="23-用户故事"><a class="markdownIt-Anchor" href="#23-用户故事"></a> 2.3. 用户故事</h2>
+<ol>
+<li>在20世纪90年代末，Kent在开发软件的过程中发现，其中最大的问题莫过于使用文档来精确描述我们想要的东西，即需求。</li>
+<li><strong>同样的一份文档，阅读的人不同，各自得到的信息也不一样</strong>。这种缺乏共识的情况，称为 “低质量的需求”</li>
+<li>停止写出完美文档的&quot;执念&quot;。</li>
+<li>用户故事之所以得名，并不是要人们如何写出更好的用户故事，而是如何在协作中更好地使用它。</li>
+</ol>
+<h3 id="231-需求用户故事模板"><a class="markdownIt-Anchor" href="#231-需求用户故事模板"></a> 2.3.1. 需求——用户故事模板</h3>
+<ol>
+<li>用户故事是产品列表的基础构件。</li>
+<li>用户故事模板
+<ol>
+<li>用户角色(who)</li>
+<li>功能(what)</li>
+<li>为什么(why)</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bnf">作为 <span class="hljs-attribute">&lt;某类用户&gt;</span> (告诉我们想要功能的是谁)<br>我想 <span class="hljs-attribute">&lt;做某事&gt;</span> (告诉我们预期的功能是什么)<br>从而 <span class="hljs-attribute">&lt;创造出某些价值&gt;</span> (告诉我们为什么用户想要这个功能)<br>Eg.<br>作为管理员，<br>我想要这个网站使用情况报告，<br>从而做出有根据的预测并优先完成相关功能。<br></code></pre></td></tr></table></figure>
+<h3 id="232-ron-jeffries的3c原则"><a class="markdownIt-Anchor" href="#232-ron-jeffries的3c原则"></a> 2.3.2. Ron Jeffries的3C原则</h3>
+<ol>
+<li>卡片(Card)(placeholder，占位符)：在一堆卡片上写下你期望的软件特性</li>
+<li>交谈(Conversation)：聚在一起对要开发的软件进行深入讨论</li>
+<li>确认(Confirmation)：对完工条件进行确认</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="233-用户故事是占位符"><a class="markdownIt-Anchor" href="#233-用户故事是占位符"></a> 2.3.3. 用户故事是占位符</h3>
+<ol>
+<li>用户故事不是完整的需求或说明书，它们是占位符。</li>
+<li>它们的信息量足以提醒团队有东西要完成，但我们刻意地不过多探讨细节直到必需之时。</li>
+<li>需要阐述用户故事细节时，我们喜欢使用召集相关团队成员参与<strong>交谈</strong>的形式。交谈的目标在于，对故事内容以及所需完成的工作达成<strong>共识</strong>。相对于依赖书面文档，使用实时对话的方式能更高效地达成此目标。它有更多的信息流动。</li>
+</ol>
+<h3 id="234-用户故事接收标准"><a class="markdownIt-Anchor" href="#234-用户故事接收标准"></a> 2.3.4. 用户故事接收标准</h3>
+<ol>
+<li>交谈中，如果某一刻大家觉得对用户故事已有共识，那就该写验收标准了。找出一列测试，直到所有参与交谈的人都认同测试通过意味着故事按预期实现即可，再用简单易懂的话记录下来。</li>
+<li>接收标准回答如下的问题:“我们如何得知它何时已完工?”</li>
+<li>理想情况下，团队应该可以根据接收标准写出自动化测试，甚至是在功能实现之前（TDD）。位于产品列表下方的故事可能不会很快被实现，接收标准可以降低精度。</li>
+</ol>
+<h3 id="235-复杂故事卡"><a class="markdownIt-Anchor" href="#235-复杂故事卡"></a> 2.3.5. 复杂故事卡</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>简短的标题</li>
+<li>描述信息：用一两句话来描述我们在想什么。使用who、what、why的格式描述是个不错的主意，满足谁的需要(who)，用户会用产品做什么事情、what)，用户期待从中获取什么收益(why)。</li>
+<li>故事序号（方便查找或与电子系统连接）</li>
+<li>估算、规模或预算</li>
+<li>优先级：数字标识；或者高中低</li>
+<li>度量</li>
+<li>依赖</li>
+<li>状态</li>
+<li>日期</li>
+<li><strong>验收条件</strong></li>
+</ol>
+<h3 id="236-产品backlog"><a class="markdownIt-Anchor" href="#236-产品backlog"></a> 2.3.6. 产品Backlog</h3>
+<ol>
+<li>是Scrum的核心，是按重要性排序的需求或故事（Story）的列表（客户语言描述的客户需求）</li>
+</ol>
+<h3 id="237-用户故事地图"><a class="markdownIt-Anchor" href="#237-用户故事地图"></a> 2.3.7. 用户故事地图</h3>
+<ol>
+<li><strong>用户故事地图是一门在需求拆分过程中保持全景图的技术</strong>，于2008年提出，敏捷软件开发中使用用户故事地图来发现、管理需求。</li>
+<li>44%使用Story mapping实践。（12th Annual State of Agile Report）</li>
+<li>解决的问题：传统列表式的用户故事难以清洗解释系统到底作什么。</li>
+</ol>
+<h4 id="2371-一个例子简单手机银行开发"><a class="markdownIt-Anchor" href="#2371-一个例子简单手机银行开发"></a> 2.3.7.1. 一个例子(简单手机银行，开发)</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2372-建立一个故事地图"><a class="markdownIt-Anchor" href="#2372-建立一个故事地图"></a> 2.3.7.2. 建立一个故事地图</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在地图的顶部是&quot;大故事&quot;，用户活动，epic。活动对人们来说是一件大事，有很多步骤，而且并不总是有精确的工作流程。</li>
+<li>如果我正在构建一个电子邮件系统，我可能会有一个名为&quot;管理电子邮件&quot;，&quot;配置电子邮件服务器&quot;和&quot;设置不在办公室的响应&quot;的活动。
+<ol>
+<li>&quot;活动&quot;的故事可能如下：作为一名顾问，我想管理我的电子邮件，以便与客户，同事和朋友保持联系。</li>
+<li>但这是一个太大的故事，无法进入迭代或冲刺。</li>
+</ol>
+</li>
+<li>这个故事分解成其他故事，如&quot;发送消息&quot;，“阅读消息”，“删除消息”，“将消息标记为垃圾邮件”。类似的东西。我称之为<strong>用户任务</strong>，用一些网格形式将小东西安排在大东西下面。</li>
+<li>想象时间从左到右移动（叙事流）：例如，当在地图中安排故事时，如果使用该系统的人通常会做一件事，那么我会把早期的东西放在左边，而后面的东西放在右边。</li>
+</ol>
+<h2 id="24-sprint计划会议准备"><a class="markdownIt-Anchor" href="#24-sprint计划会议准备"></a> 2.4. Sprint计划会议准备</h2>
+<ol>
+<li>所有重要的backlog条目都已经根据重要性被评过分,不同的重要程度对应不同的分数。分数只是用来根据重要性对backlog条目排序。</li>
+<li>所有人都可以编写添加条目，但只有Product Owner才能决定优先级。</li>
+</ol>
+<h3 id="241-会议目标"><a class="markdownIt-Anchor" href="#241-会议目标"></a> 2.4.1. 会议目标</h3>
+<ol>
+<li>以终为始
+<ol>
+<li>sprint目标（尽可能简单的语言，团队成员认同）</li>
+<li>团队成员名单(以及他们的投入程度,如果不是100%的话)</li>
+<li>sprintbacklog(即sprint中包括的故事列表)</li>
+<li>确定好sprint演示日期</li>
+<li>确定好时间地点,供举行每日scrum会议</li>
+</ol>
+</li>
+</ol>
+<h3 id="242-product-owner必须参加计划会议"><a class="markdownIt-Anchor" href="#242-product-owner必须参加计划会议"></a> 2.4.2. Product Owner必须参加计划会议</h3>
+<ol>
+<li>每个故事都含有三个变量，它们两两之间都对彼此有着强烈依赖。（没有包含质量，内部质量必须最好，外部质量可以简陋一些）
+<ol>
+<li>范围(scope)和重要性(importance)由产品负责人设置。</li>
+<li>估算(estimate)由团队设置。</li>
+</ol>
+</li>
+<li>在sprint计划会议上，经过团队和产品负责人面对面的对话，这三个变量会逐步得到调整优化。</li>
+</ol>
+<h3 id="243-计划会议例子"><a class="markdownIt-Anchor" href="#243-计划会议例子"></a> 2.4.3. 计划会议例子</h3>
+<ol>
+<li>Sprint计划会议:13:00-17:00 (每小时休息10分钟)</li>
+<li>13:00 - 13:30：产品负责人对sprint目标进行总体介绍，概括产品backlog；定下演示的时间地点。</li>
+<li>13:30 - 15:00：团队估算时间，在必要的情况下拆分 backlog条目。产品负责人在必要时修改重要性评分。理清每个条目的含义。所有重要性高的 backlog 条目都要填写&quot;如何演示&quot;。</li>
+<li>15:00 - 16:00。团队选择要放入sprint中的故事。计算生产率，用作核查工作安排的基础。</li>
+<li>16:00 - 17:00。为每日scrum会议(以下简称每日例会)安排固定的时间地点(如果和上次不同的话)。把故事进一步拆分成任务。</li>
+</ol>
+<h3 id="244-sprint的合适长度"><a class="markdownIt-Anchor" href="#244-sprint的合适长度"></a> 2.4.4. Sprint的合适长度</h3>
+<ol>
+<li>确定Sprint长度：Sprint持续多久才算合适？
+<ol>
+<li>时间短：“敏捷” 短反馈周期=频繁交付=频繁客户反馈=错误方向持续时间短=学习改进速度快……</li>
+<li>时间长：更多时间作充分准备、解决问题、达成目标，不会被接二连三的会议压的不堪重负。</li>
+</ol>
+</li>
+<li>当前，Scrum 周期通常为一个星期。</li>
+</ol>
+<h2 id="25-估算"><a class="markdownIt-Anchor" href="#25-估算"></a> 2.5. 估算</h2>
+<ol>
+<li>估算是很困难的，因为这是在预测未来。而历史证明，我们的估算经常是错误的。误差巨大，而且在很多时候都是这样。</li>
+<li>估算经常是错误的，但是估算过程仍然是有用的。估算过程是管理前方的不确定性的契机，它可以被当做风险管理的工具，让你可以发现误解、不一致以及需要进一步调査的地方。</li>
+<li>团队共同完成估算可以让大家建立对工作一致的理解。但是，根据收益递减原理，你不应在估算上花太多的时间。你可以做出一个快速但不那么准确的估计，也可以再多花一点时间做一个更准确的估计，但花上几天的时间得出精确的小时数就没用了。</li>
+</ol>
+<h3 id="251-估算单位story-point"><a class="markdownIt-Anchor" href="#251-估算单位story-point"></a> 2.5.1. 估算单位：Story Point</h3>
+<ol>
+<li>&quot;猜一下附近一栋高层建筑的高度&quot;比较难；&quot;那边的两个建筑，哪个更高？一个相对另一个高多少？&quot;容易一些。</li>
+<li>Story point：故事点，选取可识别的最小用例为2个story point.其它估算都是相对值，在所有sprint中保持该相对值一致。</li>
+<li>另外的好处，可以在估算时缩小人与人的能力误差（10倍程序员）。
+<ol>
+<li>高级工程师和入门工程师完成一个任务的绝对时间是不同的，但这个工作量却是确定的。</li>
+</ol>
+</li>
+<li>我们在估算速度时，估计我们能在一个迭代周期内能够完成的story point。</li>
+<li>比如：我们一个迭代周期可以完成20个story point，则我们可以按照优先级顺序在现有product backlog中选取20个story point以内的user story放在本迭代周期内完成。</li>
+</ol>
+<h3 id="252-估算单位t恤尺码"><a class="markdownIt-Anchor" href="#252-估算单位t恤尺码"></a> 2.5.2. 估算单位：T恤尺码</h3>
+<ol>
+<li>经常使用的序列是S、M、L。</li>
+<li>如果工作项比L大，他们会把它拆分成大小为S、M和L的更小条目。一个XL的条目会占用团队太多的产能，也不便于管理。</li>
+<li>必要时可以使用XS和XL。</li>
+</ol>
+<h3 id="253-估算过程工程计划扑克"><a class="markdownIt-Anchor" href="#253-估算过程工程计划扑克"></a> 2.5.3. 估算过程：工程&quot;计划扑克&quot;</h3>
+<ol>
+<li>0：这个故事很简单，几分钟搞定；？：一点概念没有，没想法；咖啡杯：太累了，歇会吧</li>
+<li>斐波那契数列：0,1,1,2,3,5,8,13,21,34…</li>
+<li><strong>微信小程序：规划卡片</strong></li>
+<li><strong>应用程序：ScrumPlanningPoker</strong></li>
+<li>估算过程
+<ol>
+<li>每个团队成员拿到一组卡片。</li>
+<li>产品负责人或者一名团队成员扮演阅读者的角色，他负责阅读需要估算产品Backlog的条目，并且询问大家是否有疑问。</li>
+<li>团队讨论这个条目。</li>
+<li>当团队理解了这个条目之后，每个团队成员按照自己的想法给出估算结果，并且选择对应的扑克出牌，估算结果不能告诉其他人，出牌时数字朝下扣在桌面上。</li>
+<li>阅读者向大家确认是否都已经确定估算结果，确认后，数&quot;1,2,3&quot;,大家同时展示估算结果。</li>
+<li>团队评估不同的估算结果.我们是否想法一致？我们是否存在分歧？有没有什么是我没有考虑到的？团队共同讨论估算的差异，最终达成一致。如果差异不可接受，返回3.</li>
+<li>返回2，开始估算下一个条目。</li>
+</ol>
+</li>
+</ol>
+<h3 id="254-估算有差异的原因"><a class="markdownIt-Anchor" href="#254-估算有差异的原因"></a> 2.5.4. 估算有差异的原因</h3>
+<ol>
+<li>需求理解不同。例如：复杂登陆和简单登陆。</li>
+<li>技术不熟悉。例如：没有嵌入式经验的工程师估算嵌入式系统开发内容。</li>
+</ol>
+<h3 id="255-扑克牌估算法价值"><a class="markdownIt-Anchor" href="#255-扑克牌估算法价值"></a> 2.5.5. 扑克牌估算法价值</h3>
+<ol>
+<li>传统估算通常是一个人在思考，而使用估算扑克估算时，鼓励跨职能团队的多个团队成员参与估算，团队成员可以从不同的视角来思考和分析问题，估算的过程中考虑的更加全面、估算也更加准确。</li>
+<li>在估算的过程中，团队对估算的结果进行讨论和评判，在一个高度透明的环境下，估算的结果更加真实和客观。这样也避免了很多时候过于武断，或是拍脑袋做出的决定。</li>
+<li>估算的过程也是一个知识分享和学习的过程，对某一个条目不清楚的成员通过其他成员的阐述会增加对该条目涉及到的要点的认识。</li>
+</ol>
+<h3 id="256-另一种扑克牌估算法"><a class="markdownIt-Anchor" href="#256-另一种扑克牌估算法"></a> 2.5.6. 另一种扑克牌估算法</h3>
+<ol>
+<li>在Agile Adoption Patterns: A Roadmap to Organizational Success》一书中 Amr Elssamadisy 以另一个方式描述了计划扑克的过程。那就是对每一个需求:
+<ol>
+<li>由一个领域专家向团队解释需求并回答问题，以确保大家都理解。</li>
+<li>进入以下轮次，只有在没能达成一致时才进入下一轮次。
+<ol>
+<li>第一轮:大家用卡片独立投票，不要讨论。比如像上面一样数1, 2, 3 —起投票。</li>
+<li>第二轮:让人们先思考一到两分钟，再进入下一轮独立投票，还是不要讨论。</li>
+<li>第三轮:大家先解释一下自己为什么给出这样的投票，然后再次投票。</li>
+<li>如果还没有达成一致，就暂时搁置，先进行下一个需求的估算。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>这个方法让你快速得到足够好的估计。如果能够达成一致，就不会对需求做详细的讨论了。</li>
+</ol>
+<h3 id="257-卡牌队列估算法"><a class="markdownIt-Anchor" href="#257-卡牌队列估算法"></a> 2.5.7. 卡牌队列估算法</h3>
+<ol>
+<li>把每个条目的描述写在单独的卡片上，这个应该在估算前就准备好。</li>
+<li>把所有的卡片摞成一摞放在桌上。</li>
+<li>拿出第一张卡片，放在旁边。</li>
+<li>再拿出一张，问:“这个比第一个大还是小?” 为了回答这个问题，你可能需要和其他人讨论一下这个工作项是干什么的。这需要时间，但别太长，记住这是一个快速估算。</li>
+<li>当你决定了它更大或更小后，把它放在原先卡片的上方或下方，形成一列。</li>
+<li>重 复 第 4 和 第 5 步 ，直 到 用 完 所 有 的 卡 片 。</li>
+<li>现在你可以把所有的卡片分组了— 这也是该技术的第二阶段。从桌上底部(最小)的卡片开始，声明第一组的估算是&quot;小的&quot;。</li>
+<li>继续向上，决定到何时为止卡片已经变大到需要用一个新的估算值(如 “中等”)了，让团队决定。</li>
+<li>很快，你就可以把整列卡片再过一遍，并加总(5 个的估计是S, 4 个 M ,等等) 以得到整个列的总和，这也就是需求的总工作量估计。从队列最下面的部分开始，第一部分可以被当做S。</li>
+</ol>
+<h3 id="258-金发女孩估算技术"><a class="markdownIt-Anchor" href="#258-金发女孩估算技术"></a> 2.5.8. &quot;金发女孩&quot;估算技术</h3>
+<ol>
+<li>这一技术从儿童故事《金发女孩和三只小熊》中受到启发。</li>
+<li>作为对工作项大小估计的替代，你可以把工作项调整到合适的大小。</li>
+<li>你不再是指定每个工作项的大小，而是去分割或组合工作项，让它们的规模大致相当，并便于后续操作。</li>
+</ol>
+<h3 id="259-减小故事规模"><a class="markdownIt-Anchor" href="#259-减小故事规模"></a> 2.5.9. 减小故事规模</h3>
+<ol>
+<li>很多团队要求每个故事的大小在2-8个故事点，大于8要求拆分故事。</li>
+</ol>
+<h2 id="26-故事story与任务task"><a class="markdownIt-Anchor" href="#26-故事story与任务task"></a> 2.6. 故事(Story)与任务(task)</h2>
+<ol>
+<li>Story是可以交付的东西，Task是不可以交付的，Product Owner对Task不关心；</li>
+</ol>
+<h2 id="27-计划会议续"><a class="markdownIt-Anchor" href="#27-计划会议续"></a> 2.7. 计划会议(续)</h2>
+<ol>
+<li>定下每日例会的时间和地点：这必须是每一个成员都能接受的时间和地点。</li>
+<li>确定技术故事：需要完成但是不属于可交付物的东西，如：
+<ol>
+<li>安装持续构建服务器</li>
+<li>编写系统设计概览</li>
+</ol>
+</li>
+</ol>
+<h2 id="28-计划会议的产物-sprint信息页"><a class="markdownIt-Anchor" href="#28-计划会议的产物-sprint信息页"></a> 2.8. 计划会议的产物-Sprint信息页</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="29-sprint管理-白板"><a class="markdownIt-Anchor" href="#29-sprint管理-白板"></a> 2.9. Sprint管理-白板</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="210-跟踪进度-燃尽图"><a class="markdownIt-Anchor" href="#210-跟踪进度-燃尽图"></a> 2.10. 跟踪进度-燃尽图</h2>
+<ol>
+<li>包含信息：
+<ol>
+<li>该Sprint共需要完成70个故事点</li>
+<li>目前团队还剩下15个故事点要完成</li>
+<li>估计：按照目前速度该Sprint目标可以达到</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>燃尽图表示生产速度，提醒团队适当修改生成速度</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="211-敏捷软件开发工作环境"><a class="markdownIt-Anchor" href="#211-敏捷软件开发工作环境"></a> 2.11. 敏捷软件开发工作环境</h2>
+<ol>
+<li>让团队坐在一起</li>
+<li>让Product Owner无路可走</li>
+<li>让经理和教练无路可走</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="212-静默时间"><a class="markdownIt-Anchor" href="#212-静默时间"></a> 2.12. 静默时间</h2>
+<ol>
+<li>&quot;flow&quot;心流时间，全神贯注在某件事情，以至于忘记了时间的流逝。</li>
+<li>公司层面可以为程序员设计专门的静默时间。</li>
+</ol>
+<h2 id="213-每日站会-daily-scrum"><a class="markdownIt-Anchor" href="#213-每日站会-daily-scrum"></a> 2.13. 每日站会-Daily Scrum</h2>
+<ol>
+<li>不超过15分钟</li>
+<li>回答三个问题：
+<ol>
+<li>“昨天我做了什么。”</li>
+<li>“今天准备干什么。”</li>
+<li>“你遇到了什么障碍，需要其他人如何帮你。”</li>
+</ol>
+</li>
+<li>移动任务板上的即时贴到对应的地方</li>
+<li>每日例会一结束就要计算剩余工作故事点并更新燃尽图</li>
+<li>团队每日报到、简短、及时开始与结束、聚焦重点、有规律性</li>
+</ol>
+<h2 id="214-另一种站会"><a class="markdownIt-Anchor" href="#214-另一种站会"></a> 2.14. 另一种站会</h2>
+<ol>
+<li>关注事(接力棒)— 而不是人(运动员)
+<ol>
+<li>不关注每个人做了或没做什么，而是关注整个工作流或者单个工作项的流动是否有什么问题。</li>
+</ol>
+</li>
+<li>遍历看板墙</li>
+<li>关注味道</li>
+<li>每日站会之后，鼓励自发改善会议</li>
+</ol>
+<h2 id="215-sprint演示会议"><a class="markdownIt-Anchor" href="#215-sprint演示会议"></a> 2.15. Sprint演示会议</h2>
+<ol>
+<li>为什么定义Sprint结束于演示：
+<ol>
+<li>其他人可以了解你的团队在做什么</li>
+<li>团队得到认可，团队成员感觉很好</li>
+<li>不同的团队得到交流，讨论各自工作</li>
+<li>演示可以吸引相干人士的关注，并得到重要的反馈</li>
+<li>演示会迫使团队真正完成一些工作而不是貌似完成，这样不会污染下一个Sprint。</li>
+</ol>
+</li>
+</ol>
+<h2 id="216-sprint演示-检查列表"><a class="markdownIt-Anchor" href="#216-sprint演示-检查列表"></a> 2.16. Sprint演示-检查列表</h2>
+<ol>
+<li>确保明确阐述Sprint目标</li>
+<li>集中精力演示可以实际工作的代码</li>
+<li>演示保持快节奏</li>
+<li>演示我们做了什么而不是我们怎么做的</li>
+<li>不演示细碎bug的修复和微不足道的特性</li>
+</ol>
+<h2 id="217-sprint回顾会议"><a class="markdownIt-Anchor" href="#217-sprint回顾会议"></a> 2.17. Sprint回顾会议</h2>
+<ol>
+<li>Sprint回顾是仅次于Sprint计划的第二重要的事件！</li>
+<li>这是做出改进的最佳时期。</li>
+<li>主题：我们怎样才能在下个Sprint中做的更好，不是追究责任！</li>
+</ol>
+<h3 id="2171-活动列表"><a class="markdownIt-Anchor" href="#2171-活动列表"></a> 2.17.1. 活动列表</h3>
+<ol>
+<li>根据要讨论的内容范围,设定时间为 1 至 3 个小时。
+<ol>
+<li>参与者:产品负责人,整个团队还有我自己。</li>
+<li>我们换到一个封闭的房间中,或者舒适的沙发角,或者屋顶平台等等类似的场所。只要能够在不受干扰的情况下讨论就好。</li>
+<li>我们一般不会在团队房间中进行回顾,因为这往往会分散大家的注意力。</li>
+<li>指定某人当秘书。</li>
+<li>Scrum master 向大家展示 sprint backlog,在团队的帮助下对sprint 做总结。包括重要事件和决策等。</li>
+<li>我们会轮流发言。每个人都有机会在不被人打断的情况下讲出自己的想法,他认为什么是好的,哪些可以做的更好,哪些需要在下个 sprint 中改变。</li>
+<li>我们对预估生产率和实际生产率进行比较。如果差异比较大的话,我们会分析原因。</li>
+<li>快结束的时候,Scrum master 对具体建议进行总结,得出下个 sprint 需要改进的地方。</li>
+</ol>
+</li>
+</ol>
+<h3 id="2172-使用白板"><a class="markdownIt-Anchor" href="#2172-使用白板"></a> 2.17.2. 使用白板</h3>
+<ol>
+<li>Good：哪些做法可以保持</li>
+<li>Could have been better：那些做法需要改变</li>
+<li>Improvements：具体改进想法</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec3/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="218-scrum局限"><a class="markdownIt-Anchor" href="#218-scrum局限"></a> 2.18. Scrum局限</h2>
+<ol>
+<li>没有技术实践！</li>
+<li>可以使用极限编程技术实践：测试的驱动开发、简单设计、重构、持续及成果等等。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Devops-introduction/" class="category-chain-item">2020-Devops-introduction</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/DevOps/">#DevOps</a>
+      
+        <a href="/project/tags/%E6%95%8F%E6%8D%B7/">#敏捷</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec3-%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95-Scrum/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8C%96/" title="2020-Devops-introduction-软件架构演化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Devops-introduction-软件架构演化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec10-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%8E%E9%83%A8%E7%BD%B2/" title="2020-Devops-introduction-Lec10-微服务开发与部署">
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec10-微服务开发与部署</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

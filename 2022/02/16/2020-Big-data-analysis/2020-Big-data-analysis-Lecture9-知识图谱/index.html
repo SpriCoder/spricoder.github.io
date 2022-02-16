@@ -1,0 +1,1756 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Big-data-analysis-Lecture9-知识图谱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Big-data-analysis-Lecture9-知识图谱">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture9-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Big-data-analysis-Lecture9-知识图谱">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/38.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/41.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/42.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/43.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/45.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/46.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/47.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/48.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/49.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/50.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/51.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/52.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/53.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/54.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/55.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/56.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/57.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/58.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/59.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/60.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/61.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/62.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/63.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/64.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/65.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/66.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/67.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/68.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/69.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/70.png">
+<meta property="article:published_time" content="2022-02-16T11:09:27.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:55:37.341Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="大数据分析">
+<meta property="article:tag" content="知识图谱">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/1.png">
+  
+  
+  <title>2020-Big-data-analysis-Lecture9-知识图谱 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Big-data-analysis-Lecture9-知识图谱</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lecture9-知识图谱"><a class="markdownIt-Anchor" href="#lecture9-知识图谱"></a> Lecture9-知识图谱</h2>
+<h1 id="1-知识图谱"><a class="markdownIt-Anchor" href="#1-知识图谱"></a> 1. 知识图谱</h1>
+<ol>
+<li>知识图谱概念</li>
+<li>知识图谱内涵</li>
+<li>知识图谱优势</li>
+<li>知识图谱价值</li>
+<li>典型知识图谱</li>
+</ol>
+<h1 id="2-知识图谱概念"><a class="markdownIt-Anchor" href="#2-知识图谱概念"></a> 2. 知识图谱概念</h1>
+<ol>
+<li>知识图谱(Knowledge Graph)本质上是一种<strong>大规模语义网络</strong> (semantic network)，富含实体(entity)、概念(concepts) 及其之间的各种语义关系 (semantic relationships)
+<ol>
+<li>作为一种语义网络，是大数据时代知识表示的重要方式之一</li>
+<li>作为一种技术体系，是大数据时代知识工程的代表性进展</li>
+</ol>
+</li>
+<li>知识图谱示例子。知识图谱富含实体、概念、属性、关系等信息</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="21-知识图谱分类"><a class="markdownIt-Anchor" href="#21-知识图谱分类"></a> 2.1. 知识图谱分类</h2>
+<ol>
+<li>领域(行业)知识图谱 (Domain specific Knowledge Graph)：聚焦于特定领域或者行业的知识图谱</li>
+<li>企业知识图谱(Enterprise knowledge graph)：贯穿企业各业务部门的知识图谱</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="22-知识图谱的源头"><a class="markdownIt-Anchor" href="#22-知识图谱的源头"></a> 2.2. 知识图谱的源头</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="23-知识图谱应用"><a class="markdownIt-Anchor" href="#23-知识图谱应用"></a> 2.3. 知识图谱应用</h2>
+<ol>
+<li>2012年5月，Google收购Metaweb 公司，并正式发布知识图谱</li>
+<li>搜索核心需求：让搜索通往答案，但是机器无法理解搜索关键词，也很难精准回答。</li>
+<li>根本问题
+<ol>
+<li>缺乏大规模背景知识</li>
+<li>传统知识表示难以满足需求</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-知识图谱内涵"><a class="markdownIt-Anchor" href="#3-知识图谱内涵"></a> 3. 知识图谱内涵</h1>
+<ol>
+<li>开放和封闭的知识图谱:开放是可以添加知识进来，而封闭的则不可以</li>
+<li>定义本体:在作知识图谱之前一定要先明确是开放还是封闭的</li>
+</ol>
+<h2 id="31-kg组成node-entity"><a class="markdownIt-Anchor" href="#31-kg组成node-entity"></a> 3.1. KG组成：Node-Entity</h2>
+<ol>
+<li>Entity/Objects/Instances:维基百科：实体就是东西,它本身，作为主体或作为对象存在，实际上或潜在地，具体地或抽象地，物理地或非物理地存在。</li>
+<li>Concept:概念
+<ol>
+<li>在形而上学，尤其是本体论中，概念是存在的基本类别。</li>
+<li>类别的(心理)表示</li>
+</ol>
+</li>
+<li>Category:类别有共同点的实体组；</li>
+<li>Type/class:类型/类别，WIKITIONARY：基于共享特征的分组；一类。</li>
+</ol>
+<h2 id="32-kg组成node-entity例子"><a class="markdownIt-Anchor" href="#32-kg组成node-entity例子"></a> 3.2. KG组成：Node-Entity例子</h2>
+<ol>
+<li>Date：特朗普 出生日期 1946年6月14日</li>
+<li>String：特朗普 简介&quot;唐纳德·特朗普(Donald Trump)，第45任美国总统，1946 年6月14日生于纽约，美国共和党籍政治家&quot;</li>
+<li>Numeric：特朗普 年龄 71</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>每一个信息都是node，这个node是可以被重用的，比如年龄71的点</li>
+</ul>
+<h2 id="33-kg组成edge"><a class="markdownIt-Anchor" href="#33-kg组成edge"></a> 3.3. KG组成：Edge</h2>
+<ol>
+<li>Relation:
+<ol>
+<li>侧重实体(indvidual)之间的关系</li>
+<li>例子:
+<ol>
+<li>坐着：坐在桌子上的苹果</li>
+<li>更高：华盛顿纪念碑比白宫高</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Property/Attribute/Quality(属性)
+<ol>
+<li>描述对象的特征/质量</li>
+<li>例子：对象的大小，颜色，重量，成分等</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-知识图谱源起"><a class="markdownIt-Anchor" href="#4-知识图谱源起"></a> 4. 知识图谱源起</h1>
+<h2 id="41-知识工程ke的缘起-symbolism符号主义"><a class="markdownIt-Anchor" href="#41-知识工程ke的缘起-symbolism符号主义"></a> 4.1. 知识工程(KE)的缘起-Symbolism，符号主义</h2>
+<ol>
+<li>符号主义的主要观点
+<ol>
+<li>认知即计算</li>
+<li>知识是信息的一种形式,是构成智能的基</li>
+<li>知识表示、知识推理、知识运用是人工智能的核心</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>物理符号系统
+<ol>
+<li>物理符号系统具有一般智能操作的必要和充分手段</li>
+<li>可以将思维视为根据正式规则对信息进行操作的设备。</li>
+</ol>
+</li>
+<li>GOFAI(老式人工智能，由John Haugeland提出)，专注于此类高水平符号，例如<code>&lt;dog&gt;</code>和<code>&lt;tail&gt;</code></li>
+<li>AI System = Knowledge + Reasoning</li>
+</ol>
+<h2 id="42-代表人物和时间节点"><a class="markdownIt-Anchor" href="#42-代表人物和时间节点"></a> 4.2. 代表人物和时间节点</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>KE(知识工程)是一门工程学科，涉及将知识集成到计算机系统中，以解决通常需要高水平专业知识的复杂问题。 参考维基百科</li>
+<li>知识工程是以知识为处理对象，研究知识系统的知识表示、处理和应用的方法和开发工具的学科的方法和开发工具的学科</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>传统知识工程在规则明确、边界清晰、应用封闭的应用场景取得了巨大成功</p>
+</blockquote>
+<h2 id="43-传统ke的基本特点"><a class="markdownIt-Anchor" href="#43-传统ke的基本特点"></a> 4.3. 传统KE的基本特点</h2>
+<ol>
+<li>自上而下:严重依赖专家和人的干预
+<ol>
+<li>规模有限</li>
+<li>质量存疑</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="44-传统ke的主要挑战知识获取困难"><a class="markdownIt-Anchor" href="#44-传统ke的主要挑战知识获取困难"></a> 4.4. 传统KE的主要挑战:知识获取困难</h2>
+<ol>
+<li>隐性知识、过程知识等<strong>难以表达</strong>，专家<strong>不一定愿意分享出来</strong>，不同专家之间的知识可能<strong>不一致</strong>。
+<ol>
+<li>如何表达做蛋炒饭的知识？</li>
+<li>老中医看病用到了哪些知识。</li>
+</ol>
+</li>
+<li>领域知识的<strong>形式化</strong>表达较为困难。</li>
+<li>专家知识不可避免地存在<strong>主观性</strong>，比如都是做一个方向的，表达方式、研究路径可能不一致。</li>
+<li>知识表达难以完备，缺漏是常态。</li>
+</ol>
+<h2 id="45-传统ke的主要挑战知识应用困难"><a class="markdownIt-Anchor" href="#45-传统ke的主要挑战知识应用困难"></a> 4.5. 传统KE的主要挑战:知识应用困难</h2>
+<ol>
+<li>应用易于超出预先设定的知识边界</li>
+<li>很多应用需要常识的支撑
+<ol>
+<li>难以处理异常情况</li>
+<li>难以处理不确定性推理</li>
+</ol>
+</li>
+<li>知识更新困难</li>
+</ol>
+<ul>
+<li>Example:<code>Can pig fly?</code></li>
+<li>Rule:鸟是可以飞的</li>
+</ul>
+<blockquote>
+<p>行业应用中的知识需求难以封闭于预设的领域知识边界内</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="46-互联网应用催生大数据世代知识工程bigke"><a class="markdownIt-Anchor" href="#46-互联网应用催生大数据世代知识工程bigke"></a> 4.6. 互联网应用催生大数据世代知识工程(BigKE)</h2>
+<ol>
+<li>大规模开放性应用
+<ol>
+<li>永远不知道用户下一个搜索关键字是什么</li>
+<li>“创造101”、“吃鸡”、“纸片人”、“蛙儿”</li>
+</ol>
+</li>
+<li>精度要求不高:搜索引擎从来不需要保证每个搜索的理解和检索都是正确的</li>
+<li>应用/推理简单</li>
+<li>大部分搜索理解与回答只需要实现简单的推理
+<ol>
+<li>简单推理：姚明的身高是多少，一跳就可以解决</li>
+<li>复杂推理：姚明老婆的婆婆的儿子有多高，需要几跳才可以解决</li>
+</ol>
+</li>
+<li>互联网时代的大规模开放性应用需要全新的知识表示，<strong>谷歌知识图谱</strong>诞生，知识工程迈入大数据时代</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h2 id="47-数据驱动的大规模自动化知识获取"><a class="markdownIt-Anchor" href="#47-数据驱动的大规模自动化知识获取"></a> 4.7. 数据驱动的大规模自动化知识获取</h2>
+<ol>
+<li>自下而上：网页文本、搜索日志、购买记录</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="48-大数据时代的机遇众包技术"><a class="markdownIt-Anchor" href="#48-大数据时代的机遇众包技术"></a> 4.8. 大数据时代的机遇——众包技术</h2>
+<ol>
+<li>众包与群智成为大规模知识获取的一条新路径</li>
+</ol>
+<blockquote>
+<p>案例1: 基于知识问答验证码的知识获取:复旦大学知识工场实验室提供知识验证码服务，通过众包的方式对现有知识进行验证</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>案例2:基于众包的Taxonomy构建，DBpedia通过众包方式构建了DBpedia Ontology</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="49-大数据世代的机遇高质量ugc"><a class="markdownIt-Anchor" href="#49-大数据世代的机遇高质量ugc"></a> 4.9. 大数据世代的机遇——高质量UGC</h2>
+<ol>
+<li>Web2.0时代到未，产生大量的高质量UGC(User Generated Content)
+<ol>
+<li>提供获得得广大用户一致认可的<strong>高质量数据源</strong></li>
+<li>维基百科, 百度百科</li>
+</ol>
+</li>
+<li>为自动挖掘知识提供了<strong>高质量数据源</strong></li>
+<li>为构建抽取模型提供了<strong>高质量样本</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h1 id="5-知识图谱优势"><a class="markdownIt-Anchor" href="#5-知识图谱优势"></a> 5. 知识图谱优势</h1>
+<h2 id="51-大规模"><a class="markdownIt-Anchor" href="#51-大规模"></a> 5.1. 大规模</h2>
+<ol>
+<li>对实体和概念的更大覆盖</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h2 id="52-语义丰富"><a class="markdownIt-Anchor" href="#52-语义丰富"></a> 5.2. 语义丰富</h2>
+<blockquote>
+<p>覆盖更多语义关系</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>高质量数据
+<ol>
+<li>大数据：多种来源的交叉验证</li>
+<li>众包：质量保证</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="53-友好的结构"><a class="markdownIt-Anchor" href="#53-友好的结构"></a> 5.3. 友好的结构</h2>
+<blockquote>
+<p>结构化的组织</p>
+</blockquote>
+<ol>
+<li>通过RDF</li>
+<li>按图</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h1 id="6-越来越多的知识图谱应运而生"><a class="markdownIt-Anchor" href="#6-越来越多的知识图谱应运而生"></a> 6. 越来越多的知识图谱应运而生</h1>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h1 id="7-知识图谱的价值"><a class="markdownIt-Anchor" href="#7-知识图谱的价值"></a> 7. 知识图谱的价值</h1>
+<h2 id="71-未来已至人类已经进入智能时代"><a class="markdownIt-Anchor" href="#71-未来已至人类已经进入智能时代"></a> 7.1. 未来已至:人类已经进入智能时代</h2>
+<ol>
+<li><strong>大数据的日益积累、计算能力的快速增长</strong>为人类进入智能时代奠定了基础</li>
+<li>大数据为智能技术的发展带来了前所未有的数据红利</li>
+<li>机器<strong>计算智能、感知智能</strong>达到甚至超越人类</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="72-智能化升级与转型"><a class="markdownIt-Anchor" href="#72-智能化升级与转型"></a> 7.2. 智能化升级与转型</h2>
+<ol>
+<li>智能化升级与转型已经成为各行各业的普遍诉求</li>
+<li>从信息化走向智能化是必然趋势</li>
+<li>AI+成为AI赋能传统行业的基本模式</li>
+<li>战略意义
+<ol>
+<li>全方位、深度渗透到各行各业、各个环节</li>
+<li>颠覆性影响，重塑行业形态，甚至社会形态</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="73-认知智能是智能化的关键"><a class="markdownIt-Anchor" href="#73-认知智能是智能化的关键"></a> 7.3. 认知智能是智能化的关键</h2>
+<blockquote>
+<p>理解与解释是后深度学习时代人工智能的核心使命之一</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="74-知识图谱使能认知智能"><a class="markdownIt-Anchor" href="#74-知识图谱使能认知智能"></a> 7.4. 知识图谱使能认知智能</h2>
+<ol>
+<li><strong>机器理解数据</strong>的本质：建立从数据到知识库中实体、概念、关系的映射</li>
+<li><strong>机器解释现象</strong>的本质：利用知识库中实体、概念、关系解释现象的过程</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="75-知识图谱使能机器语言认知"><a class="markdownIt-Anchor" href="#75-知识图谱使能机器语言认知"></a> 7.5. 知识图谱使能机器语言认知</h2>
+<ol>
+<li>对机器的语言理解需要知识库
+<ol>
+<li>大规模</li>
+<li>语义丰富</li>
+<li>友好的结构</li>
+<li>高质量</li>
+</ol>
+</li>
+<li>传统知识表示不能满足这些要求，但是KG可以
+<ol>
+<li>本体</li>
+<li>语义网络/框架</li>
+<li>文字</li>
+</ol>
+</li>
+<li><strong>NLP + KB = NLU</strong>
+<ol>
+<li>NLP =自然语言处理</li>
+<li>NLU =自然语言理解</li>
+</ol>
+</li>
+</ol>
+<h2 id="76-知识图谱使能可解释人工智能"><a class="markdownIt-Anchor" href="#76-知识图谱使能可解释人工智能"></a> 7.6. 知识图谱使能可解释人工智能</h2>
+<blockquote>
+<p>解释取决于人类认知的基本框架；概念、属性、关系是认知的基石。</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/33.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="77-知识引导成为解决问题的主要方式"><a class="markdownIt-Anchor" href="#77-知识引导成为解决问题的主要方式"></a> 7.7. 知识引导成为解决问题的主要方式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/34.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li><strong>数据驱动</strong>利用<strong>统计模式</strong>解决问题</li>
+<li>单纯依赖<strong>统计模式</strong>难以有效解决很多实际问题</li>
+</ol>
+<h2 id="78-知识将显著增强机器学习能力"><a class="markdownIt-Anchor" href="#78-知识将显著增强机器学习能力"></a> 7.8. 知识将显著增强机器学习能力</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/35.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>降低机器学习模型的大样本依赖，提高学习的经济性</li>
+<li>提高机器学习模型对于先验知识的利用效率</li>
+<li>增强机器学习模型与先验知识的一致性</li>
+</ol>
+<h2 id="79-知识将成为比数据更为重要的资产"><a class="markdownIt-Anchor" href="#79-知识将成为比数据更为重要的资产"></a> 7.9. 知识将成为比数据更为重要的资产</h2>
+<ol>
+<li>大数据时代是得数据者得天下</li>
+<li>人工智能时代是得知识者得天下</li>
+<li>数据是石油，知识就是石油的萃取物</li>
+<li>Knowledge is power in AI</li>
+</ol>
+<h1 id="8-典型知识图谱"><a class="markdownIt-Anchor" href="#8-典型知识图谱"></a> 8. 典型知识图谱</h1>
+<h2 id="81-知识图谱分类"><a class="markdownIt-Anchor" href="#81-知识图谱分类"></a> 8.1. 知识图谱分类</h2>
+<ol>
+<li>自动化程度</li>
+<li>数据来源结构化程度</li>
+<li>跨语言</li>
+<li>通用/specific</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/36.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="82-cyc"><a class="markdownIt-Anchor" href="#82-cyc"></a> 8.2. Cyc</h2>
+<ol>
+<li>简介:常识知识图谱</li>
+<li>特点:通过人工方法将上百万条人类常识编码成机器可用的形式，用以进行智能推断</li>
+<li>规模:目前ResearchCyc知识图谱中包含了700万条断言(事实和规则)，涉及63万个概念，38000种关系</li>
+<li><a target="_blank" rel="noopener" href="http://www.cyc.com/">http://www.cyc.com/</a></li>
+</ol>
+<h2 id="83-wordnet"><a class="markdownIt-Anchor" href="#83-wordnet"></a> 8.3. WordNet</h2>
+<ol>
+<li>简介:基于认知语言学的英语词典</li>
+<li>样例:S(n) car, auto, automobile, machine, motorcar (a motor vehicle with four wheels; usually propelled by an internal combustion engine) “he needs a car to get to work”</li>
+<li>特点:以同义词集合( synset )作为一个基本单元</li>
+<li>规模:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/37.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="84-conceptnet"><a class="markdownIt-Anchor" href="#84-conceptnet"></a> 8.4. ConceptNet</h2>
+<ol>
+<li>简介:大型的多语言常识知识库</li>
+<li>特点:知识来源丰富
+<ol>
+<li>众包(Crowd-Sourcing)</li>
+<li>资源(例如Wiktionary 和Open Mind Common Sense)</li>
+<li>带目的的游戏(如Verbosity 和 <a target="_blank" rel="noopener" href="http://nadya.jp">nadya.jp</a>)</li>
+<li>专家创建的资源(如WordNet 和JMDict)</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/39.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/38.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="http://conceptnet.io/">http://conceptnet.io/</a></li>
+</ol>
+<h2 id="85-freebasewikidata"><a class="markdownIt-Anchor" href="#85-freebasewikidata"></a> 8.5. Freebase/Wikidata</h2>
+<ol>
+<li>简介:
+<ol>
+<li>Freebase 所有知识采用结构化的表示形式，可由机器和人编辑</li>
+<li>Wikidata是维基百科的姐妹工程，同样可由机器和人自由编辑</li>
+<li>2016年8月31日，Freebase宣布关闭， 所有数据汇入Wikidata</li>
+</ol>
+</li>
+<li>样例：“Donald Trump”</li>
+<li>特点
+<ol>
+<li>众包构建</li>
+<li>结构化三元组</li>
+</ol>
+</li>
+<li>统计：Wikidata目前包含49,915,906个实体</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/40.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="86-dbpedia"><a class="markdownIt-Anchor" href="#86-dbpedia"></a> 8.6. DBpedia</h2>
+<ol>
+<li>从维基百科页面中自动抽取出结构化的知识，构建而成的大型通用百科图谱</li>
+<li>样例:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/41.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>特点
+<ol>
+<li>多语</li>
+<li>自动构建</li>
+</ol>
+</li>
+<li>统计
+<ol>
+<li>共收录有 127 种不同语言共计2800万实体</li>
+<li>其中英文实体数量最大，为 467 万</li>
+</ol>
+</li>
+<li><a target="_blank" rel="noopener" href="http://wiki.dbpedia.org/">http://wiki.dbpedia.org/</a></li>
+</ol>
+<h2 id="87-google-kg"><a class="markdownIt-Anchor" href="#87-google-kg"></a> 8.7. Google KG</h2>
+<ol>
+<li>简介：谷歌知识图谱于2012 年发布，被认为是搜索引擎的一次重大革新</li>
+<li>样例：“Nanjing University”</li>
+<li>特点：
+<ol>
+<li>规模巨大</li>
+<li>用于增强搜索引擎的搜索能力</li>
+</ol>
+</li>
+<li>统计：5700万实体，180亿关系</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/42.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="9-领域知识图谱"><a class="markdownIt-Anchor" href="#9-领域知识图谱"></a> 9. 领域知识图谱</h1>
+<h2 id="91-什么是领域知识图谱"><a class="markdownIt-Anchor" href="#91-什么是领域知识图谱"></a> 9.1. 什么是领域知识图谱</h2>
+<ol>
+<li>知识图是一个大规模的语义网络，由实体/概念以及它们之间的语义关系组成</li>
+<li>特定领域的知识图</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/43.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="92-nokgnot-only-kg"><a class="markdownIt-Anchor" href="#92-nokgnot-only-kg"></a> 9.2. NoKG(Not Only KG)</h2>
+<ol>
+<li>传统知识工程，专家构建，代价高昂， 规模有限；知识边界易于突破，难以适应大数据时代开放应用到规模化需求</li>
+<li>大规模开放应用需要&quot;大&quot;知识(大规模知识库)</li>
+<li>Small Knowledge + Big Data = Big Knowledge，知识图谱引领知识工程</li>
+</ol>
+<h2 id="93-dkg与gkg的区别"><a class="markdownIt-Anchor" href="#93-dkg与gkg的区别"></a> 9.3. DKG与GKG的区别</h2>
+<ol>
+<li>DKG，Domain-specific Knowledge Graph，领域知识图谱</li>
+<li>GKG，General-purpose Knowledge Graph，通用知识图谱</li>
+<li>DKG和GKG在知识表示、获取与应用等方面有着显著差异</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/45.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="94-dkg和gkg的关系"><a class="markdownIt-Anchor" href="#94-dkg和gkg的关系"></a> 9.4. DKG和GKG的关系</h2>
+<ol>
+<li>DKG是从GKD通过隐喻获得的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/46.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>GKG对于DKG有着显著支撑作用</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/47.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="95-领域行业应用对于知识需求难以闭合"><a class="markdownIt-Anchor" href="#95-领域行业应用对于知识需求难以闭合"></a> 9.5. 领域行业应用对于知识需求难以闭合</h2>
+<ol>
+<li>行业应用中的知识需求难以封闭于预设的领域知识边界内。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/48.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="96-为何需要符号化表示的知识图谱"><a class="markdownIt-Anchor" href="#96-为何需要符号化表示的知识图谱"></a> 9.6. 为何需要符号化表示的知识图谱</h2>
+<ol>
+<li>符号表示与分布式表示是两种重要的知识表示形式</li>
+<li>已经有两条边了，我们需要通过知识图谱推理补齐第三条边</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/49.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="97-为什么需要领域知识图谱"><a class="markdownIt-Anchor" href="#97-为什么需要领域知识图谱"></a> 9.7. 为什么需要领域知识图谱</h2>
+<ol>
+<li>大数据时代需要知识引擎释放大数据价值形成行业认知能力实现简单工作自动化</li>
+<li>人工智能时代需要机器智脑实现自然人机交互</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/50.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="98-将领域知识赋予机器解放人类脑力"><a class="markdownIt-Anchor" href="#98-将领域知识赋予机器解放人类脑力"></a> 9.8. 将领域知识赋予机器，解放人类脑力</h2>
+<ol>
+<li>领域知识的积累与沉淀是智能化的必经路径</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/51.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="99-领域知识图谱系统的生命周期"><a class="markdownIt-Anchor" href="#99-领域知识图谱系统的生命周期"></a> 9.9. 领域知识图谱系统的生命周期</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/52.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="910-dkg如何构建"><a class="markdownIt-Anchor" href="#910-dkg如何构建"></a> 9.10. DKG如何构建</h2>
+<blockquote>
+<p>实体发现可能会用到分类聚类方法</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/53.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="911-dkg如何评价"><a class="markdownIt-Anchor" href="#911-dkg如何评价"></a> 9.11. DKG如何评价</h2>
+<ol>
+<li>质量准</li>
+<li>规模全</li>
+<li>实时新</li>
+</ol>
+<h2 id="912-dkg如何存储"><a class="markdownIt-Anchor" href="#912-dkg如何存储"></a> 9.12. DKG如何存储</h2>
+<ol>
+<li>数据库选型依据
+<ol>
+<li>操作复杂度
+<ol>
+<li>全局计算</li>
+<li>多步遍历</li>
+<li>复杂子图</li>
+</ol>
+</li>
+<li>知识库规模
+<ol>
+<li>节点</li>
+<li>关系</li>
+<li>密度</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>三元组中存储哪些信息？关联事实</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/54.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="913-dkg如何查询"><a class="markdownIt-Anchor" href="#913-dkg如何查询"></a> 9.13. DKG如何查询</h2>
+<ol>
+<li>SPARQL
+<ol>
+<li>优点：表达能力强、可推理</li>
+<li>缺点：较复杂、难书写、 复杂查询执行代价高昂</li>
+</ol>
+</li>
+<li>SQL
+<ol>
+<li>优点：简单，普及</li>
+<li>缺点：表达能力相对较弱</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/55.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="914-dkg应用"><a class="markdownIt-Anchor" href="#914-dkg应用"></a> 9.14. DKG应用</h2>
+<ol>
+<li>搜索</li>
+<li>推荐</li>
+<li>问答</li>
+<li>解释</li>
+<li>决策</li>
+</ol>
+<h2 id="915-dkg落地案例"><a class="markdownIt-Anchor" href="#915-dkg落地案例"></a> 9.15. DKG落地案例</h2>
+<ol>
+<li>农业知识图谱开源项目</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/56.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="916-dkg还存在哪些挑战"><a class="markdownIt-Anchor" href="#916-dkg还存在哪些挑战"></a> 9.16. DKG还存在哪些挑战</h2>
+<ol>
+<li>知识表示</li>
+<li>知识获取</li>
+<li>知识应用</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/57.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="10-知识图谱问答"><a class="markdownIt-Anchor" href="#10-知识图谱问答"></a> 10. 知识图谱问答</h1>
+<h2 id="101-ibm-watson"><a class="markdownIt-Anchor" href="#101-ibm-watson"></a> 10.1. IBM Watson</h2>
+<ol>
+<li>目前应用于医疗行业</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/58.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="102-智能搜索"><a class="markdownIt-Anchor" href="#102-智能搜索"></a> 10.2. 智能搜索</h2>
+<ol>
+<li>知识卡片：根据查询实体，返回实体关联的知识信息</li>
+<li>知识问答：直接明了地返回问答结果</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/59.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="103-问答系统发展历程"><a class="markdownIt-Anchor" href="#103-问答系统发展历程"></a> 10.3. 问答系统发展历程</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/60.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="104-问答系统概述"><a class="markdownIt-Anchor" href="#104-问答系统概述"></a> 10.4. 问答系统概述</h2>
+<ol>
+<li>概述
+<ul>
+<li>问答系统(Question Answering system),指的是回答人提出的自然语言问题的系统</li>
+</ul>
+</li>
+<li>问答系统的价值
+<ol>
+<li>逐渐取代基于关键字搜索的交互方式</li>
+<li>跨越人机语义鸿沟的重要尝试</li>
+<li>检验机器智能的重要方式</li>
+</ol>
+</li>
+<li>问答系统的分类
+<ol>
+<li>结构化知识问答：知识图谱问答</li>
+<li>非结构化知识问答
+<ol>
+<li>机器阅读理解(machine reading comprehension)：基于单一文档</li>
+<li>信息检索问答(IR-QA)：跨文档</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="105-问答系统问题分类"><a class="markdownIt-Anchor" href="#105-问答系统问题分类"></a> 10.5. 问答系统问题分类</h2>
+<ol>
+<li>事实型问题：姚明的身高多少?</li>
+<li>是非型问题：珠穆朗玛峰是不是世界第一高峰？</li>
+<li>对比型问题：姚明和郭敬明谁更高？</li>
+<li>原因/结果/方法型问题：人民币贬值之后会发生什么</li>
+<li>观点型问题：你对人民币破7这个事情怎么看？</li>
+<li>对话型问题：您好，我想办理A套餐</li>
+</ol>
+<h2 id="106-问答系统三种范式"><a class="markdownIt-Anchor" href="#106-问答系统三种范式"></a> 10.6. 问答系统三种范式</h2>
+<ol>
+<li>基于信息检索的问答
+<ol>
+<li>资源：QA对</li>
+<li>策略：计算用户问句与问答数据库中问题之间的相似度</li>
+<li>核心：相似度计算</li>
+</ol>
+</li>
+<li>基于知识库的问答
+<ol>
+<li>资源：结构化好的知识元组</li>
+<li>策略：问句解析与查询转换</li>
+<li>核心：问句知识抽取与知识库子图查询</li>
+</ol>
+</li>
+<li>基于阅读理解的问答
+<ol>
+<li>资源：单篇文档且答案包含在文档中</li>
+<li>策略：识别答案的边界，包括起始位置和结束位置</li>
+<li>核心：边界识别</li>
+</ol>
+</li>
+</ol>
+<h2 id="107-问答系统核心问题"><a class="markdownIt-Anchor" href="#107-问答系统核心问题"></a> 10.7. 问答系统核心问题</h2>
+<ol>
+<li>信息检索问答
+<ol>
+<li>问句向量表示
+<ol>
+<li>基于传统TF-IDF的向量表示</li>
+<li>基于主题的向量表示</li>
+<li>基于预训练的向量表示(doc2vec, word2vec)</li>
+<li>基于深度学习的向量表示</li>
+</ol>
+</li>
+<li>问句相似度计算
+<ol>
+<li>Cosine向量表示</li>
+<li>编辑距离</li>
+<li>Siamese network</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>知识图谱问答
+<ol>
+<li>问句解析
+<ol>
+<li>意图识别</li>
+<li>论元解析</li>
+</ol>
+</li>
+<li>多轮问答
+<ol>
+<li>会话状态管理</li>
+<li>缺失值填充</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="108-知识图谱问答的常规做法"><a class="markdownIt-Anchor" href="#108-知识图谱问答的常规做法"></a> 10.8. 知识图谱问答的常规做法</h2>
+<ol>
+<li>基于模板匹配的语义解析
+<ol>
+<li>思想
+<ol>
+<li>人工编写+模板学习与人工审核生成模板</li>
+<li>实体识别与实体关系识别</li>
+<li>查询模板匹配</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>基于子图结构匹配，准确率高</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>以实体/属性/关系识别为前提</li>
+<li>识别误差导致查询模板召回率低</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>基于复述的语义解析
+<ol>
+<li>思想
+<ol>
+<li>人工根据具体查询需求，编写生成规则</li>
+<li>基于规则生成标准问句集合</li>
+<li>基于语义相似度进行模板匹配</li>
+<li>基于模板匹配进行论元解析</li>
+</ol>
+</li>
+<li>优点：基于语义相似度，查询模板匹配召回率高</li>
+<li>缺点：需要构造大量候选实例，匹配准确率不高</li>
+</ol>
+</li>
+</ol>
+<h2 id="109-问答系统架构"><a class="markdownIt-Anchor" href="#109-问答系统架构"></a> 10.9. 问答系统架构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/61.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1010-问句解析"><a class="markdownIt-Anchor" href="#1010-问句解析"></a> 10.10. 问句解析</h2>
+<ol>
+<li>问句预处理：基于概念、实体、属性和操作符进行分词</li>
+<li>问句实体项识别
+<ol>
+<li>概念、实体、属性</li>
+<li>操作符(&gt;&lt;=)</li>
+<li>日期实体</li>
+<li>数值实体</li>
+</ol>
+</li>
+<li>实体三元组生成
+<ol>
+<li>实体+属性、属性+对象值</li>
+<li>属性值+概念</li>
+<li>属性+数值</li>
+<li>操作符+属性+值</li>
+<li>概念+属性+值</li>
+</ol>
+</li>
+</ol>
+<h2 id="1011-基于模板规则的问句解析"><a class="markdownIt-Anchor" href="#1011-基于模板规则的问句解析"></a> 10.11. 基于模板规则的问句解析</h2>
+<ol>
+<li>方法步骤
+<ol>
+<li>&quot;冷启动&quot;阶段，不用训练，快速生效，适度泛化</li>
+<li>内置实体抽取+ 用户自定义实体库+ 规则模板语籵：播放刘德华冰币</li>
+<li>模板：[播放][singer][song]</li>
+<li>模板质量判定：语籵是否自动生成模板</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/62.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1012-基于统计的问句解析"><a class="markdownIt-Anchor" href="#1012-基于统计的问句解析"></a> 10.12. 基于统计的问句解析</h2>
+<ol>
+<li>思想：对于跨领域实体时，需要借助统计信息完成实体链接和意图分类</li>
+<li>Eg:我要去看花千骨的免费版</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/63.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1013-基于深度学习的方法"><a class="markdownIt-Anchor" href="#1013-基于深度学习的方法"></a> 10.13. 基于深度学习的方法</h2>
+<ol>
+<li>概述：近几年卷积神经网络(CNN)和循环神经网络(RNN)在NLP领域任务中表现出来的语言表示能力， 越来越多的研究人员尝试深度学习的方法完成问答领域的关键任务，包括问题分</li>
+<li>过程
+<ol>
+<li>(question classification)，语义匹配与答案选择</li>
+<li>(answer selection)，答案自动生成</li>
+<li>(answer generation);即对用户输入解析、答案查询与检索等环节进行优化。</li>
+</ol>
+</li>
+<li>优点：实现&quot;端到端＂的问答：把问题与答案均使用复杂的特征向量表示，使用深度学习来计算问题与答案的相似度</li>
+<li>不足：不支持复杂的查询;需要比较长的训练过程，不适用于现实应用场景中的知识更新后的实时查询</li>
+</ol>
+<h2 id="1014-智能问答面临的问题和挑战"><a class="markdownIt-Anchor" href="#1014-智能问答面临的问题和挑战"></a> 10.14. 智能问答面临的问题和挑战</h2>
+<ol>
+<li>复杂query的解析
+<ol>
+<li>多意图:“帮我播放音乐，打开窗户”</li>
+<li>xxx:“如果明天下币，提醒我关窗户”</li>
+<li>其他:&quot;帮我建一个明天C罗比赛的提醒</li>
+</ol>
+</li>
+<li>复杂多轮及上下文
+<ol>
+<li>任务型、问答、闲聊等多种技能的自由切换以及上下文传递</li>
+<li>U:明天西甲的比赛</li>
+<li>A:为你找到如下比赛:(屏幕显示&quot;皇马对巴萨&quot;等三场比赛)</li>
+<li>U:帮我建一个第二场比赛的提醒</li>
+</ol>
+</li>
+</ol>
+<h1 id="11-kg-embedding"><a class="markdownIt-Anchor" href="#11-kg-embedding"></a> 11. KG embedding</h1>
+<h2 id="111-推荐论文"><a class="markdownIt-Anchor" href="#111-推荐论文"></a> 11.1. 推荐论文</h2>
+<ol>
+<li><a href = "https://link.zhihu.com/?target=https%3A//ieeexplore.ieee.org/abstract/document/8047276">Knowledge Graph Embedding: A Survey of Approaches and Applications</a></li>
+<li><a href = "https://link.zhihu.com/?target=http%3A//nlp.csai.tsinghua.edu.cn/~lzy/publications/knowledge_2016.pdf">知识表示学习研究进展，刘知远</a></li>
+</ol>
+<h2 id="112-简介"><a class="markdownIt-Anchor" href="#112-简介"></a> 11.2. 简介</h2>
+<ol>
+<li>KG Embedding主要是把实体(entities)和关系(relations)嵌入(Embed)到一个连续向量空间里面</li>
+<li>KG Embedding主要包含三个步骤：
+<ol>
+<li>对实体(entities)和关系(relations)进行表示</li>
+<li>定义得分函数(scoring function)</li>
+<li>实体和关系的表示进行学习</li>
+</ol>
+</li>
+</ol>
+<h2 id="113-模型"><a class="markdownIt-Anchor" href="#113-模型"></a> 11.3. 模型</h2>
+<ol>
+<li>KG Embedding方法被划分为两类</li>
+</ol>
+<h3 id="1131-距离变换模型translational-distance-models"><a class="markdownIt-Anchor" href="#1131-距离变换模型translational-distance-models"></a> 11.3.1. 距离变换模型(Translational distance models)</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/64.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/65.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1132-语义匹配模型"><a class="markdownIt-Anchor" href="#1132-语义匹配模型"></a> 11.3.2. 语义匹配模型</h3>
+<ol>
+<li>模型有RESCAL、DistMult和HolE</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/66.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>还有SME、NTN、MLP和NAM等方式</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/67.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/68.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1133-不同模型的复杂度比较"><a class="markdownIt-Anchor" href="#1133-不同模型的复杂度比较"></a> 11.3.3. 不同模型的复杂度比较</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/69.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="114-训练"><a class="markdownIt-Anchor" href="#114-训练"></a> 11.4. 训练</h2>
+<ol>
+<li>模型训练有两种：基于开放世界假设和基于闭合世界假设</li>
+</ol>
+<h3 id="1141-开发世界假设training-under-open-world-assumptionowa"><a class="markdownIt-Anchor" href="#1141-开发世界假设training-under-open-world-assumptionowa"></a> 11.4.1. 开发世界假设，Training under Open World Assumption，OWA</h3>
+<ol>
+<li>KGS只包含真实的事实，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">D^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>只存储正例</li>
+<li>logistic loss:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><munder><mo><mi>min</mi><mo>⁡</mo></mo><mi>θ</mi></munder><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo>∪</mo><msup><mi>D</mi><mo>−</mo></msup></mrow></munder><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mo>−</mo><msub><mi>y</mi><mrow><mi>h</mi><mi>r</mi><mi>t</mi></mrow></msub><mo>∗</mo><msub><mi>f</mi><mi>r</mi></msub><mo stretchy="false">(</mo><mi>h</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\min\limits_{\theta}\sum\limits_{r \in D^+ \cup D^-}log(1 + exp(-y_{hrt} * f_r(h, t)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7852450000000002em;vertical-align:-1.03524em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.66786em;"><span style="top:-2.047892em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7521079999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500050000000001em;"><span style="top:-2.09213em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mbin mtight">∪</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.03524em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord">−</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></li>
+<li>pairwise ranking loss：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><munder><mo><mi>min</mi><mo>⁡</mo></mo><mi>θ</mi></munder><munder><mo>∑</mo><mrow><msup><mi>r</mi><mo>+</mo></msup><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup></mrow></munder><munder><mo>∑</mo><mrow><msup><mi>r</mi><mo>−</mo></msup><mo>∈</mo><msup><mi>D</mi><mo>−</mo></msup></mrow></munder><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>γ</mi><mo>−</mo><msub><mi>f</mi><mi>r</mi></msub><mo stretchy="false">(</mo><mi>h</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>f</mi><msup><mi>r</mi><mo mathvariant="normal">′</mo></msup></msub><mo stretchy="false">(</mo><msup><mi>h</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msup><mi>t</mi><mo mathvariant="normal">′</mo></msup><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\min\limits_{\theta}\sum\limits_{r^+ \in D^+}\sum\limits_{r^- \in D^-}\max(0, \gamma - f_r(h, t) + f_{r&#x27;}(h&#x27;,t&#x27;))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7852450000000002em;vertical-align:-1.03524em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.66786em;"><span style="top:-2.047892em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7521079999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500050000000001em;"><span style="top:-2.09213em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.03524em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500050000000001em;"><span style="top:-2.09213em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7026642857142857em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.03524em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">h</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32797999999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></li>
+</ol>
+<h3 id="1142-闭合世界假设training-under-cloesd-world-assumptioncma"><a class="markdownIt-Anchor" href="#1142-闭合世界假设training-under-cloesd-world-assumptioncma"></a> 11.4.2. 闭合世界假设，Training under Cloesd World Assumption，CMA</h3>
+<ol>
+<li>没有包含在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>D</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">D^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>中的样例都是错误的</li>
+<li>squared loss:<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: … - f_r(h, t))^2'>\min\limits_{\theta}\sum\limits_{h, t\in E, r\infty R(y_{hrt} - f_r(h, t))^2</span></li>
+</ol>
+<h2 id="115-其他参考信息"><a class="markdownIt-Anchor" href="#115-其他参考信息"></a> 11.5. 其他参考信息</h2>
+<ol>
+<li>实体类型，Entity Types</li>
+<li>关系路径，Relation Paths</li>
+<li>背景描述，Textual Descriptions</li>
+<li>逻辑规则， Logical Rules</li>
+<li>实体属性，Entity Attributes</li>
+<li>临时信息，Temporal Information</li>
+<li>图的结构，Graph Structures</li>
+</ol>
+<h2 id="116-应用"><a class="markdownIt-Anchor" href="#116-应用"></a> 11.6. 应用</h2>
+<ol>
+<li>In-KG Applications：
+<ol>
+<li>链接预测，知识图谱补全，Link Prediction，[公式]，[公式]，[公式]</li>
+<li>三元组分类，Triple Classifification，判断三元组事实[公式]是否为真</li>
+<li>实体分类，Entity Classifification，将实体归类为不同的实体 语义类别</li>
+<li>实体判别，Entity resolution，判断两个实体是否为同一个目标</li>
+</ol>
+</li>
+<li>Out-of-KG Applications：
+<ol>
+<li>关系抽取， Relation Extraction</li>
+<li>问答系统，Question Answering</li>
+<li>推荐系统， Recommender Systems</li>
+</ol>
+</li>
+</ol>
+<h2 id="117-transe算法"><a class="markdownIt-Anchor" href="#117-transe算法"></a> 11.7. TransE算法</h2>
+<ol>
+<li>三元组的表示:(h, r, t)含义为(头实体，关系，尾实体)</li>
+<li>目标：我们找到正确的三元组，即: h + r = t</li>
+<li>算法过程描述</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec9/70.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>注意：
+<ol>
+<li>我们需要关注的是之前的项和后面的项之间的关系，如果正确了则给予正反馈，否则基于负反馈。</li>
+<li>SGD的收敛效果没有GD，但是这个可以有效的避免过拟合情况的出现。</li>
+</ol>
+</li>
+</ol>
+<h2 id="118-transh算法"><a class="markdownIt-Anchor" href="#118-transh算法"></a> 11.8. TransH算法</h2>
+<p><a href = "https://blog.csdn.net/MonkeyDSummer/article/details/85273843">TransH 算法详解</a></p>
+<h1 id="12-实践项目参考"><a class="markdownIt-Anchor" href="#12-实践项目参考"></a> 12. 实践项目参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/qq_35273499/article/details/80259821">项目实战：如何构建知识图谱</a></li>
+<li><a href = "https://blog.csdn.net/hadoopdevelop/article/details/84787934?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">知识图谱完整项目实战(附源码)(2)</a></li>
+<li><a href = "https://github.com/smoothnlp/SmoothNLP">github:smoothNLP开源项目</a></li>
+</ol>
+<h1 id="13-知识图谱数据集介绍"><a class="markdownIt-Anchor" href="#13-知识图谱数据集介绍"></a> 13. 知识图谱数据集介绍</h1>
+<ol>
+<li><a href = "https://zhuanlan.zhihu.com/p/133649429">【知识工程】知识图谱常用实验数据集Freebase、WordNet概述</a></li>
+</ol>
+<h1 id="14-参考"><a class="markdownIt-Anchor" href="#14-参考"></a> 14. 参考</h1>
+<ol>
+<li><a href = "https://zhuanlan.zhihu.com/p/102391664">知识表示-KG Embedding</a></li>
+<li><a href = "https://www.jianshu.com/p/995cc0b8ebe5">最全知识图谱介绍:关键技术、开放数据集、应用案例汇总</a></li>
+<li><a href = "https://blog.csdn.net/MonkeyDSummer/article/details/85253813">TransE算法详解</a></li>
+<li><a href = "https://blog.csdn.net/u011274209/article/details/50991385">TransE算法(Translating Embedding)(主要是注解)</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Big-data-analysis/" class="category-chain-item">2020-Big-data-analysis</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#大数据分析</a>
+      
+        <a href="/project/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">#知识图谱</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Big-data-analysis-Lecture9-知识图谱</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture9-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-SUMMARY/" title="2020-Big-data-analysis-SUMMARY">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Big-data-analysis-SUMMARY</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture11-%E5%9B%BE%E6%8C%96%E6%8E%98/" title="2020-Big-data-analysis-Lecture11-图挖掘">
+                        <span class="hidden-mobile">2020-Big-data-analysis-Lecture11-图挖掘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

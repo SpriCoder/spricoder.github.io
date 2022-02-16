@@ -1,0 +1,1172 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Software-System-Design-Lec09-Structural Pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Software-System-Design-Lec09-Structural Pattern">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Software-System-Design-Lec09-Structural Pattern">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/21.png">
+<meta property="article:published_time" content="2022-02-16T11:09:24.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:22:50.535Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="软件系统设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/1.png">
+  
+  
+  <title>2021-Software-System-Design-Lec09-Structural Pattern - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          88 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Software-System-Design-Lec09-Structural Pattern</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec09-structual-pattern"><a class="markdownIt-Anchor" href="#lec09-structual-pattern"></a> Lec09-Structual Pattern</h2>
+<h1 id="1-外观模式"><a class="markdownIt-Anchor" href="#1-外观模式"></a> 1. 外观模式</h1>
+<h2 id="11-模式动机"><a class="markdownIt-Anchor" href="#11-模式动机"></a> 1.1. 模式动机</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>引入外观角色之后，<strong>用户只需要直接与外观角色交互，用户与子系统之间的复杂关系由外观角色来实现</strong>，从而降低了系统的耦合度。外观模式</li>
+</ol>
+<h2 id="12-模式定义"><a class="markdownIt-Anchor" href="#12-模式定义"></a> 1.2. 模式定义</h2>
+<ol>
+<li>外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个<strong>统一的外观对象</strong>进行，为子系统中的一组接口<strong>提供一个一致的界面</strong>，外观模式定义了一个高层接口，这个接口<strong>使得这一子系统更加容易使用</strong>。外观模式又称为<strong>门面模式</strong>，它是一种<strong>对象结构型模式</strong>。
+<ol>
+<li>简化了接口</li>
+<li>接口相关模式：适配器模式、外观模式，变化决定了要使用哪个模式</li>
+</ol>
+</li>
+<li>Facade Pattern: Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.</li>
+</ol>
+<h2 id="13-模式结构"><a class="markdownIt-Anchor" href="#13-模式结构"></a> 1.3. 模式结构</h2>
+<ol>
+<li>外观模式包含如下角色：
+<ol>
+<li>Facade: 外观角色</li>
+<li>SubSystem:子系统角色</li>
+</ol>
+</li>
+<li>使用的设计思想：迪米特法则</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="14-模式分析"><a class="markdownIt-Anchor" href="#14-模式分析"></a> 1.4. 模式分析</h2>
+<ol>
+<li>根据“单一职责原则”，<strong>在软件中将一个系统划分为若干个子系统有利于降低整个系统的复杂性</strong>，一个常见的设计目标是使子系统间的通信和相互依赖关系达到最小，而达到该目标的途径之一就是<strong>引入一个外观对象</strong>，它<strong>为子系统的访问提供了一个简单而单一的入口</strong>。</li>
+<li>外观模式也是“迪米特法则”的体现，<strong>通过引入一个新的外观类可以降低原有系统的复杂度</strong>，同时<strong>降低客户类与子系统类的耦合度</strong>。</li>
+<li>外观模式要求一个子系统的外部与其内部的通信<strong>通过一个统一的外观对象进行</strong>，外观类将客户端与子系统的内部复杂性分隔开，使得<strong>客户端只需要与外观对象打交道，而不需要与子系统内部的很多对象打交道</strong>。</li>
+<li>外观模式的目的在于<strong>降低系统的复杂程度</strong>。</li>
+<li>外观模式从很大程度上<strong>提高了客户端使用的便捷性</strong>，使得客户端无须关心子系统的工作细节，通过外观角色即可调用相关功能。</li>
+<li>典型的外观角色代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Facade</span><br>&#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">SubSystemA</span> <span class="hljs-variable">obj1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystemA</span>();<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">SubSystemB</span> <span class="hljs-variable">obj2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystemB</span>();<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">SubSystemC</span> <span class="hljs-variable">obj3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystemC</span>();<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method</span><span class="hljs-params">()</span>&#123;<br>    obj1.method();<br>    obj2.method();<br>    obj3.method();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="15-外观模式实例与解析"><a class="markdownIt-Anchor" href="#15-外观模式实例与解析"></a> 1.5. 外观模式实例与解析</h2>
+<h3 id="151-实例一电源总开关"><a class="markdownIt-Anchor" href="#151-实例一电源总开关"></a> 1.5.1. 实例一：电源总开关</h3>
+<ol>
+<li>现在考察一个电源总开关的例子，以便进一步说明外观模式。为了使用方便，一个电源总开关可以控制四盏灯、一个风扇、一台空调和一台电视机的启动和关闭。通过该电源总开关可以同时控制上述所有电器设备，使用外观模式设计该系统。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="152-实例二文件加密"><a class="markdownIt-Anchor" href="#152-实例二文件加密"></a> 1.5.2. 实例二：文件加密</h3>
+<ol>
+<li>某系统需要提供一个文件加密模块，加密流程包括三个操作，分别是读取源文件、加密、保存加密之后的文件。读取文件和保存文件使用流来实现，这三个操作相对独立，其业务代码封装在三个不同的类中。现在需要提供一个统一的加密外观类，用户可以直接使用该加密外观类完成文件的读取、加密和保存三个操作，而不需要与每一个类进行交互，使用外观模式设计该加密模块。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>可以使用模板方法模式实现嘛？子类提供不同的实现，复用父类方法的步骤</li>
+<li>什么时候外观？如果每一个部分都不变，只是提供接口</li>
+</ol>
+<h2 id="16-模式优缺点"><a class="markdownIt-Anchor" href="#16-模式优缺点"></a> 1.6. 模式优缺点</h2>
+<h3 id="161-外观模式的优点"><a class="markdownIt-Anchor" href="#161-外观模式的优点"></a> 1.6.1. 外观模式的优点</h3>
+<ol>
+<li><strong>对客户屏蔽子系统组件，减少了客户处理的对象数目并使得子系统使用起来更加容易</strong>。通过引入外观模式，客户代码将变得很简单，与之关联的对象也很少。</li>
+<li><strong>实现了子系统与客户之间的松耦合关系</strong>，这使得子系统的组件变化不会影响到调用它的客户类，只需要调整外观类即可。</li>
+<li><strong>降低了大型软件系统中的编译依赖性，并简化了系统在不同平台之间的移植过程</strong>，因为编译一个子系统一般不需要编译所有其他的子系统。一个子系统的修改对其他子系统没有任何影响，而且子系统内部变化也不会影响到外观对象。</li>
+<li><strong>只是提供了一个访问子系统的统一入口，并不影响用户直接使用子系统类</strong>。</li>
+</ol>
+<h3 id="162-外观模式的缺点"><a class="markdownIt-Anchor" href="#162-外观模式的缺点"></a> 1.6.2. 外观模式的缺点</h3>
+<ol>
+<li><strong>不能很好地限制客户使用子系统类</strong>，如果对客户访问子系统类做太多的限制则减少了可变性和灵活性。</li>
+<li>在不引入<strong>抽象外观类</strong>的情况下，<strong>增加新的子系统可能需要修改外观类或客户端的源代码，违背了“开闭原则”</strong>。</li>
+</ol>
+<h3 id="163-外观模式"><a class="markdownIt-Anchor" href="#163-外观模式"></a> 1.6.3. 外观模式</h3>
+<ol>
+<li>模式适用环境
+<ol>
+<li>在以下情况下可以使用外观模式：</li>
+<li><strong>当要为一个复杂子系统提供一个简单接口时可以使用外观模式</strong>。该接口可以满足大多数用户的需求，而且用户也可以越过外观类直接访问子系统。</li>
+<li><strong>客户程序与多个子系统之间存在很大的依赖性</strong>。引入外观类将子系统与客户以及其他子系统解耦，可以提高子系统的独立性和可移植性。</li>
+<li>在层次化结构中，可以<strong>使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度</strong>。</li>
+</ol>
+</li>
+</ol>
+<h2 id="17-模式应用"><a class="markdownIt-Anchor" href="#17-模式应用"></a> 1.7. 模式应用</h2>
+<ol>
+<li>外观模式应用于JDBC数据库操作</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JDBCFacade</span> &#123;<br>  <span class="hljs-keyword">private</span> Connection conn=<span class="hljs-literal">null</span>;<br>  <span class="hljs-keyword">private</span> Statement statement=<span class="hljs-literal">null</span>;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">open</span><span class="hljs-params">(String driver,String jdbcUrl,String userName,String userPwd)</span> &#123;<br>  ......<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">executeUpdate</span><span class="hljs-params">(String sql)</span> &#123;<br>  ......<br>  &#125;<br>  <span class="hljs-keyword">public</span> ResultSet <span class="hljs-title function_">executeQuery</span><span class="hljs-params">(String sql)</span> &#123;<br>  ......<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> &#123;<br>  ......<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>Session外观模式是外观模式在Java EE框架中的应用。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="18-模式扩展"><a class="markdownIt-Anchor" href="#18-模式扩展"></a> 1.8. 模式扩展</h2>
+<h3 id="181-一个系统有多个外观类"><a class="markdownIt-Anchor" href="#181-一个系统有多个外观类"></a> 1.8.1. 一个系统有多个外观类</h3>
+<ol>
+<li>在外观模式中，通常只需要一个外观类，并且此外观类只有一个实例，换言之它是一个<strong>单例类</strong>。<strong>在很多情况下为了节约系统资源，一般将外观类设计为单例类</strong>。当然这并不意味着在整个系统里只能有一个外观类，<strong>在一个系统中可以设计多个外观类，每个外观类都负责和一些特定的子系统交互</strong>，向用户提供相应的业务功能。</li>
+</ol>
+<h3 id="182-不要试图通过外观类为子系统增加新行为"><a class="markdownIt-Anchor" href="#182-不要试图通过外观类为子系统增加新行为"></a> 1.8.2. 不要试图通过外观类为子系统增加新行为</h3>
+<ol>
+<li>**不要通过继承一个外观类在子系统中加入新的行为，这种做法是错误的。**外观模式的用意是为子系统提供一个集中化和简化的沟通渠道，而不是向子系统加入新的行为，新的行为的增加应该通过修改原有子系统类或增加新的子系统类来实现，不能通过外观类来实现。</li>
+</ol>
+<h3 id="183-外观模式与迪米特法则"><a class="markdownIt-Anchor" href="#183-外观模式与迪米特法则"></a> 1.8.3. 外观模式与迪米特法则</h3>
+<ol>
+<li><strong>外观模式创造出一个外观对象，将客户端所涉及的属于一个子系统的协作伙伴的数量减到最少，使得客户端与子系统内部的对象的相互作用被外观对象所取代</strong>。外观类充当了客户类与子系统类之间的“第三者”，降低了客户类与子系统类之间的耦合度，外观模式就是实现代码重构以便达到“迪米特法则”要求的一个强有力的武器。</li>
+</ol>
+<h3 id="184-抽象外观类的引入"><a class="markdownIt-Anchor" href="#184-抽象外观类的引入"></a> 1.8.4. 抽象外观类的引入</h3>
+<ol>
+<li>外观模式最大的缺点在于违背了“开闭原则”，<strong>当增加新的子系统或者移除子系统时需要修改外观类，可以通过引入抽象外观类在一定程度上解决该问题，客户端针对抽象外观类进行编程</strong>。对于新的业务需求，不修改原有外观类，而对应增加一个新的具体外观类，由新的具体外观类来关联新的子系统对象，同时通过修改配置文件来达到不修改源代码并更换外观类的目的。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="19-小结"><a class="markdownIt-Anchor" href="#19-小结"></a> 1.9. 小结</h2>
+<ol>
+<li>在外观模式中，外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。</li>
+<li>外观模式包含两个角色
+<ol>
+<li>外观角色是在客户端直接调用的角色，在外观角色中可以知道相关的(一个或者多个)子系统的功能和责任，它将所有从客户端发来的请求委派到相应的子系统去，传递给相应的子系统对象处理</li>
+<li>在软件系统中可以同时有一个或者多个子系统角色，每一个子系统可以不是一个单独的类，而是一个类的集合，它实现子系统的功能。</li>
+</ol>
+</li>
+<li>外观模式要求一个子系统的外部与其内部的通信通过一个统一的外观对象进行，外观类将客户端与子系统的内部复杂性分隔开，使得客户端只需要与外观对象打交道，而不需要与子系统内部的很多对象打交道。</li>
+<li>外观模式
+<ol>
+<li>主要优点在于对客户屏蔽子系统组件，减少了客户处理的对象数目并使得子系统使用起来更加容易，它实现了子系统与客户之间的松耦合关系，并降低了大型软件系统中的编译依赖性，简化了系统在不同平台之间的移植过程</li>
+<li>其缺点在于不能很好地限制客户使用子系统类，而且在不引入抽象外观类的情况下，增加新的子系统可能需要修改外观类或客户端的源代码，违背了“开闭原则”。</li>
+</ol>
+</li>
+<li>外观模式适用情况包括
+<ol>
+<li>要为一个复杂子系统提供一个简单接口</li>
+<li>客户程序与多个子系统之间存在很大的依赖性</li>
+<li>在层次化结构中，需要定义系统中每一层的入口，使得层与层之间不直接产生联系。</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-享元模式"><a class="markdownIt-Anchor" href="#2-享元模式"></a> 2. 享元模式</h1>
+<h2 id="21-模式动机"><a class="markdownIt-Anchor" href="#21-模式动机"></a> 2.1. 模式动机</h2>
+<ol>
+<li>面向对象技术可以很好地解决一些灵活性或可扩展性问题，但在很多情况下需要在系统中增加类和对象的个数。<strong>当对象数量太多时，将导致运行代价过高，带来性能下降等问题</strong>。</li>
+<li><strong>享元模式</strong>正是为解决这一类问题而诞生的。<strong>享元模式通过共享技术实现相同或相似对象的重用</strong>。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在享元模式中<strong>可以共享的相同内容称为内部状态</strong>(Intrinsic State)，而那些<strong>需要外部环境来设置的不能共享的内容称为外部状态</strong>(Extrinsic State)，由于区分了内部状态和外部状态，因此可以通过设置不同的外部状态使得相同的对象可以具有一些不同的特征，而相同的内部状态是可以共享的。</li>
+<li>在享元模式中通常会出现工厂模式，需要<strong>创建一个享元工厂来负责维护一个享元池(Flyweight Pool)用于存储具有相同内部状态的享元对象</strong>。</li>
+<li>在享元模式中共享的是享元对象的内部状态，外部状态需要通过环境来设置。在实际使用中，能够共享的内部状态是有限的，因此<strong>享元对象一般都设计为较小的对象，它所包含的内部状态较少，这种对象也称为细粒度对象。享元模式的目的就是使用共享技术来实现大量细粒度对象的复用</strong>。</li>
+</ol>
+<h2 id="22-模式定义"><a class="markdownIt-Anchor" href="#22-模式定义"></a> 2.2. 模式定义</h2>
+<ol>
+<li>享元模式(Flyweight Pattern)：运用<strong>共享技术</strong>有效地支持大量<strong>细粒度对象</strong>的复用。系统只使用少量的对象，<strong>而这些对象都很相似，状态变化很小</strong>，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细粒度对象，因此它又称为<strong>轻量级模式</strong>，它是一种<strong>对象结构型模式</strong>。</li>
+<li>Flyweight Pattern: Use sharing to support large  numbers of fine-grained objects efficiently.</li>
+</ol>
+<h2 id="23-模式结构"><a class="markdownIt-Anchor" href="#23-模式结构"></a> 2.3. 模式结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>享元工厂和原型管理器非常相似</li>
+<li>享元模式包含如下角色：
+<ol>
+<li>Flyweight: 抽象享元类</li>
+<li>ConcreteFlyweight: 具体享元类</li>
+<li>UnsharedConcreteFlyweight: 非共享具体享元类</li>
+<li>FlyweightFactory: 享元工厂类</li>
+</ol>
+</li>
+<li>享元模式是一个考虑系统性能的设计模式，通过使用享元模式可以节约内存空间，提高系统的性能。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>享元模式的核心在于<strong>享元工厂类</strong>，<strong>享元工厂类的作用在于提供一个用于存储享元对象的享元池</strong>，用户需要对象时，首先从享元池中获取，<strong>如果享元池中不存在，则创建一个新的享元对象返回给用户，并在享元池中保存该新增对象</strong>。</li>
+<li>比较原型管理模式和享元工厂模型</li>
+</ol>
+<h2 id="24-模式分析"><a class="markdownIt-Anchor" href="#24-模式分析"></a> 2.4. 模式分析</h2>
+<ol>
+<li>典型的享元工厂类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightFactory</span>&#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">HashMap</span> <span class="hljs-variable">flyweights</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>();<br>  <span class="hljs-keyword">public</span> Flyweight <span class="hljs-title function_">getFlyweight</span><span class="hljs-params">(String key)</span><br>  &#123;<br>    <span class="hljs-keyword">if</span>(flyweights.containsKey(key))<br>    &#123;<br>      <span class="hljs-keyword">return</span> (Flyweight)flyweights.get(key);<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>      <span class="hljs-type">Flyweight</span> <span class="hljs-variable">fw</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFlyweight</span>();<br>      flyweights.put(key,fw);<br>      <span class="hljs-keyword">return</span> fw;<br>    &#125;<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>享元模式以共享的方式高效地支持大量的细粒度对象，享元对象能做到共享的关键是区分<strong>内部状态</strong>(Internal State)和<strong>外部状态</strong>(External State)。
+<ol>
+<li><strong>内部状态是存储在享元对象内部并且不会随环境改变而改变的状态</strong>，因此内部状态可以共享。</li>
+<li><strong>外部状态是随环境改变而改变的</strong>、<strong>不可以共享的状态</strong>。享元对象的外部状态必须由客户端保存，并在享元对象被创建之后，在需要使用的时候再传入到享元对象内部。一个外部状态与另一个外部状态之间是相互独立的。</li>
+</ol>
+</li>
+<li>典型的享元类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Flyweight</span><br>&#123;<br>  <span class="hljs-comment">//内部状态作为成员属性</span><br>  <span class="hljs-keyword">private</span> String intrinsicState;<br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Flyweight</span><span class="hljs-params">(String intrinsicState)</span><br>  &#123;<br>    <span class="hljs-built_in">this</span>.intrinsicState = intrinsicState;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">(String extrinsicState)</span><br>  &#123;<br>  ......<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="25-享元模式实例与解析"><a class="markdownIt-Anchor" href="#25-享元模式实例与解析"></a> 2.5. 享元模式实例与解析</h2>
+<h3 id="251-实例一共享网络设备无外部状态"><a class="markdownIt-Anchor" href="#251-实例一共享网络设备无外部状态"></a> 2.5.1. 实例一：共享网络设备（无外部状态）</h3>
+<ol>
+<li>很多网络设备都是支持共享的，如交换机、集线器等，多台终端计算机可以连接同一台网络设备，并通过该网络设备进行数据转发，如图所示，现用享元模式模拟共享网络设备的设计原理。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="252-实例二共享网络设备有外部状态"><a class="markdownIt-Anchor" href="#252-实例二共享网络设备有外部状态"></a> 2.5.2. 实例二：共享网络设备（有外部状态）</h3>
+<ol>
+<li>虽然网络设备可以共享，但是分配给每一个终端计算机的端口(Port)是不同的，因此多台计算机虽然可以共享同一个网络设备，但必须使用不同的端口。我们可以将端口从网络设备中抽取出来作为外部状态，需要时再进行设置。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="26-模式优缺点"><a class="markdownIt-Anchor" href="#26-模式优缺点"></a> 2.6. 模式优缺点</h2>
+<h3 id="261-享元模式的优点"><a class="markdownIt-Anchor" href="#261-享元模式的优点"></a> 2.6.1. 享元模式的优点</h3>
+<ol>
+<li>享元模式的优点在于它可以<strong>极大减少内存中对象的数量</strong>，使得相同对象或相似对象在内存中只保存一份。</li>
+<li>享元模式的外部状态相对独立，而且不会影响其内部状态，从而使得<strong>享元对象可以在不同的环境中被共享</strong>。</li>
+</ol>
+<h3 id="262-享元模式的缺点"><a class="markdownIt-Anchor" href="#262-享元模式的缺点"></a> 2.6.2. 享元模式的缺点</h3>
+<ol>
+<li>享元模式使得系统更加复杂，需要<strong>分离出内部状态和外部状态，这使得程序的逻辑复杂化</strong>。</li>
+<li>为了使对象可以共享，享元模式<strong>需要将享元对象的状态外部化，而读取外部状态使得运行时间变长</strong>。</li>
+</ol>
+<h2 id="27-模式适用环境"><a class="markdownIt-Anchor" href="#27-模式适用环境"></a> 2.7. 模式适用环境</h2>
+<ol>
+<li>在以下情况下可以使用享元模式：
+<ol>
+<li>一个系统有<strong>大量相同或者相似的对象</strong>，由于这类对象的大量使用，造成内存的大量耗费。</li>
+<li>对象的<strong>大部分状态都可以外部化</strong>，可以将这些外部状态传入对象中。</li>
+<li>使用享元模式需要维护一个存储享元对象的享元池，而这需要耗费资源，因此，<strong>应当在多次重复使用享元对象时才值得使用享元模式</strong>。</li>
+</ol>
+</li>
+</ol>
+<h2 id="28-模式应用"><a class="markdownIt-Anchor" href="#28-模式应用"></a> 2.8. 模式应用</h2>
+<ol>
+<li>享元模式在<strong>编辑器软件</strong>中大量使用，如在一个文档中多次出现相同的图片，则只需要创建一个图片对象，通过在应用程序中设置该图片出现的位置，可以实现该图片在不同地方多次重复显示。</li>
+<li>在JDK类库中定义的String类使用了享元模式。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo</span><br>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String args[])</span><br>  &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abcd&quot;</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abcd&quot;</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">str3</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;ab&quot;</span> + <span class="hljs-string">&quot;cd&quot;</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">str4</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;ab&quot;</span>;<br>    str4 += <span class="hljs-string">&quot;cd&quot;</span>;<br>    System.out.println(str1 == str2);<span class="hljs-comment">// T</span><br>    System.out.println(str1 == str3);<span class="hljs-comment">// T</span><br>    System.out.println(str1 == str4);<span class="hljs-comment">// F</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="29-模式扩展"><a class="markdownIt-Anchor" href="#29-模式扩展"></a> 2.9. 模式扩展</h2>
+<h3 id="291-单纯享元模式和复合享元模式"><a class="markdownIt-Anchor" href="#291-单纯享元模式和复合享元模式"></a> 2.9.1. 单纯享元模式和复合享元模式</h3>
+<ol>
+<li><strong>单纯享元模式</strong>：在单纯享元模式中，<strong>所有的享元对象都是可以共享的</strong>，即所有抽象享元类的子类都可共享，不存在非共享具体享元类。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li><strong>复合享元模式</strong>：将一些单纯享元使用组合模式加以组合，可以形成复合享元对象，这样的复合享元对象本身不能共享，但是它们可以分解成单纯享元对象，而后者则可以共享。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="292-享元模式与其他模式的联用"><a class="markdownIt-Anchor" href="#292-享元模式与其他模式的联用"></a> 2.9.2. 享元模式与其他模式的联用</h3>
+<ol>
+<li>在享元模式的享元工厂类中通常<strong>提供一个静态的工厂方法用于返回享元对象</strong>，使用简单工厂模式来生成享元对象。</li>
+<li>在一个系统中，通常只有唯一一个享元工厂，因此<strong>享元工厂类可以使用单例模式进行设计</strong>。</li>
+<li>享元模式可以结合组合模式形成<strong>复合享元模式</strong>，统一对享元对象设置外部状态。</li>
+</ol>
+<h2 id="210-小结"><a class="markdownIt-Anchor" href="#210-小结"></a> 2.10. 小结</h2>
+<ol>
+<li>享元模式运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用，它是一种对象结构型模式。</li>
+<li>享元模式包含四个角色
+<ol>
+<li>抽象享元类声明一个接口，通过它可以接受并作用于外部状态</li>
+<li>具体享元类实现了抽象享元接口，其实例称为享元对象；非共享具体享元是不能被共享的抽象享元类的子类</li>
+<li>享元工厂类用于创建并管理享元对象，它针对抽象享元类编程，将各种类型的具体享元对象存储在一个享元池中。</li>
+</ol>
+</li>
+<li>享元模式以共享的方式高效地支持大量的细粒度对象，享元对象能做到共享的关键是区分内部状态和外部状态。其中内部状态是存储在享元对象内部并且不会随环境改变而改变的状态，因此内部状态可以共享；外部状态是随环境改变而改变的、不可以共享的状态。</li>
+<li>享元模式
+<ol>
+<li>主要优点在于它可以极大减少内存中对象的数量，使得相同对象或相似对象在内存中只保存一份</li>
+<li>其缺点是使得系统更加复杂，并且需要将享元对象的状态外部化，而读取外部状态使得运行时间变长。</li>
+</ol>
+</li>
+<li>享元模式适用情况包括
+<ol>
+<li>一个系统有大量相同或者相似的对象，由于这类对象的大量使用，造成内存的大量耗费</li>
+<li>对象的大部分状态都可以外部化，可以将这些外部状态传入对象中；多次重复使用享元对象。</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-代理模式"><a class="markdownIt-Anchor" href="#3-代理模式"></a> 3. 代理模式</h1>
+<h2 id="31-模式动机"><a class="markdownIt-Anchor" href="#31-模式动机"></a> 3.1. 模式动机</h2>
+<ol>
+<li>在某些情况下，<strong>一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用</strong>。代理对象可以在<strong>客户端和目标对象之间起到中介的作用</strong>，并且可以<strong>通过代理对象去掉客户不能看到的内容和服务或者添加客户需要的额外服务</strong>。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>通过<strong>引入一个新的对象</strong>（如小图片和远程代理对象）<strong>来实现对真实对象的操作或者将新的对象作为真实对象的一个替身</strong>，这种实现机制即为代理模式，<strong>通过引入代理对象来间接访问一个对象</strong>，这就是代理模式的模式动机。</li>
+</ol>
+<h2 id="32-模式定义"><a class="markdownIt-Anchor" href="#32-模式定义"></a> 3.2. 模式定义</h2>
+<ol>
+<li>代理模式(Proxy Pattern) ：给某一个对象<strong>提供一个代理</strong>，并<strong>由代理对象控制对原对象的引用</strong>。代理模式的英文叫做<strong>Proxy或Surrogate</strong>，它是一种<strong>对象结构型模式</strong>。</li>
+<li>Proxy Pattern: Provide a surrogate or placeholder for another object to control access to it.</li>
+<li>思想简单，但是变体很多</li>
+</ol>
+<h2 id="33-模式结构"><a class="markdownIt-Anchor" href="#33-模式结构"></a> 3.3. 模式结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>代理模式包含如下角色：
+<ol>
+<li>Subject: 抽象主题角色</li>
+<li>Proxy: 代理主题角色</li>
+<li>RealSubject: 真实主题角色</li>
+</ol>
+</li>
+<li>Proxy是符合迪米特法则的。</li>
+</ol>
+<h2 id="34-模式分析"><a class="markdownIt-Anchor" href="#34-模式分析"></a> 3.4. 模式分析</h2>
+<ol>
+<li>代理模式示意结构图比较简单，一般可以简化为如下图所示，但是在现实中要复杂很多。</li>
+<li>典型的代理类实现代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Proxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span>&#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">RealSubject</span> <span class="hljs-variable">realSubject</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RealSubject</span>();<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">preRequest</span><span class="hljs-params">()</span><br>  &#123;......&#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span><br>  &#123;<br>    preRequest();<br>    realSubject.request();<br>    postRequest();<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postRequest</span><span class="hljs-params">()</span><br>  &#123;......&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="35-代理模式实例与解析"><a class="markdownIt-Anchor" href="#35-代理模式实例与解析"></a> 3.5. 代理模式实例与解析</h2>
+<h3 id="351-实例一论坛权限控制代理"><a class="markdownIt-Anchor" href="#351-实例一论坛权限控制代理"></a> 3.5.1. 实例一：论坛权限控制代理</h3>
+<ol>
+<li>在一个论坛中已注册用户和游客的权限不同，已注册的用户拥有发帖、修改自己的注册信息、修改自己的帖子等功能；而游客只能看到别人发的帖子，没有其他权限。使用代理模式来设计该权限管理模块。</li>
+<li>在本实例中我们使用代理模式中的保护代理，该代理用于控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。</li>
+</ol>
+<h3 id="352-实例二数学运算代理"><a class="markdownIt-Anchor" href="#352-实例二数学运算代理"></a> 3.5.2. 实例二：数学运算代理</h3>
+<ol>
+<li>模拟应用远程代理来访问另外一个应用程序域中的对象，如果在远程实现了加减乘除等运算，在本地需要调用，那么可以考虑在本地设置一个代理。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="36-模式优缺点"><a class="markdownIt-Anchor" href="#36-模式优缺点"></a> 3.6. 模式优缺点</h2>
+<h3 id="361-代理模式的优点"><a class="markdownIt-Anchor" href="#361-代理模式的优点"></a> 3.6.1. 代理模式的优点</h3>
+<ol>
+<li>代理模式能够<strong>协调调用者和被调用者</strong>，在一定程度上降低了系统的耦合度。</li>
+<li><strong>远程代理使得客户端可以访问在远程机器上的对象</strong>，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。</li>
+<li><strong>虚拟代理</strong>通过使用一个小对象来代表一个大对象，<strong>可以减少系统资源的消耗，对系统进行优化并提高运行速度。</strong></li>
+<li><strong>保护代理可以控制对真实对象的使用权限。</strong></li>
+<li>C++：智能指针代理</li>
+</ol>
+<h3 id="362-代理模式的缺点"><a class="markdownIt-Anchor" href="#362-代理模式的缺点"></a> 3.6.2. 代理模式的缺点</h3>
+<ol>
+<li>由于在客户端和真实主题之间增加了代理对象，因此<strong>有些类型的代理模式可能会造成请求的处理速度变慢</strong>。</li>
+<li><strong>实现代理模式需要额外的工作，有些代理模式的实现非常复杂</strong>。</li>
+</ol>
+<h2 id="37-模式适用环境"><a class="markdownIt-Anchor" href="#37-模式适用环境"></a> 3.7. 模式适用环境</h2>
+<ol>
+<li>根据代理模式的使用目的，常见的代理模式有以下几种类型：
+<ol>
+<li><strong>远程(Remote)代理</strong>：为一个位于不同的地址空间的对象提供一个本地的代理对象，这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中，远程代理又叫做大使(Ambassador)。</li>
+<li><strong>虚拟(Virtual)代理</strong>：如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。</li>
+<li><strong>Copy-on-Write代理</strong>：它是虚拟代理的一种，把复制（克隆）操作延迟到只有在客户端真正需要时才执行。一般来说，对象的深克隆是一个开销较大的操作，Copy-on-Write代理可以让这个操作延迟，只有对象被用到的时候才被克隆。</li>
+</ol>
+</li>
+<li>根据代理模式的使用目的，代理模式有以下几种类型（续）：
+<ol>
+<li><strong>保护(Protect or Access)代理</strong>：控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。</li>
+<li><strong>缓冲(Cache)代理</strong>：为某一个目标操作的结果提供临时的存储空间，以便多个客户端可以共享这些结果。</li>
+<li><strong>防火墙(Firewall)代理</strong>：保护目标不让恶意用户接近。</li>
+<li><strong>智能引用(Smart Reference)代理</strong>：当一个对象被引用时，提供一些额外的操作，如将此对象被调用的次数记录下来等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="38-模式应用"><a class="markdownIt-Anchor" href="#38-模式应用"></a> 3.8. 模式应用</h2>
+<ol>
+<li>Java RMI (Remote Method Invocation，远程方法调用)。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li><strong>EJB、Web Service等分布式技术都是代理模式的应用</strong>。在EJB中使用了RMI机制，远程服务器中的企业级Bean在本地有一个桩代理，客户端通过桩来调用远程对象中定义的方法，而无须直接与远程对象交互。在EJB的使用中需要提供一个公共的接口，客户端针对该接口进行编程，无须知道桩以及远程EJB的实现细节。</li>
+</ol>
+<h2 id="39-模式扩展"><a class="markdownIt-Anchor" href="#39-模式扩展"></a> 3.9. 模式扩展</h2>
+<h3 id="391-几种常用的代理模式"><a class="markdownIt-Anchor" href="#391-几种常用的代理模式"></a> 3.9.1. 几种常用的代理模式</h3>
+<ol>
+<li><strong>远程代理</strong>：远程代理可以将网络的细节隐藏起来，使得<br />
+客户端不必考虑网络的存在。客户完全可以认为被代理<br />
+的远程业务对象是局域的而不是远程的，而远程代理对<br />
+象承担了大部分的网络通信工作。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec09/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li><strong>虚拟代理</strong>：当一个对象的加载十分耗费资源的时候，虚拟代理的优势就非常明显地体现出来了。<strong>虚拟代理模式是一种内存节省技术</strong>，那些占用大量内存或处理复杂的对象将推迟到使用它的时候才创建。</li>
+<li>在应用程序启动的时候，可以用代理对象代替真实对象初始化，节省了内存的占用，并大大加速了系统的启动时间。</li>
+<li><strong>虚拟代理</strong>：一个很常见的代理模式的应用实例就是<strong>对大图浏览的控制</strong>。</li>
+<li>用户通过浏览器访问网页时先不加载真实的大图，而是通过代理对象的方法来进行处理，在代理对象的方法中，<strong>先使用一个线程向客户端浏览器加载一个小图片</strong>，然后在后台使用另一个线程来调用大图片的加载方法将大图片加载到客户端。当需要浏览大图片时，再将大图片在新网页中显示。如果用户在浏览大图时加载工作还没有完成，可以再启动一个线程来显示相应的提示信息。<strong>通过代理技术结合多线程编程将真实图片的加载放到后台来操作，不影响前台图片的浏览</strong>。</li>
+</ol>
+<h2 id="310-小结"><a class="markdownIt-Anchor" href="#310-小结"></a> 3.10. 小结</h2>
+<ol>
+<li>在代理模式中，要求给某一个对象提供一个代理，并由代理对象控制对原对象的引用。代理模式的英文叫做Proxy或Surrogate，它是一种对象结构型模式。</li>
+<li>代理模式包含三个角色
+<ol>
+<li>抽象主题角色声明了真实主题和代理主题的共同接口</li>
+<li>代理主题角色内部包含对真实主题的引用，从而可以在任何时候操作真实主题对象</li>
+<li>真实主题角色定义了代理角色所代表的真实对象，在真实主题角色中实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的方法。</li>
+</ol>
+</li>
+<li>代理模式
+<ol>
+<li>优点在于能够协调调用者和被调用者，在一定程度上降低了系统的耦合度</li>
+<li>缺点在于由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢，并且实现代理模式需要额外的工作，有些代理模式的实现非常复杂。</li>
+</ol>
+</li>
+<li>远程代理为一个位于不同的地址空间的对象提供一个本地的代表对象，它使得客户端可以访问在远程机器上的对象，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。</li>
+<li>如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建，这个小对象称为虚拟代理。虚拟代理通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。</li>
+<li>保护代理可以控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+      
+        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Software-System-Design-Lec09-Structural Pattern</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec09-Structural%20Pattern/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec20-Software%20System%20Design(Architecture)/" title="2021-Software-System-Design-Lec20-Software System Design(Architecture)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec20-Software System Design(Architecture)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec16-Description/" title="2021-Software-System-Design-Lec16-Description">
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec16-Description</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

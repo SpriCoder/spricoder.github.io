@@ -1,0 +1,1181 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Linux-Programming-Exam1-重点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Linux-Programming-Exam1-重点">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Exam1-%E9%87%8D%E7%82%B9/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Linux-Programming-Exam1-重点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/6.png">
+<meta property="article:published_time" content="2022-02-16T11:09:16.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:10:31.162Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="考试">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/6.png">
+  
+  
+  <title>2021-Linux-Programming-Exam1-重点 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Linux-Programming-Exam1-重点</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="exam1-重点"><a class="markdownIt-Anchor" href="#exam1-重点"></a> Exam1-重点</h2>
+<h1 id="1-第一章linux-basic"><a class="markdownIt-Anchor" href="#1-第一章linux-basic"></a> 1. 第一章：Linux Basic</h1>
+<h2 id="11-linux-基础"><a class="markdownIt-Anchor" href="#11-linux-基础"></a> 1.1. Linux 基础</h2>
+<ol>
+<li>Linux 是什么样的系统：Linux是使用C编译器、C依赖库、emacs和bash开发的。</li>
+<li>Linux 创始人：Linus Torvalds</li>
+<li>Linux 发行版：Red Hat(后来发展为Fedora)、Debain(一定要配置自由软件，不会配置商业软件)、Ubuntu(用户好用就行)、SuSe、Mandrake、Redflag</li>
+</ol>
+<h2 id="12-linux-安装过程"><a class="markdownIt-Anchor" href="#12-linux-安装过程"></a> 1.2. Linux 安装过程</h2>
+<ol>
+<li>安装过程：选择语言、键鼠 -&gt; 磁盘分区 -&gt; 设置引导加载程序 -&gt; 配置网络 -&gt; 配置用户和认证 -&gt; 选择包装组 -&gt; 配置 -&gt; 安装软件包 -&gt; 创建启动盘</li>
+<li>分区的基本知识
+<ol>
+<li>最多只能有四个主分区；主分区可以是扩展分区；一个扩展分区可能有很多逻辑分区。</li>
+<li>MBR硬盘分区
+<ol>
+<li>磁盘分区 不能超过4T</li>
+<li>扩展分区 扩展分区不能直接使用，还需要划分为逻辑分区，额外分区是指向正确的额外分区表</li>
+<li>逻辑分区</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>MBR：Master Boot Record：主引导记录
+<ol>
+<li>磁盘的0磁道的第1个扇区称为MBR，共512字节，由BIOS定位</li>
+<li>内容
+<ol>
+<li>446 bytes 引导代码 Boot Loader</li>
+<li>64 bytes 磁盘分区表，最多4个条目</li>
+<li>2 bytes的magic number(0x55AA)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>GPT(GUID Partition Table) Globally Unique Identifier Partition Table
+<ol>
+<li>新的硬件必须有新的代码与其对应</li>
+<li>不要在老的机器上装新的分区组织方式</li>
+<li>GPT是MBR不够用了才会选择使用</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-linux-引导加载程序"><a class="markdownIt-Anchor" href="#13-linux-引导加载程序"></a> 1.3. Linux 引导加载程序</h2>
+<ol>
+<li>引导加载程序加载并启动Linux内核：传递启动参数(设备信息)、选择加载初始根磁盘、启动其他操作系统。</li>
+<li>通用引导加载程序：LILO(Linux加载程序)、GRUB(Grand Unified Boot Loader)</li>
+<li>除非使用其他引导加载程序，否则通常在/dev/hda中进行配置</li>
+</ol>
+<h2 id="14-linux-启动过程"><a class="markdownIt-Anchor" href="#14-linux-启动过程"></a> 1.4. Linux 启动过程</h2>
+<ol>
+<li>打开电源 -&gt; BIOS -&gt; boot loader -&gt; Linux kernel -&gt; init -&gt; System Ready</li>
+<li>BIOS：检查存储，从非易失存储中加载参数(内存时序、启动设备顺序)、检查引导设备(软盘、CD-ROM、磁盘等)、装载引导设备的MBR(包含&quot;Boot Loader&quot;和分区表，通常是有LILO/GRUB来启动)并执行</li>
+<li>初始化进程
+<ol>
+<li>使用/etc/inittab的配置文件</li>
+<li>按照启动级别启动</li>
+</ol>
+</li>
+</ol>
+<h2 id="15-linux-软件安装"><a class="markdownIt-Anchor" href="#15-linux-软件安装"></a> 1.5. Linux 软件安装</h2>
+<ol>
+<li>开源软件源代码操作</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">tar -zxvf code.tar.gz<br><span class="hljs-built_in">cd</span> code<br>./configure<br>make <span class="hljs-comment"># 编译</span><br>su - <span class="hljs-comment"># 切入root权限</span><br>make install<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>自动安装：
+<ol>
+<li>apt-get command *
+<ol>
+<li>update 获取到最新的软件包</li>
+<li>upgrade 升级已安装的所有软件包</li>
+</ol>
+</li>
+<li>dpkg：debian/Ubuntu、手动一个一个安装</li>
+<li>aptitude</li>
+<li>yum + rpm</li>
+<li>rpm：RPM打包管理
+<ol>
+<li>rpm -q -a</li>
+<li>rpm –ivh package-name</li>
+<li>rpm –e package-name</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="16-命令行和图形界面各有什么好处"><a class="markdownIt-Anchor" href="#16-命令行和图形界面各有什么好处"></a> 1.6. 命令行和图形界面各有什么好处？</h2>
+<h1 id="2-shell-programming"><a class="markdownIt-Anchor" href="#2-shell-programming"></a> 2. Shell Programming</h1>
+<h2 id="21-shell是什么"><a class="markdownIt-Anchor" href="#21-shell是什么"></a> 2.1. Shell是什么</h2>
+<ol>
+<li>Shell是用户与操作系统的接口，作为核外程序存在。具有双重角色：
+<ol>
+<li>Shell是一种命令解释程序：Linux的开发启动过程(进程树)、Shell的工作步骤：打印提示符；得到命令行；解析命令；查找文件；准备参数；执行命令。</li>
+<li>Shell还是一种独立的程序设计语言解释器。</li>
+</ol>
+</li>
+<li>Shell脚本的执行方式
+<ol>
+<li>方法1：<code>sh script_file</code>，Shell新建进程运行本方法</li>
+<li>方法2：<code>chmod +x script_file</code>授予文件可执行权限；<code>./script_file</code>，Shell新建进程运行</li>
+<li>方法3：<code>source script_file</code>；<code>.script_file</code>，Shell使用本进程运行</li>
+</ol>
+</li>
+<li>不同类型的Shell</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>shell和虚拟终端是不同的，一台电脑只有一个console，但是可以划分很多虚拟终端，虚拟中断是从console模拟出来的。
+<ol>
+<li><code>VT 1-6</code>文本模式登陆</li>
+<li><code>VT 7</code>图形模式登陆提示</li>
+<li>可以使用Alt-Fn在VT之间切换</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-基本命令"><a class="markdownIt-Anchor" href="#22-基本命令"></a> 2.2. 基本命令</h2>
+<ul>
+<li><code>passwd</code>：修改密码</li>
+<li><code>mkpasswd</code>：生成随机密码</li>
+<li><code>date</code>：当天日期</li>
+<li><code>cat</code>：展示一个日历</li>
+<li><code>who</code>：查看用户名以及当前登录名</li>
+<li><code>whoami</code>：查看用户名</li>
+<li><code>finger</code>：当前用户的home目录</li>
+<li><code>clear</code>：清空当前屏幕</li>
+<li><code>echo</code>：写一个信息到屏幕；-n 不换行</li>
+<li><code>write</code>：为已经登录的用户发送一个消息</li>
+<li><code>wall</code>：群发消息</li>
+<li><code>talk</code>：希望进行对象</li>
+<li><code>mesg</code>：用来设置是否允许向当前终端写消息(Y/N)</li>
+<li><code>cd</code>：切换文件夹</li>
+<li><code>mkdir</code>：创建文件夹
+<ul>
+<li><code>-m</code> 设置权限(-m 777)</li>
+<li><code>-p</code> 一次性创建多个路径</li>
+<li><code>-v</code> 每次创建新目录都显示信息</li>
+</ul>
+</li>
+<li><code>rmdir</code>：删除文件夹</li>
+<li><code>ls</code>：查看信息：<code>-l</code> 查看所有信息；<code>-a</code> 查看包含隐藏文件；<code>-R</code> 递归的查看所有文件信息；格式为<code>文件类别、权限(3种)、链接数(硬链接数)、拥有者、拥有者组、大小、最后修改时间、名称</code></li>
+<li><code>touch</code>：更新权限或修改文件权限
+<ul>
+<li><code>-a</code> 更改File变量指定的文件的访问时间，不更新修改时间</li>
+<li><code>-c</code> 如果文件不存在，则不要进行创建</li>
+<li><code>-f</code> 强制touch运行，不需要管理文件的读和写许可权</li>
+<li><code>-m</code> 更改FILE的修改时间，不要更改访问时间。</li>
+</ul>
+</li>
+<li><code>cp</code>：拷贝文件</li>
+<li><code>mv</code>：移动或重命名文件</li>
+<li><code>ln</code>：链接文件</li>
+<li><code>rm</code>：删除文件</li>
+<li><code>cat</code>：打印文件内容</li>
+<li><code>more</code>：显示文件内容，向下滚动</li>
+<li><code>less</code>：显示文件内容，上下滚动</li>
+<li><code>ps</code>：报告所有的进程状态</li>
+<li><code>pstree</code>：展示树状的程序们</li>
+<li><code>jobs</code>：用于显示Linux中的任务列表及任务状态，包括后台运行的任务；显示任务号及其对应的进程号。</li>
+<li><code>fg</code>：将一个进程移动到前台执行</li>
+<li><code>bg</code>：将一个进程移动到后台执行</li>
+<li><code>&lt;ctrl-Z&gt;</code>：停止某一个任务</li>
+<li><code>kill</code>：杀死一个进程</li>
+<li><code>nohup</code>：忽略挂起的信号</li>
+<li><code>nice</code>：以更改过的优先级运行进程</li>
+<li><code>renice</code>：重新指定一个或多个进程的优先级</li>
+<li><code>top</code>：查看当前的CPU信息状态</li>
+<li><code>mknod</code>: 在/dev下创建驱动的设备文件</li>
+<li><code>mkfifo</code>：创建管道文件</li>
+<li><code>chmod</code>：修改文件权限
+<ul>
+<li><code>who</code>：u，g，o，a</li>
+<li><code>Operator</code>：+，-，==</li>
+<li><code>what</code>：r(4)，w(2)，x(1)</li>
+</ul>
+</li>
+<li><code>chown</code>：修改文件所有者</li>
+<li><code>chgrp</code>：修改文件分组</li>
+<li><code>find</code>：查找(find dir [-name] “*.c”)
+<ol>
+<li>options</li>
+<li>-depth 在查看目录本身之前，先搜索目录的内容</li>
+<li>-follow 跟随符号链接</li>
+<li>-maxdepths N 最多搜索N层目录</li>
+<li>-mount/-xdev 不搜索其他文件系统中的目录</li>
+<li>tests</li>
+<li>-name 根据名字查找</li>
+<li>-type 根据文件类型查找</li>
+<li>-user 根据用户名查找</li>
+<li>-ctime 根据最近更新时间查询</li>
+<li>-atime N 文件在N天之前被最后访问过</li>
+<li>-mtime N 文件在N天之前被最后修改过</li>
+<li>-newer other_file 文件比other_file新</li>
+</ol>
+</li>
+<li><code>ar</code>：用于建立或修改备存文件(创建静态链接库)，或是从备存文件中抽取文件。</li>
+<li><code>tar</code>：
+<ol>
+<li>解压：tar -xzvf test.tar.gz</li>
+<li>压缩：tar -zcvf test.tar.gz ./test/</li>
+</ol>
+</li>
+<li><code>head</code>：查看文件头部，默认10行</li>
+<li><code>tail</code>：查看文件尾部，默认10行</li>
+<li><code>su</code>：切换用户名</li>
+<li><code>uname</code>：打印当前Linux的版本信息</li>
+<li><code>man</code>：查看命令说明书</li>
+<li><code>grep</code>：在文件中搜索字符串</li>
+</ul>
+<h2 id="23-重定向-掌握"><a class="markdownIt-Anchor" href="#23-重定向-掌握"></a> 2.3. 重定向 掌握</h2>
+<ol>
+<li>标准输入、标准输出、标准错误
+<ol>
+<li>对应的文件描述符：0、1、2</li>
+<li>C语言变量：stdin、stdout、stderr</li>
+</ol>
+</li>
+<li>符号
+<ol>
+<li><code>&lt;</code>：输入重定向，改变命令的输入，后面指定输入内容(文件名)</li>
+<li><code>&gt;</code>：输出重定向，将前面输出的部分输入到后面的文件，并清空文件内容。</li>
+<li><code>&gt;!</code>：同上，强制覆盖。</li>
+<li><code>&lt;&lt;</code>：追加输入重定向：后面跟字符串，用来表示输入结束</li>
+<li><code>&gt;&gt;</code>：追加输出重定向：把前面输出的东西追加到后面的文件尾部，不清除文件的内容</li>
+<li><code>2&gt;</code>：错误重定向：将错误的信息输入到后面的文件中，会删除文件原有的内容</li>
+<li><code>2&gt;&gt;</code>：错误追加重定向：将错误的信息追加到后面的文件中，不会删除文件原有的内容</li>
+</ol>
+</li>
+<li>重定向操作在底层本质上就是调用了<code>dup2</code>函数，将进程的文件描述符进行拷贝和覆盖</li>
+<li>一般情况下，每个Unix/Linux命令运行时都会打开三个文件：
+<ol>
+<li>标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</li>
+<li>标准输出文件(stdout)：stdout的文件描述符为1，Unix程序默认向stdout输出数据。</li>
+<li>标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</li>
+</ol>
+</li>
+<li>如果希望将stdout和stderr合并后重定向到file，可以这样写：command &gt; file 2 &gt;&amp; 1或command &gt;&gt; file 2&gt;&amp;1，为什么需要将标准错误重定向到标准输出的原因，那就归结为标准错误没有缓冲区，而stdout有。</li>
+<li>如果希望对stdin和stdout都重定向，可以这样写：command &lt; file1 &gt; file2；command命令将stdin重定向到file1，将stdout重定向到file2。</li>
+</ol>
+<h2 id="24-管道-掌握"><a class="markdownIt-Anchor" href="#24-管道-掌握"></a> 2.4. 管道 掌握</h2>
+<ol>
+<li>将一个进程的输出作为另一个进程的输入</li>
+<li>上一个操作的标注输出指的是上一个命令在一系列重定向操作之后的仍然会输出到stdout的文件描述符</li>
+</ol>
+<h2 id="25-环境变量-掌握"><a class="markdownIt-Anchor" href="#25-环境变量-掌握"></a> 2.5. 环境变量 掌握</h2>
+<ol>
+<li>变量包括 用户变量、环境变量、参数变量和内部变量</li>
+<li>操作环境的参数</li>
+<li>查看和设置环境变量
+<ol>
+<li><code>echo $file_parameters</code></li>
+<li><code>env</code> 查看所有环境变量</li>
+<li><code>set</code> 查看所有环境变量</li>
+</ol>
+</li>
+<li>例：PATH环境变量，对变量进行读操作添加<code>$</code>，而写操作不必
+<ol>
+<li><code>echo $PATH</code></li>
+<li><code>export PATH</code>：设置和显示环境变量</li>
+</ol>
+</li>
+<li>具体变量
+<ol>
+<li><code>HOME</code> 用户登录目录</li>
+<li><code>PATH</code> 问号分割的用来搜索命令的目录清单</li>
+<li><code>PS1</code> 命令行提示符，通常是$字符</li>
+<li><code>PS2</code> 辅助提示符，用来提示后续输入，通常是&gt;字符</li>
+<li><code>IFS</code> 输入区分隔符</li>
+<li><code>UID</code> 当前用户的识别字，取值由数位构成的字串</li>
+<li><code>PWD</code> 当前工作目录的绝对路径名</li>
+</ol>
+</li>
+<li>参数变量和内部变量(未提)
+<ol>
+<li><code>$#</code> 传递到脚本程序的参数个数</li>
+<li><code>$0</code> 脚本程序的名字</li>
+<li><code>$1, 2...</code> 脚本程序的参数</li>
+<li><code>$*</code> 全体参数组成的清单，使用IFS中的第一个字符分割</li>
+<li><code>$@</code> <code>$*</code>的变体，不使用IFS中的第一个字符分割</li>
+</ol>
+</li>
+</ol>
+<h2 id="26-正则表达式-简单掌握"><a class="markdownIt-Anchor" href="#26-正则表达式-简单掌握"></a> 2.6. 正则表达式 简单掌握</h2>
+<ol>
+<li><code>^</code>指向任何一行的开头</li>
+<li><code>$</code>指向一行的结尾</li>
+<li><code>.</code>任意单个字符</li>
+<li><code>[]</code>包括</li>
+<li><code>?</code>匹配0或1次</li>
+<li><code>*</code>匹配0次或多次</li>
+<li><code>+</code>匹配一次或多次</li>
+<li><code>&#123;n&#125;</code>匹配n次</li>
+<li><code>&#123;n,&#125;</code>匹配n次或n次以上</li>
+<li><code>&#123;n,m&#125;</code>匹配n次到m次</li>
+</ol>
+<h2 id="27-read-单引号-双引号-转义符"><a class="markdownIt-Anchor" href="#27-read-单引号-双引号-转义符"></a> 2.7. Read、单引号、双引号、转义符</h2>
+<ol>
+<li><code>Read</code>
+<ol>
+<li><code>read var</code>会等待从控制台获得输入放在<code>$var</code>中，要是直接read则会把输入的值放在<code>$REPLY</code>
+<ol>
+<li><code>-p &quot;str&quot;</code> 先输出提示符</li>
+<li><code>-t 5</code> 5s内输入</li>
+<li><code>-s</code> 不显示输入</li>
+<li><code>-a</code> 将分裂后的字段依次存储到指定的数组中，存储的起始位置从数组的index=0开始。</li>
+<li><code>-d</code> 指定读取行的结束符号。默认结束符号为换行符。</li>
+<li><code>-n</code> 限制读取N个字符就自动结束读取，如果没有读满N个字符就按下回车或遇到换行符，则也会结束读取。</li>
+<li><code>-N</code> 严格要求读满N个字符才自动结束读取，即使中途按下了回车或遇到了换行符也不结束。其中换行符或回车算一个字符。</li>
+<li><code>-r</code> 禁止反斜线的转义功能。这意味着&quot;&quot;会变成文本的一部分。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>单引号：所有字符都保持本身字符的意思，而不会被bash进行解释</li>
+<li>双引号：除了<code>$</code>、<code>''</code>和<code>\</code>以外，双引号内的所有字符将保持字符本身的函数而不被bash解释(打印上面的特殊字符需要配合转义符号)</li>
+<li>转义符</li>
+<li>echo直接加内容会解析所有，如果后面的内容有空格，会当做两个参数-用双引号引起来</li>
+</ol>
+<h2 id="28-简单操作"><a class="markdownIt-Anchor" href="#28-简单操作"></a> 2.8. 简单操作</h2>
+<h3 id="281-字符串操作"><a class="markdownIt-Anchor" href="#281-字符串操作"></a> 2.8.1. 字符串操作</h3>
+<ol>
+<li><code>str1 = str2</code> 字符串相同则结果真</li>
+<li><code>str1 != str2</code> 字符串不先沟通则结果为真</li>
+<li><code>-z str</code> 字符串为空则结果为真</li>
+<li><code>-n str</code> 字符串不为空则结果为真</li>
+</ol>
+<h3 id="282-文件操作"><a class="markdownIt-Anchor" href="#282-文件操作"></a> 2.8.2. 文件操作</h3>
+<ol>
+<li><code>-e file</code> 文件存在则结果为真</li>
+<li><code>-d file</code> 文件是一个子目录则结果为真</li>
+<li><code>-f file</code> 文件是一个普通文件则结果为真</li>
+<li><code>-s file</code> 文件的长度不为零则结果为真</li>
+<li><code>-r file</code> 文件可读则结果为真</li>
+<li><code>-w file</code> 文件可写则结果为真</li>
+<li><code>-x file</code> 文件可执行则结果为真</li>
+</ol>
+<h3 id="283-逻辑操作"><a class="markdownIt-Anchor" href="#283-逻辑操作"></a> 2.8.3. 逻辑操作</h3>
+<ol>
+<li><code>! expr</code> 逻辑表达式求反</li>
+<li><code>expr1 -a expr2</code> 逻辑表达式 and</li>
+<li><code>expr1 -o expr2</code> 逻辑表达式 or</li>
+</ol>
+<h3 id="284-算术操作"><a class="markdownIt-Anchor" href="#284-算术操作"></a> 2.8.4. 算术操作</h3>
+<ol>
+<li><code>expr1 –eq expr2</code> 两个表达式相等则结果为真</li>
+<li><code>expr1 –ne expr2</code> 两个表达式不等则结果为真</li>
+<li><code>expr1 –gt expr2</code> expr1大于expr2则结果为真</li>
+<li><code>expr1 –ge expr2</code> expr1大于或等于expr2则结果为真</li>
+<li><code>expr1 –lt expr2</code> expr1小于expr2则结果为真</li>
+<li><code>expr1 –le expr2 expr1</code> 小于或等于expr2则结果为真</li>
+</ol>
+<h2 id="29-shell编程"><a class="markdownIt-Anchor" href="#29-shell编程"></a> 2.9. Shell编程</h2>
+<h3 id="291-if语句"><a class="markdownIt-Anchor" href="#291-if语句"></a> 2.9.1. if语句</h3>
+<ol>
+<li>if语句的条件判断是使用test命令获得的[ expression ]，expression是前半个括号的参数</li>
+<li>Shell中0表示为真，expression为0经过then</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">if</span> [ expression ]<br><span class="hljs-keyword">then</span><br>   statements<br><span class="hljs-keyword">elif</span> [expression]<br><span class="hljs-keyword">then</span><br>   statements<br><span class="hljs-keyword">else</span><br>   statements<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>紧凑模式：使用;分割</li>
+</ol>
+<h3 id="292-case语句"><a class="markdownIt-Anchor" href="#292-case语句"></a> 2.9.2. case语句</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">case</span> str <span class="hljs-keyword">in</span><br>   str1 | str2) statements;;<br>   str3 | str4) statements;;<br>   *) statements;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></table></figure>
+<h3 id="293-for语句"><a class="markdownIt-Anchor" href="#293-for语句"></a> 2.9.3. for语句</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> list<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br><br><span class="hljs-keyword">for</span>((i=1;i&lt;5;i++))<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h3 id="294-while语句"><a class="markdownIt-Anchor" href="#294-while语句"></a> 2.9.4. while语句</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">while</span> condition<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h3 id="295-until语句"><a class="markdownIt-Anchor" href="#295-until语句"></a> 2.9.5. until语句</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">until condition<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h3 id="296-select语句"><a class="markdownIt-Anchor" href="#296-select语句"></a> 2.9.6. select语句</h3>
+<ol>
+<li>Select后面输入的是数字，对应item list</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">select item <span class="hljs-keyword">in</span> itemlist<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<h3 id="297-命令组合"><a class="markdownIt-Anchor" href="#297-命令组合"></a> 2.9.7. 命令组合</h3>
+<ol>
+<li>分号串联:<code>command1;command2;...</code></li>
+<li>条件组合
+<ol>
+<li>AND命令表:<code>statement1 &amp;&amp; statement2 &amp;&amp; ...</code></li>
+<li>OR命令表:<code>statement1 || statement2 || ...</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="298-函数相当于另一个命令"><a class="markdownIt-Anchor" href="#298-函数相当于另一个命令"></a> 2.9.8. 函数：相当于另一个命令</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 函数要求理解即可，不必会写</span><br><span class="hljs-function"><span class="hljs-title">func</span></span>()&#123;<br>   <span class="hljs-built_in">local</span> var <span class="hljs-comment"># 在函数内部定义的变量默认是全局变量</span><br>   statements<br>   <span class="hljs-built_in">return</span> xxx<br>&#125;<br>func para1 para2 <span class="hljs-comment"># 函数内部调用$1 $2 得不到脚本参数，而是调用函数时后面的参数</span><br></code></pre></td></tr></table></figure>
+<h3 id="299-杂项命令"><a class="markdownIt-Anchor" href="#299-杂项命令"></a> 2.9.9. 杂项命令</h3>
+<ul>
+<li><code>break</code> 跳出循环</li>
+<li><code>continue</code> 调到下一个循环继续</li>
+<li><code>exit n</code> 以退出码n退出</li>
+<li><code>return</code> 函数返回</li>
+<li><code>export</code> 将变量导出到shell成为环境变量</li>
+<li><code>set</code> 设置环境变量</li>
+<li><code>unset</code> 删除环境变量</li>
+<li><code>trap</code> 收到收到操作系统信号后执行的动作</li>
+<li><code>:</code> 冒号命令：空命令</li>
+<li><code>.</code> 句号命令或source：在当前shell中执行命令，而不新启动进程</li>
+</ul>
+<h3 id="2910-捕获命令输出"><a class="markdownIt-Anchor" href="#2910-捕获命令输出"></a> 2.9.10. 捕获命令输出</h3>
+<ol>
+<li>语法
+<ol>
+<li><code>$(command)</code>：执行command并将结果作为字符串放在这里</li>
+<li><code>command</code></li>
+</ol>
+</li>
+<li>算术扩展：<code>$(($x+1))</code></li>
+<li>参数扩展：
+<ol>
+<li><code>$&#123;param=default&#125;</code>：如果param不存在，则返回default，并将它设置为default的值</li>
+<li><code>$&#123;param:=default&#125;</code>：如果param不存在或值为空，做如上操作</li>
+<li>`$</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Linux-Programming/" class="category-chain-item">2021-Linux-Programming</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/linux/">#linux</a>
+      
+        <a href="/project/tags/%E8%80%83%E8%AF%95/">#考试</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Linux-Programming-Exam1-重点</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Exam1-%E9%87%8D%E7%82%B9/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Exam2-%E6%A0%B8%E5%BF%83%E7%89%88/" title="2021-Linux-Programming-Exam2-核心版">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Linux-Programming-Exam2-核心版</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Exam-2021%E5%B9%B4%E8%80%83%E8%AF%95%E9%A2%98/" title="2021-Linux-Programming-Exam-2021年考试题">
+                        <span class="hidden-mobile">2021-Linux-Programming-Exam-2021年考试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

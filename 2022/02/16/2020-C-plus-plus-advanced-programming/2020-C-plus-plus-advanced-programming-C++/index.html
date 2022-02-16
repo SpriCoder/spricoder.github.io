@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-C-plus-plus-advanced-programming-C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-C-plus-plus-advanced-programming-C++">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-C-plus-plus-advanced-programming-C++">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/5.png">
+<meta property="article:published_time" content="2022-02-16T11:09:57.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:17:58.614Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="考试">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/1.png">
+  
+  
+  <title>2020-C-plus-plus-advanced-programming-C++ - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-C-plus-plus-advanced-programming-C++</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h2>
+<ol>
+<li>C++ 是 C 的超集，很多的C中的库都比C++兼容了</li>
+</ol>
+<h1 id="1-c基本语法"><a class="markdownIt-Anchor" href="#1-c基本语法"></a> 1. C++基本语法</h1>
+<ol>
+<li>对象:对象具有状态和行为。</li>
+<li>类:类可以定义为描述对象行为/状态的模板/蓝图。</li>
+<li>方法:从基本上说，一个方法表示一种行为。</li>
+<li>即时变量:每个对象都有其独特的即时变量。</li>
+</ol>
+<h2 id="11-分号语法块"><a class="markdownIt-Anchor" href="#11-分号语法块"></a> 1.1. 分号&amp;语法块</h2>
+<ol>
+<li>分号是语句结束符：一个分号表明一个逻辑实体的结束。</li>
+<li>语法块是一组用大括号括起来的逻辑连接的语句。</li>
+</ol>
+<h1 id="2-最简单的c程序"><a class="markdownIt-Anchor" href="#2-最简单的c程序"></a> 2. 最简单的C++程序</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;This is a program&quot;</span>;<br>    cin&gt;&gt;a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>包含头文件io流，同时使用c++的命名空间std</li>
+</ol>
+<h1 id="3-程序语句"><a class="markdownIt-Anchor" href="#3-程序语句"></a> 3. 程序语句</h1>
+<ol>
+<li>程序语句包含表达式语句、IO语句和控制流语句</li>
+<li>控制流语句:
+<ul>
+<li>初始化、终止、改变</li>
+<li>包含顺序、选择、重复语句</li>
+</ul>
+</li>
+</ol>
+<h2 id="31-顺序结构"><a class="markdownIt-Anchor" href="#31-顺序结构"></a> 3.1. 顺序结构</h2>
+<h2 id="32-条件结构"><a class="markdownIt-Anchor" href="#32-条件结构"></a> 3.2. 条件结构</h2>
+<ol>
+<li>if-else</li>
+<li>if-else嵌套</li>
+<li>switch：<strong>break</strong>(enum 枚举类型)
+<ol>
+<li>整形常量表达式:<code>5、const、enum、define</code>(对于compiler是固定的)</li>
+<li>值不重复</li>
+<li>次序任意(特指case)</li>
+<li>switch可以和enum结合使用，将具体数值解耦</li>
+<li>switch的进一步进一步优化可以尝试使用打表的方法</li>
+</ol>
+</li>
+<li>表达式1?表达式2:表达式3</li>
+</ol>
+<h3 id="321-switch的实现与优化表驱动"><a class="markdownIt-Anchor" href="#321-switch的实现与优化表驱动"></a> 3.2.1. switch的实现与优化(表驱动)</h3>
+<ol>
+<li>对于switch的汇编格式，其只需要被翻译为cmp一次即可。</li>
+<li>switch：使用表驱动来提高效率</li>
+<li>详见PPT 36页的动画:不要将提示语进行硬编码，可以使用枚举类型(集中管理)</li>
+<li>计算机中的所有的鼠标操作都会对应一个事件</li>
+<li>字面常量调整为枚举类型，还可以使用事件表来完成
+<ul>
+<li>使用一个handler</li>
+<li>表是从内存中装载进来</li>
+</ul>
+</li>
+<li>目前操作系统中的对应存储对应的文件为RC</li>
+</ol>
+<h3 id="322-思考一运行中的很多过程是无法进行断点调试的只能进行输出分析"><a class="markdownIt-Anchor" href="#322-思考一运行中的很多过程是无法进行断点调试的只能进行输出分析"></a> 3.2.2. 思考一:运行中的很多过程是无法进行断点调试的，只能进行输出分析</h3>
+<ol>
+<li>有很多的debug是无法使用断点进行调试，只能写成输出进行分析，我们不推荐字符串硬编码的方式进行编码，我们推荐使用集中管理</li>
+</ol>
+<h3 id="323-插件的思考"><a class="markdownIt-Anchor" href="#323-插件的思考"></a> 3.2.3. 插件的思考</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>这个插件的目的是收集你的操作信息等，为每一个操作，给定一个time</li>
+<li>以下是使用硬编码形式实现的插件，但是不好的，低耦合性</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/6.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/7.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>第一步的修正:if-else修正为switch</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>结合 case 和 枚举常量的优化</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/11.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
+<li>进一步我们使用 表驱动 的方式来实现。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/13.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="324-再进一步调整避免硬编码使用外部文件"><a class="markdownIt-Anchor" href="#324-再进一步调整避免硬编码使用外部文件"></a> 3.2.4. 再进一步调整:避免硬编码，使用外部文件</h3>
+<ol>
+<li>我们从外部导入，从磁盘读入内存</li>
+<li>这样子修改外部存储文件，则可以实现汉化等修改</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/16.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>这样做法也是很多的框架在做的事情，比如微软，则将窗口、菜单等字符串写到RC中，可以通过特殊的编辑器，进行修改。(I18N 国际化)</li>
+</ol>
+<h3 id="325-switch的实现与优化编译过程"><a class="markdownIt-Anchor" href="#325-switch的实现与优化编译过程"></a> 3.2.5. switch的实现与优化(编译过程)</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/2.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>08048787:是指内存代码段的位置</li>
+<li>上面还都是多段比较</li>
+<li>进行优化：为了只做一次Compare，我们直接创建了一个全新的索引表。
+<ul>
+<li>看最上面：先和2d:default进行比较</li>
+<li>其他情况:计算offset(base,index,width)值:base + index * width + offset</li>
+<li>方法叫做:表驱动(其中的index就是枚举类的case的取值0，1等等)</li>
+<li>平衡时间和空间代价</li>
+<li>浪费空间的问题是由compiler解决的</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="326-表驱动的应用"><a class="markdownIt-Anchor" href="#326-表驱动的应用"></a> 3.2.6. 表驱动的应用</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/switch/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>Application Scene应用
+<ul>
+<li>Error/exception handle 异常处理</li>
+<li>Message-driven 信息驱动</li>
+<li>Function pointer 函数指针:就是例子中case里面只是简答的打印，而实际情况中可能只是相似的接口而已，这是我们就要使用到函数指针了。</li>
+</ul>
+</li>
+<li>Implementation 实现
+<ul>
+<li>Array 数组</li>
+<li>Map Map</li>
+</ul>
+</li>
+<li>实际上，异常处理并不是同步的</li>
+<li>IDE上的对话框也是使用表驱动来实现的
+<ul>
+<li>在使用框架的时候，我们要看好相应的原理</li>
+<li>IDE在编译运行的时候也是使用了#define(预处理)</li>
+</ul>
+</li>
+<li>很多表都是放置到外部的文件中的</li>
+<li>IDE来完成一些事件处理:对话框添加名称，添加处理函数，实际上就是添加到枚举类型中和switch里面去，classwizard，类向导</li>
+<li>framework：一般会写明代码不可编辑，是IDE帮助你生成的代码，所以如果不了解框架，则会导致debug非常困难。</li>
+<li>C++中的实现:宏来完成实现，使用编译预处理。</li>
+<li>参考：《代码大全》(第2版)中文版，第18章 表驱动法。</li>
+</ol>
+<h2 id="33-循环结构"><a class="markdownIt-Anchor" href="#33-循环结构"></a> 3.3. 循环结构</h2>
+<ol>
+<li>while循环</li>
+<li>do-while循环</li>
+<li>for循环</li>
+<li>break跳出循环</li>
+<li>continue过循环</li>
+</ol>
+<h1 id="4-面向对象编程十大问题"><a class="markdownIt-Anchor" href="#4-面向对象编程十大问题"></a> 4. 面向对象编程十大问题</h1>
+<ol>
+<li>当类中未自主定义构造函数，compiler会提供默认构造函数，为什么，编译器会提供一个空类吗？编译器只有在一定<strong>需要</strong>默认构造函数的时候，才去创建构造函数</li>
+<li>When构造函数、析构函数被定义为private？友元、static成员的使用，When？
+<ol>
+<li>private的构造函数和析构函数常常用在某些设计模式下的情况</li>
+<li>使用方法:通过友元类对象的方法来完成创建、使用static方法完成创建</li>
+<li>构造函数的私有化的类的设计保证了其他类不能从这个类派生或者创建类的实例(单件模式)</li>
+<li><a href = "https://blog.csdn.net/vivian187/article/details/93043070">参考</a></li>
+</ol>
+</li>
+<li>为什么引入成员初始化表？为什么初始化表执行次序只与类数据成员的定义次序相关？
+<ul>
+<li>初始化列表中初始化的顺序与声明的顺序一致，与自己的声明顺序无关</li>
+<li>原则上的初始化顺序:<strong>就地初始化 &gt; 构造函数的初始化列表 &gt;构造函数里的赋值(严格意义上不能成为初始化)</strong></li>
+<li><a href = "https://blog.csdn.net/qq_38243831/article/details/97814248">参考</a></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CString</span>&#123;<br>    <span class="hljs-type">char</span> *p;<br>    <span class="hljs-type">int</span> size;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">CString</span>(<span class="hljs-type">int</span> x):<span class="hljs-built_in">size</span>(x),<span class="hljs-built_in">p</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[size]) &#123;&#125;    <br>    &#125;;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>为什么引入Copy构造函数、=操作符重载？
+<ol>
+<li>copy()拷贝函数:相同类型的类对象是通过拷贝构造函数来完成整个复制过程的，拷贝函数的拷贝过程没有处理静态数据成员，详见下</li>
+</ol>
+</li>
+<li>What is Late Binding? How C++ implement vitural ？</li>
+<li>When we use virtual ？</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>= <span class="hljs-number">0</span>;<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">error</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; msg)</span></span>;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">objectID</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<ol start="7">
+<li>What public继承和non-public继承means？
+<ol>
+<li>public继承方式
+<ul>
+<li>基类中所有public成员在派生类中为public属性；</li>
+<li>基类中所有protected成员在派生类中为protected属性；</li>
+<li>基类中所有private成员在派生类中不可访问。</li>
+</ul>
+</li>
+<li>protected继承方式
+<ul>
+<li>基类中的所有public成员在派生类中为protected属性；</li>
+<li>基类中的所有protected成员在派生类中为protected属性；</li>
+<li>基类中的所有private成员在派生类中仍然不可访问。</li>
+</ul>
+</li>
+<li>private继承方式
+<ul>
+<li>基类中的所有public成员在派生类中均为private属性；</li>
+<li>基类中的所有protected成员在派生类中均为private属性；</li>
+<li>基类中的所有private成员在派生类中均不可访问。</li>
+</ul>
+</li>
+<li>参考<a href = "https://blog.csdn.net/baowxz/article/details/51282395">公有、非公用继承的区别</a></li>
+</ol>
+</li>
+<li>Why<code>= () [] -&gt;</code>不能作为全局函数重载?
+<ul>
+<li>大体上来讲，C++一个类本身对这几个运算符就已经有了相应的解释了。</li>
+<li>如果将这四种符号进行友元全局重载，则会出现一些冲突</li>
+<li><a href = "https://blog.csdn.net/weixin_30781107/article/details/98147938">参考</a></li>
+</ul>
+</li>
+<li>When成员函数能返回&amp; ？</li>
+<li>When and How to 重载new、delete？
+<ul>
+<li>不允许重载:<code>void* operator new(size_t, void*); // 不允许重新定义这个版本</code></li>
+<li><a href = "https://blog.csdn.net/fengbingchun/article/details/78991749">C++中重载new和delete的使用</a></li>
+</ul>
+</li>
+</ol>
+<h1 id="5-vs-2017-以及插件使用注意"><a class="markdownIt-Anchor" href="#5-vs-2017-以及插件使用注意"></a> 5. VS 2017 以及插件使用注意</h1>
+<ol>
+<li>确保时间正确</li>
+<li>实验实例:是开发环境，而不是工作版本。
+<ul>
+<li>实验实例:在上面有</li>
+</ul>
+</li>
+<li>更新:直接点击安装就可以</li>
+<li>CppMinitor显示提高性能，永不再显示，或者点×</li>
+</ol>
+<h2 id="51-插件使用"><a class="markdownIt-Anchor" href="#51-插件使用"></a> 5.1. 插件使用</h2>
+<ol>
+<li>时间是精确到秒的，尽量提前完成作业。</li>
+<li>下载作业:选择作业</li>
+<li>存储路径:一定是空文件夹，最好是在桌面上新建空白文件夹。</li>
+<li>可以选择已经进行下载，直接进入考试</li>
+<li>只要上传过，我们就可以下载上次提交的代码
+<ul>
+<li>登录，download</li>
+</ul>
+</li>
+<li>一定要先进入考试，前两个按钮，</li>
+</ol>
+<h2 id="52-考试练习"><a class="markdownIt-Anchor" href="#52-考试练习"></a> 5.2. 考试/练习</h2>
+<ol>
+<li>文件 -&gt; 新建 -&gt; 项目，然后找到Visual C++,然后选择空项目，然后在下方名称中输入考试题目文件夹中考试题目文件夹的名字(比如Q2)，点击确认</li>
+<li>project的命名:根据对应文件来进行生成的</li>
+<li>项目新建后，我们在源文件中，右键，添加新建项，新建C++文件，命名为一个英文文件。</li>
+<li>如果有Q28，Q29，Q30三道题目(可以放到一个解决方案中)，在解决方案中选择添加，然后新建项目，然后按照题目名字新建就行
+<ul>
+<li>之后可以一起上传一起下载。</li>
+</ul>
+</li>
+<li>VS2017，编程完成后，我们点击菜单栏:生成 -&gt;重新生成解决方案进行项目的编译，然后点击菜单的&quot;调试&quot;进行调试，考试的debug模式一定要选择x86模式。</li>
+<li>在某一行打上断点就可以在对应位置停下来。</li>
+</ol>
+<h2 id="53-调试"><a class="markdownIt-Anchor" href="#53-调试"></a> 5.3. 调试</h2>
+<ol>
+<li>禁用断点:划到断点会有弹出框。</li>
+<li>点继续就会向下跳转</li>
+<li>在终止红色框旁边，会有断点控制
+<ul>
+<li>分别是下一步(向下箭头)</li>
+<li>进入函数调试</li>
+<li>跳出函数，停止单步</li>
+</ul>
+</li>
+<li>会显示局部变量
+<ul>
+<li>监视:可以直接输入进行监视具体的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="54-多个项目"><a class="markdownIt-Anchor" href="#54-多个项目"></a> 5.4. 多个项目</h2>
+<ol>
+<li>只需要调试一个项目，调整Q28-&gt;Q29，则选择Q29然后进行右键，然后进行设为启动项目/重新生成。</li>
+<li>加粗是表示为启动项目</li>
+</ol>
+<h2 id="55-测试"><a class="markdownIt-Anchor" href="#55-测试"></a> 5.5. 测试</h2>
+<ol>
+<li>首先进行<strong>重新生成解决方案</strong>，首先是X86</li>
+<li>然后在选择Test，然后可以选择对应题目的Run，然后就，开始进行运行，获得结果，AC:通过，WA:错误，TIE:超时，不会告诉你的错误的测试。</li>
+</ol>
+<h2 id="56-upload"><a class="markdownIt-Anchor" href="#56-upload"></a> 5.6. Upload</h2>
+<ol>
+<li>进行上传。会提示上传成功</li>
+<li>不upload则会没有分数。</li>
+</ol>
+<h2 id="57-如何停留调试框"><a class="markdownIt-Anchor" href="#57-如何停留调试框"></a> 5.7. 如何停留调试框</h2>
+<ol>
+<li>system(“pause”);来进行停留了吗</li>
+</ol>
+<h2 id="58-常见问题"><a class="markdownIt-Anchor" href="#58-常见问题"></a> 5.8. 常见问题</h2>
+<h3 id="581-插件错误"><a class="markdownIt-Anchor" href="#581-插件错误"></a> 5.8.1. 插件错误</h3>
+<ol>
+<li>与服务器建立连接出错，请重试</li>
+<li>检查CPP网站是否正常，如果网站没事，就是自身网络问题。</li>
+<li>p.nju.edu.cn可以进行检查。</li>
+</ol>
+<h3 id="582-您未参加考试"><a class="markdownIt-Anchor" href="#582-您未参加考试"></a> 5.8.2. 您未参加考试</h3>
+<ol>
+<li>去cpp plugin download，要么下载要么直接进入</li>
+</ol>
+<h3 id="583-项目不存在"><a class="markdownIt-Anchor" href="#583-项目不存在"></a> 5.8.3. 项目不存在</h3>
+<ol>
+<li>项目名错误:右键重命名进行生成即可</li>
+</ol>
+<h3 id="584-未生成可执行文件"><a class="markdownIt-Anchor" href="#584-未生成可执行文件"></a> 5.8.4. 未生成可执行文件</h3>
+<ol>
+<li>可能X86变为X64，修正然后重新生成即可。</li>
+</ol>
+<h3 id="585-找不到窗口"><a class="markdownIt-Anchor" href="#585-找不到窗口"></a> 5.8.5. 找不到窗口</h3>
+<ol>
+<li>可以在窗口中重置窗口布局</li>
+</ol>
+<h3 id="586-其他问题"><a class="markdownIt-Anchor" href="#586-其他问题"></a> 5.8.6. 其他问题</h3>
+<ol>
+<li>可以发邮件给助教邮箱</li>
+</ol>
+<h2 id="59-下载用例"><a class="markdownIt-Anchor" href="#59-下载用例"></a> 5.9. 下载用例</h2>
+<ol>
+<li>使用输入输出重定向来完成。</li>
+</ol>
+<h2 id="510-debug技巧"><a class="markdownIt-Anchor" href="#510-debug技巧"></a> 5.10. debug技巧</h2>
+<ol>
+<li>简单断点</li>
+<li>可以选择设置(小齿轮):再设置条件，设置条件断点。</li>
+<li>Ctrl + K + Ctrl + C 加注释</li>
+<li>Ctrl + K + Ctrl + U 取除注释</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-C-plus-plus-advanced-programming/" class="category-chain-item">2020-C-plus-plus-advanced-programming</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%80%83%E8%AF%95/">#考试</a>
+      
+        <a href="/project/tags/C/">#C++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-C-plus-plus-advanced-programming-C++</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E9%83%A8%E5%88%86%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" title="2020-C-plus-plus-advanced-programming-C++ 部分特殊符号">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 部分特殊符号</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-C-plus-plus-advanced-programming/C++-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2020-C-plus-plus-advanced-programming-C++%20List/" title="2020-C-plus-plus-advanced-programming-C++ List">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ List</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

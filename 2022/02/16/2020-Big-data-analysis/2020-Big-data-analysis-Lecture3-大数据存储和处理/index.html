@@ -1,0 +1,1304 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Big-data-analysis-Lecture3-大数据存储和处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Big-data-analysis-Lecture3-大数据存储和处理">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Big-data-analysis-Lecture3-大数据存储和处理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/19.png">
+<meta property="article:published_time" content="2022-02-16T11:09:27.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:53:48.196Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="存储">
+<meta property="article:tag" content="大数据分析">
+<meta property="article:tag" content="hbase">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/7.png">
+  
+  
+  <title>2020-Big-data-analysis-Lecture3-大数据存储和处理 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Big-data-analysis-Lecture3-大数据存储和处理</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lecture3-大数据存储和处理"><a class="markdownIt-Anchor" href="#lecture3-大数据存储和处理"></a> Lecture3-大数据存储和处理</h2>
+<h1 id="1-常见存储方式"><a class="markdownIt-Anchor" href="#1-常见存储方式"></a> 1. 常见存储方式</h1>
+<ol>
+<li>关系型数据库</li>
+<li>NoSQL:泛指非关系型数据库，比如MongoDB</li>
+<li>全文检索框架:Elasticsearch</li>
+</ol>
+<h2 id="11-存储的区别"><a class="markdownIt-Anchor" href="#11-存储的区别"></a> 1.1. 存储的区别</h2>
+<ol>
+<li>行式存储：大数据量查询，如果没有索引，则会遍历</li>
+<li>列式存储：可以大量的压缩空间</li>
+<li>位图索引</li>
+</ol>
+<blockquote>
+<p>位图索引的例子，如下图所示，我们可以存储为</p>
+<ol>
+<li>“男”:100101</li>
+<li>“女”:011010</li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>行号</th>
+<th>姓名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>男</td>
+</tr>
+<tr>
+<td>2</td>
+<td>女</td>
+</tr>
+<tr>
+<td>3</td>
+<td>女</td>
+</tr>
+<tr>
+<td>4</td>
+<td>男</td>
+</tr>
+<tr>
+<td>5</td>
+<td>女</td>
+</tr>
+<tr>
+<td>6</td>
+<td>男</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-不同形式存储的对比"><a class="markdownIt-Anchor" href="#12-不同形式存储的对比"></a> 1.2. 不同形式存储的对比</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>name</th>
+<th>age</th>
+<th>sex</th>
+<th>aihao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>小明</td>
+<td>21</td>
+<td>男</td>
+<td>女</td>
+</tr>
+<tr>
+<td>2</td>
+<td>隔壁老王</td>
+<td>25</td>
+<td></td>
+<td>隔壁孩子</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>MySQL形式存储</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span>,小明,<span class="hljs-number">21</span>,男,女<br><span class="hljs-number">2</span>,隔壁老王,<span class="hljs-number">25</span>, <span class="hljs-keyword">null</span>, 隔壁孩子<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>HBase的形式存储:
+<ol>
+<li>HBase是一个分布式列式存储系统，记录按<strong>列簇</strong>集中存放，通过主键(row, key)和主键的range来检索数据。</li>
+<li>HBase表中每个列都属于某一个列簇</li>
+<li>列簇是表的Schame的一部分，但是列不是，列名都是以列簇作为前缀。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bnf"><span class="hljs-attribute">&lt;1, name&gt;</span>,小明<br><span class="hljs-attribute">&lt;1, age&gt;</span>, 21<br>...<br><span class="hljs-attribute">&lt;2, name&gt;</span>, 隔壁老王<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>传统表中使用Alter子句来修改表结构，而HBase直接插入就可以修改表结构</li>
+</ol>
+<h2 id="13-es方式"><a class="markdownIt-Anchor" href="#13-es方式"></a> 1.3. ES方式</h2>
+<table>
+<thead>
+<tr>
+<th>文档id</th>
+<th>文档内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doc1</td>
+<td>how are you? fine, thank you, and you? I fine too, thank you!</td>
+</tr>
+<tr>
+<td>doc2</td>
+<td>good morning, LiLei, good morning, Hanmeimei</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>倒排索引示例:ES的存储(倒排索引)的结果如下</p>
+<ol>
+<li>应该将查询频率高的单词放在前面(越高越前)</li>
+<li>ES默认将文档存储，也可以配置不存储文件信息</li>
+<li>TF-IDF算法：参见<a href="Tec1-TF-IDF%E7%AE%97%E6%B3%95.md">Tec1-TF-IDF算法</a></li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>dictionary</th>
+<th>posting-list</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fine</td>
+<td><code>-&gt;</code> doc1</td>
+</tr>
+<tr>
+<td>Hanmei</td>
+<td><code>-&gt;</code> doc2</td>
+</tr>
+<tr>
+<td>good</td>
+<td><code>-&gt;</code> doc2</td>
+</tr>
+<tr>
+<td>LiLei</td>
+<td><code>-&gt;</code> doc2</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>you</td>
+<td><code>-&gt;</code> doc1 <code>-&gt;</code> doc2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="14-列存储和行存储"><a class="markdownIt-Anchor" href="#14-列存储和行存储"></a> 1.4. 列存储和行存储</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>列存储</th>
+<th>行存储</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关注点</td>
+<td>经常关注一张表某几列而非整表数据的时候</td>
+<td>关注整张表的内容，或者需要经常更新数据</td>
+</tr>
+<tr>
+<td>计算需要</td>
+<td>数据表列有非常多行数据并且需要聚集计算的时候</td>
+<td>不需要聚集运算，或者快速查询需求</td>
+</tr>
+<tr>
+<td>计算方式</td>
+<td>基于一列或者比较少的列计算的时候</td>
+<td>需要经常读取某行数据</td>
+</tr>
+<tr>
+<td>数据形式</td>
+<td>数据表拥有非常多的列的时候</td>
+<td>数据表本身数据行并不多</td>
+</tr>
+<tr>
+<td>数据特性</td>
+<td>数据表列有非常多的重复数据，有利于高度压缩</td>
+<td>数据表的列本身有太多唯一的数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-读写的区别"><a class="markdownIt-Anchor" href="#15-读写的区别"></a> 1.5. 读写的区别</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="16-聚簇索引和非聚簇索引"><a class="markdownIt-Anchor" href="#16-聚簇索引和非聚簇索引"></a> 1.6. 聚簇索引和非聚簇索引</h2>
+<blockquote>
+<p>物理存储的最小的单位是块(Block)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>聚集索引</th>
+<th>非聚集索引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="17-mysql"><a class="markdownIt-Anchor" href="#17-mysql"></a> 1.7. MySQL</h2>
+<ol>
+<li>查询:<code>Select (tuple) from database</code></li>
+<li>插入:<code>Insert into database value</code></li>
+<li>更新:<code>Update database set xxx = xxx where statement</code></li>
+<li>删除:<code>Delete from database where xxx</code></li>
+</ol>
+<h2 id="18-hbase"><a class="markdownIt-Anchor" href="#18-hbase"></a> 1.8. HBase</h2>
+<h3 id="181-hbase对lsm的实现"><a class="markdownIt-Anchor" href="#181-hbase对lsm的实现"></a> 1.8.1. HBase对LSM的实现</h3>
+<blockquote>
+<p>LSM，Log-Structured Merge-Tree，日志结构合并树</p>
+</blockquote>
+<ol>
+<li>假设内存非常大，有限的使用内存存储，结合日志结构实现。</li>
+<li>有数据更新不是立马更新，而是先驻留数据，积累到一定条目后归并排序，然后追加到磁盘的队列中，这样子可以显著减少磁盘的开销，一次性大规模写入，减少随机的I/O，不能命中会导致较多的磁盘消耗。</li>
+</ol>
+<h3 id="182-hbase的实现"><a class="markdownIt-Anchor" href="#182-hbase的实现"></a> 1.8.2. HBase的实现</h3>
+<ol>
+<li>查询</li>
+<li>插入</li>
+<li>更新&amp;删除:看做一个插入操作，使用时间戳和Delete标识来标识</li>
+</ol>
+<blockquote>
+<p>memstore:插入时优先放置到memstore，驻存内存，到了一定程度后再刷新到storeFile、插入都是写入操作</p>
+</blockquote>
+<h2 id="19-es"><a class="markdownIt-Anchor" href="#19-es"></a> 1.9. ES</h2>
+<h3 id="191-es的部分实现方式"><a class="markdownIt-Anchor" href="#191-es的部分实现方式"></a> 1.9.1. ES的部分实现方式</h3>
+<ol>
+<li>一个Node是一个进程</li>
+<li>容灾的话就是多副本容灾</li>
+</ol>
+<h3 id="192-es的操作"><a class="markdownIt-Anchor" href="#192-es的操作"></a> 1.9.2. ES的操作</h3>
+<ol>
+<li>插入:和HBase相似，不是写入即可查询，建立index需要比较大的开销</li>
+<li>读取</li>
+<li>更新&amp;删除</li>
+</ol>
+<h2 id="110-不同存储的容灾方式"><a class="markdownIt-Anchor" href="#110-不同存储的容灾方式"></a> 1.10. 不同存储的容灾方式</h2>
+<table>
+<thead>
+<tr>
+<th>存储方式</th>
+<th>结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>单节点，包含数据、日志两个层面的操作</td>
+</tr>
+<tr>
+<td>HBase &amp; HDFS</td>
+<td>分布式文件系统，每一个节点操作类似MySQL的单节点</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>各节点备份</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-hadoop介绍"><a class="markdownIt-Anchor" href="#2-hadoop介绍"></a> 2. Hadoop介绍</h1>
+<blockquote>
+<p>Hadoop:一个Apache基金会开发的开源软件框架，支持在由普通计算机组成的集群中运行海量数据的分布式计算，他可以让应用程序轻松扩展到上千个节点和PB级别的数据。</p>
+</blockquote>
+<h2 id="21-google-三大论文"><a class="markdownIt-Anchor" href="#21-google-三大论文"></a> 2.1. Google 三大论文</h2>
+<ol>
+<li>MapReduce</li>
+<li>GFS</li>
+<li>Big Table</li>
+</ol>
+<h2 id="22-doug-cutting-山寨项目"><a class="markdownIt-Anchor" href="#22-doug-cutting-山寨项目"></a> 2.2. Doug Cutting 山寨项目</h2>
+<ol>
+<li>MapReduce</li>
+<li>HDFS</li>
+<li>HBase</li>
+</ol>
+<h2 id="23-大数据处理层次架构"><a class="markdownIt-Anchor" href="#23-大数据处理层次架构"></a> 2.3. 大数据处理层次架构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="24-hadoop核心"><a class="markdownIt-Anchor" href="#24-hadoop核心"></a> 2.4. Hadoop核心</h2>
+<ol>
+<li>MapReduce
+<ol>
+<li>Map:任务的分解</li>
+<li>Reduce:结构的汇总</li>
+</ol>
+</li>
+<li>HDFS
+<ol>
+<li>NameNode</li>
+<li>DataNode</li>
+<li>Client</li>
+</ol>
+</li>
+</ol>
+<h3 id="241-mapreduce"><a class="markdownIt-Anchor" href="#241-mapreduce"></a> 2.4.1. MapReduce</h3>
+<ol>
+<li>MapReduce是一种并行编程模型，其实是分治算法的一种实现，适用于大规模数据集的并行计算
+<ol>
+<li>map:<code>(k1,v1)-&gt;list(k2,v2)</code></li>
+<li>reduce:<code>(k2,list(v2)) -&gt; (k3, v3)</code></li>
+</ol>
+</li>
+<li>示例:曹冲称象</li>
+<li>过程:<code>Input -&gt; Map -&gt; Sort -&gt; Combine -&gt; Partition -&gt; Reduce -&gt; Output</code></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="242-hdfs的基本概念"><a class="markdownIt-Anchor" href="#242-hdfs的基本概念"></a> 2.4.2. HDFS的基本概念</h3>
+<ol>
+<li>Block</li>
+<li>NameNode &amp; Secondary NameNode</li>
+<li>Datanode</li>
+</ol>
+<h3 id="243-hdfs架构"><a class="markdownIt-Anchor" href="#243-hdfs架构"></a> 2.4.3. HDFS架构</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2431-block"><a class="markdownIt-Anchor" href="#2431-block"></a> 2.4.3.1. Block</h4>
+<ol>
+<li>块大小默认为64M(v1.0)</li>
+<li>块大小默认为128M(v2.0)</li>
+<li>数据和元数据</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>备份</li>
+<li>一次写入多次读取</li>
+</ol>
+<h4 id="2432-namenode"><a class="markdownIt-Anchor" href="#2432-namenode"></a> 2.4.3.2. NameNode</h4>
+<ol>
+<li>可以看做是分布式文件系统中的管理者，存储文件系统的metadata，主要负责管理文件系统的命名空间，集群配置信息，存储块的赋值</li>
+<li>两个文件：EditLog、FSImage</li>
+<li>两个映射：<code>Filename -&gt; BlockSequence(FsImage)</code>、<code>Block -&gt; DatanodeList(BlockReport)</code></li>
+<li>单点(NameNode)风险</li>
+</ol>
+<h4 id="2433-secondary-namenode"><a class="markdownIt-Anchor" href="#2433-secondary-namenode"></a> 2.4.3.3. Secondary NameNode</h4>
+<ol>
+<li>不是备用NameNode，而是秘书</li>
+<li>合并和保存EditLog、FSImage
+<ol>
+<li>Checkpoint.period</li>
+<li>Checkpoint.size</li>
+</ol>
+</li>
+</ol>
+<h4 id="2434-datanode"><a class="markdownIt-Anchor" href="#2434-datanode"></a> 2.4.3.4. Datanode</h4>
+<p>文件存储的基本单位。它存储文件块在本地文件系统中，保存了文件块的meta-data，同时周期性的发送所有存在的文件块的报错给Namenode</p>
+<h4 id="2435-hdfs文件读写"><a class="markdownIt-Anchor" href="#2435-hdfs文件读写"></a> 2.4.3.5. HDFS文件读写</h4>
+<p>读文件：读取完之后会校验(Check Sum)，未通过则告知错误</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>写文件:复制的策略，冗余数据放置在机柜中，跨机柜要经过交换机等设备</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-hbase"><a class="markdownIt-Anchor" href="#3-hbase"></a> 3. HBase</h1>
+<ol>
+<li>HBase以谷歌的BigTable为模型，并用Java编写</li>
+<li>HBase是在HDFS上开发，提供了一种容错的方式存储大量的稀疏数据</li>
+<li>一个HBase系统包括一组表，每个表包含行和列，就像传统的数据库一样。每个表都必须有一个定义为主键的元素，所有对HBase表的访问尝试都必须使用这个主键。一个HBase Column表示一个对象属性。</li>
+</ol>
+<h2 id="31-什么是hbase"><a class="markdownIt-Anchor" href="#31-什么是hbase"></a> 3.1. 什么是HBase</h2>
+<ol>
+<li>HBase是一个分布式、非结构化、稀疏、面向列的数据库。</li>
+<li>HBase是基于HDFS，山寨版的BigTable，继承了可靠性、高性能、可伸缩性</li>
+</ol>
+<h2 id="32-hbase架构"><a class="markdownIt-Anchor" href="#32-hbase架构"></a> 3.2. HBase架构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/10.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-hbase角色"><a class="markdownIt-Anchor" href="#33-hbase角色"></a> 3.3. HBase角色</h2>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>内容描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZooKeeper</td>
+<td>1. 一个高效的、可扩展的协调系统<br>2. Hadoop的子项目，不属于HBase</td>
+</tr>
+<tr>
+<td>HMaster</td>
+<td>1. 管理网络对Table的增、删、改、查操作<br>2. 管理HRegionServer负载均衡</td>
+</tr>
+<tr>
+<td>HRegionServer</td>
+<td>1. 管理一系列HRegion<br>2. Region读写的场所</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>内容描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRegion</td>
+<td>1. 对应Table的Region<br>2. HStore和HLog</td>
+</tr>
+<tr>
+<td>HStore</td>
+<td>1. 对应了Table中的一个Column Family的存储<br>2. MemStore<br>3. StoreFile(HFile)</td>
+</tr>
+<tr>
+<td>StoreFile</td>
+<td>1. Compact<br>2. Split</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="34-hbase数据模型"><a class="markdownIt-Anchor" href="#34-hbase数据模型"></a> 3.4. HBase数据模型</h2>
+<blockquote>
+<p>Table &amp; Column Family</p>
+</blockquote>
+<ol>
+<li>RowKey:Table的主键, 记录按照RowKey排序</li>
+<li>Timestamp:每次数据操作对应的时间戳,可以看作是数据的version number(垃圾清理)</li>
+<li>Column Family:Table在水平方向由一个或者多个Column Family组成,一个Column Family中可以由任意多个Colum组成</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>Table &amp; Region</p>
+</blockquote>
+<ol>
+<li>记录数不断增多后,Table会逐渐分裂成多份splits,成为regions</li>
+<li>一个region由[startkey,endkey)表示</li>
+<li>不同的region会被Master分配给相应的RegionServer进行管理.</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li><code>.META.</code>:记录用户表的Region信息,可以有多个regoin</li>
+<li><code>-ROOT-</code>:记录.META.表的Region信息,只有一个region</li>
+<li><code>Zookeeper</code>:记录了-ROOT-表的location</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="35-数据导入"><a class="markdownIt-Anchor" href="#35-数据导入"></a> 3.5. 数据导入</h2>
+<ol>
+<li>Sybase -&gt; HBase
+<ol>
+<li>bcp out</li>
+<li>importtsv</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh">hadoop jar ~/hbase-0.92.1/hbase-0.92.1.jar importtsv \<br>-Dimporttsv.separator= <span class="hljs-string">&quot;,&quot;</span> <span class="hljs-comment"># 指定输入文件的分隔符为;\</span><br>-Dimporttsv.bulk.output=/output <span class="hljs-comment"># 输出hfile到/output</span><br>-Dimporttsv.columns=HBASE ROW KEY,cf1:USER NAME<br><span class="hljs-comment">#源文件的第一列为rowkey ，第二列为cf1:USER NAME\</span><br><span class="hljs-built_in">users</span> /bulkload/users.txt <span class="hljs-comment">#导 入hbase的users表中,输 入文件在/bulkload\</span><br>hadoop jar ~/hbase-0.92. 1/hbase-0.92.1.jar completebulkload/output <span class="hljs-built_in">users</span><br></code></pre></td></tr></table></figure>
+<h2 id="36-访问接口"><a class="markdownIt-Anchor" href="#36-访问接口"></a> 3.6. 访问接口</h2>
+<ol>
+<li>Hadoop &amp; HBase提供JAVA接口</li>
+<li>Thrift支持多语言访问HBase，C++、C#、Cocoa、Erlang、Haskell、Java、Ocami、Perl、PHP、Python、Ruby、Smalltalk</li>
+</ol>
+<h1 id="4-hive"><a class="markdownIt-Anchor" href="#4-hive"></a> 4. Hive</h1>
+<ol>
+<li>Hive是基于Hadoop的数据仓库工具，提供完整的SQL查询功能，可以将结构化的数据文件映射为一张数据库表。
+<ol>
+<li>可以将SQL语句转换为MapReduce任务进行运行。</li>
+<li>可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用</li>
+</ol>
+</li>
+<li>学习成本低</li>
+</ol>
+<h2 id="41-hive体系结构"><a class="markdownIt-Anchor" href="#41-hive体系结构"></a> 4.1. Hive体系结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Big-data-analysis/img/lec3/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-hive运维要点"><a class="markdownIt-Anchor" href="#42-hive运维要点"></a> 4.2. Hive运维要点</h2>
+<blockquote>
+<p>Hive相当于一套Hadoop的访问接口，运维如下几个问题需要注意</p>
+</blockquote>
+<ol>
+<li>使用单独的数据库存储元数据</li>
+<li>定义合理的表分区和键</li>
+<li>设置合理的bucket数据量</li>
+<li>进行表压缩</li>
+<li>定义外部表使用规范</li>
+<li>合理的控制Mapper，Reducer数量</li>
+</ol>
+<h1 id="5-pig"><a class="markdownIt-Anchor" href="#5-pig"></a> 5. Pig</h1>
+<blockquote>
+<p>Apache Pig架构</p>
+</blockquote>
+<ol>
+<li>严格用于使用Pig分析Hadoop中的数据的语言称为Pig Latin是一种高级数据处理语言。它提供了一组丰富的数据类型和操作符来对数据执行各种操作。</li>
+<li>要执行特定任务时，程序员使用Pig，需要用Pig Latin语言编写Pig脚本,并使用任何执行机制( Grunt Shell，UDFs，Embedded )执行它们。执行后,这些脚本将通过应用Pig框架的一系列转换来生成所需的输出。</li>
+<li>在内部, Apache Pig将这些脚本转换为一系列MapReduce作业,因此,它使程序员的工作变得容易。</li>
+</ol>
+<h2 id="51-pig组成组成"><a class="markdownIt-Anchor" href="#51-pig组成组成"></a> 5.1. Pig组成组成</h2>
+<ol>
+<li>Parser (解析器)：最初, Pig脚本由解析器处理,它检查脚本的语法,类型检查和其他杂项检查。解析器的输出将是DAG(有向无环图),它表示Pig Latin语句和逻辑运算符。在DAG中,脚本的逻辑运算符表示为节点,数据流表示为边。</li>
+<li>Optimizer (优化器)：逻辑计划(DAG)传递到逻辑优化器,逻辑优化器执行逻辑优化,例如投影和下推。</li>
+<li>Compiler (编译器)：编译器将优化的逻辑计划编译为一系列MapReduce作业。</li>
+<li>Execution engine (执行引擎)：最后,MapReduce作业以排序顺序提交到Hadoop。这些MapReduce作业在Hadoop上执行,产生所需的结果。</li>
+</ol>
+<h2 id="52-pig与sql区别"><a class="markdownIt-Anchor" href="#52-pig与sql区别"></a> 5.2. Pig与SQL区别</h2>
+<ol>
+<li>使用延迟评价、使用ETL、能够在管道中任何时刻存储数据、支持管道分裂</li>
+<li>Pig Latin是程序性的,它在管道范例中非常自然,而SQL则是声明性的。在SQL用户中,可以指定要连接两个表的数据,但不能指定要使用的连接实现。</li>
+<li>Pig Latin允许用户指定一个实现或实现的各个方面 ,以在多个方面执行脚本。Pig Latin编程类似于 指定查询执行计划。</li>
+</ol>
+<h1 id="6-参考"><a class="markdownIt-Anchor" href="#6-参考"></a> 6. 参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/qq_41848129/article/details/99720517">HBase存储方式</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Big-data-analysis/" class="category-chain-item">2020-Big-data-analysis</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E5%AD%98%E5%82%A8/">#存储</a>
+      
+        <a href="/project/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#大数据分析</a>
+      
+        <a href="/project/tags/hbase/">#hbase</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Big-data-analysis-Lecture3-大数据存储和处理</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%92%8C%E5%A4%84%E7%90%86/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture6-%E5%88%86%E7%B1%BB/" title="2020-Big-data-analysis-Lecture6-分类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Big-data-analysis-Lecture6-分类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-SUMMARY/" title="2020-Big-data-analysis-SUMMARY">
+                        <span class="hidden-mobile">2020-Big-data-analysis-SUMMARY</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1355 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-human-computer-interaction-Lec-4 评估之观察用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-human-computer-interaction-Lec-4 评估之观察用户">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Lec-4%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E8%A7%82%E5%AF%9F%E7%94%A8%E6%88%B7/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-human-computer-interaction-Lec-4 评估之观察用户">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/3.png">
+<meta property="article:published_time" content="2022-02-16T11:09:40.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:08:05.295Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="人机交互">
+<meta property="article:tag" content="观察用户">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/1.png">
+  
+  
+  <title>2021-human-computer-interaction-Lec-4 评估之观察用户 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-human-computer-interaction-Lec-4 评估之观察用户</h1>
+            
+            <div class="markdown-body">
+              
+              <p>lec4-评估之观察用户</p>
+<h1 id="1-背景"><a class="markdownIt-Anchor" href="#1-背景"></a> 1. 背景</h1>
+<ol>
+<li>观察用户怎样工作是极其重要的可用性方法
+<ol>
+<li>用户并不总能客观和完整地描述产品的使用情况：访谈得到的信息可能不真实</li>
+<li>用户有可能忽略一些细节：忽视了细节的重要性</li>
+<li>Heath和Luff在伦敦地铁控制室的观察证明有助于改进系统设计</li>
+</ol>
+</li>
+<li>观察法是所有可用性方法中最简单的方法：涉及看和听两个方面</li>
+<li>观察适用于产品开发的任何阶段
+<ol>
+<li>初期：理解用户的需要</li>
+<li>开发过程：检查原型</li>
+<li>后期：对最终产品进行评价</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-观察方法"><a class="markdownIt-Anchor" href="#2-观察方法"></a> 2. 观察方法</h1>
+<ol>
+<li>观察可以发现一些意想不到的用户操作方式
+<ol>
+<li>举例文字处理软件：把“模板”当做一类特殊文件来处理</li>
+</ol>
+</li>
+<li>两种方式
+<ol>
+<li>真实环境中的观察
+<ol>
+<li>观察者既可作为旁观者，也可作为参与者</li>
+<li>重点是应用的上下文</li>
+</ol>
+</li>
+<li>受控环境中的观察
+<ol>
+<li>观察者不能作为参与者</li>
+<li>重点是研究用户执行任务的细节</li>
+</ol>
+</li>
+<li>二者差别不大
+<ol>
+<li>有时前者模仿后者的测试条件</li>
+<li>实地观察也可作为实验室观察的补充</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-实验室观察"><a class="markdownIt-Anchor" href="#3-实验室观察"></a> 3. 实验室观察</h1>
+<ol>
+<li>在专门为可用性测试而安装配置的固定设备的环境下进行的观察
+<ol>
+<li>在一些情况下，在实验室中观察是唯一的选择：如空间站等危险环境下的系统</li>
+</ol>
+</li>
+<li>实验室布局
+<ol>
+<li>测试区</li>
+<li>观察区</li>
+<li>为避免干扰，二者分开</li>
+</ol>
+</li>
+<li>用户坐在家中测试
+<ol>
+<li>如Windows Live Meeting等软件：可观察到鼠标移动及屏幕内容的变化</li>
+<li>使用户处于更加自然和真实的状态</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>提供了可控且一致的评估环境</li>
+<li>易于分析比较</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>可控且一致的评估环境
+<ol>
+<li>人为环境、不自然</li>
+<li>可能降低测试结论的普遍性和一般性</li>
+</ol>
+</li>
+<li>不利于观察多人之间的协作</li>
+</ol>
+</li>
+<li>具备观察测试过程的能力很重要
+<ol>
+<li>对开发人员
+<ol>
+<li>令开发人员感到丢脸面</li>
+<li>给他们一些启发和指导</li>
+<li>使之能够设身处地地为最终用户着想</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>使用摄像头来观察的好处
+<ol>
+<li>用户可以更自然：被观察感比较容易</li>
+<li>观察人员可以讨论、观察的更细节</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-实验室观察的实际问题"><a class="markdownIt-Anchor" href="#4-实验室观察的实际问题"></a> 4. 实验室观察的实际问题</h1>
+<ol>
+<li>测试地点选择，测试设备安装
+<ol>
+<li>摄录面部表情</li>
+<li>摄录移动鼠标和击键过程</li>
+<li>更广范围内的用户肢体语言</li>
+</ol>
+</li>
+<li>测试设备检查：确保设置正确，并能正常工作</li>
+<li>文档准备
+<ol>
+<li>协议书
+<ol>
+<li>要求用户签署</li>
+<li>说明测试的目的、测试时间，并解释他们的权利</li>
+<li>让用户感觉轻松自在</li>
+</ol>
+</li>
+<li>脚本：要求用户执行的任务</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-观察框架"><a class="markdownIt-Anchor" href="#5-观察框架"></a> 5. 观察框架</h1>
+<ol>
+<li>观察过程发生的事件都非常复杂且变化迅速
+<ol>
+<li>观察框架用于组织观察活动和明确观察重点</li>
+</ol>
+</li>
+<li>Goetz and Lecomfte框架
+<ol>
+<li>关注事件的上下文、涉及的人员和技术</li>
+<li>人员：有哪些人员在场？他们有何特征？承担什么角色？</li>
+<li>行为：人们说了什么？做了什么？举止如何？是否存在规律性的行为？语调和肢体语言如何？</li>
+<li>时间：行为何时发生？是否与其他行为相关联？</li>
+<li>地点：行为发生于何处？是否受物理条件的影响？</li>
+<li>原因：行为为何发生？事件或交互的促成因素是什么？不同的人是否有不同的看法？</li>
+<li>方式：行为是如何组织的？受哪些规则或标准的影响？</li>
+</ol>
+</li>
+<li>Robson框架
+<ol>
+<li>有助于组织观察和数据搜集活动</li>
+<li>空间：物理空间及其布局如何？</li>
+<li>行为者：涉及哪些人员？人员详情？</li>
+<li>活动：行为者的活动及其原因？</li>
+<li>物体：存在哪些实际物体（如家具）？</li>
+<li>举止：具体成员的举止如何？</li>
+<li>事件：所观察的是不是特定事件的一部分？</li>
+<li>目标：行为者希望达到什么目标？</li>
+<li>感觉：用户组及个别成员的情绪如何？</li>
+</ol>
+</li>
+</ol>
+<h1 id="6-生理反应监控"><a class="markdownIt-Anchor" href="#6-生理反应监控"></a> 6. 生理反应监控</h1>
+<ol>
+<li>决定用户对一个界面的感情反应：提供了客观地获得用户感情状态信息的一种方法</li>
+<li>心脏活动：是压力或愤怒的反应</li>
+<li>汗腺活动：表示激励和精神努力的程度</li>
+<li>大脑活动：与决策的制定、关注和动机有关</li>
+<li>难点
+<ol>
+<li>不清楚这些事件与测量之间的关系</li>
+<li>如心率的增加是否意味着在应用界面时遭受到挫折或压力而不能完成任务？</li>
+</ol>
+</li>
+</ol>
+<h1 id="7-观察中的问题"><a class="markdownIt-Anchor" href="#7-观察中的问题"></a> 7. 观察中的问题</h1>
+<ol>
+<li>不知道用户在想什么
+<ol>
+<li>只能根据观察到的现象去揣测</li>
+<li>举例：使用Web搜索引擎检索Alan Turing的专著</li>
+</ol>
+</li>
+<li>解决方法
+<ol>
+<li>让用户“边做边说”
+<ol>
+<li>要求被测试人说出自己的想法以及想要做的事情</li>
+<li>帮助观察人员了解他们的思考过程</li>
+<li>当用户沉默时，观察人员可以提醒用户</li>
+<li>优点：简单、只需要很少的专业技术</li>
+<li>缺点：不自然，可能改变人们执行任务的方式</li>
+</ol>
+</li>
+<li>举例：<a target="_blank" rel="noopener" href="http://www.e-beam.com">http://www.e-beam.com</a></li>
+</ol>
+</li>
+</ol>
+<h1 id="8-合作评估"><a class="markdownIt-Anchor" href="#8-合作评估"></a> 8. 合作评估</h1>
+<ol>
+<li>两位用户共同合作，以便他们互相讨论、相互帮助
+<ol>
+<li>限制少，评估者很容易学会应用</li>
+<li>鼓励用户对系统提出批评</li>
+<li>在出现不清楚的情况时，评估者能够澄清容易混淆的地方</li>
+<li>能提示许多信息
+<ol>
+<li>尤其适合评估面向儿童的系统</li>
+<li>也适用于多人共享系统的评估</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="9-实验室观察"><a class="markdownIt-Anchor" href="#9-实验室观察"></a> 9. 实验室观察</h1>
+<ol>
+<li>能够使得研究人员更好地分离多个可能的影响因素，从而能够得出更准确的研究结果
+<ol>
+<li>对具有良好协调性的人机界面所起到的重要作用</li>
+<li>举例：键盘布局的试验研究
+<ol>
+<li>使用相似的训练方法，标准的基准任务，普通的说明出错率的依赖程度以及测试平凡用户的策略</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>观察者对被观察者的影响取决于观察类型和观察技巧
+<ol>
+<li>只对用户的某些行为感兴趣
+<ol>
+<li>选择作为旁观者观察</li>
+<li>如了解不同性别学生使用计算机的时间差异</li>
+</ol>
+</li>
+<li>如想了解计算机及其他设备如何影响学生们的交流:则选择作为参与者进行观察</li>
+</ol>
+</li>
+</ol>
+<h1 id="10-现场观察"><a class="markdownIt-Anchor" href="#10-现场观察"></a> 10. 现场观察</h1>
+<ol>
+<li>指在用户的实际环境中观察用户在使用软件时的情况
+<ol>
+<li>是发现同使用环境有关的问题的最佳手段</li>
+</ol>
+</li>
+<li>举例：超市收银系统
+<ol>
+<li>工作环境非常吵杂</li>
+<li>收银员一般是站着操作</li>
+<li>必须尽快地为每一个顾客结账</li>
+<li>某些顾客可能不想要某个已经扫描过的商品</li>
+<li>某些顾客在结账时发现自己还想买一样东西，于是先把已经扫描过的东西放下，转身回去继续购买</li>
+<li>某些商品的标签打印得不清楚，条码扫描不起作用，收银员必须手工输入商品信息</li>
+</ol>
+</li>
+<li>举例：超市收银系统
+<ol>
+<li>观察结论</li>
+<li>操作效率要非常高：使得收银员可以非常快速地完成各种常用操作</li>
+<li>要尽可能预防各种操作失误的产生</li>
+<li>可以不必太多关注系统的可学习性：假定收银员一定是经过了良好的培训后才允许上岗的</li>
+<li>屏幕上显示信息时要一目了然：让收银员可以轻松、正确地识别出各种信息</li>
+</ol>
+</li>
+</ol>
+<h1 id="11-现场观察的问题清单"><a class="markdownIt-Anchor" href="#11-现场观察的问题清单"></a> 11. 现场观察的问题清单</h1>
+<ol>
+<li>明确初步的研究目标和问题</li>
+<li>选择一个框架指导观察</li>
+<li>决定数据记录方式
+<ol>
+<li>笔记、录音、摄像，还是三者结合</li>
+<li>确保设备到位并能正常工作</li>
+</ol>
+</li>
+<li>评估后，尽快与观察者或被观察者共同检查所记录的笔记和其他数据
+<ol>
+<li>研究细节，找出含糊之处</li>
+<li>人的记忆能力是有限的，最好24小时内回顾数据</li>
+</ol>
+</li>
+<li>数据记录时，应区分个人意见和观察数据
+<ol>
+<li>明确标注需要进一步了解的事项</li>
+</ol>
+</li>
+<li>培养良好的合作关系
+<ol>
+<li>取得被观察对象的认可和信任</li>
+<li>避免只关注某些人，应注意小组的所有成员</li>
+</ol>
+</li>
+<li>处理敏感问题
+<ol>
+<li>避免让观察对象产生被冒犯的感觉</li>
+</ol>
+</li>
+<li>注重团队协作
+<ol>
+<li>通过比较不同评估人员的记录，得到更为可信的数据</li>
+</ol>
+</li>
+<li>应从不同的角度进行观察，避免只专注于某些特定行为</li>
+</ol>
+<h1 id="12-几个难题"><a class="markdownIt-Anchor" href="#12-几个难题"></a> 12. 几个难题</h1>
+<ol>
+<li>要观察多久</li>
+<li>如何根据紧凑的开发期限和开发人员的技能相应修改现场研究技术</li>
+<li>如何降低噪音、测试中断及其他易使注意力分散的外界干扰
+<ol>
+<li>如在测试进行的关键时刻可能会有电话打进来，或者用户在测试开始之前被请去开会了</li>
+<li>方案一：健壮的评估设计</li>
+<li>方案二：将测试协议设计成包含“有计划的干扰”
+<ol>
+<li>以评估用户在中断当前任务后是否能很容易地返回，并知道如何将工作继续做下去</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="13-注意事项"><a class="markdownIt-Anchor" href="#13-注意事项"></a> 13. 注意事项</h1>
+<ol>
+<li>观察人员自始至终应尽量保持安静
+<ol>
+<li>让用户感觉不到观察人员的存在</li>
+<li>保证用户操作和平时工作的状态一样</li>
+</ol>
+</li>
+<li>当用户的操作令观察人员无法理解时
+<ol>
+<li>需要打断用户，请他对所做的某些操作进行解释</li>
+<li>或把用户莫名其妙的操作行为记录下来</li>
+</ol>
+</li>
+<li>观察初期，应该拒绝用户的任何帮助请求
+<ol>
+<li>希望观察用户在没有系统专家指点的情况下如何操作</li>
+<li>待评估完成后为用户提供适当帮助</li>
+</ol>
+</li>
+</ol>
+<h1 id="14-观察与访谈相结合"><a class="markdownIt-Anchor" href="#14-观察与访谈相结合"></a> 14. 观察与访谈相结合</h1>
+<ol>
+<li>观察方法只能展示用户做了什么，而无法知道用户为什么这样做
+<ol>
+<li>“知其然而不知其所以然”</li>
+</ol>
+</li>
+<li>应该在记录数据之后再结合其他方法
+<ol>
+<li>如访谈
+<ol>
+<li>请用户详细讲述记录里面任何可能引发可用性问题的地方</li>
+<li>如对一个没用过系统某个功能的用户，询问为什么没有使用某项功能</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>让用户面对记录数据时应非常小心
+<ol>
+<li>避免让用户产生被监视的想法</li>
+</ol>
+</li>
+</ol>
+<h1 id="15-数据记录"><a class="markdownIt-Anchor" href="#15-数据记录"></a> 15. 数据记录</h1>
+<ol>
+<li>可以根据研究人员的专业素质及环境、项目的特点来选取合适的方法</li>
+<li>纸笔记录
+<ol>
+<li>最原始、最廉价</li>
+<li>前提
+<ol>
+<li>对观察对象有一定的了解，从而有明确的观察侧重点</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>事后对观察结果进行分析的工作量小</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>观察者容易疲劳，而且记录速度有限</li>
+<li>建议将记录者和评估者分开</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>音视频记录
+<ol>
+<li>适用场合
+<ol>
+<li>对于观察对象不太了解，或者是需要观察的内容较多</li>
+<li>特别是在采用边做边说法时</li>
+</ol>
+</li>
+<li>音频记录
+<ol>
+<li>信息全面，没有任何遗漏，便于事后详细分析</li>
+<li>没有可见记录，转录数据非常烦琐</li>
+<li>常用于提示重要细节或作为情景说明的辅助材料</li>
+</ol>
+</li>
+<li>视频记
+<ol>
+<li>能够看到参与者正在做的事情</li>
+<li>但要始终让参与者停留在视觉的范围内很困难</li>
+</ol>
+</li>
+<li>缺点：所含的信息量很大，所以数据分析非常耗时</li>
+</ol>
+</li>
+</ol>
+<h1 id="16-日志和交互记录"><a class="markdownIt-Anchor" href="#16-日志和交互记录"></a> 16. 日志和交互记录</h1>
+<ol>
+<li>间接观察的适用场合
+<ol>
+<li>直接观察可能影响用户</li>
+<li>或者评估人员无法在现场进行研究</li>
+<li>可根据搜集到的数据，推断实际情形，并找出可用性和用户体验方面的问题</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>体现了用户是如何完成真实任务的</li>
+<li>使得从工作在不同环境下的大量用户那里自动收集数据变得相当容易
+<ol>
+<li>适用于用户分散、无法当面测试的情形</li>
+<li>如互联网应用和网站设计项目等</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>应用举例
+<ol>
+<li>命令行式操作系统下用户发出的6112条错误命令分
+<ol>
+<li>30%的错误命令是由于拼写有问题</li>
+<li>表明了需要拼写校对机制来协助系统用户输入命令</li>
+</ol>
+</li>
+<li>大型计算机系统的程序员收到的3000条错误信息
+<ol>
+<li>其中85%属于9个一般性的错误</li>
+<li>一条很糟糕的错误信息占9.8%
+<ol>
+<li>“符号未在程序中定义”</li>
+<li>缺少更多相关信息的情况下很难从根本上纠正该错误</li>
+</ol>
+</li>
+<li>修改后，该错误信息出现的比例只占1.7%：使用新的错误提示可以避免重犯同样的错误</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>包含信息
+<ol>
+<li>用户使用软件的频度是多少？</li>
+<li>每次使用软件的时间有多长？</li>
+<li>对于不同操作的使用频度如何？</li>
+<li>哪些操作最常用，哪些很少使用？</li>
+<li>用户是经常使用键盘还是鼠标来启动各个功能？</li>
+</ol>
+</li>
+</ol>
+<h1 id="17-观察数据"><a class="markdownIt-Anchor" href="#17-观察数据"></a> 17. 观察数据</h1>
+<ol>
+<li>观察得到的数据
+<ol>
+<li>笔记、草图、相片、访谈或事件的录音录像、日志和交互记录等</li>
+<li>用户在做什么并统计用户花在任务各个部分上的时间</li>
+<li>用户的情感反应：如叹气、皱眉、耸肩等</li>
+</ol>
+</li>
+<li>数据类型
+<ol>
+<li>用于描述的定性数据：描述观察到的现象</li>
+<li>用于分类的定性数据：使用各种技术进行分类</li>
+<li>定量数据：用于统计目的</li>
+</ol>
+</li>
+</ol>
+<h1 id="18-定性分析"><a class="markdownIt-Anchor" href="#18-定性分析"></a> 18. 定性分析</h1>
+<ol>
+<li>分析方法
+<ol>
+<li>详细分析通常不必要
+<ol>
+<li>分析每个词、短语、动作</li>
+<li>分析半小时的录像数据也需要很长时间</li>
+</ol>
+</li>
+<li>粗略分析：结合上下文研究具体动作</li>
+</ol>
+</li>
+<li>常用的方法
+<ol>
+<li>找出关键事件，如用户遇到困难的地方
+<ol>
+<li>特点：用户发布评论、保持沉默或表露出迷惑的神情</li>
+<li>举例：Smalltalk编程手册的两个不同版本的比较</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>内容分析（content analysis）
+<ol>
+<li>用于“详细分析”录像数据</li>
+<li>把数据内容划分为一些有意义、而且互斥的类别
+<ol>
+<li>不能以任何方式相互重叠、内容类别也必须可靠</li>
+<li>可靠：不同人的分类结果不能存在很大差异</li>
+</ol>
+</li>
+<li>费时、费力、不常使用</li>
+<li>改进：层次化内容分类技术</li>
+</ol>
+</li>
+<li>会话分析（conversation analysis）
+<ol>
+<li>用于仔细检查语义，重点是对话过程</li>
+<li>弄明白发话者想要表达什么，而受话者又是怎么样理解它的意思并做出反应</li>
+<li>可用于聊天室、虚拟社区等互联网应用，以增进对用户需要的理解</li>
+</ol>
+</li>
+<li>话语分析（discourse analysis）
+<ol>
+<li>关注话语的使用，而不是内容</li>
+<li>把语言视为反映心理和社会因素的媒介
+<ol>
+<li>了解人们如何使用语言</li>
+</ol>
+</li>
+<li>措辞上的微小改动即可改变话语的意思
+<ol>
+<li>当你说“我正在进行话语分析”时，你实际上就是在进行话语分析……</li>
+<li>张三认为，当你说“我正在进行话语分析”时，你实际上就是在进行话语分析……</li>
+</ol>
+</li>
+<li>From “An interesting introduction to discourse analysis”
+<ol>
+<li>Please use the toilet, not the pool.</li>
+<li>Pool for members only.</li>
+<li>Please use the toilet, not the pool. Pool for members only.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="19-定量分析"><a class="markdownIt-Anchor" href="#19-定量分析"></a> 19. 定量分析</h1>
+<ol>
+<li>视频数据的标注和分析</li>
+<li>统计分析
+<ol>
+<li>平均值</li>
+<li>标准偏差</li>
+<li>T检验</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/1.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="20-分析工具"><a class="markdownIt-Anchor" href="#20-分析工具"></a> 20. 分析工具</h1>
+<ol>
+<li>文本记录分析工具
+<ol>
+<li>访谈稿、现场记录、开放性问卷调查等</li>
+<li>NUDIST：Non-numerical unstructured data indexing, searching, and theorizing</li>
+<li>Ethnograph：1985年发行，是第一個电脑辅助质性分析软件</li>
+</ol>
+</li>
+<li>视频分析工具
+<ol>
+<li>Observer VideoPro</li>
+<li>Morea</li>
+</ol>
+</li>
+<li>网络日志分析工具
+<ol>
+<li>Webtrends：网站服务器端记录文件分析工具</li>
+</ol>
+</li>
+</ol>
+<h1 id="21-weblog"><a class="markdownIt-Anchor" href="#21-weblog"></a> 21. WebLog</h1>
+<ol>
+<li>WEB服务器日志文件综合分析软件：当前活动会话统计、文件存取统计、搜索使用情况统计、浏览器/操作系统统计、错误统计等</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec4/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-human-computer-interaction/" class="category-chain-item">2021-human-computer-interaction</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/">#人机交互</a>
+      
+        <a href="/project/tags/%E8%A7%82%E5%AF%9F%E7%94%A8%E6%88%B7/">#观察用户</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-human-computer-interaction-Lec-4 评估之观察用户</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Lec-4%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E8%A7%82%E5%AF%9F%E7%94%A8%E6%88%B7/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Exam5-2021%E8%AF%95%E5%8D%B7/" title="2021-human-computer-interaction-Exam5-2021试卷">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-human-computer-interaction-Exam5-2021试卷</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Lec-9%20%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="2021-human-computer-interaction-Lec-9 人机交互基础知识">
+                        <span class="hidden-mobile">2021-human-computer-interaction-Lec-9 人机交互基础知识</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1117 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Software-System-Design-Lec12-Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Software-System-Design-Lec12-Introduction">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec12-Introduction/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Software-System-Design-Lec12-Introduction">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/7.png">
+<meta property="article:published_time" content="2022-02-16T11:09:25.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:24:58.760Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="软件系统设计">
+<meta property="article:tag" content="体系结构">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/1.png">
+  
+  
+  <title>2021-Software-System-Design-Lec12-Introduction - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          81 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Software-System-Design-Lec12-Introduction</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec12-introduction"><a class="markdownIt-Anchor" href="#lec12-introduction"></a> lec12-Introduction</h2>
+<h1 id="1-课程背景"><a class="markdownIt-Anchor" href="#1-课程背景"></a> 1. 课程背景</h1>
+<h2 id="11-为什么要研究软件设计体系结构why-study-software-design-architecture"><a class="markdownIt-Anchor" href="#11-为什么要研究软件设计体系结构why-study-software-design-architecture"></a> 1.1. 为什么要研究软件设计体系结构？Why Study Software Design &amp; Architecture?</h2>
+<ol>
+<li>软件(IT)系统无处不在 Software(IT) systems are everywhere</li>
+<li>每个软件密集型(组成的)系统都有一个软件设计和体系结构 Every software intensive system has a sofftware design and architecture</li>
+<li>软件设计和体系结构是实践，教育和研究中越来越重要的领域 Software design and architecture are an increasingly important area of practice, education, and research</li>
+<li>专业：软件架构师 As a profession: Software Architect</li>
+<li>作为研究领域 As a research area
+<ol>
+<li>最初于1960年左右开始 Originally started around 1960</li>
+<li>自1990年以来备受关注 Attracting major attention since 1990</li>
+</ol>
+</li>
+<li>本课程是关于 This course is about
+<ol>
+<li>软件设计和体系结构的概念，原理，方法和模式 Concepts, principles, methods, and patterns of software design and architecture</li>
+<li>软件设计和体系结构的最新实践 State-of-the-art practices of software design and architecture</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-learning-objectives-将要学习到的东西"><a class="markdownIt-Anchor" href="#12-learning-objectives-将要学习到的东西"></a> 1.2. Learning Objectives 将要学习到的东西</h2>
+<ol>
+<li>理解软件设计和体系结构的概念和原理 Understand concepts and principles of software design and architecture</li>
+<li>通过考虑需求或通过反向体系结构来创建软件体系结构 Create software architecture by taking requirements or through reverse architecting</li>
+<li>在创建软件体系结构和设计的时候应用设计模式、风格、中间件技术和框架 Apply tactics, patterns, styles, middleware technologies and frameworks in creating software architecture and design</li>
+<li>分析软件设计和评估软件体系结构的系统性 Analyze software design and evaluate software architecture systematically</li>
+<li>理解艺术式的设计是如何应用到软件设计与体系结构中的 Understand state-of the-art methods applied in software design and architecture</li>
+<li>理解软件设计与软件体系结构之间的关系，以及其他软件工程的领域话题 Understand relationships between software design and software architecture, and other software engineering topic areas</li>
+</ol>
+<h1 id="2-介绍"><a class="markdownIt-Anchor" href="#2-介绍"></a> 2. 介绍</h1>
+<h2 id="21-understanding-software-engineering-理解软件工程"><a class="markdownIt-Anchor" href="#21-understanding-software-engineering-理解软件工程"></a> 2.1. Understanding Software Engineering 理解软件工程</h2>
+<ol>
+<li>Software 和 Engineering</li>
+<li>Software 和 Hardware
+<ol>
+<li>软件是不可见的：软件是虚拟的，而硬件是实体的。</li>
+<li>软件制作出来就是为了被修改和改变的(软件的演化是他的本质属性)</li>
+</ol>
+</li>
+<li>Science vs. Engineering：科学的研究是研究这个世界既有的部分，而工程是研究的是人类创造新的世界(是不是因为人才产生的)，下面的图是很重要的。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="22-what-is-software-architecture-什么是软件体系结构"><a class="markdownIt-Anchor" href="#22-what-is-software-architecture-什么是软件体系结构"></a> 2.2. What is Software Architecture 什么是软件体系结构</h2>
+<ol>
+<li>定义1：程序或计算系统的软件体系结构是系统的一个或多个结构，其中包括软件组件，这些组件的外部可见属性以及它们之间的关系。[软件工程学院(SEI)] Definition 1:“The software architecture of a program or computing system is the structure or structures of the system, which comprise software elements, the externally visible properties of those elements, and the relationships among them.” [Software Engineering Institute (SEl)]</li>
+<li>定义2：系统的基本组织，体现在其组件，它们之间的相互关系以及环境以及支配其<strong>设计和演进的原则</strong>。[IEEE 1471-2000有关软件密集型系统的体系结构描述的推荐做法] Definition 2: “The fundamental organization of a  system, embodied in its components, their relationships，to each other and the environment, and the principles governing its design and evolution.” [IEEE 1471 -2000 Recommended Practice for Architectural Description of Software-Intensive Systems&quot;]</li>
+<li>Module和Component的区别
+<ol>
+<li>Component(组件)：是已经实现了的软件部分</li>
+<li>Module(模块)：是还没有实现出来的软件部分</li>
+<li>Element包含了Component和Module。</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-体系结构-vs-设计-architecture-vs-design"><a class="markdownIt-Anchor" href="#23-体系结构-vs-设计-architecture-vs-design"></a> 2.3. 体系结构 vs 设计 Architecture vs. Design</h2>
+<ol>
+<li>体系结构是关于软件设计 It’s about software design
+<ol>
+<li>所有的体系结构都是软件设计，但不是所有的软件设计都是体系结构 All architecture is software design, but not all design is software architecture</li>
+<li>体系结构是设计过程的一个过程 “Architecting” is part of the design process</li>
+</ol>
+</li>
+<li>其他观点 Other views
+<ol>
+<li>体系结构是更高层的设计 High-level designs</li>
+<li>体系结构是设计决策的组合 A set of design decisions</li>
+<li>体系结构是根据不同项目而不同的 Locality</li>
+</ol>
+</li>
+<li>系统的结构或组织 Structure/Organization of the system
+<ol>
+<li>元素(Elements)：部件(Components)和连接件(Connectors) Elements: components &amp; connectors</li>
+<li>关系：静态(static)和动态(dynamic)的关系 Relationships: static &amp; dynamic relationships</li>
+</ol>
+</li>
+<li>属性：元素，元素组和整个系统 Properties: elements, groups of elements &amp; overall system</li>
+</ol>
+<h2 id="24-体系结构-vs-结构-architecture-vs-structure"><a class="markdownIt-Anchor" href="#24-体系结构-vs-结构-architecture-vs-structure"></a> 2.4. 体系结构 vs 结构 Architecture vs. Structure</h2>
+<ol>
+<li>体系结构将系统分解成部件/模块/子系统，降低每一部分的复杂度 Decomposition of system into components/modules/subsystems</li>
+<li>体系结构定义 Architecture defines
+<ol>
+<li>部件接口：部件可以做什么？Component interfaces: What a component can do?</li>
+<li>部件交流和依赖：部件可以怎么沟通交流？Component communications and dependencies:How components communicate?</li>
+<li>部件职责：当我们询问它时，部件需要精确的知道自己将要做什么？Component responsibilities:Precisely what a component will do when you ask it?</li>
+</ol>
+</li>
+</ol>
+<h3 id="241-结构和体系结构-structure-and-architecture"><a class="markdownIt-Anchor" href="#241-结构和体系结构-structure-and-architecture"></a> 2.4.1. 结构和体系结构 Structure and Architecture</h3>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>左图是对于结构的描述</li>
+<li>右图是对于体系结构的描述
+<ol>
+<li>图中左侧的设计：第三方的模块与其他的四个模块直接耦合</li>
+<li>图中右侧的设计：我们加入了AL模块来屏蔽了变化</li>
+</ol>
+</li>
+</ol>
+<h3 id="242-体系结构确定通信-architecture-specifies-communication"><a class="markdownIt-Anchor" href="#242-体系结构确定通信-architecture-specifies-communication"></a> 2.4.2. 体系结构确定通信 Architecture Specifies Communication</h3>
+<ol>
+<li>通信需要 Communication involves:
+<ol>
+<li><strong>数据</strong>通过机器传递，比如 Data passing mechanisms, for example:
+<ol>
+<li>函数调用 Function call</li>
+<li>远程方法调用 Remote method invocation</li>
+<li>异步信息 Asynchronous message</li>
+</ol>
+</li>
+<li><strong>控制</strong>流 Control flow
+<ol>
+<li>组件间的信息流来满足需要的功能 Flow of messages between components to achieve required functionality</li>
+<li>序列化的 Sequential</li>
+<li>并发/并行 Concurrent/parallel</li>
+<li>同步 Synchronization</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="243-体系结构强调非功能性需求nfa-architecture-address-nfrs"><a class="markdownIt-Anchor" href="#243-体系结构强调非功能性需求nfa-architecture-address-nfrs"></a> 2.4.3. 体系结构强调非功能性需求(NFA) Architecture Address NFRS</h3>
+<ol>
+<li><strong>非功能性需求(Non-functional requirements)<strong>定义了</strong>系统运行的有多好</strong> Non-functional requirements (NFRs) define &quot;how well a system works?</li>
+<li>当然也需要考虑功能性需求。</li>
+<li>非功能性需求很少在功能性需求中很少被发现 NFRs rarely captured in functional requirements
+<ol>
+<li>又名体系结构需求 Aka. architecture requirements</li>
+<li>必须通过体系结构引出 Must be elicited by architect</li>
+</ol>
+</li>
+<li>非功能性需求 NFRs include
+<ol>
+<li>技术约束 Technical constraints</li>
+<li>商业约束 Business constraints</li>
+<li>质量属性 Quality attrilbutes</li>
+</ol>
+</li>
+<li>讨论：质量属性列表 Discussion: A list of quality attributes?</li>
+</ol>
+<h2 id="25-设计是一种抽象-design-is-an-abstraction"><a class="markdownIt-Anchor" href="#25-设计是一种抽象-design-is-an-abstraction"></a> 2.5. 设计是一种抽象 Design is an Abstraction</h2>
+<ol>
+<li>体系结构提供了设计的更高层抽象视角 Architecture provides an higher level abstract view of a design
+<ol>
+<li>隐藏设计的复杂性和实现 Hides complexity and implementation of design</li>
+<li>可能是或者可能不是体系结构元素和软件元素之间的直接映射 May or may not be a direct mapping between architecture elements and sottware elements</li>
+</ol>
+</li>
+<li>黑盒设计 和 白盒设计 Blackbox design and Whitebox design
+<ol>
+<li>是对系统结构和交互的非正式描述Informal depiction of system’s structure and interactions.</li>
+<li>描述在体系结构中内嵌的设计哲学Portray the design philosophies embodied in the<br />
+architecture</li>
+</ol>
+</li>
+<li>讨论：为什么在设计中使用抽象？Discussion: Why abstraction in design?</li>
+</ol>
+<h2 id="26-体系结构视图-architecture-views"><a class="markdownIt-Anchor" href="#26-体系结构视图-architecture-views"></a> 2.6. 体系结构视图 Architecture Views</h2>
+<ol>
+<li>体系结构视图主要是为了应对软件不可见的问题，屏蔽其他没有影响的部分，将关注点进行分离</li>
+<li>软件体系结构代表了一个复杂的设计制品 A software architecture represents a complex design artifact</li>
+<li>很多体系结构的可能视图：类比建筑-平面图，外部设计，电力设计，水暖，空气调节 Many possible ‘views’ of the architecture:Analogy with buildings-floor plan, external, electrical, plumbing, air-conditioning</li>
+</ol>
+<h1 id="3-如何创建一个设计-how-to-develop-a-design"><a class="markdownIt-Anchor" href="#3-如何创建一个设计-how-to-develop-a-design"></a> 3. 如何创建一个设计 How to Develop a Design?</h1>
+<ol>
+<li>广义的设计策略 Generic Design Strategies:
+<ol>
+<li>分解 Decomposition</li>
+<li>抽象 Abstraction</li>
+<li>逐步的：分而治之 Stepwise:Divid and Conquer</li>
+<li>生成和测试 Generate and Test</li>
+<li>迭代：渐进式细化 Iteration: Incremental Refinement</li>
+<li>重用元素 Reuseable elements</li>
+</ol>
+</li>
+</ol>
+<h2 id="31-kkruchen的41视图模型-pkrutchens-41-view-model"><a class="markdownIt-Anchor" href="#31-kkruchen的41视图模型-pkrutchens-41-view-model"></a> 3.1. K.Kruchen的4+1视图模型 P.Krutchen’s 4+1 View Model</h2>
+<ol>
+<li>逻辑视图：描述了体系结构中在体系结构上明显重要的元素以及他们之间的关系Logical view: describes architecturally significant elements of the architecture and the relationships between them</li>
+<li>过程视图：描述了体系结构中的并发和交流元素 Process view: describes the concurrency and communications elements of an architecture.</li>
+<li>物理视图：描述了主要过程和部件是如何映射到应用硬件上的 Physical view: depicts how the major processes and components are mapped on to the applications hardware.</li>
+<li>发展视图：描述了软件部件是如何在软件内部组织的，比如配置管理工具Development view: captures the internal organization of the software components as held in e.g./ a configuration management tool.</li>
+<li>使用体系结构的情况：描述了体系结构的需求，关系到了超过一个常规的视图Architecture use cases: capture the requirements for the architecture; related to more than one particular view</li>
+<li>四个视图在某一个场景下进行描述</li>
+</ol>
+<h2 id="32-体系结构和软件体系结构-architect-software-architect"><a class="markdownIt-Anchor" href="#32-体系结构和软件体系结构-architect-software-architect"></a> 3.2. 体系结构和软件体系结构 Architect &amp; Software Architect</h2>
+<blockquote>
+<p>体系结构设计了满足人类需求的结构 Architects design structures to meet human needs. - James Fitch, 1972</p>
+</blockquote>
+<ol>
+<li>体系结构的作用仍然保持着一致 The role of the architect remains the same
+<ol>
+<li>倾听用户，理解整体的需求 Listening to clients, understanding the totality of needs</li>
+<li>仔细检查灵活性 Scrutinizing feasibilities</li>
+<li>形成一个实际的结构版本，创建一个蓝图 Forming a practical vision of a structure and creating a blueprint</li>
+<li>监督构建过程，保证是符合规范的 Overseeing construction and ensuring compliance to the plan</li>
+<li>引导在暴风雨式的设计变更、危机和歧义性中的版本 Guiding the vision through the tempest of design changes, crises and ambiguities</li>
+</ol>
+</li>
+<li>软件体系结构则是监督软件的构建过程：开发人员、工程师和设计者 Software architects oversee software construction professionals Programmers, Engineers, Designers</li>
+<li>有名的软件体系结构
+<ol>
+<li>Bill Gates: Chief Software Architect of Microsoft</li>
+<li>Tim Bernrs-Lee: Inventor and Chief Architect of World Wide Web</li>
+<li>Roy Fielding: Representational State Transfer (REST)</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-软件体系结构在做什么-what-does-a-software-architect-do"><a class="markdownIt-Anchor" href="#33-软件体系结构在做什么-what-does-a-software-architect-do"></a> 3.3. 软件体系结构在做什么 What Does a Software Architect Do?</h2>
+<ol>
+<li>联络人 Liaison
+<ol>
+<li>在客户、技术团队和商业/需求分析师之间 Among clients, technical team and business/requirements analysts</li>
+<li>包含管理和市场分析 With management or marketing</li>
+</ol>
+</li>
+<li>软件工程：软件工程的最佳实践 Software Engineering:Software engineering best practices</li>
+<li>技术知识：深入理解技术领域 Technology Knowledge:Deep understanding of technology domain</li>
+<li>风险管理：Risk Management
+<ol>
+<li>与设计、技术决策相关的风险 Risks associated with the design, technology choices</li>
+<li>更多？More?</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-总体设计模型-a-general-design-model"><a class="markdownIt-Anchor" href="#34-总体设计模型-a-general-design-model"></a> 3.4. 总体设计模型 A General Design Model</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>开发和设计是在做减法</p>
+<h2 id="35-软件设计过程-software-design-process"><a class="markdownIt-Anchor" href="#35-软件设计过程-software-design-process"></a> 3.5. 软件设计过程 Software Design Process</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="36-体系结构活动-architecture-activities"><a class="markdownIt-Anchor" href="#36-体系结构活动-architecture-activities"></a> 3.6. 体系结构活动 Architecture Activities</h2>
+<ol>
+<li>创建系统的商业案例 Creating the business casenfor the System</li>
+<li>理解需求 Understanding the requirements</li>
+<li>创建和选择体系结构 Creating and selecting architecture</li>
+<li>沟通体系结构(涉众，包括开发商) Communicating the architecture (stakeholders including developers)</li>
+<li>分析或评估体系结构 Analysing or evaluating the architecture
+<ol>
+<li>整体的方法论 Overall methodologies</li>
+<li>具体技术的质量 Quality specific techniques</li>
+</ol>
+</li>
+<li>实现体系结构Implementing the architecture</li>
+<li>保证和体系结构的一致性Ensuring contormance to an architecture</li>
+</ol>
+<h2 id="37-软件体系结构过程-software-architecture-process"><a class="markdownIt-Anchor" href="#37-软件体系结构过程-software-architecture-process"></a> 3.7. 软件体系结构过程 Software Architecture Process</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="38-体系结构生命周期-architecture-lifecycle"><a class="markdownIt-Anchor" href="#38-体系结构生命周期-architecture-lifecycle"></a> 3.8. 体系结构生命周期 Architecture Lifecycle</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec12/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="39-软件体系结构和体系结构知识领域-software-design-architecture-knowledge-areas"><a class="markdownIt-Anchor" href="#39-软件体系结构和体系结构知识领域-software-design-architecture-knowledge-areas"></a> 3.9. 软件体系结构和体系结构知识领域 Software Design &amp; Architecture Knowledge Areas</h2>
+<ol>
+<li>软件设计基本原理 Software Design Basic Concepts
+<ol>
+<li>整体设计原理 General design concepts</li>
+<li>上下文：软件发展生命周期-需求、设计、编码和测试 Context: software development life cycle - requirements, design, construction and testing</li>
+<li>设计过程：决策、活动、可运行产品 Design process(role, activity, work product)</li>
+<li>软件设计的使能技术 Enabling techniques for software design</li>
+</ol>
+</li>
+<li>核心问题(技术)：一致性、事件控制和处理、分发、异常处理、交互系统、持久化 Key Issues (technical): concurrency, control and handling of events, distribution, exception handling, interactive systems, persistence</li>
+<li>软件结构和体系结构 Software Structure and Architecture
+<ol>
+<li>体系结构结构和视点 Architecture Structures and viewpoints</li>
+<li>体系结构风格和模式(宏观体系结构) Architectural styles and patterns (macro-architecture)</li>
+<li>设计模式(微观体系结构) Design patterns (micro-architecture)</li>
+</ol>
+</li>
+<li>软件设计方法Software Design Methods
+<ol>
+<li>体系结构方法，比如属性驱动的设计 Architecture Methods (e .g., Attribute- Driven Design)</li>
+<li>设计方法，比如动态系统发展方法 Design Methods (e.g., Dynamic System Development Method)</li>
+</ol>
+</li>
+<li>软件设计的质量分析和评估 Software Design Quality Analysis and Evaluation
+<ol>
+<li>质量属性 Quality attributes</li>
+<li>质量分析和评估方法、技术和工具 Quality analysis and evaluation methods, techniques and tools
+<ol>
+<li>设计回顾：比如SEI的体系结构权衡分析方法 Design reviews (e.g. SEI’s Architecture Trade-off Analysis Method)</li>
+<li>静态分析和动态分析 Static analysis and dynamic analysis</li>
+<li>模拟和原型 Simulation and prototyping</li>
+</ol>
+</li>
+<li>度量 Measures:
+<ol>
+<li>矩阵：体系结构级别 Metrics: Architecture level</li>
+<li>技术特有度量指标 Technique specific measures</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>设计建模和展示 Design Modeling and Representation
+<ol>
+<li>体系结构和设计符号(体系结构描述语言，Architecture Description Languages，ADL)Architecture and Design Notations (Architecture Description Languages(ADL))</li>
+<li>UML Unified Modelling Language (UML)</li>
+<li>设计文档(意见或其他) Design Documentation (Views &amp; Beyond)</li>
+<li>其他：在活动、关注点和领域上的不同，比如ACME，Rapide。 Others: differ in ability, focus and domain (e.g. ACME, Rapide)</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-讨论"><a class="markdownIt-Anchor" href="#4-讨论"></a> 4. 讨论</h1>
+<ol>
+<li>科学和工程有什么不同？What is Difference between Science and Engineering?
+<ol>
+<li>科学的研究是研究这个世界既有的部分</li>
+<li>工程是研究的是人类创造新的世界(是不是因为人才产生的)</li>
+</ol>
+</li>
+<li>软件和硬件有什么不同？What is Difference between ‘Software’ and ‘Hardware’?
+<ol>
+<li>软件是不可见的：软件是虚拟的，而硬件是实体的。</li>
+<li>软件制作出来就是为了被修改和改变的(软件的演化是他的本质属性)</li>
+</ol>
+</li>
+<li>体系结构和设计有什么不同？What is Difference between Architecture and Design?
+<ol>
+<li>所有的体系结构都是软件设计，但是不是所有的软件设计都是体系结构</li>
+<li>体系结构是设计过程的一个过程。</li>
+<li>其他观点
+<ol>
+<li>体系结构是更高层的设计，是为了修改的</li>
+<li>体系结构是设计决策的组合</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>体系结构和结构有什么不同？What is Difference between Architecture and Structure?
+<ol>
+<li>体系结构定义了组件(Component)的接口，Component之间如何交流以及如何相互依赖，Component的职责。</li>
+<li>体系结构提供了设计的更高层抽象视角，隐藏设计的复杂性和实现，更强调非功能性需求。</li>
+<li>【标准】架构是包括结构信息的，因为结构是一种静态的、逻辑的、是关于系统如何构成。但是架构除了包含结构，还会增加组件的相互之间的关系接口，还会定义一些动态的行为(一个组件可能和谁进行交互)</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+      
+        <a href="/project/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Software-System-Design-Lec12-Introduction</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec12-Introduction/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec01-Principles%20of%20Software%20Design/" title="2021-Software-System-Design-Lec01-Principles of Software Design">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec01-Principles of Software Design</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec21-Review%20Part2/" title="2021-Software-System-Design-Lec21-Review Part2">
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec21-Review Part2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

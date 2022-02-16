@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Devops-introduction-Lec4-敏捷与精益">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Devops-introduction-Lec4-敏捷与精益">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec4-%E6%95%8F%E6%8D%B7%E4%B8%8E%E7%B2%BE%E7%9B%8A/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Devops-introduction-Lec4-敏捷与精益">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-16T11:09:44.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:50:00.647Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="敏捷">
+<meta property="article:tag" content="精益">
+<meta property="article:tag" content="scrum">
+<meta property="article:tag" content="xp">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2020-Devops-introduction-Lec4-敏捷与精益 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Devops-introduction-Lec4-敏捷与精益</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec4-敏捷与精益"><a class="markdownIt-Anchor" href="#lec4-敏捷与精益"></a> Lec4-敏捷与精益</h2>
+<h1 id="1-概述"><a class="markdownIt-Anchor" href="#1-概述"></a> 1. 概述</h1>
+<ol>
+<li>精益与敏捷是两组具有高度兼容性的价值观和原则，都阐述了如何成功地进行产品开发。</li>
+<li>Scrum、XP和看板则是将这些原则运用到实践中的三种具体方法。换句话说，它们是精益和敏捷软件开发里轻度重叠的三种不同风格。</li>
+</ol>
+<h2 id="11-敏捷概述"><a class="markdownIt-Anchor" href="#11-敏捷概述"></a> 1.1. 敏捷概述</h2>
+<ol>
+<li>术语敏捷软件开发出现于2001年。当时，来自软件开发界的十七位思想领袖聚集在美国犹他州的一个滑雪度假胜地，探讨软件开发如何取得成功。</li>
+<li>此前，他们都各自创立了不同的新方法，如Scrum、XP和动态系统开发方法（DSDM）。</li>
+<li>研讨会期间，他们总结出一些强大的共同观点，形成了软件开发如何成功的共有愿景，即后来人们熟知的《敏捷宣言》。</li>
+</ol>
+<h2 id="12-敏捷宣言"><a class="markdownIt-Anchor" href="#12-敏捷宣言"></a> 1.2. 敏捷宣言</h2>
+<ol>
+<li>我们正在通过亲身实践以及帮助他人实践，探寻更好的软件开发方法。通过这项工作，我们建立了如下价值观
+<ol>
+<li>个体和互动胜过流程和工具</li>
+<li>可以工作的软件胜过详尽的文档</li>
+<li>客户合作胜过合同谈判</li>
+<li>响应变化胜过遵循计划</li>
+</ol>
+</li>
+<li>也就是说，虽然右项也具有其价值，但我们认为左项具有更大的价值。</li>
+</ol>
+<h2 id="13-敏捷原则"><a class="markdownIt-Anchor" href="#13-敏捷原则"></a> 1.3. 敏捷原则</h2>
+<ol>
+<li>我们最重要的目标，是通过持续不断地及早交付有价值的软件使客户满意。</li>
+<li>欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，要通过敏捷过程掌控变化。</li>
+<li>经常地交付可工作的软件，比如相隔几星期或一两个月就交付，倾向于采取较短的周期。</li>
+<li>业务人员和开发人员必须相互合作，项目中的每一天都不例外。</li>
+<li>激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。</li>
+<li>不论团队内外，传递信息效果最好、效率也最高的方式是面对面的交谈。</li>
+<li>可工作的软件是进度的首要度量标准。</li>
+<li>敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。</li>
+<li>坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。</li>
+<li>以简洁为本，它是极力减少不必要工作量的艺术。</li>
+<li>最好的架构、需求和设计出自自组织团队。</li>
+<li>团队定期地反思如何能提高成效，并依此调整自身的举止表现。</li>
+</ol>
+<h1 id="2-敏捷"><a class="markdownIt-Anchor" href="#2-敏捷"></a> 2. 敏捷</h1>
+<ol>
+<li>虽然敏捷一词正式出现于2001年，但多数敏捷方法都是在20世纪80年代到90年代形成的。敏捷只是一个描述了共同特征的统称。凡遵循上述价值观和原则的方法或方式都可视为敏捷方法。</li>
+<li>我们通过宣言可以了解2001年时的敏捷是什么意思，今天它的定义已经没有那么明确。</li>
+<li>宣言的最初作者中，很多人希望这个术语会最终淡出历史，标志着敏捷价值观和原则已成为“我们开发软件的方式”。</li>
+</ol>
+<h1 id="3-精益"><a class="markdownIt-Anchor" href="#3-精益"></a> 3. 精益</h1>
+<ol>
+<li>精益起源于日本丰田公司的“TPS”（丰田生产方式），即助力丰田成为全球最成功汽车制造商的生产方式。实践证明，TPS的基本原则“丰田之道”几乎适用于所有行业，包括软件开发。</li>
+<li>敏捷与精益可以看作是一对拥有共同价值观但起源不同的兄弟。精益起源于制造业，敏捷起源于软件开发。</li>
+</ol>
+<h2 id="31-精益原则1-全局优化"><a class="markdownIt-Anchor" href="#31-精益原则1-全局优化"></a> 3.1. 精益原则1-全局优化</h2>
+<ol>
+<li>局部的优化长期来说，会对系统整体优化不利。
+<ol>
+<li><strong>专注于整体价值流</strong>：从概念到现金。从客户需求到软件部署。</li>
+<li><strong>交付完整产品</strong>：客户不要软件产品，他们要解决问题。完整的解决方案是由完整的团队构建的。</li>
+<li><strong>着眼长期</strong>：警惕导致短期思维和优化局部业绩的治理和激励体系。</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-精益原则2-消灭浪费"><a class="markdownIt-Anchor" href="#32-精益原则2-消灭浪费"></a> 3.2. 精益原则2-消灭浪费</h2>
+<ol>
+<li>浪费指所有那些不能增加客户价值的事项。软件开发中的三大浪费如下。
+<ol>
+<li><strong>构建错误的功能</strong>：“没有什么比高效完成根本不应做的工作更无用。”</li>
+<li><strong>拒绝学习</strong>：我们有很多策略都干扰了我们学习，例如，只按计划行事、频繁移交、决策与工作分离等，而学习则是开发的精髓。</li>
+<li><strong>辗转现象</strong>：那些干扰价值顺利流动的做法，例如，任务切换、请求清单冗长、大堆未完成的工作等等，都只能达到事倍功半的效果。</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-精益原则3-品质为先"><a class="markdownIt-Anchor" href="#33-精益原则3-品质为先"></a> 3.3. 精益原则3-品质为先</h2>
+<ol>
+<li>如果在验证过程中总是能发现缺陷，那流程就有问题。
+<ol>
+<li><strong>最终验证不应发现缺陷</strong>：所有软件开发流程的根本目的都是尽早在开发阶段发现并修复缺陷</li>
+<li><strong>采用测试先行的开发模式让流程具有防误机制</strong>：测试（包括单元测试、端对端测试和集成测试）必不可少，以此建立信心，保证系统在任何层次、在开发阶段任何时间点都始终正确无误</li>
+<li><strong>打破依赖</strong>：系统架构应当支持随时添加功能</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-精益原则4-不断学习"><a class="markdownIt-Anchor" href="#34-精益原则4-不断学习"></a> 3.4. 精益原则4-不断学习</h2>
+<ol>
+<li>规划工作非常有用。学习则必不可少。
+<ol>
+<li><strong>可预测的性能来自于反馈</strong>：可预测的组织不会猜测未来并称之为计划；反之，他们会培养能力对未来做出响应。</li>
+<li><strong>保持选择方案</strong>：视代码为实验——使其具有容变性。</li>
+<li><strong>最后可靠时刻</strong>：在做出不可逆转的决策之前尽可能学习。不要提前做出纠正代价高昂的决策，也不要事后才做出决定！</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-精益原则5-尽快交付"><a class="markdownIt-Anchor" href="#35-精益原则5-尽快交付"></a> 3.5. 精益原则5-尽快交付</h2>
+<ol>
+<li>从一开始就深入了解所有干系人看重的价值。然后基于这样深入了解的价值观，创建稳定、连贯的工作流。
+<ol>
+<li><strong>快速交付、高质量和低成本是完全相互兼容的</strong>：以速度竞争见长的公司拥有很高的成本优势，他们可以交付优质的产品，而且对客户需求更为敏感。</li>
+<li><strong>排队理论同样适用于开发，而不仅仅是服务行业</strong>：专注于使用性会造成交通堵塞，反而降低了使用性。以较小的批量、限制同时进行的工作数来缩短周期时间。大力限制等待清单和队列的长度。</li>
+<li><strong>管理工作流比管理进度表要容易得多</strong>：建立可靠、可预测交付物的最佳方式是通过迭代和看板建立可靠、可重复的工作流。</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-精益原则6-人人参与"><a class="markdownIt-Anchor" href="#36-精益原则6-人人参与"></a> 3.6. 精益原则6-人人参与</h2>
+<ol>
+<li>聪明、有创造力的人员的时间与精力，是当代经济的稀有资源和竞争优势的基础。获得公正薪资的人员在自主性、成长性和使命感等方面受到激励。
+<ol>
+<li><strong>自主性</strong>：最有效的工作小组是半自治团队，有一个内部主管从头到尾负责完整、有意义的任务。</li>
+<li><strong>成长性</strong>：对人员的尊重意味着提供挑战、反馈和让所有人都能够发挥潜能、表现卓越的良好环境。</li>
+<li><strong>使命感</strong>：将工作与价值挂钩。只有相信自己工作的意义，团队成员才会全心投入工作，实现这种使命。</li>
+</ol>
+</li>
+</ol>
+<h2 id="37-精益原则7-不断提高"><a class="markdownIt-Anchor" href="#37-精益原则7-不断提高"></a> 3.7. 精益原则7-不断提高</h2>
+<ol>
+<li>结果不是重点——重点是培养人、发展体制，使之能够交付结果。
+<ol>
+<li><strong>失败是个学习机会</strong>：即使是非常小的失败都会被深入调查并纠正的，做到一丝不苟的时候，才可能获得最可靠的性能。</li>
+<li><strong>标准存在的目的就是要被质疑和提高的</strong>：将现行的、最知名的做法纳入人人都遵循的标准，与此同时鼓励所有人质疑并改变标准。</li>
+<li><strong>使用科学方法</strong>：教团队建立假设、开展大量快速实验、创建简明文档并实施最佳方案。</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Devops-introduction/" class="category-chain-item">2020-Devops-introduction</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/DevOps/">#DevOps</a>
+      
+        <a href="/project/tags/%E6%95%8F%E6%8D%B7/">#敏捷</a>
+      
+        <a href="/project/tags/%E7%B2%BE%E7%9B%8A/">#精益</a>
+      
+        <a href="/project/tags/scrum/">#scrum</a>
+      
+        <a href="/project/tags/xp/">#xp</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Devops-introduction-Lec4-敏捷与精益</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec4-%E6%95%8F%E6%8D%B7%E4%B8%8E%E7%B2%BE%E7%9B%8A/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec2-%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%8E%E4%BA%91%E6%97%B6%E4%BB%A3%E8%BF%90%E7%BB%B4/" title="2020-Devops-introduction-Lec2-云计算与云时代运维">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec2-云计算与云时代运维</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec5-%E7%9C%8B%E6%9D%BF/" title="2020-Devops-introduction-Lec5-看板">
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec5-看板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

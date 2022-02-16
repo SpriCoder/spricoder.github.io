@@ -1,0 +1,1794 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec06-Embedded%20Software%20System/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/38.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/41.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/42.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/43.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/44.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/45.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/46.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/47.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/48.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/49.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/50.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/51.png">
+<meta property="article:published_time" content="2022-02-16T11:09:38.000Z">
+<meta property="article:modified_time" content="2022-02-16T13:29:34.704Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="优先级">
+<meta property="article:tag" content="嵌入式系统导论">
+<meta property="article:tag" content="调度">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/1.png">
+  
+  
+  <title>2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          146 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec06-embedded-software-system"><a class="markdownIt-Anchor" href="#lec06-embedded-software-system"></a> lec06-Embedded Software System</h2>
+<h1 id="1-嵌入式软件概述"><a class="markdownIt-Anchor" href="#1-嵌入式软件概述"></a> 1. 嵌入式软件概述</h1>
+<h2 id="11-嵌入式软件开发路线图"><a class="markdownIt-Anchor" href="#11-嵌入式软件开发路线图"></a> 1.1. 嵌入式软件开发路线图</h2>
+<ol>
+<li>系统越来越复杂，嵌⼊式系统的软件开发逐渐变成了软件专家的工作。</li>
+<li>对电子硬件很了解，也愿意做⼀些和硬件密切相关的工作。</li>
+<li>最近10-15年，伴随着嵌⼊式软件规模和复杂性的爆炸性增⻓，专门的软件开发团队进⼊了视野。软件团队在不断壮大，但这种增长不仅仅是因为完成所需的代码。嵌⼊式软件团队中有不同领域的专家，包括⽹络、⽤户界⾯设计、硬件设备、传统嵌⼊式软件设计等方面。</li>
+</ol>
+<h2 id="12-嵌入式软件与桌面软件的对比"><a class="markdownIt-Anchor" href="#12-嵌入式软件与桌面软件的对比"></a> 1.2. 嵌入式软件与桌面软件的对比</h2>
+<h3 id="121-内存"><a class="markdownIt-Anchor" href="#121-内存"></a> 1.2.1. 内存</h3>
+<p>有限，影响编程语言的选择以及开发工具的使用(⽐如编译器优化)</p>
+<h3 id="122-cpu处理能力"><a class="markdownIt-Anchor" href="#122-cpu处理能力"></a> 1.2.2. CPU处理能力</h3>
+<p>成本和功耗的考虑，ES不得不采用保守的设计⽅案，其中的CPU往往只是恰好满足要求。</p>
+<h3 id="123-操作系统"><a class="markdownIt-Anchor" href="#123-操作系统"></a> 1.2.3. 操作系统</h3>
+<p>OS(Windows/Linux)、RTOS、专有OS或裸机</p>
+<h3 id="124-实时性"><a class="markdownIt-Anchor" href="#124-实时性"></a> 1.2.4. 实时性</h3>
+<ol>
+<li>实时系统不⼀定会运行得很快，但⼀定是可预测的，通常的术语叫做确定性</li>
+<li>实时性的要求对于OS的选择和程序设计都有影响</li>
+</ol>
+<h3 id="125-开发流程"><a class="markdownIt-Anchor" href="#125-开发流程"></a> 1.2.5. 开发流程</h3>
+<ol>
+<li>ES往往没有足够的资源进行软件开发。交叉开发对于工具的选择有很大影响。</li>
+<li>开发过程也不同，编辑/编译/调试的循环是一样的，但执⾏程序这⼀步却⾮常复杂，需要把代码转移到目标机上或者在某种环境下运⾏。</li>
+</ol>
+<h3 id="126-执行流程"><a class="markdownIt-Anchor" href="#126-执行流程"></a> 1.2.6. 执行流程</h3>
+<p>多数嵌入式设备从开机开始就会运行某个程序，该程序会⼀直运⾏到系统关机。这个程序可能存储在ROM，也可能是从⾮易失性存储器转移到RAM中执⾏。</p>
+<h3 id="127-每一个嵌入式设备都是不同的"><a class="markdownIt-Anchor" href="#127-每一个嵌入式设备都是不同的"></a> 1.2.7. 每一个嵌入式设备都是不同的</h3>
+<ol>
+<li>可能是技术层⾯的：不同的CPU架构、内存、外设、应⽤程序和操作系统</li>
+<li>也可能是商业运作层⾯的，⽐如⼿机开发、⽣产的商业模式就和核磁共振扫描仪完全不同。</li>
+</ol>
+<h3 id="128-嵌入式软件工具和组件"><a class="markdownIt-Anchor" href="#128-嵌入式软件工具和组件"></a> 1.2.8. 嵌⼊式软件工具和组件</h3>
+<ol>
+<li>与桌⾯软就开发⼀样，嵌⼊式软件⼯程师需要运⽤⼯具来构建和测试软件。同时，也很可能会引⼊可重⽤的软件组件</li>
+</ol>
+<h3 id="129-开发工具"><a class="markdownIt-Anchor" href="#129-开发工具"></a> 1.2.9. 开发工具</h3>
+<ol>
+<li>从表⾯上看，嵌⼊式软件的开发过程和桌⾯软件很像：编译代码模块，然后在调试器的控制下执⾏。然⽽，并不这么简单，有着显著的不同。</li>
+<li>往往是使用交叉编译器来进行嵌入式软件的开发。</li>
+<li>有时候嵌⼊式应用中会直接包含⼩部分的汇编代码：处于对性能的考量。</li>
+<li>嵌⼊式链接器除了将多个对象模块和函数库例程整合在⼀起以外，链接器还负责在内存中正确定位代码和数据。嵌⼊式系统的内存映射⼗分复杂，对于精确性的要求也⼗分严格。链接器必需能够灵活地应对这些要求。</li>
+<li>嵌⼊式调试器并不是⼀个单⼀的组件，⽽是⼀系列对应不同运⾏环境的⼯具。借由在本地或者指令集模拟器中运⾏代码，代码可以仅在宿主机上运⾏。调试器也可以和⼀个⽬标板相连接(JTAG或其他⽅式，如以太⽹)，并执⾏代码。</li>
+<li>其他⼀些更有针对性的⼯具，典型的选项包括分析实时性能、代码执⾏时设备功耗情况的分析器。</li>
+</ol>
+<h3 id="1210-软件组件"><a class="markdownIt-Anchor" href="#1210-软件组件"></a> 1.2.10. 软件组件</h3>
+<ol>
+<li>最简单和显⽽易⻅的可重⽤的软件组件是库。⼀些库是由编译器提供的，嵌⼊式编译器提供的库应当是适合嵌⼊式环境的：可以重⼊、可以被存储在ROM中。(不会使用printf:会有问题)</li>
+<li>其他可⽤的库，特别是针对C++的库，如标准模板库STL。这些库可能并不适合嵌⼊式应⽤，在使⽤时要多加⼩⼼。</li>
+<li>与硬件交互式难点之⼀。在OS内部设备驱动提供了这样的接⼝</li>
+<li>ES的互联性不断提⾼，需要不同的⽹络⽀持，TCP/IP或总线CAN\I2C，其他⽹络技术SNMP、Zigbee、Bluetooth、WiFi和USB。最重要的是应该检查有效性，确保符合标准，并能和其他系统互通互联。</li>
+<li>嵌⼊式设备对于有组织的数据存储是有需求的，⽐如能够应对电源故障和⽀持多线程。</li>
+<li>LCD(往往是触摸式的)成本减低让其能够被应⽤到嵌⼊式设计中。软件于是迎来了⼀项挑战：⽀持复杂的图像和⽤户界⾯。</li>
+</ol>
+<h1 id="2-软件如何影响硬件设计"><a class="markdownIt-Anchor" href="#2-软件如何影响硬件设计"></a> 2. 软件如何影响硬件设计</h1>
+<h2 id="21-谁设计硬件"><a class="markdownIt-Anchor" href="#21-谁设计硬件"></a> 2.1. 谁设计硬件？</h2>
+<ol>
+<li>可能有同时负责软件和硬件的嵌入式工程师</li>
+<li>更有可能拥有两个团队：少数掌握这两个知识的工程师</li>
+<li>有关硬件的决定可能会对软件产生持久影响</li>
+</ol>
+<h2 id="22-软件硬件的权衡"><a class="markdownIt-Anchor" href="#22-软件硬件的权衡"></a> 2.2. 软件/硬件的权衡</h2>
+<ol>
+<li>微处理器选择：可能会影响软件效率</li>
+<li>内存大小和混合
+<ol>
+<li>延迟承诺是可取的</li>
+<li>ROM/RAM互换性很有用</li>
+</ol>
+</li>
+<li>外围设备实现：有时可通过软件替换[例如：计时器]</li>
+</ol>
+<h2 id="23-调试硬件"><a class="markdownIt-Anchor" href="#23-调试硬件"></a> 2.3. 调试硬件</h2>
+<ol>
+<li>在线仿真器：不广泛使用，</li>
+<li>监控调试器
+<ol>
+<li>需要沟通渠道，额外的性能消耗</li>
+<li>需要RAM/ROM交换</li>
+</ol>
+</li>
+<li>片上调试
+<ol>
+<li>需要板载连接器，相当于协议转换器</li>
+<li>需要RAM/ROM交换</li>
+</ol>
+</li>
+</ol>
+<h2 id="24-自检支持"><a class="markdownIt-Anchor" href="#24-自检支持"></a> 2.4. 自检支持</h2>
+<ol>
+<li>I/O电路：&quot;回送&quot;可能有用</li>
+<li>板载开关：适用于配置或模式选择</li>
+<li>状态显示:提供对用户额外的信息
+<ol>
+<li>可能是字符或只是LED</li>
+<li>LED至少可以具有3种状态：开，关，闪烁</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-嵌入式系统软件架构"><a class="markdownIt-Anchor" href="#3-嵌入式系统软件架构"></a> 3. 嵌入式系统软件架构</h1>
+<h2 id="31-软件分层"><a class="markdownIt-Anchor" href="#31-软件分层"></a> 3.1. 软件分层</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/1.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="32-嵌入式系统的可视化程序模型"><a class="markdownIt-Anchor" href="#32-嵌入式系统的可视化程序模型"></a> 3.2. 嵌入式系统的可视化程序模型</h2>
+<ol>
+<li>实时系统有两种基本的程序模型
+<ol>
+<li>将实时应用视为单个执行线程</li>
+<li>将实时应用视为多个执行线程</li>
+</ol>
+</li>
+<li>取决于需要构建什么类型的系统</li>
+</ol>
+<h2 id="33-为何要为实时系统建立模型"><a class="markdownIt-Anchor" href="#33-为何要为实时系统建立模型"></a> 3.3. 为何要为实时系统建立模型</h2>
+<ol>
+<li>辅助测试和完善最终系统</li>
+<li>更重要的是，模型利用它所知的系统属性来描述整个系统，并能够被⽤于对系统特性的进⼀步研究</li>
+<li>实时工程师使用程序模型来开发软件和硬件，以便能将整个实时系统全盘考虑</li>
+<li>模型使得⼯程师能够预测程序的运⾏，从⽽满⾜系统的性能需求和功能需求</li>
+</ol>
+<h2 id="34-模型间的差异"><a class="markdownIt-Anchor" href="#34-模型间的差异"></a> 3.4. 模型间的差异</h2>
+<ol>
+<li>⼀些模型易于编写，但调试不易</li>
+<li>难于编写，但调试容易</li>
+<li>⼀些模型使得程序运⾏得更快，但需要付出更多内存资源消耗的代价</li>
+<li>⼀些鲁棒性更好，但维护很简单的模型</li>
+</ol>
+<h3 id="341-单线程程序模型优缺点"><a class="markdownIt-Anchor" href="#341-单线程程序模型优缺点"></a> 3.4.1. 单线程程序模型优缺点</h3>
+<ol>
+<li>优点
+<ol>
+<li>编程和再编程⾮常快速简单</li>
+<li>改变系统响应的特性的同时，往模型上添加新功能插件也相当容易</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>在于应⽤领域的限制</li>
+<li>难以做到安全地再编程</li>
+<li>很难应⽤到不同⾏为或不同环境的运⾏系统中去。</li>
+</ol>
+</li>
+</ol>
+<h3 id="342-多线程程序模型的优缺点"><a class="markdownIt-Anchor" href="#342-多线程程序模型的优缺点"></a> 3.4.2. 多线程程序模型的优缺点</h3>
+<ol>
+<li>优点
+<ol>
+<li>允许将系统⼯作划分为⼏个逻辑阶段，然后编写相互独⽴的程序来处理各⾃的⼯作。</li>
+<li>所有处理过程并⾏。</li>
+<li>如果有更⾼吞吐量的需求，⼯程师可以在任务中引⼊新的通信和协作模型</li>
+</ol>
+</li>
+<li>缺点:可能引⼊资源竞争，也就是不得不付出代价</li>
+</ol>
+<h2 id="35-嵌入式软件体系结构概述"><a class="markdownIt-Anchor" href="#35-嵌入式软件体系结构概述"></a> 3.5. 嵌入式软件体系结构概述</h2>
+<ol>
+<li>轮询</li>
+<li>有限状态机</li>
+<li>带中断的轮询</li>
+<li>仅有中断</li>
+<li>功能队列调度</li>
+<li>实时操作系统(RTOS)</li>
+</ol>
+<h3 id="351-轮询"><a class="markdownIt-Anchor" href="#351-轮询"></a> 3.5.1. 轮询</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//Round Robin / Control Loop</span><br><span class="hljs-comment">//Everything is a function call from the main loop</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>&#123;<br>   <span class="hljs-keyword">while</span>(TRUE) &#123;<br>      <span class="hljs-keyword">if</span> (device_A <span class="hljs-keyword">requires</span> service)<br>         <span class="hljs-function">service device_A</span><br><span class="hljs-function">      <span class="hljs-title">if</span> <span class="hljs-params">(device_B <span class="hljs-keyword">requires</span> service)</span></span><br><span class="hljs-function">         service device_B</span><br><span class="hljs-function">      <span class="hljs-title">if</span> <span class="hljs-params">(device_C <span class="hljs-keyword">requires</span> service)</span></span><br><span class="hljs-function">         service device_C</span><br><span class="hljs-function">      ... <span class="hljs-keyword">and</span> so on until all devices have been serviced, then start over again</span><br><span class="hljs-function">   &#125;</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>可确定性:如果有任务不能确定时间，会导致其他所有的任务都被影响到。而这不符合嵌入式的实时性要求。</li>
+<li>轮询的特点:
+<ol>
+<li>优先级:无，一切按顺序进行。</li>
+<li>响应时间:所有任务的总和。</li>
+<li>变更的影响:重大。改变执行任务时间或添加任务会影响所有其他任务。</li>
+<li>简单，没有共享数据问题：线性并行执行</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3511-arduino-按下按钮时打开led"><a class="markdownIt-Anchor" href="#3511-arduino-按下按钮时打开led"></a> 3.5.1.1. Arduino - 按下按钮时打开LED</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> LED = <span class="hljs-number">13</span>; <span class="hljs-comment">// the pin for the LED</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> BUTTON = <span class="hljs-number">7</span>; <span class="hljs-comment">// the input pin where the</span><br><span class="hljs-comment">// pushbutton is connected</span><br><span class="hljs-type">int</span> val = <span class="hljs-number">0</span>; <span class="hljs-comment">// val will be used to store the state</span><br><span class="hljs-comment">// of the input pin</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>&#123;<br>   <span class="hljs-built_in">pinMode</span>(LED, OUTPUT); <span class="hljs-comment">// tell Arduino LED is an output</span><br>   <span class="hljs-built_in">pinMode</span>(BUTTON, INPUT); <span class="hljs-comment">// and BUTTON is an input</span><br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span></span>&#123;<br>   val = <span class="hljs-built_in">digitalRead</span>(BUTTON); <span class="hljs-comment">// read input value and store</span><br>   it<br>   <span class="hljs-comment">// check whether the input is HIGH (button pressed)</span><br>   <span class="hljs-keyword">if</span> (val == HIGH) &#123;<br>      <span class="hljs-built_in">digitalWrite</span>(LED, HIGH); <span class="hljs-comment">// turn LED ON</span><br>   &#125;<span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-built_in">digitalWrite</span>(LED, LOW);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="3512-arduino-watchdog"><a class="markdownIt-Anchor" href="#3512-arduino-watchdog"></a> 3.5.1.2. Arduino - Watchdog</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;avr/wdt.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TIMEOUT WDTO_8S <span class="hljs-comment">// predefine time, refer avr/wdt.h</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> ledPin = <span class="hljs-number">13</span>; <span class="hljs-comment">// the number of the LED pin</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>&#123;<br>   <span class="hljs-comment">// disable the watchdog</span><br>   <span class="hljs-comment">//wdt_disable();</span><br>   <span class="hljs-built_in">pinMode</span>(ledPin,OUTPUT);<br>   <span class="hljs-comment">// LED light once after start or if timeout</span><br>   <span class="hljs-built_in">digitalWrite</span>(ledPin,HIGH);<br>   <span class="hljs-built_in">delay</span>(<span class="hljs-number">1000</span>);<br>   <span class="hljs-comment">// enable the watchdog</span><br>   <span class="hljs-built_in">wdt_enable</span>(TIMEOUT);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span></span>&#123;<br>   <span class="hljs-comment">// process runing</span><br>   <span class="hljs-built_in">digitalWrite</span>(ledPin,LOW);<br>   <span class="hljs-built_in">delay</span>(<span class="hljs-number">9000</span>); <span class="hljs-comment">//if timeout trig the reset</span><br>   <span class="hljs-comment">//feed dog</span><br>   <span class="hljs-built_in">wdt_reset</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="352-有限状态机"><a class="markdownIt-Anchor" href="#352-有限状态机"></a> 3.5.2. 有限状态机</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>   <span class="hljs-keyword">switch</span>(state) &#123;<br>      <span class="hljs-keyword">case</span> IDLE:<br>         <span class="hljs-built_in">check_buttons</span>();<br>         <span class="hljs-built_in">LEDisplay_hex</span>(NUM1);<br>         <span class="hljs-keyword">if</span> (BUTTON1 | BUTTON2 | BUTTON3)<br>            state=SHOW;<br>         <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">case</span> SHOW:<br>         NUM1=<span class="hljs-number">0</span>;<br>         <span class="hljs-keyword">if</span> (BUTTON1) NUM1 += <span class="hljs-number">0x0001</span>;<br>         <span class="hljs-keyword">if</span> (BUTTON2) NUM1 += <span class="hljs-number">0x0010</span>;<br>         <span class="hljs-keyword">if</span> (BUTTON3) NUM1 += <span class="hljs-number">0x0100</span>;<br>         state=IDLE;<br>         <span class="hljs-keyword">break</span>;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>与轮询类似，但只有当前状态被执行.</li>
+<li>每个状态决定下一个状态(非顺序执行)。</li>
+<li>优先级:每个状态确定下一个状态的优先级。</li>
+<li>响应时间:所有任务的总和。</li>
+<li>变更的影响:重大。更改任务的执行时间或添加任务会影响所有其他任务。</li>
+<li>简单性:没有共享数据问题。</li>
+</ol>
+<h3 id="353-带有中断的轮询"><a class="markdownIt-Anchor" href="#353-带有中断的轮询"></a> 3.5.3. 带有中断的轮询</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++">BOOL flag_A = FALSE; <span class="hljs-comment">/* Flag for device_A follow-up processing */</span><br><span class="hljs-comment">/* Interrupt Service Routine for high priority device_A */</span><br><span class="hljs-built_in">ISR_A</span>(<span class="hljs-type">void</span>) &#123;<br>   ... handle urgent requirements <span class="hljs-keyword">for</span> device_A in the ISR,<br>   then set flag <span class="hljs-keyword">for</span> follow-up processing in the main loop ...<br>   flag_A = TRUE;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>&#123;<br>   <span class="hljs-keyword">while</span>(TRUE) &#123;<br>      <span class="hljs-keyword">if</span> (flag_A)<br>         <span class="hljs-comment">//中断任务优先</span><br>         flag_A = FALSE<br>         <span class="hljs-comment">//... do follow-up processing with data from device_A</span><br>      <span class="hljs-keyword">if</span> (device_B <span class="hljs-keyword">requires</span> service)<br>         service device_B<br>      <span class="hljs-keyword">if</span> (device_C <span class="hljs-keyword">requires</span> service)<br>         service device_C<br>      <span class="hljs-comment">//... and so on until all high and low priority devices have been serviced</span><br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>优先级-中断优先于主循环:优先中断</li>
+<li>响应时间：所有任务的总和以及中断执行时间</li>
+<li>更改的影响：对于中断服务程序而言意义不大。与轮询作为主循环相同。</li>
+<li>共享数据-必须处理与中断服务程序共享的数据</li>
+<li>MCU中使用最多的</li>
+</ol>
+<h3 id="354-仅有中断"><a class="markdownIt-Anchor" href="#354-仅有中断"></a> 3.5.4. 仅有中断</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">SET_VECTOR</span>(P3AD, button_isr);<br><span class="hljs-built_in">SET_VECTOR</span>(TIMER1, display_isr);<br><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>如果ISR过多，可能会有问题</li>
+<li>如果高优先级的中断执行所需的时间比低优先级的中断所需的时间长，那么某些中断将被错过，或者您需要处理嵌套中断。</li>
+<li>优先级-中断优先</li>
+<li>响应时间:中断执行时间</li>
+<li>变化的影响-对于中断服务程序而言意义不大。</li>
+<li>共享数据-必须处理与中断服务程序共享的数据</li>
+</ol>
+<h3 id="355-功能队列调度"><a class="markdownIt-Anchor" href="#355-功能队列调度"></a> 3.5.5. 功能队列调度</h3>
+<ol>
+<li>函数指针被添加到队列中。</li>
+<li>主循环在队列中循环并执行任务。</li>
+<li>任务或中断将新任务添加到功能队列中。</li>
+<li>最坏的时机</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_TASKS 20</span><br><span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">int</span><span class="hljs-params">(*FuncPtr)</span><span class="hljs-params">()</span></span>;<br>FuncPtr tasks[MAX_TASKS]<br><span class="hljs-type">int</span> current_task = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_task</span><span class="hljs-params">(FuncPtr func)</span> </span>&#123;<br>   <span class="hljs-type">int</span> n;<br>   <span class="hljs-keyword">for</span>(n=current_task+<span class="hljs-number">1</span>;n&lt;MAX_TASKS<span class="hljs-number">-1</span>;n++) &#123;<br>      <span class="hljs-keyword">if</span>(tasks[n]==<span class="hljs-literal">NULL</span>) &#123;<br>         tasks[n]=func;<br>         <span class="hljs-keyword">return</span>;<br>      &#125;<br>   &#125;<br>   <span class="hljs-keyword">for</span>(n=<span class="hljs-number">0</span>;n&lt;current_task;n++) &#123;<br>      <span class="hljs-keyword">if</span>(tasks[n]==<span class="hljs-literal">NULL</span>) &#123;<br>         tasks[n]=func;<br>         <span class="hljs-keyword">return</span>;<br>   &#125;<br>&#125;<br><br><span class="hljs-function">id <span class="hljs-title">display_task</span><span class="hljs-params">()</span> </span>&#123;<br>   <span class="hljs-built_in">LEDisplay_hex</span>(NUM1);<br>   <span class="hljs-built_in">add_task</span>(button_task);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">button_task</span><span class="hljs-params">()</span> </span>&#123;<br>   <span class="hljs-built_in">check_buttons</span>();<br>   NUM1=<span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">if</span> (BUTTON1) NUM1 += <span class="hljs-number">0x0001</span>;<br>   <span class="hljs-keyword">if</span> (BUTTON2) NUM1 += <span class="hljs-number">0x0010</span>;<br>   <span class="hljs-keyword">if</span> (BUTTON3) NUM1 += <span class="hljs-number">0x0100</span>;<br>   <span class="hljs-built_in">add_task</span>(display_task);<br>&#125;<br><br><span class="hljs-built_in">main</span>() &#123;<br>   <span class="hljs-built_in">LEDisplay_init</span>();<br>   <span class="hljs-built_in">LEDisplay_clear</span>();<br>   <span class="hljs-built_in">init_buttons</span>();<br><br>   <span class="hljs-built_in">add_task</span>(button_task);<br><br>   <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-keyword">if</span>(tasks[current_task]==<span class="hljs-literal">NULL</span>) &#123;<br>      ;<br>      &#125;<br>      <span class="hljs-keyword">else</span> &#123;<br>         (*tasks[current_task])();<br>         tasks[current_task]=<span class="hljs-literal">NULL</span>;<br>      &#125;<br>      current_task++;<br>      <span class="hljs-keyword">if</span>(current_task&gt;=MAX_TASKS) current_task=<span class="hljs-number">0</span>;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>优先级：中断优先。任务按顺序执行</li>
+<li>响应时间：最长任务的执行时间</li>
+<li>变更的影响：低。中断管理优先级功能。队列管理较低的优先级。</li>
+<li>共享数据：必须处理与中断服务程序共享的数据</li>
+</ol>
+<h4 id="3551-函数队列优化"><a class="markdownIt-Anchor" href="#3551-函数队列优化"></a> 3.5.5.1. 函数队列优化</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 添加时间队列</span><br><span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">int</span><span class="hljs-params">(*FuncPtr)</span></span>;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> &#123;<br>   <span class="hljs-type">long</span> timer;<br>   <span class="hljs-type">int</span> status;<br>   FuncPtr;<br>&#125; Task;<br><br>Task task_list[MAX_TASKS];<br><br><span class="hljs-comment">// 添加任务优先级</span><br><span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">int</span><span class="hljs-params">(*FuncPtr)</span></span>;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> &#123;<br>   <span class="hljs-type">int</span> priority;<br>   FuncPtr;<br>&#125; Task;<br><br>Task task_list[MAX_TASKS];<br></code></pre></td></tr></table></figure>
+<h3 id="356-抢占式多任务或多线程"><a class="markdownIt-Anchor" href="#356-抢占式多任务或多线程"></a> 3.5.6. 抢占式多任务或多线程</h3>
+<ol>
+<li>在这种类型的系统中，低级代码段基于计时器(连接到中断)在任务或线程之间切换。这是通常认为系统具有&quot;操作系统&quot;内核的级别。根据所需的功能量，它或多或少地引入了管理在概念上并行运行的多个任务的复杂性。</li>
+<li>要访问共享数据，必须通过某种同步策略来控制，例如消息队列，信号量或非阻塞同步方案。</li>
+<li>由于这些复杂性，组织通常使用实时操作系统(RTOS)，从而使应用程序程序员可以专注于设备功能而不是操作系统服务。</li>
+</ol>
+<h2 id="36-内核分类"><a class="markdownIt-Anchor" href="#36-内核分类"></a> 3.6. 内核分类</h2>
+<h3 id="361-实时内核"><a class="markdownIt-Anchor" href="#361-实时内核"></a> 3.6.1. 实时内核</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="362-微内核"><a class="markdownIt-Anchor" href="#362-微内核"></a> 3.6.2. 微内核</h3>
+<ol>
+<li>微内核是从实时操作系统升级的逻辑选择，通常的安排是操作系统内核分配内存并将CPU切换到不同的执行线程。 用户模式进程实现主要功能，例如文件系统，网络接口等。</li>
+<li>通常，微内核在任务切换和任务间通信快速时成功，而在速度慢时失败。</li>
+</ol>
+<h3 id="363-单内核"><a class="markdownIt-Anchor" href="#363-单内核"></a> 3.6.3. 单内核</h3>
+<ol>
+<li>具有复杂功能的相对较大的内核适用于嵌入式环境。</li>
+<li>示例：嵌入式Linux和Windows CE</li>
+<li>尽管硬件成本增加，但这种嵌入式系统却越来越受欢迎，尤其是在功能更强大的嵌入式设备(例如无线路由器和GPS导航系统)上。原因如下：
+<ol>
+<li>提供了通用嵌入式芯片组的端口。</li>
+<li>它们允许将公共可用代码重复用于设备驱动程序，Web服务器，防火墙和其他代码。</li>
+<li>开发系统可以从广泛的功能集开始，然后可以将该发行版配置为排除不需要的功能，并节省其消耗的内存开销。</li>
+<li>许多工程师认为，在用户模式下运行应用程序代码更可靠且更容易调试，从而使开发过程更容易且代码更可移植。</li>
+<li>需要更快响应且可以保证的功能通常可以放置在硬件中。</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-real-time-operating-systems-rtos-实时操作系统"><a class="markdownIt-Anchor" href="#4-real-time-operating-systems-rtos-实时操作系统"></a> 4. Real time operating systems (RTOS) 实时操作系统</h1>
+<h2 id="41-整体操作系统模型和linux相似"><a class="markdownIt-Anchor" href="#41-整体操作系统模型和linux相似"></a> 4.1. 整体操作系统模型(和Linux相似)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-操作系统"><a class="markdownIt-Anchor" href="#42-操作系统"></a> 4.2. 操作系统</h2>
+<ol>
+<li>操作系统控制资源：
+<ol>
+<li>谁获得CPU；</li>
+<li>I / O何时发生；</li>
+<li>分配了多少内存。</li>
+<li>流程如何通信。</li>
+</ol>
+</li>
+<li>最重要的资源是CPU本身：由调度程序控制的CPU访问。</li>
+</ol>
+<h2 id="43-rtos-and-gpos"><a class="markdownIt-Anchor" href="#43-rtos-and-gpos"></a> 4.3. RTOS and GPOS</h2>
+<ol>
+<li>相似的功能
+<ol>
+<li>多任务级别</li>
+<li>软件和硬件资源管理</li>
+<li>为应用提供基本的OS服务</li>
+<li>从软件应用抽象硬件</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-rtos从gpos中分离出来的不同功能"><a class="markdownIt-Anchor" href="#44-rtos从gpos中分离出来的不同功能"></a> 4.4. RTOS从GPOS中分离出来的不同功能</h2>
+<ol>
+<li>嵌入式应用上下文中具有的更好的可靠性</li>
+<li>满足应用需要的裁剪能力</li>
+<li>更快的特性</li>
+<li>减少内存需求</li>
+<li>为实时嵌入式系统提供可裁剪的调度策略</li>
+<li>支持无盘化嵌入式系统，允许从ROM或RAM上引导并运行</li>
+<li>对不同硬件平台具有更好的可移植性。</li>
+</ol>
+<h2 id="45-commercial-rtoss-partial"><a class="markdownIt-Anchor" href="#45-commercial-rtoss-partial"></a> 4.5. Commercial RTOSs (partial)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="46-real-time-operating-system-rtos实时操作系统"><a class="markdownIt-Anchor" href="#46-real-time-operating-system-rtos实时操作系统"></a> 4.6. Real-time Operating System (RTOS)，实时操作系统</h2>
+<ol>
+<li>为什么要实现实时操作系统？
+<ol>
+<li>灵活性</li>
+<li>响应时间</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="461-基本单位"><a class="markdownIt-Anchor" href="#461-基本单位"></a> 4.6.1. 基本单位</h3>
+<ol>
+<li>实时操作系统的基本组成部分是进程。</li>
+<li>由于没有主循环，因此可以轻松添加新进程或删除过时的进程。</li>
+<li>RTOS根据进程的优先级安排运行时间。</li>
+</ol>
+<h3 id="462-调度程序"><a class="markdownIt-Anchor" href="#462-调度程序"></a> 4.6.2. 调度程序</h3>
+<ol>
+<li>RTOS的调度程序用来跟踪每个进程的状态，并确定应该运行的进程。</li>
+<li>调度基本单位是进程，调度是通过有限状态机完成的</li>
+</ol>
+<h2 id="47-时序约束"><a class="markdownIt-Anchor" href="#47-时序约束"></a> 4.7. 时序约束</h2>
+<ol>
+<li>执行计算以符合外部时序约束。</li>
+<li>截止时间频率
+<ol>
+<li>周期性</li>
+<li>非周期性的</li>
+</ol>
+</li>
+<li>截止时间类型：
+<ol>
+<li>硬性：未能按时完成会导致系统故障</li>
+<li>软性：未按时完成进程会导致响应降低</li>
+</ol>
+</li>
+<li>偶发进程:具有一定时钟周期的进程</li>
+</ol>
+<h3 id="471-进程时序的规范"><a class="markdownIt-Anchor" href="#471-进程时序的规范"></a> 4.7.1. 进程时序的规范</h3>
+<ol>
+<li>释放时间:进程处于就绪态的时间</li>
+<li>截止时间:进程必须结束的时间</li>
+</ol>
+<h3 id="472-释放时间和截止时间"><a class="markdownIt-Anchor" href="#472-释放时间和截止时间"></a> 4.7.2. 释放时间和截止时间</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>非周期性的进程</li>
+<li>紫色表示占用CPU的时间，紫色右侧是结束时间</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>周期性进程</li>
+<li>截止时间默认和周期时间相同</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>周期性进程</li>
+<li>比较复杂，时序的截止时间小于其周期性</li>
+</ul>
+<h2 id="48-进程速率要求"><a class="markdownIt-Anchor" href="#48-进程速率要求"></a> 4.8. 进程速率要求</h2>
+<ul>
+<li>周期：进程激活之间的间隔。</li>
+<li>速率：周期的倒数。</li>
+<li>启动速率可能高于周期:一次运行多个副本。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="49-时间冲突"><a class="markdownIt-Anchor" href="#49-时间冲突"></a> 4.9. 时间冲突</h2>
+<ul>
+<li>如果流程没有在截止时间之前完成，会发生什么？
+<ul>
+<li>硬截止时间：如果错过了系统就会失败。</li>
+<li>软截止时间：用户可能会注意到，但系统不一定会出现故障。</li>
+</ul>
+</li>
+<li>我们希望通过自己的调度算法来尽可能避免这种问题</li>
+</ul>
+<h2 id="410-示例航天飞机软件错误"><a class="markdownIt-Anchor" href="#410-示例航天飞机软件错误"></a> 4.10. 示例：航天飞机软件错误</h2>
+<blockquote>
+<p>航天飞机的首次发射由于软件计时错误而延迟：</p>
+</blockquote>
+<ol>
+<li>主控制系统PASS和备用系统BFS。</li>
+<li>BFS无法与PASS同步。</li>
+<li>更改为一个例行增加的延迟，这会延迟开始时间的计算。</li>
+</ol>
+<h2 id="411-进程执行特征"><a class="markdownIt-Anchor" href="#411-进程执行特征"></a> 4.11. 进程执行特征</h2>
+<ol>
+<li>进程执行时间 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">T_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>
+<ul>
+<li>没有抢占的执行时间。</li>
+<li>可能的时间单位：秒、时钟周期</li>
+<li>在某些情况下，最坏、最好情况的执行时间可能会有用。</li>
+</ul>
+</li>
+<li>变化来源：
+<ul>
+<li>数据依赖性。</li>
+<li>内存系统。</li>
+<li>CPU管道。</li>
+</ul>
+</li>
+<li>主备冗余、多机热备</li>
+</ol>
+<h2 id="412-利用率"><a class="markdownIt-Anchor" href="#412-利用率"></a> 4.12. 利用率</h2>
+<ol>
+<li>CPU利用率</li>
+<li>CPU执行有用的工作的比率</li>
+<li>通常在没有调度开销的情况下进行计算</li>
+</ol>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mtext> </mtext><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mtext> </mtext><mi>f</mi><mi>o</mi><mi>r</mi><mtext> </mtext><mi>u</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>f</mi><mi>u</mi><mi>l</mi><mtext> </mtext><mi>w</mi><mi>o</mi><mi>r</mi><mi>k</mi></mrow><mrow><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mtext> </mtext><mi>a</mi><mi>v</mi><mi>a</mi><mi>i</mi><mi>l</mi><mi>a</mi><mi>b</mi><mi>l</mi><mi>e</mi><mtext> </mtext><mi>C</mi><mi>P</mi><mi>U</mi><mtext> </mtext><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi></mrow></mfrac><mspace linebreak="newline"></mspace><mtext> </mtext><mspace linebreak="newline"></mspace><mo>=</mo><mfrac><mrow><munder><mo>∑</mo><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>≤</mo><mi>t</mi><mo>≤</mo><msub><mi>t</mi><mn>2</mn></msub></mrow></munder><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mrow><msub><mi>t</mi><mn>2</mn></msub><mo>−</mo><msub><mi>t</mi><mn>2</mn></msub></mrow></mfrac><mspace linebreak="newline"></mspace><mtext> </mtext><mspace linebreak="newline"></mspace><mo>=</mo><mfrac><mi>T</mi><mi>t</mi></mfrac></mrow><annotation encoding="application/x-tex">U = \frac{CPU\ time\ for\ userful\ work}{total\ available\ CPU\ time} \\
+\ \\
+= \frac{\sum\limits_{t_1\leq t \leq t_2}T(t)}{t_2 - t_2} \\
+\ \\
+= \frac{T}{t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0574399999999997em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace"> </span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace"> </span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace"> </span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace"> </span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace"> </span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0372890000000003em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.201289em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.451283999999999em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7500050000000001em;"><span style="top:-2.138816em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">≤</span><span class="mord mathdefault mtight">t</span><span class="mrel mtight">≤</span><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.061284em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace"> </span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h2 id="413-过程状态"><a class="markdownIt-Anchor" href="#413-过程状态"></a> 4.13. 过程状态</h2>
+<blockquote>
+<p>流程可以处于以下三种状态之一：</p>
+</blockquote>
+<ol>
+<li>在CPU上执行；</li>
+<li>准备执行</li>
+<li>等待数据。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="414-调度问题"><a class="markdownIt-Anchor" href="#414-调度问题"></a> 4.14. 调度问题</h2>
+<ol>
+<li>我们可以在所有截止日期之前完成吗？在所有情况下都必须能够按时完成进程。</li>
+<li>我们需要多少个CPU才能按时完成进程？</li>
+</ol>
+<h3 id="4141-嵌入式与通用调度"><a class="markdownIt-Anchor" href="#4141-嵌入式与通用调度"></a> 4.14.1. 嵌入式与通用调度</h3>
+<ol>
+<li>调度工作尝试避免使CPU访问过程变得空闲：公平=访问CPU。</li>
+<li>嵌入式系统必须符合所有截止时间:低优先级进程可能不会长时间运行。</li>
+</ol>
+<h3 id="4142-操作系统进程管理"><a class="markdownIt-Anchor" href="#4142-操作系统进程管理"></a> 4.14.2. 操作系统进程管理</h3>
+<ol>
+<li>操作系统需要跟踪：流程优先级、时序状态、进程激活记录</li>
+<li>可以创建进程：系统启动前静态、在执行期间动态：比如电话</li>
+</ol>
+<h3 id="4143-多道程序操作系统"><a class="markdownIt-Anchor" href="#4143-多道程序操作系统"></a> 4.14.3. 多道程序操作系统</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>进程:程序的唯一执行者
+<ol>
+<li>代码 + 数据</li>
+<li>多进程可能会共享代码</li>
+<li>每一个进程都会有唯一的数据(CPU寄存器，栈空间、内存空间)</li>
+<li>进程会被他们的激活记录定义</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>线程有他们自己CPU寄存器值，但是共享相同的内存空间，所以他们可以通过其他线程来影响数据
+<ol>
+<li>一个进程可能有不同的线程</li>
+<li>线程可能会运行在划分出来的CPU核心栈上</li>
+</ol>
+</li>
+</ol>
+<h3 id="4144-典型的进程任务激活记录任务控制块"><a class="markdownIt-Anchor" href="#4144-典型的进程任务激活记录任务控制块"></a> 4.14.4. 典型的进程/任务激活记录(任务控制块)</h3>
+<ul>
+<li>任务ID</li>
+<li>任务状态(运行，就绪，已阻止)</li>
+<li>任务优先级</li>
+<li>任务起始地址</li>
+<li>任务堆栈</li>
+<li>任务CPU寄存器</li>
+<li>任务数据指针</li>
+<li>任务时间</li>
+</ul>
+<h3 id="4145-什么时候可以分派新线程"><a class="markdownIt-Anchor" href="#4145-什么时候可以分派新线程"></a> 4.14.5. 什么时候可以分派新线程？</h3>
+<ol>
+<li>在非抢占式调度中：当前线程完成时可以分派新线程</li>
+<li>在抢先式调度下：
+<ol>
+<li>在计时器中断时</li>
+<li>在I/O中断时可能会分派新县城</li>
+<li>创建新线程或完成一个新线程时</li>
+<li>当前线程阻塞或释放互斥锁时</li>
+<li>当前线程阻塞信号量时</li>
+<li>更改信号量状态时</li>
+<li>当前线程进行任何OS调用时
+<ol>
+<li>文件系统访问</li>
+<li>网络访问</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="4146-当前的焦点如何决定要安排哪个线程"><a class="markdownIt-Anchor" href="#4146-当前的焦点如何决定要安排哪个线程"></a> 4.14.6. 当前的焦点：如何决定要安排哪个线程？</h3>
+<ul>
+<li>需要关注的内容有
+<ul>
+<li>抢先式与非抢先式调度</li>
+<li>定期与非定期任务</li>
+<li>固定优先级与动态优先级</li>
+<li>优先反转异常</li>
+<li>其他计划异常</li>
+</ul>
+</li>
+</ul>
+<h3 id="4147-指标我们如何评估调度策略"><a class="markdownIt-Anchor" href="#4147-指标我们如何评估调度策略"></a> 4.14.7. 指标(我们如何评估调度策略)</h3>
+<ol>
+<li>能够满足所有截止时间。</li>
+<li>CPU利用率-有效工作的时间百分比。</li>
+<li>计划开销:制定计划所需的时间。</li>
+<li>延迟</li>
+<li>总完成时间。</li>
+</ol>
+<h2 id="415-抢占式调度"><a class="markdownIt-Anchor" href="#415-抢占式调度"></a> 4.15. 抢占式调度</h2>
+<ul>
+<li>假设所有线程都有优先级
+<ul>
+<li>静态分配的(在线程持续时间内恒定)</li>
+<li>动态分配的(可能有所不同)</li>
+</ul>
+</li>
+<li>进一步假设内核跟踪&quot;启用&quot;了哪些线程(能够执行，例如在等待信号量或互斥量或时间到期之前不会被阻塞)。</li>
+<li>抢占式调度：
+<ul>
+<li>在任何时候，具有最高优先级的已启用线程正在执行。</li>
+<li>每当任何线程更改优先级或启用状态时，内核都可以分派新线程。</li>
+</ul>
+</li>
+</ul>
+<h2 id="416-速率单调调度rms-rate-monotonic-scheduling"><a class="markdownIt-Anchor" href="#416-速率单调调度rms-rate-monotonic-scheduling"></a> 4.16. 速率单调调度(RMS, Rate Monotonic Scheduling)</h2>
+<ul>
+<li>假设使用以下命令定期调用n个任务：
+<ul>
+<li>周期T1，…，Tn(施加实时约束)</li>
+<li>所有任务都是独立的。</li>
+<li>最坏情况执行时间(WCET)C1，…，Cn：假定没有互斥请锁、信号量或阻塞的I/O</li>
+<li>没有优先级限制</li>
+<li>固定优先级</li>
+<li>上下文切换所需的时间可以忽略不计</li>
+<li>抢占式调度</li>
+</ul>
+</li>
+<li>定理：如果任何优先级分配产生可行的时间表，则按时段排序的优先级(最小时段具有最高优先级)也产生可行的时间表。</li>
+<li>就可行性而言，RMS是最佳的。</li>
+</ul>
+<h3 id="4161-rms的灵活性"><a class="markdownIt-Anchor" href="#4161-rms的灵活性"></a> 4.16.1. RMS的灵活性</h3>
+<ul>
+<li>为RMS定义的可行性是指每个任务在其指定时间内执行一次完成。</li>
+</ul>
+<h3 id="4162-显示rms的优越性考虑两个不同周期的任务"><a class="markdownIt-Anchor" href="#4162-显示rms的优越性考虑两个不同周期的任务"></a> 4.16.2. 显示RMS的优越性：考虑两个不同周期的任务</h3>
+<table>
+<thead>
+<tr>
+<th>非抢占式时序是否可行？</th>
+<th>非抢占式的时间表是不可行的。红色任务的某些实例(2)如果我们进行非抢占式调度，则不会在其期限内完成。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+<tr>
+<td>如果我们对红色任务有优先级更高的抢占式调度该怎么办？</td>
+<td>具有较高优先级的红色任务的抢占式调度是可行的。请注意，抢占蓝色任务会延长其完成时间。</td>
+</tr>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4163-显示rms的优越性任务调整"><a class="markdownIt-Anchor" href="#4163-显示rms的优越性任务调整"></a> 4.16.3. 显示RMS的优越性：任务调整</h3>
+<ul>
+<li>当低优先级任务的开始阶段与高优先级任务的开始阶段匹配时，其完成时间最差。</li>
+<li>因此，在检查计划的可行性时，仅考虑最坏的情况就足够了：所有任务都同时开始其周期，如下就是最差情况</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4164-显示rms的优越用于两个任务"><a class="markdownIt-Anchor" href="#4164-显示rms的优越用于两个任务"></a> 4.16.4. 显示RMS的优越：用于两个任务</h3>
+<ul>
+<li>足以表明，如果非RMS计划是可行的，则RMS计划是可行的。</li>
+<li>考虑以下两个任务：</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>非RMS固定优先级时间表如下所示：我们可以观察到对于非RMS时序如果可行当且仅当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mo>≤</mo><msub><mi>T</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_1 + C_2 \leq T_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>RMS时间表如下所示：周期较短的任务会提前移动，而对于RMS是可行的</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4165-总结"><a class="markdownIt-Anchor" href="#4165-总结"></a> 4.16.5. 总结</h3>
+<ul>
+<li>该证明可以扩展到任意数量的任务(尽管它变得更加乏味)。</li>
+<li>该证明仅具有最优性、可行性。它没有说其他最优标准。</li>
+<li>实际实施：
+<ul>
+<li>定时器中断在周期的最大公约数</li>
+<li>多个计时器</li>
+</ul>
+</li>
+</ul>
+<h3 id="4166-rms的可行性调度分析"><a class="markdownIt-Anchor" href="#4166-rms的可行性调度分析"></a> 4.16.6. RMS的可行性调度分析</h3>
+<ul>
+<li>可调度性分析：如果需要，可以使用RM调度一组定期任务</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo>≤</mo><mi>n</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mfrac><mn>1</mn><mi>n</mi></mfrac></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum\limits^n\limits_{i=1} \leq n(2^{\frac{1}{n}} - 1)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2540200000000001em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0040200000000001em;"><span style="top:-3.4130000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>此条件足够，但不是必需的。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mfrac><msub><mi>C</mi><mi>i</mi></msub><msub><mi>T</mi><mi>i</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">U = \sum\limits_{i=1}^{n}\frac{C_i}{T_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.329066em;vertical-align:-0.9776689999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884309999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.13889em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，表示处理器利用率因子U，它是执行任务集所花费的处理器时间的一部分。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="417-ddl驱动时序"><a class="markdownIt-Anchor" href="#417-ddl驱动时序"></a> 4.17. DDL驱动时序</h2>
+<h3 id="4171-jacksons-algorithm-eddearliest-due-date-1955"><a class="markdownIt-Anchor" href="#4171-jacksons-algorithm-eddearliest-due-date-1955"></a> 4.17.1. Jackson’s Algorithm: EDD，Earliest Due Date (1955)</h3>
+<ol>
+<li>给定n个具有期限d1，…，dn的独立一次性任务，对它们进行调度以最大程度地减少最大延迟，定义为</li>
+</ol>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><munder><mo><mi>max</mi><mo>⁡</mo></mo><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo stretchy="false">{</mo><msub><mi>f</mi><mi>i</mi></msub><mo>−</mo><msub><mi>d</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">L_{max} = \max\limits_{1 \leq i \leq n}\{f_i - d_i\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.572843em;vertical-align:-0.822843em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.43055999999999994em;"><span style="top:-2.072336em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">≤</span><span class="mord mathdefault mtight">i</span><span class="mrel mtight">≤</span><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.822843em;"><span></span></span></span></span></span><span class="mopen">{</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span></p>
+<ol start="2">
+<li>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">f_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是任务i的完成时间。请注意，如果所有截止日期都得到满足，则这是负面的。</li>
+<li>最早到期日期算法：按不递减的截止日期顺序执行它们。</li>
+<li>请注意，这不需要抢占。</li>
+</ol>
+<h4 id="41711-定理"><a class="markdownIt-Anchor" href="#41711-定理"></a> 4.17.1.1. 定理</h4>
+<blockquote>
+<p>从最大延迟的意义上讲，EDD是最佳的</p>
+</blockquote>
+<ol>
+<li>为了证明这一点，请使用互换参数。如果给定的时间表S不是EDD，则必须存在任务a和b，其中时间表中a紧接在b之前，但<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">d_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&gt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">d_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。为什么？</li>
+<li>我们可以证明通过交换a和b可以改善此计划。因此，没有任何一个非EDD时间表可以达到比EDD更小的最大延迟，因此EDD时间表必须是最佳的。</li>
+</ol>
+<h4 id="41712-考虑一个非edd时序s"><a class="markdownIt-Anchor" href="#41712-考虑一个非edd时序s"></a> 4.17.1.2. 考虑一个非EDD时序S</h4>
+<ol>
+<li>在计划中必须存在任务a和b，其中a紧接在b之前，但<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">d_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>&gt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">d_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>所以S’绝对不会比S的情况更差</li>
+</ol>
+<h3 id="4172-horn的算法edfearliest-deadline-first1974"><a class="markdownIt-Anchor" href="#4172-horn的算法edfearliest-deadline-first1974"></a> 4.17.2. Horn的算法：EDF，Earliest deadline first(1974)</h3>
+<ol>
+<li>通过允许任务随时&quot;到达&quot;(准备就绪)来扩展EDD。</li>
+<li>最早截止时间优先(EDF)：给定n个独立任务的集合，它们具有任意的到达时间，任何算法在任何到达的任务中以绝对绝对最早的时间最早执行任务的任何算法都是最优的。最大程度地减少<strong>延迟</strong>。</li>
+<li>证明使用类似的互换参数。</li>
+</ol>
+<h4 id="41721-使用edf执行定期任务"><a class="markdownIt-Anchor" href="#41721-使用edf执行定期任务"></a> 4.17.2.1. 使用EDF执行定期任务</h4>
+<ul>
+<li>EDF算法可以被同等地应用于周期性任务和非周期性任务。
+<ul>
+<li>最简单的用法：截止时间是该期限的结束。</li>
+<li>替代用途：分别指定时间(相对于期间开始时间)和期限。</li>
+</ul>
+</li>
+</ul>
+<h4 id="41722-rms和edf哪个好"><a class="markdownIt-Anchor" href="#41722-rms和edf哪个好"></a> 4.17.2.2. RMS和EDF哪个好</h4>
+<ol>
+<li>RMS优点:调度决策更简单(固定优先级与EDF所需的动态优先级。EDF调度程序必须维护按优先级排序的就绪任务列表。)</li>
+<li>EDF优点:
+<ol>
+<li>由于EDF是关于最大延迟的最优，也是关于可行性的最优选择。 RMS仅是关于可行性的最优选择。对于不可行的计划，RMS会完全阻止优先级较低的任务，从而导致无限的最大延迟。</li>
+<li>如果RMS无法做到这一点，那么EDF可以充分利用</li>
+<li>EDF实际上减少了抢占，因此减少了上下文切换的开销。</li>
+<li>截止时间可能与周期不同。</li>
+</ol>
+</li>
+</ol>
+<h4 id="41723-优先级约束"><a class="markdownIt-Anchor" href="#41723-优先级约束"></a> 4.17.2.3. 优先级约束</h4>
+<ol>
+<li>有向无环图(DAG)显示优先级，这些优先级指示哪些任务必须在其他任务开始之前完成。</li>
+<li>DAG，表明任务1必须在任务2和3开始之前完成，依此类推。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>它不需要抢占。我们会看到EDF确实如此。</li>
+</ul>
+<h3 id="4173-最新截止日期优先latest-deadline-firstldf"><a class="markdownIt-Anchor" href="#4173-最新截止日期优先latest-deadline-firstldf"></a> 4.17.3. 最新截止日期优先，Latest Deadline First，LDF</h3>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/33.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/34.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/35.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">C_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：进程时间</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">D_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：表示截止时间</p>
+</li>
+<li>
+<p>LDF在最大程度减少最大延迟方面是最佳的。</p>
+</li>
+<li>
+<p>但是，它要求所有任务都可用，并且在执行任何任务之前必须知道其优先级。</p>
+</li>
+</ul>
+<h3 id="4174-edf"><a class="markdownIt-Anchor" href="#4174-edf"></a> 4.17.4. EDF*</h3>
+<ul>
+<li>如果任务是可抢占的，则可以用多项式时间复杂度解决调度具有优先级约束的n个任务的集合(并发激活)的问题。</li>
+<li>对于存在优先约束的任务，EDF *算法确定可行的时间表。</li>
+<li>通过修改可以保证，如果根本存在有效的时间表，则
+<ul>
+<li>任务的<strong>开始执行</strong>不得早于其<strong>释放时间</strong>且不得早于其<strong>前继的完成时间</strong>(任务不能抢占任何前任的任务)</li>
+<li>所有任务均在期限内完成执行</li>
+</ul>
+</li>
+<li>修改截止日期：
+<ul>
+<li>任务必须在其最后期限内完成执行时间s</li>
+<li>任务的执行不得晚于<strong>其后继任务的最大开始时间</strong></li>
+<li>解决方案：任务j取决于任务i</li>
+</ul>
+</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>d</mi><mi>i</mi><mo mathvariant="normal">′</mo></msubsup><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>d</mi><mi>i</mi></msub><mo separator="true">,</mo><msubsup><mi>d</mi><mi>j</mi><mo mathvariant="normal">′</mo></msubsup><mo>−</mo><msub><mi>C</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d&#x27;_i = \min(d_i, d&#x27;_j - C_j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.048892em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8018919999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.185em;vertical-align:-0.383108em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.383108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>修改释放时间：
+<ul>
+<li>任务必须在释放时间之前开始执行。</li>
+<li>任务的执行时间不得早于其前任的最短完成时间。</li>
+<li>解决方案：任务j取决于任务i</li>
+</ul>
+</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>r</mi><mi>j</mi><mo mathvariant="normal">′</mo></msubsup><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>r</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>r</mi><mi>i</mi></msub><mo>+</mo><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r&#x27;_j = \max(r_i, r_i + C_i)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.185em;vertical-align:-0.383108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-2.4530000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.383108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<h3 id="4175-具有优先级的edf"><a class="markdownIt-Anchor" href="#4175-具有优先级的edf"></a> 4.17.5. 具有优先级的EDF</h3>
+<ol>
+<li>使用抢占式调度程序，可以修改EDF以考虑优先级并允许任务在任意时间到达。 只需根据优先级调整截止日期和到达时间。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/36.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>(修正释放时间)给定n个具有优先级和释放时间ri的任务，如果任务i紧接任务j，则修改释放时间，如下所示：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/37.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>(修正截止时间)给定n个具有优先级和最后期限di的任务，如果任务i紧接在任务j之前，则按以下方式修改最后期限：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/38.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>在最大程度地减少最大延迟方面，具有优先级的EDF是最佳的。</li>
+</ol>
+<h3 id="4176-如何"><a class="markdownIt-Anchor" href="#4176-如何"></a> 4.17.6. 如何？</h3>
+<ol>
+<li>如果进程组不可调度，又需要保证在截至时限前完成
+<ol>
+<li>使用更快的cpu。不改变周期就可以减少执行时间。但cpu利用率更低。</li>
+<li>新设计进程以减少执行时间。需要了解代码。</li>
+<li>写规格说明以改变截至时限。</li>
+</ol>
+</li>
+</ol>
+<h2 id="418-调度异常"><a class="markdownIt-Anchor" href="#418-调度异常"></a> 4.18. 调度异常</h2>
+<ul>
+<li>互斥
+<ul>
+<li>优先级倒置</li>
+<li>优先继承</li>
+<li>优先上限</li>
+</ul>
+</li>
+<li>多处理器调度：理查德(Richard)的异常情况在最大程度地减少最大延迟方面是最佳的。</li>
+</ul>
+<h3 id="4181-互斥访问"><a class="markdownIt-Anchor" href="#4181-互斥访问"></a> 4.18.1. 互斥访问</h3>
+<ol>
+<li>线程访问共享资源时，它们需要使用互斥对象以确保数据完整性。</li>
+<li>互斥体也可能使调度复杂化。</li>
+</ol>
+<h3 id="4182-多个进程中的锁机制"><a class="markdownIt-Anchor" href="#4182-多个进程中的锁机制"></a> 4.18.2. 多个进程中的锁机制</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span> pthreads</span><br>...<br><span class="hljs-type">pthread_mutex_t</span> lock;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">addListener</span><span class="hljs-params">(notify listener)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-type">int</span> newValue)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock);<br>   value = newValue;<br>   elementType* element = head;<br>   <span class="hljs-keyword">while</span> (element != <span class="hljs-number">0</span>) &#123;<br>      (*(element-&gt;listener))(newValue);<br>      element = element-&gt;next;<br>   &#125;<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_init</span>(&amp;lock, <span class="hljs-literal">NULL</span>);<br>   ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>每当跨线程共享数据结构时，通常必须是原子访问数据结构。这是使用互斥锁或互斥锁强制执行的。持有锁时执行的代码称为<strong>关键部分</strong>。</p>
+</blockquote>
+<h3 id="4183-优先级反转互斥的危害"><a class="markdownIt-Anchor" href="#4183-优先级反转互斥的危害"></a> 4.18.3. 优先级反转：互斥的危害</h3>
+<ol>
+<li>任务1的优先级最高，任务3的优先级最低。任务3获取一个共享对象上的锁，进入关键部分。它被任务1抢占，然后任务1尝试获取锁和块，失败后被阻塞。任务2在时间4抢占了任务3(不需要锁和块)，使较高优先级的任务1被阻止了无限制的时间。实际上，任务1和2的优先级颠倒了，因为任务2可以使任务1任意等待较长时间。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/39.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>不是正常的:任务二先于任务一执行完了</li>
+</ul>
+<h2 id="419-示例火星探路者问题"><a class="markdownIt-Anchor" href="#419-示例火星探路者问题"></a> 4.19. 示例：火星探路者问题</h2>
+<blockquote>
+<p>但是在执行任务的几天后，即&quot;探路者&quot;开始收集气象数据后不久，该航天器就开始经历整个系统的重置，每次重置都会导致数据丢失。</p>
+</blockquote>
+<ul>
+<li>优先级反转导致的结果</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/40.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>VxWorks提供了抢先式线程优先级调度。 &quot;探路者&quot;飞船上的任务是作为线程执行的，其优先级以通常的方式分配，反映了这些任务的相对紧迫性。
+<ul>
+<li>VxWorks:比较贵</li>
+<li>VxWorks:最好的实时操作系统</li>
+</ul>
+</li>
+<li>探路者包含&quot;信息总线&quot;，您可以将其视为用于在航天器不同组件之间传递信息的共享存储区域。</li>
+</ul>
+<h3 id="4191-火星探路者的任务安排"><a class="markdownIt-Anchor" href="#4191-火星探路者的任务安排"></a> 4.19.1. 火星探路者的任务安排</h3>
+<ol>
+<li>总线管理任务经常以高优先级运行，以将某些类型的数据移入和移出信息总线。对总线的访问已与互斥锁(互斥锁)同步。&quot;</li>
+<li>气象数据收集任务作为不经常发生的低优先级线程运行…发布其数据时，它将获取一个互斥锁，对总线进行写操作并释放该互斥锁。</li>
+<li>该航天器还包含以中等优先级运行的通信任务。&quot;</li>
+</ol>
+<h3 id="4192-火星探路者的优先级安排"><a class="markdownIt-Anchor" href="#4192-火星探路者的优先级安排"></a> 4.19.2. 火星探路者的优先级安排</h3>
+<ol>
+<li>高优先级：从共享内存中检索数据</li>
+<li>中优先级：沟通任务</li>
+<li>低优先级：线程收集气象数据</li>
+</ol>
+<h3 id="4193-问题产生"><a class="markdownIt-Anchor" href="#4193-问题产生"></a> 4.19.3. 问题产生</h3>
+<ul>
+<li>在大多数情况下，这种组合效果很好。但是，很少会发生中断，导致(中优先级)通信任务在较短的时间间隔内被调度，而(高优先级)信息却线程被阻塞，等待(低优先级)气象数据线程。在这种情况下，优先级高于气象任务的长期运行的通信任务将阻止其运行，从而阻止阻塞的信息总线任务运行。经过一段时间后，看门狗定时器将关闭，注意到数据总线任务已经有一段时间没有执行了，得出的结论是发生了严重错误，并启动了系统总体复位。这种情况是优先级反转的典型案例。</li>
+</ul>
+<h4 id="41931-火星探路者的优先反转"><a class="markdownIt-Anchor" href="#41931-火星探路者的优先反转"></a> 4.19.3.1. 火星探路者的优先反转</h4>
+<ul>
+<li>优先级继承还解决了火星探路者问题：路径查找器中使用的VxWorks操作系统为调用互斥体基元实现了一个标志。该标志允许将优先级继承设置为on。软件出厂时，将其设置为关闭</li>
+<li>火星上的问题已通过使用VxWorks的调试工具将标志更改为on而得到纠正，而探路者已经在火星上<code>[Jones，1997]</code>。</li>
+</ul>
+<h2 id="420-priority-inheritance-protocol-pip-sha-rajkumar-lehoczky-1990-优先级继承协议"><a class="markdownIt-Anchor" href="#420-priority-inheritance-protocol-pip-sha-rajkumar-lehoczky-1990-优先级继承协议"></a> 4.20. Priority Inheritance Protocol (PIP) (Sha, Rajkumar, Lehoczky, 1990) 优先级继承协议</h2>
+<ul>
+<li>假设：通过m个共享资源进行合作的n个任务；固定优先级后，资源上的所有关键部分都以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mi>a</mi><mi>i</mi><mi>t</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">wait(S_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>开始，并以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><mi>g</mi><mi>n</mi><mi>a</mi><mi>l</mi><mo stretchy="false">(</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">signal(S_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>操作结束。</li>
+<li>基本思想：当任务<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">J_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>阻止一个或多个优先级更高的任务时，它会临时(继承)被阻止任务的最高优先级。</li>
+<li>协议：我们区分固定的名义优先级Pi和活动的优先级<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br />
+大于或等于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。相对于名义优先级对作业<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">J_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，… <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">J_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>进行排序，其中J1具有最高优先级。 乔布斯不会暂停工作。</li>
+</ul>
+<h3 id="4201-pip算法"><a class="markdownIt-Anchor" href="#4201-pip算法"></a> 4.20.1. PIP算法</h3>
+<ul>
+<li>作业是根据其活动优先级安排的。具有相同优先级的作业在FCFS执行线中执行。</li>
+<li>当作业<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">J_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>试图进入关键部分并且资源被优先级较低的作业阻塞时，作业<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">J_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>就会被阻塞。否则，它将进入关键部分。</li>
+<li>当作业<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">J_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>被阻止时，它将其活动优先级发送给持有信号量的作业<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">J_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">J_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>以优先级<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>恢复并执行其关键部分的其余部分(它继承了被其阻止作业的最高优先级的优先级)。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">J_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>退出关键部分时，它将解锁信号量，并且唤醒该信号量上阻塞的最高优先级作业。如果没有其他作业被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">J_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>阻止，则将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>设置为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">P_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，否则将其设置为被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">J_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.09618em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>阻止的作业的最高优先级。</li>
+<li>优先级继承是可传递的，即，如果1被2阻止，而2被3阻止，则3通过2继承优先级1。</li>
+</ul>
+<h3 id="4202-pip算法示例"><a class="markdownIt-Anchor" href="#4202-pip算法示例"></a> 4.20.2. PIP算法示例</h3>
+<ul>
+<li>任务1的优先级最高，任务3的优先级最低。任务3获取一个共享对象上的锁，进入关键部分。它被任务1抢占，然后任务1尝试获取锁和块。任务3继承了任务1的优先级，从而防止了任务2的抢占。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/41.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4203-死锁"><a class="markdownIt-Anchor" href="#4203-死锁"></a> 4.20.3. 死锁</h3>
+<ul>
+<li>较低优先级的任务首先启动并获取锁a，然后被较高优先级的任务抢占，后者获取锁b，然后阻止尝试获取锁a的任务。然后，较低优先级的任务将阻止尝试获取锁b，并且无法进一步进行。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/42.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span><br>...<br><span class="hljs-type">pthread_mutex_t</span> lock_a, lock_b;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">thread_1_function</span><span class="hljs-params">(<span class="hljs-type">void</span>* arg)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_b);<br>   ...<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">thread_2_function</span><span class="hljs-params">(<span class="hljs-type">void</span>* arg)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_a);<br>   ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="421-priority-ceiling-protocol-pcp-sha-rajkumarlehoczky-1990-优先天花板协议"><a class="markdownIt-Anchor" href="#421-priority-ceiling-protocol-pcp-sha-rajkumarlehoczky-1990-优先天花板协议"></a> 4.21. Priority Ceiling Protocol (PCP) (Sha, Rajkumar,Lehoczky, 1990) 优先天花板协议</h2>
+<ul>
+<li>每个锁定或信号量都被分配一个优先级上限，该上限等于可以锁定它的最高优先级任务的优先级:是否可以自动计算优先级上限？</li>
+<li>仅当任务的优先级<strong>严格高于</strong>其他任务当前持有的所有锁的优先级上限时，任务T才能获得锁:任何任务都不持有的锁不会影响任务</li>
+<li><strong>这样可以防止死锁</strong></li>
+<li>有一些扩展支持动态优先级和动态创建锁(堆栈资源策略)</li>
+</ul>
+<h3 id="4211-ocpp-and-icpp"><a class="markdownIt-Anchor" href="#4211-ocpp-and-icpp"></a> 4.21.1. OCPP and ICPP</h3>
+<ol>
+<li>在OCPP中
+<ul>
+<li>当更高优先级的任务Y尝试获取X锁定的资源时，任务X的优先级会提高。</li>
+<li>将任务的优先级提高到资源的优先级上限，以确保任务X快速完成其关键部分，从而解锁资源。</li>
+<li>仅当任务的动态优先级高于其他任务锁定的所有资源的优先级上限时，才允许该任务锁定资源。否则，任务将被阻塞，等待资源。</li>
+</ul>
+</li>
+<li>在ICPP中
+<ol>
+<li>任务锁定资源时会立即提高其优先级</li>
+<li>任务的优先级设置为资源的优先级上限，因此，可能锁定资源的任务无法调度。</li>
+<li>这样可以确保OCPP属性&quot;任务只有在其动态优先级高于其他任务锁定的所有资源的优先级上限时才能锁定资源&quot;。</li>
+</ol>
+</li>
+</ol>
+<h3 id="4212-icpp与ocpp"><a class="markdownIt-Anchor" href="#4212-icpp与ocpp"></a> 4.21.2. ICPP与OCPP</h3>
+<ul>
+<li>从调度角度来看，两个最高限额方案的最坏情况行为是相同的。但是，有一些区别：
+<ul>
+<li>ICPP比OCPP更易于实施，因为不需要监视阻塞关系</li>
+<li>ICPP导致较少的上下文切换，因为阻塞是在第一次执行之前</li>
+<li>ICPP需要更多的优先级移动，因为这会随着所有资源的使用而发生</li>
+<li>仅当发生实际阻止时，OCPP才更改优先级</li>
+</ul>
+</li>
+</ul>
+<h3 id="4213-优先天花板协议"><a class="markdownIt-Anchor" href="#4213-优先天花板协议"></a> 4.21.3. 优先天花板协议</h3>
+<ul>
+<li>在这种情况下，锁a和锁b的优先级和任务1的优先级相同。在时间3，任务1尝试获取锁b，但是由于任务2当前持有当前优先级上限等于任务1的锁a，导致任务1无法获取锁b</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/43.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;pthread.h&gt;</span></span><br>...<br><span class="hljs-type">pthread_mutex_t</span> lock_a, lock_b;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">thread_1_function</span><span class="hljs-params">(<span class="hljs-type">void</span>* arg)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_b);<br>   ...<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">thread_2_function</span><span class="hljs-params">(<span class="hljs-type">void</span>* arg)</span> </span>&#123;<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_a);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_lock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_b);<br>   ...<br>   <span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;lock_a);<br>   ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="422-脆性"><a class="markdownIt-Anchor" href="#422-脆性"></a> 4.22. 脆性</h2>
+<ul>
+<li>通常，所有线程调度算法都很脆弱：小的更改可能会带来巨大的意外后果。</li>
+<li>我将用多处理器(或多核)时间表进行说明。</li>
+<li>定理(Richard Graham，1976年)：如果根据固定数量的处理器上的优先级安排了具有固定优先级，执行时间和优先级约束的任务集，则增加处理器数量，减少执行时间或削弱优先级约束可以增加时间表的长度。</li>
+</ul>
+<h2 id="423-richard异常"><a class="markdownIt-Anchor" href="#423-richard异常"></a> 4.23. Richard异常</h2>
+<ul>
+<li>具有优先级和显示的执行时间的9个任务，其中编号较低的任务比编号较高的任务具有更高的优先级。基于优先级的3个处理器时间表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/44.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/45.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li>如果我们将处理器增加到4个又会发生什么呢？使用四个处理器的运行时间更慢：图中数字为优先级</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/46.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>贪婪调度:基于优先级的调度是&quot;贪婪&quot;。对于此示例，更智能的调度程序可以推迟调度5、6或7，从而使处理器空闲一个时间单位。</li>
+<li>贪恋调度可能是最实际的选择:如果任务仅在任务的前任完成后才&quot;到达&quot;(对于计划程序是已知的)，则贪婪的计划可能是唯一可行的选择。</li>
+<li>如果将所有计算时间减少1会怎样？</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/47.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/48.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li>如果删除优先约束(4,8)和(4,7)，会发生什么？</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/49.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/50.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li>弱化限制:优先顺序约束减弱也可能导致调度时间更长。</li>
+<li>假设任务2和4在互斥模式下共享相同的资源，并且任务被静态分配给处理器。然后，如果减少任务1的执行时间，则调度长度会增加：</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec6/51.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="424-结论"><a class="markdownIt-Anchor" href="#424-结论"></a> 4.24. 结论</h2>
+<ul>
+<li>在所有已知任务调度策略下的计时行为都很脆弱。微小的变化可能会带来巨大的(和意外的)后果。</li>
+<li>不幸的是，由于执行时间很难预测，因此这种脆弱性可能导致意外的系统故障。</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Introduction-to-Embedded-Systems/" class="category-chain-item">2020-Introduction-to-Embedded-Systems</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E4%BC%98%E5%85%88%E7%BA%A7/">#优先级</a>
+      
+        <a href="/project/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/">#嵌入式系统导论</a>
+      
+        <a href="/project/tags/%E8%B0%83%E5%BA%A6/">#调度</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec06-Embedded%20Software%20System/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec09-%E6%9D%BF%E7%BA%A7%E6%94%AF%E6%8C%81%E5%8C%85%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC/" title="2020-Introduction-to-Embedded-Systems-lec09-板级支持包与系统引导">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec09-板级支持包与系统引导</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-Shell%E7%BC%96%E7%A8%8B/" title="2018-Linux-system-basics-Shell编程">
+                        <span class="hidden-mobile">2018-Linux-system-basics-Shell编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

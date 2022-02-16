@@ -1,0 +1,940 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2019-Data-Structure-数据结构5-hashing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-Data-Structure-数据结构5-hashing">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845-hashing/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2019-Data-Structure-数据结构5-hashing">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/13.png">
+<meta property="article:published_time" content="2022-02-16T11:09:54.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:51:32.551Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="散列">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/1.png">
+  
+  
+  <title>2019-Data-Structure-数据结构5-hashing - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          66 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2019-Data-Structure-数据结构5-hashing</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="hashing"><a class="markdownIt-Anchor" href="#hashing"></a> Hashing</h2>
+<h1 id="1-散列函数"><a class="markdownIt-Anchor" href="#1-散列函数"></a> 1. 散列函数</h1>
+<ol>
+<li>散列表(Hash function)
+<ul>
+<li>Address = hash(key)</li>
+</ul>
+</li>
+<li>BT值用来标识文件的<strong>唯一性</strong>，校验值(官方会提供文件的标识值，用同样的算法来计算哈希值，如果不同，则这个文件已经发生过修改)</li>
+<li>常用的哈希函数:<strong>奇偶校验法</strong></li>
+<li>Eg.如果发生散列函数计算结果冲突(1 = 1)的时候，会使用一些方法来处理所带来的问题(散列表的常数复杂度只在不发生冲突的情况下，在发生冲突的情况下算法复杂度显然不为常数)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="11-散列函数的应用"><a class="markdownIt-Anchor" href="#11-散列函数的应用"></a> 1.1. 散列函数的应用</h2>
+<ol>
+<li>通过添加<strong>散列函数</strong>来加快线性列表的读写速度。</li>
+<li>散列函数的复杂度理论上能够到达<strong>常数</strong>级别复杂度。
+<ul>
+<li>Sequention search 线性查找: O(n)，显然在此情况下我们认为访问散列表的每一个位置的数据的概率是均等的。</li>
+<li>Binary search: O(log2n)</li>
+<li>hashing method: O©
+<ul>
+<li>Address=hash(key) also called : name-address function(名称-地址映射)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="12-散列函数"><a class="markdownIt-Anchor" href="#12-散列函数"></a> 1.2. 散列函数</h2>
+<h3 id="121-如何寻找合适的散列函数"><a class="markdownIt-Anchor" href="#121-如何寻找合适的散列函数"></a> 1.2.1. 如何寻找合适的散列函数</h3>
+<ol>
+<li>Find a proper hash function How to solve a collision Select a suitable load factor α.(寻找合适的hash函数如何解决冲突选择合适的负载因子α)</li>
+<li>α=n/b
+<ul>
+<li>n is number of elements in the hash table b is the number of buckets in the hash table</li>
+<li>α &gt; 1  碰撞频率大</li>
+<li>α &lt; 1  碰撞频率小</li>
+</ul>
+</li>
+</ol>
+<h3 id="122-散列函数1取余法"><a class="markdownIt-Anchor" href="#122-散列函数1取余法"></a> 1.2.2. 散列函数(1):取余法</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>大小通常取最大质数，避免造成散列中存在始终未用到的部分。</li>
+</ol>
+<h3 id="123-散列函数2平方取中法"><a class="markdownIt-Anchor" href="#123-散列函数2平方取中法"></a> 1.2.3. 散列函数(2):平方取中法</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>先进行原来的数据进行平方，然后选取中间的合适部分。</li>
+<li>对于一个值，按照某一进制下进行处理，处理后选择其中合适的中间部分。(类字符串进行存取)</li>
+</ol>
+<h3 id="124-散列函数3乘法杂凑函数"><a class="markdownIt-Anchor" href="#124-散列函数3乘法杂凑函数"></a> 1.2.4. 散列函数(3):乘法杂凑函数</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>%1是留下小数部分</li>
+</ol>
+<h3 id="125-散列函数4针对字符串-1"><a class="markdownIt-Anchor" href="#125-散列函数4针对字符串-1"></a> 1.2.5. 散列函数(4):针对字符串-1</h3>
+<ol>
+<li>to add up the ASCII( or Unicode ) value of the characters in  the string. 把字符串中的每一个字符的ASCII值或者Unicode值相加</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">( String Key, <span class="hljs-type">int</span> tableSize )</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">hashVal</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; Key.length( ); i++ )<br>        hashVal += Key.charAt( i );<br>    <span class="hljs-keyword">return</span> hashVal % tableSize;<br>&#125; <br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>Suppose  TableSize = 10007, Suppose all the keys are eight or fewer characters long, 8*127=1016 hash function typically can only assume value between 0~1016 引起浪费(字符串过短会导致浪费)</li>
+</ol>
+<h3 id="126-散列函数5针对字符串-2"><a class="markdownIt-Anchor" href="#126-散列函数5针对字符串-2"></a> 1.2.6. 散列函数(5):针对字符串-2</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>相当于对原来常数级的事情，添加一个常数来形成多项式。</li>
+</ol>
+<h3 id="127-其他散列函数考试无要求"><a class="markdownIt-Anchor" href="#127-其他散列函数考试无要求"></a> 1.2.7. 其他散列函数(考试无要求)</h3>
+<ol>
+<li>EL-hash</li>
+</ol>
+<h2 id="13-如何解决散列表冲突问题"><a class="markdownIt-Anchor" href="#13-如何解决散列表冲突问题"></a> 1.3. 如何解决散列表冲突问题</h2>
+<p>碰撞的两个(或多个)关键码称为同义词, 即H(k1)=H(k2),k1不等于k2</p>
+<h3 id="131-解决冲突方案1linear-probing线性探测法"><a class="markdownIt-Anchor" href="#131-解决冲突方案1linear-probing线性探测法"></a> 1.3.1. 解决冲突方案(1):linear Probing(线性探测法)</h3>
+<ol>
+<li>
+<p>If hash(key)= d and the bucket is already occupied then we will examine successive buckets d+1, d+2,……m-1, 0, 1, 2, ……d-1, in the array(如何key的哈希值是d，并且d对应的位置已经被占据，然后我们会按照线性顺序向后成环形查找)</p>
+</li>
+<li>
+<p>散列表已经满了之后，算法复杂度比较高，需要遍历整个散列表</p>
+</li>
+<li>
+<p>例一</p>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/6.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>计算例一中的平均成功访问次数</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
+<li>例二</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="6">
+<li>线性表示法的弊端:堆积问题</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="7">
+<li>不能直接删除线性表中的数据，应该是标记上删除标记</li>
+</ol>
+<h3 id="132-解决冲突方法2二次探测法quadratic-probing"><a class="markdownIt-Anchor" href="#132-解决冲突方法2二次探测法quadratic-probing"></a> 1.3.2. 解决冲突方法(2):二次探测法(Quadratic probing)</h3>
+<ol>
+<li>If hash(k)= d and the bucket is already  occupied then we will examine successive buckets d + 1, d + 2<sup>2</sup>, d + 3<sup>2</sup> ……, in the array</li>
+<li>放置hash值相同的情况下导致严重的堆积情况。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="133-解决冲突方法3双散列哈希double-hashing"><a class="markdownIt-Anchor" href="#133-解决冲突方法3双散列哈希double-hashing"></a> 1.3.3. 解决冲突方法(3):双散列哈希(Double Hashing)</h3>
+<ol>
+<li>If hash1(k)= d and the bucket is already occupied then we will counting hash2(k) = c, examine successive buckets d+c, d+2c, d+3c……，in the array(如果k的第一哈希值为d，而这个对应的格子已经被占用则我们继续计算k的第二哈希值，然后检查d+c…)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>
+<p>第一个散列函数发生冲突，那么使用第二个散列函数来放置，如果再次冲突则进行相应探测。</p>
+</li>
+<li>
+<p>再散列(<strong>进行扩容</strong>)</p>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>尽量保证表项数&gt;表的70%，也就是意味着如果不满足，就需要进行再散列。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>再散列的实现</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rehash</span><span class="hljs-params">()</span>&#123;<br>    HashEntry [] oldArray = array ;<br>    allocateArray(nextPrime(<span class="hljs-number">2</span>*oldArray.length));<br>    currentSize = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; oldArray.length;i++ )<br>        <span class="hljs-keyword">if</span>(oldArray[i] != <span class="hljs-literal">null</span> &amp;&amp; oldArray[i].isActive)<br>            insert(oldArray[i].Element);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="134-解决冲突方法4分离链接法separate-chaining"><a class="markdownIt-Anchor" href="#134-解决冲突方法4分离链接法separate-chaining"></a> 1.3.4. 解决冲突方法(4):分离链接法(Separate Chaining)</h3>
+<ol>
+<li>使用每个位置对应线性表解决这个问题</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>避免了出现向下进行顺延的情况。</li>
+</ol>
+<h2 id="14-散列表的实现"><a class="markdownIt-Anchor" href="#14-散列表的实现"></a> 1.4. 散列表的实现</h2>
+<ol>
+<li>Assume that each element to be stored in the hash table is of type E and has a field key of type k.(我们假设存储在散列表中的每一元素的类型是E，并且有一个类型为k的关键码)</li>
+<li>the hash table is implemented using two arrays: ht and empty.(散列表的实现使用了两个数组，一个是ht，另一个是empty)</li>
+<li>empty[i] is true iff ht[i] does not have an element in it. It is defined for the deletion operation(ht[t]中含有关键码当且仅当empty[i]是true。)</li>
+</ol>
+<h3 id="141-散列表的c实现"><a class="markdownIt-Anchor" href="#141-散列表的c实现"></a> 1.4.1. 散列表的c++实现</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">E</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">K</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HashTable</span>&#123; <br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">HashTable</span>(<span class="hljs-type">int</span> divisor =<span class="hljs-number">11</span>);<br>        ~<span class="hljs-built_in">HashTable</span>()&#123;<br>            <span class="hljs-keyword">delete</span>[]ht;<br>            <span class="hljs-keyword">delete</span> []empty;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">Search</span><span class="hljs-params">(<span class="hljs-type">const</span> K&amp;k ,E&amp; e)</span><span class="hljs-type">const</span></span>; <br>        <span class="hljs-function">HashTable&lt;E,K&gt;&amp;<span class="hljs-title">Insert</span><span class="hljs-params">(<span class="hljs-type">const</span> E&amp;e)</span></span>;<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">hSearch</span><span class="hljs-params">(<span class="hljs-type">const</span> K&amp; k)</span><span class="hljs-type">const</span></span>;<br>        <span class="hljs-type">int</span> D;<span class="hljs-comment">//hash function divisor</span><br>        E *ht ; <span class="hljs-comment">//hash table array</span><br>        <span class="hljs-type">bool</span> *empty ; <span class="hljs-comment">//1D array</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="142-线性探测法的c实现"><a class="markdownIt-Anchor" href="#142-线性探测法的c实现"></a> 1.4.2. 线性探测法的c++实现</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//hashtable的构造方法</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">E</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">K</span>&gt;<span class="hljs-comment">//E和K需要被实例化后，这个类才能被调用。</span><br>HashTable&lt;E,K&gt;::<span class="hljs-built_in">HashTable</span>(<span class="hljs-type">int</span> divisor)&#123;<br>    D = divisor;<br>    ht = <span class="hljs-keyword">new</span> E[D];<br>    empty= <span class="hljs-keyword">new</span> <span class="hljs-type">bool</span>[D];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;D;i++)<br>        empty[i] = <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">E</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">K</span>&gt;<br><span class="hljs-type">int</span> HashTable&lt;E,K&gt;::<span class="hljs-built_in">hSearch</span>(<span class="hljs-type">const</span> K&amp;k)<span class="hljs-type">const</span> &#123;<br>    <span class="hljs-type">int</span> i= % D;<span class="hljs-comment">//home bucket</span><br>    <span class="hljs-type">int</span> j= i ; <span class="hljs-comment">//start at home bucket</span><br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-keyword">if</span>(empty[j] || ht[j]==k) <span class="hljs-keyword">return</span> j;<span class="hljs-comment">//fit</span><br>        j=(j+<span class="hljs-number">1</span>)%D; <span class="hljs-comment">//next bucket</span><br>    &#125; <span class="hljs-keyword">while</span>(j!= i);  <span class="hljs-comment">//returned to home?是否循环完成一遍</span><br>    <span class="hljs-keyword">return</span> j; <span class="hljs-comment">//table full;</span><br>&#125;<br><br><span class="hljs-comment">//参数进行引用K&amp;k</span><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">E</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">K</span>&gt;<br><span class="hljs-type">bool</span> HashTable&lt;E,K&gt;::<span class="hljs-built_in">Search</span>(<span class="hljs-type">const</span> K&amp;k,E&amp;e)<span class="hljs-type">const</span>&#123;<br>    <span class="hljs-comment">//put element that matches k in e.</span><br>    <span class="hljs-comment">//return false if no match.</span><br>    <span class="hljs-type">int</span> b= <span class="hljs-built_in">hSearch</span>(k);<br>    <span class="hljs-keyword">if</span>(empty[b]||<span class="hljs-built_in">Hash</span>(ht[b])!=k)<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    e=ht[b];<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">E</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">K</span>&gt;<br>HashTable&lt;E,K&gt;&amp; HashTable&lt;E,K&gt;::<span class="hljs-built_in">Insert</span>(<span class="hljs-type">const</span> E&amp; e) &#123;<br>     K k=<span class="hljs-built_in">Hash</span>(e);<span class="hljs-comment">//extract key</span><br>     <span class="hljs-type">int</span> b=<span class="hljs-built_in">hSearch</span>(k);<br>     <span class="hljs-keyword">if</span>(empty[b])&#123;<br>        empty[b]=<span class="hljs-literal">false</span>;<br>        ht[b]=e;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-built_in">NoMem</span>();  <span class="hljs-comment">//table full</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="143-散列表的java实现二次探测法"><a class="markdownIt-Anchor" href="#143-散列表的java实现二次探测法"></a> 1.4.3. 散列表的java实现(二次探测法)</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt7/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Hashable</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(<span class="hljs-type">int</span> tableSize)</span>;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HashEntry</span> &#123;<br>    Hashable element;<br>    <span class="hljs-type">boolean</span> isActive;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HashEntry</span><span class="hljs-params">(Hashable e)</span>&#123;<span class="hljs-built_in">this</span>(e, <span class="hljs-literal">true</span>);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HashEntry</span><span class="hljs-params">(Hashable e, <span class="hljs-type">boolean</span> i)</span> &#123;<br>        <span class="hljs-built_in">this</span>.element = e;<br>        <span class="hljs-built_in">this</span>.isActive = i;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">QuadraticProbingHashTable</span> &#123;   <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">QuadraticProbingHashable</span><span class="hljs-params">()</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">QuadraticProbingHashable</span><span class="hljs-params">(<span class="hljs-type">int</span> size)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span>  <br>    <br>    <span class="hljs-keyword">public</span> Hashable <span class="hljs-title function_">find</span><span class="hljs-params">(Hashable x)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(Hashable x)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">(Hashable x)</span>  <br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(String key, <span class="hljs-type">int</span> tableSize)</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">DEFAULT_TABLE_SIZE</span> <span class="hljs-operator">=</span> <span class="hljs-number">11</span>;<br>    <br>    <span class="hljs-keyword">protected</span> HashEntry [ ] array; <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> currentSize;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">allocateArray</span><span class="hljs-params">(<span class="hljs-type">int</span> arraySize )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isActive</span><span class="hljs-params">( <span class="hljs-type">int</span> currentPos )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findPos</span><span class="hljs-params">( Hashable x )</span>  <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rehash</span><span class="hljs-params">( )</span><span class="hljs-comment">//需要扩大hash表大小的时候，再哈希</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">nextPrime</span><span class="hljs-params">( <span class="hljs-type">int</span> n )</span> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPrime</span><span class="hljs-params">( <span class="hljs-type">int</span> n )</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//构造方法</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">QuadraticProbingHashTable</span><span class="hljs-params">( )</span> &#123;<br>    <span class="hljs-built_in">this</span>( DEFAULT_TABLE_SIZE );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">QuadraticProbingHashTable</span><span class="hljs-params">( <span class="hljs-type">int</span> size )</span> &#123;<br>    allocateArray( size );<br>    makeEmpty( );<br>&#125;<br><span class="hljs-comment">//其他方法</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">allocateArray</span><span class="hljs-params">(<span class="hljs-type">int</span> arraySize)</span>&#123;<br>    array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashEntry</span>[arraySize];<br>&#125;<br><span class="hljs-comment">//清空哈希表</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">()</span> &#123;<br>    currentSize = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; array.length; i++ )<br>        array[ i ] = <span class="hljs-literal">null</span>;<br>&#125;<br><span class="hljs-comment">//查找哈希表元素</span><br><span class="hljs-keyword">public</span> Hashable <span class="hljs-title function_">find</span><span class="hljs-params">(Hashable x)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">currentPos</span> <span class="hljs-operator">=</span> findPos(x);<br>    <span class="hljs-keyword">return</span> isActive(currentPos)?array[currentPos].element:<span class="hljs-literal">null</span>;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findPos</span><span class="hljs-params">(Hashable x)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">collisionNum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">currentPos</span> <span class="hljs-operator">=</span> x.hash(array.length); <br>    <span class="hljs-keyword">while</span>(array[currentPos] != <span class="hljs-literal">null</span> &amp;&amp; !array[currentPos].element.equals(x)) &#123;<br>        currentPos += <span class="hljs-number">2</span>*collisionNum – <span class="hljs-number">1</span>;<span class="hljs-comment">//二次探测法 n2 - (n-1)2= 2n-1</span><br>        <span class="hljs-keyword">if</span>(currentPos &gt;= array.length)<br>            currentPos -= array.length;<br>    &#125;<span class="hljs-comment">//如果已经放满，并且要找的值不在里面会进入死循环</span><br>    <span class="hljs-keyword">return</span> currentPos;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isActive</span><span class="hljs-params">( <span class="hljs-type">int</span> currentPos )</span>  &#123;<br>    <span class="hljs-keyword">return</span> array[currentPos]!=<span class="hljs-literal">null</span> &amp;&amp; array[ currentPos ].isActive;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(Hashable x)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">currentPos</span> <span class="hljs-operator">=</span> findPos(x);<br>    <span class="hljs-keyword">if</span>(isActive(currentPos))<br>        <span class="hljs-keyword">return</span>;<br>    array[currentPos] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashEntry</span>( x, <span class="hljs-literal">true</span> );<br>    <span class="hljs-keyword">if</span>( ++currentSize &gt; array.length/<span class="hljs-number">2</span>)<br>        rehash();<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">(Hashable x)</span> &#123;  <br>    <span class="hljs-type">int</span> <span class="hljs-variable">currentPos</span> <span class="hljs-operator">=</span> findPos(x);<br>    <span class="hljs-keyword">if</span>(isActive(currentPos))<br>        array[currentPos].isActive = <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="144-散链表的java实现分离连接法"><a class="markdownIt-Anchor" href="#144-散链表的java实现分离连接法"></a> 1.4.4. 散链表的java实现(分离连接法)</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SeparateChainingHashTable</span>  &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SeparateChainingHashTable</span><span class="hljs-params">( )</span> <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SeparateChainingHashTable</span><span class="hljs-params">( <span class="hljs-type">int</span> size )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Hashable x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( Hashable x )</span><br>    <span class="hljs-keyword">public</span> Hashable <span class="hljs-title function_">find</span><span class="hljs-params">( Hashable x )</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">( String key, <span class="hljs-type">int</span> tableSize )</span>  <br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">DEFAULT_TABLE_SIZE</span> <span class="hljs-operator">=</span> <span class="hljs-number">101</span>;<br>    <span class="hljs-keyword">private</span> LinkedList [] theLists;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">nextPrime</span><span class="hljs-params">( <span class="hljs-type">int</span> n )</span> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPrime</span><span class="hljs-params">( <span class="hljs-type">int</span> n )</span> <br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Hashable</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">( <span class="hljs-type">int</span> tableSize )</span>;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Hashable</span> &#123; <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">( <span class="hljs-type">int</span> tableSize )</span> &#123; <br>        <span class="hljs-keyword">return</span> SeparateChainingHashTable.hash( name, tableSize );<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">( object rhs )</span> &#123; <br>        <span class="hljs-keyword">return</span> name.equals( ( Employee) rhs ).name );<br>    &#125;<br>    <br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> salary;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> seniority;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">SeparateChainingHashTable</span><span class="hljs-params">()</span>  &#123;<br>    <span class="hljs-built_in">this</span>( DEFAULT_TABLE_SIZE );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">SeparateChainingHashTable</span><span class="hljs-params">(<span class="hljs-type">int</span> size)</span> &#123;<br>    theLists = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>[ nextPrime( size ) ];<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; theLists.length; i++ ) theLists[ i ] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>( );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span>  &#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; theLists.length; i++ )<br>    theLists[ i ].makeEmpty( );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( Hashable x )</span>&#123;<br>    theLists[ x.hash( theLists.length ) ].remove( x );<br>&#125;<br><span class="hljs-keyword">public</span> Hashable <span class="hljs-title function_">find</span><span class="hljs-params">( Hashable x )</span> &#123;<br>    <span class="hljs-keyword">return</span> ( Hashable ) theLists[ x.hash( theLists.length ) ]. Find( x ). Retrieve( );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Hashable x )</span>  &#123;  <br>    <span class="hljs-type">LinkedList</span> <span class="hljs-variable">whichList</span> <span class="hljs-operator">=</span> theLists[ x.hash( theLists.length ) ];<br>    <span class="hljs-type">LinkedListItr</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> whichList.find( x );<br>    <span class="hljs-keyword">if</span>( itr.isPastEnd( ) )<br>        whichList.insert( x, whichList.zeroth( ) );<br>&#125;<br><br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2019-Data-Structure/" class="category-chain-item">2019-Data-Structure</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/project/tags/%E6%95%A3%E5%88%97/">#散列</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2019-Data-Structure-数据结构5-hashing</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845-hashing/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20exam/" title="2020-C-plus-plus-advanced-programming-C++ exam">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ exam</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%846.0-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/" title="2019-Data-Structure-数据结构6.0-优先级队列">
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构6.0-优先级队列</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

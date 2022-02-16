@@ -1,0 +1,1635 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2018-Linux-system-basics-linux-10.日常管理和维护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-Linux-system-basics-linux-10.日常管理和维护">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-10.%E6%97%A5%E5%B8%B8%E7%AE%A1%E7%90%86%E5%92%8C%E7%BB%B4%E6%8A%A4/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2018-Linux-system-basics-linux-10.日常管理和维护">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-16T11:09:36.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:46:45.854Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="进程">
+<meta property="article:tag" content="软件包">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2018-Linux-system-basics-linux-10.日常管理和维护 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2018-Linux-system-basics-linux-10.日常管理和维护</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="linux-10日常管理和维护"><a class="markdownIt-Anchor" href="#linux-10日常管理和维护"></a> linux-10.日常管理和维护</h2>
+<h1 id="1-rpm软件包管理"><a class="markdownIt-Anchor" href="#1-rpm软件包管理"></a> 1. RPM软件包管理</h1>
+<ol>
+<li>在linux系统上多采用RPM软件包，这种安装包在安装、升级和卸载上非常方便，不需要进行编译</li>
+</ol>
+<h2 id="11-rpm软件包简介"><a class="markdownIt-Anchor" href="#11-rpm软件包简介"></a> 1.1. RPM软件包简介</h2>
+<ol>
+<li>RPM软件包管理是一个开放的软件包管理系统。按照GPL条款发行。</li>
+</ol>
+<h3 id="111-什么是rpm软件包"><a class="markdownIt-Anchor" href="#111-什么是rpm软件包"></a> 1.1.1. 什么是RPM软件包</h3>
+<ol>
+<li>RPM维护一个已安装软件包和它们的文件的数据库。可以在系统上使用查询和检验软件包功能。RPM允许把一个已安装软件包和它们的文件的数据库。</li>
+<li>对于开发者，RPM允许把软件编码包装源码包和程序包。</li>
+</ol>
+<h3 id="112-prm软件包的设计目标"><a class="markdownIt-Anchor" href="#112-prm软件包的设计目标"></a> 1.1.2. PRM软件包的设计目标</h3>
+<p>首先了解其设计目标:</p>
+<ol>
+<li>可升级性:避免全部重装，在系统上升级个别组件，同时在升级过程中软件包中的配置文件在升级中被保留。</li>
+<li>强大的查询功能:可以在整个数据库中搜索软件包或某些特定文件。同时可以了解文件来自哪里。
+<ul>
+<li>其中有定制的二进制头文件，包括关于软件包以及信息，允许用户快速简洁地查询个体软件包。</li>
+</ul>
+</li>
+<li>系统校验:如果用户误删软件包的重要文件，直接校验该文件包就可以，有异常会引起通知。</li>
+<li>纯净源码:允许使用与软件的原创者发行源码一致的纯净软件源码。通过RPM软件，用户拥有纯净源码、使用过的补丁以及完整的建构指令。用户可以通过查看补丁来判定需要做什么。</li>
+</ol>
+<h3 id="113-prm包管理的用途"><a class="markdownIt-Anchor" href="#113-prm包管理的用途"></a> 1.1.3. PRM包管理的用途</h3>
+<ol>
+<li>可以安装、删除、升级和管理软件。</li>
+<li>通过RPM软件包管理能知道软件包包含哪些文件，也知道系统中的某个文件属于哪个文件包</li>
+<li>可以查询系统中的软件包是否安装并查询其软件。</li>
+<li>开发者可以把自己的程序打包为RPM软件包发布。</li>
+<li>软件包签名GPG和MD5的导入、验证和签名发布。</li>
+<li>依赖性的检查，查看是否有软件包由于不兼容而扰乱系统。</li>
+</ol>
+<h2 id="12-rpm软件包命令的使用"><a class="markdownIt-Anchor" href="#12-rpm软件包命令的使用"></a> 1.2. RPM软件包命令的使用</h2>
+<h3 id="121-安装软件包"><a class="markdownIt-Anchor" href="#121-安装软件包"></a> 1.2.1. 安装软件包</h3>
+<ol>
+<li>命令语法:<code>rpm -ivh [RPM包文件名称]</code></li>
+<li>参数含义:
+<ol>
+<li>-i:安装软件包。</li>
+<li>-v:在安装过程中显示详细的信息。</li>
+<li>-h:表示显示水平进度条。</li>
+<li>–replacepkgs:如果软件包已安装同一版本的软件包</li>
+</ol>
+</li>
+</ol>
+<h3 id="122-卸载软件包"><a class="markdownIt-Anchor" href="#122-卸载软件包"></a> 1.2.2. 卸载软件包</h3>
+<ol>
+<li>命令语法:<code>rpm -e [RPM包文件名称]</code></li>
+<li>依赖关系错误:另一个已安装的软件包依赖于用户试图删除的软件包时，依赖关系错误就会发生。</li>
+<li>强行删除软件包:<code>--nodeps</code></li>
+</ol>
+<h3 id="123-升级软件包"><a class="markdownIt-Anchor" href="#123-升级软件包"></a> 1.2.3. 升级软件包</h3>
+<ol>
+<li>命令语法:<code>rpm -Uvh [RPM包文件名称]</code></li>
+<li>参数含义:
+<ul>
+<li><code>-U</code>:升级软件包：升级软件包实际上是删除和安装的组合。</li>
+</ul>
+</li>
+</ol>
+<h3 id="124-刷新软件包"><a class="markdownIt-Anchor" href="#124-刷新软件包"></a> 1.2.4. 刷新软件包</h3>
+<ol>
+<li>命令含义:<code>rpm -Fvh [RPM包文件名称]</code></li>
+<li>参数含义:
+<ul>
+<li>-F:刷新软件包。</li>
+</ul>
+</li>
+<li>系统会比较指定的软件包的版本和系统上已安装的版本。如果刷新的版本高于已安装的版本，会升级到更新的版本。如果某软件包先前没有安装，PRM不会安装这个安全包。</li>
+</ol>
+<h3 id="125-查询软件包"><a class="markdownIt-Anchor" href="#125-查询软件包"></a> 1.2.5. 查询软件包</h3>
+<ol>
+<li>命令含义:<code>rpm -q [RPM包文件名称]</code></li>
+<li>参数含义:
+<ol>
+<li>-q:查询一个</li>
+<li>-qa:查询所有安装包</li>
+<li>-qi:查询已安装软件包的描述信息</li>
+<li>-ql:查询已安装软件包所含的文件列表</li>
+<li>-qR:查询某一个软件包的依赖关系</li>
+<li>-qf:查询系统中指定文件属于哪一个软件包</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-tar包管理"><a class="markdownIt-Anchor" href="#2-tar包管理"></a> 2. tar包管理</h1>
+<ol>
+<li>使用tar命令可以将文件和目录进行打包或压缩以做备份用。</li>
+</ol>
+<h2 id="21-tar包简介"><a class="markdownIt-Anchor" href="#21-tar包简介"></a> 2.1. tar包简介</h2>
+<ol>
+<li>Windows操作系统下压缩文件有zip和rar</li>
+<li>linux操作系统下有.gz,.tar.gz,.tgz.bz2,.Z,.tar等，其中Windows系统下的压缩文件也可以在linux中使用。</li>
+<li>打包:将许多文件和目录变成一个总的文件。</li>
+<li>压缩:将一个大的文件通过一些压缩算法变成一个小文件。
+<ul>
+<li>由于linux操作系统中的压缩程序只能针对一个文件进行压缩，所以需要压缩就需要先进行打包</li>
+</ul>
+</li>
+<li>tar可以为文件和目录创建备份，用于在磁带上将建备份，现在可以在任何设备创建备份</li>
+</ol>
+<h2 id="22-tar包使用和管理"><a class="markdownIt-Anchor" href="#22-tar包使用和管理"></a> 2.2. tar包使用和管理</h2>
+<ol>
+<li>命令语法:<code>tar [主选项+辅选项][文件或者目录]</code></li>
+<li>参数含义:
+<ol>
+<li>主参数:
+<ol>
+<li>-c:创建新的档案文件。</li>
+<li>-r:将要存档的文件追加到档案文件尾部。</li>
+<li>-t:列出档案内容，查看已经备份了哪些文件。</li>
+<li>-u:更新文件，用新增的文件取代原备份文件。如果在备份文件中找不到更新的文件，就追加到备份文件的最后。</li>
+<li>-x:从文档文件中释放文件。</li>
+</ol>
+</li>
+<li>辅助参数:
+<ol>
+<li>-f:使用档案文件或设备，这个选项是通常是必选的。</li>
+<li>-k:保存已经存在的文件。</li>
+<li>-m:在还原文件时，把所有文本的修改时间设为现在。</li>
+<li>-M:创建多卷的文档文件，</li>
+<li>-v:详细报告tar处理的文件，如无则不报告。</li>
+<li>-w:每一步都要确认</li>
+<li>-z:使用gzip来压缩/解压缩文件</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-tar包的特殊使用"><a class="markdownIt-Anchor" href="#23-tar包的特殊使用"></a> 2.3. tar包的特殊使用</h2>
+<ol>
+<li>tar可以在打包或解包的同时调用其他的压缩程序。</li>
+</ol>
+<h3 id="231-tar调用gzip"><a class="markdownIt-Anchor" href="#231-tar调用gzip"></a> 2.3.1. tar调用gzip</h3>
+<ol>
+<li>gzip是GNU组织开发的一个压缩程序，以.gz结尾的文件就是gzip压缩的结果。与gzip相应的解压程序是gunzip。tar中使用参数&quot;z&quot;来调用。</li>
+<li>例子:
+<ol>
+<li>将/root/abc目录包括其子目录的全部做备份文件，并且进行压缩，文件名为abc.tar.gz
+<ul>
+<li><code>tar zcvf abc.tar.gz /root/abc</code></li>
+</ul>
+</li>
+<li>查看并显示压缩文件abc.tar.gz
+<ul>
+<li><code>tar ztvf abc.tar.gz</code></li>
+</ul>
+</li>
+<li>解压压缩文件
+<ul>
+<li><code>tar ztvf abc.tar.gz</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="232-tar调用bzip2"><a class="markdownIt-Anchor" href="#232-tar调用bzip2"></a> 2.3.2. tar调用bzip2</h3>
+<ol>
+<li>bzip2是一个压缩能力更强的压缩程序。以.bz2结尾的文件是bzip2压缩的结果。</li>
+<li>tar中使用参数j来调用gzip</li>
+<li>例子:
+<ol>
+<li>将/root/abc以及该目录所有文件压缩成abc.tar.bz2
+<ul>
+<li><code>tar cjx abc.tar.bz2 /root/abc</code></li>
+</ul>
+</li>
+<li>解压缩
+<ul>
+<li><code>tar xjf abc.tar.bz2</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-进程管理"><a class="markdownIt-Anchor" href="#3-进程管理"></a> 3. 进程管理</h1>
+<ol>
+<li>linux是一个多任务的操作系统，在系统中可以运行多个进程，正在执行的一个或多个相关进程称为一个</li>
+</ol>
+<h2 id="31-进程概念"><a class="markdownIt-Anchor" href="#31-进程概念"></a> 3.1. 进程概念</h2>
+<ol>
+<li>linux是一个多用户、多任务的操作系统。
+<ol>
+<li>多用户:多个用户可以在同一时间使用计算机系统</li>
+<li>多任务:linux系统可以同时执行几个任务，可以执行一个任务的同时，执行另一个任务。</li>
+</ol>
+</li>
+<li>大多数系统只有一个CPU和一个内存，但一个系统可能有多个二级存储磁盘和多个输入/输出设备。
+<ol>
+<li>操作系统管理这些资源和多个用户间共享资源</li>
+<li>请求提出后，操作系统监控一个等待执行的任务队列，包括用户作业、操作系统任务、邮件和打印作业等。</li>
+<li>操作系统按照任务优先级为每个任务分配合适的时间片，每个时间片大约有零点几秒。会被挂起后，然后回来再处理这个任务</li>
+</ol>
+</li>
+<li>进程:
+<ol>
+<li>定义:
+<ol>
+<li>每个用户任务、每个系统管理守护进行都可以称作进程。</li>
+<li>linux系统上所有运行的内容。</li>
+<li>进程是在自身的虚拟地址空间运行的一个独立的程序。</li>
+</ol>
+</li>
+<li>分时管理办法:让所有的任务分享系统资源。</li>
+<li>与程序相比:
+<ol>
+<li>进程不是程序，由程序产生。</li>
+<li>程序不占有系统的运行资源，进程占有系统运行资源</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>作业:一系列按一定顺序执行的命令。</li>
+<li>进程类型:
+<ol>
+<li>交互式进程:一个由Shell启动并控制的进程，可以前台和后台运行。</li>
+<li>批处理进程:与终端无关，安排在指定时刻完成的一系列进程。</li>
+<li>守护进程:在引导系统时起动，以执行即时的操作系统任务。</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-查看系统进程信息"><a class="markdownIt-Anchor" href="#32-查看系统进程信息"></a> 3.2. 查看系统进程信息</h2>
+<h3 id="321-ps命令"><a class="markdownIt-Anchor" href="#321-ps命令"></a> 3.2.1. ps命令</h3>
+<ol>
+<li>要对进程进行检测和控制，查看当前需要查看当前进程。
+<ul>
+<li>查看正在运行的进程、进程是否结束、进程是否僵死，线程占有过多的资源。</li>
+</ul>
+</li>
+<li>命令语法:<code>ps [选项][/b]</code></li>
+<li>参数含义:
+<ol>
+<li>-a:显示所有用户的进程</li>
+<li>-e:显示进程环境变量</li>
+<li>-l:给出详细信息的列表</li>
+<li>-r:只显示正在运行的进程</li>
+<li>-S:增加CPU时间和页面出错的信息</li>
+<li>-w:按宽格式输出</li>
+<li>-u:打印用户格式，显示用户名和进程的起始时间</li>
+<li>-x:显示不带控制终端的进程</li>
+</ol>
+</li>
+<li>ps命令输出字段的含义</li>
+</ol>
+<h3 id="322-top命令"><a class="markdownIt-Anchor" href="#322-top命令"></a> 3.2.2. top命令</h3>
+<ol>
+<li>使用top命令可以显示当前正运行的今进程以及关于它们的重要信息，包括它们的内存和CPU用量。</li>
+<li>命令语法:<code>top [bciqsS][d &lt;间隔秒数&gt;][n &lt;执行次数&gt;]</code></li>
+<li>参数含义:
+<ol>
+<li>-b:使用批处理模式</li>
+<li>-c:列出程序时，显示每个程序的完整指令</li>
+<li>-d:设置top监控程序执行状况的间隔时间，单位是s</li>
+<li>-i:执行top指令时忽略闲置或是已成为Zombia的程序</li>
+<li>-n:设置监控信息的更新次数</li>
+<li>-q:持续监控程序执行的状况</li>
+<li>-s:使用保密模式，消除互动模式下的潜在危机。</li>
+<li>-S:使用累积模式，其效果类似ps指令的相应指令。</li>
+</ol>
+</li>
+<li>显示的各个项目:
+<ol>
+<li>uptime:系统启动时间、已经运行时间和三个平均负载值(1s、5s、15s)</li>
+<li>Process:自最近一次刷新以来的运行进程综述，分为正在运行的、休眠的、停止的等。</li>
+<li>CPU states:显示用户模式、系统模式、优先级进程和闲置。</li>
+<li>Mem:内存使用情况统计</li>
+<li>Swap:交换空间统计</li>
+<li>PID:每个进程的PID</li>
+<li>PPID:每个进程的父进程ID</li>
+<li>UID:每个进程的所有者UID</li>
+<li>USER:每个进程的所有者的用户名</li>
+<li>PRI:每个进程的优先级别</li>
+<li>NI:该进程的优先级值</li>
+<li>SIZE:该进程的的代码大小+数据大小+堆栈大小的总数，单位是KB</li>
+<li>TSIZE：该进程的代码大小</li>
+<li>DSIZE:数据和堆栈的大小</li>
+<li>TRS:文本驻留大小</li>
+<li>D:被标记为&quot;不干净&quot;的页项目</li>
+<li>LIB:使用的库页的大小，对于ELF进程没有作用。</li>
+<li>RSS:该进程占用的物理内存的总数量。</li>
+<li>SHARE:该进程使用共享内存的数量。</li>
+<li>STAT:该进程状态
+<ol>
+<li>S:休眠状态</li>
+<li>D:不可中断的休眠标志</li>
+<li>R:运行状态</li>
+<li>Z:僵死状态</li>
+<li>T:代表停止或跟踪状态</li>
+</ol>
+</li>
+<li>TIME:线程自启动以来所占有的总CPU时间。如果进入累计模式，那么该时间还包括每个进程紫禁城所占有的时间，且标题会变为CTIME</li>
+<li>%CPU:该进程自做进一次刷新以来所占用的CPU时间和总时间的百分比</li>
+<li>%MEM:该进程占有的物理内存占用的CPU时间和宗时间的百分比</li>
+<li>COMMAND:该命令名称</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-结束进程"><a class="markdownIt-Anchor" href="#33-结束进程"></a> 3.3. 结束进程</h2>
+<p>要关闭某个应用程序可以通过结束其进程的方式实现，如果进程一时无法结束，可以将其强制结束。</p>
+<h3 id="331-结束进程"><a class="markdownIt-Anchor" href="#331-结束进程"></a> 3.3.1. 结束进程:</h3>
+<ol>
+<li>原因:
+<ol>
+<li>该进程使用CPU时间过多</li>
+<li>该进程运行了很长时间，而没有产生期望的输出</li>
+<li>该进程产生到屏幕或文件中的输出太多</li>
+<li>该进程锁定了一个终端或其他的会话过程。</li>
+<li>由于操作或编程的错误，该进程正在使用错误的输入和输出的会话过程。</li>
+</ol>
+</li>
+<li>终止方式:
+<ol>
+<li>终止一个后台进程，使用kill命令来杀死。</li>
+<li>终止一个不再后台的命令，Ctrl+C。</li>
+<li>但是当命令不再后台时，由于后台进程不再终端控制下，所以任何键盘输入都会被忽略，只能用kill命令来完成。</li>
+</ol>
+</li>
+<li>kill终止后的结果:
+<ol>
+<li>没有直接的显示效果</li>
+<li>需要用ps命令来查看该进程的PID号或进程名是否存在。</li>
+</ol>
+</li>
+</ol>
+<h3 id="332-结束子进程"><a class="markdownIt-Anchor" href="#332-结束子进程"></a> 3.3.2. 结束子进程:</h3>
+<ol>
+<li>结束一个进程的同时需要结束其所有的紫禁城</li>
+<li>终止进程时，使用&quot;ps-l&quot;命令查出哪一个父进程并终止他</li>
+<li>一定要确定好进程号是什么，同时kill命令有等级，-9是无条件杀死相应的进程，如果这样不能被杀死，那么只能重启。
+<ul>
+<li>会造成文件丢失</li>
+</ul>
+</li>
+</ol>
+<h2 id="34-进程启动方式"><a class="markdownIt-Anchor" href="#34-进程启动方式"></a> 3.4. 进程启动方式</h2>
+<p>输入需要运行程序的程序号，执行一个程序，也就是启动了一个进程。</p>
+<h3 id="341-手动启动"><a class="markdownIt-Anchor" href="#341-手动启动"></a> 3.4.1. 手动启动</h3>
+<p>由用户输入命令，直接启动一个进程就是手动启动的进程。</p>
+<ol>
+<li>前台启动:
+<ol>
+<li>是手动启动进程最常用方式。</li>
+<li>必然已经进入了多线程阶段。</li>
+<li>使用ps命令查看进程。</li>
+</ol>
+</li>
+<li>后台启动
+<ol>
+<li>直接从后台启动一个进程用的少。</li>
+<li>比如要启动一个需要长时间运行的格式化文本文件的时候，为了不让整个shell在过程中处于&quot;瘫痪&quot;</li>
+</ol>
+</li>
+<li>共同特点:
+<ol>
+<li>新进程都是有Shell进程产生。</li>
+</ol>
+</li>
+</ol>
+<h3 id="342-调度启动"><a class="markdownIt-Anchor" href="#342-调度启动"></a> 3.4.2. 调度启动</h3>
+<ol>
+<li>在linux系统中，任务可以配置在指定的时间、指定的日期或系统平均负载量低于指定的数量时运行。</li>
+</ol>
+<h2 id="35-进程的挂起及恢复"><a class="markdownIt-Anchor" href="#35-进程的挂起及恢复"></a> 3.5. 进程的挂起及恢复</h2>
+<ol>
+<li>作业控制允许将进程挂起并可以在需要的时候恢复进程的运行，被挂起的作业恢复后将从中止处开始继续运行。</li>
+<li>挂起进程:Ctrl+z</li>
+<li>使用jobs命令可以显示shell的作业清单，包括具体的作业、作业号以及作业当前所处的状态。</li>
+<li>相应指令:
+<ol>
+<li>使用fg命令将挂起的作业放回到前台执行</li>
+<li>用bg命令将挂起的作业放到后台执行</li>
+</ol>
+</li>
+<li>默认情况下，fg和bg命令对最近停止的作业进行操作。如果希望恢复其他作业的运行，可以在指令中指定要恢复作业的作业来恢复该作业。</li>
+<li>例子:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs s">vi /root/it<br>[Ctrl + z]<br>jobs查看工作<br>ps查看具体的工作系统<br>fg vi /root/it将后台程序移到前台<br>fg 4 将号码为4的工作提取出来<br></code></pre></td></tr></table></figure>
+<h2 id="36-守护进程工作原理和方式"><a class="markdownIt-Anchor" href="#36-守护进程工作原理和方式"></a> 3.6. 守护进程工作原理和方式</h2>
+<ol>
+<li>在C\S模式下，服务器在一个特定的端口上接听客户连接，连接成功后服务器和客户端进行数据通信。</li>
+<li>守护进程的工作就是打开一个端口并且等待进入连接。
+<ul>
+<li>如果客户端产生一个连接请求，守护进程就创建一个子服务器响应这个连接，而主服务器继续监听其他的服务请求。</li>
+</ul>
+</li>
+</ol>
+<h3 id="361-运行独立的守护进程"><a class="markdownIt-Anchor" href="#361-运行独立的守护进程"></a> 3.6.1. 运行独立的守护进程</h3>
+<ol>
+<li>独立运行的守护进程由int脚本负责管理，所有独立运行的守护进程的脚本在/etc/rc.d/init.d/目录下。</li>
+<li>服务器在一个特定的端口上监听客户端的连接。</li>
+</ol>
+<h3 id="362-由xinetd管理的守护管理"><a class="markdownIt-Anchor" href="#362-由xinetd管理的守护管理"></a> 3.6.2. 由xinetd管理的守护管理</h3>
+<ol>
+<li>xinted能够同时监管多个指定的端口，在接受用户请求时，它能够根据用户请求的端口不同，启动不同的网络服务进程来处理这些用户请求。</li>
+<li>可以把xinetd看做一个管理启动服务的管理服务器，它决定把一个客户请求交给哪个程序来处理，然后启动相应的守护进程。</li>
+<li>这样子降低了系统开销，保护系统资源。但是访问量大、经常出现并发访问时，xinetd频繁启动相应的网络服务进程，反而会导致系统性能下降。</li>
+</ol>
+<h1 id="4-任务计划"><a class="markdownIt-Anchor" href="#4-任务计划"></a> 4. 任务计划</h1>
+<p>如果要在固定的时间上触发某个作业，需要创建任务计划，按时执行该作业。</p>
+<h2 id="41-配置cron实现自动化"><a class="markdownIt-Anchor" href="#41-配置cron实现自动化"></a> 4.1. 配置cron实现自动化</h2>
+<p>使用cron实现任务自动化可以通过修改/etc/crontab文件以及crontab命令实现，其结果是一样的。</p>
+<h3 id="411-etccrontab文件实现自动化"><a class="markdownIt-Anchor" href="#411-etccrontab文件实现自动化"></a> 4.1.1. /etc/crontab文件实现自动化</h3>
+<ol>
+<li>cron守护进程可以在无需人工干预的情况下根据时间、日期、月份和星期的组合来调用执行重复任务的守护进程。</li>
+<li>要是用这个服务必须安装了vixie-cron-4.2.3.fc8软件包并且必须运行crond服务</li>
+<li>查看方式：
+<ol>
+<li><code>rpm -qa|grep vixie-cron</code></li>
+<li><code>service crond status</code></li>
+</ol>
+</li>
+<li>/etc/crontab的主配置文件
+<ol>
+<li>文件前4行是用来配置cron任务运行环境的变量。
+<ol>
+<li>shell变量的值告诉系统要使用哪一个shell环境</li>
+<li>Path变量定义用来执行命令的路径。</li>
+<li>cron任务的输出要被邮寄给MAILTO变量定义的用户名</li>
+<li>HOME变量是用来设置执行命令或脚本时使用的主目录</li>
+</ol>
+</li>
+<li>除此以外的每一行都代表一项任务:
+<ul>
+<li><code>minute hour day month dayofweek command</code></li>
+</ul>
+<ol>
+<li>minute:0-59</li>
+<li>hour:0-23</li>
+<li>day:1-31</li>
+<li>dayofweek:1-7</li>
+<li>command:要执行的命令</li>
+</ol>
+</li>
+<li>以上的所有值中:
+<ol>
+<li>星号(*)可以用来所有有效的值</li>
+<li>短线(-)用来表示范围</li>
+<li>逗号(,)是用来隔开一系列值指定一个列表。</li>
+<li>正斜线(/)可以用来指定间隔频率</li>
+<li>开头为(#)的行是注释，不会被处理</li>
+</ol>
+</li>
+<li>在使用crontab运行shell脚本时，要由用户来给出脚本的绝对路径，设置相应的环境变量。</li>
+<li>在这个cron任务中，linux系统使用run-parts脚本来执行/etc/cron.hourly、/etc/cron.daily、/etc/cron.weekly、/etc/cron.mouthly目录中的脚本，这些脚本被相应地每小时、每日、每周或每月执行</li>
+<li>如果cron任务的脚本需要按照调度来执行,该目录中的所有文件使用和/etc/crontab一样的脚本</li>
+</ol>
+</li>
+</ol>
+<h3 id="412-crontab命令实现自动化"><a class="markdownIt-Anchor" href="#412-crontab命令实现自动化"></a> 4.1.2. crontab命令实现自动化</h3>
+<ol>
+<li>crontab命令:
+<ol>
+<li>root以外的用户可以使用crontab命令配置cron任务。所有用户定义的crontab都被保存在/var/spool/cron目录中，并使用创建它们的用户身份来执行。</li>
+<li>以某位用户身份创建一个crontab项目，登录为该用户，然后输入&quot;crontab-e&quot;命令，使用VISUAL或EDITOR环境变量指定的编辑器来编辑该用户的crontab，该文件夹根据该被保存在文件<code>/var/spool/cron/&lt;username&gt;</code>内。</li>
+<li>cron守护进程每分钟都在检查/etc/crontab文件、etc/cron.d/目录以及/var/spool/cron目录中的改变。</li>
+<li>command命令语法:<code>crontab [-u 用户名] -e -l -r</code>
+<ol>
+<li>-u:用户名，使用自己名字登录就不用</li>
+<li>-e:编辑crontab文件</li>
+<li>-l:列出crontab文件中的内容</li>
+<li>-r:删除crontab文件</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>控制对cron的使用:
+<ol>
+<li>/etc/cron.allow和/etc/cron.deny文件被用来限制对cron的使用。
+<ol>
+<li>/etc/cron.allow文件存在，只有其他列出的用户才被允许使用cron，并且/etc/cron.deny会被忽略。</li>
+<li>/etc/cron.allow文件不存在，所有在cron.deny的用户都被禁止使用cron。</li>
+</ol>
+</li>
+<li>这两个使用控制文件的格式就是每行一个用户，每个文件都不允许空格。</li>
+<li>如果使用控制文件被修改了，crond守护进程不必被重启。</li>
+<li>使用控制文件在每次用户添加或删除一项cron任务时都会被读取。</li>
+<li>无论什么使用控制文件中的规定如何，根用户都可以使用cron。</li>
+</ol>
+</li>
+<li>启动和停止服务:
+<ol>
+<li>启动服务:<code>service crond stop</code></li>
+<li>停止服务:<code>service crond start</code></li>
+</ol>
+</li>
+<li>创建crontab服务:
+<ol>
+<li>在考虑向crontab进程提交一个crontab文件，首先配置环境变量EDITOR。</li>
+<li>编辑用户宿主目录下的.bash_profile文件，在其中加入代码:<code>EDITOR = vi;export EDITOR</code>。</li>
+<li>之后创建新的crontab文件，将其提交给进程，并且其副本被放在/var/spool/cron文件中，文件名是用户名。</li>
+</ol>
+</li>
+<li>编辑crontab文件
+<ul>
+<li>如果EDITOR环境变量设为vi，那么久可以用vi来编辑文件。</li>
+</ul>
+</li>
+<li>列出crontab文件
+<ul>
+<li>root用户命令:<code>crontab -u name -l</code></li>
+<li>普通用户命令:<code>crontab -l (&gt;file_path重定向到地方)</code></li>
+</ul>
+</li>
+<li>删除crontab文件
+<ul>
+<li>root命令:<code>crontab -u name -r</code></li>
+<li>普通用户命令:<code>crontab -r</code></li>
+</ul>
+</li>
+<li>恢复丢失的crontab文件
+<ul>
+<li>如果不慎误删了crontab文件，在其宿主目录下有一个备份，那么可以将其复制到<code>/var/spool/cron/&lt;username&gt;</code>下。</li>
+<li>如果因为权限不能完成拷贝，可以使用<code>$crontab &lt;username&gt;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="42-使用at实现自动化"><a class="markdownIt-Anchor" href="#42-使用at实现自动化"></a> 4.2. 使用at实现自动化</h2>
+<ol>
+<li>cron命令被用来调度重复的任务，而at命令是被用来在指定时间内调度一次性的任务。</li>
+</ol>
+<h3 id="421-at简介"><a class="markdownIt-Anchor" href="#421-at简介"></a> 4.2.1. at简介</h3>
+<ol>
+<li>一旦一个作业被提交，at命令将会保留所有当前的环境变量，包括路径、该作业的所有输出以电子邮件的形式发送给用户。</li>
+<li>和crontab一样，root哟用户通过/etc目录下的at.allow和at.deny文件了控制哪些用户可以使用at命令，在使用命令at前必须要先安装，并且atd服务必须在运行
+<ol>
+<li><code>rpm -qa at</code>:查看at软件包是否安装</li>
+<li><code>service atd status</code>:检查atd是否运行</li>
+</ol>
+</li>
+</ol>
+<h3 id="422-配置at作业"><a class="markdownIt-Anchor" href="#422-配置at作业"></a> 4.2.2. 配置at作业</h3>
+<ol>
+<li>要在某一指定时间内调度一项一次性作业，必须先指定时间，接着指定日期</li>
+<li>命令语法:<code>at [-f script][-m -l -r][time][data]</code></li>
+<li>其中各参数含义:
+<ol>
+<li>-f script:所要提交的脚本或命令。</li>
+<li>-l:列出当前所有等待运行的作业，与atd命令具有相同的作用。</li>
+<li>-r:清除某个作业，还要提供相应的作业标识(ID)。</li>
+<li>-m:作业完成后给用户发邮件。</li>
+<li>time:at命令的时间样式.。</li>
+<li>data:日期格式可以是月份数或日期数。</li>
+</ol>
+</li>
+<li>时间参数:
+<ol>
+<li>HH:MM:例如04:00=&gt;4:00AM</li>
+<li>Midnight:12:00AM</li>
+<li>Noon:12:00PM</li>
+<li>Teatime:4:00PM</li>
+<li>英文月名 日期 年份(可选):例如January 15 2002</li>
+<li>MMDDYY,MM/DD/YY或MM.DD.YY:011502，2002年1月15日。</li>
+<li>now + 时间:时间以minutes,hours,days,weeks为单位，例如:&quot;now + 5days&quot;表示在在五天之后的此刻此时执行。</li>
+</ol>
+</li>
+<li>输入at命令和它的时间参数后，at&gt;提示就会出现，输入要执行的命令，不断回车，最后按下[Ctrl+D]键即可</li>
+</ol>
+<h3 id="423-使用at命令提交命令或脚本"><a class="markdownIt-Anchor" href="#423-使用at命令提交命令或脚本"></a> 4.2.3. 使用at命令提交命令或脚本</h3>
+<ol>
+<li>使用命令行方式:一般是提交Shell脚本，使用-f选项</li>
+<li>使用at命令提示符:一般是提交多行命令</li>
+</ol>
+<h3 id="424-列出提交的作业"><a class="markdownIt-Anchor" href="#424-列出提交的作业"></a> 4.2.4. 列出提交的作业</h3>
+<ol>
+<li>使用命令<code>at -l</code>列出所有作业</li>
+<li>使用命令<code>atq</code>列出所有作业</li>
+</ol>
+<h3 id="425-清除at作业"><a class="markdownIt-Anchor" href="#425-清除at作业"></a> 4.2.5. 清除at作业</h3>
+<ol>
+<li>先执行<code>at -l</code>命令查看，之后消除作业。</li>
+<li>命令语法:
+<ol>
+<li><code>atrm [作业表示号]</code></li>
+<li><code>at -r [作业表示号]</code></li>
+</ol>
+</li>
+</ol>
+<h1 id="5-linux系统启动"><a class="markdownIt-Anchor" href="#5-linux系统启动"></a> 5. Linux系统启动</h1>
+<ol>
+<li>讲解Linux的启动过程及维护init进程的配置文件/etc/inittab</li>
+</ol>
+<h2 id="51-linux系统启动过程"><a class="markdownIt-Anchor" href="#51-linux系统启动过程"></a> 5.1. Linux系统启动过程</h2>
+<ol>
+<li>Linux系统的启动时从计算机开机通电自检开始直到登录系统需要经过的多个过程</li>
+</ol>
+<h3 id="511-bios自检"><a class="markdownIt-Anchor" href="#511-bios自检"></a> 5.1.1. BIOS自检</h3>
+<ol>
+<li>计算机在接通电源之后首先由BIOS进行POST自检。
+<ul>
+<li>POST自检是对硬件进行检测。</li>
+</ul>
+</li>
+<li>然后根据BIOS内设置的引导顺序从磁盘CDROM中读入引导块。
+<ol>
+<li>引导从地址0xFFFF0开始进行引导。</li>
+<li>一般是从磁盘上进行硬盘上，其中主引导记录(MBR)中包含主引导加载程序。
+<ol>
+<li>MBR是512字节大小的扇区，位于磁盘上的第一个扇区中。</li>
+<li>当MBR被加载到RAM中之后，BIOS就会将控制权交给MBR。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>第一个步骤:加电POST自检。</li>
+<li>第二个步骤:进行本地设备的枚举和初始化。</li>
+<li>BIOS组成:
+<ol>
+<li>POST代码:在POST完成后从内存中清理出来。</li>
+<li>运行时的服务:会被保存在内存中。</li>
+</ol>
+</li>
+</ol>
+<h3 id="512-启动grub"><a class="markdownIt-Anchor" href="#512-启动grub"></a> 5.1.2. 启动GRUB</h3>
+<ol>
+<li>GRUB是引导加载程序。引导加载程序用于引导操作系统启动。</li>
+<li>在机器引导它的操作系统的时候，BIOS会读取引导介质上最前面的512字节(主引导记录)</li>
+<li>单一MBR只能存储一个操作系统的引导记录，在多个操作系统的时候会出现问题。</li>
+</ol>
+<h3 id="513-加载内核"><a class="markdownIt-Anchor" href="#513-加载内核"></a> 5.1.3. 加载内核</h3>
+<ol>
+<li>接下来把加载内核映像到内存中，内核映像并不能可执行的内核而是一个压缩过的内核映像。</li>
+<li>这个内核映像前面是一个例程，实现少量硬件设置，并对内核进行解压，然后将其放入高端内存。</li>
+<li>如果有初识RAM磁盘映像，系统会将它移动到内存中，并标明以后使用。</li>
+</ol>
+<h3 id="514-执行init进程"><a class="markdownIt-Anchor" href="#514-执行init进程"></a> 5.1.4. 执行init进程</h3>
+<ol>
+<li>init进程是所有系统进程的起点，是所有进程的发起者和控制着。内核在完成核内引导以后，即在本进程空间内加载init程序，进程号为1.</li>
+<li>作用:
+<ol>
+<li>扮演终结父进程的角色。
+<ul>
+<li>init进程永远不会停止。</li>
+<li>必要时会被作为参考。</li>
+</ul>
+</li>
+<li>在进入某个特定的运行级别时运行相应的程序，以此对各种运行级别进行管理。
+<ul>
+<li>在/etc/inittab文件定义的。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="515-通过etcinittab文件进行初始化"><a class="markdownIt-Anchor" href="#515-通过etcinittab文件进行初始化"></a> 5.1.5. 通过/etc/inittab文件进行初始化</h3>
+<ol>
+<li>init的工作是根据/etc/inittab来执行相应的脚本进行系统初始化，如设置键盘、字体、装载模式，设置网络等。</li>
+<li>/etc/rc.d/rc.sysinit
+<ol>
+<li>这个是init执行的第一个脚本，主要完成一些系统初始化的工作。</li>
+<li>主要完成的工作:激活交换分区、检查键盘、加载硬件模块以及其他一些需要优先执行任务。</li>
+</ol>
+</li>
+<li>/etc/rc.d/rcX.d/[KS]
+<ol>
+<li>在上面的2中的命令执行后，将返回init继续执行到/etc/rc.d/rc程序。</li>
+<li>一般能接受start,stop,restart,stauts等参数。</li>
+<li>/etc/rc.d/rc5.d/中的启动脚本通常以K或S开头的链接文件，以S开头的启动脚本将以start参数来与运行。以K开头的脚本，而且已经处于运行态，则首先以stop为参数停止这些已经启动了的守护进程，再重启。</li>
+<li>每个运行级将运行运行哪些守护进程，用户可以通过chkconfig来自行设定。</li>
+</ol>
+</li>
+<li>执行/etc/ec.d/rc.local
+<ol>
+<li>用户可以自己在这个文件中添加一些其他初始化工作之后，登录之前执行的命令。</li>
+</ol>
+</li>
+</ol>
+<h3 id="516-执行binlogin程序"><a class="markdownIt-Anchor" href="#516-执行binlogin程序"></a> 5.1.6. 执行/bin/login程序</h3>
+<ol>
+<li>login程序会提示使用者输入账号及密码，接着编码并确认密码的正确性，如果正确没把呢使用者初始化环境，并将控制权交给shell，即等待用户登录。</li>
+<li>login会接收mingetty传来的用户名作为用户名参数，然后login会对文件进行分析。
+<ol>
+<li>用户名为root，且存在/etc/nologin文件，login将输出nologin文件的内容，然后退出。</li>
+<li>这通常用来在系统维护时防止非root用户登录，只有在/etc/securetty中登记了的终端才允许root用户登录，如果不存在这个文件，则root可以在任何终端上登录。</li>
+</ol>
+</li>
+<li>分析完用户名后，login将搜索/etc/passwd和/etc/shadow来验证密码以及设置账户的其他信息。</li>
+<li>login成功后，会向对应的终端在输出最近一次登录的信息，并检查用户是否有新邮件，然后开始设置各种环境变量。</li>
+<li>对于bash而言，首先/etc/profile脚本文件，并执行它，如果用户的主目录中存在.bash_profile文件就执行它，之后按照进程启动。</li>
+</ol>
+<h2 id="52-init进程简介"><a class="markdownIt-Anchor" href="#52-init进程简介"></a> 5.2. init进程简介</h2>
+<ol>
+<li>init是linux系统执行的第一个进程，进程ID是1，是系统所有进程的起点。</li>
+<li>inittab是一个不可执行的文本文件，由若干指令所组成。</li>
+</ol>
+<h3 id="521-etcinittab配置文件"><a class="markdownIt-Anchor" href="#521-etcinittab配置文件"></a> 5.2.1. /etc/inittab配置文件</h3>
+<ol>
+<li>从脚本中得到内容:
+<ol>
+<li>系统缺省运行级别，启动系统时进入图形化界面</li>
+<li>启动相应脚本</li>
+</ol>
+</li>
+<li>具体介绍相应部分
+<ol>
+<li>id:id为1-2个字符，配置行的唯一标识符，在配置文件中不可重复。</li>
+<li>runlevels:配置行适用的运行级别
+<ol>
+<li>0:关机</li>
+<li>1:单用户字符界面</li>
+<li>2:不具备网络文件系统(NFS)的多用户子界面</li>
+<li>3:具有网络功能的多用户字符界面</li>
+<li>4:保留不用</li>
+<li>5:具有网络功能的图形用户界面</li>
+<li>6:重新启动系统</li>
+</ol>
+</li>
+<li>action:有一定的行为</li>
+<li>process:
+<ol>
+<li>为init执行的进程，这些进程都保存在/etc/rc.d/rcX，其中X代表运行级别，rc程序接受X参数，然后执行/etc/rc.d/rc.X下面的程序。</li>
+<li>使用命令查看/etc/rc.d目录内容:<code>ls -l /etc/rc(X).d|more</code></li>
+<li>显示的文件是符号链接，以S开头的标识启动该项目，以K开头的标识表示终止该程序，后面的数字标识执行顺序，优先执行数字小的，剩下的标识程序名。</li>
+<li>系统启动或切换到该运行级会执行S开头的程序，系统切换走会执行K开头的程序。</li>
+<li>这个目录下的程序可以通过chkconfig程序进行管理，当然这个目录下的程序需要符合一定规范。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>如果想要修改马上生效
+<ol>
+<li><code>kill -SIGNUP 1</code></li>
+<li><code>init q</code></li>
+</ol>
+</li>
+</ol>
+<h1 id="6-维护grub"><a class="markdownIt-Anchor" href="#6-维护grub"></a> 6. 维护GRUB</h1>
+<p>使用引导加载程序可以引导操作系统的启动，一般情况上引导加载程序都安装在MBR(主引导区)中。</p>
+<h2 id="61-引导加载程序和grub"><a class="markdownIt-Anchor" href="#61-引导加载程序和grub"></a> 6.1. 引导加载程序和GRUB</h2>
+<ol>
+<li>在linux系统中使用的引导装载程序主要是GRUB和LILO，但是目前主流的linux系统发行多用GRUB</li>
+</ol>
+<h3 id="611-引导加载程序简介"><a class="markdownIt-Anchor" href="#611-引导加载程序简介"></a> 6.1.1. 引导加载程序简介</h3>
+<ol>
+<li>在计算机要引导操作系统时
+<ol>
+<li>BIOS会读取引导介质上最前面的MBR记录。</li>
+<li>单一的MBR中只能存储一个操作系统的引导记录。BIOS使用存储在MBR中的数据激活引导加载程序。</li>
+<li>当需要多个操作系统时就会出现问题，所以需要更加灵活的引导加载程序。</li>
+</ol>
+</li>
+<li>主引导记录本身就包含两类内容:
+<ol>
+<li>引导加载程序:由于BIOS只能访问少量的数据，大部分引导加载程序分以下两部分进行引导:
+<ol>
+<li>第一阶段:BIOS引导一部分引导加载部分，即初识程序加载程序(IPL)
+<ul>
+<li>IPL查询分区表，从而能够加载位于不同介质上任意位置的数据，这一步主要是为了定位第二阶段引导加载程序(其中包含加载程序的其余部分)</li>
+</ul>
+</li>
+<li>第二阶段:引导加载程序的主体:包含加载程序更需要加载程序的部分。</li>
+<li>通常配置为主引导加载程序或二级引导加载程序。
+<ol>
+<li>主引导加载程序:安装在MBR上的第一阶段引导加载程序。</li>
+<li>二级引导加载程序:安装在可引导分区的第一阶段引导加载程序。</li>
+<li>必须在MBR上安装单独的引导加载程序，并配置它将控制权转交给二级引导加载程序。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>分区表</li>
+</ol>
+</li>
+</ol>
+<h3 id="612-grub概述"><a class="markdownIt-Anchor" href="#612-grub概述"></a> 6.1.2. GRUB概述</h3>
+<ol>
+<li>GNU GRUB是一个将引导加载程序安装到主引导记录的程序。
+<ul>
+<li>它允许一个位于主引导记录区中特定的指令来加载一个GRUB菜单或是GRUB的命令环境。</li>
+<li>这使得用户能够开始操作系统的选择，在内核引导时传递特定指定指令给内核，或是内核引导时前确定一些系统参数。</li>
+</ul>
+</li>
+<li>主引导程序是位于一个硬盘开始的扇区。</li>
+<li>GRUB支持直接和链式加载的引导方法，并能用于几乎所有操作系统、绝大多数流行的文件系统以及几乎所有系统BIOS所能识别的硬盘。</li>
+</ol>
+<h3 id="613-grub特性"><a class="markdownIt-Anchor" href="#613-grub特性"></a> 6.1.3. GRUB特性</h3>
+<ol>
+<li>在x86机器上提供一个真正基于命令行、先于操作系统启动的环境。</li>
+<li>GRUB支持逻辑块寻址(LBA)方式。
+<ol>
+<li>LBA主要作用是寻找驱动器上文件的地址并将其置于驱动器的硬件中，它被用于许多IDE和SCSI硬盘中</li>
+<li>只要BIOS能支持LBA模式，就能超越1024柱面的限制。</li>
+<li>GRUB的配置能在每次系统引导时被读取。
+<ul>
+<li>避免了重写主引导记录。</li>
+<li>然而大多数的引导加载程序都不能读取配置文件，并使用它们来设置引导选项。</li>
+<li>在使用GRUB中，如果说配置文件被错误配置并且引导，那它也只能简单地转到一个默认的命令行，允许用户手工输入命令来运行操作系统。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="62-grub配置文件"><a class="markdownIt-Anchor" href="#62-grub配置文件"></a> 6.2. GRUB配置文件</h2>
+<ol>
+<li>GRUB的配置文件是通过位于/boot/grub/grub.conf的一个配置文件来完成。</li>
+<li>文件分析:
+<ol>
+<li><code>#</code>注释行</li>
+<li><code>default = 0</code>默认启动的操作系统是由default一项来控制，default后面的数字标识第几个项目，0=&gt;1</li>
+<li><code>timeout = 5</code>设置系统的默认等待时间，代表5s系统不做出选择就自动选择default参数设置的项目。</li>
+<li><code>splashimage = (hd0,0)/grub/splash.xpm.gz</code>表示第一个硬盘的第一个分区。</li>
+<li><code>hiddenmenu</code>会跳过GRUB菜单的正常显示。</li>
+<li><code>title Fedora 8</code>:后面引导菜单项的文本内容。</li>
+</ol>
+</li>
+</ol>
+<h1 id="7-查看系统信息"><a class="markdownIt-Anchor" href="#7-查看系统信息"></a> 7. 查看系统信息</h1>
+<h2 id="71-查看内存信息"><a class="markdownIt-Anchor" href="#71-查看内存信息"></a> 7.1. 查看内存信息</h2>
+<ol>
+<li>使用free命令显示系统的物理内存和交换分区的容量，以及已使用的、空闲的、共享的、在内核缓冲内的和被缓存的内存熟练。</li>
+<li>使用free命令语法:<code>free [选项][-s &lt;间隔秒数&gt;]</code>
+<ol>
+<li>会显示内存的使用情况，包括实体内存、虚拟的交换文件内存、共享内存区段以及系统核心使用的缓冲区。</li>
+<li>参数含义:
+<ol>
+<li>-b:以Byte为单位显示内存使用情况。</li>
+<li>-k:以KB为单位显示内存使用情况</li>
+<li>-m:以MB为单位显示内存使用情况</li>
+<li>-o:不显示缓冲区调节列</li>
+<li>-s:持续观察内存使用情况</li>
+<li>-t:显示内存总的容量</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="72-查看磁盘空间占用情况"><a class="markdownIt-Anchor" href="#72-查看磁盘空间占用情况"></a> 7.2. 查看磁盘空间占用情况</h2>
+<ol>
+<li>使用df命令可以显示磁盘的相关信息。查看文件系统的磁盘空间占用情况，利用该命令获取磁盘占用了多少空间、目前还剩下多少空间等相关信息。</li>
+<li>命令语法:<code>df [选项][--block-size=&lt;区块大小&gt;][-x &lt;文件系统类型&gt;][文件或设备]</code>
+<ol>
+<li>-a:包含全部的文件系统</li>
+<li>-h:以可读性高的方式来显示信息</li>
+<li>-H:与<code>-h</code>参数相同，按时计算时按照1000字节为换算单位而不是1024字节为换算单位</li>
+<li>-i:显示incode的信息</li>
+<li>-k:指定区块大小1024字节</li>
+<li>-l:仅显示本地端的文件系统</li>
+<li>-m:指定区块大小为1048576字节</li>
+<li>-P:使用POSIX的输出格式</li>
+<li>–sync:在取得磁盘使用信息前，执行–sync指令</li>
+<li>-t:仅显示指定文件系统类型的磁盘信息</li>
+<li>-T:显示文件系统的类型</li>
+<li>-x:不显示指定文件类型的磁盘信息</li>
+</ol>
+</li>
+</ol>
+<h2 id="73-显示目录或文件的大小"><a class="markdownIt-Anchor" href="#73-显示目录或文件的大小"></a> 7.3. 显示目录或文件的大小</h2>
+<ol>
+<li>使用du命令可以显示目录或文件的大小。</li>
+<li>命令语法:<code>du [选项][文件名或目录名]</code>
+<ol>
+<li>说明:逐级进入指定目录的每一个每一个子目录并显示并显示该目录占用文件系统数据块(1024字节)的情况，如果没有给出文件或目录的名称，则当前目录进行统计。</li>
+<li>-s:对每个文件后目录只给出占用的数据块总数。</li>
+<li>-a:递归地显示指定目录中各文件及子孙目录中各文件占用的数据块数。</li>
+<li>-b:以字节为单位累出磁盘空间使用情况</li>
+<li>-k:以1024字节为单位列出磁盘空间使用情况</li>
+<li>-c:最后加上一个总计</li>
+<li>-l:计算所有的文件大小，对硬链接文件，则计算多次</li>
+<li>-x:跳过不同文件系统上的目录，不予统计</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2018-Linux-system-basics/" class="category-chain-item">2018-Linux-system-basics</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/linux/">#linux</a>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%96%87%E4%BB%B6/">#文件</a>
+      
+        <a href="/project/tags/%E8%BF%9B%E7%A8%8B/">#进程</a>
+      
+        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E5%8C%85/">#软件包</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2018-Linux-system-basics-linux-10.日常管理和维护</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-10.%E6%97%A5%E5%B8%B8%E7%AE%A1%E7%90%86%E5%92%8C%E7%BB%B4%E6%8A%A4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-12-Linux%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" title="2018-Linux-system-basics-linux-12-Linux网络服务器配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2018-Linux-system-basics-linux-12-Linux网络服务器配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Demand-and-business-model-innovation/%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F/2020-Demand-and-business-model-innovation-Book3-%E8%AE%BE%E8%AE%A1/" title="2020-Demand-and-business-model-innovation-Book3-设计">
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Book3-设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

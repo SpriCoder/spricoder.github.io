@@ -1,0 +1,1222 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Software-System-Design-Lec06-Behavioral Patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Software-System-Design-Lec06-Behavioral Patterns">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec06-Behavioral%20Patterns/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Software-System-Design-Lec06-Behavioral Patterns">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/15.png">
+<meta property="article:published_time" content="2022-02-16T11:09:21.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:22:39.283Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="软件系统设计">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/1.png">
+  
+  
+  <title>2021-Software-System-Design-Lec06-Behavioral Patterns - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          97 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Software-System-Design-Lec06-Behavioral Patterns</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec06-behavioral-patterns"><a class="markdownIt-Anchor" href="#lec06-behavioral-patterns"></a> Lec06-Behavioral Patterns</h2>
+<h1 id="1-观察者模式"><a class="markdownIt-Anchor" href="#1-观察者模式"></a> 1. 观察者模式</h1>
+<h2 id="11-模式动机"><a class="markdownIt-Anchor" href="#11-模式动机"></a> 1.1. 模式动机</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>建立一种<strong>对象与对象之间的依赖关系，一个对象发生改变时将自动通知其他对象，其他对象将相应做出反应</strong>。
+<ol>
+<li>发生改变的对象称为<strong>观察目标</strong></li>
+<li>被通知的对象称为<strong>观察者</strong></li>
+</ol>
+</li>
+<li><strong>一个观察目标可以对应多个观察者</strong>，而且这些观察者之间没有相互联系，<strong>可以根据需要增加和删除观察者，使得系统更易于扩展</strong>，这就是观察者模式的模式动机。</li>
+</ol>
+<h2 id="12-模式定义"><a class="markdownIt-Anchor" href="#12-模式定义"></a> 1.2. 模式定义</h2>
+<ol>
+<li>观察者模式(Observer Pattern)：定义对象间的一种<strong>一对多依赖关系</strong>，使得<strong>每当一个对象状态发生改变</strong>时，其<strong>相关依赖对象皆得到通知并被自动更新</strong>。</li>
+<li>观察者模式又叫做<strong>发布-订阅</strong>（Publish/Subscribe）模式、<strong>模型-视图</strong>（Model/View）模式、<strong>源-监听器</strong>（Source/Listener）模式或<strong>从属者</strong>（Dependents）模式。观察者模式是一种<strong>对象行为型</strong>模式。</li>
+<li>Observer Pattern: Define a <strong>one-to-many dependency</strong> between objects so that when <strong>one  object changes state, all its dependents are notified  and updated automatically</strong>.</li>
+</ol>
+<h2 id="13-模式结构"><a class="markdownIt-Anchor" href="#13-模式结构"></a> 1.3. 模式结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>观察者模式包含如下角色：
+<ol>
+<li>Subject: 目标</li>
+<li>ConcreteSubject: 具体目标</li>
+<li>Observer: 观察者</li>
+<li>ConcreteObserver: 具体观察者</li>
+</ol>
+</li>
+<li>观察者模式描述了<strong>如何建立对象与对象之间的依赖关系</strong>，如何构造满足这种需求的系统。</li>
+<li>这一模式中的关键对象是观察目标和观察者，<strong>一个目标可以有任意数目的与之相依赖的观察者，一旦目标的状态发生改变，所有的观察者都将得到通知</strong>。</li>
+<li>作为对这个通知的响应，每个观察者都将即时更新自己的状态，以与目标状态同步，这种交互也称为<strong>发布-订阅 (publish-subscribe)</strong>。目标是通知的发布者，它发出通知时并不需要知道谁是它的观察者，可以有任意数目的观察者订阅它并接收通知。</li>
+</ol>
+<h2 id="14-模式分析"><a class="markdownIt-Anchor" href="#14-模式分析"></a> 1.4. 模式分析</h2>
+<ol>
+<li>典型的抽象目标类代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Subject</span>&#123;<br>   <span class="hljs-keyword">protected</span> <span class="hljs-type">ArrayList</span> <span class="hljs-variable">observers</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>();<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">attach</span><span class="hljs-params">(Observer observer)</span>;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">detach</span><span class="hljs-params">(Observer observer)</span>;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">notify</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>典型的具体目标类代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteSubject</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Subject</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">attach</span><span class="hljs-params">(Observer observer)</span>&#123;<br>      observers.add(observer);<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">detach</span><span class="hljs-params">(Observer observer)</span>&#123;<br>      observers.remove(observer);<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">notify</span><span class="hljs-params">()</span>&#123;<br>      <span class="hljs-keyword">for</span>(Object obs:observers)&#123;<br>         ((Observer)obs).update();<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>典型的抽象观察者代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Observer</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>典型的具体观察者代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteObserver</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Observer</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">()</span>&#123;<br>      <span class="hljs-comment">//具体更新代码</span><br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>客户端代码片段如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteSubject</span>();<br><span class="hljs-type">Observer</span> <span class="hljs-variable">observer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteObserver</span>();<br>subject.attach(observer);<br>subject.notify();<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>观察者模式顺序图如下所示：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-观察者模式实例与解析"><a class="markdownIt-Anchor" href="#15-观察者模式实例与解析"></a> 1.5. 观察者模式实例与解析</h2>
+<h3 id="151-实例一猫-狗与老鼠"><a class="markdownIt-Anchor" href="#151-实例一猫-狗与老鼠"></a> 1.5.1. 实例一：猫、狗与老鼠</h3>
+<ol>
+<li>假设猫是老鼠和狗的观察目标，老鼠和狗是观察者，猫叫老鼠跑，狗也跟着叫，使用观察者模式描述该过程。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="152-实例二自定义登录控件"><a class="markdownIt-Anchor" href="#152-实例二自定义登录控件"></a> 1.5.2. 实例二：自定义登录控件</h3>
+<ol>
+<li>Java事件处理模型中应用了观察者模式，下面通过一个实例来学习如何自定义Java控件，并给该控件增加相应的事件。该实例基于Java Swing/AWT控件，在Swing/AWT的相关类中封装了对事件的底层处理。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="16-模式优缺点"><a class="markdownIt-Anchor" href="#16-模式优缺点"></a> 1.6. 模式优缺点</h2>
+<h3 id="161-观察者模式的优点"><a class="markdownIt-Anchor" href="#161-观察者模式的优点"></a> 1.6.1. 观察者模式的优点</h3>
+<ol>
+<li>观察者模式可以<strong>实现表示层和数据逻辑层的分离</strong>，并定义了稳定的消息更新传递机制，抽象了更新接口，使得可以有各种各样不同的表示层作为具体观察者角色。</li>
+<li>观察者模式在观察目标和观察者之间<strong>建立一个抽象的耦合</strong>。</li>
+<li>观察者模式<strong>支持广播通信</strong>。</li>
+<li>观察者模式<strong>符合开闭原则</strong>的要求。</li>
+</ol>
+<h3 id="162-观察者模式的缺点"><a class="markdownIt-Anchor" href="#162-观察者模式的缺点"></a> 1.6.2. 观察者模式的缺点</h3>
+<ol>
+<li>如果一个观察目标对象有很多直接和间接的观察者的话，<strong>将所有的观察者都通知到会花费很多时间</strong>。</li>
+<li>如果在观察者和观察目标之间有<strong>循环依赖的话</strong>，观察目标会触发它们之间进行循环调用，<strong>可能导致系统崩溃</strong>。</li>
+<li>观察者模式<strong>没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的</strong>，而仅仅只是知道观察目标发生了变化。</li>
+</ol>
+<h2 id="17-模式适用环境"><a class="markdownIt-Anchor" href="#17-模式适用环境"></a> 1.7. 模式适用环境</h2>
+<ol>
+<li>在以下情况下可以使用观察者模式：
+<ol>
+<li>一个抽象模型有两个方面，其中<strong>一个方面依赖于另一个方面</strong>。将这些方面<strong>封装在独立的对象中使它们可以各自独立地改变和复用</strong>。</li>
+<li><strong>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变</strong>，可以降低对象之间的耦合度。</li>
+<li><strong>一个对象必须通知其他对象，而并不知道这些对象是谁</strong>。</li>
+<li><strong>需要在系统中创建一个触发链</strong>，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种<strong>链式触发机制</strong>。</li>
+</ol>
+</li>
+</ol>
+<h2 id="18-模式应用"><a class="markdownIt-Anchor" href="#18-模式应用"></a> 1.8. 模式应用</h2>
+<ol>
+<li>JDK1.1版本及以后的各个版本中，事件处理模型采用基于观察者模式的<strong>委派事件模型(Delegation Event Model, DEM)</strong>。
+<ol>
+<li>在DEM中，事件的发布者称为<strong>事件源(Event Source)</strong>，而订阅者叫做<strong>事件监听器(Event Listener)</strong>，在这个过程中还可以通过**事件对象(Event Object)**来传递与事件相关的信息，可以在事件监听者的实现类中实现事件处理，因此事件监听对象又可以称为事件处理对象。</li>
+<li><strong>事件源对象、事件监听对象(事件处理对象)和事件对象</strong>构成了Java事件处理模型的三要素。</li>
+</ol>
+</li>
+<li>除了AWT中的事件处理之外，Java语言解析XML的技术<strong>SAX2</strong>以及<strong>Servlet技术的事件处理机制</strong>都基于DEM，它们都是观察者模式的应用。</li>
+<li>观察者模式在软件开发中应用非常广泛，如某电子商务网站可以在执行发送操作后给用户多个发送商品打折信息，某团队战斗游戏中某队友牺牲将给所有成员提示等等，凡是涉及到<strong>一对一或者一对多的对象交互场景都可以使用观察者模式</strong>。</li>
+</ol>
+<h2 id="19-模式扩展"><a class="markdownIt-Anchor" href="#19-模式扩展"></a> 1.9. 模式扩展</h2>
+<ol>
+<li>Java语言提供的对观察者模式的支持
+<ol>
+<li>在JDK的java.util包中，提供了<strong>Observable类</strong>以及<strong>Observer接口</strong>，它们构成了Java语言对观察者模式的支持。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>Java语言提供的对观察者模式的支持
+<ol>
+<li>Observer接口:<code>void update(Observable o, Object arg);</code></li>
+<li>Observable类
+<ol>
+<li>Observable()</li>
+<li>addObserver(Observer o)</li>
+<li>deleteObserver (Observer o)</li>
+<li>notifyObservers()、notifyObservers(Object arg)</li>
+<li>deleteObservers</li>
+<li>setChanged()</li>
+<li>clearChanged()</li>
+<li>hasChanged()</li>
+<li>countObservers()</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>MVC模式
+<ol>
+<li>MVC模式是一种架构模式，它包含三个角色：<strong>模型(Model)，视图(View)和控制器(Controller)</strong>。观察者模式可以用来实现MVC模式，观察者模式中的<strong>观察目标</strong>就是MVC模式中的<strong>模型(Model)</strong>，而<strong>观察者</strong>就是MVC中的<strong>视图</strong>(View)，控制器(Controller)充当两者之间的中介者(Mediator)。<strong>当模型层的数据发生改变时，视图层将自动改变其显示内容</strong>。</li>
+<li><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/articles/javase/index-142890.html">http://www.oracle.com/technetwork/articles/javase/index-142890.html</a></li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="110-小结"><a class="markdownIt-Anchor" href="#110-小结"></a> 1.10. 小结</h2>
+<ol>
+<li>观察者模式定义对象间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。观察者模式又叫做发布-订阅模式、模型-视图模式、源-监听器模式或从属者模式。观察者模式是一种对象行为型模式。</li>
+<li>观察者模式包含四个角色：
+<ol>
+<li>目标又称为主题，它是指被观察的对象</li>
+<li>具体目标是目标类的子类，通常它包含有经常发生改变的数据，当它的状态发生改变时，向它的各个观察者发出通知</li>
+<li>观察者将对观察目标的改变做出反应</li>
+<li>在具体观察者中维护一个指向具体目标对象的引用，它存储具体观察者的有关状态，这些状态需要和具体目标的状态保持一致。</li>
+</ol>
+</li>
+<li>观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个目标对象，当这个目标对象的状态发生变化时，会通知所有观察者对象，使它们能够自动更新。</li>
+<li>观察者模式
+<ol>
+<li>主要优点在于可以实现表示层和数据逻辑层的分离，并在观察目标和观察者之间建立一个抽象的耦合，支持广播通信</li>
+<li>其主要缺点在于如果一个观察目标对象有很多直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间，而且如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃。</li>
+</ol>
+</li>
+<li>观察者模式适用情况包括：
+<ol>
+<li>一个抽象模型有两个方面，其中一个方面依赖于另一个方面</li>
+<li>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变</li>
+<li>一个对象必须通知其他对象，而并不知道这些对象是谁；需要在系统中创建一个触发链。</li>
+</ol>
+</li>
+<li>在JDK的java.util包中，提供了Observable类以及Observer接口，它们构成了Java语言对观察者模式的支持。</li>
+</ol>
+<h1 id="2-中介者模式"><a class="markdownIt-Anchor" href="#2-中介者模式"></a> 2. 中介者模式</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="21-模式动机"><a class="markdownIt-Anchor" href="#21-模式动机"></a> 2.1. 模式动机</h2>
+<ol>
+<li>在用户与用户直接聊天的设计方案中，用户对象之间存在很强的关联性，将导致系统出现如下问题：
+<ol>
+<li><strong>系统结构复杂</strong>：对象之间存在大量的相互关联和调用，若有一个对象发生变化，则需要跟踪和该对象关联的其他所有对象，并进行适当处理。</li>
+<li><strong>对象可重用性差</strong>：由于一个对象和其他对象具有很强的关联，若没有其他对象的支持，一个对象很难被另一个系统或模块重用，这些对象表现出来更像一个不可分割的整体，职责较为混乱。</li>
+<li><strong>系统扩展性低</strong>：增加一个新的对象需要在原有相关对象上增加引用，增加新的引用关系也需要调整原有对象，系统耦合度很高，对象操作很不灵活，扩展性差。</li>
+</ol>
+</li>
+<li>在面向对象的软件设计与开发过程中，根据“单一职责原则”，我们<strong>应该尽量将对象细化，使其只负责或呈现单一的职责</strong>。</li>
+<li>对于一个模块，可能由很多对象构成，而且这些对象之间可能存在相互的引用，<strong>为了减少对象两两之间复杂的引用关系，使之成为一个松耦合的系统，我们需要使用中介者模式</strong>，这就是中介者模式的模式动机。</li>
+</ol>
+<h2 id="22-模式定义"><a class="markdownIt-Anchor" href="#22-模式定义"></a> 2.2. 模式定义</h2>
+<ol>
+<li>中介者模式(Mediator Pattern)定义：用一个中介对象来<strong>封装一系列的对象交互</strong>，中介者使各对象不需要显式地相互引用，从而<strong>使其耦合松散</strong>，而且<strong>可以独立地改变它们之间的交互</strong>。中介者模式又称为<strong>调停者模式</strong>，它是一种<strong>对象行为型模式</strong>。</li>
+<li>Mediator Pattern: Define an object that encapsulates how a set of objects interact. Mediator promotes <strong>loose coupling</strong> by keeping objects from referring to each other explicitly, and <strong>it lets you vary their interaction independently</strong>.</li>
+</ol>
+<h2 id="23-模式结构"><a class="markdownIt-Anchor" href="#23-模式结构"></a> 2.3. 模式结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>中介者模式包含如下角色：
+<ol>
+<li>Mediator: 抽象中介者</li>
+<li>ConcreteMediator: 具体中介者</li>
+<li>Colleague: 抽象同事类</li>
+<li>ConcreteColleague: 具体同事类</li>
+</ol>
+</li>
+</ol>
+<h2 id="24-模式分析"><a class="markdownIt-Anchor" href="#24-模式分析"></a> 2.4. 模式分析</h2>
+<ol>
+<li>中介者模式可以使对象之间的关系数量急剧减少：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>中介者承担两方面的职责：
+<ol>
+<li><strong>中转作用（结构性）</strong>：通过中介者提供的中转作用，各个同事对象就不再需要显式引用其他同事，当需要和其他同事进行通信时，通过中介者即可。该中转作用属于中介者<strong>在结构上的支持</strong>。</li>
+<li><strong>协调作用（行为性）</strong>：中介者可以更进一步的对同事之间的关系进行封装，同事可以一致地和中介者进行交互，而不需要指明中介者需要具体怎么做，中介者根据封装在自身内部的协调逻辑，对同事的请求进行进一步处理，将同事成员之间的关系行为进行分离和封装。该协调作用属于中介者<strong>在行为上的支持</strong>。</li>
+</ol>
+</li>
+<li>典型的抽象中介者类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Mediator</span>&#123;<br>   <span class="hljs-keyword">protected</span> ArrayList colleagues;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">register</span><span class="hljs-params">(Colleague colleague)</span>&#123;<br>      colleagues.add(colleague);<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>典型的具体中介者类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteMediator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Mediator</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>&#123;<br>      ......<br>      ((Colleague)(colleagues.get(<span class="hljs-number">0</span>))).method1();<br>      ......<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="5">
+<li>典型的抽象同事类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Colleague</span>&#123;<br>   <span class="hljs-keyword">protected</span> Mediator mediator;<br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">Colleague</span><span class="hljs-params">(Mediator mediator)</span>&#123;<br>      <span class="hljs-built_in">this</span>.mediator=mediator;<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method1</span><span class="hljs-params">()</span>;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method2</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>典型的具体同事类代码：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteColleague</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Colleague</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteColleague</span><span class="hljs-params">(Mediator mediator)</span>&#123;<br>      <span class="hljs-built_in">super</span>(mediator);<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method1</span><span class="hljs-params">()</span>&#123;<br>      ......<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method2</span><span class="hljs-params">()</span>&#123;<br>      mediator.operation1();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="25-中介者模式实例与解析"><a class="markdownIt-Anchor" href="#25-中介者模式实例与解析"></a> 2.5. 中介者模式实例与解析</h2>
+<ol>
+<li>实例：虚拟聊天室</li>
+<li>某论坛系统欲增加一个虚拟聊天室，允许论坛会员通过该聊天室进行信息交流，普通会员(CommonMember)可以给其他会员发送文本信息，钻石会员(DiamondMember)既可以给其他会员发送文本信息，还可以发送图片信息。该聊天室可以对不雅字符进行过滤，如“日”等字符；还可以对发送的图片大小进行控制。用中介者模式设计该虚拟聊天室。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="26-模式优缺点"><a class="markdownIt-Anchor" href="#26-模式优缺点"></a> 2.6. 模式优缺点</h2>
+<h3 id="261-中介者模式的优点"><a class="markdownIt-Anchor" href="#261-中介者模式的优点"></a> 2.6.1. 中介者模式的优点</h3>
+<ol>
+<li>简化了对象之间的交互。</li>
+<li>将各同事解耦。</li>
+<li>减少子类生成。</li>
+<li>可以简化各同事类的设计和实现。</li>
+</ol>
+<h3 id="262-中介者模式的缺点"><a class="markdownIt-Anchor" href="#262-中介者模式的缺点"></a> 2.6.2. 中介者模式的缺点</h3>
+<ol>
+<li>在具体中介者类中包含了同事之间的交互细节，可能会导致<strong>具体中介者类非常复杂</strong>，使得<strong>系统难以维护</strong>。</li>
+</ol>
+<h2 id="27-模式适用环境"><a class="markdownIt-Anchor" href="#27-模式适用环境"></a> 2.7. 模式适用环境</h2>
+<ol>
+<li>在以下情况下可以使用中介者模式：
+<ol>
+<li>系统中<strong>对象之间存在复杂的引用关系</strong>，产生的相互依赖关系结构混乱且难以理解。</li>
+<li>一个对象由于引用了其他很多对象并且直接和这些对象通信，导致<strong>难以复用该对象</strong>。</li>
+<li><strong>想通过一个中间类来封装多个类中的行为，而又不想生成太多的子类</strong>。可以通过引入中介者类来实现，在中介者中定义对象交互的公共行为，如果需要改变行为则可以增加新的中介者类。</li>
+</ol>
+</li>
+</ol>
+<h2 id="28-模式应用"><a class="markdownIt-Anchor" href="#28-模式应用"></a> 2.8. 模式应用</h2>
+<ol>
+<li>中介者模式在<strong>事件驱动类软件</strong>中应用比较多，在设计GUI应用程序时，组件之间可能存在较为复杂的交互关系，一个组件的改变将影响与之相关的其他组件，此时可以使用中介者模式来对组件进行协调。</li>
+<li>MVC 是Java EE 的一个基本模式，此时<strong>控制器Controller作为一种中介者</strong>，它负责控制视图对象View和模型对象Model之间的交互。如在Struts中，Action就可以作为JSP页面与业务对象之间的中介者。</li>
+</ol>
+<h2 id="29-模式扩展"><a class="markdownIt-Anchor" href="#29-模式扩展"></a> 2.9. 模式扩展</h2>
+<ol>
+<li>中介者模式与迪米特法则
+<ol>
+<li>在中介者模式中，通过创造出一个中介者对象，<strong>将系统中有关的对象所引用的其他对象数目减少到最少</strong>，使得一个对象与其同事之间的相互作用被这个对象与中介者对象之间的相互作用所取代。因此，<strong>中介者模式就是迪米特法则的一个典型应用</strong>。</li>
+</ol>
+</li>
+<li>中介者模式与GUI开发
+<ol>
+<li>中介者模式可以方便地应用于<strong>图形界面(GUI)开发</strong>中，在比较复杂的界面中可能存在<strong>多个界面组件之间的交互关系</strong>。</li>
+<li>对于这些复杂的交互关系，有时候我们可以引入一个中介者类，将这些交互的组件作为具体的同事类，将它们之间的引用和控制关系交由中介者负责**，在一定程度上简化系统的交互，这也是中介者模式的常见应用之一。</li>
+</ol>
+</li>
+</ol>
+<h2 id="210-小结"><a class="markdownIt-Anchor" href="#210-小结"></a> 2.10. 小结</h2>
+<ol>
+<li>中介者模式用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为调停者模式，它是一种对象行为型模式。</li>
+<li>中介者模式包含四个角色：
+<ol>
+<li>抽象中介者用于定义一个接口，该接口用于与各同事对象之间的通信</li>
+<li>具体中介者是抽象中介者的子类，通过协调各个同事对象来实现协作行为，了解并维护它的各个同事对象的引用</li>
+<li>抽象同事类定义各同事的公有方法</li>
+<li>具体同事类是抽象同事类的子类，每一个同事对象都引用一个中介者对象；每一个同事对象在需要和其他同事对象通信时，先与中介者通信，通过中介者来间接完成与其他同事类的通信；在具体同事类中实现了在抽象同事类中定义的方法。</li>
+</ol>
+</li>
+<li>通过引入中介者对象，可以将系统的网状结构变成以中介者为中心的星形结构，中介者承担了中转作用和协调作用。中介者类是中介者模式的核心，它对整个系统进行控制和协调，简化了对象之间的交互，还可以对对象间的交互进行进一步的控制。</li>
+<li>中介者模式
+<ol>
+<li>主要优点在于简化了对象之间的交互，将各同事解耦，还可以减少子类生成，对于复杂的对象之间的交互，通过引入中介者，可以简化各同事类的设计和实现</li>
+<li>中介者模式主要缺点在于具体中介者类中包含了同事之间的交互细节，可能会导致具体中介者类非常复杂，使得系统难以维护。</li>
+</ol>
+</li>
+<li>中介者模式适用情况包括
+<ol>
+<li>系统中对象之间存在复杂的引用关系，产生的相互依赖关系结构混乱且难以理解</li>
+<li>一个对象由于引用了其他很多对象并且直接和这些对象通信，导致难以复用该对象</li>
+<li>想通过一个中间类来封装多个类中的行为，而又不想生成太多的子类。</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-模板方法模式"><a class="markdownIt-Anchor" href="#3-模板方法模式"></a> 3. 模板方法模式</h1>
+<h2 id="31-模式动机"><a class="markdownIt-Anchor" href="#31-模式动机"></a> 3.1. 模式动机</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>模板方法模式是<strong>基于继承</strong>的代码复用基本技术，模板方法模式的结构和用法也是面向对象设计的核心之一。在模板方法模式中，可以<strong>将相同的代码放在父类中，而将不同的方法实现放在不同的子类中</strong>。</li>
+<li>在模板方法模式中，我们需要准备一个抽象类，<strong>将部分逻辑以具体方法以及具体构造函数的形式实现</strong>，<strong>然后声明一些抽象方法来让子类实现剩余的逻辑。不同的子类可以以不同的方式实现这些抽象方法，从而对剩余的逻辑有不同的实现</strong>，这就是模板方法模式的用意。模板方法模式体现了面向对象的诸多重要思想，是一种使用频率较高的模式。</li>
+</ol>
+<h2 id="32-模式定义"><a class="markdownIt-Anchor" href="#32-模式定义"></a> 3.2. 模式定义</h2>
+<ol>
+<li>模板方法模式(Template Method Pattern)：定义一个操作中<strong>算法的骨架</strong>，而将一些步骤<strong>延迟到子类</strong>中，模板方法使得子类<strong>可以不改变一个算法的结构即可重定义该算法的某些特定步骤</strong>。模板方法是一种<strong>类行为型</strong>模式。</li>
+<li>Template Method Pattern: Define <strong>the skeleton of an algorithm</strong> in an operation, <strong>deferring some steps to subclasses</strong>. Template Method <strong>lets subclasses redefine certain steps</strong> of an algorithm <strong>without changing the algorithm’s structure</strong>.</li>
+</ol>
+<h2 id="33-模式结构"><a class="markdownIt-Anchor" href="#33-模式结构"></a> 3.3. 模式结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>模板方法模式包含如下角色：
+<ol>
+<li>AbstractClass: 抽象类</li>
+<li>ConcreteClass: 具体子类</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-模式分析"><a class="markdownIt-Anchor" href="#34-模式分析"></a> 3.4. 模式分析</h2>
+<ol>
+<li>模板方法模式是一种类的行为型模式，在它的结构图中<strong>只有类之间的继承关系，没有对象关联关系</strong>。</li>
+<li>在模板方法模式的使用过程中，要求开发抽象类和开发具体子类的设计师之间进行协作。一个设计师负责给出<strong>一个算法的轮廓和骨架</strong>，另一些设计师则<strong>负责给出这个算法的各个逻辑步骤</strong>。实现这些具体逻辑步骤的方法称为<strong>基本方法(Primitive Method)</strong>，而将这些基本法方法汇总起来的方法称为<strong>模板方法(Template Method)</strong>，模板方法模式的名字从此而来。</li>
+<li>模板方法：一个模板方法是<strong>定义在抽象类中的、把基本操作方法组合在一起</strong>形成一个总算法或一个总行为的方法。</li>
+<li>基本方法：基本方法是<strong>实现算法各个步骤的方法</strong>，是模板方法的组成部分。
+<ol>
+<li>抽象方法(Abstract Method)</li>
+<li>具体方法(Concrete Method)</li>
+<li>钩子方法(Hook Method)：“挂钩”方法和空方法</li>
+</ol>
+</li>
+<li>钩子方法(Hook Method)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">template</span><span class="hljs-params">()</span>&#123;<br>   open();<br>   display();<br>   <span class="hljs-keyword">if</span>(isPrint())&#123;<br>      print();<br>   &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPrint</span><span class="hljs-params">()</span>&#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>典型的抽象类代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractClass</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">templateMethod</span><span class="hljs-params">()</span>  <span class="hljs-comment">//模板方法</span><br>   &#123;<br>      primitiveOperation1();<br>      primitiveOperation2();<br>      primitiveOperation3();<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">primitiveOperation1</span><span class="hljs-params">()</span>    <span class="hljs-comment">//基本方法—具体方法</span><br>   &#123;<br>      <span class="hljs-comment">//实现代码</span><br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">primitiveOperation2</span><span class="hljs-params">()</span>;    <span class="hljs-comment">//基本方法—抽象方法</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">primitiveOperation3</span><span class="hljs-params">()</span>    <span class="hljs-comment">//基本方法—钩子方法</span><br>   &#123;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="7">
+<li>典型的具体子类代码如下所示：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractClass</span><br>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">primitiveOperation2</span><span class="hljs-params">()</span><br>   &#123;<br>   &#125;<br>   <span class="hljs-comment">//实现代码</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">primitiveOperation3</span><span class="hljs-params">()</span><br>   <span class="hljs-comment">//实现代码</span><br>   &#123;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="35-模式分析"><a class="markdownIt-Anchor" href="#35-模式分析"></a> 3.5. 模式分析</h2>
+<ol>
+<li>在模板方法模式中，由于面向对象的多态性，子类对象在运行时将覆盖父类对象，子类中定义的方法也将覆盖父类中定义的方法，因此程序在运行时，<strong>具体子类的基本方法将覆盖父类中定义的基本方法，子类的钩子方法也将覆盖父类的钩子方法</strong>，从而可以<strong>通过在子类中实现的钩子方法对父类方法的执行进行约束，实现子类对父类行为的反向控制</strong>。</li>
+</ol>
+<h2 id="36-模板方法模式实例与解析"><a class="markdownIt-Anchor" href="#36-模板方法模式实例与解析"></a> 3.6. 模板方法模式实例与解析</h2>
+<ol>
+<li>实例一：银行业务办理流程
+<ol>
+<li>在银行办理业务时，一般都包含几个基本步骤，首先需要取号排队，然后办理具体业务，最后需要对银行工作人员进行评分。无论具体业务是取款、存款还是转账，其基本流程都一样。现使用模板方法模式模拟银行业务办理流程。模板方法模式</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>实例二：数据库操作模板
+<ol>
+<li>对数据库的操作一般包括连接、打开、使用、关闭等步骤，在数据库操作模板类中我们定义了connDB()、openDB()、useDB()、closeDB()四个方法分别对应这四个步骤。对于不同类型的数据库（如SQL Server和Oracle），其操作步骤都一致，只是连接数据库connDB()方法有所区别，现使用模板方法模式对其进行设计。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec06/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="37-模式优缺点"><a class="markdownIt-Anchor" href="#37-模式优缺点"></a> 3.7. 模式优缺点</h2>
+<h3 id="371-模板方法模式的优点"><a class="markdownIt-Anchor" href="#371-模板方法模式的优点"></a> 3.7.1. 模板方法模式的优点</h3>
+<ol>
+<li>模板方法模式<strong>在一个类中抽象地定义算法</strong>，而<strong>由它的子类实现细节的处理</strong>。</li>
+<li>模板方法模式是一种<strong>代码复用的基本技术</strong>。</li>
+<li>模板方法模式导致一种<strong>反向的控制结构</strong>，通过一个父类调用其子类的操作，通过对子类的扩展增加新的行为，<strong>符合“开闭原则”</strong>。</li>
+</ol>
+<h3 id="372-模板方法模式的缺点"><a class="markdownIt-Anchor" href="#372-模板方法模式的缺点"></a> 3.7.2. 模板方法模式的缺点</h3>
+<ol>
+<li>每个不同的实现都需要定义一个子类，这会<strong>导致类的个数增加</strong>，系统更加庞大，设计也更加抽象，但是更加符合“单一职责原则”，使得类的内聚性得以提高。</li>
+</ol>
+<h2 id="38-模式适用环境"><a class="markdownIt-Anchor" href="#38-模式适用环境"></a> 3.8. 模式适用环境</h2>
+<ol>
+<li>在以下情况下可以使用模板方法模式：
+<ol>
+<li>一次性实现一个算法的不变的部分，并<strong>将可变的行为留给子类来实现</strong>。</li>
+<li><strong>各子类中公共的行为应被提取出来并集中到一个公共父类</strong>中以避免代码重复。</li>
+<li><strong>对一些复杂的算法进行分割</strong>，将其算法中固定不变的部分设计为模板方法和父类具体方法，而一些可以改变的细节由其子类来实现。</li>
+<li>控制<strong>子类的扩展</strong>。</li>
+</ol>
+</li>
+</ol>
+<h2 id="39-模式应用"><a class="markdownIt-Anchor" href="#39-模式应用"></a> 3.9. 模式应用</h2>
+<ol>
+<li>模板方法模式广泛应用于框架设计（如Spring，Struts等）中，<strong>以确保父类控制处理流程的逻辑顺序</strong>（如框架的初始化）。</li>
+<li>Java单元测试工具JUnit中的TestCase类的设计：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">runBare</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>   setUp();<br>   <span class="hljs-keyword">try</span> &#123;<br>      runTest();<br>   &#125;<br>   <span class="hljs-keyword">finally</span> &#123;<br>      tearDown();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="310-模式扩展"><a class="markdownIt-Anchor" href="#310-模式扩展"></a> 3.10. 模式扩展</h2>
+<ol>
+<li>关于继承的讨论
+<ol>
+<li>模板方法模式鼓励我们<strong>恰当使用继承</strong>，此模式可以用来改写一些拥有相同功能的相关类，<strong>将可复用的一般性的行为代码移到父类里面</strong>，而将特殊化的行为代码移到子类里面。这也进一步说明，虽然继承复用存在一些问题，但是在某些情况下还是可以给开发人员带来方便，<strong>模板方法模式就是体现继承优势的模式之一</strong>。</li>
+</ol>
+</li>
+<li>好莱坞原则
+<ol>
+<li>在模板方法模式中，子类不显式调用父类的方法，而是通过覆盖父类的方法来实现某些具体的业务逻辑，<strong>父类控制对子类的调用</strong>，这种机制被称为<strong>好莱坞原则</strong>(Hollywood Principle)，好莱坞原则的定义为：“<strong>不要给我们打电话，我们会给你打电话(Don‘t call us, we’ll call you)</strong>”。</li>
+<li>在模板方法模式中，好莱坞原则体现在：<strong>子类不需要调用父类，而通过父类来调用子类，将某些步骤的实现写在子类中，由父类来控制整个过程</strong>。</li>
+</ol>
+</li>
+<li>钩子方法的使用
+<ol>
+<li>钩子方法的引入使得子类可以控制父类的行为。</li>
+<li>最简单的钩子方法就是<strong>空方法</strong>，也<strong>可以在钩子方法中定义一个默认的实现</strong>，如果子类不覆盖钩子方法，则执行父类的默认实现代码。</li>
+<li>比较复杂一点的钩子方法<strong>可以对其他方法进行约束</strong>，这种钩子方法通常返回一个boolean类型，即返回true或false，用来判断是否执行某一个基本方法。</li>
+</ol>
+</li>
+</ol>
+<h2 id="311-小结"><a class="markdownIt-Anchor" href="#311-小结"></a> 3.11. 小结</h2>
+<ol>
+<li>在模板方法模式中，定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。模板方法是一种类行为型模式。</li>
+<li>模板方法模式包含两个角色
+<ol>
+<li>在抽象类中定义一系列基本操作，这些基本操作可以是具体的，也可以是抽象的，同时，在抽象类中实现了一个模板方法，用于定义一个算法的骨架</li>
+<li>具体子类是抽象类的子类，用于实现在父类中定义的抽象基本操作以完成子类特定算法的步骤，也可以覆盖在父类中实现的具体基本操作。</li>
+</ol>
+</li>
+<li>在模板方法模式中，方法可以分为模板方法和基本方法，其中基本方法又可以分为抽象方法、具体方法和钩子方法，钩子方法根据其特点又分为空方法和与实现算法步骤的基本方法“挂钩”的方法。</li>
+<li>模板方法模式
+<ol>
+<li>优点在于在子类定义详细的处理算法时不会改变算法的结构，实现了代码的复用，通过对子类的扩展可以增加新的行为，符合“开闭原则”</li>
+<li>其缺点在于需要为每个不同的实现都定义一个子类，这会导致类的个数增加，系统更加庞大，设计也更加抽象</li>
+</ol>
+</li>
+<li>模板方法模式适用情况包括
+<ol>
+<li>一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现</li>
+<li>各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复</li>
+<li>对一些复杂的算法进行分割，将其算法中固定不变的部分设计为模板方法，而一些可以改变的细节由其子类来实现</li>
+<li>通过模板方法模式还可以控制子类的扩展。</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Software-System-Design/" class="category-chain-item">2021-Software-System-Design</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+      
+        <a href="/project/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Software-System-Design-Lec06-Behavioral Patterns</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec06-Behavioral%20Patterns/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec05-State&amp;Command/" title="2021-Software-System-Design-Lec05-State&amp;Command">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec05-State&amp;Command</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec10-Defensive%20Programming/" title="2021-Software-System-Design-Lec10-Defensive Programming">
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec10-Defensive Programming</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1391 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Business-Intelligence-Lecture3-OLAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Business-Intelligence-Lecture3-OLAP">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture3-OLAP/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Business-Intelligence-Lecture3-OLAP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/38.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/41.png">
+<meta property="article:published_time" content="2022-02-16T11:09:50.000Z">
+<meta property="article:modified_time" content="2022-02-16T12:02:01.035Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="商务智能">
+<meta property="article:tag" content="多维分析">
+<meta property="article:tag" content="olap">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/1.png">
+  
+  
+  <title>2020-Business-Intelligence-Lecture3-OLAP - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          76 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Business-Intelligence-Lecture3-OLAP</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="联机分析处理-olap"><a class="markdownIt-Anchor" href="#联机分析处理-olap"></a> 联机分析处理 OLAP</h2>
+<h1 id="1-联机分析处理olap"><a class="markdownIt-Anchor" href="#1-联机分析处理olap"></a> 1. 联机分析处理(OLAP)</h1>
+<h2 id="11-从联机事务处理oltp到联机分析处理olap"><a class="markdownIt-Anchor" href="#11-从联机事务处理oltp到联机分析处理olap"></a> 1.1. 从联机事务处理(OLTP)到联机分析处理(OLAP)</h2>
+<ol>
+<li><strong>关系数据库模型出现</strong>：60年代末E.F. Codd提出的<strong>关系数据库模型</strong>促进了关系数据库及OLTP的发展</li>
+<li><strong>数据量大幅度增长</strong>：数据量从80年代的M字节及G字节过渡到现在的T字节和P字节</li>
+<li><strong>性能差异</strong>：在这样的数据量的前提下，<strong>兼顾</strong>事务操作和分析操作在性能上越来越不可能</li>
+<li><strong>实际情况的不同需求</strong>：实际的情况要求为两种<strong>目的、特点</strong>有很大差异的应用提供不同的解决技术，OLAP应运而生</li>
+<li>OLTP和OLAP是针对两种不同的环境：
+<ol>
+<li>OLTP和关系型数据库相关，面向数据和信息片段</li>
+<li>OLAP是面向完全的信息体的</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-olaponline-analytical-processing"><a class="markdownIt-Anchor" href="#12-olaponline-analytical-processing"></a> 1.2. OLAP(Online Analytical Processing)</h2>
+<ol>
+<li>通过专门的<strong>数据综合引擎</strong>，辅之以更加直观的<strong>数据访问界面</strong>，力图统一分散的<strong>公共应用逻辑</strong>，在<strong>短时间</strong>内响应<strong>非数据处理专业人员</strong>的复杂查询要求。1993年，E.F. Codd将这类技术定义为OLAP
+<ol>
+<li><strong>短时间</strong>：数据仓库做不到短时间响应，不是在线服务</li>
+<li><strong>非数据处理专业人员</strong>：不是所有人都有能力的，访问信息体的过程包含了所有的决策过程，是比较主观的。为什么不配备数据处理专业人员：大量的交流时间</li>
+</ol>
+</li>
+<li><strong>OLAP</strong>(联机分析处理)是针对特定问题的联机数据访问和分析。通过对信息(这些信息已经从原始的数据进行了<strong>转换</strong>，以反映用户能理解的企业的真实的&quot;维&quot;)的很多种可能的观察形式进行<strong>快速、稳定一致和交互性</strong>的存取，允许管理决策人员对数据进行深入观察</li>
+</ol>
+<h2 id="13-olap-vsoltp"><a class="markdownIt-Anchor" href="#13-olap-vsoltp"></a> 1.3. OLAP vs.OLTP</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>和操作性应用和分析性应用的对比图是相似的</p>
+<h1 id="2-olap的特征及衡量标准"><a class="markdownIt-Anchor" href="#2-olap的特征及衡量标准"></a> 2. OLAP的特征及衡量标准</h1>
+<h2 id="21-codd关于olap的评价准则"><a class="markdownIt-Anchor" href="#21-codd关于olap的评价准则"></a> 2.1. Codd关于OLAP的评价准则</h2>
+<h3 id="211-olap必须提供多维概念视图"><a class="markdownIt-Anchor" href="#211-olap必须提供多维概念视图"></a> 2.1.1. OLAP必须提供多维概念视图</h3>
+<p>从多个维度考察对象：大量情况下，一般是10-15个维度。</p>
+<h3 id="212-透明性准则"><a class="markdownIt-Anchor" href="#212-透明性准则"></a> 2.1.2. 透明性准则</h3>
+<ol>
+<li>OLAP在体系结构中的位置对用户是透明的</li>
+<li>OLAP的数据源对用户也是透明的</li>
+</ol>
+<h3 id="213-存取能力准则"><a class="markdownIt-Anchor" href="#213-存取能力准则"></a> 2.1.3. 存取能力准则</h3>
+<ol>
+<li>将OLAP的概念视图映射到异质的数据存储上，能访问数据并执行所需转换，从而提供<strong>单一、完整、连续</strong>的用户视图</li>
+<li>不是客观正确，是主观正确。</li>
+</ol>
+<h3 id="214-稳定的报表功能"><a class="markdownIt-Anchor" href="#214-稳定的报表功能"></a> 2.1.4. 稳定的报表功能</h3>
+<p>数据的维数和数据的综合层次增加时，提供给最终分析人员的报表能力和响应速度不应该有明显的降低和减慢</p>
+<h3 id="215-客户服务器体系结构"><a class="markdownIt-Anchor" href="#215-客户服务器体系结构"></a> 2.1.5. 客户/服务器体系结构</h3>
+<ol>
+<li>服务器保证透明性和建立统一的公共概念模式、逻辑模式和物理模式。</li>
+<li>客户端负责应用逻辑和界面</li>
+</ol>
+<h3 id="216-维的同等性原则"><a class="markdownIt-Anchor" href="#216-维的同等性原则"></a> 2.1.6. 维的同等性原则</h3>
+<p>每一数据维在数据结构和操作能力上都是等同的</p>
+<h3 id="217-动态的稀疏矩阵处理准则"><a class="markdownIt-Anchor" href="#217-动态的稀疏矩阵处理准则"></a> 2.1.7. 动态的稀疏矩阵处理准则</h3>
+<ol>
+<li>OLAP工具必须使得模型的物理模式充分适应指定的维数，尤其是特定模型的数据分布</li>
+<li>压缩和解压缩：解压缩的时间会不会影响到在线服务，同时要保证空间。</li>
+</ol>
+<h3 id="218-多用户支持能力准则"><a class="markdownIt-Anchor" href="#218-多用户支持能力准则"></a> 2.1.8. 多用户支持能力准则</h3>
+<p>OLAP工具必须提供并发访问、数据完整性及安全性机制</p>
+<h3 id="219-非受限的跨维操作"><a class="markdownIt-Anchor" href="#219-非受限的跨维操作"></a> 2.1.9. 非受限的跨维操作</h3>
+<ol>
+<li>对于多维数据之间存在的固有的层次关系(构成包含的层次关系，比如国家、省市等)，OLAP工具应自己推导而不是由用户明确定义相关计算</li>
+<li>对于无法从固有关系中得出得计算，提供计算完备的语言来定义各种计算公式</li>
+</ol>
+<h3 id="2110-直观的数据操作"><a class="markdownIt-Anchor" href="#2110-直观的数据操作"></a> 2.1.10. 直观的数据操作</h3>
+<h3 id="2111-灵活的报表生成"><a class="markdownIt-Anchor" href="#2111-灵活的报表生成"></a> 2.1.11. 灵活的报表生成</h3>
+<h3 id="2112-0"><a class="markdownIt-Anchor" href="#2112-0"></a> 2.1.12. 0</h3>
+<ol>
+<li>维数不应小于15</li>
+<li>任意聚集层次</li>
+</ol>
+<h2 id="22-fasmi-另一个评价准则"><a class="markdownIt-Anchor" href="#22-fasmi-另一个评价准则"></a> 2.2. FASMI — 另一个评价准则</h2>
+<blockquote>
+<p>FASMI (Fast Analysis of Shared Multidimensional Information)</p>
+</blockquote>
+<ol>
+<li>Fast：在线</li>
+<li>Analysis：分析是临时起意、规律还是外在的影响</li>
+<li>Shared：多个分析人员使用分时方式来对信息体进行只读的利用</li>
+<li>Multidimensional：多维度，不是按照实现需要、软件需要进行组装，不一定是上下文相关的</li>
+<li>Information：是在信息和信息体层面上的。</li>
+</ol>
+<h1 id="3-olap中的几个基本概念"><a class="markdownIt-Anchor" href="#3-olap中的几个基本概念"></a> 3. OLAP中的几个基本概念</h1>
+<h2 id="31-度量值"><a class="markdownIt-Anchor" href="#31-度量值"></a> 3.1. 度量值</h2>
+<p>度量值，在分析型处理中，我们所关心和分析的对象</p>
+<ol>
+<li>在多维数据集中，度量值是<strong>一组值</strong>，而且通常为<strong>数字值</strong>，比如午饭的花费。</li>
+<li>度量值是所分析的<strong>多维数据集的中心值</strong>，即：度量值是最终用户浏览多维数据集时重点查看的<strong>数值型数据</strong></li>
+<li>度量值的选择取决于<strong>最终用户所请求的信息类型</strong></li>
+<li>一些常见的度量值有
+<ol>
+<li>销售金额 sales</li>
+<li>成本金额 cost</li>
+<li>库存数量 production count</li>
+<li>消费金额 expenditures</li>
+</ol>
+</li>
+<li>度量值是<strong>主观</strong>的，但是受到<strong>客观的制约</strong>(要但是没有)</li>
+</ol>
+<h2 id="32-维"><a class="markdownIt-Anchor" href="#32-维"></a> 3.2. 维</h2>
+<ol>
+<li><strong>维</strong>是观察度量值的<strong>角度</strong>，比如有大量数据与之相关，那么我们需要考虑和观察期内部的联系。</li>
+<li>例如：可以从三个&quot;维&quot;角度观察<strong>销售金额</strong>这个度量值
+<ol>
+<li><strong>时间维</strong>：可从时间角度统计(所有)商品在不同时间段内的销售(总)金额，以便于分析其与时间之间的关系</li>
+<li><strong>商品维</strong>：根据商品的分类情况统计每一类商品的销售金额，以便于分析其与商品类型之间的关系</li>
+<li><strong>地域维</strong>：可根据每个连锁店所在的地域统计其销售(总)金额，以便于分析其与地域之间的关系</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-层"><a class="markdownIt-Anchor" href="#33-层"></a> 3.3. 层</h2>
+<ol>
+<li>在分析型应用中，对度量值可以在不同的<strong>深度层面</strong>上进行分析与观察，并可能得到不同的分析结果。因此，“层” 反映了对度量值的观察<strong>深度</strong></li>
+<li>一般而言，<strong>&quot;层&quot;是与&quot;维&quot;相关联的</strong>。在一个&quot;维&quot;中可允许存在若干个&quot;层&quot;，并且可以采用多种不同的&quot;层&quot;次划分方法</li>
+<li>维中的&quot;层&quot;通常被组织成一个层次结构，在数据仓库系统的元数据中需要记录不同&quot;层&quot;之间的包含关系，以便于能够在数据仓库中已有的统计结果上正确地执行新的统计查询</li>
+</ol>
+<h3 id="331-时间维中的层次关系"><a class="markdownIt-Anchor" href="#331-时间维中的层次关系"></a> 3.3.1. 时间维中的层次关系</h3>
+<ol>
+<li>日-月-季-年:包含关系，高层次数据可以通过低层次关系计算出来。</li>
+<li>日-周-年</li>
+<li>但是我们认为周和月份是没有<strong>偏序</strong>关系的：有些周是跨月份的。</li>
+<li>时间维度关联的度量值在不同层次的体现就是之前讲述的不同粒度。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="332-地域维中的层次关系"><a class="markdownIt-Anchor" href="#332-地域维中的层次关系"></a> 3.3.2. 地域维中的层次关系</h3>
+<ol>
+<li>市-省-国-洲</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="333-商品维中的层次关系"><a class="markdownIt-Anchor" href="#333-商品维中的层次关系"></a> 3.3.3. 商品维中的层次关系</h3>
+<ol>
+<li>按商品的类别可以分为
+<ol>
+<li>家电(大家电(电视机, 洗衣机, 冰箱, …), 小家电(…),  …)</li>
+<li>服装(男式，女式，童装)</li>
+<li>日用品(…)</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>按如下的方法进行层次划分
+<ol>
+<li>按商品的价格分为：高档，中档，低档</li>
+<li>按商品的供应商分为：外资，合资，国营，私营，个体</li>
+<li>按购买商品的顾客信息划分
+<ol>
+<li>按照年龄层次来划分：老年，中年，青年，少年儿童，婴儿</li>
+<li>按照所从事的职业来划分</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-维成员"><a class="markdownIt-Anchor" href="#34-维成员"></a> 3.4. 维成员</h2>
+<blockquote>
+<p>维的一个取值称为该维的一个&quot;维成员&quot;</p>
+</blockquote>
+<ol>
+<li>如果一个维是多层次的，则该维的&quot;维成员&quot;可以是
+<ol>
+<li>在不同维层次上的取值的组合
+<ol>
+<li>例如：对具有日，月，年三个层次的&quot;时间维&quot;来说，“某年某月某日”、“某年某月”、“某月某日”、&quot;某年&quot;都是其维成员，如：1998年，1月，1998年1月，1998年1月1日，1月1日</li>
+<li>这部分代表在这个过程中的维度。</li>
+</ol>
+</li>
+<li>在某个维层次上的取值：临时取出作为一个拷贝。
+<ol>
+<li>例如：“地域&quot;维中的&quot;江苏”，“南京”，…</li>
+<li>例如：“商品&quot;维中的&quot;电视机”，“服装”，…</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>对一个度量值来说，维成员是该度量值在某维中位置的描述</li>
+</ol>
+<h2 id="35-多维数组"><a class="markdownIt-Anchor" href="#35-多维数组"></a> 3.5. 多维数组</h2>
+<blockquote>
+<p>一个多维数组可以表示为(维1, 维2, …, 维n, 变量)</p>
+</blockquote>
+<ol>
+<li>其中：
+<ol>
+<li>“变量” 表示我们所观察的<strong>度量值</strong></li>
+<li>维1、维2、…、维n分别表示我们观察该度量值的角度(维)</li>
+</ol>
+</li>
+<li>如：(时间，商品种类，商店，销售额)是一个有关商品销售额的三维数组，其中的数据成员可以表示为：
+<ol>
+<li>(2000年，家电，南京市，5000万)</li>
+<li>(2000年7月，女式服装，江苏省，2000万)</li>
+</ol>
+</li>
+<li>维度越高，当前的不可用数据就越多。</li>
+</ol>
+<h2 id="36-数据单元单元格"><a class="markdownIt-Anchor" href="#36-数据单元单元格"></a> 3.6. 数据单元(单元格)</h2>
+<ol>
+<li>多维数组可以被看成是一个根据多个下标进行定位的值的集合</li>
+<li>当多维数组的每一维都选中一个维成员，这些维成员的组合就唯一确定了一个度量值，即：(维成员1，维成员2，…，维成员n，度量值)</li>
+<li>这样一个值或存放该值的地方我们称其为一个&quot;数据单元&quot;</li>
+<li>可以是实际存在的，也可以是在概念上的一个讨论。</li>
+<li>数据单元可能是冗余关系，为了保证访问效率。</li>
+</ol>
+<h2 id="37-多维数组和联机分析处理"><a class="markdownIt-Anchor" href="#37-多维数组和联机分析处理"></a> 3.7. 多维数组和联机分析处理</h2>
+<ol>
+<li>假设：在一个分析型应用中需要若干个度量值(设为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>个)， 以它们为聚焦点作不同角度(设每个分析对象有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个维)与深度(设每个维上又分为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个层)的分析，那么可以得到多种不同的统计分析结果(共为(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种)，即可以构造出(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种多维数组。</li>
+<li>为了方便快速地查到这些统计分析结果，OLAP需要解决以下两个问题：
+<ol>
+<li>OLAP的数据构造方式</li>
+<li>OLAP的基本数据模型</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-olap中的数据构造方式"><a class="markdownIt-Anchor" href="#4-olap中的数据构造方式"></a> 4. OLAP中的数据构造方式</h1>
+<ol>
+<li>ROLAP，Relational OLAP
+<ol>
+<li>用传统的&quot;关系数据库管理系统&quot;(RDBMS)管理，将<strong>星型(雪花型)模式</strong>用<strong>二维表</strong>形式存储，表间用<strong>关键字</strong>相连，从而构成一个<strong>关系模式</strong>，它称为ROLAP</li>
+<li>用户在ROLAP上的查询操作将被<strong>改写</strong>成RDBMS中的查询操作并执行获得查询结果</li>
+</ol>
+</li>
+<li>MOLAP，Multi-Dimensional OLAP
+<ol>
+<li>用&quot;多维数据库管理系统&quot;管理，多维数据库采用的基本数据模式就是&quot;多维数组&quot;。</li>
+<li>在MOLAP中，“事实表&quot;被表示成一个&quot;<strong>多维数组</strong>”，“维&quot;的属性值被映射成&quot;多维数组&quot;的下标，而&quot;度量值”(包括综合数据)则作为多维数组的取值存储在数据单元中。在查询时，可以通过下标的取值来找到相应多维数组中的&quot;度量值&quot;</li>
+</ol>
+</li>
+<li>混合联机分析处理(HOLAP)</li>
+</ol>
+<h2 id="41-molap-与-rolap"><a class="markdownIt-Anchor" href="#41-molap-与-rolap"></a> 4.1. MOLAP 与 ROLAP</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>结合<strong>多维综合引擎</strong>作为中介使用</li>
+<li>ROLAP使用关系数据库管理系统(RDBMS)或扩充关系数据库管理系统(XRDBMS)存储和管理数据仓库，以<strong>关系表存储多维数据，有较强的可伸缩性</strong>。
+<ol>
+<li><strong>维数据</strong>存储在维表</li>
+<li><strong>事实数据和维ID</strong>则存储在事实表</li>
+<li>维表和事实表通过主键和外键关联。</li>
+<li>此外，ROLAP通过一些软件工具实现，物理层仍用关系数据库的存储结构，因此称为<strong>虚拟OLAP(virtual OLAP)。</strong></li>
+</ol>
+</li>
+<li>MOLAP支持数据的多维视图，采用多维数组存储数据
+<ol>
+<li>它把维映射到多维数组的<strong>下标或下标</strong>的范围</li>
+<li>事实数据则存储在数组单元中，从而实现了多维视图到数组的映射，形成了<strong>立方体</strong>(cube)结构。</li>
+<li>但随着维数的增加，大容量的数据可能使立方体稀疏化，此时需要借助稀疏矩阵压缩技术来处理。由于MOLAP是从物理层实现，采用了多维数组的存储结构,故又称为物理OLAP(physical OLAP)。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-混合联机分析处理holap"><a class="markdownIt-Anchor" href="#42-混合联机分析处理holap"></a> 4.2. 混合联机分析处理(HOLAP)</h2>
+<ol>
+<li>试图将 MOLAP 和ROLAP进行融合</li>
+<li>从而在大量数据上获得高效率</li>
+<li>方式
+<ol>
+<li>同时提供多维数据库(MDDB)和关系数据库(RDB)</li>
+<li>将 RDB的查询结果存储到 MDDB</li>
+<li>使用MDDB存储高层次数据，RDB存储细节数据</li>
+</ol>
+</li>
+<li>高层和查询结果使用MOLAP，底层使用ROLAP。</li>
+</ol>
+<h1 id="5-olap的基本数据模型"><a class="markdownIt-Anchor" href="#5-olap的基本数据模型"></a> 5. OLAP的基本数据模型</h1>
+<h2 id="51-olap需解决的问题"><a class="markdownIt-Anchor" href="#51-olap需解决的问题"></a> 5.1. OLAP需解决的问题</h2>
+<ol>
+<li>OLAP服务器必须提高对OLAP数据的<strong>访问效率</strong>，包括：
+<ol>
+<li><strong>数据抽取、转换及加载的效率</strong>：相对没有其他二者不重要，因为是可以离线的。</li>
+<li>OLAP数据<strong>查询</strong>效率</li>
+<li>OLAP数据<strong>更新</strong>效率</li>
+</ol>
+</li>
+<li>目前可有多种方法以提高ROLAP中的处理效率：
+<ol>
+<li>采用<strong>物化视图</strong>方式：存储<strong>物化视图</strong>，之后就可以直接调用，将视图这种&quot;虚表&quot;形式转换成<strong>实际存在的二维表</strong>，以达到快速取得综合数据的目的</li>
+<li>采用<strong>特殊的索引与集簇</strong>方式，以加速星型模式内表的联接速度</li>
+<li>尽量采用<strong>并行操作</strong>方式以提高处理速度</li>
+<li>采用OLAP中的<strong>查询优化</strong>技术，如共享排序技术等</li>
+<li>采用<strong>增量</strong>技术，在OLAP数据更新时保留不变的数据，仅更改变动的数据以加快数据更新速度</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-olap的基本数据模型"><a class="markdownIt-Anchor" href="#52-olap的基本数据模型"></a> 5.2. OLAP的基本数据模型</h2>
+<ol>
+<li>MOLAP，多维数据库(MDDB，Multi-Dimensional Database)</li>
+<li>ROLAP，常用的两种ROLAP数据模型
+<ol>
+<li>星形模型</li>
+<li>雪花模型</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-mddb-vs-rdbms"><a class="markdownIt-Anchor" href="#53-mddb-vs-rdbms"></a> 5.3. MDDB vs. RDBMS</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>左上角是一个三维立体数据模型，每一个块上标注的为对应的数据。
+<ol>
+<li>地理维度：广州、北京、上海</li>
+<li>时间维度：一月、二月、三月</li>
+<li>顾客维度：GDB、EBB、CITIC</li>
+</ol>
+</li>
+<li>大量的数据中可能<strong>蕴涵</strong>非常多的稀疏数据带来了空间浪费的问题</li>
+<li>左侧为<strong>多维数据模型</strong>，右侧为<strong>二维数据模型</strong>。</li>
+<li>二维数据表可以被拆分为多个表格，之后通过拼接得到最后的大表格，但是我们仍然要考虑冗余的问题和时间效率的问题。</li>
+<li>维度数等价于<strong>关系型数据库的关键字数</strong>。</li>
+</ol>
+<h2 id="54-多维联机分析处理molap"><a class="markdownIt-Anchor" href="#54-多维联机分析处理molap"></a> 5.4. 多维联机分析处理(MOLAP)</h2>
+<ol>
+<li>MOLAP使用专门的<strong>多维数据库</strong>来存放所需要的数据</li>
+<li>数据以<strong>多维</strong>的方式存放，并且使用<strong>多维</strong>的方式进行展现。</li>
+<li>多维数组比关系数据表表达更清晰且占用存储小(在处理<strong>稠密数据</strong>时)</li>
+<li>高速的综合速度，MOLAP适用于需要高速处理的复杂分析</li>
+<li>维护多维数组需要大量资源</li>
+</ol>
+<h3 id="541-多维数据库存取"><a class="markdownIt-Anchor" href="#541-多维数据库存取"></a> 5.4.1. 多维数据库存取</h3>
+<ol>
+<li>经<strong>压缩</strong>的、类似于<strong>数组</strong>的对象构成</li>
+<li>这些对象带有<strong>高度压缩</strong>的索引及指针结构</li>
+<li>并非维间的每种维成员组合都对应<strong>合理的度量值</strong>，MDDB必须具有高效的稀疏数据处理能力，能略过零元、缺失和重复数据</li>
+</ol>
+<h3 id="542-使用多维查询语言mdsql"><a class="markdownIt-Anchor" href="#542-使用多维查询语言mdsql"></a> 5.4.2. 使用多维查询语言MDSQL</h3>
+<ol>
+<li>列出1996年1月至6月彩电在北京地区的销售量和成本</li>
+<li>语法1</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>语法2</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="55-关系联机分析处理rolap"><a class="markdownIt-Anchor" href="#55-关系联机分析处理rolap"></a> 5.5. 关系联机分析处理(ROLAP)</h2>
+<ol>
+<li>ROLAP使用通用的<strong>关系数据库</strong>来存储所需数据</li>
+<li>ROLAP 适应于处理<strong>大量数据</strong>，<strong>低效率</strong></li>
+<li>现有的关系型数据库已经对OLAP做了很多优化，包括并行存储、并行查询、并行数据管理、基于成本的查询优化、位图索引、SQL的OLAP扩展(cube, rollup)等，性能有所提高</li>
+</ol>
+<h3 id="551-二维数据模型"><a class="markdownIt-Anchor" href="#551-二维数据模型"></a> 5.5.1. 二维数据模型</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>计算上限和下限，上限为销售商、发货、顾客和产品。</li>
+</ol>
+<h3 id="552-星型模式"><a class="markdownIt-Anchor" href="#552-星型模式"></a> 5.5.2. 星型模式</h3>
+<ol>
+<li>星型模式是一种多维表结构，它一般由两种不同性质的二维表组成：
+<ol>
+<li>事实表(Fact table)：存放多维表中的主要事实，称为度量值(Measure)</li>
+<li>维表(Dimension Table)：存放多维表中的维成员的取值</li>
+</ol>
+</li>
+<li>一般一个n维的多维表往往有n个维表和一个事实表，它们构成了一个星形结构，因而称其为&quot;<strong>星型模式</strong>&quot;：在星型模式中主体是事实表，而有关维的细节则放置于维表内以达到简化事实表的目的，事实表与维表间由公共属性相连以使它们构成一个整体</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>上述的星型模式可以转化成下面的四个关系</li>
+</ol>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gcode">事实表：<br>   销售表<span class="hljs-comment">(产品标识符，商店标识符，日期标识符，销售额)</span><br>维表<span class="hljs-number">1</span>：<br>   产品表<span class="hljs-comment">(产品标识符，类别，大类别)</span><br>维表<span class="hljs-number">2</span>：<br>   商店表<span class="hljs-comment">(商店标识符，市名，省名，国名，洲名)</span><br>维表<span class="hljs-number">3</span>：<br>   时间表<span class="hljs-comment">(时间标识符，日期，月份，季度，年份)</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="553-雪花模式"><a class="markdownIt-Anchor" href="#553-雪花模式"></a> 5.5.3. 雪花模式</h3>
+<ol>
+<li>雪花模型是对星型模型的扩展：雪花模型对星型模型的维表进一步层次化，<strong>原有的各维表可能被扩展为小的事实表</strong>，形成一些局部的&quot;层次&quot;区域</li>
+<li>优点：使维表尽可能地<strong>规范化</strong>，最大限度地减少<strong>维表的数据存储量</strong></li>
+<li>缺点：执行查询时需要更多的<strong>连接操作</strong>，可能会影响查询性能</li>
+<li>例如：前面的维表1&quot;产品表&quot;也可以是一个如下所示的星型结构：产品(类别，供应商，顾客)</li>
+<li>在前面的&quot;星型模式&quot;中，我们只考虑产品的分类(&quot;类别&quot;属性)，在这里我们还可以从产品的&quot;供应商&quot;或&quot;购买顾客&quot;角度来考虑对产品进行分析</li>
+<li>也可以以其中的&quot;供应商&quot;为中心再构成一个 “星型模式”</li>
+</ol>
+<blockquote>
+<p>产品维表示例</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>雪花模型示例</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>我们用雪花模型替代星型模型。</li>
+<li>在当前构造数据模型时，我们会有数据总线：这就是伪表的共享问题。</li>
+</ol>
+<h2 id="56-其他扩展模型"><a class="markdownIt-Anchor" href="#56-其他扩展模型"></a> 5.6. 其他扩展模型</h2>
+<ol>
+<li>星座模式：通过公共维度连接多个星型模式</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>雪暴模式：通过公共维度连接多个雪花模式</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="6-数据立方体data-cube"><a class="markdownIt-Anchor" href="#6-数据立方体data-cube"></a> 6. 数据立方体(Data Cube)</h1>
+<h2 id="61-数据立方体"><a class="markdownIt-Anchor" href="#61-数据立方体"></a> 6.1. 数据立方体</h2>
+<ol>
+<li>数据仓库的数据模式通常可以看成是定义在<strong>多个数据源</strong>上的<strong>数据视图</strong>，其中存储的<strong>分析型数据</strong>通常是一些经过统计而获得的<strong>综合性数据</strong>：
+<ol>
+<li>获取这些综合性数据的常用方法是在视图中用<strong>统计函数</strong>进行计算，但这种方法的缺点是显见的：<strong>时间开销太大</strong></li>
+<li>大多数情况下，数据是<strong>比较稀疏</strong>的</li>
+<li>对于真实情况下，一般使用数据仓库的数据量都不会太小，不然也没有必要使用<strong>数据仓库</strong>。</li>
+</ol>
+</li>
+<li>物化视图
+<ol>
+<li>为了提高对统计信息的查询速度，我们可以预先计算好数据视图中的<strong>统计信息</strong>并保存在数据仓库中，这称为<strong>物化视图</strong>，即将虚的视图转变成实际的视图</li>
+<li>其本质类似于使用<strong>空间来代换时间</strong>，可以较好地提高数据仓库的性能。</li>
+<li><strong>存放物化视图的三维数据模型叫&quot;数据立方体&quot;</strong>，可以选择物化全部视图并存储。</li>
+</ol>
+</li>
+<li>以前面的<strong>星型模式</strong>为例，其事实表共有三维，即产品P(product)、商店S(store)及日期D(Date)，可以为它们定义一系列的物化视图。</li>
+</ol>
+<p>PSD视图</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>PS、SD、PD视图：采用类似的方法也可以定义出SD、PD视图</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>P、S、D视图：采用类似的方法也可以定义出S、D视图。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>ALL视图：ALL视图表示不分组，该视图中的销售总额表示销售表中所有销售金额之和。其定义如下：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/20.png" srcset="/project/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/21.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>如果不考虑层次问题，只考虑维度问题，那么我们可以得到上图中的白色部分</li>
+<li>关于维度的缩减：而其他颜色的部分，我们对维度进行压缩，得到了sum部分，而最右下角的则是All，All，All视图</li>
+</ol>
+<h2 id="62-数据超立方体"><a class="markdownIt-Anchor" href="#62-数据超立方体"></a> 6.2. 数据超立方体</h2>
+<ol>
+<li>在数据立方体中进行的是一个三维的分析应用。但当应用中分析对象超过三维时，则构成一个<strong>多维</strong>(或称n维, n≥4)应用，此时无法用数据立方体表示其中的数据，而只能通过虚拟的n(n≥4)维空间建立n维立方体，它称为&quot;数据超立方体&quot;，一般主要针对数据立方体进行讲述。</li>
+</ol>
+<blockquote>
+<p>四维：如图，数据立方体线性排列</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/22.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>六维：如图，数据立方体成立方体排列</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/23.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="63-方体格"><a class="markdownIt-Anchor" href="#63-方体格"></a> 6.3. 方体格</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/24.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>n维方体称为<strong>基本方体</strong></li>
+<li>0维方体代表最高层次的<strong>抽象</strong>，称作<strong>顶点方体</strong></li>
+<li>方体格构成数据立方体</li>
+<li>每一个顶点都是一个方体，对应了一种的可能表达形式</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/25.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>上图是4D方体</li>
+<li>2D方体是4D方体的一个点</li>
+<li>从下向上可以计算，但是不可以从上向下处理</li>
+<li>使用<strong>格</strong>结构，我们可以发现上层资源计算如果<strong>底层有部分物化</strong>，则不需要从最底层开始计算</li>
+</ol>
+<h2 id="64-星型网查询模式"><a class="markdownIt-Anchor" href="#64-星型网查询模式"></a> 6.4. 星型网查询模式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/26.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在每一个维度里面，我们还应当一并<strong>应用层次</strong>来进行查询。</li>
+<li>每一个环我们都称为是一个<strong>足迹</strong></li>
+</ol>
+<h2 id="65-数据立方体的物化"><a class="markdownIt-Anchor" href="#65-数据立方体的物化"></a> 6.5. 数据立方体的物化</h2>
+<ol>
+<li><strong>不进行物化</strong></li>
+<li><strong>全物化</strong>：n维 L层的立方体包含<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>L</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T = \prod\limits_{i=1}\limits^{n}(L_i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.329066em;vertical-align:-0.9776689999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∏</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>种子方，之所以加1是因为包含了All层次</li>
+<li><strong>部分物化</strong>
+<ol>
+<li>确定要<strong>物化</strong>的方体子集:
+<ol>
+<li>冰山方体：比如A集合的数据是远远大于B集合的，那么我们可能会物化A集合的底层节点，或者是我们发现某一个维度可能被经常使用，我们可以选择物化其中的部分。</li>
+<li>部分物化：因为存储空间是不确定的</li>
+</ol>
+</li>
+<li>利用<strong>查询</strong>处理时物化的方体</li>
+<li>在<strong>装入和刷新</strong>时，有效地更新物化的方体</li>
+</ol>
+</li>
+</ol>
+<h2 id="66-多维阵列聚合压缩矩阵"><a class="markdownIt-Anchor" href="#66-多维阵列聚合压缩矩阵"></a> 6.6. 多维阵列聚合(压缩矩阵)</h2>
+<ol>
+<li>将数组分区成块(块是适合内存的小的子立方体)</li>
+<li>压缩稀疏数组寻址：(chunk_id，偏移量)</li>
+<li>通过按以下顺序访问多维数据集单元以&quot;多路&quot;方式计算聚合，该顺序可以最大程度地减少访问每个单元的次数，并减少内存访问和存储成本</li>
+<li>多维阵列聚合的结果，大概率是无法放置到内存中的</li>
+<li>导入时间是线性的(我们不讨论并发)</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/27.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/28.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>我们需要仔细考虑空间问题：因为空间开销比较大，所以我们开辟了三个2D方体来缓存数据内容</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/29.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>左侧空间中，我们得到的数据会顺序落入到对应的位置，上图中有7个星</li>
+<li>上侧空间中，我们得到的数据会放置到对应的格</li>
+<li>下侧空间中，得到的数据客户映射到对应的格</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/30.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>左侧空间中，已经存放了29个星</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/31.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/32.png" srcset="/project/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>对比上面的两种情况，下者比上面的部分要大10倍</li>
+<li>我们调用要按照维度<strong>从小到大</strong>的方式来调用，这样子可以保证所有的二维物化表空间最小化。</li>
+<li>A，B，C是该多维模型的维度，其中右边的数量是A，B，C三个维度上的&quot;刻度&quot;大小，即在图中的一小格，包含多少个可以区分的维成员。</li>
+<li>因为物化的顺序不同的前提下，需要使用的中间存储空间分别<strong>是&quot;一格&quot;，&quot;一列&quot;和&quot;一片&quot;</strong></li>
+</ol>
+<h2 id="67-olap与数据仓库"><a class="markdownIt-Anchor" href="#67-olap与数据仓库"></a> 6.7. OLAP与数据仓库</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/33.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>底层存储使用<strong>雪花模式</strong>完成存储</li>
+<li>物化的部分，作为<strong>聚集层</strong>，作为在线的不同的<strong>物化视图</strong></li>
+<li>物化视图通过<strong>数据立方体</strong>来串联在一起</li>
+<li><strong>轻度综合级和高度综合级</strong>是没有严格的划分的</li>
+<li>数据仓库中以主题为核心构建出来的<strong>不一定使用OLAP</strong>进行访问，被记录在数据仓库中元数据中和数据访问相关的部分。</li>
+<li>数据仓库软件都是<strong>支持多种数据模型</strong>的</li>
+<li>在OLAP服务器上可以存放部分<strong>私有资源</strong>(从数据仓库中拿到后计算得到的，但是只在OLAP中使用)，OLAP中物化视图不一定都要放到数据仓库中，如果有<strong>共享</strong>的部分则放置到数据仓库，而如果不是则不必占用公共资源，之后不再关心这部分，因为对我们是透明的。</li>
+</ol>
+<h1 id="7-多维数据分析"><a class="markdownIt-Anchor" href="#7-多维数据分析"></a> 7. 多维数据分析</h1>
+<ol>
+<li>多维分析是指对以多维形式组织起来的数据采取<strong>切片、切块、旋转、钻取</strong>等各种分析动作，以求剖析数据，使最终用户能从<strong>多个角度、多个侧面</strong>地观察数据，从而深入地了解被包含在数据中的信息、内涵。</li>
+<li>基本操作
+<ol>
+<li>切片(Slice)：根据<strong>某一维上的某个维成员值</strong>选择统计数据进行分析</li>
+<li>切块(Dice)
+<ol>
+<li>根据<strong>某一维上的某个维成员取值的区间</strong>选择统计数据进行分析</li>
+<li>根据多个维度上的维成员取值的区间选择统计数据进行分析</li>
+</ol>
+</li>
+<li>旋转(Pivot/Rotate)<strong>调整维的排列次序</strong>的动作称为旋转</li>
+<li>上钻/数据概括(roll_up)将多维下标的取值提升到<strong>较高</strong>的概念层次上，从而形成新的统计查询结果，并进行分析。</li>
+<li>下钻/数据细化(drill_down)将多维下标的取值降低到<strong>较低</strong>的概念层次上，从而形成更细致的统计查询结果，并进行分析。</li>
+</ol>
+</li>
+<li>在大多数OLAP中，我们拿到数据的第一步骤一般我们首先选择降维(缩小分析域)，也就是我们选择部分属性出来进行观察，直接影响最后的分析效果。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/34.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="71-切片"><a class="markdownIt-Anchor" href="#71-切片"></a> 7.1. 切片</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/35.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="72-切块"><a class="markdownIt-Anchor" href="#72-切块"></a> 7.2. 切块</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/36.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="73-旋转"><a class="markdownIt-Anchor" href="#73-旋转"></a> 7.3. 旋转</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/37.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>三维方体中有一个平面是被压缩在底下的，我们不好访问</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/38.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>六维空间中，如果我们要交换红色轴和里面x轴是如何进行操作</p>
+</blockquote>
+<h2 id="74-上钻"><a class="markdownIt-Anchor" href="#74-上钻"></a> 7.4. 上钻</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/39.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>同一个维度同一层次的调整下，上钻和下钻是互为逆操作。</li>
+<li>上钻：是将部分的数据进行压缩升高维度，将比较细的表达方式切换为比较粗的表达方式。</li>
+</ol>
+<h2 id="75-下钻"><a class="markdownIt-Anchor" href="#75-下钻"></a> 7.5. 下钻</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/40.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>将比较粗的表达方式转换为比较细的表达方式</li>
+<li>虽然我们目前只有两个维度的数据，但是数据是不足的，那么我们可能需要补充引入部分数据。</li>
+</ol>
+<h2 id="76-其他操作"><a class="markdownIt-Anchor" href="#76-其他操作"></a> 7.6. 其他操作</h2>
+<ol>
+<li>跨钻(drill across)对多个事实进行操作</li>
+<li>钻透(drill through)下钻至数据立方体的最低细节后，继续细化至数据仓库/数据库的关系型表格</li>
+</ol>
+<h2 id="77-发现驱动的探查"><a class="markdownIt-Anchor" href="#77-发现驱动的探查"></a> 7.7. 发现驱动的探查</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/41.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>使用下钻和上钻等方式来对数据进行探查，对不同的部分中的异常部分进行下钻来溯源</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2020-Business-Intelligence/" class="category-chain-item">2020-Business-Intelligence</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">#商务智能</a>
+      
+        <a href="/project/tags/%E5%A4%9A%E7%BB%B4%E5%88%86%E6%9E%90/">#多维分析</a>
+      
+        <a href="/project/tags/olap/">#olap</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Business-Intelligence-Lecture3-OLAP</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture3-OLAP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture6-Data%20Mining/" title="2020-Business-Intelligence-Lecture6-Data Mining">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-Business-Intelligence-Lecture6-Data Mining</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture5-Dimensional%20Modeling/" title="2020-Business-Intelligence-Lecture5-Dimensional Modeling">
+                        <span class="hidden-mobile">2020-Business-Intelligence-Lecture5-Dimensional Modeling</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

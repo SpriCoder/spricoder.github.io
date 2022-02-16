@@ -1,0 +1,1539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Data-Integration-Lec2-xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Data-Integration-Lec2-xml">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Data-Integration/2021-Data-Integration-Lec2-xml/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Data-Integration-Lec2-xml">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/20.png">
+<meta property="article:published_time" content="2022-02-16T11:10:05.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:00:20.554Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="文档">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="XML">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/1.png">
+  
+  
+  <title>2021-Data-Integration-Lec2-xml - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:10" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          183 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Data-Integration-Lec2-xml</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec2-xml"><a class="markdownIt-Anchor" href="#lec2-xml"></a> lec2-xml</h2>
+<ol>
+<li>转达信息</li>
+<li>报告添加内容</li>
+</ol>
+<h1 id="1-xml概述"><a class="markdownIt-Anchor" href="#1-xml概述"></a> 1. XML概述</h1>
+<h2 id="11-xml-定义"><a class="markdownIt-Anchor" href="#11-xml-定义"></a> 1.1. XML 定义</h2>
+<ol>
+<li>Extensible Markup Language：A set of rules for encoding documents electronically</li>
+<li>W3C于1998年推出的一种用于数据描述的元标记语言的国际标准</li>
+</ol>
+<h2 id="12-xml标准系列"><a class="markdownIt-Anchor" href="#12-xml标准系列"></a> 1.2. XML标准系列</h2>
+<ol>
+<li>核心
+<ol>
+<li>XML Information Set</li>
+<li>Document Type Declaration</li>
+<li>XML Schema</li>
+<li>Namespace</li>
+</ol>
+</li>
+<li>展现与转换
+<ol>
+<li>CSS</li>
+<li>XSL:eXtensible Stylesheet Language</li>
+</ol>
+</li>
+<li>定位、链接与查询
+<ol>
+<li>Xpath:XML Path Language</li>
+<li>Xpointer:XML Pointer Language</li>
+<li>Xlink:XML Linking Language</li>
+<li>Xquery:XML Query Language</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-xml版本"><a class="markdownIt-Anchor" href="#13-xml版本"></a> 1.3. XML版本</h2>
+<ol>
+<li>1.0版-Extensible Markup Language (XML) 1.0
+<ol>
+<li>第一版:1998.2.10. W3C推荐标准</li>
+<li>第二版:2000.10.6. W3C推荐标准(加删少量DTD生成式,修改错误,改进描述)</li>
+<li>第三版:2004.2.4. W3C推荐标准(修改错误,改进描述)</li>
+<li>第四版:2006.8.16. W3C推荐标准(修改错误,改进描述)</li>
+<li>第五版:2008.11.26. W3C推荐标准(修改错误,放宽了对元素和属性命名字符的限制,~XML 1.1)</li>
+</ol>
+</li>
+<li>1.1版–Extensible Markup Language (XML) 1.1(元素和属性名称所采用扩展字符集)
+<ol>
+<li>第一版:2004.2.4. W3C推荐标准</li>
+<li>第二版:2006.8.16.(修改错误,改进描述)</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>置标语言家谱表</th>
+<th>Web体系结构的发展</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/1.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/2.png" srcset="/project/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="14-html和xhtml"><a class="markdownIt-Anchor" href="#14-html和xhtml"></a> 1.4. HTML和XHTML</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="141-标准的xml使用标准的xml标签"><a class="markdownIt-Anchor" href="#141-标准的xml使用标准的xml标签"></a> 1.4.1. 标准的xml：使用标准的XML标签</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>张三<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>用户ID:001<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>公司:A公司<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>EMAIL:zhang＠aaa．com<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>电话:(010)62345678<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>地址:五街1234号<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">U</span>&gt;</span>城市:北京市<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>省份:北京<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>李四<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>用户ID:002<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>公司:B公司<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>EMAIL:li＠bbb．org<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>电话:(021)87654321<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>地址:南京路9876号<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>城市:上海市<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>省份:上海<span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="142-具有语义的xml使用自定义的标签"><a class="markdownIt-Anchor" href="#142-具有语义的xml使用自定义的标签"></a> 1.4.2. 具有语义的xml：使用自定义的标签</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;联系人列表&gt;<br>  &lt;联系人&gt;<br>    &lt;姓名&gt;张三&lt;/姓名&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">ID</span>&gt;</span>001<span class="hljs-tag">&lt;/<span class="hljs-name">ID</span>&gt;</span><br>    &lt;公司&gt;A公司&lt;/公司&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">EMAIL</span>&gt;</span>zhang@aaa.com<span class="hljs-tag">&lt;/<span class="hljs-name">EMAIL</span>&gt;</span><br>    &lt;电话&gt;(010)62345678&lt;/电话&gt;<br>    &lt;地址&gt;<br>      &lt;街道&gt;五街1234号&lt;/街道&gt;<br>      &lt;城市&gt;北京市&lt;/城市&gt;<br>      &lt;省份&gt;北京&lt;/省份&gt;<br>    &lt;/地址&gt;<br>  &lt;/联系人&gt;<br>  &lt;联系人&gt;<br>    &lt;姓名&gt;李四&lt;/姓名&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">ID</span>&gt;</span>002<span class="hljs-tag">&lt;/<span class="hljs-name">ID</span>&gt;</span><br>    &lt;公司&gt;B公司&lt;/公司&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">EMAII</span>&gt;</span>1i@bbb.org<span class="hljs-tag">&lt;/<span class="hljs-name">EMAII</span>&gt;</span><br>    &lt;电话&gt;(021)87654321&lt;电话&gt;<br>    &lt;地址&gt;<br>      &lt;街道&gt;南京路9876号&lt;/街道&gt;<br>      &lt;城市&gt;上海市&lt;/城市&gt;<br>      &lt;省份&gt;上海&lt;/省份&gt;<br>    &lt;/地址&gt;<br>  &lt;/联系人&gt;<br>&lt;/联系人列表&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="15-xml和html比较"><a class="markdownIt-Anchor" href="#15-xml和html比较"></a> 1.5. XML和HTML比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="16-xml的特点"><a class="markdownIt-Anchor" href="#16-xml的特点"></a> 1.6. XML的特点</h2>
+<ol>
+<li>自描述性</li>
+<li>内容独立性</li>
+<li>可扩展和复用性</li>
+<li>便于网络传输
+<ol>
+<li>Java = Portable Programs</li>
+<li>XML = Portable Data</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="17-xml最重要的五个应用"><a class="markdownIt-Anchor" href="#17-xml最重要的五个应用"></a> 1.7. XML最重要的五个应用</h2>
+<ol>
+<li><strong>数据交换</strong>:XML使用元素和属性来描述数据。在数据传送过程中，XML始终保留了诸如父/子关系这样的数据结构</li>
+<li><strong>Web服务</strong>:SOAP可以在用不同编程语言构造的对象之间传递消息</li>
+<li><strong>内容管理</strong>:XML只用元素和属性来描述数据，而不提供数据的显示方法。XSLT等能够轻易地将XML文件转换成各种格式文件，比如HTML，WML，PDF，flat file，EDI等</li>
+<li><strong>Web集成</strong>:在个人电子助理和浏览器之间用XML来传递数据</li>
+<li><strong>配置</strong>:将配置数据标记为XML格式，能使其更具可读性,并能方便地集成到应用系统中去；.NET中的XmlDocument和XmlTextReader</li>
+</ol>
+<h2 id="18-xml设计目标"><a class="markdownIt-Anchor" href="#18-xml设计目标"></a> 1.8. XML设计目标</h2>
+<ol>
+<li>在互联网上直接使用</li>
+<li>支持各种各样的应用程序</li>
+<li>与SGML兼容</li>
+<li>应用程序应该容易编写</li>
+<li>可选特性的数量应该减到最小,最好减至没有</li>
+<li>良好的可读性,并且比较清晰</li>
+<li>用XML设计新的标记语言方便快捷</li>
+<li>XML设计的标记语言正式、简洁</li>
+<li>XML文件容易创建</li>
+<li>XML标记的简洁性无关紧要</li>
+</ol>
+<h2 id="19-开发xml应用的步骤"><a class="markdownIt-Anchor" href="#19-开发xml应用的步骤"></a> 1.9. 开发XML应用的步骤</h2>
+<ol>
+<li>考察应用场景,确定是否使用XML</li>
+<li>设计系统架构和工作流程</li>
+<li>设计XML文档中使用的标签(语汇集)</li>
+<li>根据语汇集开发处理XML文档的应用程序</li>
+<li>特定场景下(如网站发布)还需要编写XSLT文档以转换XML文档生成目标数据</li>
+</ol>
+<h2 id="110-xml的缺点"><a class="markdownIt-Anchor" href="#110-xml的缺点"></a> 1.10. XML的缺点</h2>
+<ol>
+<li>结构不够紧凑:传统的二进制文档</li>
+<li>性能较低
+<ol>
+<li>额外的文档分析过程</li>
+<li>更多的存储空间</li>
+<li>读写XML文档需要执行更多的输入输出操作</li>
+<li>缺少索引机制,大量数据读取和更新的效率比数据库操作低很多</li>
+</ol>
+</li>
+</ol>
+<h2 id="111-xml应用实例"><a class="markdownIt-Anchor" href="#111-xml应用实例"></a> 1.11. XML应用实例</h2>
+<ol>
+<li>为置标语言FCLML公司的客户列表置表语言制定的,文档类型定义DTD,其程序为fclml.dtd</li>
+<li>客户联系信息的XML文档Client.xml</li>
+<li>为client.xml制定一个样式Mystyle.xsl</li>
+<li>Html格式及显示</li>
+</ol>
+<h3 id="1111-fclmldtd"><a class="markdownIt-Anchor" href="#1111-fclmldtd"></a> 1.11.1. Fclml.dtd</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;? xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;? &gt;<br><span class="hljs-meta">&lt;!ELEMENT 联系人列表(联系人)*&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 联系人(姓名,<span class="hljs-keyword">ID</span>,公司,<span class="hljs-keyword">EMAIL</span>,电话,地址)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 地址(街道,城市,省份)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 姓名(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-keyword">ID</span>(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 公司(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-keyword">EMAIL</span>(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 电话(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 街道(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 城市(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 省份(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="1112-clientxml"><a class="markdownIt-Anchor" href="#1112-clientxml"></a> 1.11.2. Client.xml</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;? xml version=&quot;1.0&quot;encoding=&quot;GB2312&quot; standalone=&quot;no&quot;?&gt;<br><span class="hljs-meta">&lt;!DOCTYPE 联系人列表 <span class="hljs-keyword">SYSTEM</span><span class="hljs-string">&quot; fclml．dtd&quot;</span>&gt;</span><br><span class="hljs-meta">&lt;?xml-stylesheettype=&quot;text/xsl&quot; href=&quot;mystyle．xsl&quot;?&gt;</span><br><br>&lt;联系人列表&gt;<br>  &lt;联系人&gt;<br>    &lt;姓名&gt;张三&lt;/姓名&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">ID</span>&gt;</span>001<span class="hljs-tag">&lt;/<span class="hljs-name">ID</span>&gt;</span><br>    &lt;公司&gt;A公司&lt;/公司&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">EMAIL</span>&gt;</span>zhang@aaa.com<span class="hljs-tag">&lt;/<span class="hljs-name">EMAIL</span>&gt;</span><br>    &lt;电话&gt;(010)62345678&lt;/电话&gt;<br>    &lt;地址&gt;<br>      &lt;街道&gt;五街1234号&lt;/街道&gt;<br>      &lt;城市&gt;北京市&lt;/城市&gt;<br>      &lt;省份&gt;北京&lt;/省份&gt;<br>    &lt;/地址&gt;<br>  &lt;/联系人&gt;<br>  &lt;联系人&gt;<br>    &lt;姓名&gt;李四&lt;/姓名&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">ID</span>&gt;</span>002<span class="hljs-tag">&lt;/<span class="hljs-name">ID</span>&gt;</span><br>    &lt;公司&gt;B公司&lt;/公司&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">EMAII</span>&gt;</span>1i@bbb.org<span class="hljs-tag">&lt;/<span class="hljs-name">EMAII</span>&gt;</span><br>    &lt;电话&gt;(021)87654321&lt;电话&gt;<br>    &lt;地址&gt;<br>      &lt;街道&gt;南京路9876号&lt;/街道&gt;<br>      &lt;城市&gt;上海市&lt;/城市&gt;<br>      &lt;省份&gt;上海&lt;/省份&gt;<br>    &lt;/地址&gt;<br>  &lt;/联系人&gt;<br>&lt;/联系人列表&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="1113-mystylexsl"><a class="markdownIt-Anchor" href="#1113-mystylexsl"></a> 1.11.3. MyStyle.xsl</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1．0&quot;encoding=&quot;GB2312&quot;?&gt;</span><br>&lt;xsl:stylesheetxmlns:xsl=&quot;http://www.w3.org/TR/WD-xsl&quot;<br>xmlHs=&quot;http://www.w3.org/TR/REC-html40&quot; result-ns:=&quot;&quot;&gt;<br><span class="hljs-tag">&lt;<span class="hljs-name">xst:template</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">xsl:apply-templates</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">xsl:template</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">xsl:template</span> <span class="hljs-attr">match</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">HTML</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">HEAD</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TITLE</span>&gt;</span>F公司的客户联系信息<span class="hljs-tag">&lt;/<span class="hljs-name">TITlE</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">HEAD</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">BODY</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">xsl:apply-templates</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;联系人列表&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">BODY</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">HTML</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">xsl:template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="1114-html格式"><a class="markdownIt-Anchor" href="#1114-html格式"></a> 1.11.4. Html格式</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">xsl:stemplat</span> <span class="hljs-attr">match</span>=<span class="hljs-string">&quot;联系人列表&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">xsl:for-each</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;联系人&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;姓名&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>用户ID:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;ID&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>公司:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;公司&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>EMAIL:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;EMAIL&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>电话:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;电话&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>街道:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;地址/街道&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>城市:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;地址/城市&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>省份:<span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;地址/省份&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">xsl:for-each</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">xsl:template</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">xsl:stylesheet</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="1115-xml格式"><a class="markdownIt-Anchor" href="#1115-xml格式"></a> 1.11.5. XML格式</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">HTML</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">HEAD</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TITLE</span>&gt;</span>F公司的客户联系信息<span class="hljs-tag">&lt;/<span class="hljs-name">TITLE</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">HEAD</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">BODY</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>张三<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">UI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>用户ID：001<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>公司：A公司<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>EMAIL:zhang＠aaa．com<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>电话：(010)62345678<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>地址：五街1234号<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>城市：北京市<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>省份：北京<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>李四<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">UL</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>ID：002<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>公司：B公司<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>EMAIL：1i＠bbb．or8<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>电话：(021)87654321<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>地址：南京路9876号<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>城市：上海市<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">LI</span>&gt;</span>省份：上海<span class="hljs-tag">&lt;/<span class="hljs-name">LI</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">UL</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">BODY</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">HTML</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="1116-显示"><a class="markdownIt-Anchor" href="#1116-显示"></a> 1.11.6. 显示</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-xml语法"><a class="markdownIt-Anchor" href="#2-xml语法"></a> 2. XML语法</h1>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xmlversion=&quot;1．0&quot;encoding=&quot;GB2312&quot;standalone=&quot;no&quot;?&gt;</span><br><span class="hljs-meta">&lt;?xml—stylesheettype=&quot;text/xsl&quot;href=&quot;mystyle．xsl&quot;?&gt;</span><br>&lt;专有名词列表&gt;<br>  &lt;专有名词&gt;<br>    &lt;名词&gt;XML&lt;/名词&gt;<br>    &lt;解释&gt;XMI是一种可扩展的元置标语言,它可用以规定新的置标规则,并根据这个规则组织数据&lt;/解释&gt;<br>    &lt;示例&gt;<br>      &lt;!-一个XML的例子-&gt;<br>      &lt;![CDATA[<br>      &lt;联系人&gt;<br>      &lt;姓名&gt;张三&lt;/姓名&gt;<br>      &lt;EMAIL&gt;zhang＠aaa．com&lt;/EMAIL&gt;<br>      &lt;/联系人&gt;<br>      ]]&gt;<br>    &lt;/示例&gt;<br>  &lt;/专有名词&gt;<br>&lt;/专有名词列表&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="21-xml文档的基本构成"><a class="markdownIt-Anchor" href="#21-xml文档的基本构成"></a> 2.1. XMl文档的基本构成</h2>
+<ol>
+<li>XMl声明</li>
+<li>处理指令(可选)</li>
+<li>XML元素
+<ol>
+<li>[1]是XML声明</li>
+<li>[2]是处理指令</li>
+<li>[3]一[17]是文档中的各个元素</li>
+<li>[8]是注释</li>
+<li>[9]～[14]是CDATA节</li>
+<li>在[5]行的<code>&lt;名词&gt;XML&lt;/名词&gt;</code>中,<code>&lt;名词&gt;``&lt;/名词&gt;</code>是标记,&quot;XML&quot;是字符数据</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-xml整体逻辑结构总结"><a class="markdownIt-Anchor" href="#22-xml整体逻辑结构总结"></a> 2.2. XML整体逻辑结构总结</h2>
+<ol>
+<li>XML文档通常以一个XML声明开始</li>
+<li>通过XML元素来组织XML数据</li>
+<li>XML元素包括标记和字符数据</li>
+<li>为组织数据更方便、清晰,在字符数据中引入CDATA数据块</li>
+<li>在文档中引入注释</li>
+<li>需要给XML处理程序提供一些指示信息,XML文档中可以包含处理指令</li>
+</ol>
+<h2 id="23-xml语法概述"><a class="markdownIt-Anchor" href="#23-xml语法概述"></a> 2.3. XML语法概述</h2>
+<ol>
+<li>元素规则</li>
+<li>必须有结束标记</li>
+<li>属性取值要加引号</li>
+<li>实体引用</li>
+<li>注释的语法</li>
+<li>空格会被保留</li>
+</ol>
+<h3 id="231-元素规则"><a class="markdownIt-Anchor" href="#231-元素规则"></a> 2.3.1. 元素规则</h3>
+<ol>
+<li>名字中不能<strong>包含空格</strong></li>
+<li>名字不能以<strong>数字或标点符号</strong>开头</li>
+<li>名字不能以任何<strong>大小写的xml开头</strong></li>
+<li>左尖括号(&lt;)<strong>后不可以有空格</strong></li>
+<li><strong>起始和结束标签的大小写</strong>必须一致</li>
+<li>XML文件中出现的第一个元素是<strong>根元素</strong></li>
+<li><strong>根元素必须有完整的起始和结束标签</strong></li>
+<li>所有的子元素必须嵌套在<strong>一个根元素</strong>中</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Root</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">ChildA</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ChildB</span>&gt;</span><br>      content<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ChildB</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">ChildA</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">Root</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="9">
+<li>嵌套元素不可以<strong>相互重叠</strong></li>
+<li>子元素如果内容为空，可以缩写标签:<code>&lt;ElementName /&gt;</code></li>
+</ol>
+<h4 id="2311-根元素"><a class="markdownIt-Anchor" href="#2311-根元素"></a> 2.3.1.1. 根元素</h4>
+<ol>
+<li>XML 文档必须包含在一个<strong>单一元素</strong>中。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="hljs-comment">&lt;!--A well-formed document --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">greeting</span>&gt;</span><br>  Hello, World!<br><span class="hljs-tag">&lt;/<span class="hljs-name">greeting</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>不包含单一根元素的文档都会被XML 解析器拒绝</li>
+</ol>
+<h4 id="2312-必需有结束标记"><a class="markdownIt-Anchor" href="#2312-必需有结束标记"></a> 2.3.1.2. 必需有结束标记</h4>
+<ol>
+<li>不能省去任何结束标记</li>
+<li>如果一个元素根本不包含标记,则称为空元素；HTML 换行(<code>&lt;br&gt;</code>)和图像(<code>&lt;img&gt;</code>)元素就是两个例子。在XML文档的空元素中,可以把结束斜杠放在开始标记中。下面的两个换行元素和两个图像元素对于XML 解析器来说是一回事：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../img/c.gif&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">img</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../img/c.gif&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="2313-属性"><a class="markdownIt-Anchor" href="#2313-属性"></a> 2.3.1.3. 属性</h4>
+<ol>
+<li>名称不够用</li>
+<li>命名规则和元素的命名规则类似</li>
+<li>属性必须有值</li>
+<li>属性值必须用单引号或双引号括起,且要始终保持一致</li>
+</ol>
+<h4 id="2314-实体引用"><a class="markdownIt-Anchor" href="#2314-实体引用"></a> 2.3.1.4. 实体引用</h4>
+<ol>
+<li>一些字符拥有特殊的意义</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>if salary &lt; 1000 then<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>if salary <span class="hljs-symbol">&amp;lt;</span> 1000 then<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>5个预定义的实体引用
+<ol>
+<li><code>&amp;lt;</code> &lt; 小于</li>
+<li><code>&amp;gt;</code> &gt; 大于</li>
+<li><code>&amp;amp</code> &amp; 和号</li>
+<li><code>&amp;apos</code> ’ 单引号</li>
+<li><code>&amp;quot;</code> &quot; 引号</li>
+</ol>
+</li>
+</ol>
+<h4 id="2315-cdata字节"><a class="markdownIt-Anchor" href="#2315-cdata字节"></a> 2.3.1.5. CDATA字节</h4>
+<ol>
+<li>元素内容的字符数据中不能插入左尖括号&quot;&lt;“或连字符”&amp;&quot;</li>
+<li>数据难以阅读</li>
+<li><code>&lt;![CDATA[…]]&gt;</code></li>
+<li>不包含字符串&quot;]]&gt;&quot;即可</li>
+</ol>
+<h4 id="2316-注释"><a class="markdownIt-Anchor" href="#2316-注释"></a> 2.3.1.6. 注释</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--This is a comment --&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>空格会被保留
+<ol>
+<li>HTML 会把多个连续的空格字符裁减为一个</li>
+<li>在XML 中,文档中的空格不会被删节</li>
+</ol>
+</li>
+<li>双连字符<code>--</code>不能在注释中出现</li>
+<li>注释不能以<code>---&gt;</code>终止</li>
+</ol>
+<h3 id="232-良好格式well-formed"><a class="markdownIt-Anchor" href="#232-良好格式well-formed"></a> 2.3.2. 良好格式(Well-formed)</h3>
+<ol>
+<li>XML文件的第一行必须是声明该文件是XML文件以及它所使用的XML规范版本</li>
+<li>在XML文件中有且只能够有一个根元素</li>
+<li>在XML文件中的标记必须正确地关闭</li>
+<li><strong>标记之间不得交叉</strong></li>
+<li>属性值必须要用引号括起来</li>
+<li>控制标记、指令和属性名称等英文要区分大小写</li>
+</ol>
+<h3 id="233-xml名称空间"><a class="markdownIt-Anchor" href="#233-xml名称空间"></a> 2.3.3. XML名称空间</h3>
+<ol>
+<li>不同领域的XML语汇的识别问题</li>
+<li>类似属性的形式声明
+<ol>
+<li>xmlns: URI</li>
+<li>xmlns:xx(前缀) = 某URI</li>
+<li>URI代表名称空间所属的领域</li>
+</ol>
+</li>
+<li>名称空间的作用范围：名称空间的作用范围就是该元素以及该元素所包含的元素和属性</li>
+</ol>
+<h1 id="3-dtd与scheme"><a class="markdownIt-Anchor" href="#3-dtd与scheme"></a> 3. DTD与Scheme</h1>
+<h2 id="31-dtddocument-type-definition"><a class="markdownIt-Anchor" href="#31-dtddocument-type-definition"></a> 3.1. DTD(Document Type Definition)</h2>
+<ol>
+<li>一套关于标记符的语法规则，XML1.0版标准中XML文件的验证机制，属于XML文件组成的一部分</li>
+<li>一种保证XML文档格式正确的有效方法，可以通过比较XML文档和DTD文件来看文档是否符合规范，元素和标签使用是否正确</li>
+<li>想使用XML进行数据交换的行业或组织可定义自己的DTD</li>
+<li>DTD文件是ASCII文本文件，后缀名为.dtd</li>
+</ol>
+<h3 id="311-内部dtd示例"><a class="markdownIt-Anchor" href="#311-内部dtd示例"></a> 3.1.1. 内部DTD示例</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1．0&quot;encoding=&quot;GB2312&quot;,standalone=&quot;yes&quot;&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE联系人列表[</span><br><span class="hljs-meta">&lt;!ELEMENT 联系人列表(联系人)*&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 联系人(姓名,ID,公司,EMAIL,电话)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 姓名(#PCDATA)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT ID(#PCDATA)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 公司(#PCDATA)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT EMAIL(#PCDATA)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 电话(#PCDATA)&gt;</span><br><span class="hljs-meta">]&gt;</span><br><span class="hljs-meta">&lt;联系人列表&gt;</span><br><span class="hljs-meta">  &lt;联系人&gt;</span><br><span class="hljs-meta">    &lt;姓名&gt;张三&lt;/姓名&gt;</span><br><span class="hljs-meta">    &lt;ID&gt;001&lt;/ID&gt;</span><br><span class="hljs-meta">    &lt;公司&gt;A公司&lt;/公司&gt;</span><br><span class="hljs-meta">    &lt;EMAIL&gt;zhang＠aaa．com&lt;/EMAIL&gt;</span><br><span class="hljs-meta">    &lt;电话&gt;(010)62345678&lt;/电话&gt;</span><br><span class="hljs-meta">  &lt;/联系人&gt;</span><br><span class="hljs-meta">&lt;/联系人列表&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="312-外部dtd"><a class="markdownIt-Anchor" href="#312-外部dtd"></a> 3.1.2. 外部DTD</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;? xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;? &gt;<br><span class="hljs-meta">&lt;!ELEMENT 联系人列表(联系人)*&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 联系人(姓名,<span class="hljs-keyword">ID</span>,公司,<span class="hljs-keyword">EMAIL</span>,电话,地址)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 地址(街道,城市,省份)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 姓名(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-keyword">ID</span>(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 公司(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-keyword">EMAIL</span>(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 电话(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 街道(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 城市(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br><span class="hljs-meta">&lt;!ELEMENT 省份(<span class="hljs-keyword">#PCDATA</span>)&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="313-元素声明"><a class="markdownIt-Anchor" href="#313-元素声明"></a> 3.1.3. 元素声明</h3>
+<ol>
+<li><code>&lt;!ELEMENT 元素名称元素的内容格式的定义&gt;</code></li>
+<li>基本元素声明：<code>&lt;!ELEMENT 姓名(#PCDATA)&gt;</code></li>
+<li>复合元素声明：<code>&lt;!ELEMENT 联系人(姓名,ID,公司,EMAIL,电话)&gt;</code></li>
+</ol>
+<h3 id="314-元素出现次数的控制"><a class="markdownIt-Anchor" href="#314-元素出现次数的控制"></a> 3.1.4. 元素出现次数的控制</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/7.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="315-元素属性声明"><a class="markdownIt-Anchor" href="#315-元素属性声明"></a> 3.1.5. 元素属性声明</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!ATTLIST 元素名 属性名 属性 类型 <span class="hljs-keyword">#REQUIRED</span>&gt;</span><br><span class="hljs-meta">&lt;!ATTLIST 页面作者 姓名 <span class="hljs-keyword">CDATA</span> <span class="hljs-keyword">#REQUIRED</span></span><br><span class="hljs-meta"><span class="hljs-keyword">#IMPLIED</span>, <span class="hljs-keyword">#FIXED</span> <span class="hljs-string">&quot;缺省值&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>元素名是属性所属的元素的名字</li>
+<li>属性名是属性的名字</li>
+<li>缺省值是属性的初值</li>
+<li>属性类型用来指定其属于哪种有效属性</li>
+</ol>
+<h3 id="316-xml属性类型"><a class="markdownIt-Anchor" href="#316-xml属性类型"></a> 3.1.6. XML属性类型</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="317-dtd的特点"><a class="markdownIt-Anchor" href="#317-dtd的特点"></a> 3.1.7. DTD的特点</h3>
+<ol>
+<li>DTD的优势在于每一个XML文档都可携带一个DTD，用来对该文档格式进行描述</li>
+<li>多个XML文档就都可以共享使用该DTD，使得数据交换更为有效。可以用某个DTD来检测接收到的数据是否符合某个标准</li>
+<li>DTD比Schema更加精炼，文档篇幅相同的情况下能表示更多内容</li>
+<li>DTD的局限性
+<ol>
+<li>DTD不遵守XML语法</li>
+<li>DTD数据类型有限</li>
+<li>DTD不可扩展</li>
+<li>DTD不支持命名空间</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-schema"><a class="markdownIt-Anchor" href="#32-schema"></a> 3.2. Schema</h2>
+<ol>
+<li>2001年5月2日成为W3C标准</li>
+<li>XML文档结构和内容约束的机制</li>
+<li>获得W3C推荐标准的第一个独立的XML模式语言</li>
+<li>XML的一种应用，将XML DTD重新按照XML语言规范来定义，充分体现了XML自描述性的特点</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml">1.<span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encording=&quot;GB2312&quot;?&gt;</span><br>2.<br>3. &lt;学生花名册 年级=&quot;六年级&quot; 班级=&quot;一班&quot;&gt;<br>4.    &lt;学生&gt;<br>5.      &lt;姓名&gt;李华&lt;/姓名&gt;<br>6.      &lt;籍贯&gt;河北&lt;/籍贯&gt;<br>7.      &lt;年龄&gt;14&lt;/年龄&gt;<br>8.      &lt;电话&gt;62875555 &lt;/电话&gt;<br>9.    &lt;/学生&gt;<br>10.   &lt;学生&gt;<br>11.     &lt;姓名&gt;王珊&lt;/姓名&gt;<br>12.     &lt;籍贯&gt;北京&lt;/籍贯&gt;<br>13.     &lt;年龄&gt;12&lt;/年龄&gt;<br>14.     &lt;电话&gt;82618888&lt;/电话&gt;<br>15.   &lt;/学生&gt;<br>16. &lt;/学生花名册&gt;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>相应DTD描述</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE 学生花名册[</span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 学生花名册(学生*)&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ATTLIST 学生花名册 年级CDATA # <span class="hljs-keyword">REQUIRED</span></span></span><br><span class="hljs-meta"><span class="hljs-meta">                      班级CDATA # <span class="hljs-keyword">IMPLIED</span>&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 学生(姓名+，籍贯，年龄，电话?)&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 姓名(# <span class="hljs-keyword">PCDATA</span>)&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 籍贯(# <span class="hljs-keyword">PCDATA</span>)&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 年龄(# <span class="hljs-keyword">PCDATA</span>)&gt;</span></span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ELEMENT 电话(# <span class="hljs-keyword">PCDATA</span>)&gt;</span></span><br><span class="hljs-meta">]&gt;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>上述第2行可用下面语句替换：<code>&lt;!DOCTYPE 学生花名册SYSTEM &quot;roster.dtd&quot;&gt;</code></li>
+<li>XML文档的结构：
+<ul>
+<li>根元素&quot;学生花名册&quot;
+<ul>
+<li>“年级”</li>
+<li>“班级”</li>
+</ul>
+</li>
+<li>&quot;学生花名册&quot;元素
+<ul>
+<li>&quot;学生&quot;元素
+<ul>
+<li>“姓名”</li>
+<li>“籍贯”</li>
+<li>“年龄”</li>
+<li>“电话”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用XML Schema 来描述：rosterschema.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml">1.  <span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encording=&quot;GB2312&quot;?&gt;</span><br>2.  <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span></span><br><span class="hljs-tag">      <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;urn:schemas-microsoft-com:xml-data&quot;</span> <span class="hljs-attr">xmlns:dt</span>=<span class="hljs-string">&quot;urn:schemas-microsoft-com:datatypes&quot;</span>&gt;</span><br>3.    &lt;AttributeTypename=&quot;年级&quot;/&gt;<br>4.    &lt;AttributeTypename=&quot;班级&quot;/&gt;<br>5.    &lt;ElementTypename=&quot;姓名&quot;/&gt;<br>6.    &lt;ElementTypename=&quot;籍贯&quot;/&gt;<br>7.    &lt;ElementTypename=&quot;年龄&quot;/&gt;<br>8.    &lt;ElementTypename=&quot;电话&quot;dt:type=&quot;fixed.14.4&quot;/&gt;<br>9.    &lt;ElementTypename=&quot;学生&quot; content=&quot;eltOnly&quot;&gt;<br>10.     &lt;elementTypename=&quot;姓名&quot;/&gt;<br>11.     &lt;elementTypename=&quot;籍贯&quot;/&gt;<br>12.     &lt;elementTypename=&quot;年龄&quot;/&gt;<br>13.     &lt;elementTypename=&quot;电话&quot;/&gt;<br>14.   <span class="hljs-tag">&lt;<span class="hljs-name">ElementType</span>&gt;</span><br>15.   &lt;ElementTypename=&quot;学生花名册&quot; content=&quot;eltOnly&quot;&gt;<br>16.     &lt;elementType=&quot;学生&quot;/&gt;<br>17.     <span class="hljs-tag">&lt;<span class="hljs-name">attribute</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;年级&quot;</span>/&gt;</span><br>18.     <span class="hljs-tag">&lt;<span class="hljs-name">attribute</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;班级&quot;</span>/&gt;</span><br>19.   <span class="hljs-tag">&lt;/<span class="hljs-name">ElementType</span>&gt;</span><br>20. <span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>为了给roster.xml指定文档定义规则，roster.xml第2行可用下面语句替换：<code>&lt;学生花名册xmlns=&quot;x-schema:rosterschema.xml&quot;&gt;</code></li>
+<li>rosterschema.xml分析
+<ul>
+<li>第1行是XML类型声明语句，指明该文档是一个XML文档，并且符合版本1.0规范；该文档采用GB2312编码</li>
+<li>第2行是Schema声明语句,它包含了Schema命名空间的声明</li>
+<li>本例中用到了两个命名空间
+<ul>
+<li><code>xmlns=&quot;urn:schemas-microsoft-com:xml-data&quot;</code>，指定本文档是一个XMLSchema文档</li>
+<li><code>xmlns:dt=&quot;urn:schemas-microsoft-com:datatypes&quot;&gt;</code>，定义了本文档中可以使用的数据类型</li>
+</ul>
+</li>
+<li>第3、4行是属性定义语句，它定义了两个属性：年级和班级</li>
+<li>第5-8行是元素定义语句，它定义了4个元素</li>
+<li>第9-14行定义了本XML Schema的二级元素：学生，指明该元素含有包含四个子元素：姓名、年龄、籍贯、电话</li>
+<li>第15-19行定义了本XML Schema的顶级元素：学生花名册，指明该元素包含一个子元素：学生，以及两个属性：年级、班级</li>
+<li>第20行是结束标记语句，它指明该XML Schema 的描述到此为止</li>
+</ul>
+</li>
+</ul>
+<h3 id="321-schema的优点"><a class="markdownIt-Anchor" href="#321-schema的优点"></a> 3.2.1. Schema的优点</h3>
+<ol>
+<li>XML Schema支持数据类型</li>
+<li>XML Schema使用XML语法</li>
+<li>XML Schema安全数据通讯</li>
+<li>XML Schema是可扩展的</li>
+</ol>
+<h4 id="3211-xml-schema支持数据类型"><a class="markdownIt-Anchor" href="#3211-xml-schema支持数据类型"></a> 3.2.1.1. XML Schema支持数据类型</h4>
+<ol>
+<li>更易于描述允许使用的文档内容</li>
+<li>更易于检验数据的有效性</li>
+<li>更易于与数据库中的数据一起协同工作</li>
+<li>更易于定义关于数据的限制</li>
+<li>更易于定义数据格式</li>
+<li>更易于将数据在不同的数据类型之间进行转换</li>
+</ol>
+<h4 id="3212-xml-schema使用xml语法"><a class="markdownIt-Anchor" href="#3212-xml-schema使用xml语法"></a> 3.2.1.2. XML Schema使用XML语法</h4>
+<ol>
+<li>可以不需要再学习一种全新的语言</li>
+<li>可以使用XML编辑器来编辑Schema文件</li>
+<li>可以使用XML解析器解析Schema文件</li>
+<li>可以使用XML DOM 处理Schema</li>
+<li>可以使用XSLT转换Schema</li>
+</ol>
+<h4 id="3213-xml-schema安全数据通讯"><a class="markdownIt-Anchor" href="#3213-xml-schema安全数据通讯"></a> 3.2.1.3. XML Schema安全数据通讯</h4>
+<ol>
+<li>当数据由发送者传递给接受者，数据内容理解的一致性。基于XML Schema，发送者可以用接受者能够理解的方式描述数据</li>
+<li>日期&quot;03-11-2004&quot;的理解</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">date</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span><br>2004-03-11<br><span class="hljs-tag">&lt;/<span class="hljs-name">date</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="3214-xml-schema是可扩展的"><a class="markdownIt-Anchor" href="#3214-xml-schema是可扩展的"></a> 3.2.1.4. XML Schema是可扩展的</h4>
+<ol>
+<li>因为XML Schema文件是由XML编写，所以可扩展</li>
+<li>在其它的Schema文件中再次再次使用你的Schema</li>
+<li>从标准的数据类型中派生出你自己的数据类型</li>
+<li>在同一个文档中参考多种Schema</li>
+</ol>
+<h3 id="322-schema-声明"><a class="markdownIt-Anchor" href="#322-schema-声明"></a> 3.2.2. Schema 声明</h3>
+<ol>
+<li>XML Schema的根元素为schema 元素：位于XML Schema的名字空间xs(XML Schema)或xsd(XML Schema definition)中</li>
+<li>Schema元素含有多个属性
+<ol>
+<li>名字空间声明(必须)</li>
+<li>其他在本文档中要用到的名字空间的声明(可选)</li>
+<li>该文档描述的目标名字空间(可选)</li>
+<li>语言(可选)等</li>
+</ol>
+</li>
+<li>常用格式为：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">xmlns:xsd</span>= <span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xmlns</span>[<span class="hljs-attr">:</span>名字空间名] = <span class="hljs-string">&quot;URI&quot;</span> &lt;!<span class="hljs-attr">--</span>可有若干个<span class="hljs-attr">--</span>&gt;</span><br>  targetNamespace= &quot;URI&quot;<br>  xml:language= &quot;语种&quot;&gt;<br>    若干子元素<br><span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="323-元素的声明"><a class="markdownIt-Anchor" href="#323-元素的声明"></a> 3.2.3. 元素的声明</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">elementType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;元素名&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">content</span> =<span class="hljs-string">&quot;&#123;empty|textonly|eltonly|mixed&#125;&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">dt:type</span>= <span class="hljs-string">&quot;类型参数&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">order</span> = <span class="hljs-string">&quot;&#123;one|seq|many&#125;&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">model</span> = <span class="hljs-string">&quot;&#123;open|close&#125;&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">&quot;最少出现次数&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">&quot;最大出现次数&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">elementType</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>最简单的声明：<code>&lt;elementType name=&quot;A&quot; content= &quot;empty&quot;/&gt;</code></li>
+</ol>
+<h3 id="324-属性声明"><a class="markdownIt-Anchor" href="#324-属性声明"></a> 3.2.4. 属性声明</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">AttributeType</span></span><br><span class="hljs-tag">  <span class="hljs-attr">name</span> = <span class="hljs-string">&quot;属性名&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">dt:type</span>= <span class="hljs-string">&quot;属性类型&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">dt:value</span>= <span class="hljs-string">&quot;枚举值列表&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">default</span> = <span class="hljs-string">&quot;默认值&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">required</span> = <span class="hljs-string">&quot;&#123;yes|no&#125;&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>例子</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Xsd:</span> <span class="hljs-attr">element</span> <span class="hljs-attr">name</span> = <span class="hljs-string">&quot;DNASample&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">xsd:</span> <span class="hljs-attr">complexType</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">xsd:</span> <span class="hljs-attr">sequence</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">xsd:</span> <span class="hljs-attr">element</span> <span class="hljs-attr">name</span> = <span class="hljs-string">&quot;sample&quot;</span> <span class="hljs-attr">type</span> = <span class="hljs-string">&quot;dnaType&quot;</span> <span class="hljs-attr">minOccurs</span>= <span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">maxOccurs</span>= <span class="hljs-string">&quot;5&quot;</span> /&gt;</span><br>  &lt;/xsd: sequence&gt;<br>  &lt;/xsd: complexType&gt;<br>  &lt;/Xsd: element&gt;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>不合法</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">DNASample</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">sample</span>&gt;</span>GATCTATC<span class="hljs-tag">&lt;/<span class="hljs-name">sample</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">DNASample</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="325-类型定义"><a class="markdownIt-Anchor" href="#325-类型定义"></a> 3.2.5. 类型定义</h3>
+<ol>
+<li>内置数据类型：数字、串、时间等预定义的基本数据类型，用于叶元素内容和属性值，还可用作简单类型的基</li>
+<li>简单类型：对内置数据类型的约束、列表和联合，自定义数据的结构和范围，也用于叶元素内容和属性值</li>
+<li>复杂类型：定义元素的子元素和属性，确定文档的逻辑结构，只能用于根元素和中间元素</li>
+</ol>
+<h4 id="3251-scheme-xml-的两种类型"><a class="markdownIt-Anchor" href="#3251-scheme-xml-的两种类型"></a> 3.2.5.1. Scheme XML 的两种类型</h4>
+<ol>
+<li>简单类型：
+<ol>
+<li>没有属性和子元素用来定义其他类型</li>
+<li>包含40种以上的预定义的简单类型</li>
+</ol>
+</li>
+<li>复杂类型：
+<ol>
+<li>可以存在多个属性</li>
+<li>可以用在其他复杂类型的定义中</li>
+<li>不能用来定义简单类型</li>
+<li>可以有子元素</li>
+</ol>
+</li>
+<li>内置基本类型
+<ol>
+<li>数字：decimal(十进制数)、float(浮点数)、double(双精度数)、hexBinary(十六进制数)、base64Binary(基64数)</li>
+<li>时间：duration(期间)、dateTime(日期与时间)、time(时间)、date(日期)、gYearMonth(年月)、gYear(年)、gMonth(月)、gMonthDay(月日)、gDay(日)</li>
+<li>其他：string(串)、boolean(布尔)、anyURI(任意统一资源标识符)、QName(限定名qualified name)、NOTATION(符号)</li>
+</ol>
+</li>
+</ol>
+<h3 id="326-有效性验证"><a class="markdownIt-Anchor" href="#326-有效性验证"></a> 3.2.6. 有效性验证</h3>
+<ol>
+<li>解析器构造XML文档，判断文档是否格式良好</li>
+<li>验证文档信息项(例如一个元素)
+<ol>
+<li>根据元素的名域URI ，获取Schema</li>
+<li>将文档信息项关连到相应Schema Component(如元素声明)</li>
+<li>判断Schema Component是否有效</li>
+<li>判断Information Item是否符合Schema Component</li>
+</ol>
+</li>
+<li>重复第二步，直到验证完整个文档</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml">[01]  <span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br>[02]  <span class="hljs-tag">&lt;<span class="hljs-name">students</span> <span class="hljs-attr">xmlns:stud</span>=<span class="hljs-string">&quot;http://cscw.buaa.edu.cn/Schema-Stud&quot;</span></span><br><span class="hljs-tag">      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;SY9061&quot;</span>&gt;</span><br>[03]    <span class="hljs-tag">&lt;<span class="hljs-name">student</span> <span class="hljs-attr">SId</span>=<span class="hljs-string">&quot;12345&quot;</span>&gt;</span><br>[04]      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Lin<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>[05]      <span class="hljs-tag">&lt;<span class="hljs-name">age</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">age</span>&gt;</span><br>[06]    <span class="hljs-tag">&lt;/<span class="hljs-name">student</span>&gt;</span><br>[07]    <span class="hljs-tag">&lt;<span class="hljs-name">student</span> <span class="hljs-attr">sId</span>=<span class="hljs-string">&quot;345657&quot;</span>&gt;</span><br>[08]      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Li<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>[09]    <span class="hljs-tag">&lt;/<span class="hljs-name">student</span>&gt;</span><br>[10]  <span class="hljs-tag">&lt;/<span class="hljs-name">students</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml">[01]<span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">http://www.w3.org/2000/08/XMLSchema</span></span><br><span class="hljs-tag">[<span class="hljs-attr">02</span>]    <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">&quot;http://cscw.buaa.edu.cn/Schema-Stud&quot;</span>&gt;</span><br>[08]  &lt;xsd:elementname=&quot;students&quot; type=&quot;StudentsType&quot;/&gt;<br>[09]  &lt;xsd:complexTypename=&quot;StudentsType&quot;&gt;<br>[10]    <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span><br>[11]      &lt;xsd:elementname=&quot;student&quot; type=&quot;StudentType&quot; maxOccus=&quot;unbounded&quot;/&gt;<br>[12]    <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span><br>[13]    &lt;xsd:attributename=&quot;class&quot; type=&quot;xsd:NMTOKEN&quot;/&gt;<br>[14]  <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span><br>[15]  &lt;xsd:complexTypename=&quot;StudentType&quot;&gt;<br>[16]    <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span><br>[17]      &lt;xsd:elementname=&quot;name&quot; type=&quot;xsd:string&quot;/&gt;<br>[18]      &lt;xsd:elementname=&quot;age&quot; type=&quot;xsd:int&quot; minOccus=&quot;0&quot;/&gt;<br>[19]    <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span><br>[20]    &lt;xsd:attributename=&quot;sId&quot; type=&quot;xsd:NMTOKEN&quot;/&gt;<br>[21]  <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span><br>[22]<span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h1 id="4-xslxslt-和-xpath"><a class="markdownIt-Anchor" href="#4-xslxslt-和-xpath"></a> 4. XSL,XSLT 和 XPath</h1>
+<h2 id="41-xsl"><a class="markdownIt-Anchor" href="#41-xsl"></a> 4.1. XSL</h2>
+<ol>
+<li>eXtensibleStylesheetLanguage，即可扩展样式表语言，w3c 推荐的一种标准，用以定义XML 文档的转换与格式化</li>
+<li>包含三个部分
+<ol>
+<li>XSLT(XSL Transformations)用于转换XML 文档的语言</li>
+<li>XPath(XML Path Language) 用于在XML 文档中导航的语言</li>
+<li>XSL-FO(XSL Formatting Objects)一种用于格式化XML 文档的语言</li>
+</ol>
+</li>
+</ol>
+<h3 id="411-why-need-xsl"><a class="markdownIt-Anchor" href="#411-why-need-xsl"></a> 4.1.1. Why need XSL</h3>
+<ol>
+<li>XML文档开发时会遇到的问题
+<ol>
+<li>面向一个应用设计的组织数据的结构可能对另外的应用不适应</li>
+<li>需要根据用户不同而对源文件处理，使之呈现内容不同，或者隐藏掉一些内容</li>
+<li>开发者选择的结构可能其他人员不熟悉，或者不习惯</li>
+</ol>
+</li>
+<li>相同数据在不同终端显示，设备不同，显示要求也不一样，XSLT使得避免了大量繁琐的工作</li>
+<li>CSS是一种静态的样式描述格式，其本身不遵从XML的语法规范</li>
+</ol>
+<h3 id="412-xslt文件的格式"><a class="markdownIt-Anchor" href="#412-xslt文件的格式"></a> 4.1.2. XSLT文件的格式</h3>
+<ol>
+<li>宣告部分</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">xsl:stylesheetversion</span> =<span class="hljs-string">&quot;1.0&quot;</span> <span class="hljs-attr">xmlns:xsl</span>=<span class="hljs-string">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>主程式部分</li>
+<li>函数部分</li>
+</ol>
+<h3 id="413-xslt的主程式"><a class="markdownIt-Anchor" href="#413-xslt的主程式"></a> 4.1.3. XSLT的主程式</h3>
+<ol>
+<li>主程式必须由<code>&lt;xsl:template match=&quot;/&quot;&gt;</code>标签开始，而以<code>&lt;/xsl:template&gt;s</code>结束</li>
+<li>XSL 程式开始执行时，先执行主程式，其他函数的执行是透过主程式或别的函数来调用</li>
+<li>XSL 程式的输出是HTML 、XML或其他结构化的文件</li>
+</ol>
+<h3 id="414-xslt程式的函数"><a class="markdownIt-Anchor" href="#414-xslt程式的函数"></a> 4.1.4. XSLT程式的函数</h3>
+<ol>
+<li>函数由<code>&lt;xsl:template&gt;</code>标签开始，以<code>&lt;/xsl:template&gt;</code>结束</li>
+<li>和主程式的写法类似，只是函数名称不同。主程式的名称是match=&quot;/&quot; 中的&quot;/&quot; ，表示原来XML 文件的根标签</li>
+<li>函数名称定义在&lt;xsl:template match=“函数名称” &gt; 标签中match 的attribute 值，即&quot;函数名称&quot; ，此函数名称是原来XML 文件中的标签名称</li>
+</ol>
+<h3 id="415-match具体匹配表达式"><a class="markdownIt-Anchor" href="#415-match具体匹配表达式"></a> 4.1.5. match=“具体匹配表达式”</h3>
+<ol>
+<li>从XML文档中取出一个特定的节点集合</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;xsl:templatematch=&quot;/&quot;&gt;<br>&lt;xsl:templatematch=&quot;shoppingcart/item&quot;&gt;<br>&lt;xsl:templatematch=&quot;/shoppingcart/item&quot;&gt;<br><span class="hljs-tag">&lt;<span class="hljs-name">xsl:template</span> <span class="hljs-attr">match</span>=<span class="hljs-string">&quot;shoppingcart/item[@itemNo=&#x27;3333&#x27;]&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">shoppingcart</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">itemNo</span>&gt;</span>3333<span class="hljs-tag">&lt;/<span class="hljs-name">itemNo</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">itemName</span>&gt;</span>屠龙刀<span class="hljs-tag">&lt;/<span class="hljs-name">itemName</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">item</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">itemNo</span>&gt;</span>4444<span class="hljs-tag">&lt;/<span class="hljs-name">itemNo</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">itemName</span>&gt;</span>离别钩<span class="hljs-tag">&lt;/<span class="hljs-name">itemName</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">shoppingcart</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="416-xslfor-each-select词语"><a class="markdownIt-Anchor" href="#416-xslfor-each-select词语"></a> 4.1.6. xsl:for-each select=“词语”</h3>
+<ol>
+<li>列举特定的元素出来一一进行处理</li>
+<li>order-by=&quot;+名称&quot;
+<ol>
+<li>&quot;+“表示按降序排列；”-&quot;表示按升序排列</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">&lt;xsl:iftest=&quot;.[名称=&#x27;..&#x27;]&quot;&gt;<br><span class="hljs-tag">&lt;<span class="hljs-name">xsl:value-of</span> <span class="hljs-attr">select</span>=<span class="hljs-string">&quot;元素名称/@属性名称&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!-- 取属性值 --&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="42-xpath"><a class="markdownIt-Anchor" href="#42-xpath"></a> 4.2. XPath</h2>
+<ol>
+<li>w3c颁布成为正式标准
+<ol>
+<li>XSL和XPointer对XML源文档进行匹配以定位文档或文档部分时,XPath提供了一套整合的定位语法，能够向前或向后对文档片段进行定位</li>
+<li>XQuery中，也有广泛的应用</li>
+</ol>
+</li>
+<li>XML源文档经常被看作是一些节点的集合，称作源文档树
+<ol>
+<li>XPath的表达式描述了一条对特定节点或节点集合的路径</li>
+<li>使用符号斜线&quot;/&quot;来分离路径上的节点</li>
+</ol>
+</li>
+</ol>
+<h3 id="421-xml文档树节点类型"><a class="markdownIt-Anchor" href="#421-xml文档树节点类型"></a> 4.2.1. XML文档树节点类型</h3>
+<ol>
+<li>根节点</li>
+<li>元素节点</li>
+<li>文本节点</li>
+<li>属性节点</li>
+<li>名字空间节点</li>
+<li>处理指令节点</li>
+<li>注释节点</li>
+</ol>
+<h3 id="422-xpath表达式"><a class="markdownIt-Anchor" href="#422-xpath表达式"></a> 4.2.2. XPath表达式</h3>
+<ol>
+<li>XPath的核心语法构架是表达式，XPath表达式由一系列的步组成，从根节点开始，步步深入，层层分析，直到最后一步返回结果
+<ol>
+<li>数字类型</li>
+<li>布尔类型</li>
+<li>字符串类型</li>
+<li>节点集合</li>
+</ol>
+</li>
+</ol>
+<h3 id="423-当前上下文"><a class="markdownIt-Anchor" href="#423-当前上下文"></a> 4.2.3. 当前上下文</h3>
+<ol>
+<li>context node：XPath定位步中的活跃元素</li>
+<li>Root/…/Ancestor/Parent/SELF/Child/Descendant</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="424-定位路径组成"><a class="markdownIt-Anchor" href="#424-定位路径组成"></a> 4.2.4. 定位路径组成</h3>
+<ol>
+<li>XPath定位路径是由一步或许多步构成，这些步被前斜线&quot;/&quot;分隔每一步都由三个部分组成
+<ol>
+<li>…/axis::nodetest[predicate]/…</li>
+<li>轴(axis)：由步选择的节点和当前上下文节点之间的关系</li>
+<li>节点测试(nodetest)：由步选择的节点类型和节点扩展名称</li>
+<li>谓词(predicate)：可以没有，由表达式进一步筛选节点测试选择的节点集</li>
+</ol>
+</li>
+</ol>
+<h3 id="425-定位路径的种类"><a class="markdownIt-Anchor" href="#425-定位路径的种类"></a> 4.2.5. 定位路径的种类</h3>
+<ol>
+<li>绝对路径
+<ol>
+<li>从根节点开始搜索，并且表达式以：&quot;/&quot;开头</li>
+<li>例如：/child::catalog/child::tools</li>
+</ol>
+</li>
+<li>相对路径：
+<ol>
+<li>基于当前上下文节点开始搜索</li>
+<li>例如：child::tools/child::saw</li>
+</ol>
+</li>
+</ol>
+<h3 id="426-例子"><a class="markdownIt-Anchor" href="#426-例子"></a> 4.2.6. 例子</h3>
+<ol>
+<li><code>/paper/chapter[1]/section[2]/title</code>: 第一章第二部分的标题</li>
+<li><code>/paper/chapter/title</code>: 所有章的标题</li>
+<li><code>/paper/*/title</code>: 论文中任何子元素的标题</li>
+<li><code>parent::node()or..</code>: 当前节点的父节点</li>
+<li><code>self::node()or.</code>：当前节点</li>
+<li><code>../..</code>：当前节点的父节点的父节点</li>
+<li><code>child::*</code>：当前节点的子节点</li>
+<li><code>./following-sibling::node()/@status</code>：后继兄弟节点status属性</li>
+</ol>
+<h3 id="427-轴"><a class="markdownIt-Anchor" href="#427-轴"></a> 4.2.7. 轴</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="428-节点测试"><a class="markdownIt-Anchor" href="#428-节点测试"></a> 4.2.8. 节点测试</h3>
+<ol>
+<li>*对任何主节点类型的节点测试结果都为真</li>
+<li>形式为NCName:* 时，其前缀和限制名称一样利用当前基准的名域声明进行扩展，除了加入名域的限制外，其选择节点和 * 一样</li>
+<li>还可以选择节点的类型
+<ol>
+<li>//Comment()：提取文档中所有的注释</li>
+<li>/book/chapter[2]//text():提取第二章中所有元素的实际文本内容；</li>
+</ol>
+</li>
+</ol>
+<h3 id="429-谓词"><a class="markdownIt-Anchor" href="#429-谓词"></a> 4.2.9. 谓词</h3>
+<ol>
+<li>轴和节点测试得到初始节点，由谓词进一步过滤，谓词形式为在方括号中加入谓词表达式，表达式为真时，选择该节点，否则不选择，谓词表达式经计算后结果是数字和非数字两种，若为数字，而且结果和该元素在初始节点集中的位置一样，表达式为真，否则为假</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/11.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4210-xpath中的字符串函数"><a class="markdownIt-Anchor" href="#4210-xpath中的字符串函数"></a> 4.2.10. XPath中的字符串函数</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4211-xpath中的数值函数"><a class="markdownIt-Anchor" href="#4211-xpath中的数值函数"></a> 4.2.11. XPath中的数值函数</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4212-xpath中的布尔函数"><a class="markdownIt-Anchor" href="#4212-xpath中的布尔函数"></a> 4.2.12. XPath中的布尔函数</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/14.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4213-示例"><a class="markdownIt-Anchor" href="#4213-示例"></a> 4.2.13. 示例</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">bookstore</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">book</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;eng&quot;</span>&gt;</span>Harry Potter<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">price</span>&gt;</span>29.99<span class="hljs-tag">&lt;/<span class="hljs-name">price</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">book</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">book</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;eng&quot;</span>&gt;</span>Learning XML<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">price</span>&gt;</span>39.95<span class="hljs-tag">&lt;/<span class="hljs-name">price</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">book</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bookstore</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>/bookstore/book[1]选取属于bookstore 子元素的第一个book 元素。</li>
+<li>/bookstore/book[last()] 选取属于bookstore 子元素的最后一个book 元素。</li>
+<li>/bookstore/book[last()-1] 选取属于bookstore 子元素的倒数第二个book 元素。</li>
+<li>/bookstore/book[position()❤️]选取最前面的两个属于bookstore 元素的子元素的book 元素。</li>
+<li>//title[@lang]选取所有拥有名为lang的属性的title 元素。</li>
+<li>//title[@lang=‘eng’]选取所有title 元素，且这些元素拥有值为eng 的lang属性。</li>
+<li>/bookstore/book[price&gt;35.00]选取所有bookstore 元素的book 元素，且其中的price 元素的值须大于35.00。</li>
+<li>/bookstore/book[price&gt;35.00]/title 选取所有bookstore 元素中book 元素的title 元素，其中的price 元素的值须大于35.00</li>
+</ol>
+<h1 id="5-xml解析"><a class="markdownIt-Anchor" href="#5-xml解析"></a> 5. XML解析</h1>
+<h2 id="51-xml解析技术的分类"><a class="markdownIt-Anchor" href="#51-xml解析技术的分类"></a> 5.1. XML解析技术的分类</h2>
+<ol>
+<li>把代表XML文档的一个无结构的字符序列转换为满足XML语法的结构化组件的过程
+<ol>
+<li>面向文档的流式解析</li>
+<li>面向文档的对象式解析</li>
+<li>面向文档的指针式解析</li>
+<li>面向应用的对象式解析</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-面向文档的流式解析"><a class="markdownIt-Anchor" href="#52-面向文档的流式解析"></a> 5.2. 面向文档的流式解析</h2>
+<ol>
+<li>一种基于事件的解析过程，解析器顺序读取XML文档，产生一个对应的事件流，并向事件处理程序发送所捕获的各种事件，如元素开始和元素结束等</li>
+<li>能够立即读取数据，而不是等待所有的数据被处理</li>
+<li>不需要将整个文档一次加载到内存，效率较高</li>
+<li>易用性的降低，流式解析编程较为复杂</li>
+<li>单遍解析特性，不支持随机访问</li>
+<li>推式解析(SAX)和拉式解析(StAX)</li>
+</ol>
+<h2 id="53-推式解析sax"><a class="markdownIt-Anchor" href="#53-推式解析sax"></a> 5.3. 推式解析(SAX)</h2>
+<ol>
+<li>解析器控制着读循环，在文档结束之前控制权不会返回给应用程序。解析器通过回调的方式进行数据处理</li>
+<li>SAX基于事件驱动，SAX解析器在读取XML文档的过程中生成一个事件流，并且对于每个事件通过回调事件处理程序中相应的方法来进行处理。比如元素开始和结束标记，元素内容，实体，语法分析错误等事件。针对下面的简单XML文档，所产生的事件如图所示，注意针对元素内的空格或回车也会生成一个文本事件</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/15.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="54-拉式解析stax"><a class="markdownIt-Anchor" href="#54-拉式解析stax"></a> 5.4. 拉式解析(StAX)</h2>
+<ol>
+<li>应用程序控制着读循环。循环中，应用程序负责反复调用解析器获得下一个事件，直到文档结束</li>
+<li>通过保留解析过程的控制权，可以简化调用代码来准确地处理它预期的内容，并且可随时停止解析</li>
+<li>没有基于处理程序回调，应用程序也不需要像SAX中那样模拟解析器的状态</li>
+</ol>
+<h2 id="55-两套处理xml的api"><a class="markdownIt-Anchor" href="#55-两套处理xml的api"></a> 5.5. 两套处理XML的API</h2>
+<ol>
+<li>基于指针的API:简单返回事件，此时事件用数值形式来表示。这是一种低层API，没有提供底层XML结构的抽象</li>
+<li>基于迭代器的API:以对象方式返回事件，每个事件对象都封装了它所表示的特定XML结构固有的信息，因此可直接利用其方法获得属于该结构的信息，但也需要额外的对象创建开销</li>
+</ol>
+<h2 id="56-面向文档的对象式解析技术"><a class="markdownIt-Anchor" href="#56-面向文档的对象式解析技术"></a> 5.6. 面向文档的对象式解析技术</h2>
+<ol>
+<li>流式解析方式无法更改数据和不支持随机访问</li>
+<li>DOM (Document Object Model) 用与平台和语言无关的方式对XML文档进行建模的W3C标准，提供一个可以通用于各种程序语言和应用程序的接口</li>
+<li>DOM作为一种对象式解析技术，定义了层次化对象模型来表示XML文档。即为XML语法中的每个概念(如元素，属性，实体，文档等)定义对应的类，而解析器在读入XML文档的时候，会建立XML语法和类之间的一一映射</li>
+<li>DOM的层次化对象模型是一个树形结构，它将一个XML文档看作一棵节点树，每个节点代表一个XML文档中的元素</li>
+</ol>
+<h2 id="57-dom的基本节点对象"><a class="markdownIt-Anchor" href="#57-dom的基本节点对象"></a> 5.7. DOM的基本节点对象</h2>
+<ol>
+<li>Document对象：树的最高节点，也是对整个文档操作的入口</li>
+<li>Element和Attr对象：对文档中元素和元素属性的映射</li>
+<li>Text对象：作为Element和Attr对象的子节点，代表元素或属性的文本内容</li>
+<li>NodeList对象：对节点按指定的方式进行遍历</li>
+</ol>
+<h2 id="58-面向文档的指针式解析技术"><a class="markdownIt-Anchor" href="#58-面向文档的指针式解析技术"></a> 5.8. 面向文档的指针式解析技术</h2>
+<ol>
+<li>效率问题:提取解析模式，解析时提取一部分源文件(字符串)，然后在内存中进行解析构建</li>
+<li>VTD(Virtual Token Descriptor)记录每个元素的起始位置，长度，深度以及令牌的类型等信息，类似于XML文档中元素的指针，可以快速定位到某个元素</li>
+<li>VTD-XML是一种无提取的XML解析方法，解决了DOM占用内存过大的缺点，并且还提供了快速的解析与遍历、对XPath的支持和增量更新等特性</li>
+</ol>
+<h3 id="581-vtd记录的比特层格式"><a class="markdownIt-Anchor" href="#581-vtd记录的比特层格式"></a> 5.8.1. VTD记录的比特层格式</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>令牌开始偏移量(即相对于XML文档头部的距离)是30 bits，能解析的最大文件是1G。令牌长度为20 bits，即一个令牌的最大长度是1M。令牌类型4bits，说明支持16种词汇类型</li>
+</ol>
+<h2 id="59-面向应用的对象式解析技术"><a class="markdownIt-Anchor" href="#59-面向应用的对象式解析技术"></a> 5.9. 面向应用的对象式解析技术</h2>
+<ol>
+<li>有的程序关心文档的XML结构；有的应用程序仅仅将XML作为数据交换的媒介，它们更关心的是文档数据本身</li>
+<li>数据绑定是指将数据从一些存储媒介(如XML文档、文本文件和数据库)中取出，并通过应用程序表示这些数据的过程，即把数据绑定到虚拟机能够理解并且可以操作的某种内存中的结构</li>
+<li>Hibernate就是针对数据库的轻量级数据绑定框架</li>
+</ol>
+<h3 id="591-数据绑定的应用"><a class="markdownIt-Anchor" href="#591-数据绑定的应用"></a> 5.9.1. 数据绑定的应用</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>编组(Marshalling) ：把内存中的数据转换到存储介质中的过程。</li>
+<li>解组(Unmarshalling) ：把数据从存储媒介转换到内存中的过程</li>
+<li>映射(Mapping) ：用于编组和解组的一套规则</li>
+</ol>
+<h2 id="510-文档模型和数据绑定模型比较"><a class="markdownIt-Anchor" href="#510-文档模型和数据绑定模型比较"></a> 5.10. 文档模型和数据绑定模型比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/18.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="511-四种xml解析技术的特性比较"><a class="markdownIt-Anchor" href="#511-四种xml解析技术的特性比较"></a> 5.11. 四种XML解析技术的特性比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/19.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="512-面向文档解析方式的性能比较"><a class="markdownIt-Anchor" href="#512-面向文档解析方式的性能比较"></a> 5.12. 面向文档解析方式的性能比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/xml/20.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Data-Integration/" class="category-chain-item">2021-Data-Integration</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%96%87%E6%A1%A3/">#文档</a>
+      
+        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">#数据集成</a>
+      
+        <a href="/project/tags/XML/">#XML</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Data-Integration-Lec2-xml</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Data-Integration/2021-Data-Integration-Lec2-xml/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Data-Integration/2021-Data-Integration-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="2021-Data-Integration-消息中间件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Data-Integration-消息中间件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Data-Integration/2021-Data-Integration-Hw2-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E8%AF%B4%E6%98%8E/" title="2021-Data-Integration-Hw2-第二次作业说明">
+                        <span class="hidden-mobile">2021-Data-Integration-Hw2-第二次作业说明</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

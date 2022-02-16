@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-Database-Development-Lec9-为性能而设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-Database-Development-Lec9-为性能而设计">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec9-%E4%B8%BA%E6%80%A7%E8%83%BD%E8%80%8C%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-Database-Development-Lec9-为性能而设计">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-16T11:10:12.000Z">
+<meta property="article:modified_time" content="2022-02-16T14:04:36.130Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="规范化">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2021-Database-Development-Lec9-为性能而设计 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:10" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-Database-Development-Lec9-为性能而设计</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec9-为性能而设计"><a class="markdownIt-Anchor" href="#lec9-为性能而设计"></a> Lec9-为性能而设计</h2>
+<h1 id="1-为性能而设计"><a class="markdownIt-Anchor" href="#1-为性能而设计"></a> 1. 为性能而设计</h1>
+<h2 id="11-数据的关系视图"><a class="markdownIt-Anchor" href="#11-数据的关系视图"></a> 1.1. 数据的关系视图</h2>
+<ol>
+<li>数据库只是对现实世界的有限描述。对特定的业务活动的描述不止一种</li>
+<li>&quot;关系模型&quot;中的&quot;关系&quot;的含义</li>
+<li>关系模型的一致性
+<ol>
+<li>只要遵守关系理论，可以保证基于数据库的任何查询结果与原始数据具有同样的有效</li>
+<li>关系理论包括
+<ol>
+<li>关系不包含重复数据</li>
+<li>关系理论保证无限数据的正确性</li>
+<li>记录之间没有顺序</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-规范化normailization"><a class="markdownIt-Anchor" href="#12-规范化normailization"></a> 1.2. 规范化（Normailization）</h2>
+<ol>
+<li>表结构没有规范化会面临很大的风险吗？
+<ol>
+<li>1NF 确保原子性（Atomicity）</li>
+<li>2NF 检查对键的完全依赖</li>
+<li>3NF 检查属性的独立性</li>
+</ol>
+</li>
+<li>过分精益求精会使精力分散</li>
+<li>规范化的价值
+<ol>
+<li>合理规范化的模型可应对需求变更</li>
+<li>规范化数据重复降至最少</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-有值-无值-空值"><a class="markdownIt-Anchor" href="#13-有值-无值-空值"></a> 1.3. 有值、无值、空值</h2>
+<ol>
+<li>表中的每一条记录都应该是特定&quot;事物&quot;的状态描述，如果大部分特征信息都显示&quot;我们不知道&quot;，无疑大大降低了信息可信性</li>
+<li>存在空值意味着关系模型存在严重的问题，动摇了查询优化的基础</li>
+<li>空值对程序逻辑是危险的
+<ol>
+<li>必须使用空值的话，一定要清楚它在特定情况下的影响。</li>
+</ol>
+</li>
+</ol>
+<h2 id="14-限用boolean型字段"><a class="markdownIt-Anchor" href="#14-限用boolean型字段"></a> 1.4. 限用Boolean型字段</h2>
+<ol>
+<li>SQL中并不存在Boolean类型</li>
+<li>实现flag表示标志位的Y/N或T/F
+<ol>
+<li>例如：order_completed</li>
+<li>但是…往往增加信息字段能包含更多的信息量</li>
+<li>例如：completion_date completion_by</li>
+<li>或者增加order更多状态标示</li>
+</ol>
+</li>
+<li>极端的例子：四个属性取值都是T/F，可以用0-15这16个数值代表四个属性所有组合状态
+<ol>
+<li>技巧可能违反了原子性的原则</li>
+<li>为数据而数据，是通向灾难之路</li>
+</ol>
+</li>
+</ol>
+<h2 id="15-理解子类型subtype"><a class="markdownIt-Anchor" href="#15-理解子类型subtype"></a> 1.5. 理解子类型（SubType）</h2>
+<ol>
+<li>表过&quot;宽&quot;（有太多属性）的另一个原因，是对数据项之间的关系了解不够深入，窄表的效率相对比较高</li>
+<li>一般情况下，给子类型表指定完全独立于父表主键的主键，是极其错误的</li>
+</ol>
+<h2 id="16-约束应明确说明"><a class="markdownIt-Anchor" href="#16-约束应明确说明"></a> 1.6. 约束应明确说明</h2>
+<ol>
+<li>数据中存在隐含约束是一种不良设计</li>
+<li>字段的性质随着环境变化而变化时设计的错误和不稳定性</li>
+<li>数据语义属于DBMS，别放到应用程序中</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* × */</span><br>configuration(parameter_name, parameter_value)<br><span class="hljs-comment">/* √ */</span><br>configuration(parameter_id, parameter_name, parameter_type)<br>  configuration_numeric (parameter_id, parameter_value)<br></code></pre></td></tr></table></figure>
+<h2 id="17-过于灵活的危险性"><a class="markdownIt-Anchor" href="#17-过于灵活的危险性"></a> 1.7. 过于灵活的危险性</h2>
+<ol>
+<li>“真理向前跨一步就是谬误”</li>
+<li>不可思议的四<strong>通用表</strong>设计
+<ol>
+<li>Objects(oid, name), Attributes(attrid, attrname,type)</li>
+<li>Object_Attributes(oid,attrid,value)</li>
+<li>Link(oid1,oid2)</li>
+</ol>
+</li>
+<li>随意增加属性，避免NULL</li>
+<li>成本急剧上升，性能令人失望</li>
+<li>基于规则的优化器：笛卡尔积往往是最消耗性能的。</li>
+<li>目前是基于成本的优化器，大量的性能消耗也使得关系数据库出现问题</li>
+</ol>
+<h2 id="18-如何处理历史数据"><a class="markdownIt-Anchor" href="#18-如何处理历史数据"></a> 1.8. 如何处理历史数据</h2>
+<ol>
+<li>历史数据：例如：商品在某一时刻的价格</li>
+<li>Price_history(article_id , effective_from_date , price)</li>
+<li>缺点在于查询当前价格比较笨拙</li>
+<li>设置为价格终止时间呢？</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a.article_name, h.price<br><span class="hljs-keyword">from</span> articles a,<br>  price_history h<br><span class="hljs-keyword">where</span> a.article_name <span class="hljs-operator">=</span> some_name<br>  <span class="hljs-keyword">and</span> h.article_id <span class="hljs-operator">=</span> a.article_id<br>  <span class="hljs-keyword">and</span> h.effective_from_date <span class="hljs-operator">=</span><br>    (<span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(b.effective_from_date)<br>      <span class="hljs-keyword">from</span> price_history b<br>      <span class="hljs-keyword">where</span> b.article_id <span class="hljs-operator">=</span> h.article_id)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a.article_name, h.price<br>  <span class="hljs-keyword">from</span> articles a,<br>    price_history h<br>  <span class="hljs-keyword">where</span> a.article_name <span class="hljs-operator">=</span> some_name<br>    <span class="hljs-keyword">and</span> h.article_id <span class="hljs-operator">=</span> a.article_id<br>    <span class="hljs-keyword">and</span> h.effective_from_date <span class="hljs-operator">=</span><br>      (<span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(b.effective_from_date)<br>        <span class="hljs-keyword">from</span> price_history b<br>        <span class="hljs-keyword">where</span> b.article_id <span class="hljs-operator">=</span> h.article_id<br>          <span class="hljs-keyword">and</span> b.effective_from_date <span class="hljs-operator">&lt;=</span> sysdate)<br></code></pre></td></tr></table></figure>
+<h2 id="19-处理流程"><a class="markdownIt-Anchor" href="#19-处理流程"></a> 1.9. 处理流程</h2>
+<ol>
+<li>操作模式（operating mode）
+<ol>
+<li>异步模式处理（批处理）</li>
+<li>同步模式处理（实时交易）</li>
+</ol>
+</li>
+<li>处理数据的方式会影响我们物理结构的设计</li>
+<li>清算：部分锁表进行清算</li>
+<li>任何一个系统要将批处理和实时处理分开</li>
+</ol>
+<h2 id="110-数据集中化centralizing"><a class="markdownIt-Anchor" href="#110-数据集中化centralizing"></a> 1.10. 数据集中化（Centralizing）</h2>
+<ol>
+<li>分布式数据系统复杂性大大增加
+<ol>
+<li>远程数据的透明引用访问代价很高</li>
+<li>不同数据源数据结合极为困难
+<ol>
+<li>Copy的数据传输开销</li>
+<li>无法从数据规划中获益（物理结构，索引）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>数据库该如何部署呢？中庸、分析、决策</li>
+<li>离数据越近，访问速度越快</li>
+</ol>
+<h2 id="111-系统复杂性"><a class="markdownIt-Anchor" href="#111-系统复杂性"></a> 1.11. 系统复杂性</h2>
+<ol>
+<li>数据库的错误很多
+<ol>
+<li>硬件故障</li>
+<li>错误操作…</li>
+</ol>
+</li>
+<li>数据恢复往往是RD和DBA争论焦点
+<ol>
+<li>DBA，即便确保数据库本身工作正常，依然无法了解数据是否正确</li>
+<li>RD，在数据库恢复后进行所有的功能性的检查</li>
+</ol>
+</li>
+<li>高性能数据库一般不使用防御式编程，而做进攻性编程</li>
+</ol>
+<h1 id="2-小结"><a class="markdownIt-Anchor" href="#2-小结"></a> 2. 小结</h1>
+<ol>
+<li>错误的设计是导致灾难性后果的源泉</li>
+<li>解决设计问题会浪费惊人的精力和智慧</li>
+<li>性能问题非常普遍</li>
+<li>打着&quot;改善性能&quot;的旗号进行非规范化处理，常常使性能问题变得更糟</li>
+<li>成果的数据建模和数据操作应严格遵循基本的设计原则。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2021-Database-Development/" class="category-chain-item">2021-Database-Development</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/project/tags/%E8%A7%84%E8%8C%83%E5%8C%96/">#规范化</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-Database-Development-Lec9-为性能而设计</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec9-%E4%B8%BA%E6%80%A7%E8%83%BD%E8%80%8C%E8%AE%BE%E8%AE%A1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Database-Development/2021-Database-Development-Lec8-%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" title="2021-Database-Development-Lec8-并发处理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-Database-Development-Lec8-并发处理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2021-Database-Development/2021-Database-Development-Exam0-%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/" title="2021-Database-Development-Exam0-复习提纲">
+                        <span class="hidden-mobile">2021-Database-Development-Exam0-复习提纲</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

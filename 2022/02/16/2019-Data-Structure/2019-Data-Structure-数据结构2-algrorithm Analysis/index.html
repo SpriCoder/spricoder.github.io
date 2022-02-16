@@ -1,0 +1,1076 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/project/img/avatar.png">
+  <link rel="icon" href="/project/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2019-Data-Structure-数据结构2-algrorithm Analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-Data-Structure-数据结构2-algrorithm Analysis">
+<meta property="og:url" content="https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842-algrorithm%20Analysis/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2019-Data-Structure-数据结构2-algrorithm Analysis">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.17.png">
+<meta property="article:published_time" content="2022-02-16T11:09:51.000Z">
+<meta property="article:modified_time" content="2022-02-16T11:51:01.434Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法复杂度">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.1.png">
+  
+  
+  <title>2019-Data-Structure-数据结构2-algrorithm Analysis - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/project/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/project/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/project/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/project/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/project/local-search.xml"};
+  </script>
+  <script  src="/project/js/utils.js" ></script>
+  <script  src="/project/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/project/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/project/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-16 19:09" pubdate>
+          2022年2月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2019-Data-Structure-数据结构2-algrorithm Analysis</h1>
+            
+            <div class="markdown-body">
+              
+              <p><strong>Algorithm Analysis(算法分析)</strong><br />
+分析一个算法的时间和空间效率</p>
+<h1 id="1-两个方法来进行算法分析"><a class="markdownIt-Anchor" href="#1-两个方法来进行算法分析"></a> 1. 两个方法来进行算法分析</h1>
+<h2 id="11-performance-analysis"><a class="markdownIt-Anchor" href="#11-performance-analysis"></a> 1.1. performance analysis</h2>
+<h2 id="12-performance-measurement"><a class="markdownIt-Anchor" href="#12-performance-measurement"></a> 1.2. performance measurement</h2>
+<h1 id="2-空间复杂度space-complexity"><a class="markdownIt-Anchor" href="#2-空间复杂度space-complexity"></a> 2. 空间复杂度(Space complexity)</h1>
+<ol>
+<li>the amount of memory a program needs to run to completion 运行完成程序所需要的内存空间</li>
+</ol>
+<h2 id="21-组件components"><a class="markdownIt-Anchor" href="#21-组件components"></a> 2.1. 组件(components)</h2>
+<ol>
+<li>一个程序在电脑上运行时存储所需要的内存占用。</li>
+</ol>
+<h3 id="211-instruction-space指令空间"><a class="markdownIt-Anchor" href="#211-instruction-space指令空间"></a> 2.1.1. instruction space(指令空间)</h3>
+<ol>
+<li>这个是指程序编译成的二进制码的空间大小。</li>
+<li>或者称为代码区，代码空间。</li>
+<li>代码空间在某些情况下是不计算的:
+<ul>
+<li>为什么:这部分和你的算法内容是无关的，更多的是系统对于二进制码的执行。</li>
+<li>同学们的源代码编译而成二进制码在载入内存时越大越大。这个对于不同软件的差异会很大。</li>
+<li>在windows里面的动态链接库就是用来处理这个问题，没必要一次性导入全部的二进制码。</li>
+</ul>
+</li>
+</ol>
+<h3 id="212-data-space数据空间"><a class="markdownIt-Anchor" href="#212-data-space数据空间"></a> 2.1.2. data space(数据空间)</h3>
+<ol>
+<li>space needed for constants,simple variables,component variables 常量、基本变量、成员变量所需的内存空间</li>
+<li>数据区，主要是包括相应的数据等。各种变量常量的空间。</li>
+</ol>
+<h3 id="213-environment-stack-space环境栈空间"><a class="markdownIt-Anchor" href="#213-environment-stack-space环境栈空间"></a> 2.1.3. environment stack space(环境栈空间)</h3>
+<ol>
+<li>to save information needed to resume execution of partially completed functions 保存恢复执行部分完成的函数所需的信息</li>
+<li>栈空间、堆空间等。
+<ul>
+<li>恢复执行程序功能而是用的空间。</li>
+<li>是一个比较细枝末节的空间。</li>
+</ul>
+</li>
+</ol>
+<h3 id="214-不计算的空间"><a class="markdownIt-Anchor" href="#214-不计算的空间"></a> 2.1.4. 不计算的空间</h3>
+<ol>
+<li>操作系统的额外保留空间是不算的。(在计算算法复杂度的时候不考虑这个问题)</li>
+</ol>
+<h2 id="22-空间复杂度讨论的数据区部分"><a class="markdownIt-Anchor" href="#22-空间复杂度讨论的数据区部分"></a> 2.2. 空间复杂度讨论的数据区部分</h2>
+<h3 id="221-a-fixed-part-定长部分"><a class="markdownIt-Anchor" href="#221-a-fixed-part-定长部分"></a> 2.2.1. a fixed part 定长部分</h3>
+<ol>
+<li>include space for instructions,simple variables,fixed-size component variables,constants 包含指令、简单变量、定长度的成员变量、常量的内存空间</li>
+<li>这部分空间是<strong>一定会存在</strong>的。</li>
+<li>常数0所占据的空间也会算入。(但是是一个常数级空间)两个0怎么样呢?
+<ul>
+<li>影响不大，因为怎么算都是常量级别的</li>
+</ul>
+</li>
+</ol>
+<h3 id="222-a-variable-part-变量部分"><a class="markdownIt-Anchor" href="#222-a-variable-part-变量部分"></a> 2.2.2. a variable part 变量部分</h3>
+<ol>
+<li>include space for component variables,dynamical allocated space,recursion stack 包含成员变量、动态分配空间、递归栈空间的内存空间部分</li>
+<li>我们最关心的是这部分，也就是随着数据量的增长而带来的问题。</li>
+</ol>
+<h2 id="23-算法例子"><a class="markdownIt-Anchor" href="#23-算法例子"></a> 2.3. 算法例子</h2>
+<h3 id="231-例一"><a class="markdownIt-Anchor" href="#231-例一"></a> 2.3.1. 例一</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.1.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在调用相应函数之前的空间是不进行计算的，所以数组并没有单独多余输入。</li>
+<li>a是一个指针。</li>
+</ol>
+<p>结果</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.2.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>例子机器是16个字节</li>
+<li>S(n):S表示space</li>
+<li>S(n) = 0:的含义是指占用空间是常数级的。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>不同机器位数</th>
+<th>每个int占据的大小</th>
+<th>S(n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16位</td>
+<td>2 bytes</td>
+<td>12 bytes</td>
+</tr>
+<tr>
+<td>32位</td>
+<td>4 bytes</td>
+<td>24 bytes</td>
+</tr>
+<tr>
+<td>64位</td>
+<td>8 bytes</td>
+<td>64 bytes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="232-例二"><a class="markdownIt-Anchor" href="#232-例二"></a> 2.3.2. 例二</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.3.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<p>结果</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.4.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>只要你写了局部变量，局部变量静态分布，在执行局部之前就已经分配好了而不是等到执行的时候才分配地址。</li>
+<li>返回值地址需要被存储(不然无法进行返回)</li>
+</ol>
+<h2 id="24-为什么不是用空间增长率来表示空间复杂度"><a class="markdownIt-Anchor" href="#24-为什么不是用空间增长率来表示空间复杂度"></a> 2.4. 为什么不是用空间增长率来表示空间复杂度</h2>
+<p>注意:S(n)并不是空间增长的导数。</p>
+<h1 id="3-时间复杂度time-complexity"><a class="markdownIt-Anchor" href="#3-时间复杂度time-complexity"></a> 3. 时间复杂度(Time complexity)</h1>
+<ol>
+<li>the amount of time a program needs to run to completion 程序运行完成所需要的时间</li>
+<li>编译时间是不计算近时间复杂度，一般来说我们的编译次数是远远小于运行时间，一般只消耗一次。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.5.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h2 id="31-计算程序的时间复杂度"><a class="markdownIt-Anchor" href="#31-计算程序的时间复杂度"></a> 3.1. 计算程序的时间复杂度</h2>
+<ol>
+<li>关键的是计数中间的关键的操作个数。
+<ul>
+<li>格外重要的是在循环中的操作个数</li>
+</ul>
+</li>
+<li>第一个例子:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.6.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>先假设所有的操作都进行计算
+<ul>
+<li>1(pos)+1(i)+(n-1)(for): 包含赋值语句，还包括for循环中每次都必须要做的语句。</li>
+<li>在循环中:首先进行条件判断，然后有一个可能做也可能不做的操作，然后是做i++，所以一个循环中最少是3倍，最多是4倍操作。</li>
+<li>所以操作数在(1+1+3(n-1)+1)-(1+1+4(n-1)+1)之间。</li>
+<li>不要太纠结这个非这个层次的操作个数</li>
+</ul>
+</li>
+<li>为什么计算时间复杂度比较模糊、很难精准表示?
+<ul>
+<li>因为很多操作可能不止一个操作。</li>
+<li>CPU执行不同指令的速度是不同的。</li>
+</ul>
+</li>
+</ol>
+<h3 id="311-补充cpu和gpu的区别"><a class="markdownIt-Anchor" href="#311-补充cpu和gpu的区别"></a> 3.1.1. 补充：CPU和GPU的区别</h3>
+<ol>
+<li>在GPU中计算条件指令的速度很慢，但计算图形界面指令很快。而CPU则相反。</li>
+<li>GPU擅长负责图形(三维)、矩阵运算。</li>
+<li>CPU擅长运算数理逻辑。</li>
+</ol>
+<h3 id="312-问题我们需要计算到多么精细是合适的"><a class="markdownIt-Anchor" href="#312-问题我们需要计算到多么精细是合适的"></a> 3.1.2. 问题:我们需要计算到多么精细是合适的？</h3>
+<ol>
+<li>我们只需要做到时间复杂度的数量级即可。</li>
+</ol>
+<h2 id="32-不同情况下的时间复杂度的情况"><a class="markdownIt-Anchor" href="#32-不同情况下的时间复杂度的情况"></a> 3.2. 不同情况下的时间复杂度的情况</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.8.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<h3 id="321-最好情况"><a class="markdownIt-Anchor" href="#321-最好情况"></a> 3.2.1. 最好情况</h3>
+<h3 id="322-平均情况"><a class="markdownIt-Anchor" href="#322-平均情况"></a> 3.2.2. 平均情况</h3>
+<ol>
+<li>这个计算起来时很复杂的。
+<ul>
+<li>其前提是所有情况的概率是一致的。</li>
+</ul>
+</li>
+<li>使用算术平均值来代替平均情况是一个简化的运算，在考试中是可以这么进行计算，但是并不能完全代表平均情况。</li>
+</ol>
+<h3 id="323-最差情况"><a class="markdownIt-Anchor" href="#323-最差情况"></a> 3.2.3. 最差情况</h3>
+<h3 id="324-例子"><a class="markdownIt-Anchor" href="#324-例子"></a> 3.2.4. 例子</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.9.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>最好情况下:一次性结束，第一次找到</li>
+<li>最坏情况下:n次结束，最后一次找到</li>
+<li>平均情况下:(n+1)/2，使用算术平均值</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.10.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>不等概率下如何进行计算?
+<ul>
+<li>将对应的位置上的概率加权进行计算。</li>
+</ul>
+</li>
+</ol>
+<h1 id="4-如何统计大规模的算法步数"><a class="markdownIt-Anchor" href="#4-如何统计大规模的算法步数"></a> 4. 如何统计大规模的算法步数</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.12.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>使用整形变量count，并且加入到相应的必要的地方进行计数。</li>
+<li>为程序加入计数器</li>
+<li>第四个count是表示跳出的条件判断</li>
+</ol>
+<h1 id="5-渐进性时间分析方法"><a class="markdownIt-Anchor" href="#5-渐进性时间分析方法"></a> 5. 渐进性时间分析方法</h1>
+<ol>
+<li>我们更加关心的是<strong>文件规模</strong>比较大的情况下的算法时间复杂度问题。</li>
+</ol>
+<h2 id="51-大o表示法"><a class="markdownIt-Anchor" href="#51-大o表示法"></a> 5.1. 大O表示法</h2>
+<ol>
+<li>provide a upper bound for the function f.表示函数 f 的上界</li>
+<li>定义:f(n)=O(g(n)) iff positive constant c and n<sub>0</sub> exist such that f(n) &lt;=c * g(n)  for all n, n&gt;=n<sub>0</sub></li>
+<li>例子:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.13.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>复杂度排序:从小到大
+<ol>
+<li>O(1)</li>
+<li>O(log n)</li>
+<li>O(n)</li>
+<li>O(nlogn)</li>
+<li>O(n<sup>2</sup>)</li>
+<li>O(n<sup>3</sup>)</li>
+<li>O(2<sup>n</sup>)</li>
+<li>O(3<sup>n</sup>)</li>
+<li>O(n!)</li>
+<li>O(n<sup>n</sup>)</li>
+<li>O(n<sup>n<sup>.<sup>.<sup>.<sup>n</sup></sup></sup></sup></sup>)</li>
+</ol>
+</li>
+</ol>
+<h3 id="511-最大子序列的和"><a class="markdownIt-Anchor" href="#511-最大子序列的和"></a> 5.1.1. 最大子序列的和</h3>
+<ol>
+<li>MAXIMUM SUBSEQUNCE SUM PROBLEM 给定整数a1,a2,…,an (可能有负数)，求∑a<sub>k</sub>的最大值。
+<ul>
+<li>求最大子序列和</li>
+</ul>
+</li>
+<li>算法:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxSubSum1</span><span class="hljs-params">( <span class="hljs-type">int</span> [] a )</span> &#123;   <br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++ )<br>        <span class="hljs-comment">//双指针i和j卡两边，全遍历</span><br>        <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i; j &lt; a.length; j++ ) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">thisSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> i; k &lt;= j; k++ ) <br>                thisSum += a[k];<br>            <span class="hljs-keyword">if</span> ( thisSum &gt; maxSum )<br>                maxSum = thisSum;<br>        &#125;<br>    <span class="hljs-keyword">return</span> maxSum;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>时间复杂度:O(n<sup>3</sup>)</li>
+</ol>
+<h2 id="算法优化"><a class="markdownIt-Anchor" href="#算法优化"></a> 算法优化</h2>
+<ol>
+<li>例子:通过前一个子序列加上之后的一个元素的和即为结果。</li>
+</ol>
+<h2 id="-code1-进一步的优化"><a class="markdownIt-Anchor" href="#-code1-进一步的优化"></a> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxSubSum2</span><span class="hljs-params">( <span class="hljs-type">int</span> [] a )</span> &#123;   <br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++ ) &#123;   <br>        <span class="hljs-type">int</span> <span class="hljs-variable">thisSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>        <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i; j &lt; a.length; j++ ) &#123;<br>            <span class="hljs-comment">//不从头加，进行累加</span><br>            thisSum += a[j]; <br>            <span class="hljs-keyword">if</span> ( thisSum &gt; maxSum ) <br>            maxSum = thisSum; <br>        &#125; <br>    &#125; <br>    <span class="hljs-keyword">return</span> maxSum; <br>&#125;<br></code></pre></td></tr></table></figure><br />
+进一步的优化</h2>
+<ol>
+<li>我们使用分治法:将一个问题分为两个部分来解决。</li>
+<li><strong>分阶段</strong>:把问题分成两个大致相等的子问题，然后递归地对它们求解。</li>
+<li><strong>治阶段</strong>:将两个子问题的解合并到一起，可能在做些少量的附加工作，最后得到整个问题的解</li>
+<li>key:什么时候是两边都不是含有最大子序列的情况。
+<ul>
+<li>如果是这样子的情况，那么左边的最右边和右边的最左边必定在这个序列中，通过生成法生成一个最大子序列。</li>
+<li>如果含有那么完成了优化。</li>
+</ul>
+</li>
+<li>优化代码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxSumRec</span><span class="hljs-params">( <span class="hljs-type">int</span> [] a, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right )</span> &#123;   <br>    <span class="hljs-keyword">if</span> ( left == right ) <br>        <span class="hljs-keyword">if</span> ( a[left] &gt; <span class="hljs-number">0</span> ) <br>            <span class="hljs-keyword">return</span> a[left];<br>        <span class="hljs-keyword">else</span>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">center</span> <span class="hljs-operator">=</span> ( left + right ) / <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxLeftSum</span> <span class="hljs-operator">=</span> maxSumRec( a, left, center );<br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxRightSum</span> <span class="hljs-operator">=</span> maxSumRec( a, center + <span class="hljs-number">1</span>, right );<br>    <span class="hljs-comment">//向左生成局部最大子序列</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxLeftBorderSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, leftBorderSum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> center; i &gt;= left; i-- ) &#123;<br>        leftBorderSum += a[i];<br>        <span class="hljs-keyword">if</span> ( leftBordersum &gt; maxLeftBorderSum )<br>            maxLeftBorderSum = leftBorderSum;<br>    &#125;<br>    <span class="hljs-comment">// 向右生成局部最大子序列</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxRightBorderSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>,rightBorderSum = <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> center + <span class="hljs-number">1</span>; i &lt;= right; i++ ) &#123;<br>        rightBorderSum += a[i] ;<br>        <span class="hljs-keyword">if</span> ( rightBorderSum &gt; maxRightBorderSum )<br>            maxRightBorderSum =  rightBorderSum;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max3( maxLeftSum, maxRightSun, maxLeftBorderSum + maxRightBorderSum );<br>    <span class="hljs-comment">// 返回三者的最大值。</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="6">
+<li>算法复杂度:O(nlog<sub>2</sub>n)
+<ul>
+<li>先跳过去递归部分</li>
+<li>for循环:两个for循环相当于遍历数组整整一遍。</li>
+</ul>
+</li>
+</ol>
+<p>算法复杂度 = 左递归 + 右递归 + O(n)<br />
+= 左左递归 + 左右递归 + 右左递归 + 右右递归 + 2 * O(n)<br />
+= …一共切(log<sub>2</sub>n)次<br />
+= O(log<sub>2</sub>n)*O(n)<br />
+= O(nlog<sub>2</sub>n)</p>
+<h3 id="512-求最大公因数gcd"><a class="markdownIt-Anchor" href="#512-求最大公因数gcd"></a> 5.1.2. 求最大公因数(GCD)</h3>
+<ol>
+<li>辗转相除法，用来求最大公因数。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">gcd</span><span class="hljs-params">( <span class="hljs-type">long</span> m, <span class="hljs-type">long</span> n )</span> &#123;   <br>    <span class="hljs-keyword">while</span>( n != <span class="hljs-number">0</span> ) &#123;    <br>        <span class="hljs-type">long</span> <span class="hljs-variable">rem</span> <span class="hljs-operator">=</span> m % n; <br>        m = n; <br>        n = rem; <br>    &#125;<br>    <span class="hljs-keyword">return</span> m;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>分析最大公因数的算法复杂度
+<ol>
+<li>从逆向进推断:m<sub>1</sub>、m<sub>2</sub>、…、m<sub>n</sub></li>
+<li>前一个值等于后面一个值乘以商加上余数。也就是m<sub>i</sub> = p * m<sub>i+1</sub> + m<sub>i+2</sub></li>
+<li>最坏情况下:p=1，p不可能为0。
+<ul>
+<li>除了在一开始的情况下，p可能为0。</li>
+<li>最坏情况下是斐波那契数列。</li>
+<li>比如第一个数是一个亿，那么在最坏情况下我们就可以认为是斐波那契数列的第几项是一个亿。</li>
+</ul>
+</li>
+<li>复杂度是O(log N)，在1884年有一个精确的证明(By Lame)，也就是这个问题复杂度不会比斐波那契数列更差，转言之，斐波那契数列的算法复杂度是O(log N)</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-omega-ω表示法"><a class="markdownIt-Anchor" href="#52-omega-ω表示法"></a> 5.2. Omega Ω表示法</h2>
+<ol>
+<li>表示的是一个算法的复杂度在数量级上的下界。</li>
+<li>定义:is the lower bound analog of the big Oh notation,permits us to bound the value f from below.</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.16.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>表示的是下限。</li>
+</ol>
+<h2 id="53-theta-θ表示法"><a class="markdownIt-Anchor" href="#53-theta-θ表示法"></a> 5.3. Theta θ表示法</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img%5Ccpt2%5Cim2.17.png" srcset="/project/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>不能向大了写，也不能向小了写。</li>
+<li>考试中我们使用的表示法。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/project/categories/2019-Data-Structure/" class="category-chain-item">2019-Data-Structure</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/project/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/project/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+      
+        <a href="/project/tags/%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6/">#算法复杂度</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2019-Data-Structure-数据结构2-algrorithm Analysis</div>
+      <div>https://stormbroken.github.io/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842-algrorithm%20Analysis/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%841-%E7%BB%AA%E8%AE%BA/" title="2019-Data-Structure-数据结构1-绪论">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构1-绪论</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/project/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture1-Business%20Intelligence/" title="2020-Business-Intelligence-Lecture1-Business Intelligence">
+                        <span class="hidden-mobile">2020-Business-Intelligence-Lecture1-Business Intelligence</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/project/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/project/img/police_beian.png" srcset="/project/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/project/js/events.js" ></script>
+<script  src="/project/js/plugins.js" ></script>
+
+
+  
+    <script  src="/project/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/project/js/local-search.js" ></script>
+
+  <script defer src="/project/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/project/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
