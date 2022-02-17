@@ -54,7 +54,7 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/29.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/30.png">
 <meta property="article:published_time" content="2022-02-16T11:10:03.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:55:45.941Z">
+<meta property="article:modified_time" content="2022-02-17T00:54:02.320Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据科学">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          19 分钟
+          17 分钟
         
       </span>
     
@@ -304,92 +304,31 @@
             
             <div class="markdown-body">
               
-              <h2 id="02-概率基础"><a class="markdownIt-Anchor" href="#02-概率基础"></a> 02-概率基础</h2>
-<!-- TOC -->
-<ul>
-<li><a href="#1-%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%A6%82%E7%8E%87%E7%9A%84%E5%AE%9A%E4%B9%89">1. 第一节 概率的定义</a>
-<ul>
-<li><a href="#11-%E5%85%83%E7%B4%A0%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84">1.1. 元素与数据之间的映射</a></li>
-<li><a href="#12-%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%9B%86%E5%90%88%E8%A1%A8%E7%A4%BA">1.2. 事件的集合表示</a>
-<ul>
-<li><a href="#121-%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB">1.2.1. 事件的分类</a></li>
-</ul>
-</li>
-<li><a href="#13-%E4%BA%8B%E4%BB%B6%E7%9A%84%E7%BB%93%E5%90%88%E8%BF%90%E7%AE%97">1.3. 事件的结合运算</a>
-<ul>
-<li><a href="#131-%E5%A4%8D%E6%9D%82%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97%E8%A1%A8%E7%A4%BA">1.3.1. 复杂事件的集合运算表示</a></li>
-<li><a href="#132-%E4%BA%8B%E4%BB%B6%E5%8F%91%E7%94%9F%E7%9A%84%E9%A2%91%E7%8E%87">1.3.2. 事件发生的频率</a></li>
-<li><a href="#133-%E9%A2%91%E7%8E%87%E7%9A%84%E6%94%B6%E6%95%9B%E6%80%A7">1.3.3. 频率的收敛性</a></li>
-</ul>
-</li>
-<li><a href="#14-%E7%BB%8F%E5%85%B8%E6%A6%82%E7%8E%87%E5%AE%9A%E4%B9%89">1.4. 经典概率定义</a>
-<ul>
-<li><a href="#141-%E5%8F%A4%E5%85%B8%E6%A6%82%E7%8E%87">1.4.1. 古典概率</a></li>
-<li><a href="#142-%E5%87%A0%E4%BD%95%E6%A6%82%E7%8E%87">1.4.2. 几何概率</a></li>
-<li><a href="#143-%E5%B0%8F%E7%BB%93">1.4.3. 小结</a></li>
-</ul>
-</li>
-<li><a href="#15-%E6%A6%82%E7%8E%87%E7%9A%84%E5%85%AC%E7%90%86%E5%8C%96%E8%A1%A8%E7%A4%BA">1.5. 概率的公理化表示</a></li>
-</ul>
-</li>
-<li><a href="#2-%E6%A6%82%E7%8E%87%E7%9A%84%E8%AE%A1%E7%AE%97">2. 概率的计算</a>
-<ul>
-<li><a href="#21-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87">2.1. 条件概率</a>
-<ul>
-<li><a href="#211-%E5%BC%95%E5%85%A5">2.1.1. 引入</a></li>
-<li><a href="#212-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87">2.1.2. 条件概率</a></li>
-</ul>
-</li>
-<li><a href="#22-%E4%B9%98%E6%B3%95%E5%85%AC%E5%BC%8F">2.2. 乘法公式</a></li>
-<li><a href="#23-%E5%AE%8C%E5%A4%87%E4%BA%8B%E4%BB%B6%E7%BB%84">2.3. 完备事件组</a></li>
-<li><a href="#24-%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F">2.4. 全概率公式</a></li>
-<li><a href="#25-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F">2.5. 贝叶斯公式</a></li>
-<li><a href="#26-%E7%8B%AC%E7%AB%8B%E6%80%A7">2.6. 独立性</a></li>
-</ul>
-</li>
-<li><a href="#3-%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E7%A4%BA%E4%BE%8B">3. 随机测试示例</a>
-<ul>
-<li><a href="#31-%E5%BC%95%E5%85%A5">3.1. 引入</a></li>
-<li><a href="#32-%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF">3.2. 问题背景</a></li>
-<li><a href="#33-%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E5%88%9D%E6%AD%A5">3.3. 随机测试初步</a></li>
-<li><a href="#34-%E9%9A%8F%E6%9C%BA%E6%B5%8B%E8%AF%95%E6%94%B9%E8%BF%9B">3.4. 随机测试改进</a></li>
-</ul>
-</li>
-<li><a href="#4-%E6%80%BB%E7%BB%93">4. 总结</a></li>
-</ul>
-<!-- /TOC -->
-<h1 id="1-第一节-概率的定义"><a class="markdownIt-Anchor" href="#1-第一节-概率的定义"></a> 1. 第一节 概率的定义</h1>
-<h2 id="11-元素与数据之间的映射"><a class="markdownIt-Anchor" href="#11-元素与数据之间的映射"></a> 1.1. 元素与数据之间的映射</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+              <h2 id="02-概率基础"><a href="#02-概率基础" class="headerlink" title="02-概率基础"></a>02-概率基础</h2><h1 id="1-第一节-概率的定义"><a href="#1-第一节-概率的定义" class="headerlink" title="1. 第一节 概率的定义"></a>1. 第一节 概率的定义</h1><h2 id="1-1-元素与数据之间的映射"><a href="#1-1-元素与数据之间的映射" class="headerlink" title="1.1. 元素与数据之间的映射"></a>1.1. 元素与数据之间的映射</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>样本点:集合元素</li>
 <li>样本空间:集合</li>
-<li>为何映射集合？
-<ul>
+<li>为何映射集合？<ul>
 <li>可以应用大量的已有数学模型来进行研究</li>
 </ul>
 </li>
 </ol>
-<h2 id="12-事件的集合表示"><a class="markdownIt-Anchor" href="#12-事件的集合表示"></a> 1.2. 事件的集合表示</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-2-事件的集合表示"><a href="#1-2-事件的集合表示" class="headerlink" title="1.2. 事件的集合表示"></a>1.2. 事件的集合表示</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>样本空间Ω的任意子集 A 称为(随机)事件</li>
 <li>观察到样本点e ，若e ∊ A则称这一事件发生</li>
 </ol>
-<h3 id="121-事件的分类"><a class="markdownIt-Anchor" href="#121-事件的分类"></a> 1.2.1. 事件的分类</h3>
-<ol>
+<h3 id="1-2-1-事件的分类"><a href="#1-2-1-事件的分类" class="headerlink" title="1.2.1. 事件的分类"></a>1.2.1. 事件的分类</h3><ol>
 <li>基本事件：由一个样本点组成的单点集</li>
 <li>复合事件：由两个或两个以上样本点组成的集合</li>
 <li>必然事件：全集Ω</li>
-<li>不可能事件：空集∅
-<ul>
+<li>不可能事件：空集∅<ul>
 <li>任何实验产生的样本点都不能属于空集</li>
 </ul>
 </li>
 <li>空集和全集都是样本空间的子集，所以都是事件。</li>
 </ol>
-<h2 id="13-事件的结合运算"><a class="markdownIt-Anchor" href="#13-事件的结合运算"></a> 1.3. 事件的结合运算</h2>
-<ol>
+<h2 id="1-3-事件的结合运算"><a href="#1-3-事件的结合运算" class="headerlink" title="1.3. 事件的结合运算"></a>1.3. 事件的结合运算</h2><ol>
 <li>包含：𝐴⊆𝐵，即事件𝐴发生必然导致事件𝐵发生</li>
 <li>相等：𝐴=𝐵，即𝐴⊆𝐵且𝐵⊆𝐴</li>
 <li>和：𝐴∪𝐵，即𝐴和𝐵至少一个发生</li>
@@ -398,35 +337,27 @@
 <li><strong>互不相容</strong>：𝐴𝐵=∅，即𝐴和𝐵不能同时发生</li>
 <li>互逆：𝐴∪𝐵=Ω且𝐴𝐵=∅，𝐴和𝐵互逆，通常𝐵记为 𝐴(上划线)</li>
 </ol>
-<h3 id="131-复杂事件的集合运算表示"><a class="markdownIt-Anchor" href="#131-复杂事件的集合运算表示"></a> 1.3.1. 复杂事件的集合运算表示</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="132-事件发生的频率"><a class="markdownIt-Anchor" href="#132-事件发生的频率"></a> 1.3.2. 事件发生的频率</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="133-频率的收敛性"><a class="markdownIt-Anchor" href="#133-频率的收敛性"></a> 1.3.3. 频率的收敛性</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-3-1-复杂事件的集合运算表示"><a href="#1-3-1-复杂事件的集合运算表示" class="headerlink" title="1.3.1. 复杂事件的集合运算表示"></a>1.3.1. 复杂事件的集合运算表示</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-2-事件发生的频率"><a href="#1-3-2-事件发生的频率" class="headerlink" title="1.3.2. 事件发生的频率"></a>1.3.2. 事件发生的频率</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-3-频率的收敛性"><a href="#1-3-3-频率的收敛性" class="headerlink" title="1.3.3. 频率的收敛性"></a>1.3.3. 频率的收敛性</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>这个常数为概率</li>
 </ol>
-<h2 id="14-经典概率定义"><a class="markdownIt-Anchor" href="#14-经典概率定义"></a> 1.4. 经典概率定义</h2>
-<h3 id="141-古典概率"><a class="markdownIt-Anchor" href="#141-古典概率"></a> 1.4.1. 古典概率</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-4-经典概率定义"><a href="#1-4-经典概率定义" class="headerlink" title="1.4. 经典概率定义"></a>1.4. 经典概率定义</h2><h3 id="1-4-1-古典概率"><a href="#1-4-1-古典概率" class="headerlink" title="1.4.1. 古典概率"></a>1.4.1. 古典概率</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>两个重要特性:
-<ol>
+<li>两个重要特性:<ol>
 <li>有限样本空间</li>
 <li>等可能</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="142-几何概率"><a class="markdownIt-Anchor" href="#142-几何概率"></a> 1.4.2. 几何概率</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-4-2-几何概率"><a href="#1-4-2-几何概率" class="headerlink" title="1.4.2. 几何概率"></a>1.4.2. 几何概率</h3><ol>
 <li>数据表示如何从有限集合到无限集合推广？</li>
 <li>例一：某人午觉醒来，发觉表停了，他打开收音机，想听电台报时，求他等待的时间短于10分钟的概率。</li>
 <li>例二：在400毫升自来水中有一个大肠杆菌，今从中随机抽出2毫 升水样放到显微镜下观察，求发现大肠杆菌的概率。</li>
 <li>一种相当自然的答案是认为例1所求的概率等于&lt;1/6，例2所求的概率等于1/200。在求这些概率时，我们采纳了某种几何特性的等可能假设。</li>
-<li>实例:在半径为1的圆内随机地取一条弦，问弦长超过根号3的概率等于多少?
-<ul>
+<li>实例:在半径为1的圆内随机地取一条弦，问弦长超过根号3的概率等于多少?<ul>
 <li><strong>等可能假设</strong>不同，结果不同</li>
 <li>选择圆心角:1/3，等可能假设:假设在弧上</li>
 <li>选择弦心距:1/2，等可能假设:到圆心的距离</li>
@@ -434,154 +365,123 @@
 </ul>
 </li>
 </ol>
-<h3 id="143-小结"><a class="markdownIt-Anchor" href="#143-小结"></a> 1.4.3. 小结</h3>
-<ol>
+<h3 id="1-4-3-小结"><a href="#1-4-3-小结" class="headerlink" title="1.4.3. 小结"></a>1.4.3. 小结</h3><ol>
 <li>在数据映射中，我们需要遵循物理世界到数据集合的某种结构保持。</li>
 </ol>
-<h2 id="15-概率的公理化表示"><a class="markdownIt-Anchor" href="#15-概率的公理化表示"></a> 1.5. 概率的公理化表示</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-5-概率的公理化表示"><a href="#1-5-概率的公理化表示" class="headerlink" title="1.5. 概率的公理化表示"></a>1.5. 概率的公理化表示</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>概率的性质</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-概率的计算"><a class="markdownIt-Anchor" href="#2-概率的计算"></a> 2. 概率的计算</h1>
-<h2 id="21-条件概率"><a class="markdownIt-Anchor" href="#21-条件概率"></a> 2.1. 条件概率</h2>
-<h3 id="211-引入"><a class="markdownIt-Anchor" href="#211-引入"></a> 2.1.1. 引入</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-概率的计算"><a href="#2-概率的计算" class="headerlink" title="2. 概率的计算"></a>2. 概率的计算</h1><h2 id="2-1-条件概率"><a href="#2-1-条件概率" class="headerlink" title="2.1. 条件概率"></a>2.1. 条件概率</h2><h3 id="2-1-1-引入"><a href="#2-1-1-引入" class="headerlink" title="2.1.1. 引入"></a>2.1.1. 引入</h3><ol>
 <li>已知某一事件已发生，求另一事件发生的概率。</li>
 <li>例如考虑有两个孩子的家庭，假定男女出生率一样，则两个孩子(依大小排列)的性别为(男男)，(男女)，(女男)，(女女)的可能性是一样的。</li>
 <li>记A为随机选取两娃家庭有一男一女的事件，则𝑃(𝐴)=1/2</li>
 <li>如果我们预先知道某个家庭至少有一个女孩(设为事件𝐵)，那么，上述事件A的概率便应是2/3</li>
 </ol>
-<h3 id="212-条件概率"><a class="markdownIt-Anchor" href="#212-条件概率"></a> 2.1.2. 条件概率</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-1-2-条件概率"><a href="#2-1-2-条件概率" class="headerlink" title="2.1.2. 条件概率"></a>2.1.2. 条件概率</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>使用韦恩图来进行说明</li>
 </ol>
-<h2 id="22-乘法公式"><a class="markdownIt-Anchor" href="#22-乘法公式"></a> 2.2. 乘法公式</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-2-乘法公式"><a href="#2-2-乘法公式" class="headerlink" title="2.2. 乘法公式"></a>2.2. 乘法公式</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>例子:设某光学仪器厂制造的透镜，第一次落下时打破的概率为1/2，若第一次落下未打破，第二次落下打破的概率为7/10，若前两次落下未打破，第三次落下打破的概率为9/10。试求透镜落下三次后未打破的概率。
-<ul>
+<li>例子:设某光学仪器厂制造的透镜，第一次落下时打破的概率为1/2，若第一次落下未打破，第二次落下打破的概率为7/10，若前两次落下未打破，第三次落下打破的概率为9/10。试求透镜落下三次后未打破的概率。<ul>
 <li>(1 - 0.5)(1 - 0.7)(1 - 0.9) = 0.015</li>
 </ul>
 </li>
 </ol>
-<h2 id="23-完备事件组"><a class="markdownIt-Anchor" href="#23-完备事件组"></a> 2.3. 完备事件组</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="24-全概率公式"><a class="markdownIt-Anchor" href="#24-全概率公式"></a> 2.4. 全概率公式</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-3-完备事件组"><a href="#2-3-完备事件组" class="headerlink" title="2.3. 完备事件组"></a>2.3. 完备事件组</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-4-全概率公式"><a href="#2-4-全概率公式" class="headerlink" title="2.4. 全概率公式"></a>2.4. 全概率公式</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>练习</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>
-<p>2/5 * 1/2 * 3/7 * 1/2 = 3/70</p>
+<li>2/5 <em> 1/2 </em> 3/7 * 1/2 = 3/70</li>
+<li><p>2/3 <em> 1/2 + 1/3 </em> 3/4 = 7/12</p>
 </li>
-<li>
-<p>2/3 * 1/2 + 1/3 * 3/4 = 7/12</p>
-</li>
-<li>
-<p>写法设法参考</p>
+<li><p>写法设法参考</p>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="25-贝叶斯公式"><a class="markdownIt-Anchor" href="#25-贝叶斯公式"></a> 2.5. 贝叶斯公式</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-5-贝叶斯公式"><a href="#2-5-贝叶斯公式" class="headerlink" title="2.5. 贝叶斯公式"></a>2.5. 贝叶斯公式</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>意义:贝叶斯定理往往与全概率公式同时使用。全概率公式一用于&quot;由因求果&quot;问题，而贝叶斯定理一般用于&quot;执果寻因&quot;问题。</li>
+<li>意义:贝叶斯定理往往与全概率公式同时使用。全概率公式一用于”由因求果”问题，而贝叶斯定理一般用于”执果寻因”问题。</li>
 <li>例如，在医疗诊断中，为了诊断到底是哪种疾病，对病人进行观察与检查，确定了某项身体指标(如是体温、验血)，然后采用这类指标来帮助诊断。这时就可以用贝叶斯公式来计算有关概率。</li>
 <li>是概率理念的一个巨大进步。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
-<li>练习:
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>练习:<ul>
 <li>11/164</li>
 </ul>
 </li>
 </ol>
-<h2 id="26-独立性"><a class="markdownIt-Anchor" href="#26-独立性"></a> 2.6. 独立性</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-6-独立性"><a href="#2-6-独立性" class="headerlink" title="2.6. 独立性"></a>2.6. 独立性</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>和互不相容是完全不一样的，A与B互不相容是指A交B为空</li>
-<li>独立在实际中往往是假设。
-<ul>
+<li>独立在实际中往往是假设。<ul>
 <li>而不是去求证的目标</li>
 </ul>
 </li>
 <li>独立是一个非常强的假设。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="3-随机测试示例"><a class="markdownIt-Anchor" href="#3-随机测试示例"></a> 3. 随机测试示例</h1>
-<h2 id="31-引入"><a class="markdownIt-Anchor" href="#31-引入"></a> 3.1. 引入</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="32-问题背景"><a class="markdownIt-Anchor" href="#32-问题背景"></a> 3.2. 问题背景</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="33-随机测试初步"><a class="markdownIt-Anchor" href="#33-随机测试初步"></a> 3.3. 随机测试初步</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="3-随机测试示例"><a href="#3-随机测试示例" class="headerlink" title="3. 随机测试示例"></a>3. 随机测试示例</h1><h2 id="3-1-引入"><a href="#3-1-引入" class="headerlink" title="3.1. 引入"></a>3.1. 引入</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-问题背景"><a href="#3-2-问题背景" class="headerlink" title="3.2. 问题背景"></a>3.2. 问题背景</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-3-随机测试初步"><a href="#3-3-随机测试初步" class="headerlink" title="3.3. 随机测试初步"></a>3.3. 随机测试初步</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>进一步明确化问题
-<ul>
+<li>进一步明确化问题<ul>
 <li>通过选择部分数字来进行校验</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/24.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>什么时候会出现误判？
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/24.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>什么时候会出现误判？<ul>
 <li>求解的时候我们要计算第二种情况下的误判概率</li>
 <li>注意单边错误，误判概率:单边错误概率</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>我们化简到求两个方程的差等于0的根的个数
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>我们化简到求两个方程的差等于0的根的个数<ul>
 <li>根据代数基本定理我们可以知道的是我们的根的个数不会大于100个。</li>
 <li>概率的模糊估计</li>
 </ul>
 </li>
 </ol>
-<h2 id="34-随机测试改进"><a class="markdownIt-Anchor" href="#34-随机测试改进"></a> 3.4. 随机测试改进</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-4-随机测试改进"><a href="#3-4-随机测试改进" class="headerlink" title="3.4. 随机测试改进"></a>3.4. 随机测试改进</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/27.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>我们只需要简单的增加测试用例的数量就可以降低出错的概率</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>为了进一步降低出错概率，我们多次使用常用的系统分析的手段
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>为了进一步降低出错概率，我们多次使用常用的系统分析的手段<ul>
 <li>使用随机检测</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>有放回抽样
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>有放回抽样<ul>
 <li>每次随机取，所以检测错误的概率为1/100</li>
 <li>也就是错误概率会成指数型降低</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
-<li>有放回的抽样:
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>有放回的抽样:<ul>
 <li>一共有d个根，在第j次的时候，已经提出了j-1个根。</li>
 <li>为什么是100d - (j - 1)因为是从100d个数据中选择数字</li>
 <li>j增大到d的时候，就能将概率降低到0</li>
 </ul>
 </li>
 </ol>
-<h1 id="4-总结"><a class="markdownIt-Anchor" href="#4-总结"></a> 4. 总结</h1>
-<ol>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><ol>
 <li>𝐹(𝑥)无放回抽样的准确率比有放回抽样高。</li>
 <li>有放回抽样的算法实现通常比无放回抽样简单。</li>
 <li>当𝑑+1次无放回抽样后，能够确保算法的准确性。</li>

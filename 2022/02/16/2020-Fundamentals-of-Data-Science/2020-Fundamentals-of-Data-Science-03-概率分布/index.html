@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/17.png">
 <meta property="article:published_time" content="2022-02-16T11:10:03.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:55:54.570Z">
+<meta property="article:modified_time" content="2022-02-17T00:54:08.223Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据科学">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.2k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          13 分钟
+          11 分钟
         
       </span>
     
@@ -292,136 +292,75 @@
             
             <div class="markdown-body">
               
-              <!-- TOC -->
-<ul>
-<li><a href="#1-%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E4%B8%8E%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">1. 数据分布与概率分布</a>
-<ul>
-<li><a href="#11-%E9%A2%91%E6%95%B0%E5%88%86%E5%B8%83%E4%B8%8E%E9%A2%91%E7%8E%87%E5%88%86%E5%B8%83">1.1. 频数分布与频率分布</a></li>
-<li><a href="#12-%E7%B4%AF%E7%A7%AF%E9%A2%91%E6%95%B0%E4%B8%8E%E7%B4%AF%E7%A7%AF%E9%A2%91%E7%8E%87">1.2. 累积频数与累积频率</a></li>
-<li><a href="#13-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">1.3. 概率分布</a>
-<ul>
-<li><a href="#131-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">1.3.1. 随机变量</a></li>
-<li><a href="#132-%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0">1.3.2. 分布函数</a></li>
-</ul>
-</li>
-<li><a href="#14-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">1.4. 随机变量</a>
-<ul>
-<li><a href="#141-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%A6%BB%E6%95%A3%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">1.4.1. 离散型随机变量(离散随机变量)</a></li>
-<li><a href="#142-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">1.4.2. 连续型随机变量</a></li>
-<li><a href="#143-%E5%BC%BA%E8%B0%83">1.4.3. 强调</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#2-%E7%9F%A9%E6%95%B0%E6%8D%AE%E5%8A%A8%E5%8A%9B%E5%AD%A6">2. 矩:数据动力学</a>
-<ul>
-<li><a href="#21-%E4%BB%80%E4%B9%88%E6%98%AF%E7%9F%A9">2.1. 什么是矩?</a></li>
-<li><a href="#22-%E6%95%B0%E6%8D%AE%E5%8E%9F%E7%82%B9%E7%9F%A9">2.2. 数据原点矩</a></li>
-<li><a href="#23-%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E8%B7%9D">2.3. 数据中心距</a></li>
-<li><a href="#24-%E4%BE%8B%E5%AD%90">2.4. 例子</a></li>
-<li><a href="#25-%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B">2.5. 数学期望</a>
-<ul>
-<li><a href="#251-%E7%A6%BB%E6%95%A3%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%9B">2.5.1. 离散变量数据期望</a></li>
-<li><a href="#252-%E8%BF%9E%E7%BB%AD%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B">2.5.2. 连续随机变量数学期望</a></li>
-<li><a href="#253-%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8">2.5.3. 数学期望的性质</a></li>
-</ul>
-</li>
-<li><a href="#26-%E6%96%B9%E5%B7%AE">2.6. 方差</a>
-<ul>
-<li><a href="#261-%E6%96%B9%E5%B7%AE%E7%9A%84%E6%80%A7%E8%B4%A8">2.6.1. 方差的性质</a></li>
-</ul>
-</li>
-<li><a href="#27-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E7%9F%A9-%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81">2.7. 概率分布的矩-数字特征</a></li>
-<li><a href="#%E7%A6%BB%E6%95%A3%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">离散概率分布</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h1 id="1-数据分布与概率分布"><a class="markdownIt-Anchor" href="#1-数据分布与概率分布"></a> 1. 数据分布与概率分布</h1>
-<h2 id="11-频数分布与频率分布"><a class="markdownIt-Anchor" href="#11-频数分布与频率分布"></a> 1.1. 频数分布与频率分布</h2>
-<ol>
+              <h1 id="1-数据分布与概率分布"><a href="#1-数据分布与概率分布" class="headerlink" title="1. 数据分布与概率分布"></a>1. 数据分布与概率分布</h1><h2 id="1-1-频数分布与频率分布"><a href="#1-1-频数分布与频率分布" class="headerlink" title="1.1. 频数分布与频率分布"></a>1.1. 频数分布与频率分布</h2><ol>
 <li>频数是各个数据被观测到的次数。</li>
 <li>频率是频数除以总次数。</li>
 </ol>
-<h2 id="12-累积频数与累积频率"><a class="markdownIt-Anchor" href="#12-累积频数与累积频率"></a> 1.2. 累积频数与累积频率</h2>
-<ol>
+<h2 id="1-2-累积频数与累积频率"><a href="#1-2-累积频数与累积频率" class="headerlink" title="1.2. 累积频数与累积频率"></a>1.2. 累积频数与累积频率</h2><ol>
 <li>数据排序后(通常是降序)进行频数或者频率的累加。</li>
 </ol>
-<h2 id="13-概率分布"><a class="markdownIt-Anchor" href="#13-概率分布"></a> 1.3. 概率分布</h2>
-<ol>
+<h2 id="1-3-概率分布"><a href="#1-3-概率分布" class="headerlink" title="1.3. 概率分布"></a>1.3. 概率分布</h2><ol>
 <li>我们需要从特定数据到一般规律的抽象，才能奠定数据科学的基础。</li>
 </ol>
-<h3 id="131-随机变量"><a class="markdownIt-Anchor" href="#131-随机变量"></a> 1.3.1. 随机变量</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-3-1-随机变量"><a href="#1-3-1-随机变量" class="headerlink" title="1.3.1. 随机变量"></a>1.3.1. 随机变量</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>例子:随机变量X，Y，Z
-<ul>
+<li>例子:随机变量X，Y，Z<ul>
 <li>X更加符合需求</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Summary:</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="132-分布函数"><a class="markdownIt-Anchor" href="#132-分布函数"></a> 1.3.2. 分布函数</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-2-分布函数"><a href="#1-3-2-分布函数" class="headerlink" title="1.3.2. 分布函数"></a>1.3.2. 分布函数</h3><ol>
 <li>对任意的X进行概率的累加，即从负无穷到X累加构建的一个函数成为随机变量X的分布函数</li>
 <li>分布函数一定是左连续的，但是概率密度函数不一定</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="14-随机变量"><a class="markdownIt-Anchor" href="#14-随机变量"></a> 1.4. 随机变量</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-4-随机变量"><a href="#1-4-随机变量" class="headerlink" title="1.4. 随机变量"></a>1.4. 随机变量</h2><ol>
 <li>为了进一步研究概率分布，我们对于随机变量进行深入研究分析。</li>
 </ol>
-<h3 id="141-离散型随机变量离散随机变量"><a class="markdownIt-Anchor" href="#141-离散型随机变量离散随机变量"></a> 1.4.1. 离散型随机变量(离散随机变量)</h3>
-<ol>
+<h3 id="1-4-1-离散型随机变量-离散随机变量"><a href="#1-4-1-离散型随机变量-离散随机变量" class="headerlink" title="1.4.1. 离散型随机变量(离散随机变量)"></a>1.4.1. 离散型随机变量(离散随机变量)</h3><ol>
 <li>一个随机变量 X 的可能取值为有限个或可列无穷多个, 则称X为离散型随机变量。</li>
 <li>概率分布律</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>之前的抛硬币问题的例子</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="142-连续型随机变量"><a class="markdownIt-Anchor" href="#142-连续型随机变量"></a> 1.4.2. 连续型随机变量</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-4-2-连续型随机变量"><a href="#1-4-2-连续型随机变量" class="headerlink" title="1.4.2. 连续型随机变量"></a>1.4.2. 连续型随机变量</h3><ol>
 <li>例子:一个靶子是半径为2米的圆盘,设击中靶上任意同心圆盘上的点的概率与该圆盘的面积成正比,并设射击都能击中靶, 以X表示弹着点于圆心的距离。试求随机变量X的分布函数。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>概率密度函数:在断点处未必是连续的
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>概率密度函数:在断点处未必是连续的<ul>
 <li>密度函数要求非负可积即可。当然在经典连续概率分布中，密度函数通常也是连续的。一来是比较符合自然世界，二来是容易得出优良的数学性质。</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>性质:</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="143-强调"><a class="markdownIt-Anchor" href="#143-强调"></a> 1.4.3. 强调</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-4-3-强调"><a href="#1-4-3-强调" class="headerlink" title="1.4.3. 强调"></a>1.4.3. 强调</h3><ol>
 <li>随机变量还有其他形式，不是离散的未必是连续的，反之亦然。</li>
 </ol>
-<h1 id="2-矩数据动力学"><a class="markdownIt-Anchor" href="#2-矩数据动力学"></a> 2. 矩:数据动力学</h1>
-<h2 id="21-什么是矩"><a class="markdownIt-Anchor" href="#21-什么是矩"></a> 2.1. 什么是矩?</h2>
-<ol>
+<h1 id="2-矩-数据动力学"><a href="#2-矩-数据动力学" class="headerlink" title="2. 矩:数据动力学"></a>2. 矩:数据动力学</h1><h2 id="2-1-什么是矩"><a href="#2-1-什么是矩" class="headerlink" title="2.1. 什么是矩?"></a>2.1. 什么是矩?</h2><ol>
 <li>矩：是物理学中的一个丰富概念，涉及质量、 形状、空间、运动等各个方面。</li>
 <li>Eg.力矩</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-数据原点矩"><a class="markdownIt-Anchor" href="#22-数据原点矩"></a> 2.2. 数据原点矩</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-数据原点矩"><a href="#2-2-数据原点矩" class="headerlink" title="2.2. 数据原点矩"></a>2.2. 数据原点矩</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>一阶矩是算术平均值，代表数据集的&quot;重心&quot;</li>
+<li>一阶矩是算术平均值，代表数据集的”重心” </li>
 <li>二阶矩代表数据集的转动惯量</li>
 <li>原点矩代表了数据集跟重量相关的动力度量</li>
 </ol>
-<h2 id="23-数据中心距"><a class="markdownIt-Anchor" href="#23-数据中心距"></a> 2.3. 数据中心距</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-3-数据中心距"><a href="#2-3-数据中心距" class="headerlink" title="2.3. 数据中心距"></a>2.3. 数据中心距</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>一阶中心矩B1为零</li>
 <li>二阶中心矩B2为方差</li>
@@ -429,41 +368,31 @@
 <li>四阶中心矩刻画峰度</li>
 <li>中心矩代表了数据集跟几何相关的动力度量</li>
 </ol>
-<h2 id="24-例子"><a class="markdownIt-Anchor" href="#24-例子"></a> 2.4. 例子</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="25-数学期望"><a class="markdownIt-Anchor" href="#25-数学期望"></a> 2.5. 数学期望</h2>
-<h3 id="251-离散变量数据期望"><a class="markdownIt-Anchor" href="#251-离散变量数据期望"></a> 2.5.1. 离散变量数据期望</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="252-连续随机变量数学期望"><a class="markdownIt-Anchor" href="#252-连续随机变量数学期望"></a> 2.5.2. 连续随机变量数学期望</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="253-数学期望的性质"><a class="markdownIt-Anchor" href="#253-数学期望的性质"></a> 2.5.3. 数学期望的性质</h3>
-<ol>
+<h2 id="2-4-例子"><a href="#2-4-例子" class="headerlink" title="2.4. 例子"></a>2.4. 例子</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-5-数学期望"><a href="#2-5-数学期望" class="headerlink" title="2.5. 数学期望"></a>2.5. 数学期望</h2><h3 id="2-5-1-离散变量数据期望"><a href="#2-5-1-离散变量数据期望" class="headerlink" title="2.5.1. 离散变量数据期望"></a>2.5.1. 离散变量数据期望</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-5-2-连续随机变量数学期望"><a href="#2-5-2-连续随机变量数学期望" class="headerlink" title="2.5.2. 连续随机变量数学期望"></a>2.5.2. 连续随机变量数学期望</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-5-3-数学期望的性质"><a href="#2-5-3-数学期望的性质" class="headerlink" title="2.5.3. 数学期望的性质"></a>2.5.3. 数学期望的性质</h3><ol>
 <li>对于常数𝐶, 有𝐸(𝐶)=𝐶</li>
 <li>对于常数𝐶及随机变量𝑋, 有𝐸(𝐶𝑋)=𝐶𝐸(𝑋)</li>
 <li>设𝑋和𝑌为两个随机变量, 则𝐸(𝑋+𝑌)=𝐸(𝑋)+𝐸(𝑌)</li>
 <li>设随机变量𝑋和𝑌<strong>独立</strong>, 则𝐸(𝑋𝑌)=𝐸(𝑋)𝐸(𝑌)</li>
 </ol>
-<h2 id="26-方差"><a class="markdownIt-Anchor" href="#26-方差"></a> 2.6. 方差</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="261-方差的性质"><a class="markdownIt-Anchor" href="#261-方差的性质"></a> 2.6.1. 方差的性质</h3>
-<ol>
+<h2 id="2-6-方差"><a href="#2-6-方差" class="headerlink" title="2.6. 方差"></a>2.6. 方差</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-6-1-方差的性质"><a href="#2-6-1-方差的性质" class="headerlink" title="2.6.1. 方差的性质"></a>2.6.1. 方差的性质</h3><ol>
 <li>设𝐶是常数，则𝑉𝑎𝑟(𝐶)=0;</li>
 <li>设𝑋是随机变量, 𝐶是常数, 则 𝑉𝑎𝑟(𝑋+𝐶)=𝑉𝑎𝑟(𝑋),𝑉𝑎𝑟(𝐶𝑋)=𝐶<sup>2</sup>𝑉𝑎𝑟(𝑋).</li>
 <li>设随机变量𝑋与𝑌<strong>相互独立</strong>, 则 𝑉𝑎𝑟(𝑋±𝑌)=𝑉𝑎𝑟(𝑋)+𝑉𝑎𝑟(𝑌).</li>
 </ol>
-<h2 id="27-概率分布的矩-数字特征"><a class="markdownIt-Anchor" href="#27-概率分布的矩-数字特征"></a> 2.7. 概率分布的矩-数字特征</h2>
-<ol>
-<li>随机变量X的矩定义如下
-<ul>
+<h2 id="2-7-概率分布的矩-数字特征"><a href="#2-7-概率分布的矩-数字特征" class="headerlink" title="2.7. 概率分布的矩-数字特征"></a>2.7. 概率分布的矩-数字特征</h2><ol>
+<li>随机变量X的矩定义如下<ul>
 <li>若𝐸(𝑋<sup>k</sup>)存在(𝑘=1,2,⋯), 称𝐸(𝑋<sup>k</sup>)为𝑋的𝑘阶原点矩或𝑘阶矩, 记为𝜇<sub>𝑘</sub></li>
 <li>若𝐸((𝑋−𝐸𝑋)<sup>k</sup>)存在(𝑘=1,2,⋯), 称𝐸((𝑋−𝐸𝑋)<sup>k</sup>)为𝑋的𝑘阶中点矩, 记为𝜐<sub>𝑘</sub></li>
 </ul>
 </li>
 <li>中心距的原点矩表示</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="离散概率分布"><a class="markdownIt-Anchor" href="#离散概率分布"></a> 离散概率分布</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt3/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="离散概率分布"><a href="#离散概率分布" class="headerlink" title="离散概率分布"></a>离散概率分布</h2><ol>
 <li>见离散概率分布</li>
 </ol>
 
