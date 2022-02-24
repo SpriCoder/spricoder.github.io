@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用Docker的方式安装Jenkins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 安装 Jenkins">
+<meta property="og:url" content="https://stormbroken.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="使用Docker的方式安装Jenkins">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/9.png">
+<meta property="article:published_time" content="2022-02-24T01:06:52.000Z">
+<meta property="article:modified_time" content="2022-02-24T01:06:44.113Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png">
+  
+  
+  <title>Docker 安装 Jenkins - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-24 09:06" pubdate>
+          2022年2月24日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker 安装 Jenkins</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="Docker-安装-Jenkins"><a href="#Docker-安装-Jenkins" class="headerlink" title="Docker 安装 Jenkins"></a>Docker 安装 Jenkins</h2><blockquote>
+<p>开始前最好，将docker升级到最新版本(至少大于17)</p>
+</blockquote>
+<h1 id="1-安装过程"><a href="#1-安装过程" class="headerlink" title="1. 安装过程"></a>1. 安装过程</h1><ol>
+<li>首先拉取镜像:<code>docker pull jenkins</code>(我安装的是Jenkins 2.275)</li>
+<li>创建本地数据卷:<code>mkdir -p /data/jenkins_home/</code></li>
+<li>修改用户授权:<code>chown -R 1000:1000 /data/jenkins_home/</code></li>
+<li>启动容器:</li>
+<li><code>docker run -d --name jenkins -p 7900:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins</code><ol>
+<li>这里挂载了物理盘映射</li>
+<li>还挂载了docker映射</li>
+</ol>
+</li>
+<li>访问对应网址:<code>xxx:7900</code></li>
+<li>获取初始管理员密码(两种方式，因为映射了本地逻辑卷)<ol>
+<li><code>docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword</code></li>
+<li>或者在进入容器后(<code>docker exec -it jenkins /bin/bash</code>)：<code>cat /data/jenkins_home/secrets/initialAdminPassword</code></li>
+</ol>
+</li>
+<li>选择安装推荐的插件等待即可</li>
+<li>按照流程创建管理员账户</li>
+<li>根据之前的情况创建实例，即完成</li>
+</ol>
+<h1 id="2-Jenkins-安装-npm"><a href="#2-Jenkins-安装-npm" class="headerlink" title="2. Jenkins 安装 npm"></a>2. Jenkins 安装 npm</h1><ol>
+<li>首先以root权限进入容器:<code>docker exec -it -u root jenkins bash</code></li>
+</ol>
+<h2 id="2-1-替换容器的源"><a href="#2-1-替换容器的源" class="headerlink" title="2.1. 替换容器的源"></a>2.1. 替换容器的源</h2><ol>
+<li>备份：<code>cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></li>
+<li>查看系统版号:<code>lsb_release -c</code>，并且将下文中替换文件中的对应位置进行修改</li>
+<li>修改：<code>vim /etc/apt/sources.list</code>，如果无法拉取：<code>sudo apt install apt-transport-https ca-certificates</code>，vim中使用shift+insert插入</li>
+<li><code>W: Unable to read /etc/apt/preferences.d/ - DirectoryExists (2: No such file or directory)</code>:这时新建此文件夹即可mkdir /etc/apt/preferences.d</li>
+<li>如果没有vim，先<code>apt update</code>，然后<code>apt install vim</code></li>
+</ol>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-updates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-backports main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian-security buster/u</span>pdates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>添加node源：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -</code></li>
+</ol>
+<h2 id="2-2-安装nodejs和npm"><a href="#2-2-安装nodejs和npm" class="headerlink" title="2.2. 安装nodejs和npm"></a>2.2. 安装nodejs和npm</h2><ol>
+<li>然后安装node.js:<code>apt-get install nodejs</code>，一定要先更新源</li>
+<li>然后安装npm:<code>apt-get install npm</code>，</li>
+<li>之后替换npm源:<code>npm config set registry http://registry.npm.taobao.org/</code></li>
+</ol>
+<h1 id="3-Jenkins流水线-Docker-Maven-Github-webhooks-Spring-boot"><a href="#3-Jenkins流水线-Docker-Maven-Github-webhooks-Spring-boot" class="headerlink" title="3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot"></a>3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot</h1><h2 id="3-1-需要的插件和配置"><a href="#3-1-需要的插件和配置" class="headerlink" title="3.1. 需要的插件和配置"></a>3.1. 需要的插件和配置</h2><h3 id="3-1-1-插件"><a href="#3-1-1-插件" class="headerlink" title="3.1.1. 插件"></a>3.1.1. 插件</h3><ol>
+<li>Blue Ocean</li>
+<li>Maven Integration</li>
+</ol>
+<h3 id="3-1-2-配置"><a href="#3-1-2-配置" class="headerlink" title="3.1.2. 配置"></a>3.1.2. 配置</h3><ol>
+<li>查看容器的全部信息:<code>docker inspect jenkins</code>，其中的Env项中包含了<code>JAVA_HOME</code>等环境信息，如下所示</li>
+</ol>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-string">&quot;Env&quot;</span>: [<br>      <span class="hljs-string">&quot;PATH=/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>,<br>      <span class="hljs-string">&quot;LANG=C.UTF-8&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_HOME=/usr/local/openjdk-8&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_VERSION=8u242&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_URL_VERSION=8u242b08&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_HOME=/var/jenkins_home&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_SLAVE_AGENT_PORT=50000&quot;</span>,<br>      <span class="hljs-string">&quot;REF=/usr/share/jenkins/ref&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_VERSION=2.275&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_UC=https://updates.jenkins.io&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals&quot;</span>,<br>      <span class="hljs-string">&quot;COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log&quot;</span><br>]<br></code></pre></td></tr></table></figure>
+<ol>
+<li>进行全局工具配置：<code>Jenkins -&gt; 系统管理 -&gt; 全局工具管理</code></li>
+<li>jdk配置，如果没有自动安装，如果有则使用上面的JAVA_HOME地址即可</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>Git配置</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>Docker配置</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-1-3-安装maven"><a href="#3-1-3-安装maven" class="headerlink" title="3.1.3. 安装maven"></a>3.1.3. 安装maven</h3><ol>
+<li>同样的进入容器:<code>docker exec -it -u root jenkins bash</code></li>
+<li>下载maven压缩包：<code>wget https://mirrors.aliyun.com/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
+<li>解压缩maven安装包：<code>tar -zvxf apache-maven-3.6.3-bin.tar.gz</code></li>
+<li>配置环境变量：<code>vi /etc/profile</code>(安装vi:<code>apt-get install vi</code>)</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> MAVEN_HOME=/opt/apache-maven-3.6.3<br><span class="hljs-built_in">export</span> MAVEN_HOME<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$MAVEN_HOME</span>/bin<br></code></pre></td></tr></table></figure>
+<ol>
+<li>编辑maven的<code>settings.xml</code>来替换源(位置<code>conf/</code>下)，在<code>&lt;mirrors&gt;&lt;/mirrors&gt;</code>标签内添加一下任意一个</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>alimaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>aliyun maven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>刷新权限:<code>source /etc/profile</code></li>
+<li>然后在<code>Jenkins -&gt; 系统管理 -&gt; 全局工具管理</code>继续进行Maven配置</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-1-4-配置Jenkins使用Docker"><a href="#3-1-4-配置Jenkins使用Docker" class="headerlink" title="3.1.4. 配置Jenkins使用Docker"></a>3.1.4. 配置Jenkins使用Docker</h3><ol>
+<li>之前在创建容器的时候已经完成了sock的映射</li>
+<li>登录进入jenkins容器:<code>docker exec -it -u root jenkins bash</code></li>
+<li>安装docker client:</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sh">apt-get update &amp;&amp; \<br>apt-get -y install apt-transport-https \<br>     ca-certificates \<br>     curl \<br>     gnupg2 \<br>     software-properties-common &amp;&amp; \<br>curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$ID</span>&quot;</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \<br>add-apt-repository \<br>   <span class="hljs-string">&quot;deb [arch=amd64] https://download.docker.com/linux/<span class="hljs-subst">$(. /etc/os-release; echo <span class="hljs-string">&quot;<span class="hljs-variable">$ID</span>&quot;</span>)</span> \</span><br><span class="hljs-string">   <span class="hljs-subst">$(lsb_release -cs)</span> \</span><br><span class="hljs-string">   stable&quot;</span> &amp;&amp; \<br>apt-get update &amp;&amp; \<br>apt-get -y install docker-ce<br></code></pre></td></tr></table></figure>
+<ol>
+<li>通过输入<code>docker</code>来检查是否成功</li>
+<li>授予jenkins用户docker权限：<ol>
+<li>以root用户身份进入jenkins容器：<code>docker exec -it -u root jenkins /bin/bash</code></li>
+<li>查看当前用户情况:<code>ls -l /var/run/docker.sock</code></li>
+<li>授权<code>jenkins</code>用户:<code>chown jenkins: /var/run/docker.sock</code></li>
+<li>再次查看用户情况:<code>ls -l /var/run/docker.sock</code></li>
+<li>检查<code>docker ps</code>之类的命令是否可以使用</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-1-5-配置Jenkins中的Git-SSH"><a href="#3-1-5-配置Jenkins中的Git-SSH" class="headerlink" title="3.1.5. 配置Jenkins中的Git SSH"></a>3.1.5. 配置Jenkins中的Git SSH</h3><ol>
+<li>进入jenkins容器:<code>docker exec -it jenkins /bin/bash</code></li>
+<li>生成SSH密钥:<code>ssh-keygen</code>，一路回车使用默认值</li>
+<li>查找密钥：<code>cat /var/jenkins_home/.ssh/id_rsa.pub</code></li>
+<li>然后登录Github，在<code>settings-&gt;SSH and GPG keys</code>中添加密钥。</li>
+</ol>
+<h3 id="3-1-6-Github添加Webhook"><a href="#3-1-6-Github添加Webhook" class="headerlink" title="3.1.6. Github添加Webhook"></a>3.1.6. Github添加Webhook</h3><ol>
+<li>进入想要部署的仓库，<code>settings -&gt; webhook</code>，选择<code>Add Webhook</code></li>
+<li>设置payload_url为jenkins对应地址:<code>xxx(jenkins访问网址)/github-webhook/</code></li>
+<li>选择<code>Just the push event.</code>和<code>Active</code>后保存即可</li>
+</ol>
+<h3 id="3-1-7-配置主从节点"><a href="#3-1-7-配置主从节点" class="headerlink" title="3.1.7. 配置主从节点"></a>3.1.7. 配置主从节点</h3><blockquote>
+<p>避免出现如下报错：pending—Waiting for next available executor</p>
+</blockquote>
+<ol>
+<li>进入对应位置:<code>系统管理 -&gt; 节点管理</code></li>
+<li>点击<code>配置主从节点</code>，设置至少为2个。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-使用流水线新建任务"><a href="#3-2-使用流水线新建任务" class="headerlink" title="3.2. 使用流水线新建任务"></a>3.2. 使用流水线新建任务</h2><ol>
+<li>点击<code>新建任务</code>，新建一个名为<code>Jenkins-Demo</code>的流水线任务</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li><code>构建触发器</code>选择<code>GitHub hook trigger for GITScm polling</code></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>流水线中(<code>jenkinsfile</code>文件放置在仓库根目录下)<ol>
+<li><code>定义</code>选择<code>Pipeline script from SCM</code></li>
+<li><code>SCM</code>选择<code>Git</code></li>
+<li><code>Repository URL</code>输入对应仓库的<code>git@xxx.git</code>地址</li>
+</ol>
+</li>
+<li>如果出现报错如下，则先进入jenkins容器输入命令<code>git ls-remote -h -- git@github.com:xxx.git HEAD</code>：并输入<code>yes</code>确认</li>
+</ol>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">无法连接仓库：Command <span class="hljs-string">&quot;git ls-remote -h -- git@github.com:xxx.git HEAD&quot;</span> returned status code <span class="hljs-number">128</span>:<br><span class="hljs-keyword">stdout</span>:<br><span class="hljs-keyword">stderr</span>: Host key verification failed.<br>fatal: Could <span class="hljs-keyword">not</span> <span class="hljs-built_in">read</span> <span class="hljs-built_in">from</span> remote repository.<br><br>Please make sure you have <span class="hljs-keyword">the</span> correct access rights<br><span class="hljs-keyword">and</span> <span class="hljs-keyword">the</span> repository exists<br></code></pre></td></tr></table></figure>
+<ol>
+<li>最后指定分支为<code>main</code>，整体如下图所示</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>之后选择保存即可</li>
+<li>之后点击<code>立即构建</code>来查看效果</li>
+</ol>
+<h1 id="4-GitLab-Jenkins-Spring-Boot"><a href="#4-GitLab-Jenkins-Spring-Boot" class="headerlink" title="4. GitLab + Jenkins + Spring Boot"></a>4. GitLab + Jenkins + Spring Boot</h1><h2 id="4-1-配置GitLab插件和连接"><a href="#4-1-配置GitLab插件和连接" class="headerlink" title="4.1. 配置GitLab插件和连接"></a>4.1. 配置GitLab插件和连接</h2><ol>
+<li>Jenkins需要安装插件GitLab Plugin和GitLab Hook Plugin</li>
+<li>进入系统配置，找到GitLab的配置位置，进行配置</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>注意上面需要的API token需要到GitLab的用户设置中，生成Personal Access Tokens</li>
+<li>填写完成后点击Test Connection，如果显示Success表示配置成功</li>
+<li>完成GitLab的Ssh配置，过程完全类似第二大步中的对应步骤。</li>
+</ol>
+<h2 id="4-2-创建项目"><a href="#4-2-创建项目" class="headerlink" title="4.2. 创建项目"></a>4.2. 创建项目</h2><ol>
+<li>勾选Build when a change is pushed to GitLab. GitLab webhook URL:</li>
+<li>下拉找到点击高级，找到Allowed branches，选择Filter branch by name(一般是master)</li>
+<li>在下拉，来到流水线中，选择Pipeline script from SCM，URL填写GitLab获取的URL，进行测试(注意如果出现<code>git ls-remote -h -- ssh://git@xxx.git HEAD</code>，第一次是需要进入容器执行该命令，并输入yes)</li>
+<li>进入GitLab的对应项目仓库，找到settings-&gt;integration配置刚刚得到的webhook URL(注意看提示)，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八</li>
+<li>之后配置好jenkinsfile，然后跟踪构建结果即可。</li>
+</ol>
+<h1 id="5-Jenkins-使用Pipeline集成Cobertura-不支持Java-1-8"><a href="#5-Jenkins-使用Pipeline集成Cobertura-不支持Java-1-8" class="headerlink" title="5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)"></a>5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)</h1><ol>
+<li>jenkins首先安装插件<code>Cobertura Plugin</code></li>
+<li>在pom文件的build-&gt;plugins下添加如下的plugin以生成xml格式的覆盖率检查报告</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.codehaus.mojo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">formats</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>xml<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">formats</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">check</span>/&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>使用:<code>mvn cobertura:cobertura</code>生成相应的测试报告，默认路径为<code>**/target/site/cobertura/</code></li>
+<li>在流水线中添加如下post以添加覆盖报告到Jenkins UI。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pipeline">post &#123;<br>   always &#123;<br>      step([$class: &#x27;CoberturaPublisher&#x27;, autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: &#x27;**/target/site/cobertura/coverage.xml&#x27;, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: &#x27;ASCII&#x27;, zoomCoverageChart: false, enableNewApi: true])<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="6-Jenkins-使用pipeline集成jacoco"><a href="#6-Jenkins-使用pipeline集成jacoco" class="headerlink" title="6. Jenkins 使用pipeline集成jacoco"></a>6. Jenkins 使用pipeline集成jacoco</h1><ol>
+<li>在jenkins中安装<code>jacoco</code>插件</li>
+<li>在html发布后发现了403问题，在script界面运行<code>System.clearProperty(&quot;hudson.model.DirectoryBrowserSupport.CSP&quot;)</code></li>
+<li>之后<strong>重新构建</strong>并发布HTML报告即可</li>
+</ol>
+<h1 id="7-实用插件"><a href="#7-实用插件" class="headerlink" title="7. 实用插件"></a>7. 实用插件</h1><ol>
+<li><a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a></li>
+<li><a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a></li>
+</ol>
+<h1 id="8-配置Jenkins的分布式构建和部署"><a href="#8-配置Jenkins的分布式构建和部署" class="headerlink" title="8. 配置Jenkins的分布式构建和部署"></a>8. 配置Jenkins的分布式构建和部署</h1><ol>
+<li><a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a></li>
+</ol>
+<h1 id="9-参考"><a href="#9-参考" class="headerlink" title="9. 参考"></a>9. 参考</h1><ol>
+<li><a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a></li>
+<li><a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a></li>
+<li><a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a></li>
+<li><a href = "https://blog.csdn.net/linfen1520/article/details/109045063">Jenkins+Docker+github+Spring Boot自动化部署</a></li>
+<li><a href = "https://www.jianshu.com/p/c570e0bb4926">Jenkins容器中安装Docker</a></li>
+<li><a href = "https://blog.csdn.net/zhichuan0307/article/details/108273161">Jenkins持续集成显示pending—Waiting for next available executor</a></li>
+<li><a href = "https://jenkins-zh.cn/wechat/articles/2019/06/2019-06-14-setup-jenkins-ci-in-30-minutes/">30分钟搞定 Jenkins CI</a></li>
+<li><a href = "https://www.cnblogs.com/kaerxifa/p/11671961.html">gitlab webhook jenkins 403问题解决方案</a></li>
+<li><a href = "https://www.cnblogs.com/qiaoyeye/p/7737565.html">jenkins安全内容配置策略</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="category-chain-item">服务器配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Docker 安装 Jenkins</div>
+      <div>https://stormbroken.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月24日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/19/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading3-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/" title="Designing-Data-Intensive-Applications-Reading3-数据模型与查询语言">
+                        <span class="hidden-mobile">Designing-Data-Intensive-Applications-Reading3-数据模型与查询语言</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
