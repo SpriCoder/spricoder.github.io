@@ -31,8 +31,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/8.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/17.png">
-<meta property="article:published_time" content="2022-02-16T11:09:56.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:11:03.945Z">
+<meta property="article:published_time" content="2022-02-16T11:17:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:08:52.504Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C++">
@@ -210,7 +210,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:17" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -283,22 +283,17 @@
             
             <div class="markdown-body">
               
-              <h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h2>
-<h1 id="1-继承机制"><a class="markdownIt-Anchor" href="#1-继承机制"></a> 1. 继承机制</h1>
-<ol>
+              <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h1 id="1-继承机制"><a href="#1-继承机制" class="headerlink" title="1. 继承机制"></a>1. 继承机制</h1><ol>
 <li>基于目标代码的复用</li>
-<li>对事物进行分类
-<ol>
+<li>对事物进行分类<ol>
 <li>派生类是基类的具体化</li>
 <li>把事务(概念)以层次结构表示出来，有利于描述和解决问题</li>
 </ol>
 </li>
 <li>增量开发(面向接口编程)</li>
 </ol>
-<h1 id="2-单继承"><a class="markdownIt-Anchor" href="#2-单继承"></a> 2. 单继承</h1>
-<ol>
-<li>protected:
-<ol>
+<h1 id="2-单继承"><a href="#2-单继承" class="headerlink" title="2. 单继承"></a>2. 单继承</h1><ol>
+<li>protected:<ol>
 <li>如果没有继承的话，protected和private是相同的</li>
 <li>派生类可以访问基类中protected的属性的成员。</li>
 <li>派生类不可以访问<strong>基类中的对象</strong>的protected的属性。</li>
@@ -306,160 +301,127 @@
 </ol>
 </li>
 </ol>
-<h2 id="21-核心代码示例"><a class="markdownIt-Anchor" href="#21-核心代码示例"></a> 2.1. 核心代码示例</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-type">int</span> id;<span class="hljs-comment">//id在Undergraduated_Student中仍然是私有的</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">char</span> nickname[<span class="hljs-number">16</span>];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_ID</span> <span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;id = x;&#125; <br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span> <span class="hljs-params">(<span class="hljs-type">char</span> *s)</span> </span>&#123;<span class="hljs-built_in">strcpy</span> (nickname,s);&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span> <span class="hljs-params">()</span> </span>&#123;cout &lt;&lt; nickname &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; id &lt;&lt; endl ;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;cout &lt;&lt; x &lt;&lt; endl;&#125;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span>: <span class="hljs-keyword">public</span> Student &#123;<br>    <span class="hljs-type">int</span> dept_no;<span class="hljs-comment">//学院编号</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setDeptNo</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;dept_no = x;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">()</span></span>&#123;cout &lt;&lt; dept_no &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; nickname &lt;&lt; endl;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_ID</span> <span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;……&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">()</span></span>&#123;<br>            cout &lt;&lt; dept_no &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; nickname &lt;&lt; endl;<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>        Student::nickname;<span class="hljs-comment">//这样在才能修改可见性</span><br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//新定义了一个private方法，父类对应方法被隐藏</span><br>&#125;;<br>Undergraduated_Student us;<br>us.<span class="hljs-built_in">showInfo</span>(<span class="hljs-number">10</span>);<span class="hljs-comment">//可以吗？不可以,因为是新的名空间，重定义后面的名空间访问不到</span><br></code></pre></td></tr></table></figure>
-<h2 id="22-继承方式"><a class="markdownIt-Anchor" href="#22-继承方式"></a> 2.2. 继承方式</h2>
-<ol>
+<h2 id="2-1-核心代码示例"><a href="#2-1-核心代码示例" class="headerlink" title="2.1. 核心代码示例"></a>2.1. 核心代码示例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> &#123;<br>    <span class="hljs-type">int</span> id;<span class="hljs-comment">//id在Undergraduated_Student中仍然是私有的</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">char</span> nickname[<span class="hljs-number">16</span>];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_ID</span> <span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;id = x;&#125; <br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span> <span class="hljs-params">(<span class="hljs-type">char</span> *s)</span> </span>&#123;<span class="hljs-built_in">strcpy</span> (nickname,s);&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span> <span class="hljs-params">()</span> </span>&#123;cout &lt;&lt; nickname &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; id &lt;&lt; endl ;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;cout &lt;&lt; x &lt;&lt; endl;&#125;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span>: <span class="hljs-keyword">public</span> Student &#123;<br>    <span class="hljs-type">int</span> dept_no;<span class="hljs-comment">//学院编号</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setDeptNo</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;dept_no = x;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">()</span></span>&#123;cout &lt;&lt; dept_no &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; nickname &lt;&lt; endl;&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_ID</span> <span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;……&#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">()</span></span>&#123;<br>            cout &lt;&lt; dept_no &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; nickname &lt;&lt; endl;<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>        Student::nickname;<span class="hljs-comment">//这样在才能修改可见性</span><br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//新定义了一个private方法，父类对应方法被隐藏</span><br>&#125;;<br>Undergraduated_Student us;<br>us.<span class="hljs-built_in">showInfo</span>(<span class="hljs-number">10</span>);<span class="hljs-comment">//可以吗？不可以,因为是新的名空间，重定义后面的名空间访问不到</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-2-继承方式"><a href="#2-2-继承方式" class="headerlink" title="2.2. 继承方式"></a>2.2. 继承方式</h2><ol>
 <li>public、private:访问权限只和基类中的访问权限有关</li>
 </ol>
-<h3 id="221-public"><a class="markdownIt-Anchor" href="#221-public"></a> 2.2.1. public</h3>
-<ol>
+<h3 id="2-2-1-public"><a href="#2-2-1-public" class="headerlink" title="2.2.1. public"></a>2.2.1. public</h3><ol>
 <li>public:<code>class Undergraduated_Student: public Student</code></li>
 <li>原来的public是public，原来的private是private</li>
 <li>如果没有特殊需要建议使用public</li>
 </ol>
-<h3 id="222-private"><a class="markdownIt-Anchor" href="#222-private"></a> 2.2.2. private</h3>
-<ol>
+<h3 id="2-2-2-private"><a href="#2-2-2-private" class="headerlink" title="2.2.2. private"></a>2.2.2. private</h3><ol>
 <li>private:原来所有的都是private，但是这个private是对于Undergraduate_Student大对象而言，所以他自己还是可以访问的。</li>
 <li>默认的继承方式</li>
 </ol>
-<h3 id="223-protected"><a class="markdownIt-Anchor" href="#223-protected"></a> 2.2.3. protected</h3>
-<ol>
+<h3 id="2-2-3-protected"><a href="#2-2-3-protected" class="headerlink" title="2.2.3. protected"></a>2.2.3. protected</h3><ol>
 <li>如果没有继承的话，protected和private是相同的</li>
 <li>派生类可以访问基类中protected的属性的成员。</li>
 <li>派生类不可以访问<strong>基类中的对象</strong>的protected的属性。</li>
 <li><strong>派生类含有基类的所有成员变量</strong></li>
 </ol>
-<h2 id="23-继承声明方式"><a class="markdownIt-Anchor" href="#23-继承声明方式"></a> 2.3. 继承声明方式</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//错误声明</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span> : <span class="hljs-keyword">public</span> Student;<span class="hljs-comment">//声明的时候是不用声明继承的</span><br><span class="hljs-comment">//正确声明</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span>;<br></code></pre></td></tr></table></figure>
-<h2 id="24-基类和继承类的方法关系"><a class="markdownIt-Anchor" href="#24-基类和继承类的方法关系"></a> 2.4. 基类和继承类的方法关系</h2>
-<h3 id="241-派生类中的showinfo"><a class="markdownIt-Anchor" href="#241-派生类中的showinfo"></a> 2.4.1. 派生类中的showInfo()</h3>
-<ol>
+<h2 id="2-3-继承声明方式"><a href="#2-3-继承声明方式" class="headerlink" title="2.3. 继承声明方式"></a>2.3. 继承声明方式</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//错误声明</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span> : <span class="hljs-keyword">public</span> Student;<span class="hljs-comment">//声明的时候是不用声明继承的</span><br><span class="hljs-comment">//正确声明</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Undergraduated_Student</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="2-4-基类和继承类的方法关系"><a href="#2-4-基类和继承类的方法关系" class="headerlink" title="2.4. 基类和继承类的方法关系"></a>2.4. 基类和继承类的方法关系</h2><h3 id="2-4-1-派生类中的showInfo"><a href="#2-4-1-派生类中的showInfo" class="headerlink" title="2.4.1. 派生类中的showInfo()"></a>2.4.1. 派生类中的showInfo()</h3><ol>
 <li>派生类中的showInfo():Overwirtten <strong>重写(绝对不是覆盖)</strong>，隐藏基类的showInfo()函数</li>
 <li>而并不是覆盖操作</li>
 </ol>
-<h3 id="242-基类的showinfo"><a class="markdownIt-Anchor" href="#242-基类的showinfo"></a> 2.4.2. 基类的showInfo()</h3>
-<ol>
-<li>如果基类中有一个<code>void ShowInfo(int x)</code>:那么是不是从基类可以进行调用呢？
-<ol>
+<h3 id="2-4-2-基类的showInfo"><a href="#2-4-2-基类的showInfo" class="headerlink" title="2.4.2. 基类的showInfo()"></a>2.4.2. 基类的showInfo()</h3><ol>
+<li>如果基类中有一个<code>void ShowInfo(int x)</code>:那么是不是从基类可以进行调用呢？<ol>
 <li>不可以(所有函数都被隐藏)</li>
 <li>因为重定义将名空间进行了覆盖</li>
 </ol>
 </li>
 <li>父类中的所有的函数都不可见:但是我们可以通过指定名空间来完成访问:<code>using Student::showInfo</code>,所有的版本都可以见，这时候是重写。</li>
 </ol>
-<h3 id="243-方法调用的顺序"><a class="markdownIt-Anchor" href="#243-方法调用的顺序"></a> 2.4.3. 方法调用的顺序</h3>
-<ol>
+<h3 id="2-4-3-方法调用的顺序"><a href="#2-4-3-方法调用的顺序" class="headerlink" title="2.4.3. 方法调用的顺序"></a>2.4.3. 方法调用的顺序</h3><ol>
 <li>首先在名空间中按照名称进行匹配</li>
 <li>一旦名称匹配，则会校验函数参数</li>
 <li>匹配不上是不会去别的名空间进行匹配(也就是不会去student那里去匹配)</li>
 </ol>
-<h2 id="25-方法覆盖"><a class="markdownIt-Anchor" href="#25-方法覆盖"></a> 2.5. 方法覆盖</h2>
-<ol>
+<h2 id="2-5-方法覆盖"><a href="#2-5-方法覆盖" class="headerlink" title="2.5. 方法覆盖"></a>2.5. 方法覆盖</h2><ol>
 <li>我们需要指明覆盖:<code>virtual</code>:在对应想要重写的函数的前面写上一个virtual</li>
 <li>虚函数实现的是多态</li>
 </ol>
-<h2 id="26-不可以被继承的部分"><a class="markdownIt-Anchor" href="#26-不可以被继承的部分"></a> 2.6. 不可以被继承的部分</h2>
-<ol>
+<h2 id="2-6-不可以被继承的部分"><a href="#2-6-不可以被继承的部分" class="headerlink" title="2.6. 不可以被继承的部分"></a>2.6. 不可以被继承的部分</h2><ol>
 <li>构造函数和析构函数是不可以被继承的:是对类进行初始化的，无法继承</li>
 <li>运算符重载函数也是不可以被继承的</li>
 </ol>
-<h2 id="27-访问权限的修改方法"><a class="markdownIt-Anchor" href="#27-访问权限的修改方法"></a> 2.7. 访问权限的修改方法</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">private</span>:<br>    Student::nickname;<span class="hljs-comment">//char nickname[16];语法上没问题，没有将原来的nickname变为私有的</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//新定义了一个private方法，父类对应方法被隐藏</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-7-访问权限的修改方法"><a href="#2-7-访问权限的修改方法" class="headerlink" title="2.7. 访问权限的修改方法"></a>2.7. 访问权限的修改方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">private</span>:<br>    Student::nickname;<span class="hljs-comment">//char nickname[16];语法上没问题，没有将原来的nickname变为私有的</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetNickName</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//新定义了一个private方法，父类对应方法被隐藏</span><br></code></pre></td></tr></table></figure>
 <ol>
 <li>声明<code>char nickname[16];</code>并没有修改可变性，语法无误，语义不对；</li>
 </ol>
-<h1 id="3-继承的初始化"><a class="markdownIt-Anchor" href="#3-继承的初始化"></a> 3. 继承的初始化</h1>
-<ol>
-<li>派生类对象的初始化
-<ul>
+<h1 id="3-继承的初始化"><a href="#3-继承的初始化" class="headerlink" title="3. 继承的初始化"></a>3. 继承的初始化</h1><ol>
+<li>派生类对象的初始化<ul>
 <li>由基类和派生类共同完成</li>
 </ul>
 </li>
-<li>构造函数的执行次序
-<ol>
+<li>构造函数的执行次序<ol>
 <li>基类的构造函数</li>
 <li>派生类对象成员类的构造函数(注意！)</li>
 <li>派生类的构造函数</li>
 </ol>
 </li>
-<li>析构函数的执行次序(与构造函数执行顺序相反)
-<ol>
+<li>析构函数的执行次序(与构造函数执行顺序相反)<ol>
 <li>派生类的析构函数</li>
 <li>派生类对象成员类的析构函数</li>
 <li>基类的析构函数</li>
 </ol>
 </li>
-<li>基类构造函数的调用
-<ul>
+<li>基类构造函数的调用<ul>
 <li>缺省执行基类默认构造函数</li>
 <li>如果要执行基类的<strong>非默认构造函数</strong>，则必须在派生类构造函数的成员初始化表中指出</li>
 </ul>
 </li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//测试执行和析构顺序</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">A</span>() &#123;x = <span class="hljs-number">0</span>; &#125;<br>        <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> i) &#123; x = i; &#125;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span>: <span class="hljs-keyword">public</span> A<br>&#123;   <span class="hljs-type">int</span> y;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">B</span>()&#123;y = <span class="hljs-number">0</span>;&#125;<br>        <span class="hljs-built_in">B</span>(<span class="hljs-type">int</span> i) &#123;y = i;&#125;<br>        <span class="hljs-built_in">B</span>(<span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j):<span class="hljs-built_in">A</span>(i)&#123;<br>            <span class="hljs-comment">//成员初始化表中显式调用基类构造函数</span><br>            y = j;<br>        &#125;<br>        <span class="hljs-built_in">B</span>(<span class="hljs-type">const</span> B&amp; b)&#123;<span class="hljs-comment">//拷贝构造</span><br>            <span class="hljs-comment">//首先调用A的默认初始化构造函数</span><br>            <span class="hljs-comment">//如果想要调用对应拷贝构造函数，必须用成员初始化表声明</span><br>            <span class="hljs-comment">//拷贝构造函数</span><br>        &#125;<br>&#125;;<br>B b1;<span class="hljs-comment">//执行A::A()和B::B()</span><br><span class="hljs-function">B <span class="hljs-title">b2</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//执行A::A()和B::B(int)</span><br><span class="hljs-function">B <span class="hljs-title">b3</span><span class="hljs-params">(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//执行A::A(int)和B::B(int,int)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span>: <span class="hljs-keyword">public</span> A&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-comment">//继承下来多版本的构造函数</span><br>        <span class="hljs-keyword">using</span> A::A; <span class="hljs-comment">//继承A的构造函数</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="4-多继承"><a class="markdownIt-Anchor" href="#4-多继承"></a> 4. 多继承</h1>
-<h2 id="41-定义"><a class="markdownIt-Anchor" href="#41-定义"></a> 4.1. 定义</h2>
-<ol>
-<li>定义</li>
-</ol>
-<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bnf">class <span class="hljs-attribute">&lt;派生类名&gt;</span>：[<span class="hljs-attribute">&lt;继承方式&gt;</span>] <span class="hljs-attribute">&lt;基类名1&gt;</span>，<br>                 [<span class="hljs-attribute">&lt;继承方式&gt;</span>] <span class="hljs-attribute">&lt;基类名2&gt;</span>，…<br>&#123;〈成员表〉&#125;<br></code></pre></td></tr></table></figure>
-<ol>
+<h1 id="4-多继承"><a href="#4-多继承" class="headerlink" title="4. 多继承"></a>4. 多继承</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1. 定义"></a>4.1. 定义</h2><ol>
+<li>定义<figure class="highlight bnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bnf">class <span class="hljs-attribute">&lt;派生类名&gt;</span>：[<span class="hljs-attribute">&lt;继承方式&gt;</span>] <span class="hljs-attribute">&lt;基类名1&gt;</span>，<br>                 [<span class="hljs-attribute">&lt;继承方式&gt;</span>] <span class="hljs-attribute">&lt;基类名2&gt;</span>，…<br>&#123;〈成员表〉&#125;<br></code></pre></td></tr></table></figure></li>
 <li>Java不允许多继承，是因为多继承非常复杂。</li>
 <li>继承方式:默认是private的继承方式：public、private 、protected</li>
 <li>继承方式及访问控制的规定同单继承:重复进行继承</li>
 <li>派生类拥有所有基类的所有成员</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>可以睡的沙发:继承sofa和Bed</li>
 <li>setWeight重名:两个基类有相同部分，我们会拆分基类</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>之后我们拆分出来setWeigth()(Base Class Decomposition)</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>形成菱形结构:还有问题，Weigth变量依旧在，已然有两个Weigth部分</li>
 <li>解决方案:虚继承</li>
 </ul>
-<h2 id="42-基类声明顺序初始化顺序"><a class="markdownIt-Anchor" href="#42-基类声明顺序初始化顺序"></a> 4.2. 基类声明顺序(初始化顺序)</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-2-基类声明顺序-初始化顺序"><a href="#4-2-基类声明顺序-初始化顺序" class="headerlink" title="4.2. 基类声明顺序(初始化顺序)"></a>4.2. 基类声明顺序(初始化顺序)</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>基类的声明次序决定：
-<ol>
+<li>基类的声明次序决定：<ol>
 <li>对基类构造函数/析构函数的调用次序(顶部基类，同层基类按照声明顺序) 上图中就是 ABCD的顺序</li>
 <li>对基类数据成员的存储安排</li>
 </ol>
 </li>
 <li>析构函数正好相反</li>
 </ol>
-<h3 id="421-名冲突"><a class="markdownIt-Anchor" href="#421-名冲突"></a> 4.2.1. 名冲突</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4-2-1-名冲突"><a href="#4-2-1-名冲突" class="headerlink" title="4.2.1. 名冲突"></a>4.2.1. 名冲突</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>&lt;基类名&gt;::&lt;基类成员名&gt;</li>
 <li>成交变量和成员函数的重名问题:在上图中，D中会有B和C的x</li>
 <li>问题:每次setWeight到底是设置谁的？</li>
 </ol>
-<h3 id="422-虚基类"><a class="markdownIt-Anchor" href="#422-虚基类"></a> 4.2.2. 虚基类</h3>
-<ol>
+<h3 id="4-2-2-虚基类"><a href="#4-2-2-虚基类" class="headerlink" title="4.2.2. 虚基类"></a>4.2.2. 虚基类</h3><ol>
 <li>如果直接基类有公共的基类，则该公共基类中的成员变量在多继承的派生类中有<strong>多</strong>个副本</li>
 <li>如果有一个公共的虚基类，则成员变量只有<strong>一</strong>个副本</li>
 <li>类D有两个x成员，B::x,C::x</li>
-<li>虚继承:保留一个虚指针
-<ol>
+<li>虚继承:保留一个虚指针<ol>
 <li>虚指针指向A</li>
 <li>可以认为是一个组合关系</li>
 </ol>
 </li>
-<li>合并</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span>: <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">public</span> A;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">C</span>: <span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> A;<br><span class="hljs-comment">//public virtual 和 virtual public是一致的</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">D</span>: B, C;<br></code></pre></td></tr></table></figure>
-<h3 id="423-虚基类注意"><a class="markdownIt-Anchor" href="#423-虚基类注意"></a> 4.2.3. 虚基类注意</h3>
-<ol>
-<li>虚基类的构造函数由<strong>最新派生出</strong>的类的构造函数调用
-<ol>
+<li>合并<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span>: <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">public</span> A;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">C</span>: <span class="hljs-keyword">public</span> <span class="hljs-keyword">virtual</span> A;<br><span class="hljs-comment">//public virtual 和 virtual public是一致的</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">D</span>: B, C;<br></code></pre></td></tr></table></figure>
+<h3 id="4-2-3-虚基类注意"><a href="#4-2-3-虚基类注意" class="headerlink" title="4.2.3. 虚基类注意"></a>4.2.3. 虚基类注意</h3></li>
+<li>虚基类的构造函数由<strong>最新派生出</strong>的类的构造函数调用<ol>
 <li>原来是B构造一份A，C构造一个A</li>
 <li>而现在是由D调用A的构造函数，在D的时候先调用A的构造函数，在B和C的时候不在调用A的构造函数，而只是存放指针</li>
 </ol>
@@ -467,17 +429,16 @@
 <li>虚基类的构造函数优先非虚基类的构造函数执行</li>
 <li>如果有两个基类，两个类有一个相同名称的虚函数,比如B和C都有一个同名的虚函数，到底怎么做?不做要求</li>
 </ol>
-<h3 id="424-多继承理解"><a class="markdownIt-Anchor" href="#424-多继承理解"></a> 4.2.4. 多继承理解</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="4-2-4-多继承理解"><a href="#4-2-4-多继承理解" class="headerlink" title="4.2.4. 多继承理解"></a>4.2.4. 多继承理解</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>通过VS的c++命令行中选择打印一些参数</li>
 <li>Ex:<code>/d1 reportAllClassLayout</code>,可以看到所有类的布局如下</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>下图是一个逻辑上的理解:会有多个虚函数表</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/C++-OOP/img/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>构造D，将B的v3覆盖</li>
 <li>之后在第一个A上面直接添加一个虚函数表中的记录</li>
@@ -576,9 +537,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/" title="2020-C-plus-plus-advanced-programming-C++ 类的封装">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec17-Document/" title="2021-Software-System-Design-Lec17-Document">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 类的封装</span>
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec17-Document</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -586,8 +547,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-%E4%BD%9C%E4%B8%9A%E6%80%BB%E7%BB%93/" title="2020-C-plus-plus-advanced-programming-作业总结">
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-作业总结</span>
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture17/" title="2019-COA19-lecture17">
+                        <span class="hidden-mobile">2019-COA19-lecture17</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

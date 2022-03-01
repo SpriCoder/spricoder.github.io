@@ -48,8 +48,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/18.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/19.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/20.png">
-<meta property="article:published_time" content="2022-02-16T11:10:05.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:55:04.678Z">
+<meta property="article:published_time" content="2022-02-16T11:03:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:31:16.781Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="软件测试">
 <meta property="article:tag" content="性能测试">
@@ -225,7 +225,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:03" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -298,158 +298,128 @@
             
             <div class="markdown-body">
               
-              <h2 id="性能测试"><a class="markdownIt-Anchor" href="#性能测试"></a> 性能测试</h2>
-<ol>
+              <h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><ol>
 <li>例子:北京奥运会的售票宕机</li>
 </ol>
-<h1 id="1-什么是性能测试"><a class="markdownIt-Anchor" href="#1-什么是性能测试"></a> 1. 什么是性能测试</h1>
-<ol>
+<h1 id="1-什么是性能测试"><a href="#1-什么是性能测试" class="headerlink" title="1. 什么是性能测试"></a>1. 什么是性能测试</h1><ol>
 <li>验证产品的性能在特定负载和环境条件下使用是否满足性能指标</li>
 <li>进一步发现系统中存在的性能瓶颈，优化系统</li>
 </ol>
-<h2 id="11-性能测试的度量方法"><a class="markdownIt-Anchor" href="#11-性能测试的度量方法"></a> 1.1. 性能测试的度量方法</h2>
-<ol>
+<h2 id="1-1-性能测试的度量方法"><a href="#1-1-性能测试的度量方法" class="headerlink" title="1.1. 性能测试的度量方法"></a>1.1. 性能测试的度量方法</h2><ol>
 <li>不同的关注对象采用不同的性能的度量方法</li>
 <li>服务端性能采用CPU、内存等使用率来度量</li>
 <li>客户端性能通常根据系统处理特定用户请求的响应时间来度量</li>
 </ol>
-<h2 id="12-响应时间"><a class="markdownIt-Anchor" href="#12-响应时间"></a> 1.2. 响应时间</h2>
-<ol>
+<h2 id="1-2-响应时间"><a href="#1-2-响应时间" class="headerlink" title="1.2. 响应时间"></a>1.2. 响应时间</h2><ol>
 <li>系统对请求作出响应所需要的时间</li>
-<li>响应时间的细划分
-<ol>
+<li>响应时间的细划分<ol>
 <li><strong>服务端响应时间</strong>:请求发出开始到客户端接收到最后一个字节数据所消耗的时间</li>
 <li><strong>客户端响应时间</strong>:客户端收到响应数据后呈现/响应用户所需的时间。</li>
 </ol>
 </li>
 </ol>
-<h2 id="13-并发用户数"><a class="markdownIt-Anchor" href="#13-并发用户数"></a> 1.3. 并发用户数</h2>
-<ol>
+<h2 id="1-3-并发用户数"><a href="#1-3-并发用户数" class="headerlink" title="1.3. 并发用户数"></a>1.3. 并发用户数</h2><ol>
 <li>并发用户数取决于测试对象的目标业务场景</li>
 <li>先确定业务场景，然后基于场景采用某些对应方法计算并发用户数。</li>
 <li>并发用户数与同时在线数是有区别的</li>
 </ol>
-<h2 id="14-吞吐量"><a class="markdownIt-Anchor" href="#14-吞吐量"></a> 1.4. 吞吐量</h2>
-<ol>
+<h2 id="1-4-吞吐量"><a href="#1-4-吞吐量" class="headerlink" title="1.4. 吞吐量"></a>1.4. 吞吐量</h2><ol>
 <li>单位时间内处理的用户请求数量</li>
 <li>访问人数/天，页面数/秒，请求数/秒，处理业务数/小时等等</li>
 </ol>
-<h2 id="15-性能计数器"><a class="markdownIt-Anchor" href="#15-性能计数器"></a> 1.5. 性能计数器</h2>
-<ol>
+<h2 id="1-5-性能计数器"><a href="#1-5-性能计数器" class="headerlink" title="1.5. 性能计数器"></a>1.5. 性能计数器</h2><ol>
 <li>性能计数器是描述系统性能的一些数据指标</li>
 <li>Eg.内存使用率、CPU使用率、进程时间等都是常见服务器性能计数器</li>
 <li>性能计数器与系统配置情况、系统架构、开发方式都有密切联系。</li>
 </ol>
-<h2 id="16-负载测试"><a class="markdownIt-Anchor" href="#16-负载测试"></a> 1.6. 负载测试</h2>
-<ol>
+<h2 id="1-6-负载测试"><a href="#1-6-负载测试" class="headerlink" title="1.6. 负载测试"></a>1.6. 负载测试</h2><ol>
 <li>负载测试用于验证系统在正常负载条件下的行为</li>
-<li>两种方式:负载数:并发用户数，事务数
-<ol>
+<li>两种方式:负载数:并发用户数，事务数<ol>
 <li>直接到达负载数</li>
 <li>逐步增加负载数</li>
 </ol>
 </li>
 </ol>
-<h2 id="17-压力测试"><a class="markdownIt-Anchor" href="#17-压力测试"></a> 1.7. 压力测试</h2>
-<ol>
+<h2 id="1-7-压力测试"><a href="#1-7-压力测试" class="headerlink" title="1.7. 压力测试"></a>1.7. 压力测试</h2><ol>
 <li>压力测试是评估应用系统处于或者超过预期负载时的行为。</li>
 <li>压力测试关注的行为不一定是性能行为，可能是某种Bug，比如同步问题，性能泄露</li>
 <li>压力级别逐渐增加的时候，系统性能应该按照预期缓慢下降，但是不应该崩溃。(系统性能能不能回来)</li>
 <li>压力测试还可以发现系统崩溃的临界点，从而发现系统的薄弱点。</li>
 </ol>
-<h1 id="2-具体实践"><a class="markdownIt-Anchor" href="#2-具体实践"></a> 2. 具体实践</h1>
-<ol>
+<h1 id="2-具体实践"><a href="#2-具体实践" class="headerlink" title="2. 具体实践"></a>2. 具体实践</h1><ol>
 <li>测试后期管理和测试。</li>
 </ol>
-<h2 id="21-趋势iwsaasaws性能测试"><a class="markdownIt-Anchor" href="#21-趋势iwsaasaws性能测试"></a> 2.1. 趋势IWSaaS+AWS性能测试</h2>
-<ol>
+<h2 id="2-1-趋势IWSaaS-AWS性能测试"><a href="#2-1-趋势IWSaaS-AWS性能测试" class="headerlink" title="2.1. 趋势IWSaaS+AWS性能测试"></a>2.1. 趋势IWSaaS+AWS性能测试</h2><ol>
 <li>IWSaaS：部署在云上的安全网关，部署在Amazon云平台，为全球提供服务(发布周期是1-2星期)</li>
 <li>Auto Scaling：动态调整实例</li>
 <li>使用了一个监控服务器和性能测试控制服务器</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="211-测试难点"><a class="markdownIt-Anchor" href="#211-测试难点"></a> 2.1.1. 测试难点</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-1-测试难点"><a href="#2-1-1-测试难点" class="headerlink" title="2.1.1. 测试难点"></a>2.1.1. 测试难点</h3><ol>
 <li>十万级用户支持</li>
 <li>20 + 安全网关实例</li>
 <li>20 + Jmeter实例</li>
 <li>动态实例:安全网关的数量是动态的，IP地址是动态的</li>
 <li>Jmeter多机联合不适合:负载会比较重</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/2.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="6">
-<li>动态网关策略:
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/2.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>动态网关策略:<ol>
 <li>CPU负载&gt;70%，多开</li>
 <li>CPU负载&lt;40%，少开</li>
 </ol>
 </li>
 </ol>
-<h3 id="212-测试要求和方案"><a class="markdownIt-Anchor" href="#212-测试要求和方案"></a> 2.1.2. 测试要求和方案</h3>
-<ol>
+<h3 id="2-1-2-测试要求和方案"><a href="#2-1-2-测试要求和方案" class="headerlink" title="2.1.2. 测试要求和方案"></a>2.1.2. 测试要求和方案</h3><ol>
 <li>基本测试要求:平均页面响应时间&lt;2s</li>
-<li>测试方案:
-<ol>
+<li>测试方案:<ol>
 <li>Jmeter模拟用户产生HTTP流量来通过安全网关</li>
 <li>初识用户数，逐渐增加用户数，直到找到符合条件的最大用户量和吞吐量</li>
 <li>不断测试到大于2s为止</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="213-无人值守性能测试"><a class="markdownIt-Anchor" href="#213-无人值守性能测试"></a> 2.1.3. 无人值守性能测试</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-3-无人值守性能测试"><a href="#2-1-3-无人值守性能测试" class="headerlink" title="2.1.3. 无人值守性能测试"></a>2.1.3. 无人值守性能测试</h3><ol>
 <li>部署自动化</li>
-<li>性能测试自动化
-<ol>
+<li>性能测试自动化<ol>
 <li>控制服务器</li>
 <li>自动上传测试脚本</li>
 <li>自动上传测试报告</li>
 </ol>
 </li>
-<li>持续集成
-<ol>
+<li>持续集成<ol>
 <li>Jenkins集成，自动触发</li>
 </ol>
 </li>
 <li>及早发现和快速定位问题</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="214-测试环境"><a class="markdownIt-Anchor" href="#214-测试环境"></a> 2.1.4. 测试环境</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/AWS/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-1-4-测试环境"><a href="#2-1-4-测试环境" class="headerlink" title="2.1.4. 测试环境"></a>2.1.4. 测试环境</h3><ol>
 <li>公网测试和本地测试</li>
-<li>splunk:漏洞管理系统
-<ol>
+<li>splunk:漏洞管理系统<ol>
 <li>对于大量的服务器的log汇总到一起来查看</li>
 </ol>
 </li>
 <li>Zenoss:自动组机测试</li>
 </ol>
-<h2 id="22-淘宝web性能测试"><a class="markdownIt-Anchor" href="#22-淘宝web性能测试"></a> 2.2. 淘宝Web性能测试</h2>
-<h3 id="221-页面加载事件的重要性"><a class="markdownIt-Anchor" href="#221-页面加载事件的重要性"></a> 2.2.1. 页面加载事件的重要性</h3>
-<ol>
+<h2 id="2-2-淘宝Web性能测试"><a href="#2-2-淘宝Web性能测试" class="headerlink" title="2.2. 淘宝Web性能测试"></a>2.2. 淘宝Web性能测试</h2><h3 id="2-2-1-页面加载事件的重要性"><a href="#2-2-1-页面加载事件的重要性" class="headerlink" title="2.2.1. 页面加载事件的重要性"></a>2.2.1. 页面加载事件的重要性</h3><ol>
 <li>大多数用户期望的网站加载时间是3s，如果时间长于3s，网站就开始流失用户</li>
 <li>Amazon加载事件每多1s，收入少16亿收入</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>关注浏览器</li>
 </ol>
-<h3 id="222-页面访问瀑布图"><a class="markdownIt-Anchor" href="#222-页面访问瀑布图"></a> 2.2.2. 页面访问瀑布图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-2-页面访问瀑布图"><a href="#2-2-2-页面访问瀑布图" class="headerlink" title="2.2.2. 页面访问瀑布图"></a>2.2.2. 页面访问瀑布图</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>大量的时间浪费在了前端绘制上</li>
 </ol>
-<h3 id="223-前端优化"><a class="markdownIt-Anchor" href="#223-前端优化"></a> 2.2.3. 前端优化</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/3.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/4.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-3-前端优化"><a href="#2-2-3-前端优化" class="headerlink" title="2.2.3. 前端优化"></a>2.2.3. 前端优化</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/3.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/4.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>前端的优化是性价比很高的工具</li>
 </ol>
-<h3 id="224-服务器端性能测试流程"><a class="markdownIt-Anchor" href="#224-服务器端性能测试流程"></a> 2.2.4. 服务器端性能测试流程</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-4-服务器端性能测试流程"><a href="#2-2-4-服务器端性能测试流程" class="headerlink" title="2.2.4. 服务器端性能测试流程"></a>2.2.4. 服务器端性能测试流程</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>性能测试需求采集</li>
 <li>性能方案评估</li>
@@ -465,70 +435,55 @@
 <li>录入界限库</li>
 <li>知识沉淀</li>
 </ol>
-<h3 id="225-性能测试指标"><a class="markdownIt-Anchor" href="#225-性能测试指标"></a> 2.2.5. 性能测试指标</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-5-性能测试指标"><a href="#2-2-5-性能测试指标" class="headerlink" title="2.2.5. 性能测试指标"></a>2.2.5. 性能测试指标</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>PV:压测方法和重要决策依据</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>前3个是重要的性能指标</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>CPU消耗一定要注意不同核之间的负载均衡</li>
 <li>保证CPU的满负荷运行</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/10.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="5">
-<li>我们关心Java虚拟机中老生带(Old Generation)和内存变化情况
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/10.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>我们关心Java虚拟机中老生带(Old Generation)和内存变化情况<ol>
 <li>老生代GC在一小时以上</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="6">
-<li>考虑网卡的瓶颈:
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>考虑网卡的瓶颈:<ol>
 <li>减少请求返回数量</li>
 <li>缓存数据在本地</li>
 <li>增大网卡带宽</li>
 </ol>
 </li>
 </ol>
-<h3 id="226-性能测试压力变化模型以及测试类型"><a class="markdownIt-Anchor" href="#226-性能测试压力变化模型以及测试类型"></a> 2.2.6. 性能测试压力变化模型以及测试类型</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/13.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="227-通过标准"><a class="markdownIt-Anchor" href="#227-通过标准"></a> 2.2.7. 通过标准</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-6-性能测试压力变化模型以及测试类型"><a href="#2-2-6-性能测试压力变化模型以及测试类型" class="headerlink" title="2.2.6. 性能测试压力变化模型以及测试类型"></a>2.2.6. 性能测试压力变化模型以及测试类型</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/13.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-2-7-通过标准"><a href="#2-2-7-通过标准" class="headerlink" title="2.2.7. 通过标准"></a>2.2.7. 通过标准</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>决定是否能发布</li>
 </ol>
-<h3 id="228-pts介绍和架构"><a class="markdownIt-Anchor" href="#228-pts介绍和架构"></a> 2.2.8. PTS介绍和架构</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/16.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/17.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/18.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/19.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-2-8-PTS介绍和架构"><a href="#2-2-8-PTS介绍和架构" class="headerlink" title="2.2.8. PTS介绍和架构"></a>2.2.8. PTS介绍和架构</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/16.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/17.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/18.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/19.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Test/img/TaoBao/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>PTS 对于阿里云用户免费，第一次会有引导。</li>
-<li>测试脚本
-<ol>
+<li>测试脚本<ol>
 <li>域名绑定:绑定好域名</li>
 <li>登录模块:保证只需要登录一次。</li>
 <li>支持上传参数(在请求连接里面选择右键从文件中进行选择变量)首先上传本地CSV，之后快速启动即可以完成测试</li>
 </ol>
 </li>
-<li>场景:
-<ol>
+<li>场景:<ol>
 <li>三种不同测试</li>
 <li>施压器:乘以并发数得到最后的总数</li>
 </ol>
 </li>
-<li>任务:
-<ol>
+<li>任务:<ol>
 <li>持续时间</li>
 <li>开始时候晚于当前则会排机测试，不然则需要手动触发</li>
 <li>计费以实际为准</li>
@@ -537,8 +492,7 @@
 <li>实时监控:查看更多的信息</li>
 <li>可以查看服务器的日志情况</li>
 </ol>
-<h2 id="23-jmeter-使用"><a class="markdownIt-Anchor" href="#23-jmeter-使用"></a> 2.3. JMeter 使用</h2>
-
+<h2 id="2-3-JMeter-使用"><a href="#2-3-JMeter-使用" class="headerlink" title="2.3. JMeter 使用"></a>2.3. JMeter 使用</h2>
               
             </div>
             <hr/>
@@ -627,9 +581,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Test/2020-Software-Test-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/" title="2020-Software-Test-功能测试">
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-03-%E5%AE%9E%E4%BE%8B%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0/" title="2020-Software-Engineering-and-Computing-II-03-实例项目描述">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Software-Test-功能测试</span>
+                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-03-实例项目描述</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -637,8 +591,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Test/2020-Software-Test-%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/" title="2020-Software-Test-白盒测试">
-                        <span class="hidden-mobile">2020-Software-Test-白盒测试</span>
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="2021-Database-Development-Lec3-索引结构及使用">
+                        <span class="hidden-mobile">2021-Database-Development-Lec3-索引结构及使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -40,8 +40,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/15.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/17.png">
-<meta property="article:published_time" content="2022-02-16T11:10:00.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:09:17.826Z">
+<meta property="article:published_time" content="2022-02-16T11:11:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:22:10.575Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="计算机网络">
@@ -218,7 +218,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:11" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.3k 字
+          8.9k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          78 分钟
+          74 分钟
         
       </span>
     
@@ -291,11 +291,10 @@
             
             <div class="markdown-body">
               
-              <h2 id="第11讲-网络安全"><a class="markdownIt-Anchor" href="#第11讲-网络安全"></a> 第11讲-网络安全</h2>
-<h1 id="1-网络安全问题概述"><a class="markdownIt-Anchor" href="#1-网络安全问题概述"></a> 1. 网络安全问题概述</h1>
-<ol>
+              <h2 id="第11讲-网络安全"><a href="#第11讲-网络安全" class="headerlink" title="第11讲-网络安全"></a>第11讲-网络安全</h2><h1 id="1-网络安全问题概述"><a href="#1-网络安全问题概述" class="headerlink" title="1. 网络安全问题概述"></a>1. 网络安全问题概述</h1><ol>
 <li>计算机网络上的通信面临以下的四种威胁：</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -327,84 +326,70 @@
 </tr>
 </tbody>
 </table>
-<h2 id="11-被动攻击和主动攻击"><a class="markdownIt-Anchor" href="#11-被动攻击和主动攻击"></a> 1.1. 被动攻击和主动攻击</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="111-被动攻击"><a class="markdownIt-Anchor" href="#111-被动攻击"></a> 1.1.1. 被动攻击</h3>
-<ol>
+</div>
+<h2 id="1-1-被动攻击和主动攻击"><a href="#1-1-被动攻击和主动攻击" class="headerlink" title="1.1. 被动攻击和主动攻击"></a>1.1. 被动攻击和主动攻击</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-1-被动攻击"><a href="#1-1-1-被动攻击" class="headerlink" title="1.1.1. 被动攻击"></a>1.1.1. 被动攻击</h3><ol>
 <li>截获信息的攻击称为被动攻击(并不改变通讯的过程)</li>
 <li>在被动攻击中，攻击者只是观察和分析某一个协议数据单元PDU而不干扰信息流。</li>
 </ol>
-<h3 id="112-主动攻击"><a class="markdownIt-Anchor" href="#112-主动攻击"></a> 1.1.2. 主动攻击</h3>
-<ol>
+<h3 id="1-1-2-主动攻击"><a href="#1-1-2-主动攻击" class="headerlink" title="1.1.2. 主动攻击"></a>1.1.2. 主动攻击</h3><ol>
 <li>更改信息和拒绝用户使用资源的攻击称为主动攻击。(修改了通信的构成)</li>
-<li>主动攻击是指攻击者对某个连接中通过的PDU进行各种处理(理解PDU后)
-<ol>
+<li>主动攻击是指攻击者对某个连接中通过的PDU进行各种处理(理解PDU后)<ol>
 <li>更改报文流</li>
 <li>拒绝报文服务</li>
 <li>伪造连接初始化</li>
 </ol>
 </li>
 </ol>
-<h2 id="12-计算机网络通信安全的目标"><a class="markdownIt-Anchor" href="#12-计算机网络通信安全的目标"></a> 1.2. 计算机网络通信安全的目标</h2>
-<ol>
+<h2 id="1-2-计算机网络通信安全的目标"><a href="#1-2-计算机网络通信安全的目标" class="headerlink" title="1.2. 计算机网络通信安全的目标"></a>1.2. 计算机网络通信安全的目标</h2><ol>
 <li>防止析出报文内容</li>
 <li>防止通信量分析(通信的习惯)</li>
 <li>检测更改报文流</li>
 <li>检测拒绝报文服务</li>
 <li>检测伪造初始化连接</li>
 </ol>
-<h2 id="13-报文应该具有的性质"><a class="markdownIt-Anchor" href="#13-报文应该具有的性质"></a> 1.3. 报文应该具有的性质</h2>
-<ol>
+<h2 id="1-3-报文应该具有的性质"><a href="#1-3-报文应该具有的性质" class="headerlink" title="1.3. 报文应该具有的性质"></a>1.3. 报文应该具有的性质</h2><ol>
 <li>保密性</li>
 <li>完整性</li>
 <li>可用性</li>
 <li>鉴别性</li>
 <li>不可否认(抵赖)性:确认是特定的发送方</li>
 </ol>
-<h2 id="14-恶意程序malicious-program"><a class="markdownIt-Anchor" href="#14-恶意程序malicious-program"></a> 1.4. 恶意程序(malicious program)</h2>
-<ol>
-<li>计算机病毒:会&quot;传染&quot;其他程序的程序，“传染” 通过修改其他程序来把自身或其变种复制进去而完成。</li>
+<h2 id="1-4-恶意程序-malicious-program"><a href="#1-4-恶意程序-malicious-program" class="headerlink" title="1.4. 恶意程序(malicious program)"></a>1.4. 恶意程序(malicious program)</h2><ol>
+<li>计算机病毒:会”传染”其他程序的程序，”传染” 通过修改其他程序来把自身或其变种复制进去而完成。</li>
 <li>计算机蠕虫:通过网络的通信功能将自身从一个结点发送到另一个结点并启动运行的程序。(特定场景才能使用，出现上商业行为)</li>
-<li>特洛伊木马:一种程序，它执行的功能超出所声称的功能。运作木马获得特殊的权限
-<ol>
+<li>特洛伊木马:一种程序，它执行的功能超出所声称的功能。运作木马获得特殊的权限<ol>
 <li>逻辑程序:逻辑下载程序</li>
 <li>控制器程序:远程控制</li>
 </ol>
 </li>
 <li>逻辑炸弹:一种当运行环境满足某种特定条件时执行其他特殊功能的程序。</li>
 </ol>
-<h2 id="15-计算机网络安全的内容"><a class="markdownIt-Anchor" href="#15-计算机网络安全的内容"></a> 1.5. 计算机网络安全的内容</h2>
-<ol>
+<h2 id="1-5-计算机网络安全的内容"><a href="#1-5-计算机网络安全的内容" class="headerlink" title="1.5. 计算机网络安全的内容"></a>1.5. 计算机网络安全的内容</h2><ol>
 <li>保密性</li>
 <li>安全协议的设计</li>
 <li>访问控制</li>
 </ol>
-<h1 id="2-一般的数据加密模型"><a class="markdownIt-Anchor" href="#2-一般的数据加密模型"></a> 2. 一般的数据加密模型</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-一般的数据加密模型"><a href="#2-一般的数据加密模型" class="headerlink" title="2. 一般的数据加密模型"></a>2. 一般的数据加密模型</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>不确定有没有人修改:使用密文发送</li>
-<li>最早的是<strong>凯撒密码</strong>:
-<ol>
+<li>最早的是<strong>凯撒密码</strong>:<ol>
 <li>加密：明文按照数字mod的值进行偏移，得到密文</li>
 <li>解密：密文反向偏移数字mod的值进行偏移，得到明文</li>
 </ol>
 </li>
 </ol>
-<h2 id="21-密码相关的重要概念"><a class="markdownIt-Anchor" href="#21-密码相关的重要概念"></a> 2.1. 密码相关的重要概念</h2>
-<ol>
+<h2 id="2-1-密码相关的重要概念"><a href="#2-1-密码相关的重要概念" class="headerlink" title="2.1. 密码相关的重要概念"></a>2.1. 密码相关的重要概念</h2><ol>
 <li><strong>密码编码学</strong>(cryptography)是密码体制的设计学(设计密码)</li>
 <li><strong>密码分析学</strong>(cryptanalysis)则是在未知密钥的情况下从密文推演出明文或密钥的技术。密码编码学与密码分析学合起来即为密码学(cryptology)。</li>
 <li>如果不论截取者获得了多少密文，但在密文中都没有足够的信息来唯一地确定出对应的明文，则这一密码体制称为<strong>无条件安全</strong>的，或称为<strong>理论上是不可破</strong>的。</li>
 <li>如果密码体制中的密码不能被可使用的计算资源破译，则这一密码体制称为在<strong>计算上安全</strong>的。(目前一般的密码体系能够达到的标注)</li>
 </ol>
-<h1 id="3-对称密钥和公钥密码体制"><a class="markdownIt-Anchor" href="#3-对称密钥和公钥密码体制"></a> 3. 对称密钥和公钥密码体制</h1>
-<h2 id="31-对称密钥密码体系"><a class="markdownIt-Anchor" href="#31-对称密钥密码体系"></a> 3.1. 对称密钥密码体系</h2>
-<ol>
+<h1 id="3-对称密钥和公钥密码体制"><a href="#3-对称密钥和公钥密码体制" class="headerlink" title="3. 对称密钥和公钥密码体制"></a>3. 对称密钥和公钥密码体制</h1><h2 id="3-1-对称密钥密码体系"><a href="#3-1-对称密钥密码体系" class="headerlink" title="3.1. 对称密钥密码体系"></a>3.1. 对称密钥密码体系</h2><ol>
 <li>所谓常规密钥密码体制，即加密密钥与解密密钥是<strong>相同</strong>的密码体制。</li>
 <li>这种加密系统又称为<strong>对称密钥系统</strong>。</li>
 </ol>
-<h3 id="311-数据加密标准-des-data-encryption-standard"><a class="markdownIt-Anchor" href="#311-数据加密标准-des-data-encryption-standard"></a> 3.1.1. 数据加密标准 DES Data Encryption Standard</h3>
-<ol>
+<h3 id="3-1-1-数据加密标准-DES-Data-Encryption-Standard"><a href="#3-1-1-数据加密标准-DES-Data-Encryption-Standard" class="headerlink" title="3.1.1. 数据加密标准 DES Data Encryption Standard"></a>3.1.1. 数据加密标准 DES Data Encryption Standard</h3><ol>
 <li>数据加密标准DES属于常规密钥密码体制，是一种分组密码(对称加密算法)</li>
 <li>在加密前，先对整个明文进行分组。每一个组长为64位。</li>
 <li>然后对每一个64位二进制数据进行加密处理，产生一组64位密文数据。</li>
@@ -413,79 +398,65 @@
 <li>对于64位密码有编排的过程，详细自己查找学习</li>
 <li>密钥长度不会太长，算法复杂度比较低</li>
 </ol>
-<h3 id="312-des-的保密性"><a class="markdownIt-Anchor" href="#312-des-的保密性"></a> 3.1.2. DES 的保密性</h3>
-<ol>
+<h3 id="3-1-2-DES-的保密性"><a href="#3-1-2-DES-的保密性" class="headerlink" title="3.1.2. DES 的保密性"></a>3.1.2. DES 的保密性</h3><ol>
 <li>DES的保密性仅取决于对密钥的保密，而算法是公开的。尽管人们在破译DES方面取得了许多进展，但至今仍未能找到比穷举搜索密钥更有效的方法。</li>
 <li>DES 是世界上第一个公认的实用密码算法标准，它曾对密码学的发展做出了重大贡献。</li>
-<li>目前较为严重的问题是DES的密钥的长度(算力提升)
-<ol>
+<li>目前较为严重的问题是DES的密钥的长度(算力提升)<ol>
 <li>由于算力的提升，破解DES所需的时间进一步降低，不再是计算上安全的了。</li>
 <li>通过增加DES密钥的长度来提高安全性。</li>
 </ol>
 </li>
 <li>现在已经设计出来搜索DES密钥的专用芯片(硬件层面的解决方案)</li>
 </ol>
-<h2 id="32-公钥密码体制"><a class="markdownIt-Anchor" href="#32-公钥密码体制"></a> 3.2. 公钥密码体制</h2>
-<ol>
-<li>公钥密码体制使用<strong>不同的加密密钥与解密密钥</strong>，是一种&quot;由已知加密密钥推导出解密密钥在<strong>计算上是不可行</strong>的&quot;密码体制。(非对称密码体系)
-<ol>
+<h2 id="3-2-公钥密码体制"><a href="#3-2-公钥密码体制" class="headerlink" title="3.2. 公钥密码体制"></a>3.2. 公钥密码体制</h2><ol>
+<li>公钥密码体制使用<strong>不同的加密密钥与解密密钥</strong>，是一种”由已知加密密钥推导出解密密钥在<strong>计算上是不可行</strong>的”密码体制。(非对称密码体系)<ol>
 <li>经典算法:密钥E和N，明文是一个数字，加密时用明文做E的指数次方之后mod N得到密文C，解密是D和N，密文C做D次方再mod N得到明文</li>
 <li>例子:密钥是7和187，明文88，88的7次方mod187 = 11(密文)，解密密钥23和187，11的23次方mod187得到88(明文)</li>
 </ol>
 </li>
 </ol>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>88</mn><mo stretchy="false">(</mo><mi mathvariant="normal">明</mi><mi mathvariant="normal">文</mi><msup><mo stretchy="false">)</mo><mn>7</mn></msup><mtext> </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mn>187</mn><mo>=</mo><mn>11</mn><mo stretchy="false">(</mo><mi mathvariant="normal">密</mi><mi mathvariant="normal">文</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">88(明文)^{7}\ mod\ 187=11(密文)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord">8</span><span class="mopen">(</span><span class="mord cjk_fallback">明</span><span class="mord cjk_fallback">文</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord">1</span><span class="mord">8</span><span class="mord">7</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mopen">(</span><span class="mord cjk_fallback">密</span><span class="mord cjk_fallback">文</span><span class="mclose">)</span></span></span></span><br />
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>11</mn><mo stretchy="false">(</mo><mi mathvariant="normal">密</mi><mi mathvariant="normal">文</mi><msup><mo stretchy="false">)</mo><mn>23</mn></msup><mtext> </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mn>187</mn><mo>=</mo><mn>88</mn><mo stretchy="false">(</mo><mi mathvariant="normal">明</mi><mi mathvariant="normal">文</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">11(密文)^{23}\ mod\ 187=88(明文)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mopen">(</span><span class="mord cjk_fallback">密</span><span class="mord cjk_fallback">文</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord">1</span><span class="mord">8</span><span class="mord">7</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord">8</span><span class="mopen">(</span><span class="mord cjk_fallback">明</span><span class="mord cjk_fallback">文</span><span class="mclose">)</span></span></span></span></p>
-<ol start="2">
-<li>公钥密码体制的产生主要是因为两个方面的原因，一是由于常规密钥密码体制的密钥分配问题，另一是由于对数字签名的需求。
+<p>$88(明文)^{7}\ mod\ 187=11(密文)$<br>$11(密文)^{23}\ mod\ 187=88(明文)$</p>
 <ol>
+<li>公钥密码体制的产生主要是因为两个方面的原因，一是由于常规密钥密码体制的密钥分配问题，另一是由于对数字签名的需求。<ol>
 <li>一个机构可以发送自己的公钥，保留自己的密钥。接收者受到密钥加密的就知道是谁发送的，保证机构可以发送安全认证，接受者使用公钥解密知道是谁发送的，做到密钥的分配</li>
 <li>私钥加密的是机构的签名，大量数据传输使用对称密钥体系传输，公钥发送比较少的数据，因为公钥密码体系算法复杂度比较高，加密的时候是很多位的明文，计算量太大。</li>
 </ol>
 </li>
 <li>现有最著名的公钥密码体制是RSA体制，它基于数论中大数分解问题的体制，由美国三位科学家Rivest，Shamir和Adleman于1976年提出并在1978年正式发表。</li>
 </ol>
-<h3 id="321-公钥算法的例子"><a class="markdownIt-Anchor" href="#321-公钥算法的例子"></a> 3.2.1. 公钥算法的例子</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-2-1-公钥算法的例子"><a href="#3-2-1-公钥算法的例子" class="headerlink" title="3.2.1. 公钥算法的例子"></a>3.2.1. 公钥算法的例子</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>在公钥密码体制中，加密密钥(即公钥)PK是公开信息，而解密密钥(即私钥或秘钥)SK是需要保密的</li>
 <li>加密算法E和解密算法D也都是公开的</li>
 <li>虽然SK是由PK决定的，但却不能根据PK计算出SK(单向的)</li>
 <li>公钥和私钥是成对生成的</li>
 </ol>
-<h3 id="322-公钥算法的特点"><a class="markdownIt-Anchor" href="#322-公钥算法的特点"></a> 3.2.2. 公钥算法的特点</h3>
-<ol>
-<li>发送者A用B的公钥<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">PK_{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>对明文X加密(E运算)后，在接收者B用自己的私钥<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><msub><mi>K</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">SK_{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>解密(D 运算)，即可恢复出明文：
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>S</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>D</mi><mrow><mi>S</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><msub><mi>E</mi><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">D_{SK_B}(Y) = D_{SK_B}(E_{PK_B}(X)) = X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<h3 id="3-2-2-公钥算法的特点"><a href="#3-2-2-公钥算法的特点" class="headerlink" title="3.2.2. 公钥算法的特点"></a>3.2.2. 公钥算法的特点</h3><ol>
+<li>发送者A用B的公钥$PK_{B}$对明文X加密(E运算)后，在接收者B用自己的私钥$SK_{B}$解密(D 运算)，即可恢复出明文：<ul>
+<li>$D_{SK_B}(Y) = D_{SK_B}(E_{PK_B}(X)) = X$</li>
 </ul>
 </li>
 <li>解密密钥是接收者专用的秘钥，对其他人都保密。</li>
-<li>加密密钥是公开的，但不能用它来解密，即
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><msub><mi>E</mi><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mi mathvariant="normal">≠</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">D_{PK_B}(E_{PK_B}(X))\neq X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<li>加密密钥是公开的，但不能用它来解密，即 <ul>
+<li>$D_{PK_B}(E_{PK_B}(X))\neq X$</li>
 </ul>
 </li>
-<li>加密和解密的运算可以对调，即(用私钥进行加密，意义有差别:这样子证明是B发送的，但是别人都知道公钥，相当于明文发送)
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><msub><mi>D</mi><mrow><mi>S</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><msub><mi>D</mi><mrow><mi>S</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><msub><mi>E</mi><mrow><mi>P</mi><msub><mi>K</mi><mi>B</mi></msub></mrow></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">E_{PK_B}(D_{SK_B}(X)) = D_{SK_B}(E_{PK_B}(X)) = X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.000305em;vertical-align:-0.250305em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-left:-0.07153em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.250305em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<li>加密和解密的运算可以对调，即(用私钥进行加密，意义有差别:这样子证明是B发送的，但是别人都知道公钥，相当于明文发送)<ul>
+<li>$E_{PK_B}(D_{SK_B}(X)) = D_{SK_B}(E_{PK_B}(X)) = X$</li>
 </ul>
 </li>
 <li>在计算机上可容易地产生成对的PK和SK</li>
-<li>从已知的PK实际上不可能推导出SK，即从PK到SK是&quot;计算上不可能的&quot;</li>
+<li>从已知的PK实际上不可能推导出SK，即从PK到SK是”计算上不可能的”</li>
 <li>加密和解密算法都是公开的</li>
 </ol>
-<h3 id="323-应当注意"><a class="markdownIt-Anchor" href="#323-应当注意"></a> 3.2.3. 应当注意</h3>
-<ol>
+<h3 id="3-2-3-应当注意"><a href="#3-2-3-应当注意" class="headerlink" title="3.2.3. 应当注意"></a>3.2.3. 应当注意</h3><ol>
 <li>任何加密方法的安全性取决于<strong>密钥的长度</strong>，以及<strong>攻破密文所需的计算量</strong></li>
 <li>在这方面，公钥密码体制并不比传统加密体制更加优越</li>
 <li>由于目前公钥加密算法的开销较大，在可见的将来还不会放弃传统的加密方法</li>
 <li>公钥需要密钥分配协议，具体的分配过程并不比采用传统加密方法时更简单</li>
 </ol>
-<h1 id="4-数字签名"><a class="markdownIt-Anchor" href="#4-数字签名"></a> 4. 数字签名</h1>
-<ol>
-<li>数字签名必须保证以下三点：
-<ol>
+<h1 id="4-数字签名"><a href="#4-数字签名" class="headerlink" title="4. 数字签名"></a>4. 数字签名</h1><ol>
+<li>数字签名必须保证以下三点：<ol>
 <li>报文鉴别:接收者能够核实发送者对报文的签名</li>
 <li>报文的完整性:发送者事后不能抵赖对报文的签名</li>
 <li>不可否认:接收者不能伪造对报文的签名</li>
@@ -493,113 +464,90 @@
 </li>
 <li>现在已有多种实现各种数字签名的方法。但采用<strong>公钥算法</strong>更容易实现</li>
 </ol>
-<h2 id="41-数字签名的实现"><a class="markdownIt-Anchor" href="#41-数字签名的实现"></a> 4.1. 数字签名的实现</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-1-数字签名的实现"><a href="#4-1-数字签名的实现" class="headerlink" title="4.1. 数字签名的实现"></a>4.1. 数字签名的实现</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>因为除A外没有别人能具有A的私钥，所以除A外没有别人能产生这个密文。因此B相信报文X是A签名发送的。</li>
 <li>若A要抵赖曾发送报文给B，B可将明文和对应的密文出示给第三者。第三者很容易用A的公钥去证实A确实发送X给B。</li>
 <li>反之，若B将X伪造成X’，则B不能在第三者前出示对应的密文。这样就证明了B伪造了报文。</li>
 </ol>
-<h2 id="42-具有保密性的数字签名"><a class="markdownIt-Anchor" href="#42-具有保密性的数字签名"></a> 4.2. 具有保密性的数字签名</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-2-具有保密性的数字签名"><a href="#4-2-具有保密性的数字签名" class="headerlink" title="4.2. 具有保密性的数字签名"></a>4.2. 具有保密性的数字签名</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>首先用自己的私钥进行签名，然后对密文用B的公钥加密</li>
 <li>收到密文的，如果没有B的私钥，不能进行解密</li>
 <li>然后用B的私钥解密，之后用A的公钥检验是A发送的，一般只用来传送对称密码，比较耗时。</li>
 <li>保障获取公钥的过程</li>
 </ol>
-<h1 id="5-防火墙"><a class="markdownIt-Anchor" href="#5-防火墙"></a> 5. 防火墙</h1>
-<ol>
+<h1 id="5-防火墙"><a href="#5-防火墙" class="headerlink" title="5. 防火墙"></a>5. 防火墙</h1><ol>
 <li>防火墙是由软件、硬件构成的系统，是一种特殊编程(ACL)的路由器，用来在两个网络之间实施接入控制策略。接入控制策略是由使用防火墙的单位自行制订的，为的是可以最适合本单位的需要。</li>
 <li>防火墙内的网络称为<strong>可信赖的网络</strong>(trusted network)，而将外部的因特网称为<strong>不可信赖的网络</strong>(untrusted network)。</li>
 <li>防火墙可用来解决内联网和外联网的<strong>安全问题</strong>。</li>
 </ol>
-<h2 id="51-防火墙在互连网络中的位置"><a class="markdownIt-Anchor" href="#51-防火墙在互连网络中的位置"></a> 5.1. 防火墙在互连网络中的位置</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="5-1-防火墙在互连网络中的位置"><a href="#5-1-防火墙在互连网络中的位置" class="headerlink" title="5.1. 防火墙在互连网络中的位置"></a>5.1. 防火墙在互连网络中的位置</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>其实只用一个路由器就可以完成防火墙的划分。</li>
 <li>例子中:应用网关，可以内部外部进行访问过滤。</li>
 <li>优点:在防火墙中的外局域网和内局域网都可以放置一些服务器，由左侧过滤的路由器控制访问，而右侧的路由控制内部网络的访问，从而达成一个访问权限控制</li>
 <li>内网络安全也是一个问题</li>
 </ol>
-<h2 id="52-防火墙的功能"><a class="markdownIt-Anchor" href="#52-防火墙的功能"></a> 5.2. 防火墙的功能</h2>
-<ol>
-<li>防火墙的功能有两个：<strong>阻止和允许</strong>。
-<ol>
+<h2 id="5-2-防火墙的功能"><a href="#5-2-防火墙的功能" class="headerlink" title="5.2. 防火墙的功能"></a>5.2. 防火墙的功能</h2><ol>
+<li>防火墙的功能有两个：<strong>阻止和允许</strong>。<ol>
 <li><strong>阻止</strong>就是阻止某种类型的通信量通过防火墙(从外部网络到内部网络，或反过来)：比如阻止内部的对迅雷的请求向外发送</li>
 <li><strong>允许</strong>的功能与<strong>阻止</strong>恰好相反。</li>
 </ol>
 </li>
 <li>防火墙必须能够识别通信量的各种类型。不过在<strong>大多数情况下防火墙的主要功能</strong>是<strong>阻止</strong>。</li>
 </ol>
-<h2 id="53-防火墙技术一般分为两类"><a class="markdownIt-Anchor" href="#53-防火墙技术一般分为两类"></a> 5.3. 防火墙技术一般分为两类</h2>
-<ol>
-<li><strong>网络级防火墙</strong>:用来防止整个网络出现外来非法的入侵。属于这类的有<strong>分组过滤和授权服务器</strong>
-<ol>
+<h2 id="5-3-防火墙技术一般分为两类"><a href="#5-3-防火墙技术一般分为两类" class="headerlink" title="5.3. 防火墙技术一般分为两类"></a>5.3. 防火墙技术一般分为两类</h2><ol>
+<li><strong>网络级防火墙</strong>:用来防止整个网络出现外来非法的入侵。属于这类的有<strong>分组过滤和授权服务器</strong><ol>
 <li>前者检查所有流入本网络的信息，然后拒绝不符合事先制订好的一套准则的数据</li>
 <li>后者则检查用户的登录是否合法</li>
 </ol>
 </li>
 <li><strong>应用级防火墙</strong>:从应用程序来进行接入控制。通常使用应用网关或代理服务器来区分各种应用，例如，可以只允许通过访问万维网的应用，而阻止FTP应用通过</li>
 </ol>
-<h2 id="54-访问控制列表aclaccess-control-lists"><a class="markdownIt-Anchor" href="#54-访问控制列表aclaccess-control-lists"></a> 5.4. 访问控制列表ACL(Access Control Lists)</h2>
-<ol>
+<h2 id="5-4-访问控制列表ACL-Access-Control-Lists"><a href="#5-4-访问控制列表ACL-Access-Control-Lists" class="headerlink" title="5.4. 访问控制列表ACL(Access Control Lists)"></a>5.4. 访问控制列表ACL(Access Control Lists)</h2><ol>
 <li>ACL是指令列表，它告诉路由器允许或拒绝什么类型的数据包。</li>
 <li>如果要让路由器拒绝某些数据包，则必须配置ACL。否则，只要链路打开，路由器将接受并转发所有数据包</li>
-<li>您可以根据以下情况允许或拒绝数据包：
-<ol>
+<li>您可以根据以下情况允许或拒绝数据包：<ol>
 <li>源地址</li>
 <li>目的地址</li>
 <li>上层的协议，比如TCP或UDP端口</li>
 </ol>
 </li>
 </ol>
-<h2 id="55-使用acl的前提下发送数据包"><a class="markdownIt-Anchor" href="#55-使用acl的前提下发送数据包"></a> 5.5. 使用ACL的前提下，发送数据包</h2>
-<ol>
-<li>为了确定是允许还是拒绝数据包，请按顺序对ACL语句进行测试。
-<ol>
-<li>当一个语句&quot;匹配&quot;时，<strong>不再评估任何语句</strong>。(前面的语句先匹配，处理掉)</li>
+<h2 id="5-5-使用ACL的前提下，发送数据包"><a href="#5-5-使用ACL的前提下，发送数据包" class="headerlink" title="5.5. 使用ACL的前提下，发送数据包"></a>5.5. 使用ACL的前提下，发送数据包</h2><ol>
+<li>为了确定是允许还是拒绝数据包，请按顺序对ACL语句进行测试。<ol>
+<li>当一个语句”匹配”时，<strong>不再评估任何语句</strong>。(前面的语句先匹配，处理掉)</li>
 <li>允许或拒绝该数据包。</li>
 </ol>
 </li>
-<li>ACL末尾有一个隐含的&quot;deny any&quot;语句:如果数据包与ACL中的任何语句都不匹配，则将其丢弃。</li>
+<li>ACL末尾有一个隐含的”deny any”语句:如果数据包与ACL中的任何语句都不匹配，则将其丢弃。</li>
 </ol>
-<h2 id="56-exampleacl-例子"><a class="markdownIt-Anchor" href="#56-exampleacl-例子"></a> 5.6. Example:ACL 例子</h2>
-<ol>
-<li>如果我们有如下所述的ACL列表：</li>
-</ol>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pf">Permit packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.1</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">pass</span><br>Permit packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.2</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">pass</span><br>Deny packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.3</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>然后
-<ol>
+<h2 id="5-6-Example-ACL-例子"><a href="#5-6-Example-ACL-例子" class="headerlink" title="5.6. Example:ACL 例子"></a>5.6. Example:ACL 例子</h2><ol>
+<li>如果我们有如下所述的ACL列表：<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pf">Permit packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.1</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">pass</span><br>Permit packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.2</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">pass</span><br>Deny packets <span class="hljs-keyword">from</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">100.3</span><br></code></pre></td></tr></table></figure></li>
+<li>然后<ol>
 <li>Packets from 192.168.100.1 will be forwarded</li>
 <li>Packets from 192.168.100.3 will be denied</li>
 <li>But how does the router process the packets from 192.168.100.4? denied(默认被匹配掉)</li>
 </ol>
 </li>
 </ol>
-<h2 id="57-路由器如何使用出站acl"><a class="markdownIt-Anchor" href="#57-路由器如何使用出站acl"></a> 5.7. 路由器如何使用出站ACL</h2>
-<ol>
+<h2 id="5-7-路由器如何使用出站ACL"><a href="#5-7-路由器如何使用出站ACL" class="headerlink" title="5.7. 路由器如何使用出站ACL"></a>5.7. 路由器如何使用出站ACL</h2><ol>
 <li>检查数据包是否可路由。如果是这样，请在路由表中查找路由</li>
-<li>检查出站接口的ACL
-<ol>
+<li>检查出站接口的ACL<ol>
 <li>如果没有ACL，则将数据包切换出目标接口</li>
 <li>如果是ACL，请按照ACL语句顺序检查数据包-根据匹配的条件拒绝或允许。</li>
 </ol>
 </li>
 <li>如果没有语句匹配，会发生什么？拒绝所有没有匹配的包</li>
 </ol>
-<h2 id="58-出站标准acl流程"><a class="markdownIt-Anchor" href="#58-出站标准acl流程"></a> 5.8. 出站标准ACL流程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="5-8-出站标准ACL流程"><a href="#5-8-出站标准ACL流程" class="headerlink" title="5.8. 出站标准ACL流程"></a>5.8. 出站标准ACL流程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>收到packet，确定路由表确认路由表看能够转发</li>
-<li>可以转发的话，进入ACL确认
-<ol>
+<li>可以转发的话，进入ACL确认<ol>
 <li>如果当前端口没有ACL配置，则直接进行转发</li>
-<li>如果当前端口有ACL配置，开始匹配source地址(标准的ACL，只能对原地址进行判断)
-<ol>
-<li>语句满足条件，
-<ol>
+<li>如果当前端口有ACL配置，开始匹配source地址(标准的ACL，只能对原地址进行判断)<ol>
+<li>语句满足条件，<ol>
 <li>deny</li>
 <li>premit</li>
 </ol>
@@ -610,8 +558,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="59-标准acl的两个基本使用"><a class="markdownIt-Anchor" href="#59-标准acl的两个基本使用"></a> 5.9. 标准ACL的两个基本使用</h2>
-<blockquote>
+<h2 id="5-9-标准ACL的两个基本使用"><a href="#5-9-标准ACL的两个基本使用" class="headerlink" title="5.9. 标准ACL的两个基本使用"></a>5.9. 标准ACL的两个基本使用</h2><blockquote>
 <p>在全局配置模式下顺序编写ACL语句。</p>
 </blockquote>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> access-list-number&#123;permit/deny&#125; &#123;test-conditions&#125;<br><span class="hljs-function"><span class="hljs-title">Lab-D</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> <span class="hljs-number">1</span> deny <span class="hljs-number">192.5</span>.<span class="hljs-number">5.10</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span> 拒绝来自<span class="hljs-number">192.5</span>.<span class="hljs-number">5.10</span>的报文<br></code></pre></td></tr></table></figure>
@@ -619,31 +566,28 @@
 <p>在接口配置模式下将ACL分组(Group)到一个或多个接口。</p>
 </blockquote>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">Router(config-<span class="hljs-keyword">if</span>)#&#123;protocol&#125; <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span> <span class="hljs-keyword">access</span>-list-number &#123;<span class="hljs-keyword">in</span>/<span class="hljs-keyword">out</span>&#125;<br>Lab-D(config-<span class="hljs-keyword">if</span>)#ip <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span> <span class="hljs-number">1</span> <span class="hljs-keyword">out</span>/<span class="hljs-keyword">in</span><br></code></pre></td></tr></table></figure>
-<h3 id="591-access-list-number参数"><a class="markdownIt-Anchor" href="#591-access-list-number参数"></a> 5.9.1. access-list-number参数</h3>
-<ol>
+<h3 id="5-9-1-access-list-number参数"><a href="#5-9-1-access-list-number参数" class="headerlink" title="5.9.1. access-list-number参数"></a>5.9.1. access-list-number参数</h3><ol>
 <li>ACL有很多类型。访问列表号指定什么类型。</li>
 <li>下表显示了常见的访问列表类型。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>注意默认的取值(扩展ACL不仅仅局限于源地址)</li>
 </ul>
 <ol>
 <li><code>Router(config)#access-list access-list-number &#123;permit/deny&#125;&#123;test-conditions&#125;</code></li>
 </ol>
-<h3 id="592-允许或拒绝的参数"><a class="markdownIt-Anchor" href="#592-允许或拒绝的参数"></a> 5.9.2. 允许或拒绝的参数</h3>
-<ol>
+<h3 id="5-9-2-允许或拒绝的参数"><a href="#5-9-2-允许或拒绝的参数" class="headerlink" title="5.9.2. 允许或拒绝的参数"></a>5.9.2. 允许或拒绝的参数</h3><ol>
 <li>输入访问列表并选择正确的访问列表号后，根据您要执行的操作，输入允许还是拒绝。</li>
 <li><code>Router(config)#access-list access-list-number &#123;permit/deny&#125;&#123;test-conditions&#125;</code></li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="593-test-condition参数"><a class="markdownIt-Anchor" href="#593-test-condition参数"></a> 5.9.3. test-condition参数</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-9-3-test-condition参数"><a href="#5-9-3-test-condition参数" class="headerlink" title="5.9.3. test-condition参数"></a>5.9.3. test-condition参数</h3><ol>
 <li>在ACL的{test condition}部分中，大多数访问列表的共同点是源地址的IP掩码和通配符掩码。</li>
 <li>源地址可以是子网，地址范围或单个主机。由于通配符掩码使用源地址检查位，因此也称为ip掩码。</li>
 <li>通配符掩码告诉路由器要检查哪些位。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <ol>
 <li>Ip mask:Ipv4的地址</li>
@@ -651,36 +595,29 @@
 <li><code>Router(config)#access-list access-list-number &#123;permit/deny&#125;&#123;test-conditions&#125;</code></li>
 </ol>
 </blockquote>
-<h3 id="594-通配符掩码-wildcard-mask"><a class="markdownIt-Anchor" href="#594-通配符掩码-wildcard-mask"></a> 5.9.4. 通配符掩码 Wildcard Mask</h3>
-<ol>
-<li>编写通配符掩码以告知路由器地址中要匹配的位以及要忽略的位。
-<ol>
+<h3 id="5-9-4-通配符掩码-Wildcard-Mask"><a href="#5-9-4-通配符掩码-Wildcard-Mask" class="headerlink" title="5.9.4. 通配符掩码 Wildcard Mask"></a>5.9.4. 通配符掩码 Wildcard Mask</h3><ol>
+<li>编写通配符掩码以告知路由器地址中要匹配的位以及要忽略的位。<ol>
 <li><strong>0位表示检查该位位置</strong></li>
 <li><strong>1表示忽略该位位置</strong></li>
 </ol>
 </li>
-<li>我们先前的192.5.5.10 0.0.0.0示例可以用二进制重写为：
-<ol>
+<li>我们先前的192.5.5.10 0.0.0.0示例可以用二进制重写为：<ol>
 <li>11000000.00000101.00000101.00001010 (Source address)</li>
 <li>00000000.00000000.00000000.00000000 (Wildcard mask)</li>
 </ol>
 </li>
 </ol>
-<h4 id="595-通配符掩码的例子"><a class="markdownIt-Anchor" href="#595-通配符掩码的例子"></a> 5.9.5. 通配符掩码的例子</h4>
-<ol>
+<h4 id="5-9-5-通配符掩码的例子"><a href="#5-9-5-通配符掩码的例子" class="headerlink" title="5.9.5. 通配符掩码的例子"></a>5.9.5. 通配符掩码的例子</h4><ol>
 <li>编写一个IP掩码和通配符掩码以检查网络上的所有主机：192.5.5.0 255.255.255.0(检查这一个网段)</li>
-<li>Answer: 192.5.5.0  0.0.0.255(和net mask是取反的)
-<ol>
+<li>Answer: 192.5.5.0  0.0.0.255(和net mask是取反的)<ol>
 <li>请注意，此通配符掩码是C类地址的默认子网掩码的镜像。</li>
 <li>警告：仅当查看整个网络或子网时，这才是有用的规则。</li>
 </ol>
 </li>
-<li>编写一个IP掩码和通配符掩码以检查子网中的所有主机：192.5.5.32 255.255.255.224
-<ol>
+<li>编写一个IP掩码和通配符掩码以检查子网中的所有主机：192.5.5.32 255.255.255.224<ol>
 <li>If you answered 192.5.5.32 0.0.0.31</li>
 <li>0.0.0.31 是 255.255.255.224 的镜像地址</li>
-<li>二进制标识
-<ol>
+<li>二进制标识<ol>
 <li>11111111.11111111.11111111.11100000 (255.255.255.224)</li>
 <li>00000000.00000000.00000000.00011111 (0.0.0.31)</li>
 </ol>
@@ -688,89 +625,69 @@
 </ol>
 </li>
 </ol>
-<h3 id="596-省时任何命令"><a class="markdownIt-Anchor" href="#596-省时任何命令"></a> 5.9.6. 省时：任何命令</h3>
-<ol>
-<li>由于ACL末尾有一个隐含的&quot;deny any&quot;语句，<strong>因此您必须编写语句以允许其他人通过。</strong></li>
-<li>使用我们前面的示例，如果学生被拒绝访问而所有其他学生都被允许访问，则您将编写以下两个语句：
-<ol>
+<h3 id="5-9-6-省时：任何命令"><a href="#5-9-6-省时：任何命令" class="headerlink" title="5.9.6. 省时：任何命令"></a>5.9.6. 省时：任何命令</h3><ol>
+<li>由于ACL末尾有一个隐含的”deny any”语句，<strong>因此您必须编写语句以允许其他人通过。</strong></li>
+<li>使用我们前面的示例，如果学生被拒绝访问而所有其他学生都被允许访问，则您将编写以下两个语句：<ol>
 <li><code>Lab-A(config)#access-list 1 deny 192.5.5.0 0.0.0.127</code>:拒绝一个</li>
 <li><code>Lab-A(config)#access-list 1 permit 0.0.0.0 255.255.255.255</code></li>
 </ol>
 </li>
-<li>由于最后一条语句通常用于覆盖&quot;拒绝任何&quot;，因此思科为您提供了一个选项-any命令：
-<ol>
+<li>由于最后一条语句通常用于覆盖”拒绝任何”，因此思科为您提供了一个选项-any命令：<ol>
 <li><code>Lab-A(config)#access-list 1 permit any</code> == <code>Lab-A(config)#access-list 1 permit 0.0.0.0 255.255.255.255</code></li>
 </ol>
 </li>
 </ol>
-<h3 id="597-省时主机名支持"><a class="markdownIt-Anchor" href="#597-省时主机名支持"></a> 5.9.7. 省时：主机名支持</h3>
-<ol>
-<li>很多时候，网络管理员将需要编写ACL来允许特定主机(或拒绝主机)。该语句可以用两种方式编写。
-<ol>
+<h3 id="5-9-7-省时：主机名支持"><a href="#5-9-7-省时：主机名支持" class="headerlink" title="5.9.7. 省时：主机名支持"></a>5.9.7. 省时：主机名支持</h3><ol>
+<li>很多时候，网络管理员将需要编写ACL来允许特定主机(或拒绝主机)。该语句可以用两种方式编写。<ol>
 <li><code>Lab-A(config)#access-list 1 permit 192.5.5.10 0.0.0.0</code></li>
 <li><code>Lab-A(config)#access-list 1 permit host 192.5.5.10(host 专指 192.5.5.10)</code></li>
 </ol>
 </li>
 </ol>
-<h2 id="598-标准acl的配置位置"><a class="markdownIt-Anchor" href="#598-标准acl的配置位置"></a> 5.9.8. 标准ACL的配置位置</h2>
-<ol>
+<h2 id="5-9-8-标准ACL的配置位置"><a href="#5-9-8-标准ACL的配置位置" class="headerlink" title="5.9.8. 标准ACL的配置位置"></a>5.9.8. 标准ACL的配置位置</h2><ol>
 <li>标准ACL没有目标参数。因此，您将标准ACL放置在尽可能靠近目标的位置。</li>
-<li>要了解原因，请问自己，如果在Lab-A的E0上放置&quot; deny 192.5.5.0 0.0.0.255&quot;语句，将会对所有IP流量产生什么影响？</li>
+<li>要了解原因，请问自己，如果在Lab-A的E0上放置” deny 192.5.5.0 0.0.0.255”语句，将会对所有IP流量产生什么影响？</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/11.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/11.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>如果放到Lab A的E0口则会导致无法访问Lab B/C,应该放到Lab D的E0</li>
 <li>约定:将标准ACL放到与将要生效的主机越近越好，但是其实会对带宽有一定的损耗</li>
 </ul>
-<h2 id="510-扩展aclextend-access-control-lists"><a class="markdownIt-Anchor" href="#510-扩展aclextend-access-control-lists"></a> 5.10. 扩展ACL(Extend Access Control Lists)</h2>
-<ol>
-<li>扩展ACL的编号范围为100-199，并&quot;扩展&quot;了标准ACL的功能。</li>
-<li>扩展功能包括基于过滤流量的功能。
-<ol>
+<h2 id="5-10-扩展ACL-Extend-Access-Control-Lists"><a href="#5-10-扩展ACL-Extend-Access-Control-Lists" class="headerlink" title="5.10. 扩展ACL(Extend Access Control Lists)"></a>5.10. 扩展ACL(Extend Access Control Lists)</h2><ol>
+<li>扩展ACL的编号范围为100-199，并”扩展”了标准ACL的功能。</li>
+<li>扩展功能包括基于过滤流量的功能。<ol>
 <li>目的地址</li>
-<li>ip协议的部分(更加细分):您可以编写语句以仅拒绝&quot;ICMP&quot;等协议或&quot;RIP&quot;和&quot;IGRP&quot;之类的路由协议</li>
-<li>协议套件的上层
-<ol>
-<li>您可以编写语句以仅拒绝诸如&quot;TFTP&quot;或&quot;HTTP&quot;之类的协议</li>
+<li>ip协议的部分(更加细分):您可以编写语句以仅拒绝”ICMP”等协议或”RIP”和”IGRP”之类的路由协议</li>
+<li>协议套件的上层<ol>
+<li>您可以编写语句以仅拒绝诸如”TFTP”或”HTTP”之类的协议</li>
 <li>您可以使用eq，gt，lt和neq(等于，大于，小于和不等于)之类的操作数来指定如何处理特定协议。</li>
-<li>例如，如果您希望访问列表允许除http访问之外的所有流量，则可以使用&quot; permit ip any neq 80&quot;(允许来自任意源地址和目的地址的不是80端口的信息)</li>
+<li>例如，如果您希望访问列表允许除http访问之外的所有流量，则可以使用” permit ip any neq 80”(允许来自任意源地址和目的地址的不是80端口的信息)</li>
 </ol>
 </li>
 </ol>
 </li>
 </ol>
-<h3 id="5101-扩展acl的两个功能"><a class="markdownIt-Anchor" href="#5101-扩展acl的两个功能"></a> 5.10.1. 扩展ACL的两个功能</h3>
-<blockquote>
-<p>在全局配置模式下顺序编写ACL语句。(语法更加丰富)</p>
+<h3 id="5-10-1-扩展ACL的两个功能"><a href="#5-10-1-扩展ACL的两个功能" class="headerlink" title="5.10.1. 扩展ACL的两个功能"></a>5.10.1. 扩展ACL的两个功能</h3><blockquote>
+<p>在全局配置模式下顺序编写ACL语句。(语法更加丰富)<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Router</span>(config)# access-list access-list-number &#123;permit|<span class="hljs-literal">deny</span>&#125; &#123;protocol|protocol-keyword&#125;&#123;source source-wildcard&#125; &#123;destination destination-wildcard&#125;<span class="hljs-meta"> [protocol-specific options] [log]</span><br><span class="hljs-attribute">Lab</span>-A(config)#access-list <span class="hljs-number">101</span> <span class="hljs-literal">deny</span> tcp <span class="hljs-number">192.5.5.0</span> <span class="hljs-number">0.0.0.255</span> <span class="hljs-number">210.93.105.0</span> <span class="hljs-number">0.0.0.255</span> eq telnet log<br></code></pre></td></tr></table></figure><br>在接口配置模式下将ACL分组到一个或多个接口<br><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">Router(config-<span class="hljs-keyword">if</span>)#&#123;protocol&#125; <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span><br><span class="hljs-keyword">access</span>-list-number &#123;<span class="hljs-keyword">in</span>/<span class="hljs-keyword">out</span>&#125;<br>Lab-A(config-<span class="hljs-keyword">if</span>)#ip <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span> <span class="hljs-number">101</span> <span class="hljs-keyword">out</span> <br></code></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Router</span>(config)# access-list access-list-number &#123;permit|<span class="hljs-literal">deny</span>&#125; &#123;protocol|protocol-keyword&#125;&#123;source source-wildcard&#125; &#123;destination destination-wildcard&#125;<span class="hljs-meta"> [protocol-specific options] [log]</span><br><span class="hljs-attribute">Lab</span>-A(config)#access-list <span class="hljs-number">101</span> <span class="hljs-literal">deny</span> tcp <span class="hljs-number">192.5.5.0</span> <span class="hljs-number">0.0.0.255</span> <span class="hljs-number">210.93.105.0</span> <span class="hljs-number">0.0.0.255</span> eq telnet log<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>在接口配置模式下将ACL分组到一个或多个接口</p>
-</blockquote>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">Router(config-<span class="hljs-keyword">if</span>)#&#123;protocol&#125; <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span><br><span class="hljs-keyword">access</span>-list-number &#123;<span class="hljs-keyword">in</span>/<span class="hljs-keyword">out</span>&#125;<br>Lab-A(config-<span class="hljs-keyword">if</span>)#ip <span class="hljs-keyword">access</span>-<span class="hljs-keyword">group</span> <span class="hljs-number">101</span> <span class="hljs-keyword">out</span> <br></code></pre></td></tr></table></figure>
-<h3 id="5102-扩展参数"><a class="markdownIt-Anchor" href="#5102-扩展参数"></a> 5.10.2. 扩展参数</h3>
-<ol>
+<h3 id="5-10-2-扩展参数"><a href="#5-10-2-扩展参数" class="headerlink" title="5.10.2. 扩展参数"></a>5.10.2. 扩展参数</h3><ol>
 <li>access-list-number:choose from the range 100 to 199</li>
-<li>{protocol | protocol-number}:For the CCNA, you only need to know ip and tcp–many more are available</li>
+<li>{protocol | protocol-number}:For the CCNA, you only need to know ip and tcp—many more are available</li>
 <li>{source source-wildcard}:same as in standard 和标准的相似</li>
 <li>{destination destination-wildcard}:formatted like the standard, but specifies the destination 和标准格式系统</li>
 <li>[protocol-specific options]：这个参数用于确认协议的过滤部分</li>
 </ol>
-<h3 id="5103-端口号"><a class="markdownIt-Anchor" href="#5103-端口号"></a> 5.10.3. 端口号</h3>
-<ol>
+<h3 id="5-10-3-端口号"><a href="#5-10-3-端口号" class="headerlink" title="5.10.3. 端口号"></a>5.10.3. 端口号</h3><ol>
 <li>查看tcp和udp协议的各种端口号，并了解以下最常见的端口号。</li>
 <li>您还可以在{protocolspecific options}中键入名称(telnet)而不是数字(23)。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="5104-配置扩展acl的位置"><a class="markdownIt-Anchor" href="#5104-配置扩展acl的位置"></a> 5.10.4. 配置扩展ACL的位置</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-10-4-配置扩展ACL的位置"><a href="#5-10-4-配置扩展ACL的位置" class="headerlink" title="5.10.4. 配置扩展ACL的位置"></a>5.10.4. 配置扩展ACL的位置</h3><ol>
 <li>在下图中，我们要拒绝网络221.23.123.0访问服务器198.150.13.34</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/14.png" srcset="/img/loading.gif" lazyload alt="" />。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/14.png" srcset="/img/loading.gif" lazyload alt="">。</p>
 <ol>
-<li>访问列表应应用于什么路由器和接口？
-<ol>
+<li>访问列表应应用于什么路由器和接口？<ol>
 <li>将访问列表写在路由器C上，将其应用于E0，并在</li>
 <li>这将使网络不受221.23.123.0发往198.150.13.34的访问，但仍允许221.23.123.0访问Internet</li>
 </ol>
@@ -778,23 +695,20 @@
 </ol>
 <blockquote>
 <p>按照标准的原则，应该放置到Route A，而用扩展的放置的是Route C的E0上，放置对应的命令</p>
-</blockquote>
 <ul>
 <li>由于扩展的ACL具有目标信息，因此<strong>您希望将其放置在尽可能靠近源的位置。</strong></li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="5105-编写并使用acl"><a class="markdownIt-Anchor" href="#5105-编写并使用acl"></a> 5.10.5. 编写并使用ACL</h3>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> <span class="hljs-number">100</span> deny ip <span class="hljs-number">221.23</span>.<span class="hljs-number">123.0</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.255</span> <span class="hljs-number">198.150</span>.<span class="hljs-number">13.34</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> <span class="hljs-number">100</span> permit ip any any<br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#int</span> e0<br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config-if)</span></span><span class="hljs-selector-id">#ip</span> access-group <span class="hljs-number">100</span> <span class="hljs-keyword">in</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="5106-acls的命名"><a class="markdownIt-Anchor" href="#5106-acls的命名"></a> 5.10.6. ACLS的命名</h3>
-<ol>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-10-5-编写并使用ACL"><a href="#5-10-5-编写并使用ACL" class="headerlink" title="5.10.5. 编写并使用ACL"></a>5.10.5. 编写并使用ACL</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> <span class="hljs-number">100</span> deny ip <span class="hljs-number">221.23</span>.<span class="hljs-number">123.0</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.255</span> <span class="hljs-number">198.150</span>.<span class="hljs-number">13.34</span> <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span><br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#access-list</span> <span class="hljs-number">100</span> permit ip any any<br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config)</span></span><span class="hljs-selector-id">#int</span> e0<br><span class="hljs-function"><span class="hljs-title">Router-C</span><span class="hljs-params">(config-if)</span></span><span class="hljs-selector-id">#ip</span> access-group <span class="hljs-number">100</span> <span class="hljs-keyword">in</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-10-6-ACLS的命名"><a href="#5-10-6-ACLS的命名" class="headerlink" title="5.10.6. ACLS的命名"></a>5.10.6. ACLS的命名</h3><ol>
 <li>Cisco IOS的一项不错的功能是可以命名ACL。如果在同一路由器上需要99个以上的标准ACL，这将特别有用。</li>
 <li>命名ACL后，提示将更改，您不再需要输入access-list和access-listnumber参数。</li>
 <li>在下面的示例中，ACL命名为over_and，以提示应如何将其放置在接口上</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="5107-acls的校验"><a class="markdownIt-Anchor" href="#5107-acls的校验"></a> 5.10.7. ACLS的校验</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec11/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-10-7-ACLS的校验"><a href="#5-10-7-ACLS的校验" class="headerlink" title="5.10.7. ACLS的校验"></a>5.10.7. ACLS的校验</h3><ol>
 <li><code>show access-lists</code> 查看全部</li>
 <li><code>shows all access-lists configured on the router</code> 显示路由器上配置的所有访问列表</li>
 <li><code>show access-lists &#123;name | number&#125;</code> 查看某一个端口的</li>
@@ -893,9 +807,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-lecture10-WANs/" title="2020-Internet-computing-lecture10-WANs">
+                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%847.0-%E6%8E%92%E5%BA%8F/" title="2019-Data-Structure-数据结构7.0-排序">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Internet-computing-lecture10-WANs</span>
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构7.0-排序</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -903,8 +817,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-Tec02-BootStrap/" title="2020-Internet-computing-Tec02-BootStrap">
-                        <span class="hidden-mobile">2020-Internet-computing-Tec02-BootStrap</span>
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-11-%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/" title="2020-Software-Engineering-and-Computing-II-11-人机交互设计">
+                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-11-人机交互设计</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

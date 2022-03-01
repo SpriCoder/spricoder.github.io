@@ -42,8 +42,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/17.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/18.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/19.png">
-<meta property="article:published_time" content="2022-02-16T11:09:46.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:49:23.225Z">
+<meta property="article:published_time" content="2022-02-16T11:13:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:02:07.969Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="COA">
@@ -220,7 +220,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:13" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -293,68 +293,53 @@
             
             <div class="markdown-body">
               
-              <h2 id="bus"><a class="markdownIt-Anchor" href="#bus"></a> Bus</h2>
-<h1 id="1-总线bus"><a class="markdownIt-Anchor" href="#1-总线bus"></a> 1. 总线(Bus)</h1>
-<ol>
-<li>
-<p>Bus is a communication pathway connecting two or more devices(总线是连接两个或多个设备的通信通道)<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+              <h2 id="Bus"><a href="#Bus" class="headerlink" title="Bus"></a>Bus</h2><h1 id="1-总线-Bus"><a href="#1-总线-Bus" class="headerlink" title="1. 总线(Bus)"></a>1. 总线(Bus)</h1><ol>
+<li><p>Bus is a communication pathway connecting two or more devices(总线是连接两个或多个设备的通信通道)<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
-<p>关键特点:(key Characteristic)</p>
+<li><p>关键特点:(key Characteristic)</p>
 <ol>
 <li>A shared transmission medium(共享传输介质)</li>
 <li>Multiple devices connect to the bus(多种设备连接到总线)</li>
 <li>A signal transmitted by any one device is available for reception by all other devices attached to the bus(任何一个设备发送的信号可供连接到总线的所有其他设备接收)</li>
-<li>Only one device at a time can successfully transmit(一次只有一个设备可以成功传输)
-<ul>
+<li>Only one device at a time can successfully transmit(一次只有一个设备可以成功传输)<ul>
 <li>If two devices transmit during the same time period, their signals will overlap and become garbled(如果两个设备在同一时间段内传输，它们的信号将重叠并变得混乱)</li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
-<h1 id="2-总线的类型"><a class="markdownIt-Anchor" href="#2-总线的类型"></a> 2. 总线的类型</h1>
-<h2 id="21-总线的一种分类层次型"><a class="markdownIt-Anchor" href="#21-总线的一种分类层次型"></a> 2.1. 总线的一种分类(层次型)</h2>
-<ol>
-<li>Chip inner bus(芯片内部总线)
-<ul>
+<h1 id="2-总线的类型"><a href="#2-总线的类型" class="headerlink" title="2. 总线的类型"></a>2. 总线的类型</h1><h2 id="2-1-总线的一种分类-层次型"><a href="#2-1-总线的一种分类-层次型" class="headerlink" title="2.1. 总线的一种分类(层次型)"></a>2.1. 总线的一种分类(层次型)</h2><ol>
+<li>Chip inner bus(芯片内部总线)<ul>
 <li>Connect the parts inner a chip 连接芯片内部的各部分</li>
 <li>E.g. connect registers, ALU and other parts in CPU</li>
 </ul>
 </li>
-<li>System bus(系统总线)
-<ul>
+<li>System bus(系统总线)<ul>
 <li>Connect CPU, memory, I/O controller and other functional devices 连接CPU，内存，输入输出控制器或者其他功能设备</li>
 </ul>
 </li>
-<li>Communication bus(通信总线)
-<ul>
+<li>Communication bus(通信总线)<ul>
 <li>Connect host and I/O devices or connect different computer systems 连接主机和输入输出设备并且连接不同的计算机系统</li>
 </ul>
 </li>
 <li>上面是按照层级来的，层级由小到大。</li>
 <li>Intel的系统总线如下</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-总线的另一种分类功能型总线的组成"><a class="markdownIt-Anchor" href="#22-总线的另一种分类功能型总线的组成"></a> 2.2. 总线的另一种分类(功能型)——总线的组成</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-总线的另一种分类-功能型-——总线的组成"><a href="#2-2-总线的另一种分类-功能型-——总线的组成" class="headerlink" title="2.2. 总线的另一种分类(功能型)——总线的组成"></a>2.2. 总线的另一种分类(功能型)——总线的组成</h2><ol>
 <li>Bus lines can be classified into three functional groups(总线可以被分类为三个功能的集合)</li>
-<li>Data lines: move data between system modules(数据总线:在系统各个模块之间传输数据)
-<ul>
+<li>Data lines: move data between system modules(数据总线:在系统各个模块之间传输数据)<ul>
 <li>The number of data lines determines the size of data can be transferred at one time(数据总线的数量决定着能够一次性传输数据的<strong>大小情况</strong>，简单说就是一次能够传输多少位的信息)</li>
 </ul>
 </li>
-<li>Address lines: designate the source or destination of the data on the data bus and address I/O ports(地址总线:指定数据总线上数据的源或目标以及地址I/O端口)
-<ul>
+<li>Address lines: designate the source or destination of the data on the data bus and address I/O ports(地址总线:指定数据总线上数据的源或目标以及地址I/O端口)<ul>
 <li>The number of address lines determines the size of addressing space(<strong>地址行的数目决定了地址空间的大小</strong>)</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
-<li>Control lines: control the access to and the use of the data and address lines(控制总线:<strong>控制访问和使用数据、地址线</strong>的权限)
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>Control lines: control the access to and the use of the data and address lines(控制总线:<strong>控制访问和使用数据、地址线</strong>的权限)<ul>
 <li>Clock: bus synchronization(时钟:总线同步)</li>
 <li>Bus request: the device sending the signal requests bus(总线请求:发送信号的设备请求总线)</li>
 <li>Bus grant: the device receiving the signal can use bus(总线授权:接受信号的设备可以使用总线)</li>
@@ -367,56 +352,45 @@
 </ul>
 </li>
 </ol>
-<h3 id="221-design-element设计元素"><a class="markdownIt-Anchor" href="#221-design-element设计元素"></a> 2.2.1. Design element设计元素</h3>
-<ol>
-<li>Bus type(总线类型)
-<ul>
+<h3 id="2-2-1-Design-element设计元素"><a href="#2-2-1-Design-element设计元素" class="headerlink" title="2.2.1. Design element设计元素"></a>2.2.1. Design element设计元素</h3><ol>
+<li>Bus type(总线类型)<ul>
 <li>Dedicated, multiplexed(专用总线，复用总线)</li>
 </ul>
 </li>
-<li>Arbitration(仲裁)
-<ul>
+<li>Arbitration(仲裁)<ul>
 <li>Centralized, distributed(中心式的，分布式的)</li>
 </ul>
 </li>
-<li>Timing(时间)
-<ul>
+<li>Timing(时间)<ul>
 <li>Synchronous, asynchronous, semi-synchronous, split transaction(同步的，异步的，半同步的，分割式的)</li>
 </ul>
 </li>
 <li>Bus bandwidth and data transfer rate(总线带宽和数据传输速率)</li>
-<li>Bus hierarchy(总线层次)
-<ul>
+<li>Bus hierarchy(总线层次)<ul>
 <li>Single bus, double bus, multiple bus(单总线，双总线，多总线)</li>
 </ul>
 </li>
 </ol>
-<h1 id="3-bus-type总线类型"><a class="markdownIt-Anchor" href="#3-bus-type总线类型"></a> 3. Bus Type总线类型</h1>
-<ol>
-<li>Dedicated bus(专用总线): permanently assigned either to one function or to a physical subset of computer components(永久分配给计算机组件的一个功能或物理子集)
-<ul>
+<h1 id="3-Bus-Type总线类型"><a href="#3-Bus-Type总线类型" class="headerlink" title="3. Bus Type总线类型"></a>3. Bus Type总线类型</h1><ol>
+<li>Dedicated bus(专用总线): permanently assigned either to one function or to a physical subset of computer components(永久分配给计算机组件的一个功能或物理子集)<ul>
 <li>Advantage: high throughput for there is less bus contention(优点:高吞吐量，减少总线争用)</li>
 <li>Disadvantage: the increased size and cost(缺点:体积和数量会增大，价格会增高)</li>
 </ul>
 </li>
-<li>Multiplexed bus(复用总线): use the same lines for multiple purposes(用相同的线来完成不同的目的)
-<ul>
+<li>Multiplexed bus(复用总线): use the same lines for multiple purposes(用相同的线来完成不同的目的)<ul>
 <li>Advantage: fewer lines to save space and cost(优点:更少的线来节省空间和代价)</li>
 <li>Disadvantage: need more complex circuitry within each module and potentially reduce performance for sharing(缺点:在每个模块中需要更复杂的电路，并可能降低共享的性能)</li>
 </ul>
 </li>
 <li>复用有着多种形态，有可能是一条复用总线(传输地址、指令等)，也可能是CPU和ALU的复用总线(传输地址、指令等)。</li>
 </ol>
-<h1 id="4-arbitration仲裁"><a class="markdownIt-Anchor" href="#4-arbitration仲裁"></a> 4. Arbitration(仲裁)</h1>
-<ol>
+<h1 id="4-Arbitration-仲裁"><a href="#4-Arbitration-仲裁" class="headerlink" title="4. Arbitration(仲裁)"></a>4. Arbitration(仲裁)</h1><ol>
 <li>A bus can be listened by multiple devices but only sent information by one device(总线是被<strong>多种设备</strong>监听，但是仅仅把信息<strong>送给一个</strong>设备)</li>
-<li>Bus arbitration(总线仲裁)
-<ul>
+<li>Bus arbitration(总线仲裁)<ul>
 <li>Choose one device by some strategy when multiple devices want to communicate with bus(通过策略在多个想要和总线进行通信的设备中选择一个)</li>
 </ul>
 </li>
-<li>Balance(平衡)
-<ol>
+<li>Balance(平衡)<ol>
 <li>Priority(优先级): the device with higher priority should be serviced first(有高优先级的设备更加可能被优先服务)</li>
 <li>Fairness(公平): the devices with the lowest priority cannot be delayed forever(优先级低的设备有可能一直用不到总线)</li>
 </ol>
@@ -424,64 +398,53 @@
 <li>优先级和公平性本来就是矛盾的，没有好坏之分。</li>
 <li>总线上:必须要等总线空闲的时候看优先级来完成。</li>
 </ol>
-<h2 id="41-arbitration-type总裁类型"><a class="markdownIt-Anchor" href="#41-arbitration-type总裁类型"></a> 4.1. Arbitration Type(总裁类型)</h2>
-<ol>
-<li>Centralized scheme(集中式): a single hardware device, referred to as a bus controller or arbiter, is responsible for allocating time on the bus(一个简单的作为<strong>总线控制器</strong>或者<strong>仲裁器</strong>的硬件设备，它负责为总线各个设备分配使用时间)
-<ul>
+<h2 id="4-1-Arbitration-Type-总裁类型"><a href="#4-1-Arbitration-Type-总裁类型" class="headerlink" title="4.1. Arbitration Type(总裁类型)"></a>4.1. Arbitration Type(总裁类型)</h2><ol>
+<li>Centralized scheme(集中式): a single hardware device, referred to as a bus controller or arbiter, is responsible for allocating time on the bus(一个简单的作为<strong>总线控制器</strong>或者<strong>仲裁器</strong>的硬件设备，它负责为总线各个设备分配使用时间)<ul>
 <li>Daisy chain(链式)</li>
 <li>Query by a counter(计数器查询法)</li>
 <li>Independently request(独自请求)</li>
 </ul>
 </li>
-<li>Distributed scheme(分布式): each module contains access control logic and the modules act together to share the bus(每一个部分包含权限控制逻辑并且每个模块同时相应去共享总线)
-<ul>
+<li>Distributed scheme(分布式): each module contains access control logic and the modules act together to share the bus(每一个部分包含权限控制逻辑并且每个模块同时相应去共享总线)<ul>
 <li>Self selection(自主选择)</li>
 <li>Collision detection(冲突探测)</li>
 </ul>
 </li>
 </ol>
-<h1 id="5-集中式仲裁方式"><a class="markdownIt-Anchor" href="#5-集中式仲裁方式"></a> 5. 集中式仲裁方式</h1>
-<h2 id="51-daisy-chain菊花链式"><a class="markdownIt-Anchor" href="#51-daisy-chain菊花链式"></a> 5.1. Daisy Chain(菊花链式)</h2>
-<ol>
+<h1 id="5-集中式仲裁方式"><a href="#5-集中式仲裁方式" class="headerlink" title="5. 集中式仲裁方式"></a>5. 集中式仲裁方式</h1><h2 id="5-1-Daisy-Chain-菊花链式"><a href="#5-1-Daisy-Chain-菊花链式" class="headerlink" title="5.1. Daisy Chain(菊花链式)"></a>5.1. Daisy Chain(菊花链式)</h2><ol>
 <li>All the devices are connected serially, and grant is delivered from the highest priority device to the lowest priority device(所有的设备会被线性的连接，并且许可信号被从高优先级的设备传递到低优先级的设备上去)</li>
 <li>If one device receives the grant and has bus request, the device sets the bus busy and the grant is not further delivered(如果一个设备有许可并且有总线请求，那么这个设备会设置总线为忙并且不再发送许可信号)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>最左边的是仲裁器，黄色的线表示总线忙，Grant是许可线，来确定具体是哪一个设备可以使用。</li>
 </ol>
-<h3 id="511-优点"><a class="markdownIt-Anchor" href="#511-优点"></a> 5.1.1. 优点</h3>
-<ol>
+<h3 id="5-1-1-优点"><a href="#5-1-1-优点" class="headerlink" title="5.1.1. 优点"></a>5.1.1. 优点</h3><ol>
 <li>Simple to determine the priority(很简单来保证优先级)</li>
 <li>Flexible to add devices(添加设备容易)</li>
 </ol>
-<h3 id="512-缺点"><a class="markdownIt-Anchor" href="#512-缺点"></a> 5.1.2. 缺点</h3>
-<ol>
+<h3 id="5-1-2-缺点"><a href="#5-1-2-缺点" class="headerlink" title="5.1.2. 缺点"></a>5.1.2. 缺点</h3><ol>
 <li>Cannot ensure the fairness(不能保证公平)</li>
 <li>Sensitive to circuit fault(对于设备内部的总线损坏十分敏感，如果高优先级损坏，低优先级完全无法使用)。</li>
 <li>Limit the bus speed(限制总线速度，需要遍历，线性)</li>
 </ol>
-<h2 id="52-query-by-a-counter计数器查询法"><a class="markdownIt-Anchor" href="#52-query-by-a-counter计数器查询法"></a> 5.2. Query By A Counter(计数器查询法)</h2>
-<ol>
+<h2 id="5-2-Query-By-A-Counter-计数器查询法"><a href="#5-2-Query-By-A-Counter-计数器查询法" class="headerlink" title="5.2. Query By A Counter(计数器查询法)"></a>5.2. Query By A Counter(计数器查询法)</h2><ol>
 <li>Remove bus grant line, and use devices ID lines(移除了许可总线，使用装置ID线)</li>
 <li>If the bus is not busy, the bus arbiter sends the count through device ID lines(如果总线不忙，则总线仲裁器通过装置ID线发送计数)</li>
 <li>If one device requests the bus whose ID equals to the current count, the arbiters stops counting and the device sets the bus busy(如果一个设备需要总线，并且ID和当前的技术相同，则仲裁器终止技术并且设备设置总线为忙。)</li>
 <li>通过不同报数规则保证公平性等。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>图中每一个线不是一根线，而是一组线，有N位，则至少有log<sub>2</sub>N 向上取整个。</li>
-<li>报号是不会故意等很久的，按照匀速率往下报号。
-<ul>
+<li>报号是不会故意等很久的，按照匀速率往下报号。<ul>
 <li>会稍微等一下，但是不会等很久</li>
 </ul>
 </li>
 <li>报号的方式是可以控制的</li>
 </ol>
-<h3 id="521-优点"><a class="markdownIt-Anchor" href="#521-优点"></a> 5.2.1. 优点</h3>
-<ol>
-<li>Flexible to determine the device priorities by using different initial counts(通过不同初始化的技术来决定设备的优先级)
-<ul>
+<h3 id="5-2-1-优点"><a href="#5-2-1-优点" class="headerlink" title="5.2.1. 优点"></a>5.2.1. 优点</h3><ol>
+<li>Flexible to determine the device priorities by using different initial counts(通过不同初始化的技术来决定设备的优先级)<ul>
 <li>Fixed priority: 0(初始化优先级:0)</li>
 <li>Fair priority: the ID following the device used the bus(公平优先级:ID对应的设备使用总线)</li>
 </ul>
@@ -489,52 +452,42 @@
 <li>Not sensitive to circuit fault(对于设备电路损坏不敏感)</li>
 <li>可以很灵活，可以平衡公平和灵活。</li>
 </ol>
-<h3 id="522-缺点"><a class="markdownIt-Anchor" href="#522-缺点"></a> 5.2.2. 缺点</h3>
-<ol>
+<h3 id="5-2-2-缺点"><a href="#5-2-2-缺点" class="headerlink" title="5.2.2. 缺点"></a>5.2.2. 缺点</h3><ol>
 <li>Add the device ID lines(添加了设备ID线)</li>
 <li>Require to decode and compare device ID signal(需要解码和比较ID信号)</li>
 <li>响应速度比较慢。</li>
 </ol>
-<h2 id="53-independently-request单独请求"><a class="markdownIt-Anchor" href="#53-independently-request单独请求"></a> 5.3. Independently Request(单独请求)</h2>
-<ol>
+<h2 id="5-3-Independently-Request-单独请求"><a href="#5-3-Independently-Request-单独请求" class="headerlink" title="5.3. Independently Request(单独请求)"></a>5.3. Independently Request(单独请求)</h2><ol>
 <li>Each device has its bus request line and bus grant line(每一个设备都有自己的请求线和总线许可线)</li>
 <li>When one device request the bus, it sends the request signal to bus arbiter through the bus request line(什么时候一个设备需要总线，它就通过总线请求线来发送信号给总线仲裁器)</li>
-<li>Bus arbiter determines which device can use the bus(总线仲裁决定了哪一个设备可以使用总线)
-<ul>
+<li>Bus arbiter determines which device can use the bus(总线仲裁决定了哪一个设备可以使用总线)<ul>
 <li>Determination strategy: fixed priority, fair daisy chain, LRU, FIFO, …(很多的策略)</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="531-好处"><a class="markdownIt-Anchor" href="#531-好处"></a> 5.3.1. 好处</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-3-1-好处"><a href="#5-3-1-好处" class="headerlink" title="5.3.1. 好处"></a>5.3.1. 好处</h3><ol>
 <li>Fast response(快速)</li>
 <li>Programming priority(优先级可以调整)</li>
 </ol>
-<h3 id="532-缺点"><a class="markdownIt-Anchor" href="#532-缺点"></a> 5.3.2. 缺点</h3>
-<ol>
-<li>Complex control logic(复杂的控制逻辑)
-<ul>
+<h3 id="5-3-2-缺点"><a href="#5-3-2-缺点" class="headerlink" title="5.3.2. 缺点"></a>5.3.2. 缺点</h3><ol>
+<li>Complex control logic(复杂的控制逻辑)<ul>
 <li>为什么？是仲裁器电路比较复杂。</li>
 </ul>
 </li>
 <li>More control lines(更多的控制线)</li>
 </ol>
-<h1 id="6-分布式仲裁方式"><a class="markdownIt-Anchor" href="#6-分布式仲裁方式"></a> 6. 分布式仲裁方式</h1>
-<h2 id="61-self-selection-自主选择"><a class="markdownIt-Anchor" href="#61-self-selection-自主选择"></a> 6.1. Self Selection 自主选择</h2>
-<ol>
+<h1 id="6-分布式仲裁方式"><a href="#6-分布式仲裁方式" class="headerlink" title="6. 分布式仲裁方式"></a>6. 分布式仲裁方式</h1><h2 id="6-1-Self-Selection-自主选择"><a href="#6-1-Self-Selection-自主选择" class="headerlink" title="6.1. Self Selection 自主选择"></a>6.1. Self Selection 自主选择</h2><ol>
 <li>Fixed priority(固定优先级)</li>
-<li>Each device sends the request on its bus request line(每一个设备都可以发送请求到他自己的请求总线的线上)
-<ul>
+<li>Each device sends the request on its bus request line(每一个设备都可以发送请求到他自己的请求总线的线上)<ul>
 <li>The lowest priority device doesn’t have request line(最低优先级的设备不需要有总线请求线)</li>
 </ul>
 </li>
 <li>Each device independently determines whether it is the device with the highest priority(每一个设备都可以独立的决定这个设备是不是最高优先级)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
-<li>3的优先级最高:因为3的线最少
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>3的优先级最高:因为3的线最少<ul>
 <li>蓝色线:双向线:需要监听总线忙或者不忙</li>
 <li>如果总线不忙:3使用，通过红色告诉012</li>
 <li>如果总线不忙、3不用:2使用，通过绿色告诉01</li>
@@ -542,15 +495,12 @@
 </ul>
 </li>
 </ol>
-<h2 id="62-collision-detection冲突检测法"><a class="markdownIt-Anchor" href="#62-collision-detection冲突检测法"></a> 6.2. Collision Detection(冲突检测法)</h2>
-<ol>
-<li>When one device wants to use the bus, it checks whether the bus is busy(当一个设备想要使用总线，它来检测总线是否在忙)
-<ul>
+<h2 id="6-2-Collision-Detection-冲突检测法"><a href="#6-2-Collision-Detection-冲突检测法" class="headerlink" title="6.2. Collision Detection(冲突检测法)"></a>6.2. Collision Detection(冲突检测法)</h2><ol>
+<li>When one device wants to use the bus, it checks whether the bus is busy(当一个设备想要使用总线，它来检测总线是否在忙)<ul>
 <li>If bus is not busy, the device uses the bus(如果总线空闲，那么设备使用总线)</li>
 </ul>
 </li>
-<li>Collision: if two devices found the bus is not busy, they may use the bus at the same time(冲突：如果两个设备都发现总线空闲，他们有可能同时使用总线)
-<ul>
+<li>Collision: if two devices found the bus is not busy, they may use the bus at the same time(冲突：如果两个设备都发现总线空闲，他们有可能同时使用总线)<ul>
 <li>In data transfer, the device will listen to the bus and check whether exists a collision(在<strong>数据传输</strong>过程中，设备需要监听总线并且确定是否存在冲突)</li>
 <li>If a collision happens, all the devices using bus will stop data transfer and request the bus after a random duration(如果发生冲突，所有使用总线的设备将停止数据传输，并在随机时间后请求总线)</li>
 </ul>
@@ -558,15 +508,12 @@
 <li>抢椅子，如果抢到了，发现总线占用，则进行再次争夺。</li>
 <li>不关心谁在用，而只是发送数据上去，监听有无数据扰动，如无则无人使用，正常使用即可，否则放弃总线，随机等待一定时间后再次使用。</li>
 </ol>
-<h1 id="7-timing时序"><a class="markdownIt-Anchor" href="#7-timing时序"></a> 7. Timing(时序)</h1>
-<ol>
-<li>The way in which events are coordinated on the bus(在总线上协调事务的方式——时序)
-<ul>
+<h1 id="7-Timing-时序"><a href="#7-Timing-时序" class="headerlink" title="7. Timing(时序)"></a>7. Timing(时序)</h1><ol>
+<li>The way in which events are coordinated on the bus(在总线上协调事务的方式——时序)<ul>
 <li>Determine the start and end time of each bus transaction(确定每个总线事务的开始和结束时间)</li>
 </ul>
 </li>
-<li>Type(类型)
-<ul>
+<li>Type(类型)<ul>
 <li>Synchronous timing(同步时序): the occurrence of events on the bus is determined by a clock(总线上的所有事务的发生由时钟决定)</li>
 <li>Asynchronous timing(异步时序): the occurrence of one event on a bus follows and depends on the occurrence of a previous event(总线上的事务的发生取决于它的前置事务的发生)</li>
 <li>Semi-Synchronous(半同步): combine synchronous timing (clock) and asynchronous timing (handshaking)(结合同步时钟和异步时序(握手))</li>
@@ -574,60 +521,50 @@
 </ul>
 </li>
 </ol>
-<h2 id="71-synchronous同步总线"><a class="markdownIt-Anchor" href="#71-synchronous同步总线"></a> 7.1. Synchronous(同步总线)</h2>
-<ol>
-<li>Bus transaction(总线事务): address + data + … + data(传输一次地址和很多的数据)
-<ul>
+<h2 id="7-1-Synchronous-同步总线"><a href="#7-1-Synchronous-同步总线" class="headerlink" title="7.1. Synchronous(同步总线)"></a>7.1. Synchronous(同步总线)</h2><ol>
+<li>Bus transaction(总线事务): address + data + … + data(传输一次地址和很多的数据)<ul>
 <li>同步总线只能很短，不然会出现问题(时钟混乱)</li>
 </ul>
 </li>
 <li>数据过长会导致不同步，造成问题。</li>
 </ol>
-<h3 id="711-advantage"><a class="markdownIt-Anchor" href="#711-advantage"></a> 7.1.1. Advantage</h3>
-<p>Simpler to implement and test(很简单去实现和测试)</p>
-<h3 id="712-disadvantage"><a class="markdownIt-Anchor" href="#712-disadvantage"></a> 7.1.2. Disadvantage</h3>
-<ol>
+<h3 id="7-1-1-Advantage"><a href="#7-1-1-Advantage" class="headerlink" title="7.1.1. Advantage"></a>7.1.1. Advantage</h3><p>Simpler to implement and test(很简单去实现和测试)</p>
+<h3 id="7-1-2-Disadvantage"><a href="#7-1-2-Disadvantage" class="headerlink" title="7.1.2. Disadvantage"></a>7.1.2. Disadvantage</h3><ol>
 <li>All the device share the same clock(所有的设备使用相同的时钟)</li>
 <li>Bus length is limited for clock skew(总线长度被时钟偏移限制)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="72-asynchronous异步问题"><a class="markdownIt-Anchor" href="#72-asynchronous异步问题"></a> 7.2. Asynchronous(异步问题)</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-2-Asynchronous-异步问题"><a href="#7-2-Asynchronous-异步问题" class="headerlink" title="7.2. Asynchronous(异步问题)"></a>7.2. Asynchronous(异步问题)</h2><ol>
 <li>Bus transaction: address + data + … + data</li>
 <li>Use handshaking protocol(使用握手规则)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>蓝色表示先后关系，也就是&quot;一次握手&quot;</li>
-<li>Ready是&quot;我准备好了&quot;</li>
-<li>Ack是&quot;我收到了&quot;</li>
+<li>蓝色表示先后关系，也就是”一次握手”</li>
+<li>Ready是”我准备好了”</li>
+<li>Ack是”我收到了”</li>
 <li>第一个握手(No interlock):我告诉你我准备好了</li>
-<li>第二个握手(Semi-interlock):&quot;我准备好了&quot;信号只能在你说&quot;我收到了&quot;之后才能撤回。
-<ul>
+<li>第二个握手(Semi-interlock):”我准备好了”信号只能在你说”我收到了”之后才能撤回。<ul>
 <li>我告诉你我已经收到了</li>
 </ul>
 </li>
-<li>第三个握手(interlock):我知道你知道&quot;我收到了&quot;之后才能撤回</li>
+<li>第三个握手(interlock):我知道你知道”我收到了”之后才能撤回</li>
 <li>发送方和接收方都要各发出一个信号，接收一个信号</li>
 <li>握手之前有相应的准备</li>
 </ol>
-<h3 id="721-advantage"><a class="markdownIt-Anchor" href="#721-advantage"></a> 7.2.1. Advantage</h3>
-<ol>
+<h3 id="7-2-1-Advantage"><a href="#7-2-1-Advantage" class="headerlink" title="7.2.1. Advantage"></a>7.2.1. Advantage</h3><ol>
 <li>Flexible to the devices with different speeds(可以很灵活的适应不同速度的设备)</li>
 </ol>
-<h3 id="722-disadvantage"><a class="markdownIt-Anchor" href="#722-disadvantage"></a> 7.2.2. Disadvantage</h3>
-<ol>
+<h3 id="7-2-2-Disadvantage"><a href="#7-2-2-Disadvantage" class="headerlink" title="7.2.2. Disadvantage"></a>7.2.2. Disadvantage</h3><ol>
 <li>Sensitive to noise(对于噪声比较敏感)</li>
 <li>Complex interface logic(复杂的接口逻辑)</li>
 </ol>
-<h3 id="723-cpu从内存中读取一个数据"><a class="markdownIt-Anchor" href="#723-cpu从内存中读取一个数据"></a> 7.2.3. CPU从内存中读取一个数据</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="7-2-3-CPU从内存中读取一个数据"><a href="#7-2-3-CPU从内存中读取一个数据" class="headerlink" title="7.2.3. CPU从内存中读取一个数据"></a>7.2.3. CPU从内存中读取一个数据</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>CPU puts address and sets ReadReq line =&gt; Memory reads address(CPU告诉内存物品地址已经放上去了)</li>
 <li>Memory reads address and sets Ack line =&gt; CPU releases address lines and ReadReq line(内存告诉CPU我已经收到了地址了)</li>
 <li>CPU release address lines and ReadReq line =&gt; Memory releases Ack line(CPU撤回我已经放上去地址了)</li>
-<li>Memory releases Ack line =&gt; Memory puts data on data lines(情况Ack信号线)
-<ul>
+<li>Memory releases Ack line =&gt; Memory puts data on data lines(情况Ack信号线)<ul>
 <li>如果没有的话，Ack的回复信号(4)会被误认为是(6)，所以这一步就是为了清空信号线</li>
 </ul>
 </li>
@@ -635,8 +572,7 @@
 <li>CPU reads data and sets Ack line =&gt; Memory release data lines and DataRdy line(CPU告诉内存我已经收到数据了)</li>
 <li>Memory releases data and dataRdy line =&gt; CPU releases Ack lines(内存撤回我准备好数据了)</li>
 <li>7次握手(3*2+1) =&gt; 2次传递 =&gt; 中间有一次来分开</li>
-<li>蓝色:CPU干的事情，黑色:内存干的事情。
-<ul>
+<li>蓝色:CPU干的事情，黑色:内存干的事情。<ul>
 <li>ReadReq:读取是否准备好了</li>
 <li>Data:数据线</li>
 <li>Ack:信号线</li>
@@ -644,76 +580,62 @@
 </ul>
 </li>
 </ol>
-<h2 id="73-semi-synchronous半同步信号"><a class="markdownIt-Anchor" href="#73-semi-synchronous半同步信号"></a> 7.3. Semi-Synchronous(半同步信号)</h2>
-<ol>
-<li>To reduce the influence of noise, use clock in asynchronous timing(为了减少噪声的硬性，我们在异步的时候使用时钟)
-<ul>
+<h2 id="7-3-Semi-Synchronous-半同步信号"><a href="#7-3-Semi-Synchronous-半同步信号" class="headerlink" title="7.3. Semi-Synchronous(半同步信号)"></a>7.3. Semi-Synchronous(半同步信号)</h2><ol>
+<li>To reduce the influence of noise, use clock in asynchronous timing(为了减少噪声的硬性，我们在异步的时候使用时钟)<ul>
 <li>Ready and reply signals are valid in the rising edges of clock(准备好的信号和恢复信号只有在时钟信号高电平的时候才有效)</li>
 <li>有效的避免了噪声。</li>
 </ul>
 </li>
 <li>Combine the advantage of synchronous and asynchronous timing(结合了同步和异步时序的优点)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>在异步总线中会受到噪音的干扰</li>
 </ol>
-<h2 id="74-split-bus-transaction总线事务分隔"><a class="markdownIt-Anchor" href="#74-split-bus-transaction总线事务分隔"></a> 7.4. Split Bus Transaction(总线事务分隔)</h2>
-<ol>
+<h2 id="7-4-Split-Bus-Transaction-总线事务分隔"><a href="#7-4-Split-Bus-Transaction-总线事务分隔" class="headerlink" title="7.4. Split Bus Transaction(总线事务分隔)"></a>7.4. Split Bus Transaction(总线事务分隔)</h2><ol>
 <li>Split one bus transaction into two procedures(将总线事务进行了分割)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>就是将两个信号之间的总线释放出来</li>
 <li>事务是一个不可分割的部分，理论上总线在这段时间全部被占用，但是实际上会有被闲置的时刻，所以我们设备在准备数据的时候，将总线释放出来。</li>
 </ol>
-<h3 id="741-优点"><a class="markdownIt-Anchor" href="#741-优点"></a> 7.4.1. 优点</h3>
-<p>increase the bus utilization(提高了总线的利用率)</p>
-<h3 id="742-缺点"><a class="markdownIt-Anchor" href="#742-缺点"></a> 7.4.2. 缺点</h3>
-<p>increase the duration of each bus transaction and system complexity(增加了系统总线的事物时间间隔和系统的复杂性)</p>
-<h1 id="8-bus-bandwidth-and-data-transfer-rate带宽和数据传输率"><a class="markdownIt-Anchor" href="#8-bus-bandwidth-and-data-transfer-rate带宽和数据传输率"></a> 8. Bus Bandwidth and Data Transfer Rate(带宽和数据传输率)</h1>
-<ol>
-<li>Bus bandwidth(带宽): the maximum data transfer rate of bus(总线的最大数据传输速率)
-<ul>
+<h3 id="7-4-1-优点"><a href="#7-4-1-优点" class="headerlink" title="7.4.1. 优点"></a>7.4.1. 优点</h3><p>increase the bus utilization(提高了总线的利用率)</p>
+<h3 id="7-4-2-缺点"><a href="#7-4-2-缺点" class="headerlink" title="7.4.2. 缺点"></a>7.4.2. 缺点</h3><p>increase the duration of each bus transaction and system complexity(增加了系统总线的事物时间间隔和系统的复杂性)</p>
+<h1 id="8-Bus-Bandwidth-and-Data-Transfer-Rate-带宽和数据传输率"><a href="#8-Bus-Bandwidth-and-Data-Transfer-Rate-带宽和数据传输率" class="headerlink" title="8. Bus Bandwidth and Data Transfer Rate(带宽和数据传输率)"></a>8. Bus Bandwidth and Data Transfer Rate(带宽和数据传输率)</h1><ol>
+<li>Bus bandwidth(带宽): the maximum data transfer rate of bus(总线的最大数据传输速率)<ul>
 <li>Don’t consider bus arbitration, address transfer, …(不包含其他时间)</li>
 <li>一个数据/最短时间:最大带宽</li>
 </ul>
 </li>
-<li>Data transfer rate(数据传输率)
-<ul>
+<li>Data transfer rate(数据传输率)<ul>
 <li>Consider address transfer, …(包含了各种时间)</li>
 </ul>
 </li>
-<li>Bus width(总线宽度): the number of lines to compose a bus(组成总线的线的个数)
-<ul>
+<li>Bus width(总线宽度): the number of lines to compose a bus(组成总线的线的个数)<ul>
 <li>The wider the data bus, the greater the number of bits transferred at one time(数据总线越宽，一次性能够传递的数据的位数越多)</li>
 <li>The wider the address bus, the greater  the range of locations that can be referenced(地址总线越宽，地址能够表示的范围越宽)</li>
 </ul>
 </li>
 <li>最大时间传输率:包括传输地址等待等时间来进行计算，而不是带宽。</li>
 </ol>
-<h2 id="81-data-transfer-rate-of-synchronous-bus-and-asynchronous-bus同步总线和异步总线的数据传输率"><a class="markdownIt-Anchor" href="#81-data-transfer-rate-of-synchronous-bus-and-asynchronous-bus同步总线和异步总线的数据传输率"></a> 8.1. Data Transfer Rate of Synchronous Bus and Asynchronous Bus(同步总线和异步总线的数据传输率)</h2>
-<ol>
-<li>Data transfer rate = d/t(t包含三个步骤:先送过去地址，准备好数据，将数据传回)
-<ul>
+<h2 id="8-1-Data-Transfer-Rate-of-Synchronous-Bus-and-Asynchronous-Bus-同步总线和异步总线的数据传输率"><a href="#8-1-Data-Transfer-Rate-of-Synchronous-Bus-and-Asynchronous-Bus-同步总线和异步总线的数据传输率" class="headerlink" title="8.1. Data Transfer Rate of Synchronous Bus and Asynchronous Bus(同步总线和异步总线的数据传输率)"></a>8.1. Data Transfer Rate of Synchronous Bus and Asynchronous Bus(同步总线和异步总线的数据传输率)</h2><ol>
+<li>Data transfer rate = d/t(t包含三个步骤:先送过去地址，准备好数据，将数据传回)<ul>
 <li>传送时间:和总线宽度、数据宽度有关</li>
 <li>握手和CPU处理一般是并行处理的</li>
 </ul>
 </li>
 </ol>
-<h3 id="811-同步总线和异步总线的例一"><a class="markdownIt-Anchor" href="#811-同步总线和异步总线的例一"></a> 8.1.1. 同步总线和异步总线的例一</h3>
-<ol>
+<h3 id="8-1-1-同步总线和异步总线的例一"><a href="#8-1-1-同步总线和异步总线的例一" class="headerlink" title="8.1.1. 同步总线和异步总线的例一"></a>8.1.1. 同步总线和异步总线的例一</h3><ol>
 <li>Assume the clock cycle of synchronous bus is 50ns and each transfer requires one clock cycle, asynchronous bus requires 40ns for each handshaking. Both buses have 32 bits width, and the data prepare time of memory is 200ns. Calculate the data transfer rates of the two buses when read one word (32 bits) from memory.(我们假设同步总线的时钟周期为50ns，并且每一次数据传输需要一个时钟周期，异步总线每次握手需要40ns。两种总线均为32位宽，并且数据的准备时间均为200ns，计算当总线从内存中读取一个字(32位)的时候的数据传输率)</li>
-<li>Synchronous bus(同步总线)
-<ul>
+<li>Synchronous bus(同步总线)<ul>
 <li>Sends command and address to memory: 50ns</li>
 <li>Memory prepares data: 200ns</li>
 <li>Transfers data to CPU: 50ns</li>
 <li>Data transfer rate = 4B / (50 + 200 + 50)ns = 106.7Mbps</li>
 </ul>
 </li>
-<li><strong>Asynchronous bus</strong>
-<ul>
+<li><strong>Asynchronous bus</strong><ul>
 <li>Step 1: 40ns</li>
 <li>Step 2, 3, 4: max(40ns*3, 200ns) = 200ns</li>
 <li>Step 5, 6, 7: 40ns * 3 = 120ns</li>
@@ -722,41 +644,31 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="812-例二"><a class="markdownIt-Anchor" href="#812-例二"></a> 8.1.2. 例二</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="8-1-2-例二"><a href="#8-1-2-例二" class="headerlink" title="8.1.2. 例二"></a>8.1.2. 例二</h3><ol>
 <li>Assume the clock cycle of synchronous bus is 50ns and each transfer requires one clock cycle, asynchronous bus requires 40ns for each handshaking. Both buses have 32 bits width, and the data prepare time of memory is <strong>230</strong>ns. Calculate the data transfer rates of the two buses when read one word (32 bits) from memory.(我们假设同步总线的时钟周期为50ns，同时我们每一次传输数据都需要一个时钟周期，异步总线每次握手需要40ns，两个总线均为32位宽，并且数据的准备时间均为230ns，计算两种总线在从内存中读取一个字的数据传输率)</li>
-<li>Synchronous bus
-<ul>
+<li>Synchronous bus<ul>
 <li>Data transfer rate = 4B / (50 + <strong>250</strong> + 50)ns = 91.4Mbps</li>
 <li>修改为230必须要等20ns，因为一个时间周期不可以做两件事情。</li>
 </ul>
 </li>
-<li>Asynchronous bus
-<ul>
+<li>Asynchronous bus<ul>
 <li>Data transfer rate = 4B / (40 + <strong>230</strong> + 120)ns = 82.1Mbps</li>
 </ul>
 </li>
 </ol>
-<h3 id="813-例三"><a class="markdownIt-Anchor" href="#813-例三"></a> 8.1.3. 例三</h3>
-<ol>
-<li>Assume a system has the following characteristic:(我们假设一个系统有如下特性)
-<ol>
+<h3 id="8-1-3-例三"><a href="#8-1-3-例三" class="headerlink" title="8.1.3. 例三"></a>8.1.3. 例三</h3><ol>
+<li>Assume a system has the following characteristic:(我们假设一个系统有如下特性)<ol>
 <li>It supports to access the blocks with the size of 4 to 16 words (32 bits per word)(这个系统支持访问大小为4或者16字的块(每个字有32位))</li>
-<li>Synchronous bus has the 64 bits width and 200MHz clock frequency, which<br />
-requires one clock cycle to transfer address or 64 bits data(同步总线有64位宽，并且时钟周期为200MHz，需要一个时钟周期来传递地址或者64位的数据)</li>
+<li>Synchronous bus has the 64 bits width and 200MHz clock frequency, which<br>requires one clock cycle to transfer address or 64 bits data(同步总线有64位宽，并且时钟周期为200MHz，需要一个时钟周期来传递地址或者64位的数据)</li>
 <li>There are two idle clock cycles between two bus transactions(两个总线事务之间有两个空闲的时钟周期)</li>
-<li>The access time of memory requires 200ns for the first 4 words, and then<br />
-reduces to 20ns per 4 words(访问内存的时间，前4个字需要200ns，之后每4个字需要20ns)</li>
-<li>When the previous data is transferred on bus, memory is reading the following<br />
-data at the same time(当前面的数据在被传入总线，内存同时可以读取出后面的数据)</li>
+<li>The access time of memory requires 200ns for the first 4 words, and then<br>reduces to 20ns per 4 words(访问内存的时间，前4个字需要200ns，之后每4个字需要20ns)</li>
+<li>When the previous data is transferred on bus, memory is reading the following<br>data at the same time(当前面的数据在被传入总线，内存同时可以读取出后面的数据)</li>
 </ol>
 </li>
 <li>If read 256 words, calculate the data transfer rate, transfer time and bus transactions number per second when transfer 4 words and 16 words each time, respectively(如果读出来256个字，计算在每次读出来4个字和16个字的时候的数据传输率，传输时间和每秒能够处理的事物的个数)</li>
-<li>问题一:Transfer 4 words each time 每次传送4个字
-<ol>
-<li>Bus transaction: address + 4 words data
-<ul>
+<li>问题一:Transfer 4 words each time 每次传送4个字<ol>
+<li>Bus transaction: address + 4 words data<ul>
 <li>Address transfer: 1 cycle</li>
 <li>Data read: 200ns (40 cycles)</li>
 <li>Data transfer: 2 cycles(读出和读入各1个周期)</li>
@@ -764,8 +676,7 @@ data at the same time(当前面的数据在被传入总线，内存同时可以�
 </ul>
 </li>
 <li>Total: (256 / 4) * (1 + 40 + 2 + 2) = 2880 cycles</li>
-<li>Transfer time = 2880 * 5 = 14400ns
-<ul>
+<li>Transfer time = 2880 * 5 = 14400ns<ul>
 <li>一个时钟周期5ns</li>
 </ul>
 </li>
@@ -773,18 +684,15 @@ data at the same time(当前面的数据在被传入总线，内存同时可以�
 <li>Data transfer rate = 256 * 4B / 14400ns = 568.9Mbps</li>
 </ol>
 </li>
-<li>问题二:Transfer 16 words each time
-<ol>
-<li>Bus transaction: address + 16 words data
-<ul>
+<li>问题二:Transfer 16 words each time<ol>
+<li>Bus transaction: address + 16 words data<ul>
 <li>Address transfer: 1 cycle</li>
 <li>Data read (first 4 words): 200ns (40 cycles)</li>
 <li>Data transfer: 2 clock cycles (read the following 4 words)</li>
 <li>Idle: 2 clock cycles (finish the following 4 words read)</li>
 </ul>
 </li>
-<li>Total: 256 / 16 * (1 + 40 + <strong>3 * max(4, 2)</strong> + 2 + 2) = 912 cycles
-<ul>
+<li>Total: 256 / 16 <em> (1 + 40 + **3 </em> max(4, 2)** + 2 + 2) = 912 cycles<ul>
 <li>特性五</li>
 </ul>
 </li>
@@ -794,69 +702,59 @@ data at the same time(当前面的数据在被传入总线，内存同时可以�
 </ol>
 </li>
 </ol>
-<h2 id="82-增加同步总线的宽度和数据传输率increase-bandwidth-and-the-rate-of-data-transfer-of-synchronous-bus"><a class="markdownIt-Anchor" href="#82-增加同步总线的宽度和数据传输率increase-bandwidth-and-the-rate-of-data-transfer-of-synchronous-bus"></a> 8.2. 增加同步总线的宽度和数据传输率(Increase Bandwidth and the rate of data transfer Of Synchronous Bus)</h2>
-<ol>
+<h2 id="8-2-增加同步总线的宽度和数据传输率-Increase-Bandwidth-and-the-rate-of-data-transfer-Of-Synchronous-Bus"><a href="#8-2-增加同步总线的宽度和数据传输率-Increase-Bandwidth-and-the-rate-of-data-transfer-Of-Synchronous-Bus" class="headerlink" title="8.2. 增加同步总线的宽度和数据传输率(Increase Bandwidth and the rate of data transfer Of Synchronous Bus)"></a>8.2. 增加同步总线的宽度和数据传输率(Increase Bandwidth and the rate of data transfer Of Synchronous Bus)</h2><ol>
 <li>Increase clock frequency(提高时钟频率)</li>
-<li>Increase data bus width(增加数据总线的宽度)
-<ul>
+<li>Increase data bus width(增加数据总线的宽度)<ul>
 <li>Transfer more data each time (cost: more bus lines)(每次传输更多地数据)</li>
 </ul>
 </li>
-<li>Block transfers(块传输)
-<ul>
+<li>Block transfers(块传输)<ul>
 <li>Transfer address once and transfer data (cost: high complexity)(同时传送地址和数据，代价是高复杂度)</li>
 </ul>
 </li>
-<li>Split bus transaction(切割总线事务)
-<ul>
+<li>Split bus transaction(切割总线事务)<ul>
 <li>Increase system bandwidth (cost: high complexity, enlarge the duration of each transaction)(增加总线宽度，代价是高复杂度，增加了每个总线事务的时间)</li>
 </ul>
 </li>
-<li>Separate address lines and data lines(分离地址线和数据线)
-<ul>
+<li>Separate address lines and data lines(分离地址线和数据线)<ul>
 <li>Transfer address and data simultaneously (cost: more bus lines, high complexity)(同时传递地址和数据，代价是更多的总线的长度和高复杂度)</li>
 </ul>
 </li>
 </ol>
-<h1 id="9-总线层次结构bus-hierarchy"><a class="markdownIt-Anchor" href="#9-总线层次结构bus-hierarchy"></a> 9. 总线层次结构(Bus Hierarchy)</h1>
-<h2 id="91-single-bus-hierarchy一根总线"><a class="markdownIt-Anchor" href="#91-single-bus-hierarchy一根总线"></a> 9.1. Single bus hierarchy(一根总线)</h2>
-<ol>
-<li>CPU, memory and I/O modules attach to system bus(CPU,主存和I/O模块连接到系统总线)
-<ul>
+<h1 id="9-总线层次结构-Bus-Hierarchy"><a href="#9-总线层次结构-Bus-Hierarchy" class="headerlink" title="9. 总线层次结构(Bus Hierarchy)"></a>9. 总线层次结构(Bus Hierarchy)</h1><h2 id="9-1-Single-bus-hierarchy-一根总线"><a href="#9-1-Single-bus-hierarchy-一根总线" class="headerlink" title="9.1. Single bus hierarchy(一根总线)"></a>9.1. Single bus hierarchy(一根总线)</h2><ol>
+<li>CPU, memory and I/O modules attach to system bus(CPU,主存和I/O模块连接到系统总线)<ul>
 <li>I/O模块不是I/O</li>
 </ul>
 </li>
 <li>Advantage: simple, easy to extend(简单，容易扩展)</li>
 <li>Disadvantage: bus is the bottleneck(总线是瓶颈)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="92-double-bus-hierarchy-双总线结构"><a class="markdownIt-Anchor" href="#92-double-bus-hierarchy-双总线结构"></a> 9.2. Double bus hierarchy 双总线结构</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="9-2-Double-bus-hierarchy-双总线结构"><a href="#9-2-Double-bus-hierarchy-双总线结构" class="headerlink" title="9.2. Double bus hierarchy 双总线结构"></a>9.2. Double bus hierarchy 双总线结构</h2><ol>
 <li>Add a memory bus between CPU and memory(在CPU和主存之间添加了存储总线)</li>
 <li>Advantage: increase the transfer efficiency between CPU and memory, and reduce the burden of system bus(提高了CPU和主存之间的数据传输效率，并且减少了系统总线的负担)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Split system bus to memory bus and I/O bus with IOP (input/output processer)(把系统总线划分为存储总线和I/O总线)</li>
 <li>Advantage: reduce the burden of I/O(减少了I/O的负担)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="93-multiple-bus-hierarchy-多总线结构"><a class="markdownIt-Anchor" href="#93-multiple-bus-hierarchy-多总线结构"></a> 9.3. Multiple bus hierarchy 多总线结构</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="9-3-Multiple-bus-hierarchy-多总线结构"><a href="#9-3-Multiple-bus-hierarchy-多总线结构" class="headerlink" title="9.3. Multiple bus hierarchy 多总线结构"></a>9.3. Multiple bus hierarchy 多总线结构</h2><ol>
 <li>Split system bus to memory bus and I/O bus, and add DMA bus(添加了I/O总线和DMA总线)</li>
 <li>Advantage: increase I/O efficiency(优点:增加了I/O模块的效率)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Add a local bus to connect CPU and cache(添加了CPU和cache之间的总线)</li>
 <li>Advantage: separate CPU with I/O communication(把CPU从I/O交互中解耦)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="5">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Add a high speed I/O bus to connect high speed devices(使用桥接，两层总线，一层快I/O总线，一层慢I/O总线)</li>
 <li>Advantage: increase I/O communication efficiency(提高了I/O交互的效率)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt13/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -948,9 +846,9 @@ data at the same time(当前面的数据在被传入总线，内存同时可以�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture07/" title="2019-COA19-lecture07">
+                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-Tec02-BootStrap/" title="2020-Internet-computing-Tec02-BootStrap">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-COA19-lecture07</span>
+                        <span class="hidden-mobile">2020-Internet-computing-Tec02-BootStrap</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -958,8 +856,8 @@ data at the same time(当前面的数据在被传入总线，内存同时可以�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture17/" title="2019-COA19-lecture17">
-                        <span class="hidden-mobile">2019-COA19-lecture17</span>
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Exam-%E6%95%B4%E7%90%86/" title="2020-Big-data-analysis-Exam-整理">
+                        <span class="hidden-mobile">2020-Big-data-analysis-Exam-整理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

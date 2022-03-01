@@ -54,8 +54,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/29.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/30.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/31.png">
-<meta property="article:published_time" content="2022-02-16T11:10:12.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:04:08.796Z">
+<meta property="article:published_time" content="2022-02-16T11:06:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:32:50.077Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -233,7 +233,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:06" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -306,42 +306,33 @@
             
             <div class="markdown-body">
               
-              <h2 id="01-lec6-数据库模式设计之层次结构"><a class="markdownIt-Anchor" href="#01-lec6-数据库模式设计之层次结构"></a> 0.1. Lec6-数据库模式设计之层次结构</h2>
-<h1 id="1-处理层次结构hierarchical-data"><a class="markdownIt-Anchor" href="#1-处理层次结构hierarchical-data"></a> 1. 处理层次结构（Hierarchical Data）</h1>
-<ol>
-<li>树状结构（Tree Structures）
-<ol>
-<li>历史
-<ol>
+              <h2 id="0-1-Lec6-数据库模式设计之层次结构"><a href="#0-1-Lec6-数据库模式设计之层次结构" class="headerlink" title="0.1. Lec6-数据库模式设计之层次结构"></a>0.1. Lec6-数据库模式设计之层次结构</h2><h1 id="1-处理层次结构（Hierarchical-Data）"><a href="#1-处理层次结构（Hierarchical-Data）" class="headerlink" title="1. 处理层次结构（Hierarchical Data）"></a>1. 处理层次结构（Hierarchical Data）</h1><ol>
+<li>树状结构（Tree Structures）<ol>
+<li>历史<ol>
 <li>层次数据库</li>
 <li>网状数据库：灵活但是还是存在困难</li>
-<li>关系型数据库
-<ol>
+<li>关系型数据库<ol>
 <li>在效率、灵活等方面找到了一个平衡点</li>
 <li>没有必要将配置文件存储到数据库中，存储在文件系统也是很好的一个选择</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>直到关系理论出现，数据库设计是&quot;科学（science）“而非&quot;工艺（craft）”
-<ol>
+<li>直到关系理论出现，数据库设计是”科学（science）”而非”工艺（craft）”<ol>
 <li>层次性数据广泛存在（XML，LDAP，BOM…）</li>
 </ol>
 </li>
-<li>层次结构复杂度在于
-<ol>
+<li>层次结构复杂度在于<ol>
 <li>访问树的方式</li>
 </ol>
 </li>
 </ol>
 </li>
 </ol>
-<h1 id="2-树状结构-vs-主从结构"><a class="markdownIt-Anchor" href="#2-树状结构-vs-主从结构"></a> 2. 树状结构 VS. 主从结构</h1>
-<ol>
-<li>父子结构（parent/child link）–tree structure</li>
+<h1 id="2-树状结构-VS-主从结构"><a href="#2-树状结构-VS-主从结构" class="headerlink" title="2. 树状结构 VS. 主从结构"></a>2. 树状结构 VS. 主从结构</h1><ol>
+<li>父子结构（parent/child link）—tree structure</li>
 <li>主从结构（master/detail relationship）：通过外键，来形成主从结构</li>
-<li>差异
-<ol>
+<li>差异<ol>
 <li>树状结构保存只需要一张表：代表层次的树。所有节点的类型都相同，节点的属性都相似，表(节点)和自己有主从关系而不是其他表</li>
 <li>深度：主从结构没有深度的概念</li>
 <li>所有权：主从结构可以明确外键完整性约束，但是树状结构不需要定义所有权</li>
@@ -350,8 +341,7 @@
 </li>
 <li>参考书籍：Fabian Pascal：Practical Issues in Database Management（Addion Wesley）</li>
 </ol>
-<h1 id="3-层次结构的实际案例"><a class="markdownIt-Anchor" href="#3-层次结构的实际案例"></a> 3. 层次结构的实际案例</h1>
-<ol>
+<h1 id="3-层次结构的实际案例"><a href="#3-层次结构的实际案例" class="headerlink" title="3. 层次结构的实际案例"></a>3. 层次结构的实际案例</h1><ol>
 <li>Risk exposure</li>
 <li>档案位置</li>
 <li>原料使用</li>
@@ -360,26 +350,21 @@
 <li>通常，树中的节点数量偏小。实际上，这也是树的优点，便于高效检索</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> building.name building,<br>  floor.name floor,<br>  room.name room,<br>  alley.name alley,<br>  cabinet.name cabinet,<br>  shelf.name shelf,<br>  box.name box,<br>  folder.name folder<br><span class="hljs-keyword">from</span> inventory,<br>  location folder,<br>  location box,<br>  location shelf,<br>  location cabinet,<br>  location alley,<br>  location room,<br>  location floor,<br>  location building<br><span class="hljs-keyword">where</span> inventory.id <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;AZE087564609&#x27;</span><br>  <span class="hljs-keyword">and</span> inventory.folder <span class="hljs-operator">=</span> folder.id<br>  <span class="hljs-keyword">and</span> folder.located_in <span class="hljs-operator">=</span> box.id<br>  <span class="hljs-keyword">and</span> box.located_in <span class="hljs-operator">=</span> shelf.id<br>  <span class="hljs-keyword">and</span> shelf.located_in <span class="hljs-operator">=</span> cabinet.id<br>  <span class="hljs-keyword">and</span> cabinet.located_in <span class="hljs-operator">=</span> alley.id<br>  <span class="hljs-keyword">and</span> alley.located_in <span class="hljs-operator">=</span> room.id<br>  <span class="hljs-keyword">and</span> room.located_in <span class="hljs-operator">=</span> floor.id<br>  <span class="hljs-keyword">and</span> floor.located_in <span class="hljs-operator">=</span> building.id<br></code></pre></td></tr></table></figure>
-<h1 id="4-用sql数据库描述树结构"><a class="markdownIt-Anchor" href="#4-用sql数据库描述树结构"></a> 4. 用SQL数据库描述树结构</h1>
-<ol>
+<h1 id="4-用SQL数据库描述树结构"><a href="#4-用SQL数据库描述树结构" class="headerlink" title="4. 用SQL数据库描述树结构"></a>4. 用SQL数据库描述树结构</h1><ol>
 <li>只要对象的类型相同，而对象的层树可变，其关系就应该被建模为树结构</li>
-<li>在数据库设计中，树通常三种模型
-<ol>
-<li>Adjacency model 邻接模型
-<ol>
+<li>在数据库设计中，树通常三种模型<ol>
+<li>Adjacency model 邻接模型<ol>
 <li>层次中父节点id作为子节点id的一个属性pid，不能确定兄弟节点的排序</li>
 <li>难以处理的，是递归的</li>
 </ol>
 </li>
-<li>Materialized path model 物化路径模型
-<ol>
+<li>Materialized path model 物化路径模型<ol>
 <li>将树中间的每一个节点和在树中的位置描述成数据的结合</li>
 <li>是所有子节点的祖先节点的id的串联(1.2.3)</li>
 <li>能够知道兄弟节点之间的排名，家谱</li>
 </ol>
 </li>
-<li>Nested set model 嵌套集合模型 1996
-<ol>
+<li>Nested set model 嵌套集合模型 1996<ol>
 <li>每一个节点被赋予了一对数字(left number, right number)</li>
 <li>父节点的左数字和右数字之间包含了它所有的子节点的左数字、右数字</li>
 </ol>
@@ -388,184 +373,153 @@
 </li>
 <li><a href = "http://www.kessler-web.co.uk">数据来源</a></li>
 </ol>
-<h1 id="5-树的实际实现"><a class="markdownIt-Anchor" href="#5-树的实际实现"></a> 5. 树的实际实现</h1>
-<h2 id="51-邻接模型"><a class="markdownIt-Anchor" href="#51-邻接模型"></a> 5.1. 邻接模型</h2>
-<ol>
+<h1 id="5-树的实际实现"><a href="#5-树的实际实现" class="headerlink" title="5. 树的实际实现"></a>5. 树的实际实现</h1><h2 id="5-1-邻接模型"><a href="#5-1-邻接模型" class="headerlink" title="5.1. 邻接模型"></a>5.1. 邻接模型</h2><ol>
 <li>ADJACENCY_MODEL</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>表的每一行描述一个部队，parent_id指向树中的上级部队</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="52-物化路径模型"><a class="markdownIt-Anchor" href="#52-物化路径模型"></a> 5.2. 物化路径模型</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-2-物化路径模型"><a href="#5-2-物化路径模型" class="headerlink" title="5.2. 物化路径模型"></a>5.2. 物化路径模型</h2><ol>
 <li>MATERIALIZED_PATH_MODEL</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>表中有两个索引，在materialized_path上的唯一性索引以及在commander上的索引，正确的设计应该增加id字段。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="53-嵌套集合模型"><a class="markdownIt-Anchor" href="#53-嵌套集合模型"></a> 5.3. 嵌套集合模型</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-3-嵌套集合模型"><a href="#5-3-嵌套集合模型" class="headerlink" title="5.3. 嵌套集合模型"></a>5.3. 嵌套集合模型</h2><ol>
 <li>NESTED_SETS_MODEL</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="6-用sql访问树的结构"><a class="markdownIt-Anchor" href="#6-用sql访问树的结构"></a> 6. 用SQL访问树的结构</h1>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="6-用SQL访问树的结构"><a href="#6-用SQL访问树的结构" class="headerlink" title="6. 用SQL访问树的结构"></a>6. 用SQL访问树的结构</h1><ol>
 <li>为了检查效率和性能,分别用不同模型解决如下两个问题:</li>
 <li>法国将军Dominique Vandamme指挥哪些部队，以缩排方式或简单列表的方式显示他们。注意，所有的commander字段都构建了索引 (简称Vandamme查询)</li>
-<li>Scottish Highlanders的每个团各属于哪个部队(自底向上的查询)。在部队的名称.(description字段).上没有索引， 唯- -的方法是在description字段中查找&quot;Highland&quot; 字符串，在没有任何全文索引的情况下，这个问题简称highland问题
-<ol>
+<li>Scottish Highlanders的每个团各属于哪个部队(自底向上的查询)。在部队的名称.(description字段).上没有索引， 唯- -的方法是在description字段中查找”Highland” 字符串，在没有任何全文索引的情况下，这个问题简称highland问题<ol>
 <li>注:层次结构Corp-division-brigade regiment</li>
 <li>Oracle</li>
 </ol>
 </li>
 </ol>
-<h2 id="61-自顶向下查询vandamme-查询"><a class="markdownIt-Anchor" href="#61-自顶向下查询vandamme-查询"></a> 6.1. 自顶向下查询：Vandamme 查询</h2>
-<h3 id="611-邻接模型"><a class="markdownIt-Anchor" href="#611-邻接模型"></a> 6.1.1. 邻接模型</h3>
-<ol>
+<h2 id="6-1-自顶向下查询：Vandamme-查询"><a href="#6-1-自顶向下查询：Vandamme-查询" class="headerlink" title="6.1. 自顶向下查询：Vandamme 查询"></a>6.1. 自顶向下查询：Vandamme 查询</h2><h3 id="6-1-1-邻接模型"><a href="#6-1-1-邻接模型" class="headerlink" title="6.1.1. 邻接模型"></a>6.1.1. 邻接模型</h3><ol>
 <li><code>connect by &lt; a column of the current row &gt; = prior a column of the previous row</code></li>
 <li><code>connect by &lt; a column of the previous row &gt; = prior a column of the current row</code></li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> lpad(description, length(description) <span class="hljs-operator">+</span> level) description, commander<br><span class="hljs-keyword">from</span> adjacency_ model<br><span class="hljs-keyword">connect</span> <span class="hljs-keyword">by</span> parent_ id <span class="hljs-operator">=</span> prior id<br><span class="hljs-keyword">start</span> <span class="hljs-keyword">with</span> commander <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Général de Division Dominique Vandamme&#x27;</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>邻接矩阵：递归实现</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>添加排序：加粗部分完成排序（优化器会避免出现重复计算）</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>那么MySQL呢？两个方法
-<ol>
+<li>那么MySQL呢？两个方法<ol>
 <li>手动union</li>
 <li>在一个查询汇总多次连接</li>
 <li>前提都是已知深度（人工获取）</li>
 </ol>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="612-物化路径模型"><a class="markdownIt-Anchor" href="#612-物化路径模型"></a> 6.1.2. 物化路径模型</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-1-2-物化路径模型"><a href="#6-1-2-物化路径模型" class="headerlink" title="6.1.2. 物化路径模型"></a>6.1.2. 物化路径模型</h3><ol>
 <li>查询编写不困难</li>
 <li>计算由路径导出的层次不方便</li>
 <li>假设mp_depth()函数返回当前节点深度</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="613-嵌套集合模型"><a class="markdownIt-Anchor" href="#613-嵌套集合模型"></a> 6.1.3. 嵌套集合模型</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-1-3-嵌套集合模型"><a href="#6-1-3-嵌套集合模型" class="headerlink" title="6.1.3. 嵌套集合模型"></a>6.1.3. 嵌套集合模型</h3><ol>
 <li>很简单，某节点的后代的 left_num 和 right_num 都会在该节点的 left_num 和right_num 范围内</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>缩排怎么办？</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="614-比较各模型下的vandamme模型"><a class="markdownIt-Anchor" href="#614-比较各模型下的vandamme模型"></a> 6.1.4. 比较各模型下的Vandamme模型</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-1-4-比较各模型下的Vandamme模型"><a href="#6-1-4-比较各模型下的Vandamme模型" class="headerlink" title="6.1.4. 比较各模型下的Vandamme模型"></a>6.1.4. 比较各模型下的Vandamme模型</h3><ol>
 <li>返回40条记录，循环执行各个查询5000次，比较每秒返回的记录数</li>
 <li>邻接模型最高：parentId</li>
-<li>物化路径模型
-<ol>
+<li>物化路径模型<ol>
 <li>计算深度：字符串相关操作效率低</li>
 <li>缩排：反复处理字符串效率低</li>
 </ol>
 </li>
-<li>嵌套集合模型：
-<ol>
+<li>嵌套集合模型：<ol>
 <li>查找子代完胜其他模型</li>
 <li>缩排成本太高了</li>
 <li>改进：每个节点都冗余存储深度，但是维护成本高：树结构不改变、不需要所有节点排序时最好。</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="62-自底向上访问highland查询"><a class="markdownIt-Anchor" href="#62-自底向上访问highland查询"></a> 6.2. 自底向上访问：Highland查询</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="6-2-自底向上访问：Highland查询"><a href="#6-2-自底向上访问：Highland查询" class="headerlink" title="6.2. 自底向上访问：Highland查询"></a>6.2. 自底向上访问：Highland查询</h2><ol>
 <li>在 description 字段中查找“ Highland ”字符串</li>
 <li>必然导致完整的表扫描：无法使用索引</li>
 <li>不同模型下 Highland 查询的差异</li>
 </ol>
-<h3 id="621-邻接模型"><a class="markdownIt-Anchor" href="#621-邻接模型"></a> 6.2.1. 邻接模型</h3>
-<p>Connect by 非常容易实现：Connect by不是关系操作</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="622-物化路径模型"><a class="markdownIt-Anchor" href="#622-物化路径模型"></a> 6.2.2. 物化路径模型</h3>
-<ul>
-<li>仅找出适当的记录并缩排显示算容易
-<ul>
+<h3 id="6-2-1-邻接模型"><a href="#6-2-1-邻接模型" class="headerlink" title="6.2.1. 邻接模型"></a>6.2.1. 邻接模型</h3><p>Connect by 非常容易实现：Connect by不是关系操作</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-2-2-物化路径模型"><a href="#6-2-2-物化路径模型" class="headerlink" title="6.2.2. 物化路径模型"></a>6.2.2. 物化路径模型</h3><ul>
+<li>仅找出适当的记录并缩排显示算容易<ul>
 <li>重复记录的问题</li>
 <li>顺序的问题</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="623-嵌套集合模型"><a class="markdownIt-Anchor" href="#623-嵌套集合模型"></a> 6.2.3. 嵌套集合模型</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-2-3-嵌套集合模型"><a href="#6-2-3-嵌套集合模型" class="headerlink" title="6.2.3. 嵌套集合模型"></a>6.2.3. 嵌套集合模型</h3><ol>
 <li>动态计算深度依旧是个问题</li>
 <li>不要显示人造根节点</li>
 <li>硬编码最大深度（为了缩排显示）</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="624-比较各种模型下的highland查询"><a class="markdownIt-Anchor" href="#624-比较各种模型下的highland查询"></a> 6.2.4. 比较各种模型下的Highland查询</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="6-2-4-比较各种模型下的Highland查询"><a href="#6-2-4-比较各种模型下的Highland查询" class="headerlink" title="6.2.4. 比较各种模型下的Highland查询"></a>6.2.4. 比较各种模型下的Highland查询</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>由于邻接模型中会有重复语句，我们可以使用有效结果的行数来衡量</p>
-<h3 id="625-一些问题"><a class="markdownIt-Anchor" href="#625-一些问题"></a> 6.2.5. 一些问题</h3>
-<ol>
+<h3 id="6-2-5-一些问题"><a href="#6-2-5-一些问题" class="headerlink" title="6.2.5. 一些问题"></a>6.2.5. 一些问题</h3><ol>
 <li>物化路径不该是KEY，即使他们有唯一性：主键最好不要经常被更新</li>
 <li>物化路径不该暗示任何兄弟节点的排序</li>
 <li>所选择的编码方式不需要完全中立</li>
 </ol>
-<h1 id="7-聚合来自树的值"><a class="markdownIt-Anchor" href="#7-聚合来自树的值"></a> 7. 聚合来自树的值</h1>
-<ul>
-<li>一共有2个大部分
-<ul>
+<h1 id="7-聚合来自树的值"><a href="#7-聚合来自树的值" class="headerlink" title="7. 聚合来自树的值"></a>7. 聚合来自树的值</h1><ul>
+<li>一共有2个大部分<ul>
 <li>保存叶节点的值</li>
 <li>计算某个值散布在整个树中的百分比</li>
 </ul>
 </li>
 </ul>
-<h2 id="71-对保存于叶节点的值做聚合"><a class="markdownIt-Anchor" href="#71-对保存于叶节点的值做聚合"></a> 7.1. 对保存于叶节点的值做聚合</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="72-计算每一层的人数"><a class="markdownIt-Anchor" href="#72-计算每一层的人数"></a> 7.2. 计算每一层的人数</h2>
-<h3 id="721-计算每一层的人数邻接模型"><a class="markdownIt-Anchor" href="#721-计算每一层的人数邻接模型"></a> 7.2.1. 计算每一层的人数（邻接模型）</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="722-计算每一层的人数物化路径"><a class="markdownIt-Anchor" href="#722-计算每一层的人数物化路径"></a> 7.2.2. 计算每一层的人数（物化路径）</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="723-不同模型的性能"><a class="markdownIt-Anchor" href="#723-不同模型的性能"></a> 7.2.3. 不同模型的性能</h3>
-<ul>
+<h2 id="7-1-对保存于叶节点的值做聚合"><a href="#7-1-对保存于叶节点的值做聚合" class="headerlink" title="7.1. 对保存于叶节点的值做聚合"></a>7.1. 对保存于叶节点的值做聚合</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/24.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-2-计算每一层的人数"><a href="#7-2-计算每一层的人数" class="headerlink" title="7.2. 计算每一层的人数"></a>7.2. 计算每一层的人数</h2><h3 id="7-2-1-计算每一层的人数（邻接模型）"><a href="#7-2-1-计算每一层的人数（邻接模型）" class="headerlink" title="7.2.1. 计算每一层的人数（邻接模型）"></a>7.2.1. 计算每一层的人数（邻接模型）</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-2-2-计算每一层的人数（物化路径）"><a href="#7-2-2-计算每一层的人数（物化路径）" class="headerlink" title="7.2.2. 计算每一层的人数（物化路径）"></a>7.2.2. 计算每一层的人数（物化路径）</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/27.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-2-3-不同模型的性能"><a href="#7-2-3-不同模型的性能" class="headerlink" title="7.2.3. 不同模型的性能"></a>7.2.3. 不同模型的性能</h3><ul>
 <li>执行查询5000次，比较单位时间返回的记录数</li>
 </ul>
-<h2 id="73-散布在各层的百分比"><a class="markdownIt-Anchor" href="#73-散布在各层的百分比"></a> 7.3. 散布在各层的百分比</h2>
-<ol>
+<h2 id="7-3-散布在各层的百分比"><a href="#7-3-散布在各层的百分比" class="headerlink" title="7.3. 散布在各层的百分比"></a>7.3. 散布在各层的百分比</h2><ol>
 <li>假设我们经营魔药。每种魔药由多种成分（ ingredient ）组成，处方 recipe 列出成分及百分比。处方可以共享某种“基础魔药”，以复合成分 compound ingredient ）的形式表示。</li>
 <li>百分比被分到了每一个部分中</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>某一种可以选择的建模方法
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/28.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>某一种可以选择的建模方法<ol>
 <li>Components 表为通用类型</li>
 <li>它有 recipes 和 basic_ingredients 两种子类型</li>
 <li>Composition 表保存处方成分（可以是处方或基本成分及其数量）</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="74-树状结构的问题"><a class="markdownIt-Anchor" href="#74-树状结构的问题"></a> 7.4. 树状结构的问题</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec6/31.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-4-树状结构的问题"><a href="#7-4-树状结构的问题" class="headerlink" title="7.4. 树状结构的问题"></a>7.4. 树状结构的问题</h2><ol>
 <li>本章的方法，在数据量很少的情况下效果令人满意</li>
 <li>对大数据量的处理“像老爷车一样慢”</li>
 <li>同样可以采用非规范化模型、或基于触发器的扁平化数据模型。</li>
@@ -665,9 +619,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="2021-Database-Development-Lec3-索引结构及使用">
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec6-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8C%96%E4%B8%8E%E6%9C%80%E6%96%B0%E8%BF%9B%E5%B1%95/" title="2020-Devops-introduction-Lec6-软件架构演化与最新进展">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Database-Development-Lec3-索引结构及使用</span>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec6-软件架构演化与最新进展</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -675,8 +629,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec7-%E5%AF%B9%E5%86%97%E4%BD%99%E7%9A%84%E6%8E%A7%E5%88%B6(%E5%8F%8D%E8%8C%83%E5%BC%8F%E6%A8%A1%E5%BC%8F)/" title="2021-Database-Development-Lec7-对冗余的控制(反范式模式)">
-                        <span class="hidden-mobile">2021-Database-Development-Lec7-对冗余的控制(反范式模式)</span>
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-6%20%E5%9B%A2%E9%98%9F%E5%B7%A5%E7%A8%8B%E5%BC%80%E5%8F%91/" title="2021-software-quality-management-Lec-6 团队工程开发">
+                        <span class="hidden-mobile">2021-software-quality-management-Lec-6 团队工程开发</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

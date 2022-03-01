@@ -16,28 +16,41 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II">
+    <meta name="description" content="2020-Compilation-Principle-Overview">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II">
-<meta property="og:url" content="https://stormbroken.github.io/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Hw01-Homework%20for%20uC%20OS-II/index.html">
+<meta property="og:title" content="2020-Compilation-Principle-Overview">
+<meta property="og:url" content="https://stormbroken.github.io/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Overview/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II">
+<meta property="og:description" content="2020-Compilation-Principle-Overview">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/2.png">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/1.png">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/3.png">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/4.png">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/5.png">
-<meta property="article:published_time" content="2022-02-16T11:09:38.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:20:05.700Z">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/15.png">
+<meta property="article:published_time" content="2022-02-16T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:11:36.336Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="作业">
-<meta property="article:tag" content="嵌入式系统导论">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="语法">
+<meta property="article:tag" content="编译原理">
+<meta property="article:tag" content="编译器">
+<meta property="article:tag" content="语义">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/2.png">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/1.png">
   
   
-  <title>2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II - SpriCoder的博客</title>
+  <title>2020-Compilation-Principle-Overview - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +218,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:00" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -217,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.4k 字
         
       </span>
     
@@ -228,7 +241,7 @@
         
         
         
-          14 分钟
+          12 分钟
         
       </span>
     
@@ -274,107 +287,119 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II</h1>
+            <h1 style="display: none">2020-Compilation-Principle-Overview</h1>
             
             <div class="markdown-body">
               
-              <h2 id="hw01-homework-for-ucos-ii"><a class="markdownIt-Anchor" href="#hw01-homework-for-ucos-ii"></a> Hw01-Homework for uC/OS-II</h2>
-<ol>
-<li>uC/OS-II的多任务实验</li>
+              <h2 id="Lecture1-Overview"><a href="#Lecture1-Overview" class="headerlink" title="Lecture1-Overview"></a>Lecture1-Overview</h2><h1 id="1-源起"><a href="#1-源起" class="headerlink" title="1. 源起"></a>1. 源起</h1><ol>
+<li>Donald E. Knuth (1938 ∼) Turing Award, 1974的贡献：<ol>
+<li>LR Parser (语法)</li>
+<li>Attribute Grammar (语义)</li>
+<li>ALGOL 58 Compiler</li>
 </ol>
-<h1 id="1-固定优先级调度"><a class="markdownIt-Anchor" href="#1-固定优先级调度"></a> 1. 固定优先级调度</h1>
-<ol>
-<li>uC/OS-II支持固定优先级调度</li>
-<li>易于实施RM</li>
+</li>
 </ol>
-<h1 id="2-周期任务"><a class="markdownIt-Anchor" href="#2-周期任务"></a> 2. 周期任务</h1>
-<h2 id="21-调用ostaskcreate来创建任务"><a class="markdownIt-Anchor" href="#21-调用ostaskcreate来创建任务"></a> 2.1. 调用OSTaskCreate来创建任务</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//A straightforward emulation of (c,p)</span><br><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>  Start=<span class="hljs-built_in">OSTimeGet</span>() ;<br>  <span class="hljs-built_in">While</span>(<span class="hljs-built_in">OStimeGet</span>()-start &lt; c) ;<br>  <span class="hljs-built_in">OSTimeDly</span> (p-c) ;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>编译器一般而言是将一种语言转换成另一个语言，例如GopherJS(Go-&gt;JavaScript)</li>
+</ol>
+<h1 id="2-机器语言是如何跑起来的"><a href="#2-机器语言是如何跑起来的" class="headerlink" title="2. 机器语言是如何跑起来的"></a>2. 机器语言是如何跑起来的</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="3-IR-Intermediate-Representation-中间表示"><a href="#3-IR-Intermediate-Representation-中间表示" class="headerlink" title="3. IR(Intermediate Representation) 中间表示"></a>3. IR(Intermediate Representation) 中间表示</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/3.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>前端(分析阶段): <strong>分析源语言程序, 收集所有必要的信息</strong></li>
+<li>后端(综合阶段): <strong>利用收集到的信息, 生成目标语言程序</strong></li>
+<li>为什么不是一步到位，而是生成中间代码？<ol>
+<li>模块化</li>
+<li>好处：例如C、Java、Python都可以生成同一种中间语言(与机器无关的)，而中间语言可以生成不同的机器语言M1、M2、M3；如果没有模块化的话，则需要3*3的编译器。</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-1-编译器前端-分析阶段"><a href="#3-1-编译器前端-分析阶段" class="headerlink" title="3.1. 编译器前端:分析阶段"></a>3.1. 编译器前端:分析阶段</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-编译器后端-综合阶段"><a href="#3-2-编译器后端-综合阶段" class="headerlink" title="3.2. 编译器后端:综合阶段"></a>3.2. 编译器后端:综合阶段</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-3-词法、语法、语义和物理定律"><a href="#3-3-词法、语法、语义和物理定律" class="headerlink" title="3.3. 词法、语法、语义和物理定律"></a>3.3. 词法、语法、语义和物理定律</h2><blockquote>
+<p>作为一名程序员，你看到了什么？</p>
+</blockquote>
+<script type="math/tex; mode=display">
+position = initial + rate * 60</script><ol>
+<li>词法: 标识符、数字、运算符</li>
+<li>语法: 包含算术运算的赋值语句</li>
+<li>语义: position, initial, rate 是数值类型</li>
+<li>物理定律: 当前位置 = 初始位置 + 速度 × 时间</li>
+<li>我们希望编译器可以懂词法、语法、语义，但是作为编译器, 它仅仅看到了一个字符串</li>
+</ol>
+<h3 id="3-3-1-词法分析器-Lexer-Scanner"><a href="#3-3-1-词法分析器-Lexer-Scanner" class="headerlink" title="3.3.1. 词法分析器(Lexer/Scanner)"></a>3.3.1. 词法分析器(Lexer/Scanner)</h3><blockquote>
+<p>将<strong>字符</strong>流转化为<strong>词法单元(token)</strong>流。</p>
+</blockquote>
+<p><code>token:&lt;token-class, attribute-value&gt;</code></p>
+<ol>
+<li>属性值：收集到的信息(如内存地址、寄存器编号)</li>
+<li>原形式:<code>position = initial + rat * 60</code></li>
+<li>词法解析后结果:<code>⟨id, 1⟩ ⟨ws⟩ ⟨assign⟩ ⟨ws⟩ ⟨id, 2⟩ ⟨ws⟩ ⟨+⟩ ⟨ws⟩ ⟨id, 3⟩ ⟨ws⟩ ⟨∗⟩ ⟨ws⟩ ⟨num, 4⟩</code><ol>
+<li>ws表示空白符</li>
+<li>assign表示等号(赋值)</li>
+<li>这里，1，2，3，4是指向<strong>符号表</strong>的指针</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-3-2-语法分析器-Parser"><a href="#3-3-2-语法分析器-Parser" class="headerlink" title="3.3.2. 语法分析器(Parser)"></a>3.3.2. 语法分析器(Parser)</h3><blockquote>
+<p>构建<strong>词法单元</strong>之间的语法结构, 生成<strong>语法树</strong></p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>问题：如果[开始，结束]之间存在抢占，则任务未获得CPU时间的c个单位</li>
+<li>给定的程序是否符合语法规则，如果符合语法规则，则构建语法树；构建完成之后，源程序就使用不到了，所有的操作都将在语法树中进行。</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-3-3-语义分析器"><a href="#3-3-3-语义分析器" class="headerlink" title="3.3.3. 语义分析器"></a>3.3.3. 语义分析器</h3><blockquote>
+<p>语义检查, 如<strong>类型检查、”先声明后使用” 约束检查</strong></p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>语义分析器：语义检查，如<strong>类型检查</strong>(最重要的检查)、”先声明后使用”约束检查</li>
+<li>这里的inttofloat就是类型分析，即类型提升。</li>
+<li>“先声明后使用”：变量和函数在使用前是否声明过。</li>
+</ol>
+<h3 id="3-3-4-中间代码生成器"><a href="#3-3-4-中间代码生成器" class="headerlink" title="3.3.4. 中间代码生成器"></a>3.3.4. 中间代码生成器</h3><blockquote>
+<p>生成中间代码, 如<strong>三地址代码</strong></p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>C =任务的时钟滴答花费</li>
-<li>delay = p-(end - start)</li>
+<li>中间代码类似目标代码, 但不含有机器相关信息(如寄存器、指令格式)</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-3-5-中间代码优化器"><a href="#3-3-5-中间代码优化器" class="headerlink" title="3.3.5. 中间代码优化器"></a>3.3.5. 中间代码优化器</h3><blockquote>
+<p>编译时计算、消除冗余临时变量</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>编译时计算、消除冗余临时变量</li>
+</ol>
+<h3 id="3-3-6-代码生成器"><a href="#3-3-6-代码生成器" class="headerlink" title="3.3.6. 代码生成器"></a>3.3.6. 代码生成器</h3><blockquote>
+<p>生成目标代码, 主要任务包括<strong>指令选择、寄存器分配</strong></p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>注意:这里现将id3的地址是放到寄存器R2中的，由于计算的时候是需要放在寄存器中进行的。</li>
+</ol>
+<h3 id="3-3-7-符号表"><a href="#3-3-7-符号表" class="headerlink" title="3.3.7. 符号表"></a>3.3.7. 符号表</h3><blockquote>
+<p>收集并管理<strong>变量名/函数名</strong>相关的信息</p>
+</blockquote>
+<ol>
+<li>变量名:类型、寄存器、内存地址、<strong>行号</strong>(debug中可以使用到)</li>
+<li>函数名:参数个数、参数类型、返回值类型</li>
+<li>编译器最重要的数据结构是tree和hash table</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>使用计时器来计时</li>
+<li>符号表：红黑树(RB-Tree)、哈希表(Hashtable)</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Task</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">int</span> start ; <span class="hljs-comment">//the start time</span><br>  <span class="hljs-type">int</span> end ; <span class="hljs-comment">//the end time</span><br>  <span class="hljs-type">int</span> toDelay;<br>  start=<span class="hljs-number">0</span> ;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">while</span>(OSTCBCur-&gt;compTime&gt;<span class="hljs-number">0</span>) <span class="hljs-comment">//C ticks</span><br>    &#123;<br>      <span class="hljs-comment">// do nothing</span><br>    &#125;<br>    end=<span class="hljs-built_in">OSTimeGet</span>() ; <span class="hljs-comment">// end time</span><br>    toDelay=T-(end-start) ;<br>    start=start+T ; <span class="hljs-comment">// next start time</span><br>    OSTCBCur-&gt;compTime=C ; <span class="hljs-comment">// reset the counter (c ticks for computation)</span><br>    <span class="hljs-built_in">OSTimeDly</span> (toDelay); <span class="hljs-comment">// delay and wait (T-C) times</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="22-osinitexit"><a class="markdownIt-Anchor" href="#22-osinitexit"></a> 2.2. OSInitExit</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>在OS_CORE.C中定义</li>
-<li>该功能将在系统从ISR调用返回后管理调度</li>
-<li>我们需要在此处打印&quot;抢先&quot;事件</li>
+<li>为了方便表达<strong>嵌套结构与作用域</strong>, 可能需要维护多个符号表</li>
+<li>支持几个变量是重名的，可以作用在不同的作用域中。</li>
 </ol>
-<h2 id="23-os_sched"><a class="markdownIt-Anchor" href="#23-os_sched"></a> 2.3. OS_Sched</h2>
-<ol>
-<li>在OS_CORE.C中定义</li>
-<li>当任务自愿放弃对CPU的占有时，调用OS_Sched()</li>
-<li>我们需要在这里打印出&quot;完整&quot;事件</li>
-</ol>
-<h2 id="24-printing-messages"><a class="markdownIt-Anchor" href="#24-printing-messages"></a> 2.4. Printing messages</h2>
-<ol>
-<li>Print messages</li>
-<li><code>printf(&quot;\n%10d Preempt &quot;,timestamp);</code></li>
-<li>期望输出格式:</li>
-</ol>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coq">Current <span class="hljs-built_in">time</span> | <span class="hljs-type">Event</span> | <span class="hljs-type">[From</span> Task ID] | <span class="hljs-type">[To</span> Task ID]<br><span class="hljs-keyword">Time</span> tick (priority) | <span class="hljs-type">Preempt</span> | <span class="hljs-type">TaskID</span>(priority) | <span class="hljs-type">TaskID</span><br></code></pre></td></tr></table></figure>
-<h1 id="3-定义"><a class="markdownIt-Anchor" href="#3-定义"></a> 3. 定义</h1>
-<ol>
-<li>实施两组定期任务。
-<ol>
-<li>TaskSet 1 = {t1(1,3), t2(3,6)}</li>
-<li>TaskSet 2 = {t1(1,3), t2(3,6), t3(4,9) }}</li>
-<li>任务到达时间均为0</li>
-<li>显示上下文切换行为</li>
-<li>显示违反期限的情况</li>
-</ol>
-</li>
-</ol>
-<h1 id="4-课程"><a class="markdownIt-Anchor" href="#4-课程"></a> 4. 课程</h1>
-<ol>
-<li>如何创建在每p单位时间中精确执行c单位时间的任务？(c，p)</li>
-<li>我们可以在内核中的哪个位置添加用于观察上下文切换行为的代码？</li>
-</ol>
-<h1 id="5-注意"><a class="markdownIt-Anchor" href="#5-注意"></a> 5. 注意</h1>
-<ol>
-<li>在实时应用程序中，确定任务周期，并通过硬件中断调用任务调用</li>
-<li>任务计算时间由最坏情况计算时间分析(WCET)确定</li>
-<li>在此项目中，我们将模拟这种行为，更重要的是，获得有关如何将CPU时间分配给任务的见解</li>
-</ol>
-<h1 id="6-测试任务集合"><a class="markdownIt-Anchor" href="#6-测试任务集合"></a> 6. 测试任务集合</h1>
-<ol>
-<li>测试集1：{t1(1,3) , t2(3,5) }</li>
-<li>测试集2：{t1(1,4) , t2(2,5) , t3(2,10)}</li>
-</ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/4.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="7-实验内容"><a class="markdownIt-Anchor" href="#7-实验内容"></a> 7. 实验内容</h1>
-<ol>
-<li>⽬标： 在ucOS-II上多任务实验。</li>
-<li>要求：
-<ol>
-<li>在pc上的ucOS-II移植版本上实现，参⻅Moodle上Lecture Notes下的实验⽬录uCOSII下的源码。</li>
-<li>MISRA C 2004 Guidelines for the use of the C language in critical systems</li>
-</ol>
-</li>
-<li>提交
-<ol>
-<li>提交格式：学号_姓名.rar</li>
-<li>完整的⽂档说明实现步骤，包括所增加的代码与注释，执⾏结果截图。</li>
-</ol>
-</li>
-<li>任务集，包含3个周期性任务，选择合理的参数ti(ci,pi)，分别给出两种情况的输出：
-<ol>
-<li>任务之间没有相关性</li>
-<li>任务之间有数据相关性(优先级最⾼与最低任务之间)</li>
-</ol>
-</li>
-</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-4-时间苦短-来不及优化"><a href="#3-4-时间苦短-来不及优化" class="headerlink" title="3.4. 时间苦短, 来不及优化"></a>3.4. 时间苦短, 来不及优化</h2><blockquote>
+<p>但是, 在设计实际生产环境中的编译器时, <strong>优化</strong>通常占用了大多数时间</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec1/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -392,7 +417,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/2020-Introduction-to-Embedded-Systems/" class="category-chain-item">2020-Introduction-to-Embedded-Systems</a>
+  <a href="/categories/2020-Compilation-Principle/" class="category-chain-item">2020-Compilation-Principle</a>
   
   
 
@@ -407,9 +432,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BD%9C%E4%B8%9A/">#作业</a>
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/">#嵌入式系统导论</a>
+        <a href="/tags/%E8%AF%AD%E6%B3%95/">#语法</a>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%99%A8/">#编译器</a>
+      
+        <a href="/tags/%E8%AF%AD%E4%B9%89/">#语义</a>
       
     </div>
   
@@ -421,8 +452,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2020-Introduction-to-Embedded-Systems-Hw01-Homework for uC OS-II</div>
-      <div>https://stormbroken.github.io/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Hw01-Homework%20for%20uC%20OS-II/</div>
+      <div>2020-Compilation-Principle-Overview</div>
+      <div>https://stormbroken.github.io/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Overview/</div>
     </div>
     <div class="license-meta">
       
@@ -464,9 +495,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/" title="2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel">
+                      <a href="/2022/02/16/2021-Server-Development/2021-Server-Development-Exam0-%E8%AF%BE%E7%A8%8B%E5%A4%8D%E4%B9%A0/" title="2021-Server-Development-Exam0-课程复习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel</span>
+                        <span class="hidden-mobile">2021-Server-Development-Exam0-课程复习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -474,8 +505,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec0-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E5%AF%BC%E8%A8%80/" title="2020-Introduction-to-Embedded-Systems-lec0-嵌入式系统概论导言">
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec0-嵌入式系统概论导言</span>
+                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/2020-Demand-and-business-model-innovation-%E5%AF%BC%E8%AE%BA/" title="2020-Demand-and-business-model-innovation-导论">
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-导论</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

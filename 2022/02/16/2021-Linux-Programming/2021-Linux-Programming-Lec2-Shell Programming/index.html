@@ -29,8 +29,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/4.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/11.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/12.png">
-<meta property="article:published_time" content="2022-02-16T11:09:15.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:12:06.594Z">
+<meta property="article:published_time" content="2022-02-16T11:02:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:36:26.798Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="shell">
@@ -209,7 +209,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:02" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -282,23 +282,18 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec2-shell-programming"><a class="markdownIt-Anchor" href="#lec2-shell-programming"></a> Lec2-Shell Programming</h2>
-<h1 id="1-what-is-shell"><a class="markdownIt-Anchor" href="#1-what-is-shell"></a> 1. What is Shell?</h1>
-<ol>
-<li>Shell:
-<ol>
+              <h2 id="Lec2-Shell-Programming"><a href="#Lec2-Shell-Programming" class="headerlink" title="Lec2-Shell Programming"></a>Lec2-Shell Programming</h2><h1 id="1-What-is-Shell"><a href="#1-What-is-Shell" class="headerlink" title="1. What is Shell?"></a>1. What is Shell?</h1><ol>
+<li>Shell:<ol>
 <li>A command interpreter and programming environment</li>
 </ol>
 </li>
 <li>用户和操作系统之间的接口</li>
 <li>作为核外程序而存在</li>
 </ol>
-<h2 id="11-shell-用户和操作系统之间的接口"><a class="markdownIt-Anchor" href="#11-shell-用户和操作系统之间的接口"></a> 1.1. Shell: 用户和操作系统之间的接口</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-shell作为核外程序而存在"><a class="markdownIt-Anchor" href="#12-shell作为核外程序而存在"></a> 1.2. Shell：作为核外程序而存在</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="13-各种不同的shell"><a class="markdownIt-Anchor" href="#13-各种不同的shell"></a> 1.3. 各种不同的Shell</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-1-Shell-用户和操作系统之间的接口"><a href="#1-1-Shell-用户和操作系统之间的接口" class="headerlink" title="1.1. Shell: 用户和操作系统之间的接口"></a>1.1. Shell: 用户和操作系统之间的接口</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-Shell：作为核外程序而存在"><a href="#1-2-Shell：作为核外程序而存在" class="headerlink" title="1.2. Shell：作为核外程序而存在"></a>1.2. Shell：作为核外程序而存在</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-3-各种不同的Shell"><a href="#1-3-各种不同的Shell" class="headerlink" title="1.3. 各种不同的Shell"></a>1.3. 各种不同的Shell</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -350,142 +345,117 @@
 </tr>
 </tbody>
 </table>
-<h2 id="14-shell-的双重角色"><a class="markdownIt-Anchor" href="#14-shell-的双重角色"></a> 1.4. Shell 的双重角色</h2>
-<ol>
-<li>命令解释程序
-<ol>
+</div>
+<h2 id="1-4-Shell-的双重角色"><a href="#1-4-Shell-的双重角色" class="headerlink" title="1.4. Shell 的双重角色"></a>1.4. Shell 的双重角色</h2><ol>
+<li>命令解释程序<ol>
 <li>Linux的开机启动过程；进程树</li>
-<li>Shell的工作步骤
-<ol>
+<li>Shell的工作步骤<ol>
 <li>打印提示符；得到命令行；解析命令；查找文件；准备参数；执行命令</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>独立的程序设计语言解释器
-<ol>
+<li>独立的程序设计语言解释器<ol>
 <li>KISS (Keep It Small and Stupid)</li>
 <li>Reusable tools</li>
 <li>Redirection and pipe</li>
 </ol>
 </li>
 </ol>
-<h2 id="15-unix的哲学示例"><a class="markdownIt-Anchor" href="#15-unix的哲学示例"></a> 1.5. UNIX的哲学（示例）</h2>
-<ol>
-<li>重定向
-<ol>
-<li>使用&quot;echo&quot;创建文件吗？</li>
+<h2 id="1-5-UNIX的哲学（示例）"><a href="#1-5-UNIX的哲学（示例）" class="headerlink" title="1.5. UNIX的哲学（示例）"></a>1.5. UNIX的哲学（示例）</h2><ol>
+<li>重定向<ol>
+<li>使用”echo”创建文件吗？</li>
 </ol>
 </li>
-<li>管道
-<ol>
+<li>管道<ol>
 <li>获取目录中文件的数量？</li>
 <li>仅显示子目录？</li>
 <li>ar t /usr/lib/libc.a | grep printf | pr -4 -t(?)</li>
 </ol>
 </li>
 </ol>
-<h1 id="2-脚本"><a class="markdownIt-Anchor" href="#2-脚本"></a> 2. 脚本</h1>
-<h2 id="21-脚本是能在命令行直接输入的"><a class="markdownIt-Anchor" href="#21-脚本是能在命令行直接输入的"></a> 2.1. 脚本是能在命令行直接输入的</h2>
-<ol>
+<h1 id="2-脚本"><a href="#2-脚本" class="headerlink" title="2. 脚本"></a>2. 脚本</h1><h2 id="2-1-脚本是能在命令行直接输入的"><a href="#2-1-脚本是能在命令行直接输入的" class="headerlink" title="2.1. 脚本是能在命令行直接输入的"></a>2.1. 脚本是能在命令行直接输入的</h2><ol>
 <li>但仅会执行一次</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-编写脚本文件"><a class="markdownIt-Anchor" href="#22-编写脚本文件"></a> 2.2. 编写脚本文件</h2>
-<ol>
-<li>脚本文件
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-编写脚本文件"><a href="#2-2-编写脚本文件" class="headerlink" title="2.2. 编写脚本文件"></a>2.2. 编写脚本文件</h2><ol>
+<li>脚本文件<ol>
 <li>注释</li>
 <li>退出码(exit code)</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># Here is comments</span><br><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> *; <span class="hljs-keyword">do</span><br>  <span class="hljs-keyword">if</span> grep –l POSIX <span class="hljs-variable">$file</span>; <span class="hljs-keyword">then</span><br>    more <span class="hljs-variable">$file</span><br>  <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h2 id="23-执行脚本文件"><a class="markdownIt-Anchor" href="#23-执行脚本文件"></a> 2.3. 执行脚本文件</h2>
-<ol>
+<h2 id="2-3-执行脚本文件"><a href="#2-3-执行脚本文件" class="headerlink" title="2.3. 执行脚本文件"></a>2.3. 执行脚本文件</h2><ol>
 <li>Method 1: <code>sh script_file</code></li>
-<li>Method 2:
-<ol>
+<li>Method 2: <ol>
 <li><code>chmod +x script_file (chown, chgrp optionally)</code></li>
 <li><code>./script_file</code></li>
 </ol>
 </li>
-<li>Method 3:
-<ol>
+<li>Method 3: <ol>
 <li><code>source script_file, or</code></li>
 <li><code>./script_file</code></li>
 </ol>
 </li>
 </ol>
-<h2 id="24-用户环境"><a class="markdownIt-Anchor" href="#24-用户环境"></a> 2.4. 用户环境</h2>
-<ol>
-<li><code>.bash_profile</code>, <code>.bash_logout</code>, <code>.bashrc files</code>
-<ol>
+<h2 id="2-4-用户环境"><a href="#2-4-用户环境" class="headerlink" title="2.4. 用户环境"></a>2.4. 用户环境</h2><ol>
+<li><code>.bash_profile</code>, <code>.bash_logout</code>, <code>.bashrc files</code><ol>
 <li><code>.bash_profile</code>: 用户登录时被读取，其中包含的命令被bash执行</li>
 <li><code>.bashrc</code>: 启动一个新的shell时读取并执行</li>
 <li><code>.bash_logout</code>: 登录退出时读取执行</li>
 </ol>
 </li>
-<li>Alias
-<ol>
+<li>Alias<ol>
 <li>alias/unaliascommand</li>
 </ol>
 </li>
-<li>环境变量
-<ol>
+<li>环境变量<ol>
 <li>export command</li>
 <li>export, env &amp; set command</li>
 </ol>
 </li>
 </ol>
-<h2 id="25-变量"><a class="markdownIt-Anchor" href="#25-变量"></a> 2.5. 变量</h2>
-<ol>
+<h2 id="2-5-变量"><a href="#2-5-变量" class="headerlink" title="2.5. 变量"></a>2.5. 变量</h2><ol>
 <li>用户变量</li>
 <li>环境变量</li>
 <li>参数变量和内部变量</li>
 </ol>
-<h3 id="251-用户变量"><a class="markdownIt-Anchor" href="#251-用户变量"></a> 2.5.1. 用户变量</h3>
-<ol>
-<li>用户变量：
-<ol>
+<h3 id="2-5-1-用户变量"><a href="#2-5-1-用户变量" class="headerlink" title="2.5.1. 用户变量"></a>2.5.1. 用户变量</h3><ol>
+<li>用户变量：<ol>
 <li>用户在shell脚本里定义的变量</li>
 </ol>
 </li>
-<li>变量的赋值和使用
-<ol>
+<li>变量的赋值和使用<ol>
 <li><code>var=value</code></li>
 <li><code>echo $var</code></li>
 </ol>
 </li>
-<li>read命令
-<ol>
+<li>read命令<ol>
 <li>用法：<code>read var</code> 或<code>read</code></li>
 <li><code>REPLY variable</code></li>
 </ol>
 </li>
-<li>引号的用法
-<ol>
+<li>引号的用法<ol>
 <li>双引号，单引号</li>
-<li>转义符&quot;&quot;</li>
+<li>转义符”\”</li>
 </ol>
 </li>
 </ol>
-<h3 id="252-read-用法"><a class="markdownIt-Anchor" href="#252-read-用法"></a> 2.5.2. read 用法</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#! /bin/bash</span><br><span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;Enter your name: &quot;</span>       <span class="hljs-comment"># 参数-n的作用是不换行，echo默认是换行</span><br><span class="hljs-built_in">read</span> name                         <span class="hljs-comment">#从键盘输入</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hello <span class="hljs-variable">$name</span>, welcome to my program&quot;</span><br><span class="hljs-built_in">exit</span> 0                            <span class="hljs-comment">#退出shell程序。</span><br></code></pre></td></tr></table></figure>
+<h3 id="2-5-2-read-用法"><a href="#2-5-2-read-用法" class="headerlink" title="2.5.2. read 用法"></a>2.5.2. read 用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#! /bin/bash</span><br><span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;Enter your name: &quot;</span>       <span class="hljs-comment"># 参数-n的作用是不换行，echo默认是换行</span><br><span class="hljs-built_in">read</span> name                         <span class="hljs-comment">#从键盘输入</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hello <span class="hljs-variable">$name</span>, welcome to my program&quot;</span><br><span class="hljs-built_in">exit</span> 0                            <span class="hljs-comment">#退出shell程序。</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SH"><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter your name:&quot;</span> name   <span class="hljs-comment">#-p参数，允许在read命令行中直接指定一个提示</span><br><br><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;Enter a number:&quot;</span> number<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$number</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#! /bin/bash</span><br><span class="hljs-comment"># 5s内输入</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">read</span> -t 5 -p <span class="hljs-string">&quot;please enter your name:&quot;</span> name<br><span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hello <span class="hljs-variable">$name</span>， welcome to my script&quot;</span><br><span class="hljs-keyword">else</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;sorry, too slow&quot;</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#! /bin/bash</span><br><span class="hljs-comment"># 只读取一个字符</span><br><span class="hljs-built_in">read</span> -n1 -p <span class="hljs-string">&quot;DO you want to continue[ Y/N] ?&quot;</span> answer<br><span class="hljs-keyword">case</span> <span class="hljs-variable">$answer</span> <span class="hljs-keyword">in</span><br>Y|y)<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;fine, continue&quot;</span>;;<br>N|n)<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ok, good bye&quot;</span>;;<br>*)<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;error choice&quot;</span>;;<br><span class="hljs-keyword">esac</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#! /bin/bash</span><br><span class="hljs-comment"># 不显示输入</span><br><span class="hljs-built_in">read</span> -s -p <span class="hljs-string">&quot;Enter your password: &quot;</span> pass<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;your password is <span class="hljs-variable">$pass</span>&quot;</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#! /bin/bash</span><br>count=1<br><span class="hljs-built_in">cat</span> viewFile.sh| <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line<br><span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Scount:<span class="hljs-variable">$line</span>&quot;</span><br>  count=$((<span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>))<br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Total Count:<span class="hljs-variable">$count</span>&quot;</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h2 id="26-引号的用法"><a class="markdownIt-Anchor" href="#26-引号的用法"></a> 2.6. 引号的用法</h2>
-<ol>
+<h2 id="2-6-引号的用法"><a href="#2-6-引号的用法" class="headerlink" title="2.6. 引号的用法"></a>2.6. 引号的用法</h2><ol>
 <li>单引号内的所有字符都保持它本身字符的意思，而不会被bash进行解释，例如，<code>$</code>就是<code>$</code>本身而不再是bash的变量引用符；\就是\本身而不再是bash的转义字符。</li>
 <li>除了$、``（不是单引号）和\外，双引号内的所有字符将保持字符本身的含义而不被bash解释</li>
 </ol>
-<h2 id="27-环境变量"><a class="markdownIt-Anchor" href="#27-环境变量"></a> 2.7. 环境变量</h2>
-<ol>
+<h2 id="2-7-环境变量"><a href="#2-7-环境变量" class="headerlink" title="2.7. 环境变量"></a>2.7. 环境变量</h2><ol>
 <li>环境变量：Shell环境提供的变量。通常使用大写字母做名字</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -516,15 +486,16 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ol>
 <li>env：显示全部环境变量</li>
 <li>set：设置环境变量</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sed &#x27;s/ A  /  B /g&#x27; code1.cpp<br>正则表达式<br></code></pre></td></tr></table></figure>
-<h2 id="28-参数变量和内部变量"><a class="markdownIt-Anchor" href="#28-参数变量和内部变量"></a> 2.8. 参数变量和内部变量</h2>
-<ol>
+<h2 id="2-8-参数变量和内部变量"><a href="#2-8-参数变量和内部变量" class="headerlink" title="2.8. 参数变量和内部变量"></a>2.8. 参数变量和内部变量</h2><ol>
 <li>调用脚本程序时如果带有参数，对应的参数和额外产生的一些变量。</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -555,12 +526,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="29-条件测试"><a class="markdownIt-Anchor" href="#29-条件测试"></a> 2.9. 条件测试</h2>
-<ol>
+</div>
+<h2 id="2-9-条件测试"><a href="#2-9-条件测试" class="headerlink" title="2.9. 条件测试"></a>2.9. 条件测试</h2><ol>
 <li>退出码</li>
 <li>test命令：<code>test expression</code> 或 <code>[ expression ]</code></li>
-<li>test命令支持的条件测试
-<ol>
+<li>test命令支持的条件测试<ol>
 <li>字符串比较</li>
 <li>算术比较</li>
 <li>与文件有关的条件测试</li>
@@ -568,7 +538,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="210-字符串比较"><a class="markdownIt-Anchor" href="#210-字符串比较"></a> 2.10. 字符串比较</h2>
+<h2 id="2-10-字符串比较"><a href="#2-10-字符串比较" class="headerlink" title="2.10. 字符串比较"></a>2.10. 字符串比较</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -595,7 +565,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="211-算术比较"><a class="markdownIt-Anchor" href="#211-算术比较"></a> 2.11. 算术比较</h2>
+</div>
+<h2 id="2-11-算术比较"><a href="#2-11-算术比较" class="headerlink" title="2.11. 算术比较"></a>2.11. 算术比较</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -630,7 +601,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="212-与文件有关的条件测试"><a class="markdownIt-Anchor" href="#212-与文件有关的条件测试"></a> 2.12. 与文件有关的条件测试</h2>
+</div>
+<h2 id="2-12-与文件有关的条件测试"><a href="#2-12-与文件有关的条件测试" class="headerlink" title="2.12. 与文件有关的条件测试"></a>2.12. 与文件有关的条件测试</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -669,7 +641,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="213-逻辑操作"><a class="markdownIt-Anchor" href="#213-逻辑操作"></a> 2.13. 逻辑操作</h2>
+</div>
+<h2 id="2-13-逻辑操作"><a href="#2-13-逻辑操作" class="headerlink" title="2.13. 逻辑操作"></a>2.13. 逻辑操作</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -692,78 +665,66 @@
 </tr>
 </tbody>
 </table>
-<h2 id="214-条件操作"><a class="markdownIt-Anchor" href="#214-条件操作"></a> 2.14. 条件操作</h2>
-<h3 id="2141-if语句"><a class="markdownIt-Anchor" href="#2141-if语句"></a> 2.14.1. if语句</h3>
-<ol>
+</div>
+<h2 id="2-14-条件操作"><a href="#2-14-条件操作" class="headerlink" title="2.14. 条件操作"></a>2.14. 条件操作</h2><h3 id="2-14-1-if语句"><a href="#2-14-1-if语句" class="headerlink" title="2.14.1. if语句"></a>2.14.1. if语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">if [ expression ]<br>then<br>statements<br>elif [ expression ]<br>then<br>statements<br>elif …<br>else<br>statements<br>fi<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>紧凑形式:<code>;</code> 同一行上多个命令的分隔符</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># eg.1 .bash_profile</span><br><span class="hljs-keyword">if</span> [ -f ~/.bashrc ]; <span class="hljs-keyword">then</span><br>. ~/.bashrc<br><span class="hljs-keyword">fi</span><br><br><span class="hljs-comment"># eg.2</span><br><span class="hljs-comment"># !/bin/sh</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Is this morning? Please answer yes or no.&quot;</span><br><span class="hljs-built_in">read</span> answer<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$answer</span>&quot;</span> = <span class="hljs-string">&quot;yes&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Good morning&quot;</span><br><span class="hljs-keyword">elif</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$answer</span>&quot;</span> = <span class="hljs-string">&quot;no&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Good afternoon&quot;</span><br><span class="hljs-keyword">else</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Sorry, <span class="hljs-variable">$answer</span> not recognized. Enter yes or no&quot;</span><br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h3 id="2142-case语句"><a class="markdownIt-Anchor" href="#2142-case语句"></a> 2.14.2. case语句</h3>
-<ol>
+<h3 id="2-14-2-case语句"><a href="#2-14-2-case语句" class="headerlink" title="2.14.2. case语句"></a>2.14.2. case语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">case</span> str <span class="hljs-keyword">in</span><br>  str1 | str2) statements;;<br>  str3 | str4) statements;;<br>  *) statements;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>例子Eg</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Is this morning? Please answer yes or no.&quot;</span><br><span class="hljs-built_in">read</span> answer<br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$answer</span>&quot;</span> <span class="hljs-keyword">in</span><br><span class="hljs-built_in">yes</span> | y | Yes | YES) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Good morning!&quot;</span> ;;<br>no | n | No | NO) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Good afternoon!&quot;</span> ;;<br>*) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Sorry, answer not recognized.&quot;</span> ;;<br><span class="hljs-keyword">esac</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h2 id="215-重复语句"><a class="markdownIt-Anchor" href="#215-重复语句"></a> 2.15. 重复语句</h2>
-<h3 id="2151-for语句"><a class="markdownIt-Anchor" href="#2151-for语句"></a> 2.15.1. for语句</h3>
-<ol>
+<h2 id="2-15-重复语句"><a href="#2-15-重复语句" class="headerlink" title="2.15. 重复语句"></a>2.15. 重复语句</h2><h3 id="2-15-1-for语句"><a href="#2-15-1-for语句" class="headerlink" title="2.15.1. for语句"></a>2.15.1. for语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> list<br><span class="hljs-keyword">do</span><br>  statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>适用于对一系列字符串循环处理</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> $(<span class="hljs-built_in">ls</span> f*.sh); <span class="hljs-keyword">do</span><br>  lpr <span class="hljs-variable">$file</span><br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h3 id="2152-while语句"><a class="markdownIt-Anchor" href="#2152-while语句"></a> 2.15.2. while语句</h3>
-<ol>
+<h3 id="2-15-2-while语句"><a href="#2-15-2-while语句" class="headerlink" title="2.15.2. while语句"></a>2.15.2. while语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">while</span> condition<br><span class="hljs-keyword">do</span><br>  statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>例子</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">quit=n<br><span class="hljs-keyword">while</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$quit</span>&quot;</span> != <span class="hljs-string">&quot;y&quot;</span> ]; <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">read</span> menu_choice<br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$menu_choice</span>&quot;</span> <span class="hljs-keyword">in</span><br>    a) do_something;;<br>    b) do_anotherthing;;<br>    …<br>    q|Q) quit=y;;<br>    *) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Sorry, choice not recognized.&quot;</span>;;<br>  <span class="hljs-keyword">esac</span><br><span class="hljs-keyword">done</span><br><br>a=0<br><span class="hljs-keyword">while</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$a</span>&quot;</span> -le <span class="hljs-string">&quot;<span class="hljs-variable">$LIMIT</span>&quot;</span> ]<br><span class="hljs-keyword">do</span><br>  a=$((<span class="hljs-variable">$a</span>+<span class="hljs-number">1</span>))<br>  <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$a</span>&quot;</span> -gt 2 ]<br>  <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">break</span> <span class="hljs-comment"># Skip entire rest of loop.</span><br>  <span class="hljs-keyword">fi</span><br>  <span class="hljs-built_in">echo</span> -n <span class="hljs-string">&quot;<span class="hljs-variable">$a</span>&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<h3 id="2153-until语句"><a class="markdownIt-Anchor" href="#2153-until语句"></a> 2.15.3. until语句</h3>
-<ol>
+<h3 id="2-15-3-until语句"><a href="#2-15-3-until语句" class="headerlink" title="2.15.3. until语句"></a>2.15.3. until语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">until condition<br><span class="hljs-keyword">do</span><br>  statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>Not recommended (while statement is preferred)</li>
 </ol>
-<h3 id="2154-select语句"><a class="markdownIt-Anchor" href="#2154-select语句"></a> 2.15.4. select语句</h3>
-<ol>
+<h3 id="2-15-4-select语句"><a href="#2-15-4-select语句" class="headerlink" title="2.15.4. select语句"></a>2.15.4. select语句</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">select item <span class="hljs-keyword">in</span> itemlist<br><span class="hljs-keyword">do</span><br>  statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>作用：生成菜单列表</li>
 <li>Eg. 一个简单的菜单选择程序</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>clear<br>select item <span class="hljs-keyword">in</span> Continue Finish<br><span class="hljs-keyword">do</span><br>  <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$item</span>&quot;</span> <span class="hljs-keyword">in</span><br>    Continue) ;;<br>    Finish) <span class="hljs-built_in">break</span> ;;<br>    *) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Wrong choice! Please select again!&quot;</span> ;;<br>  <span class="hljs-keyword">esac</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
-<h2 id="216-补充read"><a class="markdownIt-Anchor" href="#216-补充read"></a> 2.16. 补充read</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">read [-rs] [-a ARRAY] [-d delim] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [var_name1 var_name2 ...]<br><br>选项说明：<br>-a：将分裂后的字段依次存储到指定的数组中，存储的起始位置从数组的index=0开始。<br>-d：指定读取行的结束符号。默认结束符号为换行符。<br>-n：限制读取N个字符就自动结束读取，如果没有读满N个字符就按下回车或遇到换行符，则也会结束读取。<br>-N：严格要求读满N个字符才自动结束读取，即使中途按下了回车或遇到了换行符也不结束。其中换行符或回车算一个字符。<br>-p：给出提示符。默认不支持&quot;\n&quot;换行，要换行需要特殊处理，见下文示例。例如，&quot;-p 请输入密码：&quot;<br>-r：禁止反斜线的转义功能。这意味着&quot;\&quot;会变成文本的一部分。<br>-s：静默模式。输入的内容不会回显在屏幕上。<br>-t：给出超时时间，在达到超时时间时，read退出并返回错误。也就是说不会读取任何内容，即使已经输入了一部分。<br></code></pre></td></tr></table></figure>
+<h2 id="2-16-补充read"><a href="#2-16-补充read" class="headerlink" title="2.16. 补充read"></a>2.16. 补充read</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">read [-rs] [-a ARRAY] [-d delim] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [var_name1 var_name2 ...]<br><br>选项说明：<br>-a：将分裂后的字段依次存储到指定的数组中，存储的起始位置从数组的index=0开始。<br>-d：指定读取行的结束符号。默认结束符号为换行符。<br>-n：限制读取N个字符就自动结束读取，如果没有读满N个字符就按下回车或遇到换行符，则也会结束读取。<br>-N：严格要求读满N个字符才自动结束读取，即使中途按下了回车或遇到了换行符也不结束。其中换行符或回车算一个字符。<br>-p：给出提示符。默认不支持&quot;\n&quot;换行，要换行需要特殊处理，见下文示例。例如，&quot;-p 请输入密码：&quot;<br>-r：禁止反斜线的转义功能。这意味着&quot;\&quot;会变成文本的一部分。<br>-s：静默模式。输入的内容不会回显在屏幕上。<br>-t：给出超时时间，在达到超时时间时，read退出并返回错误。也就是说不会读取任何内容，即使已经输入了一部分。<br></code></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">read num<br>[ $num -eq 2 ]<br></code></pre></td></tr></table></figure>
 <p>如果输入的是纯数值的话，那么比较的时候，可以使用算数比较，也可以使用字符串比较。</p>
-<h2 id="217-命令表和语句块"><a class="markdownIt-Anchor" href="#217-命令表和语句块"></a> 2.17. 命令表和语句块</h2>
-<ol>
+<h2 id="2-17-命令表和语句块"><a href="#2-17-命令表和语句块" class="headerlink" title="2.17. 命令表和语句块"></a>2.17. 命令表和语句块</h2><ol>
 <li>命令表(命令组合)</li>
 <li>语句块</li>
 </ol>
-<h3 id="2171-命令表"><a class="markdownIt-Anchor" href="#2171-命令表"></a> 2.17.1. 命令表</h3>
-<ol>
-<li>命令组合
-<ol>
+<h3 id="2-17-1-命令表"><a href="#2-17-1-命令表" class="headerlink" title="2.17.1. 命令表"></a>2.17.1. 命令表</h3><ol>
+<li>命令组合<ol>
 <li>分号串联：<code>command1 ; command2 ;</code></li>
-<li>条件组合
-<ol>
+<li>条件组合<ol>
 <li>AND命令表，格式：statement1 &amp;&amp; statement2 &amp;&amp; statement3</li>
 <li>OR命令表，格式：statement1 || statement2 || statement3 || …</li>
 </ol>
@@ -771,36 +732,32 @@
 </ol>
 </li>
 </ol>
-<h3 id="2172-语句块"><a class="markdownIt-Anchor" href="#2172-语句块"></a> 2.17.2. 语句块</h3>
-<ol>
+<h3 id="2-17-2-语句块"><a href="#2-17-2-语句块" class="headerlink" title="2.17.2. 语句块"></a>2.17.2. 语句块</h3><ol>
 <li>形式</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&#123;<br>statement1<br>statement2<br>&#125;<br><br><span class="hljs-comment"># or</span><br><br>&#123; statement1; statement2 ;&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="2173-函数"><a class="markdownIt-Anchor" href="#2173-函数"></a> 2.17.3. 函数</h3>
-<ol>
-<li>形式</li>
-</ol>
+<h3 id="2-17-3-函数"><a href="#2-17-3-函数" class="headerlink" title="2.17.3. 函数"></a>2.17.3. 函数</h3><ol>
+<li><p>形式</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-function"><span class="hljs-title">func</span></span>()<br>&#123;<br>statements<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>局部变量:local关键字</li>
+</li>
+<li><p>局部变量:local关键字</p>
+</li>
 <li>函数的调用:func para1 para2</li>
 <li>返回值:return</li>
 <li>例子</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-function"><span class="hljs-title">yesno</span></span>()<br>&#123;<br>  msg=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span><br>  def=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span><br>  <span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>; <span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; &quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$msg</span>&quot;</span><br>    <span class="hljs-built_in">read</span> answer<br>    <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$answer</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$answer</span>&quot;</span> <span class="hljs-keyword">in</span><br>        y|Y|<span class="hljs-built_in">yes</span>|YES)<br>        <span class="hljs-built_in">return</span> 0<br>        ;;<br>        n|N|no|NO)<br>        <span class="hljs-built_in">return</span> 1<br>        ;;<br>        *)<br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot; &quot;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ERROR: Invalid response,</span><br><span class="hljs-string">        expected \&quot;yes\&quot; or \&quot;no\&quot;.&quot;</span><br>        <span class="hljs-built_in">continue</span><br>        ;;<br>        <span class="hljs-keyword">esac</span><br>    <span class="hljs-keyword">else</span><br>      <span class="hljs-built_in">return</span> <span class="hljs-variable">$def</span><br>  <span class="hljs-keyword">fi</span><br>  <span class="hljs-keyword">done</span><br>&#125;<br><br><span class="hljs-keyword">if</span> yesno <span class="hljs-string">&quot;Continue installation? [n]&quot;</span> 1 ; <span class="hljs-keyword">then</span><br>  :<br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">exit</span> 1<br>f<br></code></pre></td></tr></table></figure>
-<h2 id="218-其他"><a class="markdownIt-Anchor" href="#218-其他"></a> 2.18. 其他</h2>
-<ol>
+<h2 id="2-18-其他"><a href="#2-18-其他" class="headerlink" title="2.18. 其他"></a>2.18. 其他</h2><ol>
 <li>杂项命令：<code>break, continue, exit, return, export, set, unset, trap, &quot;:&quot;, &quot;.&quot;, …</code></li>
 <li>捕获命令输出</li>
 <li>算术扩展</li>
 <li>参数扩展</li>
 <li>即时文档</li>
 </ol>
-<h3 id="2181-杂项命令"><a class="markdownIt-Anchor" href="#2181-杂项命令"></a> 2.18.1. 杂项命令</h3>
-<ol>
+<h3 id="2-18-1-杂项命令"><a href="#2-18-1-杂项命令" class="headerlink" title="2.18.1. 杂项命令"></a>2.18.1. 杂项命令</h3><ol>
 <li>break: 从for/while/until循环退出</li>
 <li>continue: 跳到下一个循环继续执行</li>
-<li>exit n: 以退出码&quot;n&quot;退出脚本运行</li>
+<li>exit n: 以退出码”n”退出脚本运行</li>
 <li>return: 函数返回</li>
 <li>export: 将变量导出到shell，使之成为shell的环境变量</li>
 <li>set: 为shell设置参数变量</li>
@@ -809,10 +766,8 @@
 <li>“:”(冒号命令): 空命令</li>
 <li>“.”(句点命令)或source: 在当前shell中执行命令</li>
 </ol>
-<h3 id="2182-捕获命令输出"><a class="markdownIt-Anchor" href="#2182-捕获命令输出"></a> 2.18.2. 捕获命令输出</h3>
-<ol>
-<li>语法
-<ol>
+<h3 id="2-18-2-捕获命令输出"><a href="#2-18-2-捕获命令输出" class="headerlink" title="2.18.2. 捕获命令输出"></a>2.18.2. 捕获命令输出</h3><ol>
+<li>语法<ol>
 <li>$(command)</li>
 <li>`command`</li>
 </ol>
@@ -820,26 +775,20 @@
 <li>举例</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The current directory is <span class="hljs-variable">$PWD</span>&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The current directory is <span class="hljs-subst">$(pwd)</span>&quot;</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h3 id="2183-算术扩展"><a class="markdownIt-Anchor" href="#2183-算术扩展"></a> 2.18.3. 算术扩展</h3>
-<ol>
+<h3 id="2-18-3-算术扩展"><a href="#2-18-3-算术扩展" class="headerlink" title="2.18.3. 算术扩展"></a>2.18.3. 算术扩展</h3><ol>
 <li>$(())扩展</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>x=0<br><span class="hljs-keyword">while</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$x</span>&quot;</span> –ne 10 ]; <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$x</span><br>  x=$((<span class="hljs-variable">$x</span>+<span class="hljs-number">1</span>))<br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h3 id="2184-参考扩展"><a class="markdownIt-Anchor" href="#2184-参考扩展"></a> 2.18.4. 参考扩展</h3>
-<ol>
-<li>问题:
-<ol>
+<h3 id="2-18-4-参考扩展"><a href="#2-18-4-参考扩展" class="headerlink" title="2.18.4. 参考扩展"></a>2.18.4. 参考扩展</h3><ol>
+<li>问题:<ol>
 <li>批处理 1_tmp, 2_tmp, …</li>
 </ol>
 </li>
 <li>方法</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br>i=0<br><span class="hljs-keyword">while</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>&quot;</span> –ne 10 ]; <span class="hljs-keyword">do</span><br>  <span class="hljs-built_in">touch</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;i&#125;</span>_tmp&quot;</span><br>  i=$((<span class="hljs-variable">$i</span>+<span class="hljs-number">1</span>))<br><span class="hljs-keyword">done</span><br><span class="hljs-built_in">exit</span> 0<br></code></pre></td></tr></table></figure>
-<h3 id="2185-参数扩展更复杂的形式"><a class="markdownIt-Anchor" href="#2185-参数扩展更复杂的形式"></a> 2.18.5. 参数扩展更复杂的形式</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/11.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="2186-即时文档"><a class="markdownIt-Anchor" href="#2186-即时文档"></a> 2.18.6. 即时文档</h3>
-<ol>
+<h3 id="2-18-5-参数扩展更复杂的形式"><a href="#2-18-5-参数扩展更复杂的形式" class="headerlink" title="2.18.5. 参数扩展更复杂的形式"></a>2.18.5. 参数扩展更复杂的形式</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/11.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec2/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-18-6-即时文档"><a href="#2-18-6-即时文档" class="headerlink" title="2.18.6. 即时文档"></a>2.18.6. 即时文档</h3><ol>
 <li>在shell脚本中向一条命令传送输入数据</li>
 <li>Example</li>
 </ol>
@@ -938,9 +887,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Lec0-Introduction/" title="2021-Linux-Programming-Lec0-Introduction">
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec2-%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A6%81%E7%82%B9/" title="2021-Database-Development-Lec2-开发数据库的要点">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Linux-Programming-Lec0-Introduction</span>
+                        <span class="hidden-mobile">2021-Database-Development-Lec2-开发数据库的要点</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -948,8 +897,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Linux-Programming/2021-Linux-Programming-Exam0-%E5%BE%80%E5%B9%B4%E8%AF%95%E9%A2%98/" title="2021-Linux-Programming-Exam0-往年试题">
-                        <span class="hidden-mobile">2021-Linux-Programming-Exam0-往年试题</span>
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-2%20%E8%BD%AF%E4%BB%B6%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8E%86%E5%8F%B2%E6%BC%94%E5%8F%98%E5%92%8C%E7%BB%8F%E5%85%B8%E5%B7%A5%E4%BD%9C/" title="2021-software-quality-management-Lec-2 软件过程的历史演变和经典工作">
+                        <span class="hidden-mobile">2021-software-quality-management-Lec-2 软件过程的历史演变和经典工作</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

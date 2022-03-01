@@ -42,8 +42,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-17.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-18.png">
-<meta property="article:published_time" content="2022-02-16T11:09:53.000Z">
-<meta property="article:modified_time" content="2022-02-18T01:07:29.466Z">
+<meta property="article:published_time" content="2022-02-16T11:04:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:02:50.063Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据结构">
@@ -220,7 +220,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:04" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -293,222 +293,160 @@
             
             <div class="markdown-body">
               
-              <h2 id="list"><a class="markdownIt-Anchor" href="#list"></a> List</h2>
-<h1 id="1-引入"><a class="markdownIt-Anchor" href="#1-引入"></a> 1. 引入</h1>
-<h2 id="11-abstract-data-typesadts"><a class="markdownIt-Anchor" href="#11-abstract-data-typesadts"></a> 1.1. Abstract Data Types(ADTS)</h2>
-<ol>
+              <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h1 id="1-引入"><a href="#1-引入" class="headerlink" title="1. 引入"></a>1. 引入</h1><h2 id="1-1-Abstract-Data-Types-ADTS"><a href="#1-1-Abstract-Data-Types-ADTS" class="headerlink" title="1.1. Abstract Data Types(ADTS)"></a>1.1. Abstract Data Types(ADTS)</h2><ol>
 <li>ADT定义: a set of objects together with a set of operaions. Abstract data types are mathematical abstractions; nowhere in an ADT‟s definition is there any mention of how the set of operations is implemented. 一组物体和一组操作。抽象数据类型是数学抽象；在ADT的定义中，没有提到如何实现操作集。</li>
 </ol>
-<h3 id="111-数据对象"><a class="markdownIt-Anchor" href="#111-数据对象"></a> 1.1.1. 数据对象</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="112-数据结构"><a class="markdownIt-Anchor" href="#112-数据结构"></a> 1.1.2. 数据结构</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-线性表"><a class="markdownIt-Anchor" href="#2-线性表"></a> 2. 线性表</h1>
-<ol>
+<h3 id="1-1-1-数据对象"><a href="#1-1-1-数据对象" class="headerlink" title="1.1.1. 数据对象"></a>1.1.1. 数据对象</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-2-数据结构"><a href="#1-1-2-数据结构" class="headerlink" title="1.1.2. 数据结构"></a>1.1.2. 数据结构</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-线性表"><a href="#2-线性表" class="headerlink" title="2. 线性表"></a>2. 线性表</h1><ol>
 <li>线性表是对象或者值的集合</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>以上是需要实现的方法。</li>
 </ol>
-<h2 id="21-线性表需要实现的方法"><a class="markdownIt-Anchor" href="#21-线性表需要实现的方法"></a> 2.1. 线性表需要实现的方法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-线性表的不同实现"><a class="markdownIt-Anchor" href="#22-线性表的不同实现"></a> 2.2. 线性表的不同实现</h2>
-<h3 id="221-简单数组实现线性表"><a class="markdownIt-Anchor" href="#221-简单数组实现线性表"></a> 2.2.1. 简单数组实现线性表</h3>
-<ol>
+<h2 id="2-1-线性表需要实现的方法"><a href="#2-1-线性表需要实现的方法" class="headerlink" title="2.1. 线性表需要实现的方法"></a>2.1. 线性表需要实现的方法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-线性表的不同实现"><a href="#2-2-线性表的不同实现" class="headerlink" title="2.2. 线性表的不同实现"></a>2.2. 线性表的不同实现</h2><h3 id="2-2-1-简单数组实现线性表"><a href="#2-2-1-简单数组实现线性表" class="headerlink" title="2.2.1. 简单数组实现线性表"></a>2.2.1. 简单数组实现线性表</h3><ol>
 <li>(e1,e2,………en)，也就是数组向系统请求了一块连续的内存，数据量大小由程序员来确定。</li>
 <li>each position of the array is called a cell or a node mapping formula:  location(i)=i-1</li>
 <li>从数组类型存储的线性表中取出一个元素的复杂度是O(1)。</li>
 <li>一般我们在线性表中放置的是相同类型的值。</li>
 </ol>
-<h2 id="一些方法"><a class="markdownIt-Anchor" href="#一些方法"></a> 一些方法</h2>
-<ol>
-<li>顺序查找<code>Search(x)</code>的时间复杂度O(n),平均算法复杂度O((n+1)/2)
-<ul>
+<h2 id="一些方法"><a href="#一些方法" class="headerlink" title="一些方法"></a>一些方法</h2><ol>
+<li>顺序查找<code>Search(x)</code>的时间复杂度O(n),平均算法复杂度O((n+1)/2)<ul>
 <li>平均数据访问次数:n/2</li>
 </ul>
 </li>
-<li>删除<code>remove(k,x)</code>：delete the k’th element and return it in x
-<ul>
+<li>删除<code>remove(k,x)</code>：delete the k’th element and return it in x<ul>
 <li>最坏和平均情况下的算法复杂度都是O(n)</li>
 <li>平均数据移动次数:(n-1)/2</li>
 </ul>
 </li>
-<li>插入操作<code>insert(x,i)</code>
-<ul>
+<li>插入操作<code>insert(x,i)</code><ul>
 <li>平均数据移动次数:n/2</li>
 </ul>
 </li>
 </ol>
-<h3 id="222-单链表linked-list实现线性表"><a class="markdownIt-Anchor" href="#222-单链表linked-list实现线性表"></a> 2.2.2. 单链表(Linked List)实现线性表</h3>
-<ol>
+<h3 id="2-2-2-单链表-Linked-List-实现线性表"><a href="#2-2-2-单链表-Linked-List-实现线性表" class="headerlink" title="2.2.2. 单链表(Linked List)实现线性表"></a>2.2.2. 单链表(Linked List)实现线性表</h3><ol>
 <li>特点:在内存中不是连续内存。</li>
-<li>一个链表节点中存储一个指针，一个数据。
-<ul>
+<li>一个链表节点中存储一个指针，一个数据。<ul>
 <li>java中的指针是不可以进行加减操作，防止出现一些系统问题。而C++中是可以进行加减运算。</li>
 </ul>
 </li>
 <li>最后的一个指针指向null</li>
 </ol>
-<h2 id="部分操作"><a class="markdownIt-Anchor" href="#部分操作"></a> 部分操作</h2>
-<ol>
-<li>删除操作:<code>Delete(index,x)</code>
-<ol>
+<h2 id="部分操作"><a href="#部分操作" class="headerlink" title="部分操作"></a>部分操作</h2><ol>
+<li>删除操作:<code>Delete(index,x)</code><ol>
 <li>删除第一个节点:重新指向第一个指针，并且在C++中需要delete掉被解引用的对象。手动释放需要先记下来位置。</li>
-<li>删除中间节点:首先查询，之后删除
-<ul>
+<li>删除中间节点:首先查询，之后删除<ul>
 <li><code>before.link = before.link.link</code></li>
 </ul>
 </li>
 </ol>
 </li>
-<li>插入操作:<code>insert(index,x)</code>
-<ol>
+<li>插入操作:<code>insert(index,x)</code><ol>
 <li>在线性表开头插入一个元素:首先插入一个元素，然后把头指针指向头。</li>
 <li>在线性表中间插入一个元素:首先查询找到相应元素</li>
 </ol>
 </li>
 </ol>
-<h3 id="223-带有表头元素的单链表"><a class="markdownIt-Anchor" href="#223-带有表头元素的单链表"></a> 2.2.3. 带有表头元素的单链表</h3>
-<ol>
+<h3 id="2-2-3-带有表头元素的单链表"><a href="#2-2-3-带有表头元素的单链表" class="headerlink" title="2.2.3. 带有表头元素的单链表"></a>2.2.3. 带有表头元素的单链表</h3><ol>
 <li>有一个头节点，Header: 这个节点的数据是没有的，然后指针是指向第一个元素的</li>
 </ol>
-<h1 id="3-线性表的java实现"><a class="markdownIt-Anchor" href="#3-线性表的java实现"></a> 3. 线性表的java实现</h1>
-<ol>
+<h1 id="3-线性表的java实现"><a href="#3-线性表的java实现" class="headerlink" title="3. 线性表的java实现"></a>3. 线性表的java实现</h1><ol>
 <li>ListNode：代表结点的类</li>
 <li>LinkedList：代表表本身的类</li>
 <li>LinkedListItr：代表游标位置的类</li>
 <li>都是包 DataStructure的一部分</li>
 </ol>
-<h2 id="31-listnode"><a class="markdownIt-Anchor" href="#31-listnode"></a> 3.1. ListNode</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;   <br>    object element;<br>    ListNode next;<br>    ListNode( object theElement) &#123;<br>        <span class="hljs-built_in">this</span>( theElement, <span class="hljs-literal">null</span>);<br>    &#125;<br>    ListNode( object theElement, ListNode n) &#123;<br>        element = theElement; <br>        next = n;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
-<h2 id="32-linkedlistitr"><a class="markdownIt-Anchor" href="#32-linkedlistitr"></a> 3.2. LinkedListItr</h2>
-<ol>
-<li>封装相应的指针操作</li>
+<h2 id="3-1-ListNode"><a href="#3-1-ListNode" class="headerlink" title="3.1. ListNode"></a>3.1. ListNode</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;   <br>    object element;<br>    ListNode next;<br>    ListNode( object theElement) &#123;<br>        <span class="hljs-built_in">this</span>( theElement, <span class="hljs-literal">null</span>);<br>    &#125;<br>    ListNode( object theElement, ListNode n) &#123;<br>        element = theElement; <br>        next = n;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+<h2 id="3-2-LinkedListItr"><a href="#3-2-LinkedListItr" class="headerlink" title="3.2. LinkedListItr"></a>3.2. LinkedListItr</h2><ol>
+<li>封装相应的指针操作<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinkedListItr</span> &#123;<br>    LinkedListItr( ListNode  theNode) &#123;<br>        current = theNode;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPastEnd</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-type">return</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span>= <span class="hljs-literal">null</span>; <br>    &#125;<br>    <span class="hljs-keyword">public</span> object <span class="hljs-title function_">retrieve</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//获得当前节点的数据</span><br>        <span class="hljs-keyword">return</span> isPastEnd( ) ? <span class="hljs-literal">null</span> : current.element; <br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">advance</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">if</span>( ! isPastEnd( ) ) current = current.next; <br>    &#125;<br>    ListNode current; <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinkedListItr</span> &#123;<br>    LinkedListItr( ListNode  theNode) &#123;<br>        current = theNode;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPastEnd</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-type">return</span> <span class="hljs-variable">current</span> <span class="hljs-operator">=</span>= <span class="hljs-literal">null</span>; <br>    &#125;<br>    <span class="hljs-keyword">public</span> object <span class="hljs-title function_">retrieve</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//获得当前节点的数据</span><br>        <span class="hljs-keyword">return</span> isPastEnd( ) ? <span class="hljs-literal">null</span> : current.element; <br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">advance</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">if</span>( ! isPastEnd( ) ) current = current.next; <br>    &#125;<br>    ListNode current; <br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="33-linkedlist"><a class="markdownIt-Anchor" href="#33-linkedlist"></a> 3.3. LinkedList</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinkedList</span> &#123;<br>    <span class="hljs-keyword">private</span> ListNode header;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">LinkedList</span><span class="hljs-params">( )</span> &#123;<span class="hljs-comment">//这里是含有表头节点的单链表，如果不带表头的话，应该是heder = null</span><br>        header = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>( <span class="hljs-literal">null</span> );<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> header.next = = <span class="hljs-literal">null</span> ;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>        header.next = <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-comment">//指向头指针的Itr</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">zeroth</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( header );<br>    &#125;<br>    <span class="hljs-comment">//指向第一个项的Itr</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">first</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( header.next );<br>    &#125; <br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, LinkedListItr p )</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="34-一些方法的实现"><a class="markdownIt-Anchor" href="#34-一些方法的实现"></a> 3.4. 一些方法的实现</h2>
-<h3 id="341-打印线性表"><a class="markdownIt-Anchor" href="#341-打印线性表"></a> 3.4.1. 打印线性表</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Method to print a list</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printList</span><span class="hljs-params">( LinkedList theList )</span> &#123;   <br>    <span class="hljs-keyword">if</span> ( theList.isEmpty( ) ) <br>        System.out.print (<span class="hljs-string">&quot;Empty list&quot;</span>);<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-type">LinkedListItr</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> theList.first();<br>        <span class="hljs-keyword">for</span>(;! Itr.isPastEnd(); itr. Advance( ) )<br>            System.out.print(itr.retrieve() + <span class="hljs-string">&quot; &quot;</span> );<br>    &#125;<br>    System.out.println();<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="342-查找特定项"><a class="markdownIt-Anchor" href="#342-查找特定项"></a> 3.4.2. 查找特定项</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">find</span> <span class="hljs-params">(object x)</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> header.next;<br>    <span class="hljs-keyword">while</span> ( itr != <span class="hljs-literal">null</span> &amp;&amp; !itr.element.equals( x ))<br>        itr = itr.next;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( itr );<br>&#125; <br></code></pre></td></tr></table></figure>
+<h2 id="3-3-LinkedList"><a href="#3-3-LinkedList" class="headerlink" title="3.3. LinkedList"></a>3.3. LinkedList</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinkedList</span> &#123;<br>    <span class="hljs-keyword">private</span> ListNode header;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">LinkedList</span><span class="hljs-params">( )</span> &#123;<span class="hljs-comment">//这里是含有表头节点的单链表，如果不带表头的话，应该是heder = null</span><br>        header = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>( <span class="hljs-literal">null</span> );<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> header.next = = <span class="hljs-literal">null</span> ;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>        header.next = <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-comment">//指向头指针的Itr</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">zeroth</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( header );<br>    &#125;<br>    <span class="hljs-comment">//指向第一个项的Itr</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">first</span><span class="hljs-params">( )</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( header.next );<br>    &#125; <br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, LinkedListItr p )</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="3-4-一些方法的实现"><a href="#3-4-一些方法的实现" class="headerlink" title="3.4. 一些方法的实现"></a>3.4. 一些方法的实现</h2><h3 id="3-4-1-打印线性表"><a href="#3-4-1-打印线性表" class="headerlink" title="3.4.1. 打印线性表"></a>3.4.1. 打印线性表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Method to print a list</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printList</span><span class="hljs-params">( LinkedList theList )</span> &#123;   <br>    <span class="hljs-keyword">if</span> ( theList.isEmpty( ) ) <br>        System.out.print (<span class="hljs-string">&quot;Empty list&quot;</span>);<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-type">LinkedListItr</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> theList.first();<br>        <span class="hljs-keyword">for</span>(;! Itr.isPastEnd(); itr. Advance( ) )<br>            System.out.print(itr.retrieve() + <span class="hljs-string">&quot; &quot;</span> );<br>    &#125;<br>    System.out.println();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3-4-2-查找特定项"><a href="#3-4-2-查找特定项" class="headerlink" title="3.4.2. 查找特定项"></a>3.4.2. 查找特定项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">find</span> <span class="hljs-params">(object x)</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> header.next;<br>    <span class="hljs-keyword">while</span> ( itr != <span class="hljs-literal">null</span> &amp;&amp; !itr.element.equals( x ))<br>        itr = itr.next;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( itr );<br>&#125; <br></code></pre></td></tr></table></figure>
 <ol>
 <li>时间复杂度O(n)</li>
 </ol>
-<h3 id="343-移除节点"><a class="markdownIt-Anchor" href="#343-移除节点"></a> 3.4.3. 移除节点</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">LinkedListItr</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> findprevious( x );<br>    <span class="hljs-keyword">if</span>( p.current.next != <span class="hljs-literal">null</span> )<br>        p.current.next = p.current.next.next;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3-4-3-移除节点"><a href="#3-4-3-移除节点" class="headerlink" title="3.4.3. 移除节点"></a>3.4.3. 移除节点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">LinkedListItr</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> findprevious( x );<br>    <span class="hljs-keyword">if</span>( p.current.next != <span class="hljs-literal">null</span> )<br>        p.current.next = p.current.next.next;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
-<li>时间复杂度O(1)
-<ul>
+<li>时间复杂度O(1)<ul>
 <li>你可以把findPrevious操作当做是一个单独的先进行的操作，而不是这个操作的一部分。</li>
 </ul>
 </li>
 </ol>
-<h3 id="344-查找上一个节点"><a class="markdownIt-Anchor" href="#344-查找上一个节点"></a> 3.4.4. 查找上一个节点</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> header;<br>    <span class="hljs-keyword">while</span>( itr.next !=<span class="hljs-literal">null</span> &amp;&amp; !itr.next.element.equals( x )) itr = itr.next;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( itr );<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3-4-4-查找上一个节点"><a href="#3-4-4-查找上一个节点" class="headerlink" title="3.4.4. 查找上一个节点"></a>3.4.4. 查找上一个节点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> LinkedListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> header;<br>    <span class="hljs-keyword">while</span>( itr.next !=<span class="hljs-literal">null</span> &amp;&amp; !itr.next.element.equals( x )) itr = itr.next;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedListItr</span>( itr );<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>时间复杂度O(n)</li>
 </ol>
-<h3 id="345-例子多项式求和"><a class="markdownIt-Anchor" href="#345-例子多项式求和"></a> 3.4.5. 例子:多项式求和</h3>
-<ol>
+<h3 id="3-4-5-例子-多项式求和"><a href="#3-4-5-例子-多项式求和" class="headerlink" title="3.4.5. 例子:多项式求和"></a>3.4.5. 例子:多项式求和</h3><ol>
 <li>我们对两个多项式求和</li>
 <li>方法一:我们对齐相加</li>
-<li>方法二:我们用数组来存储指数和参数。</li>
+<li>方法二:我们用数组来存储指数和参数。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Polynomial</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Polynomial</span><span class="hljs-params">( )</span> &#123;<br>        zeroPolynomial( );<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertTerm</span><span class="hljs-params">( <span class="hljs-type">int</span> coef, <span class="hljs-type">int</span> exp )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">zeroPolynomial</span><span class="hljs-params">()</span>&#123;<span class="hljs-comment">//清空多项式</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;=MAX-DEGREE; i++) <br>            coeffArray[i] = <span class="hljs-number">0</span>;<br>        highPower = <span class="hljs-number">0</span>; <br>    &#125;<br>    <span class="hljs-keyword">public</span> Polynomial <span class="hljs-title function_">add</span><span class="hljs-params">( Polynomial rhs )</span>&#123;<br>        <span class="hljs-type">Polynomial</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Polynomial</span>( );<br>        sum.highPower = max( highPower, rhs.highPower );<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> sum.highPower;  i&gt;=<span class="hljs-number">0</span>;  i--)<br>            sum.coeffArray[i] = coeffArray[i] + rhs.coeffArray[i];<br>        <span class="hljs-keyword">return</span> sum; <br>    &#125;<br>    <span class="hljs-keyword">public</span> Polynomial <span class="hljs-title function_">multiply</span><span class="hljs-params">( Polynomial rhs )</span> <span class="hljs-keyword">throws</span> Overflow<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> MAX-DEGREE = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> coeffArray[ ] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span> [MAX-DEGREE + <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">highPower</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Polynomial</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Polynomial</span><span class="hljs-params">( )</span> &#123;<br>        zeroPolynomial( );<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertTerm</span><span class="hljs-params">( <span class="hljs-type">int</span> coef, <span class="hljs-type">int</span> exp )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">zeroPolynomial</span><span class="hljs-params">()</span>&#123;<span class="hljs-comment">//清空多项式</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;=MAX-DEGREE; i++) <br>            coeffArray[i] = <span class="hljs-number">0</span>;<br>        highPower = <span class="hljs-number">0</span>; <br>    &#125;<br>    <span class="hljs-keyword">public</span> Polynomial <span class="hljs-title function_">add</span><span class="hljs-params">( Polynomial rhs )</span>&#123;<br>        <span class="hljs-type">Polynomial</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Polynomial</span>( );<br>        sum.highPower = max( highPower, rhs.highPower );<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> sum.highPower;  i&gt;=<span class="hljs-number">0</span>;  i--)<br>            sum.coeffArray[i] = coeffArray[i] + rhs.coeffArray[i];<br>        <span class="hljs-keyword">return</span> sum; <br>    &#125;<br>    <span class="hljs-keyword">public</span> Polynomial <span class="hljs-title function_">multiply</span><span class="hljs-params">( Polynomial rhs )</span> <span class="hljs-keyword">throws</span> Overflow<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> MAX-DEGREE = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> coeffArray[ ] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span> [MAX-DEGREE + <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">highPower</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="4-单循环链表"><a class="markdownIt-Anchor" href="#4-单循环链表"></a> 4. 单循环链表</h1>
-<ol>
+<h1 id="4-单循环链表"><a href="#4-单循环链表" class="headerlink" title="4. 单循环链表"></a>4. 单循环链表</h1><ol>
 <li>就是最后一个的next指向第一个或者表头</li>
 </ol>
-<h2 id="41-例子"><a class="markdownIt-Anchor" href="#41-例子"></a> 4.1. 例子</h2>
-<ol>
-<li>
-<p>约瑟夫问题<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-1-例子"><a href="#4-1-例子" class="headerlink" title="4.1. 例子"></a>4.1. 例子</h2><ol>
+<li><p>约瑟夫问题<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-10.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
-<li>
-<p>问题解决:</p>
+<li><p>问题解决:</p>
 <ul>
 <li>使用新的单链表来记录。</li>
 <li>p是最后一个点，降低插入的复杂度</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">w = m;<br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i&lt;= n-<span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j&lt;=w-<span class="hljs-number">1</span>; j++) rear = rear.link;<br>    <span class="hljs-keyword">if</span> (i = = <span class="hljs-number">1</span>) &#123; <br>        head = rear.link ; p = head;<br>    &#125; <span class="hljs-keyword">else</span> &#123; <br>        p.link = rear.link;<br>        p = rear.link;<br>    &#125;<br>    rear.link = p.link;<br>    &#125;<br>    P.link = rear; rear.link = <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
-<h2 id="42-循环队列的相关计算公式"><a class="markdownIt-Anchor" href="#42-循环队列的相关计算公式"></a> 4.2. 循环队列的相关计算公式</h2>
-<ol>
+<h2 id="4-2-循环队列的相关计算公式"><a href="#4-2-循环队列的相关计算公式" class="headerlink" title="4.2. 循环队列的相关计算公式"></a>4.2. 循环队列的相关计算公式</h2><ol>
 <li>我们不妨设front为队头指针，rear为队尾指针，m为队列最大容量。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>
-<p>入队: rear = (rear + 1) % m</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>入队: rear = (rear + 1) % m</li>
+<li>出队: front = (front + 1) % m</li>
+<li>队空: front = rear</li>
+<li>队满: front = (rear + 1) % m</li>
+<li>当前队列中的元素个数: n = (rear - front + m) % m</li>
+<li><p>求队头指针位置: (rear - length + 1 + m) % m</p>
 </li>
-<li>
-<p>出队: front = (front + 1) % m</p>
-</li>
-<li>
-<p>队空: front = rear</p>
-</li>
-<li>
-<p>队满: front = (rear + 1) % m</p>
-</li>
-<li>
-<p>当前队列中的元素个数: n = (rear - front + m) % m</p>
-</li>
-<li>
-<p>求队头指针位置: (rear - length + 1 + m) % m</p>
-</li>
-<li>
-<p><a href = "https://blog.csdn.net/u011080472/article/details/51173584">循环队列的相关计算公式</a></p>
+<li><p><a href = "https://blog.csdn.net/u011080472/article/details/51173584">循环队列的相关计算公式</a></p>
 </li>
 </ol>
-<h1 id="5-多项式问题"><a class="markdownIt-Anchor" href="#5-多项式问题"></a> 5. 多项式问题</h1>
-<h2 id="51-线性表的数组实现"><a class="markdownIt-Anchor" href="#51-线性表的数组实现"></a> 5.1. 线性表的数组实现</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="511-部分方法"><a class="markdownIt-Anchor" href="#511-部分方法"></a> 5.1.1. 部分方法</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="乘法"><a class="markdownIt-Anchor" href="#乘法"></a> 乘法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="52-线性表的单链表实现"><a class="markdownIt-Anchor" href="#52-线性表的单链表实现"></a> 5.2. 线性表的单链表实现</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="521-多项式相加"><a class="markdownIt-Anchor" href="#521-多项式相加"></a> 5.2.1. 多项式相加</h3>
-<ol>
-<li>存放非零指数的系数与指数，因此没有节点有三个域组成。
-<ul>
+<h1 id="5-多项式问题"><a href="#5-多项式问题" class="headerlink" title="5. 多项式问题"></a>5. 多项式问题</h1><h2 id="5-1-线性表的数组实现"><a href="#5-1-线性表的数组实现" class="headerlink" title="5.1. 线性表的数组实现"></a>5.1. 线性表的数组实现</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-1-1-部分方法"><a href="#5-1-1-部分方法" class="headerlink" title="5.1.1. 部分方法"></a>5.1.1. 部分方法</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-2-线性表的单链表实现"><a href="#5-2-线性表的单链表实现" class="headerlink" title="5.2. 线性表的单链表实现"></a>5.2. 线性表的单链表实现</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-2-1-多项式相加"><a href="#5-2-1-多项式相加" class="headerlink" title="5.2.1. 多项式相加"></a>5.2.1. 多项式相加</h3><ol>
+<li>存放非零指数的系数与指数，因此没有节点有三个域组成。<ul>
 <li>(coef + exp)(item) + link</li>
 </ul>
 </li>
 <li>在具体实现时，并不要再重新申请节点，完全利用原来两个链表的结点。</li>
-<li>方法:设4个引用变量:
-<ul>
+<li>方法:设4个引用变量:<ul>
 <li>pa,pb,pc,p(c++需要)</li>
 </ul>
 </li>
 </ol>
-<h2 id="算术步骤"><a class="markdownIt-Anchor" href="#算术步骤"></a> 算术步骤</h2>
-<ol>
+<h2 id="算术步骤"><a href="#算术步骤" class="headerlink" title="算术步骤"></a>算术步骤</h2><ol>
 <li>初始化：pc , pa , pb</li>
-<li>当pa和pb都有项时pc永远指向相加时结果链表的最后一个结点。
-<ol>
-<li>指数相等(pa. exp==pb. exp)
-<ul>
+<li>当pa和pb都有项时pc永远指向相加时结果链表的最后一个结点。<ol>
+<li>指数相等(pa. exp==pb. exp)<ul>
 <li>对应系数相加：pa. coef=pa. coef + pb. coef ;</li>
-<li>p= pb(c++需要) ;</li>
+<li>p= pb(c++需要) ; </li>
 <li>pb前进 ;</li>
 <li>if  (系数相加结果为0){  p=pa;   pa前进; } else   { pc. link=pa;  pc=pa;  pa前进}</li>
 </ul>
 </li>
-<li>指数不等 pa. exp&lt; pb.exp //pb要插入结果链表
-<ul>
+<li>指数不等 pa. exp&lt; pb.exp //pb要插入结果链表<ul>
 <li>{pc. link=pb ;  pc=pb ; pb前进}</li>
 </ul>
 </li>
-<li>指数不等 pa. exp&gt; pb. exp    //pa要插入结果链表
-<ul>
+<li>指数不等 pa. exp&gt; pb. exp    //pa要插入结果链表 <ul>
 <li>{pc. link=pa ;  pc=pa ; pa前进}</li>
 </ul>
 </li>
@@ -517,59 +455,44 @@
 <li>当两链表中有一链表为空，则将另一链表链入结果链表就可以 if(pb空了){pc. link=pa;} else   pc. link=pb;</li>
 </ol>
 <p>算法复杂度:O(m+n)</p>
-<h1 id="6-双向链表"><a class="markdownIt-Anchor" href="#6-双向链表"></a> 6. 双向链表</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="6-双向链表"><a href="#6-双向链表" class="headerlink" title="6. 双向链表"></a>6. 双向链表</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>删除开始，删除中间是不同的</li>
 </ol>
-<h2 id="61-删除"><a class="markdownIt-Anchor" href="#61-删除"></a> 6.1. 删除</h2>
-<ol>
-<li>删除第一个节点<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-6.png" srcset="/img/loading.gif" lazyload alt="" /></li>
-<li>删除中间<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-7.png" srcset="/img/loading.gif" lazyload alt="" /></li>
+<h2 id="6-1-删除"><a href="#6-1-删除" class="headerlink" title="6.1. 删除"></a>6.1. 删除</h2><ol>
+<li>删除第一个节点<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-6.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>删除中间<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-7.png" srcset="/img/loading.gif" lazyload alt=""></li>
 </ol>
-<h2 id="62-插入"><a class="markdownIt-Anchor" href="#62-插入"></a> 6.2. 插入</h2>
-<ol>
-<li>从头插入<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-8.png" srcset="/img/loading.gif" lazyload alt="" /></li>
-<li>从中插入<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-9.png" srcset="/img/loading.gif" lazyload alt="" /></li>
+<h2 id="6-2-插入"><a href="#6-2-插入" class="headerlink" title="6.2. 插入"></a>6.2. 插入</h2><ol>
+<li>从头插入<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-8.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>从中插入<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-9.png" srcset="/img/loading.gif" lazyload alt=""></li>
 </ol>
-<h2 id="63-变形双向循环链表"><a class="markdownIt-Anchor" href="#63-变形双向循环链表"></a> 6.3. 变形:双向循环链表</h2>
-<ol>
+<h2 id="6-3-变形-双向循环链表"><a href="#6-3-变形-双向循环链表" class="headerlink" title="6.3. 变形:双向循环链表"></a>6.3. 变形:双向循环链表</h2><ol>
 <li>带表头的双向链表</li>
 <li>不带表头的双向链表</li>
 <li>带表头的空双向链表</li>
 </ol>
-<h1 id="7-例子2009年考研统考题"><a class="markdownIt-Anchor" href="#7-例子2009年考研统考题"></a> 7. 例子:2009年考研统考题</h1>
-<ol>
+<h1 id="7-例子-2009年考研统考题"><a href="#7-例子-2009年考研统考题" class="headerlink" title="7. 例子:2009年考研统考题"></a>7. 例子:2009年考研统考题</h1><ol>
 <li>算法思想:双指针，第一个指针先跑k步，然后跑第二个指针，第一第二个一起往前跑。</li>
 </ol>
-<h1 id="8-静态链表"><a class="markdownIt-Anchor" href="#8-静态链表"></a> 8. 静态链表</h1>
-<ol>
+<h1 id="8-静态链表"><a href="#8-静态链表" class="headerlink" title="8. 静态链表"></a>8. 静态链表</h1><ol>
 <li>静态链表是由数组实现的单链表。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>在系统中，对于系统来说，内存时这样子的被系统管理的。</li>
 <li>如果next是0，那么相当于null</li>
 </ol>
-<h2 id="81-静态链表的实现"><a class="markdownIt-Anchor" href="#81-静态链表的实现"></a> 8.1. 静态链表的实现</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-17.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="82-实现代码"><a class="markdownIt-Anchor" href="#82-实现代码"></a> 8.2. 实现代码</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Class skeleton for CursorList </span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CursorList</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">alloc</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">free</span><span class="hljs-params">( <span class="hljs-type">int</span> p)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CursorList</span><span class="hljs-params">( )</span> &#123;  header = alloc( );   cursorSpace[ header ].next = <span class="hljs-number">0</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span> &#123;  <span class="hljs-keyword">return</span> cursorSpace[ header ].next = = <span class="hljs-number">0</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">zeroth</span><span class="hljs-params">( )</span> &#123;   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( header ); &#125;<br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">first</span><span class="hljs-params">( )</span> &#123;   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( cursorSpace[ header ].next ); &#125;<br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, CursorListItr p)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> header; <span class="hljs-keyword">static</span> CursorNode [ ] cursorSpace;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> SPACE-SIZE = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">static</span> &#123;<span class="hljs-comment">//静态变量对一个类只有一个</span><br>        cursorSpace = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorNode</span>[ SPACE-SIZE ];<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;SPACE-SIZE; i++) cursorSpace[ i ] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorNode</span>( <span class="hljs-literal">null</span>, i + <span class="hljs-number">1</span> );<br>        cursorSpace[ SPACE-SIZE-<span class="hljs-number">1</span>].next = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="8-1-静态链表的实现"><a href="#8-1-静态链表的实现" class="headerlink" title="8.1. 静态链表的实现"></a>8.1. 静态链表的实现</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-17.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt3/im3-18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-2-实现代码"><a href="#8-2-实现代码" class="headerlink" title="8.2. 实现代码"></a>8.2. 实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Class skeleton for CursorList </span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CursorList</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">alloc</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">free</span><span class="hljs-params">( <span class="hljs-type">int</span> p)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CursorList</span><span class="hljs-params">( )</span> &#123;  header = alloc( );   cursorSpace[ header ].next = <span class="hljs-number">0</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span> &#123;  <span class="hljs-keyword">return</span> cursorSpace[ header ].next = = <span class="hljs-number">0</span>; &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">zeroth</span><span class="hljs-params">( )</span> &#123;   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( header ); &#125;<br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">first</span><span class="hljs-params">( )</span> &#123;   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( cursorSpace[ header ].next ); &#125;<br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, CursorListItr p)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">findPrevious</span><span class="hljs-params">( object x )</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> header; <span class="hljs-keyword">static</span> CursorNode [ ] cursorSpace;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> SPACE-SIZE = <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">static</span> &#123;<span class="hljs-comment">//静态变量对一个类只有一个</span><br>        cursorSpace = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorNode</span>[ SPACE-SIZE ];<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;SPACE-SIZE; i++) cursorSpace[ i ] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorNode</span>( <span class="hljs-literal">null</span>, i + <span class="hljs-number">1</span> );<br>        cursorSpace[ SPACE-SIZE-<span class="hljs-number">1</span>].next = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>静态部分是系统管理者的</li>
 <li>非静态部分是用户的</li>
 </ol>
-<h2 id="83-静态链表如何确定还有可以分配的内存"><a class="markdownIt-Anchor" href="#83-静态链表如何确定还有可以分配的内存"></a> 8.3. 静态链表如何确定还有可以分配的内存</h2>
-<ol>
+<h2 id="8-3-静态链表如何确定还有可以分配的内存"><a href="#8-3-静态链表如何确定还有可以分配的内存" class="headerlink" title="8.3. 静态链表如何确定还有可以分配的内存"></a>8.3. 静态链表如何确定还有可以分配的内存</h2><ol>
 <li>将剩余的内存先存储到一个静态链表中去。</li>
 </ol>
-<h2 id="84-部分方法的实现"><a class="markdownIt-Anchor" href="#84-部分方法的实现"></a> 8.4. 部分方法的实现</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">alloc</span><span class="hljs-params">( )</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> cursorSpace[ <span class="hljs-number">0</span> ].next;<br>    cursorSpace[<span class="hljs-number">0</span>].next = cursorSpace[p].next;<br>    <span class="hljs-keyword">if</span>( p == <span class="hljs-number">0</span> ) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OutOfMemoryError</span>( ); <span class="hljs-keyword">return</span> p; &#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">free</span><span class="hljs-params">( <span class="hljs-type">int</span> p )</span> &#123;<br>    cursorSpace[p].element = <span class="hljs-literal">null</span>;<br>    cursorSpace[p].next = cursorSpace[<span class="hljs-number">0</span>].next;<br>    cursorSpace[<span class="hljs-number">0</span>].next = p; &#125;<br><span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> cursorSpace[ header ].next;<br>    <span class="hljs-keyword">while</span>( itr != <span class="hljs-number">0</span> &amp;&amp; !cursorSpace[ itr ].element.equals( x ) )<br>        itr = cursorSpace[ itr ].next;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( itr );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, CursorListItr p )</span> &#123;<br>    <span class="hljs-keyword">if</span>( p != <span class="hljs-literal">null</span> &amp;&amp; p.current != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> p.current;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> alloc( );<br>        cursorSpace[ tmp ].element = x;<br>        cursorSpace[ tmp ].next = cursorSpace[ pos ].next;<br>        cursorSpace[ pos ].next = tmp;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span> &#123;   <br>    <span class="hljs-type">CursorListItr</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> findPrevious( x );<br>    <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> p.current;<br>    <span class="hljs-keyword">if</span>( cursorSpace[ pos ].next != <span class="hljs-number">0</span> ) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> cursorSpace[ pos ].next;<br>        cursorSpace[ pos ].next = cursorSpace[ tmp ].next;<br>        free( tmp );<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>    <span class="hljs-keyword">while</span>( !isEmpty( ) )<br>        remove( first( ).retrieve( ) );<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="8-4-部分方法的实现"><a href="#8-4-部分方法的实现" class="headerlink" title="8.4. 部分方法的实现"></a>8.4. 部分方法的实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">alloc</span><span class="hljs-params">( )</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> cursorSpace[ <span class="hljs-number">0</span> ].next;<br>    cursorSpace[<span class="hljs-number">0</span>].next = cursorSpace[p].next;<br>    <span class="hljs-keyword">if</span>( p == <span class="hljs-number">0</span> ) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OutOfMemoryError</span>( ); <span class="hljs-keyword">return</span> p; &#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">free</span><span class="hljs-params">( <span class="hljs-type">int</span> p )</span> &#123;<br>    cursorSpace[p].element = <span class="hljs-literal">null</span>;<br>    cursorSpace[p].next = cursorSpace[<span class="hljs-number">0</span>].next;<br>    cursorSpace[<span class="hljs-number">0</span>].next = p; &#125;<br><span class="hljs-keyword">public</span> CursorListItr <span class="hljs-title function_">find</span><span class="hljs-params">( object x )</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">itr</span> <span class="hljs-operator">=</span> cursorSpace[ header ].next;<br>    <span class="hljs-keyword">while</span>( itr != <span class="hljs-number">0</span> &amp;&amp; !cursorSpace[ itr ].element.equals( x ) )<br>        itr = cursorSpace[ itr ].next;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CursorListItr</span>( itr );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( object x, CursorListItr p )</span> &#123;<br>    <span class="hljs-keyword">if</span>( p != <span class="hljs-literal">null</span> &amp;&amp; p.current != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> p.current;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> alloc( );<br>        cursorSpace[ tmp ].element = x;<br>        cursorSpace[ tmp ].next = cursorSpace[ pos ].next;<br>        cursorSpace[ pos ].next = tmp;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">( object x )</span> &#123;   <br>    <span class="hljs-type">CursorListItr</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> findPrevious( x );<br>    <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> p.current;<br>    <span class="hljs-keyword">if</span>( cursorSpace[ pos ].next != <span class="hljs-number">0</span> ) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> cursorSpace[ pos ].next;<br>        cursorSpace[ pos ].next = cursorSpace[ tmp ].next;<br>        free( tmp );<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>    <span class="hljs-keyword">while</span>( !isEmpty( ) )<br>        remove( first( ).retrieve( ) );<br>&#125;<br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -661,9 +584,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%848.0-graphs/" title="2019-Data-Structure-数据结构8.0-graphs">
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture04/" title="2019-COA19-lecture04">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-Data-Structure-数据结构8.0-graphs</span>
+                        <span class="hidden-mobile">2019-COA19-lecture04</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -671,8 +594,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%843.2-%E5%8D%95%E8%B0%83%E6%A0%88/" title="2019-Data-Structure-数据结构3.2-单调栈">
-                        <span class="hidden-mobile">2019-Data-Structure-数据结构3.2-单调栈</span>
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec4-%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90/" title="2020-Big-data-analysis-Tec4-情感分析">
+                        <span class="hidden-mobile">2020-Big-data-analysis-Tec4-情感分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

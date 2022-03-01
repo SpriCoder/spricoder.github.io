@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2019-COA19-存储结构的解释">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img%5Ccpt0-1.png">
-<meta property="article:published_time" content="2022-02-16T11:09:45.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:27:31.735Z">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img\cpt0-1.png">
+<meta property="article:published_time" content="2022-02-16T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:01:04.017Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="COA">
 <meta property="article:tag" content="存储结构">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img%5Ccpt0-1.png">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img\cpt0-1.png">
   
   
   <title>2019-COA19-存储结构的解释 - SpriCoder的博客</title>
@@ -201,7 +201,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:00" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -274,57 +274,47 @@
             
             <div class="markdown-body">
               
-              <h1 id="1-存储结构"><a class="markdownIt-Anchor" href="#1-存储结构"></a> 1. 存储结构</h1>
-<ol>
-<li>存储器由一定数量的单元构成，每个单元可以被唯一标识，每个单元都有存储一个数值的能力。
-<ol>
+              <h1 id="1-存储结构"><a href="#1-存储结构" class="headerlink" title="1. 存储结构"></a>1. 存储结构</h1><ol>
+<li>存储器由一定数量的单元构成，每个单元可以被唯一标识，每个单元都有存储一个数值的能力。<ol>
 <li>地址：单元的唯一标识符(采用二进制)</li>
 <li>地址空间：可唯一标识的单元总数</li>
-<li>寻址能力：存储在每个单元中的信息的位数
-<ul>
+<li>寻址能力：存储在每个单元中的信息的位数<ul>
 <li>大多数存储器是字节寻址的，而执行科学计算的计算机通常是64位寻址的，也就是2<sup>64</sup></li>
 </ul>
 </li>
 </ol>
 </li>
-<li>寻址能力的影响因素:归根结底是因为设计时的地址的长度。
-<ol>
+<li>寻址能力的影响因素:归根结底是因为设计时的地址的长度。  <ol>
 <li>地址总线的根数</li>
 <li>寻址机制的不同</li>
 </ol>
 </li>
-<li>计算机的内存真正能真正使用的内存大小的影响因素:
-<ol>
+<li>计算机的内存真正能真正使用的内存大小的影响因素:<ol>
 <li>地址空间</li>
 <li>寻址能力</li>
 <li>最终是由上面两个之一来决定的。</li>
 <li>例子:4G内存的电脑加上8G的内存条，不会变快，因为寻址能力不会变强，被制约。</li>
 </ol>
 </li>
-<li>地址空间越大，容量会越大吗？
-<ul>
+<li>地址空间越大，容量会越大吗？<ul>
 <li>不一定，每个单元(屋子)的大小一定。</li>
 <li>容量是指</li>
 </ul>
 </li>
 </ol>
-<h1 id="2-主存结构"><a class="markdownIt-Anchor" href="#2-主存结构"></a> 2. 主存结构</h1>
-<ol>
+<h1 id="2-主存结构"><a href="#2-主存结构" class="headerlink" title="2. 主存结构"></a>2. 主存结构</h1><ol>
 <li>主存存储器由多达2<sup>n</sup>个可寻址的字组成，每个字有一个n位的地址。</li>
 <li>比如一个存储器是64M *16位的，那么就是16位的数据，64MB是容量(地址数量)。</li>
 <li>一个字节(1 B = 8 b),(1KB = 2<sup>10</sup>B = 2<sup>13</sup>b)</li>
 <li>1K * 4 位的DRAM，其中1K是存储单元个数(1024)、大小4位</li>
 </ol>
-<h1 id="3-概念汇总"><a class="markdownIt-Anchor" href="#3-概念汇总"></a> 3. 概念汇总</h1>
-<ol>
+<h1 id="3-概念汇总"><a href="#3-概念汇总" class="headerlink" title="3. 概念汇总"></a>3. 概念汇总</h1><ol>
 <li><strong>位</strong>:数据存储的最小单位，一个位只能存储0或1。</li>
-<li><strong>字节</strong>:(B/Byte)
-<ul>
+<li><strong>字节</strong>:(B/Byte)<ul>
 <li>1 B = 8 b</li>
 </ul>
 </li>
-<li><strong>字</strong>:在计算机中，一串数码是作为一个整体来处理或运算的，称为一个字。字的位数称为字长;字通常分若干个字节。
-<ul>
+<li><strong>字</strong>:在计算机中，一串数码是作为一个整体来处理或运算的，称为一个字。字的位数称为字长;字通常分若干个字节。<ul>
 <li>表示机器CPU的处理能力:也就是CPU在单位时间内能处理的最大二进制数的位数</li>
 <li>Eg.如果字长为32位，则1字 = 32bit = 4B，指令长度为</li>
 </ul>
@@ -337,77 +327,62 @@
 <li><strong>寻址范围</strong>:寻址范围是一个数字范围，不带有单位</li>
 <li><strong>寻址空间</strong>:寻址空间的大小是寻址范围的大小。</li>
 <li><strong>按字节寻址</strong>:一组地址线的不同状态对应一个字节的地址，存储空间的最小编址单位是字节。</li>
-<li><strong>按字寻址</strong>:一组地址线的每个不同状态对应一个字的地址，存储空间的最小编址单位是字。
-<ul>
+<li><strong>按字寻址</strong>:一组地址线的每个不同状态对应一个字的地址，存储空间的最小编址单位是字。<ul>
 <li>一个字由若干个字节构成，因此计算机在寻址过程中会区分字里面的字节，所以需要占用一根地址线，来<strong>字内寻址</strong>。(不是重点)</li>
 </ul>
 </li>
 </ol>
-<h2 id="31-一些例子"><a class="markdownIt-Anchor" href="#31-一些例子"></a> 3.1. 一些例子</h2>
-<ol>
+<h2 id="3-1-一些例子"><a href="#3-1-一些例子" class="headerlink" title="3.1. 一些例子"></a>3.1. 一些例子</h2><ol>
 <li>对于24位地址线的主存，若字长为32位，则按字节寻址的范围为16M(2<sup>24</sup>B = 16M),按字寻址的范围为4M(16M * 8 / 32)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img%5Ccpt0-1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="4-cache和主存储器之间的映射"><a class="markdownIt-Anchor" href="#4-cache和主存储器之间的映射"></a> 4. Cache和主存储器之间的映射</h1>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img\cpt0-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="4-Cache和主存储器之间的映射"><a href="#4-Cache和主存储器之间的映射" class="headerlink" title="4. Cache和主存储器之间的映射"></a>4. Cache和主存储器之间的映射</h1><ol>
 <li>注意每一行中的读取哪一个字是地址中最后一个字地址的作用。</li>
 </ol>
-<h2 id="41-如何计算不同情况下的标签"><a class="markdownIt-Anchor" href="#41-如何计算不同情况下的标签"></a> 4.1. 如何计算不同情况下的标签</h2>
-<ol>
+<h2 id="4-1-如何计算不同情况下的标签"><a href="#4-1-如何计算不同情况下的标签" class="headerlink" title="4.1. 如何计算不同情况下的标签"></a>4.1. 如何计算不同情况下的标签</h2><ol>
 <li>对于word的长度，每一块多少字，每一行多少字有关。</li>
-<li>对于Line的长度:
-<ol>
+<li>对于Line的长度:<ol>
 <li>容量除以上面的字长</li>
 <li>直接告诉</li>
 </ol>
 </li>
-<li>对于set的长度:
-<ol>
+<li>对于set的长度:<ol>
 <li>直接告诉结果</li>
 <li>总行数/组行数</li>
 <li>数据区大小/路数/字大小</li>
 </ol>
 </li>
 <li>对于tag的长度:容量必须的长度-set的长度-Line的长度。</li>
-<li>总长度位数计算:
-<ol>
+<li>总长度位数计算:<ol>
 <li>主存地址空间大小</li>
 <li>容量</li>
 <li>主存块数*每块大小</li>
 </ol>
 </li>
 </ol>
-<h3 id="411-直接映射"><a class="markdownIt-Anchor" href="#411-直接映射"></a> 4.1.1. 直接映射</h3>
-<ol>
-<li>直接映射的标签组成
-<ul>
+<h3 id="4-1-1-直接映射"><a href="#4-1-1-直接映射" class="headerlink" title="4.1.1. 直接映射"></a>4.1.1. 直接映射</h3><ol>
+<li>直接映射的标签组成<ul>
 <li>Tag + Line + Word</li>
 </ul>
 </li>
 </ol>
-<h3 id="412-全相联映射"><a class="markdownIt-Anchor" href="#412-全相联映射"></a> 4.1.2. 全相联映射</h3>
-<ol>
-<li>全相联映射的标签组成
-<ul>
+<h3 id="4-1-2-全相联映射"><a href="#4-1-2-全相联映射" class="headerlink" title="4.1.2. 全相联映射"></a>4.1.2. 全相联映射</h3><ol>
+<li>全相联映射的标签组成<ul>
 <li>Tag + Word</li>
 </ul>
 </li>
 </ol>
-<h3 id="413-组相联映射"><a class="markdownIt-Anchor" href="#413-组相联映射"></a> 4.1.3. 组相联映射</h3>
-<ol>
-<li>组相联映射的标签组成
-<ul>
+<h3 id="4-1-3-组相联映射"><a href="#4-1-3-组相联映射" class="headerlink" title="4.1.3. 组相联映射"></a>4.1.3. 组相联映射</h3><ol>
+<li>组相联映射的标签组成<ul>
 <li>Tag + Set + Word</li>
 </ul>
 </li>
 </ol>
-<h2 id="42-替换策略"><a class="markdownIt-Anchor" href="#42-替换策略"></a> 4.2. 替换策略</h2>
-<ol>
+<h2 id="4-2-替换策略"><a href="#4-2-替换策略" class="headerlink" title="4.2. 替换策略"></a>4.2. 替换策略</h2><ol>
 <li>对于LRU:就是看最近被用到次数最少的进行替换</li>
 <li>对于FIFO:就是先进先出，哪怕刚被用到。</li>
 </ol>
-<h1 id="5-参考"><a class="markdownIt-Anchor" href="#5-参考"></a> 5. 参考</h1>
-<ol>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h1><ol>
 <li><a href = "https://blog.csdn.net/m0_37345402/article/details/89429285">按字寻址与按字节寻址</a></li>
 </ol>
 
@@ -499,9 +474,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture17/" title="2019-COA19-lecture17">
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture0/" title="2019-COA19-lecture0">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-COA19-lecture17</span>
+                        <span class="hidden-mobile">2019-COA19-lecture0</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -509,8 +484,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture08/" title="2019-COA19-lecture08">
-                        <span class="hidden-mobile">2019-COA19-lecture08</span>
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%9C%E4%B8%9A%E8%AE%B2%E8%A7%A3/" title="2019-COA19-计算机组成与结构作业讲解">
+                        <span class="hidden-mobile">2019-COA19-计算机组成与结构作业讲解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -41,8 +41,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/15.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/17.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/18.png">
-<meta property="article:published_time" content="2022-02-16T11:09:12.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:55:02.880Z">
+<meta property="article:published_time" content="2022-02-16T11:07:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:19:08.299Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -222,7 +222,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:07" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -295,39 +295,30 @@
             
             <div class="markdown-body">
               
-              <h2 id="ch07-完整性-视图-安全和目录"><a class="markdownIt-Anchor" href="#ch07-完整性-视图-安全和目录"></a> ch07-完整性、视图、安全和目录</h2>
-<h1 id="1-完整性约束"><a class="markdownIt-Anchor" href="#1-完整性约束"></a> 1. 完整性约束</h1>
-<ol>
+              <h2 id="ch07-完整性、视图、安全和目录"><a href="#ch07-完整性、视图、安全和目录" class="headerlink" title="ch07-完整性、视图、安全和目录"></a>ch07-完整性、视图、安全和目录</h2><h1 id="1-完整性约束"><a href="#1-完整性约束" class="headerlink" title="1. 完整性约束"></a>1. 完整性约束</h1><ol>
 <li>Create Table的同时创建完整性约束</li>
-<li>完整性约束
-<ol>
+<li>完整性约束<ol>
 <li>列约束</li>
 <li>行约束:Primary, not null</li>
 </ol>
 </li>
 <li>参照完整性：外键</li>
 <li>触发器</li>
-<li>其他修改方式
-<ol>
+<li>其他修改方式<ol>
 <li>修改表:<code>ALTER TABLE</code></li>
 <li>删除表:<code>DROP TABLE</code></li>
 </ol>
 </li>
 </ol>
-<h2 id="11-create-table命令的使用方法"><a class="markdownIt-Anchor" href="#11-create-table命令的使用方法"></a> 1.1. Create Table命令的使用方法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-列完整性约束"><a class="markdownIt-Anchor" href="#12-列完整性约束"></a> 1.2. 列完整性约束</h2>
-<ol>
-<li>单列完整性约束
-<ol>
+<h2 id="1-1-Create-Table命令的使用方法"><a href="#1-1-Create-Table命令的使用方法" class="headerlink" title="1.1. Create Table命令的使用方法"></a>1.1. Create Table命令的使用方法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-列完整性约束"><a href="#1-2-列完整性约束" class="headerlink" title="1.2. 列完整性约束"></a>1.2. 列完整性约束</h2><ol>
+<li>单列完整性约束<ol>
 <li>NOT NULL 或 DEFAULT NULL</li>
 <li>约束名(可选)</li>
 <li>UNIQUE 且 NOT NULL：候选键</li>
 <li>PRIMARY KEY</li>
-<li>REFERENCES
-<ol>
-<li>FOREIGN KEY
-<ol>
+<li>REFERENCES<ol>
+<li>FOREIGN KEY<ol>
 <li>表 T1 中列的集合 F 被定义为 T1 的外键当且仅当 F 中任意一行的值结合起来，都是 NULL 或是另一个表 T2 的候选键或主键</li>
 </ol>
 </li>
@@ -340,190 +331,153 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>多列完整性约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>候选键约束:UNIQUE &amp; NOT NULL</li>
-<li>constraint是声明约束
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>候选键约束:UNIQUE &amp; NOT NULL</li>
+<li>constraint是声明约束<ol>
 <li>constraint &lt;约束名&gt; &lt;约束内容&gt;</li>
 </ol>
 </li>
 </ol>
-<h2 id="13-列完整性约束的例子"><a class="markdownIt-Anchor" href="#13-列完整性约束的例子"></a> 1.3. 列完整性约束的例子</h2>
-<ol>
+<h2 id="1-3-列完整性约束的例子"><a href="#1-3-列完整性约束的例子" class="headerlink" title="1.3. 列完整性约束的例子"></a>1.3. 列完整性约束的例子</h2><ol>
 <li>正常的值约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>外键约束</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="14-外键foreign-key"><a class="markdownIt-Anchor" href="#14-外键foreign-key"></a> 1.4. 外键(Foreign key)</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-4-外键-Foreign-key"><a href="#1-4-外键-Foreign-key" class="headerlink" title="1.4. 外键(Foreign key)"></a>1.4. 外键(Foreign key)</h2><ol>
 <li>如果要求任一行中F的值的组合至少包含一个空值，或者匹配一组P的值组合，则将表T1中的一组F列定义为T1的外键 表示参考表T2的候选或主键。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>外键的正确性保证</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/7.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/8.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="15-参照完整性"><a class="markdownIt-Anchor" href="#15-参照完整性"></a> 1.5. 参照完整性</h2>
-<ol>
-<li>T1的任何行中的F列必须满足下列条件之一：
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/7.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/8.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-5-参照完整性"><a href="#1-5-参照完整性" class="headerlink" title="1.5. 参照完整性"></a>1.5. 参照完整性</h2><ol>
+<li>T1的任何行中的F列必须满足下列条件之一：<ol>
 <li>在至少一个允许空值的列中具有空值</li>
 <li>没有空值并且等于T2的某些行上P的值组合。</li>
 </ol>
 </li>
 </ol>
-<h2 id="16-表的列和约束的修改"><a class="markdownIt-Anchor" href="#16-表的列和约束的修改"></a> 1.6. 表的列和约束的修改</h2>
-<ol>
+<h2 id="1-6-表的列和约束的修改"><a href="#1-6-表的列和约束的修改" class="headerlink" title="1.6. 表的列和约束的修改"></a>1.6. 表的列和约束的修改</h2><ol>
 <li>表的列:Add、Drop、Modify</li>
 <li>约束:Add、Drop</li>
 </ol>
-<h2 id="17-数据库触发器database-trigger"><a class="markdownIt-Anchor" href="#17-数据库触发器database-trigger"></a> 1.7. 数据库触发器(Database Trigger)</h2>
-<ol>
+<h2 id="1-7-数据库触发器-Database-Trigger"><a href="#1-7-数据库触发器-Database-Trigger" class="headerlink" title="1.7. 数据库触发器(Database Trigger)"></a>1.7. 数据库触发器(Database Trigger)</h2><ol>
 <li>数据库触发器是响应于数据库中特定表或视图上的某些事件而自动执行的过程代码。</li>
 <li>触发器主要用于维护数据库上信息的完整性。 例如，将新记录(新工人)添加到雇员表时，还应该在税金，休假和薪水表中创建新记录。</li>
-<li>触发器分为行级触发器和列级触发器
-<ol>
+<li>触发器分为行级触发器和列级触发器<ol>
 <li>For Each Row:结果集的每一行被影响了就执行一次</li>
 <li>For Each Statement:对于整个结果集只触发一次</li>
 </ol>
 </li>
 </ol>
-<h3 id="171-数据库触发器的定义"><a class="markdownIt-Anchor" href="#171-数据库触发器的定义"></a> 1.7.1. 数据库触发器的定义</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/10.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="172-update触发器类型"><a class="markdownIt-Anchor" href="#172-update触发器类型"></a> 1.7.2. Update触发器类型</h3>
-<ol>
+<h3 id="1-7-1-数据库触发器的定义"><a href="#1-7-1-数据库触发器的定义" class="headerlink" title="1.7.1. 数据库触发器的定义"></a>1.7.1. 数据库触发器的定义</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/10.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-7-2-Update触发器类型"><a href="#1-7-2-Update触发器类型" class="headerlink" title="1.7.2. Update触发器类型"></a>1.7.2. Update触发器类型</h3><ol>
 <li>行级别触发器:在行的任何列值更改之前或之后执行</li>
 <li>列级别触发器:在指定列更改之前或之后执行此操作</li>
 </ol>
-<h3 id="173-触发器例子"><a class="markdownIt-Anchor" href="#173-触发器例子"></a> 1.7.3. 触发器例子</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/11.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-视图view"><a class="markdownIt-Anchor" href="#2-视图view"></a> 2. 视图(View)</h1>
-<ol>
+<h3 id="1-7-3-触发器例子"><a href="#1-7-3-触发器例子" class="headerlink" title="1.7.3. 触发器例子"></a>1.7.3. 触发器例子</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/11.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-视图-View"><a href="#2-视图-View" class="headerlink" title="2. 视图(View)"></a>2. 视图(View)</h1><ol>
 <li>Create View：在执行Create View的语句时，没有数据被检索或存储，但是视图对象作为一个对象被存放在系统目录中。</li>
 <li>视图不是数据快照，只是存储了一些定义。</li>
 <li>任何SQL SELECT语句检索的数据均为表形式。</li>
 <li>我们想在其他Select语句的FROM子句中使用此TABLE。</li>
 </ol>
-<h2 id="21-视图的定义"><a class="markdownIt-Anchor" href="#21-视图的定义"></a> 2.1. 视图的定义</h2>
-<ol>
+<h2 id="2-1-视图的定义"><a href="#2-1-视图的定义" class="headerlink" title="2.1. 视图的定义"></a>2.1. 视图的定义</h2><ol>
 <li>它是一个由子查询产生的表，但具有自己的名称(表名称或属性名)</li>
 <li>它可以在大多数情况下用作由SQL CREATE TABLE语句创建的基表</li>
-<li>属性:
-<ol>
+<li>属性:<ol>
 <li>本身没有数据存储，只是从中选择数据的窗口(只是SELECT选取出来的数据</li>
 <li>因此，它被视为虚拟表</li>
 </ol>
 </li>
 <li>不足:视图的更新受限</li>
 </ol>
-<h2 id="22-视图的声明"><a class="markdownIt-Anchor" href="#22-视图的声明"></a> 2.2. 视图的声明</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> view_name [(col_name &#123;, …...&#125;)]<br>  <span class="hljs-keyword">AS</span>  subquery<br>  [ <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> OPTION ]<br></code></pre></td></tr></table></figure>
+<h2 id="2-2-视图的声明"><a href="#2-2-视图的声明" class="headerlink" title="2.2. 视图的声明"></a>2.2. 视图的声明</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> view_name [(col_name &#123;, …...&#125;)]<br>  <span class="hljs-keyword">AS</span>  subquery<br>  [ <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">CHECK</span> OPTION ]<br></code></pre></td></tr></table></figure>
 <ol>
-<li>视图内容:
-<ol>
+<li>视图内容:<ol>
 <li>可以省略名字列表，如果子查询的目标列表(选择子句)具有不需要限定符的列名。</li>
 <li>需要为表达式或不明确的姓氏提供名称。</li>
 <li>可以以任何方式重命名列。</li>
 </ol>
 </li>
-<li>子查询:
-<ol>
+<li>子查询:<ol>
 <li><strong>不可以使用Order By子句</strong></li>
 </ol>
 </li>
-<li>有检查选项
-<ol>
+<li>有检查选项<ol>
 <li>如果发生以下情况，将不允许更新或通过可更新的视图插入:它们导致视图子查询看不到的行。</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
-<li>视图的创建的执行:
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>视图的创建的执行:<ol>
 <li>视图定义在系统目录中被存储为数据库中特定的物体</li>
 <li>没有数据被拉取或存储(类似引用)</li>
 </ol>
 </li>
-<li>查询修改
-<ol>
+<li>查询修改<ol>
 <li>可以修改访问视图的查询或更新语句。</li>
 <li>以便修改后的查询或更新实际上对基表执行访问。</li>
 </ol>
 </li>
 <li>注意：声明的话，如果有重名的列则必须声明对应列的内容</li>
 </ol>
-<h2 id="23-嵌套视图定义"><a class="markdownIt-Anchor" href="#23-嵌套视图定义"></a> 2.3. 嵌套视图定义</h2>
-<ol>
+<h2 id="2-3-嵌套视图定义"><a href="#2-3-嵌套视图定义" class="headerlink" title="2.3. 嵌套视图定义"></a>2.3. 嵌套视图定义</h2><ol>
 <li>在视图的基础上再次定义视图</li>
 </ol>
-<h2 id="24-视图的特权"><a class="markdownIt-Anchor" href="#24-视图的特权"></a> 2.4. 视图的特权</h2>
-<ol>
+<h2 id="2-4-视图的特权"><a href="#2-4-视图的特权" class="headerlink" title="2.4. 视图的特权"></a>2.4. 视图的特权</h2><ol>
 <li>创建视图的用户是用户的所有者</li>
-<li>所有者被赋予视图更新权限
-<ol>
+<li>所有者被赋予视图更新权限<ol>
 <li>视图是可更新的</li>
 <li>用户在定义视图的基表上具有所需的更新特权。</li>
 </ol>
 </li>
 </ol>
-<h2 id="25-视图的查询过程"><a class="markdownIt-Anchor" href="#25-视图的查询过程"></a> 2.5. 视图的查询过程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/14.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="26-删除视图"><a class="markdownIt-Anchor" href="#26-删除视图"></a> 2.6. 删除视图</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> &#123; <span class="hljs-keyword">TABLE</span> table_name <span class="hljs-operator">|</span> <span class="hljs-keyword">VIEW</span> view_name &#125;<br>  &#123; CASCADE <span class="hljs-operator">|</span> RESTRICT &#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="2-5-视图的查询过程"><a href="#2-5-视图的查询过程" class="headerlink" title="2.5. 视图的查询过程"></a>2.5. 视图的查询过程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/14.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-6-删除视图"><a href="#2-6-删除视图" class="headerlink" title="2.6. 删除视图"></a>2.6. 删除视图</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> &#123; <span class="hljs-keyword">TABLE</span> table_name <span class="hljs-operator">|</span> <span class="hljs-keyword">VIEW</span> view_name &#125;<br>  &#123; CASCADE <span class="hljs-operator">|</span> RESTRICT &#125;;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>视图被删除的时候，没有行会被影响到</li>
 </ol>
-<h2 id="27-可更新视图条件"><a class="markdownIt-Anchor" href="#27-可更新视图条件"></a> 2.7. 可更新视图条件</h2>
-<ol>
+<h2 id="2-7-可更新视图条件"><a href="#2-7-可更新视图条件" class="headerlink" title="2.7. 可更新视图条件"></a>2.7. 可更新视图条件</h2><ol>
 <li>子查询的FROM子句必须仅包含一个表，并且如果该表是视图表，则它也必须是可更新的视图表。</li>
 <li>GROUP BY和HAVING子句均不存在。</li>
 <li>未指定DISTINCT关键字。</li>
 <li>WHERE子句不包含直接或通过视图间接引用FROM子句中任何表的子查询。</li>
 <li>子查询的所有结果列都是简单的列名：没有表达式，没有列名出现多次。</li>
-<li>注:Oracle数据库的更新加入视图必须满足:(PPT 54 - 57)
-<ol>
+<li>注:Oracle数据库的更新加入视图必须满足:(PPT 54 - 57)<ol>
 <li>是多对一的加入视图</li>
 <li>视图的各列在N侧包含表的主键</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="28-视图的值"><a class="markdownIt-Anchor" href="#28-视图的值"></a> 2.8. 视图的值</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-8-视图的值"><a href="#2-8-视图的值" class="headerlink" title="2.8. 视图的值"></a>2.8. 视图的值</h2><ol>
 <li>视图提供了一种使复杂的，通常发出的查询更易于编写的方法。</li>
 <li>视图允许过时的表以及引用它们的程序在重组中幸免，程序数据独立性</li>
 <li>视图增加了安全方面，以允许不同的用户以不同的方式查看相同的数据。</li>
 </ol>
-<h1 id="3-安全性"><a class="markdownIt-Anchor" href="#3-安全性"></a> 3. 安全性</h1>
-<ol>
+<h1 id="3-安全性"><a href="#3-安全性" class="headerlink" title="3. 安全性"></a>3. 安全性</h1><ol>
 <li>GRANT &amp; REVOKE statements</li>
 </ol>
-<h2 id="31-grant子句"><a class="markdownIt-Anchor" href="#31-grant子句"></a> 3.1. GRANT子句</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> &#123;<span class="hljs-keyword">ALL</span> PRIVILEGES<span class="hljs-operator">|</span>privilege &#123;, privilege … &#125;&#125;<br>  <span class="hljs-keyword">ON</span> [ <span class="hljs-keyword">TABLE</span> ] tablename <span class="hljs-operator">|</span> viewname<br>  <span class="hljs-keyword">TO</span> &#123; PUBLIC <span class="hljs-operator">|</span> <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name &#123; , <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name … &#125; &#125;<br>  [ <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION ]<br></code></pre></td></tr></table></figure>
+<h2 id="3-1-GRANT子句"><a href="#3-1-GRANT子句" class="headerlink" title="3.1. GRANT子句"></a>3.1. GRANT子句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> &#123;<span class="hljs-keyword">ALL</span> PRIVILEGES<span class="hljs-operator">|</span>privilege &#123;, privilege … &#125;&#125;<br>  <span class="hljs-keyword">ON</span> [ <span class="hljs-keyword">TABLE</span> ] tablename <span class="hljs-operator">|</span> viewname<br>  <span class="hljs-keyword">TO</span> &#123; PUBLIC <span class="hljs-operator">|</span> <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name &#123; , <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name … &#125; &#125;<br>  [ <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION ]<br></code></pre></td></tr></table></figure>
 <ol>
-<li>可以被表的所有者使用
-<ol>
+<li>可以被表的所有者使用<ol>
 <li>表所有者具有这个表的全部权限</li>
 <li>其他用户不可以访问表如果他们没有这个表上的任何一个权限</li>
 </ol>
 </li>
 <li>列权限在视图上也会具有</li>
-<li>权限:
-<ol>
+<li>权限:<ol>
 <li>SELECT、DELETE、INSERT</li>
 <li>UPDATE [col_name, {,col_name …}]</li>
 <li>REFERENCE [col_name, {, col_name …}]</li>
@@ -533,23 +487,19 @@
 <li>WITH GRANT OPTION</li>
 <li>注:在视图上有的权限，不需要在原表上有</li>
 </ol>
-<h2 id="32-revoke语句"><a class="markdownIt-Anchor" href="#32-revoke语句"></a> 3.2. REVOKE语句</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">REVOKE</span> &#123; <span class="hljs-keyword">ALL</span> PRIVILEGES <br>    <span class="hljs-operator">|</span> privilege &#123;, privilege …&#125; &#125;<br>  <span class="hljs-keyword">ON</span>  tablename <span class="hljs-operator">|</span> viewname<br>  <span class="hljs-keyword">FROM</span> &#123; PUBLIC <span class="hljs-operator">|</span> <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name &#123;, <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name … &#125;&#125;<br>  &#123; CASCADE <span class="hljs-operator">|</span> RESTRICT &#125;<br></code></pre></td></tr></table></figure>
+<h2 id="3-2-REVOKE语句"><a href="#3-2-REVOKE语句" class="headerlink" title="3.2. REVOKE语句"></a>3.2. REVOKE语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">REVOKE</span> &#123; <span class="hljs-keyword">ALL</span> PRIVILEGES <br>    <span class="hljs-operator">|</span> privilege &#123;, privilege …&#125; &#125;<br>  <span class="hljs-keyword">ON</span>  tablename <span class="hljs-operator">|</span> viewname<br>  <span class="hljs-keyword">FROM</span> &#123; PUBLIC <span class="hljs-operator">|</span> <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name &#123;, <span class="hljs-keyword">user</span><span class="hljs-operator">-</span>name … &#125;&#125;<br>  &#123; CASCADE <span class="hljs-operator">|</span> RESTRICT &#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>撤销先前授予用户的特权。</li>
 </ol>
-<h1 id="4-系统目录和架构"><a class="markdownIt-Anchor" href="#4-系统目录和架构"></a> 4. 系统目录和架构</h1>
-<ol>
-<li>数据字典
-<ol>
+<h1 id="4-系统目录和架构"><a href="#4-系统目录和架构" class="headerlink" title="4. 系统目录和架构"></a>4. 系统目录和架构</h1><ol>
+<li>数据字典<ol>
 <li>SQL命令行创建的所有对象都会被作为表的对象存储在系统中</li>
 </ol>
 </li>
 <li>数据库管理员访问其他站点，会通过查看系统目录(元数据)来查看表是否存在，表中有什么列</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="5-注"><a class="markdownIt-Anchor" href="#5-注"></a> 5. 注</h1>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch07/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="5-注"><a href="#5-注" class="headerlink" title="5. 注"></a>5. 注</h1><ol>
 <li>修改视图可以影响表，修改表也会影响视图</li>
 </ol>
 
@@ -649,9 +599,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-4%20%E4%BC%B0%E7%AE%97%E3%80%81%E8%AE%A1%E5%88%92%E5%92%8C%E8%B7%9F%E8%B8%AA/" title="2021-software-quality-management-Lec-4 估算、计划和跟踪">
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec7-K8S%E5%85%A5%E9%97%A8/" title="2020-Devops-introduction-Lec7-K8S入门">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-software-quality-management-Lec-4 估算、计划和跟踪</span>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec7-K8S入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -659,8 +609,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-6%20%E5%9B%A2%E9%98%9F%E5%B7%A5%E7%A8%8B%E5%BC%80%E5%8F%91/" title="2021-software-quality-management-Lec-6 团队工程开发">
-                        <span class="hidden-mobile">2021-software-quality-management-Lec-6 团队工程开发</span>
+                      <a href="/2022/02/16/2020-OS/2020-OS-Exam1-%E5%A4%8D%E4%B9%A0/" title="2020-OS-Exam1-复习">
+                        <span class="hidden-mobile">2020-OS-Exam1-复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

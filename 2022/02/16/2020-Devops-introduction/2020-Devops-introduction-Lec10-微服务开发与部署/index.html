@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/2.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/3.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/4.png">
-<meta property="article:published_time" content="2022-02-16T11:09:43.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:51:14.159Z">
+<meta property="article:published_time" content="2022-02-16T11:10:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:17:49.263Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="DevOps">
@@ -205,7 +205,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:10" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -278,18 +278,14 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec10-微服务开发与部署"><a class="markdownIt-Anchor" href="#lec10-微服务开发与部署"></a> Lec10-微服务开发与部署</h2>
-<h1 id="1-微服务开发"><a class="markdownIt-Anchor" href="#1-微服务开发"></a> 1. 微服务开发</h1>
-<ol>
-<li>单体应用程序
-<ol>
+              <h2 id="Lec10-微服务开发与部署"><a href="#Lec10-微服务开发与部署" class="headerlink" title="Lec10-微服务开发与部署"></a>Lec10-微服务开发与部署</h2><h1 id="1-微服务开发"><a href="#1-微服务开发" class="headerlink" title="1. 微服务开发"></a>1. 微服务开发</h1><ol>
+<li>单体应用程序<ol>
 <li>数据库的表对所有模块可见</li>
 <li>一个人的修改整个应用都要重新构建、测试、部署</li>
 <li>整体复制分布式部署，不能拆分按需部署</li>
 </ol>
 </li>
-<li>微服务架构模式的特征
-<ol>
+<li>微服务架构模式的特征<ol>
 <li>应用程序分解为具有明确定义了职责范围的细粒度组件</li>
 <li>完全独立部署，独立测试，并可复用</li>
 <li>使用轻量级通信协议，HTTP和JSON，松耦合</li>
@@ -297,29 +293,23 @@
 <li>将大型团队划分成多个小型开发团队，每个团队只负责他们各自的服务</li>
 </ol>
 </li>
-<li>Spring Boot和Spring Cloud
-<ol>
+<li>Spring Boot和Spring Cloud<ol>
 <li>Spring Boot提供了基于Java的、面向REST的微服务框架</li>
 <li>Spring Cloud使实施和部署微服务到私有云或公有云变得更加简单</li>
 </ol>
 </li>
 </ol>
-<h1 id="2-下一代微服务service-mesh"><a class="markdownIt-Anchor" href="#2-下一代微服务service-mesh"></a> 2. 下一代微服务：Service Mesh</h1>
-<ol>
+<h1 id="2-下一代微服务：Service-Mesh"><a href="#2-下一代微服务：Service-Mesh" class="headerlink" title="2. 下一代微服务：Service Mesh"></a>2. 下一代微服务：Service Mesh</h1><ol>
 <li>一种基础设施层，服务间的通信通过Service Mesh进行。</li>
 <li>可靠地传输复杂网络拓扑中服务的请求，将服务变成现代的云原生服务。</li>
 <li>一种网络代理的实现，通常与业务服务部署在一起，业务服务不感知。</li>
 <li>一种TCP/IP之上的网络模型。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="21-部署模型单个服务调用表现为sidecar"><a class="markdownIt-Anchor" href="#21-部署模型单个服务调用表现为sidecar"></a> 2.1. 部署模型：单个服务调用，表现为sidecar</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-部署模型多个服务调用表现为通讯层"><a class="markdownIt-Anchor" href="#22-部署模型多个服务调用表现为通讯层"></a> 2.2. 部署模型：多个服务调用，表现为通讯层</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="23-部署模型有大量服务表现为网络"><a class="markdownIt-Anchor" href="#23-部署模型有大量服务表现为网络"></a> 2.3. 部署模型：有大量服务，表现为网络</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="24-为什么使用service-mesh"><a class="markdownIt-Anchor" href="#24-为什么使用service-mesh"></a> 2.4. 为什么使用Service Mesh</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-1-部署模型：单个服务调用，表现为sidecar"><a href="#2-1-部署模型：单个服务调用，表现为sidecar" class="headerlink" title="2.1. 部署模型：单个服务调用，表现为sidecar"></a>2.1. 部署模型：单个服务调用，表现为sidecar</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-部署模型：多个服务调用，表现为通讯层"><a href="#2-2-部署模型：多个服务调用，表现为通讯层" class="headerlink" title="2.2. 部署模型：多个服务调用，表现为通讯层"></a>2.2. 部署模型：多个服务调用，表现为通讯层</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-3-部署模型：有大量服务，表现为网络"><a href="#2-3-部署模型：有大量服务，表现为网络" class="headerlink" title="2.3. 部署模型：有大量服务，表现为网络"></a>2.3. 部署模型：有大量服务，表现为网络</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec10/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-4-为什么使用Service-Mesh"><a href="#2-4-为什么使用Service-Mesh" class="headerlink" title="2.4. 为什么使用Service Mesh"></a>2.4. 为什么使用Service Mesh</h2><ol>
 <li>无需多种语言的微服务框架开发</li>
 <li>对业务代码0侵入</li>
 <li>不适合改造的单体应用</li>
@@ -416,9 +406,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec3-%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95-Scrum/" title="2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum">
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E6%96%87%E4%BB%B6/" title="2020-C-plus-plus-advanced-programming-C++ 输入重定向到文件">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Devops-introduction-Lec3-敏捷软件开发方法-Scrum</span>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 输入重定向到文件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -426,8 +416,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec11-DevSecOps/" title="2020-Devops-introduction-Lec11-DevSecOps">
-                        <span class="hidden-mobile">2020-Devops-introduction-Lec11-DevSecOps</span>
+                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Ref01-%E7%89%A9%E8%81%94%E7%BD%91%E7%9A%84M2M/" title="2020-Introduction-to-Embedded-Systems-Ref01-物联网的M2M">
+                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-Ref01-物联网的M2M</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

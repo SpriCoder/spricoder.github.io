@@ -31,8 +31,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/6.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/7.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/8.png">
-<meta property="article:published_time" content="2022-02-16T11:09:21.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:24:43.830Z">
+<meta property="article:published_time" content="2022-02-16T11:10:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:39:29.526Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="软件系统设计">
@@ -209,7 +209,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:10" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          11k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          97 分钟
+          96 分钟
         
       </span>
     
@@ -282,47 +282,37 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec10-defensive-programming"><a class="markdownIt-Anchor" href="#lec10-defensive-programming"></a> lec10-Defensive Programming</h2>
-<h1 id="1-防御式编程-defensive-programming"><a class="markdownIt-Anchor" href="#1-防御式编程-defensive-programming"></a> 1. 防御式编程 Defensive Programming</h1>
-<h2 id="11-可用-正确和优秀的代码"><a class="markdownIt-Anchor" href="#11-可用-正确和优秀的代码"></a> 1.1. 可用、正确和优秀的代码</h2>
-<ol>
+              <h2 id="lec10-Defensive-Programming"><a href="#lec10-Defensive-Programming" class="headerlink" title="lec10-Defensive Programming"></a>lec10-Defensive Programming</h2><h1 id="1-防御式编程-Defensive-Programming"><a href="#1-防御式编程-Defensive-Programming" class="headerlink" title="1. 防御式编程 Defensive Programming"></a>1. 防御式编程 Defensive Programming</h1><h2 id="1-1-可用、正确和优秀的代码"><a href="#1-1-可用、正确和优秀的代码" class="headerlink" title="1.1. 可用、正确和优秀的代码"></a>1.1. 可用、正确和优秀的代码</h2><ol>
 <li>编写大多数情况下都能用(可用)的代码很容易：但是提供意外输入会崩溃。</li>
-<li>正确的代码绝不会崩溃
-<ol>
+<li>正确的代码绝不会崩溃<ol>
 <li>但所有可能输入集合很大，难以测试</li>
 <li>并非所有正确的代码都是优秀的代码：可能逻辑难以理解，并且几乎无法维护。</li>
 </ol>
 </li>
 <li>优秀的代码是<strong>健壮的、高效</strong>的、当然也是正确的：即便面对不常见输入，产品级代码也不会崩溃和产生错误的结果。</li>
 </ol>
-<h2 id="12-编程中的常见设想"><a class="markdownIt-Anchor" href="#12-编程中的常见设想"></a> 1.2. 编程中的常见设想</h2>
-<ol>
-<li>这个函数&quot;绝不会&quot;被那样调用：传递给我的参数总是有效的</li>
-<li>这段代码肯定会&quot;一直&quot;正常运行：它绝对不会产生错误</li>
-<li>如果我把这个变量标记为&quot;仅限内部使用&quot;，就没有人会尝试访问这个变量</li>
+<h2 id="1-2-编程中的常见设想"><a href="#1-2-编程中的常见设想" class="headerlink" title="1.2. 编程中的常见设想"></a>1.2. 编程中的常见设想</h2><ol>
+<li>这个函数”绝不会”被那样调用：传递给我的参数总是有效的</li>
+<li>这段代码肯定会”一直”正常运行：它绝对不会产生错误</li>
+<li>如果我把这个变量标记为”仅限内部使用”，就没有人会尝试访问这个变量</li>
 <li><strong>进行防御式编程时，不应该做任何设想</strong>！</li>
 </ol>
-<h2 id="13-你的软件开发过程是怎样的"><a class="markdownIt-Anchor" href="#13-你的软件开发过程是怎样的"></a> 1.3. 你的软件开发过程是怎样的？</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-什么是防御式编程"><a class="markdownIt-Anchor" href="#2-什么是防御式编程"></a> 2. 什么是防御式编程</h1>
-<ol>
+<h2 id="1-3-你的软件开发过程是怎样的？"><a href="#1-3-你的软件开发过程是怎样的？" class="headerlink" title="1.3. 你的软件开发过程是怎样的？"></a>1.3. 你的软件开发过程是怎样的？</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-什么是防御式编程"><a href="#2-什么是防御式编程" class="headerlink" title="2. 什么是防御式编程"></a>2. 什么是防御式编程</h1><ol>
 <li><strong>通过预见到(或至少预先推测到)问题所在，断定代码中每个阶段可能出现的错误，并做出相应的防范措施，来防止类似意外的发生。</strong></li>
 <li>防御式编程源自于防御式驾驶。</li>
-<li>主要思想
-<ol>
+<li>主要思想<ol>
 <li>子程序应该不因传入错误数据而被破坏，哪怕是由其他子程序产生的错误数据</li>
 <li>换句话说，要承认程序都会有问题，都会被修改</li>
 </ol>
 </li>
 </ol>
-<h2 id="21-关于防御式编程"><a class="markdownIt-Anchor" href="#21-关于防御式编程"></a> 2.1. 关于防御式编程</h2>
-<ol>
+<h2 id="2-1-关于防御式编程"><a href="#2-1-关于防御式编程" class="headerlink" title="2.1. 关于防御式编程"></a>2.1. 关于防御式编程</h2><ol>
 <li>区别于检查错误：防御性编程并不能排除所有的程序错误</li>
 <li>区别于调试：防御式编程是一种<strong>防卫</strong>方式，而不是补救方式</li>
 <li>区别于测试：测试不是防御式的，测试可以验证代码现在是正确的，但不保证在经历修改之后不会出错</li>
 </ol>
-<h2 id="22-防御式编程技巧"><a class="markdownIt-Anchor" href="#22-防御式编程技巧"></a> 2.2. 防御式编程技巧</h2>
-<ol>
+<h2 id="2-2-防御式编程技巧"><a href="#2-2-防御式编程技巧" class="headerlink" title="2.2. 防御式编程技巧"></a>2.2. 防御式编程技巧</h2><ol>
 <li>使用好的编码风格和合理的设计</li>
 <li>不要仓促地编写代码</li>
 <li>不要相信任何人</li>
@@ -335,15 +325,13 @@
 <li>使用安全的数据结构</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">char</span> *<span class="hljs-title">unsafe_copy</span> <span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> * source)</span></span>&#123;<br>  <span class="hljs-type">char</span> *buffer = <span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-number">10</span>] ;<br>  <span class="hljs-built_in">strcpy</span>(buffer, source);<br>  <span class="hljs-keyword">return</span> buffer ; <br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="11">
+<ol>
 <li>使用标准语言工具</li>
 <li>审慎地进行强制转换</li>
 </ol>
-<h2 id="23-处理非法输入数据"><a class="markdownIt-Anchor" href="#23-处理非法输入数据"></a> 2.3. 处理非法输入数据</h2>
-<ol>
+<h2 id="2-3-处理非法输入数据"><a href="#2-3-处理非法输入数据" class="headerlink" title="2.3. 处理非法输入数据"></a>2.3. 处理非法输入数据</h2><ol>
 <li>好的程序应如何处理垃圾？</li>
-<li>检查所有来源于外部的数据的值：
-<ol>
+<li>检查所有来源于外部的数据的值：<ol>
 <li>文件、用户、网络或其他外部接口</li>
 <li>确保在允许范围内</li>
 </ol>
@@ -351,16 +339,13 @@
 <li>检查子程序所有输入参数的值：因为数据来自于其他子程序</li>
 <li>决定如何处理错误的输入数据：这很重要。</li>
 </ol>
-<h2 id="24-断言assertions"><a class="markdownIt-Anchor" href="#24-断言assertions"></a> 2.4. 断言Assertions</h2>
-<ol>
-<li>在开发期间使用的、让程序在运行时进行自检的代码，是对开发人员的警告，通常是一个子程序或宏
-<ol>
+<h2 id="2-4-断言Assertions"><a href="#2-4-断言Assertions" class="headerlink" title="2.4. 断言Assertions"></a>2.4. 断言Assertions</h2><ol>
+<li>在开发期间使用的、让程序在运行时进行自检的代码，是对开发人员的警告，通常是一个子程序或宏<ol>
 <li>断言为真，表示程序运行正常</li>
 <li>断言为假，表示代码中出现了意料之外的错误</li>
 </ol>
 </li>
-<li>构成(两个参数)
-<ol>
+<li>构成(两个参数)<ol>
 <li>布尔表达式：描述假设为真的情况</li>
 <li>显示的信息：断言为假时(不是必须的!)</li>
 </ol>
@@ -368,8 +353,7 @@
 <li>举例</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java 示例：</span><br><span class="hljs-keyword">assert</span> denominator != <span class="hljs-number">0</span> : <span class="hljs-string">&quot;denominator is unexpectedly equal to 0.&quot;</span>;<br><span class="hljs-comment">// 声明denominator不会等于0当第一个参数demonimator != 0为false时，要打印的信息</span><br></code></pre></td></tr></table></figure>
-<h3 id="241-断言的用途"><a class="markdownIt-Anchor" href="#241-断言的用途"></a> 2.4.1. 断言的用途</h3>
-<ol>
+<h3 id="2-4-1-断言的用途"><a href="#2-4-1-断言的用途" class="headerlink" title="2.4.1. 断言的用途"></a>2.4.1. 断言的用途</h3><ol>
 <li>输入参数或输出参数的取值处于预期的范围内</li>
 <li>子程序开始(或结束)执行时，文件或流是处于打开(或关闭)的状态</li>
 <li>子程序开始(或结束)执行时，文件或流的读写位置处于开头(或结尾)处</li>
@@ -381,28 +365,22 @@
 <li>子程序开始(或结束)执行时，某个容器是空的(或满的)</li>
 <li>一个经过高度优化的复杂子程序的运算结果和相对缓慢但代码清晰的子程序的运算结果相一致</li>
 </ol>
-<h3 id="242-什么时候使用断言"><a class="markdownIt-Anchor" href="#242-什么时候使用断言"></a> 2.4.2. 什么时候使用断言</h3>
-<ol>
+<h3 id="2-4-2-什么时候使用断言"><a href="#2-4-2-什么时候使用断言" class="headerlink" title="2.4.2. 什么时候使用断言"></a>2.4.2. 什么时候使用断言</h3><ol>
 <li>断言主要用于<strong>开发和维护</strong>阶段</li>
 <li>帮助查清相互矛盾的假定、预料之外的情况、传递给子程序的错误数据等</li>
 <li>生成产品代码时并不编译进去，不希望用户看到产品代码中的断言信息，同时避免降低系统性能</li>
 </ol>
-<h3 id="243-建立自己的断言机制"><a class="markdownIt-Anchor" href="#243-建立自己的断言机制"></a> 2.4.3. 建立自己的断言机制</h3>
-<ol>
+<h3 id="2-4-3-建立自己的断言机制"><a href="#2-4-3-建立自己的断言机制" class="headerlink" title="2.4.3. 建立自己的断言机制"></a>2.4.3. 建立自己的断言机制</h3><ol>
 <li>常见的高级语言都支持断言：如C++、Java、C#和Microsoft Visual Basic等</li>
-<li>如果不直接支持断言也可以自己实现
-<ol>
+<li>如果不直接支持断言也可以自己实现<ol>
 <li>J2SE 1.3及早期版本没有内建的断言机制</li>
 <li>C++中标准的assert宏并不支持文本信息</li>
 </ol>
 </li>
 </ol>
-<h3 id="244-建立自己的断言机制c"><a class="markdownIt-Anchor" href="#244-建立自己的断言机制c"></a> 2.4.4. 建立自己的断言机制：C++</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++示例：一个实现断言的宏condition &amp; message断言的两个参数</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ASSERT(condition, message) &#123;</span><br>  <span class="hljs-keyword">if</span> (!(condition))(<br>    <span class="hljs-built_in">LogError</span>(<span class="hljs-string">&quot;Assertion failed:&quot;</span>, <span class="hljs-meta">#condition, message );</span><br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="245-使用指导"><a class="markdownIt-Anchor" href="#245-使用指导"></a> 2.4.5. 使用指导</h3>
-<ol>
-<li>用错误处理代码来处理预期会发生的<strong>非正常</strong>情况，用断言来检查<strong>永远不该发生的情况</strong>
-<ol>
+<h3 id="2-4-4-建立自己的断言机制：C"><a href="#2-4-4-建立自己的断言机制：C" class="headerlink" title="2.4.4. 建立自己的断言机制：C++"></a>2.4.4. 建立自己的断言机制：C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++示例：一个实现断言的宏condition &amp; message断言的两个参数</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ASSERT(condition, message) &#123;</span><br>  <span class="hljs-keyword">if</span> (!(condition))(<br>    <span class="hljs-built_in">LogError</span>(<span class="hljs-string">&quot;Assertion failed:&quot;</span>, <span class="hljs-meta">#condition, message );</span><br>    <span class="hljs-built_in">exit</span>(EXIT_FAILURE);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="2-4-5-使用指导"><a href="#2-4-5-使用指导" class="headerlink" title="2.4.5. 使用指导"></a>2.4.5. 使用指导</h3><ol>
+<li>用错误处理代码来处理预期会发生的<strong>非正常</strong>情况，用断言来检查<strong>永远不该发生的情况</strong><ol>
 <li>错误处理：检查有害的输入数据</li>
 <li>断言：检查代码中的bug，可看作是可执行的注解</li>
 </ol>
@@ -410,11 +388,9 @@
 <li>避免把需要执行的代码放到断言中：当关闭断言功能时，编译器会将其排除在外</li>
 </ol>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vb">Debug.Assert(PerformAction()) <span class="hljs-comment">&#x27;Couldn&#x27;t perform action</span><br></code></pre></td></tr></table></figure>
-<h3 id="246-约束"><a class="markdownIt-Anchor" href="#246-约束"></a> 2.4.6. 约束</h3>
-<ol>
-<li>用断言来注解并验证前/后置条件
-<ol>
-<li>&quot;契约式设计&quot;的一种</li>
+<h3 id="2-4-6-约束"><a href="#2-4-6-约束" class="headerlink" title="2.4.6. 约束"></a>2.4.6. 约束</h3><ol>
+<li>用断言来注解并验证前/后置条件<ol>
+<li>“契约式设计”的一种</li>
 <li>Preconditions: 子程序或类的调用方代码在调用子程序或实例化对象之前要确保为真的属性，是调用调用方代码对所调用代码要承担的义务。</li>
 <li>Postconditions: 子程序或类在执行结束后要确保为真的属性，是子程序或对调用方代码锁承担的责任。</li>
 <li>Invariants: 当程序执行到达特定点(如循环中、方法调用等)时都保持为真的条件，否则程序逻辑存在问题。</li>
@@ -423,46 +399,39 @@
 <li>如果变量来源于系统外部，就应该用错误处理代码来检查和处理非法数据</li>
 </ol>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs vb"><span class="hljs-keyword">Private</span> <span class="hljs-keyword">Function</span> Velocity ( _<br>   <span class="hljs-keyword">ByVal</span> latitude <span class="hljs-keyword">As</span> <span class="hljs-type">Single</span>, _<br>   <span class="hljs-keyword">ByVal</span> longitude <span class="hljs-keyword">As</span> <span class="hljs-type">Single</span>, _<br>   <span class="hljs-keyword">ByVal</span> elevation <span class="hljs-keyword">As</span> <span class="hljs-type">Single</span> _<br>) <span class="hljs-keyword">As</span> <span class="hljs-type">Single</span><br><span class="hljs-comment">&#x27;Preconditions</span><br>Debug.Assert(-<span class="hljs-number">90</span> &lt;= latitude <span class="hljs-built_in">And</span> latitude &lt;= <span class="hljs-number">90</span>)<br>Debug.Assert(<span class="hljs-number">0</span> &lt;= longitude <span class="hljs-built_in">And</span> longitude &lt; <span class="hljs-number">360</span>)<br>Debug.Assert(-<span class="hljs-number">500</span> &lt;= elevation <span class="hljs-built_in">And</span> elevation &lt;= <span class="hljs-number">75000</span>)<br><br><span class="hljs-comment">&#x27;Postconditions</span><br>Debug.Assert( <span class="hljs-number">0</span> &lt;= returnVelocity <span class="hljs-built_in">And</span> returnVelocity &lt;=<br><span class="hljs-number">600</span> )<br><span class="hljs-comment">&#x27;return value</span><br>Velocity = returnVelocity<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Function</span><br></code></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>对于高健壮性的代码，应该先使用断言再处理错误</li>
 </ol>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vb"><span class="hljs-keyword">Private</span> <span class="hljs-keyword">Function</span> Velocity ( _<br>) <span class="hljs-keyword">As</span> <span class="hljs-type">Single</span><br><span class="hljs-comment">&#x27; Preconditions</span><br>Debug.Assert(-<span class="hljs-number">90</span> &lt;= latitude <span class="hljs-built_in">And</span> latitude &lt;= <span class="hljs-number">90</span>)<br>Debug.Assert(<span class="hljs-number">0</span> &lt;= longitude <span class="hljs-built_in">And</span> longitude &lt; <span class="hljs-number">360</span>)<br>Debug.Assert(-<span class="hljs-number">500</span> &lt;= elevation <span class="hljs-built_in">And</span> elevation &lt;= <span class="hljs-number">75000</span>)<br><br><span class="hljs-keyword">If</span> (latitude &lt; -<span class="hljs-number">90</span>) <span class="hljs-keyword">Then</span><br>   latitude = -<span class="hljs-number">90</span><br><span class="hljs-keyword">ElseIf</span> (latitude &gt; <span class="hljs-number">90</span>) <span class="hljs-keyword">Then</span><br>   latitude = <span class="hljs-number">90</span><br><span class="hljs-keyword">End</span> <span class="hljs-keyword">If</span><br><span class="hljs-keyword">If</span> (longitude &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">Then</span><br>   longitude = <span class="hljs-number">0</span><br><span class="hljs-keyword">ElseIf</span> (longitude &gt; <span class="hljs-number">360</span>) <span class="hljs-keyword">Then</span> ...<br></code></pre></td></tr></table></figure>
-<h3 id="247-前置条件"><a class="markdownIt-Anchor" href="#247-前置条件"></a> 2.4.7. 前置条件</h3>
-<ol>
+<h3 id="2-4-7-前置条件"><a href="#2-4-7-前置条件" class="headerlink" title="2.4.7. 前置条件"></a>2.4.7. 前置条件</h3><ol>
 <li>不要断言方法的规范</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh rate.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> rate refresh rate, in frames per second.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@throws</span> IllegalArgumentException if rate &lt;= 0 or</span><br><span class="hljs-comment">* rate &gt; MAX_REFRESH_RATE.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setRefreshRate</span><span class="hljs-params">(<span class="hljs-type">int</span> rate)</span>&#123;<br>  <span class="hljs-comment">// Enforce specified precondition in public method</span><br>  <span class="hljs-keyword">if</span> (rate &lt;= <span class="hljs-number">0</span> || rate &gt; MAX_REFRESH_RATE)<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Illegal rate: &quot;</span> + rate);<br>  setRefreshInterval(<span class="hljs-number">1000</span>/rate);<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>可以断言非public方法的前置条件</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh interval (to a legal frame rate).</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> interval refresh interval in milliseconds.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setRefreshInterval</span><span class="hljs-params">( <span class="hljs-type">int</span> interval )</span><br>&#123;<br>  <span class="hljs-comment">// preconditions in nonpublic method</span><br>  <span class="hljs-keyword">assert</span> interval &gt; <span class="hljs-number">0</span> &amp;&amp; interval &lt;= <span class="hljs-number">1000</span>/MAX_REFRESH_RATE : interval;<br>  ... <span class="hljs-comment">// Set the refresh interval</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="248-不变式invariants"><a class="markdownIt-Anchor" href="#248-不变式invariants"></a> 2.4.8. 不变式Invariants</h3>
-<ol>
+<h3 id="2-4-8-不变式Invariants"><a href="#2-4-8-不变式Invariants" class="headerlink" title="2.4.8. 不变式Invariants"></a>2.4.8. 不变式Invariants</h3><ol>
 <li>永远都应该为真的条件</li>
-<li>内部不变式
-<ol>
+<li>内部不变式<ol>
 <li>程序运行到特定时刻应该为真的事实</li>
 <li>如：assert x &gt; 0</li>
 </ol>
 </li>
-<li>控制流不变式
-<ol>
+<li>控制流不变式<ol>
 <li>断言不会被运行到的代码，如assert false: suit;</li>
 <li>注意：将语句放置在编译器认为不会被运行到的地方会报错</li>
 </ol>
 </li>
-<li>类不变式
-<ol>
+<li>类不变式<ol>
 <li>指类对象作为有效的类成员必须满足的条件</li>
 <li>如：assert person.age &gt;= 0 &amp;&amp; person.age &lt; 150;</li>
 <li>在即将从public方法和构造函数中返回时断言类的不变式</li>
 </ol>
 </li>
 </ol>
-<h3 id="249-注意"><a class="markdownIt-Anchor" href="#249-注意"></a> 2.4.9. 注意</h3>
-<ol>
-<li>断言是提高软件质量技术的有益辅助手段
-<ol>
+<h3 id="2-4-9-注意"><a href="#2-4-9-注意" class="headerlink" title="2.4.9. 注意"></a>2.4.9. 注意</h3><ol>
+<li>断言是提高软件质量技术的有益辅助手段<ol>
 <li>可看作是可执行的注解</li>
 <li>相比注释，能更主动地对程序中的假定作出说明</li>
 </ol>
@@ -471,21 +440,17 @@
 <li>断言不能有任何副作用</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> i= pullNumberFromThinAir();<br><span class="hljs-keyword">assert</span>(i = <span class="hljs-number">6</span>); <span class="hljs-comment">//错误的断言导致i被赋值</span><br>printf(<span class="hljs-string">&quot;i is 8d\n&quot;</span>,i);<br></code></pre></td></tr></table></figure>
-<h3 id="2410-question-应该进行多少约束校验"><a class="markdownIt-Anchor" href="#2410-question-应该进行多少约束校验"></a> 2.4.10. Question: 应该进行多少约束校验？</h3>
-<ol>
+<h3 id="2-4-10-Question-应该进行多少约束校验？"><a href="#2-4-10-Question-应该进行多少约束校验？" class="headerlink" title="2.4.10. Question: 应该进行多少约束校验？"></a>2.4.10. Question: 应该进行多少约束校验？</h3><ol>
 <li>每一行都设置一个校验？过多的约束校验，可能使得代码的逻辑变得不明确</li>
-<li>可读性是衡量程序质量的最佳标准
-<ol>
+<li>可读性是衡量程序质量的最佳标准<ol>
 <li>在主要函数中放置前置条件和后置条件，并且在关键的循环中放置不变条件，就已经足够了</li>
 <li>在修正错误的地方加入一条断言也是一个良好的习惯</li>
 </ol>
 </li>
 </ol>
-<h3 id="2411-补充断言举例"><a class="markdownIt-Anchor" href="#2411-补充断言举例"></a> 2.4.11. 补充：断言举例</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AssertionDemo</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span> i; <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>      sum += i;<br>    &#125;<br>    <span class="hljs-type">assert</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span>= <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">assert</span> sum &gt; <span class="hljs-number">10</span> &amp;&amp; sum &lt; <span class="hljs-number">5</span> * <span class="hljs-number">10</span> : <span class="hljs-string">&quot;sum is &quot;</span> + sum;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="2-4-11-补充：断言举例"><a href="#2-4-11-补充：断言举例" class="headerlink" title="2.4.11. 补充：断言举例"></a>2.4.11. 补充：断言举例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AssertionDemo</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span> i; <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>      sum += i;<br>    &#125;<br>    <span class="hljs-type">assert</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span>= <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">assert</span> sum &gt; <span class="hljs-number">10</span> &amp;&amp; sum &lt; <span class="hljs-number">5</span> * <span class="hljs-number">10</span> : <span class="hljs-string">&quot;sum is &quot;</span> + sum;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
-<li>冒泡排序的前置后置条件
-<ol>
+<li>冒泡排序的前置后置条件<ol>
 <li>前置条件不为空</li>
 <li>后置条件为有序</li>
 </ol>
@@ -493,15 +458,12 @@
 <li>另一种断言的用法是放在没有default处理的switch语句</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">switch</span> (month) &#123;<br>  <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: ... ; <span class="hljs-keyword">break</span>;<br>  <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: ... ; <span class="hljs-keyword">break</span>;<br>  ...<br>  <span class="hljs-keyword">case</span> <span class="hljs-number">12</span>: ... ; <span class="hljs-keyword">break</span>;<br>  <span class="hljs-keyword">default</span>: <span class="hljs-keyword">assert</span> <span class="hljs-literal">false</span> : <span class="hljs-string">&quot;Invalid month: &quot;</span> + month<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="2412-断言-vs-错误处理"><a class="markdownIt-Anchor" href="#2412-断言-vs-错误处理"></a> 2.4.12. 断言 vs. 错误处理</h3>
-<ol>
+<h3 id="2-4-12-断言-vs-错误处理"><a href="#2-4-12-断言-vs-错误处理" class="headerlink" title="2.4.12. 断言 vs. 错误处理"></a>2.4.12. 断言 vs. 错误处理</h3><ol>
 <li>断言处理代码中不应发生的错误</li>
 <li>错误处理处理那些预料中可能发生的错误</li>
 </ol>
-<h1 id="3-错误处理技术"><a class="markdownIt-Anchor" href="#3-错误处理技术"></a> 3. 错误处理技术</h1>
-<ol>
-<li>错误可能而且必将发生
-<ol>
+<h1 id="3-错误处理技术"><a href="#3-错误处理技术" class="headerlink" title="3. 错误处理技术"></a>3. 错误处理技术</h1><ol>
+<li>错误可能而且必将发生<ol>
 <li>错误是预先就知道的，区别于程序中的bug</li>
 <li>如想打开的数据库文件已被删除，磁盘空间已满</li>
 </ol>
@@ -509,8 +471,7 @@
 <li>用户错误：提供错误的输入，或试图进行荒谬的操作</li>
 <li>程序员错误：是一种Bug，由程序员引入的代码缺陷</li>
 <li>意外情况：网络连接失败，打印机墨水用光等</li>
-<li>错误处理技术用来处理那些预料中可能要发生的错误情况
-<ol>
+<li>错误处理技术用来处理那些预料中可能要发生的错误情况<ol>
 <li>返回中立值(如数值返回0)</li>
 <li>换用下一个正确的数据</li>
 <li>返回与前次相同的数据</li>
@@ -520,80 +481,67 @@
 </ol>
 </li>
 </ol>
-<h2 id="31-错误处理技术"><a class="markdownIt-Anchor" href="#31-错误处理技术"></a> 3.1. 错误处理技术</h2>
-<ol>
-<li>返回中立值：继续执行操作并简单地返回一个没有危害的数值
-<ol>
+<h2 id="3-1-错误处理技术"><a href="#3-1-错误处理技术" class="headerlink" title="3.1. 错误处理技术"></a>3.1. 错误处理技术</h2><ol>
+<li>返回中立值：继续执行操作并简单地返回一个没有危害的数值<ol>
 <li>数值计算可以返回0</li>
 <li>字符串操作可以返回空字符串</li>
 <li>指针操作可以返回一个空指针</li>
 </ol>
 </li>
 <li>换用下一个正确的数据：在处理数据流的时候，返回下一个正确的数据即可</li>
-<li>返回与上一次相同的数据
-<ol>
+<li>返回与上一次相同的数据<ol>
 <li>“重用上一次正确的结果”</li>
 <li>如windows系统崩溃后用上一次配置重启动</li>
 </ol>
 </li>
-<li>换用最接近的合法值
-<ol>
+<li>换用最接近的合法值<ol>
 <li>常出现在数值超出其正常设定的上下界的时候</li>
 <li>Velocity的例子</li>
 </ol>
 </li>
-<li>把警告信息记录到日志文件中
-<ol>
+<li>把警告信息记录到日志文件中<ol>
 <li>在使用这种方法的时候需要对错误信息进行标示，或者将警告信息单独存放，以便快速查询定位</li>
 <li>可以和其他技术结合使用</li>
 </ol>
 </li>
-<li>返回一个错误码：当只有系统的某些部分处理错误，而其他部分则不在本地(局部)处理错误时
-<ol>
+<li>返回一个错误码：当只有系统的某些部分处理错误，而其他部分则不在本地(局部)处理错误时<ol>
 <li>设置一个状态变量的值</li>
 <li>用状态值作为函数的返回值</li>
 <li>用语言内建的异常机制抛出一个异常</li>
 </ol>
 </li>
-<li>调用错误处理子程序或对象
-<ol>
+<li>调用错误处理子程序或对象<ol>
 <li>把错误处理集中在一个全局的错误处理子程序或对象</li>
 <li>优点：能把错误处理的职责都集中到一起</li>
 <li>代价：错误处理代码与整个程序紧密耦合</li>
 </ol>
 </li>
-<li>显示出错消息
-<ol>
+<li>显示出错消息<ol>
 <li>当心：不要告诉系统的潜在攻击者太多东西</li>
 <li>“程序应该只在没有什么可做的情况下才向用户报告错误”</li>
 </ol>
 </li>
-<li>用最妥当的方法在局部处理错误
-<ol>
+<li>用最妥当的方法在局部处理错误<ol>
 <li>具体采用何种错误处理方法由具体程序员决定</li>
 <li>灵活度高，但系统的整体性能将无法满足对其正确性或可靠性的需求</li>
 </ol>
 </li>
 <li>关闭程序：适用于人身安全攸关的应用程序</li>
 </ol>
-<h2 id="32-健壮性与正确性"><a class="markdownIt-Anchor" href="#32-健壮性与正确性"></a> 3.2. 健壮性与正确性</h2>
-<ol>
+<h2 id="3-2-健壮性与正确性"><a href="#3-2-健壮性与正确性" class="headerlink" title="3.2. 健壮性与正确性"></a>3.2. 健壮性与正确性</h2><ol>
 <li>处理错误最恰当的方式要根据出现错误的软件的类别而定</li>
-<li>正确性(correctness)：人身安全攸关的软件
-<ol>
+<li>正确性(correctness)：人身安全攸关的软件<ol>
 <li>指软件按照需求正确执行任务的能力</li>
 <li>永不返回不准确的结果，哪怕不返回结果也比返回不准确的结果好</li>
 </ol>
 </li>
-<li>健壮性(robustness)：消费类应用软件
-<ol>
+<li>健壮性(robustness)：消费类应用软件<ol>
 <li>指软件对于规范要求以外的输入情况的处理能力</li>
 <li>要不断尝试采取某些措施，以保证软件可以持续地运转下去，哪怕有时做出一些不够准确的结果</li>
 </ol>
 </li>
 </ol>
-<h2 id="33-错误处理代码示例"><a class="markdownIt-Anchor" href="#33-错误处理代码示例"></a> 3.3. 错误处理代码示例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-3-错误处理代码示例"><a href="#3-3-错误处理代码示例" class="headerlink" title="3.3. 错误处理代码示例"></a>3.3. 错误处理代码示例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>1号：工作流：可读性差</li>
 <li>2号：扁平化，缺点是需要明显的控制变量</li>
@@ -601,49 +549,40 @@
 <li>4号：合适的</li>
 <li>5号：异常，异常的处理不明显</li>
 </ol>
-<h2 id="34-错误信息编写"><a class="markdownIt-Anchor" href="#34-错误信息编写"></a> 3.4. 错误信息编写</h2>
-<ol>
-<li>当需要由用户清理错误时
-<ol>
-<li>以用户期望的方式呈现信息：“磁盘空间：0KB”？</li>
+<h2 id="3-4-错误信息编写"><a href="#3-4-错误信息编写" class="headerlink" title="3.4. 错误信息编写"></a>3.4. 错误信息编写</h2><ol>
+<li>当需要由用户清理错误时<ol>
+<li>以用户期望的方式呈现信息：”磁盘空间：0KB”？</li>
 <li>确保用户能够理解错误信息</li>
-<li>不要呈现毫无意义的错误代码：“Error code 707E”？</li>
-<li>将后果严重的错误与仅仅是警告区分开来：可使用&quot;Error:&quot;或图标</li>
-<li>提示用户每种选择可能的后果后再提出问题：“是否继续”？</li>
+<li>不要呈现毫无意义的错误代码：”Error code 707E”？</li>
+<li>将后果严重的错误与仅仅是警告区分开来：可使用”Error:”或图标</li>
+<li>提示用户每种选择可能的后果后再提出问题：”是否继续”？</li>
 </ol>
 </li>
 </ol>
-<h2 id="35-异常"><a class="markdownIt-Anchor" href="#35-异常"></a> 3.5. 异常</h2>
-<ol>
-<li>是把代码中的错误或异常事件传递给调用方代码的一种特殊手段
-<ol>
+<h2 id="3-5-异常"><a href="#3-5-异常" class="headerlink" title="3.5. 异常"></a>3.5. 异常</h2><ol>
+<li>是把代码中的错误或异常事件传递给调用方代码的一种特殊手段<ol>
 <li>当遇到意料之外的情况，但不知道该如何处理时，可以抛出一个异常</li>
 <li>同继承一样，谨慎使用可降低复杂度</li>
 </ol>
 </li>
-<li>基本结构
-<ol>
+<li>基本结构<ol>
 <li>子程序使用throw抛出一个异常对象</li>
 <li>被调用链上层其他子程序的try-catch语句捕获</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>为什么C<ins>没有finally呢？因为C</ins>提供了资源获得和初始化RAI，确保无论是否发生异常都可以完成清理工作。因为C++可以自己进行析构。</li>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>为什么C++没有finally呢？因为C++提供了资源获得和初始化RAI，确保无论是否发生异常都可以完成清理工作。因为C++可以自己进行析构。</li>
 </ol>
-<h3 id="351-trace-a-program-execution"><a class="markdownIt-Anchor" href="#351-trace-a-program-execution"></a> 3.5.1. Trace a Program Execution</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>  statement1; <span class="hljs-comment">//Suppose no exceptions in the statements</span><br>  statement2; <span class="hljs-comment">//Suppose an exception of type Exception1 is thrown in statement2</span><br>  statement3;<br>&#125;<br><span class="hljs-keyword">catch</span>(Exception1 ex) &#123;<br>  handling ex; <span class="hljs-comment">// The exception is handled.</span><br>&#125;<br><span class="hljs-keyword">catch</span>(Exception2 ex)&#123;<br>  handling ex; <span class="hljs-comment">// Handling exception </span><br>  <span class="hljs-keyword">throw</span> ex; <span class="hljs-comment">// Rethrow the exception and control is transferred to the caller</span><br>&#125;<br><span class="hljs-keyword">finally</span> &#123;<br>  finalStatements; <span class="hljs-comment">// The final block is always executed</span><br>&#125;<br>Next statement;<span class="hljs-comment">// Next statement in the method is executed</span><br></code></pre></td></tr></table></figure>
-<h3 id="352-使用建议"><a class="markdownIt-Anchor" href="#352-使用建议"></a> 3.5.2. 使用建议</h3>
-<ol>
-<li>用异常通知程序的其他部分，发生了不可忽略的错误
-<ol>
+<h3 id="3-5-1-Trace-a-Program-Execution"><a href="#3-5-1-Trace-a-Program-Execution" class="headerlink" title="3.5.1. Trace a Program Execution"></a>3.5.1. Trace a Program Execution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>  statement1; <span class="hljs-comment">//Suppose no exceptions in the statements</span><br>  statement2; <span class="hljs-comment">//Suppose an exception of type Exception1 is thrown in statement2</span><br>  statement3;<br>&#125;<br><span class="hljs-keyword">catch</span>(Exception1 ex) &#123;<br>  handling ex; <span class="hljs-comment">// The exception is handled.</span><br>&#125;<br><span class="hljs-keyword">catch</span>(Exception2 ex)&#123;<br>  handling ex; <span class="hljs-comment">// Handling exception </span><br>  <span class="hljs-keyword">throw</span> ex; <span class="hljs-comment">// Rethrow the exception and control is transferred to the caller</span><br>&#125;<br><span class="hljs-keyword">finally</span> &#123;<br>  finalStatements; <span class="hljs-comment">// The final block is always executed</span><br>&#125;<br>Next statement;<span class="hljs-comment">// Next statement in the method is executed</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-5-2-使用建议"><a href="#3-5-2-使用建议" class="headerlink" title="3.5.2. 使用建议"></a>3.5.2. 使用建议</h3><ol>
+<li>用异常通知程序的其他部分，发生了不可忽略的错误<ol>
 <li>能提供一种无法被忽略的错误通知机制</li>
 <li>消除了错误向外扩散的可能性</li>
 </ol>
 </li>
-<li>只有真正例外的情况下才抛出异常
-<ol>
+<li>只有真正例外的情况下才抛出异常<ol>
 <li>仅在其他编码实践方法无法解决的情况下才使用异常(同断言类似，处理罕见且不该发生的情况)</li>
 <li>会增加复杂度：调用子程序的代码需要了解被调用代码中可能会抛出的异常，弱化了封装性</li>
 </ol>
@@ -652,39 +591,32 @@
 <li>避免在构造函数和析构函数中抛出异常，除非你在同一地方把它们捕获：C++中，构造函数中的异常会造成资源泄露</li>
 <li>在恰当的抽象层次抛出异常：确保异常的抽象层次与子程序接口的抽象层次是一致的</li>
 </ol>
-<h3 id="353-举例"><a class="markdownIt-Anchor" href="#353-举例"></a> 3.5.3. 举例</h3>
-<ol>
+<h3 id="3-5-3-举例"><a href="#3-5-3-举例" class="headerlink" title="3.5.3. 举例"></a>3.5.3. 举例</h3><ol>
 <li>抛出的异常也是程序接口的一部分，和其他具体的数据类型一样</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java反例: 抛出抽象层次不一致的异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> TaxId <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EOFException &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>子程序的调用方代码不是与Employee类的代码耦合，而是与比Employee类层次更低的抛出EOFException异常的代码耦合起来了</li>
 </ol>
-<h3 id="354-改进"><a class="markdownIt-Anchor" href="#354-改进"></a> 3.5.4. 改进</h3>
-<ol>
+<h3 id="3-5-4-改进"><a href="#3-5-4-改进" class="headerlink" title="3.5.4. 改进"></a>3.5.4. 改进</h3><ol>
 <li>GetTaxId() 代码应抛回一个与其所在类的接口相一致的异常</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java示例:一个在一致的抽象层次上抛出异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> TaxId <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EmployeeDataNotAvailable &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>在设计上需要增加EmployeeDataNotAvailable异常类型，<br />
-并将更底层的EOFException异常映射为该异常类型3</li>
-</ol>
-<h3 id="355-使用建议补"><a class="markdownIt-Anchor" href="#355-使用建议补"></a> 3.5.5. 使用建议(补)</h3>
 <ol>
+<li>在设计上需要增加EmployeeDataNotAvailable异常类型，<br>并将更底层的EOFException异常映射为该异常类型3</li>
+</ol>
+<h3 id="3-5-5-使用建议-补"><a href="#3-5-5-使用建议-补" class="headerlink" title="3.5.5. 使用建议(补)"></a>3.5.5. 使用建议(补)</h3><ol>
 <li>在异常消息中加入关于导致异常发生的全部信息：确保消息中含有为理解异常抛出原因所需的信息，如数组下标错误</li>
 <li>避免使用空的catch语句：意味着try或catch里的代码不对</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-comment">// lots of code</span><br>&#125; <span class="hljs-keyword">catch</span> ( AnException exception ) &#123;<br>  LogError(<span class="hljs-string">&quot;Unexpected exception&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="356-使用建议补"><a class="markdownIt-Anchor" href="#356-使用建议补"></a> 3.5.6. 使用建议(补)</h3>
-<ol>
-<li>了解所用函数库可能抛出的异常
-<ol>
+<h3 id="3-5-6-使用建议-补"><a href="#3-5-6-使用建议-补" class="headerlink" title="3.5.6. 使用建议(补)"></a>3.5.6. 使用建议(补)</h3><ol>
+<li>了解所用函数库可能抛出的异常<ol>
 <li>未能捕获由函数库抛出的异常可导致程序崩溃</li>
 <li>可通过编写原型代码来演练该函数库</li>
 </ol>
 </li>
-<li>把项目中对异常的使用标准化
-<ol>
+<li>把项目中对异常的使用标准化<ol>
 <li>当抛出多种类型的异常，如对象、数据及指针的话，则考虑建立一个标准</li>
 <li>创建项目的特定异常类：构造自己的异常类继承体系</li>
 <li>规定哪些异常在局部处理，哪些不在局部处理</li>
@@ -693,90 +625,74 @@
 </ol>
 </li>
 </ol>
-<h3 id="357-exception-classes"><a class="markdownIt-Anchor" href="#357-exception-classes"></a> 3.5.7. Exception Classes</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3571-system-errors"><a class="markdownIt-Anchor" href="#3571-system-errors"></a> 3.5.7.1. System Errors</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3572-exceptions"><a class="markdownIt-Anchor" href="#3572-exceptions"></a> 3.5.7.2. Exceptions</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3573-runtime-exceptions"><a class="markdownIt-Anchor" href="#3573-runtime-exceptions"></a> 3.5.7.3. Runtime Exceptions</h4>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-5-7-Exception-Classes"><a href="#3-5-7-Exception-Classes" class="headerlink" title="3.5.7. Exception Classes"></a>3.5.7. Exception Classes</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="3-5-7-1-System-Errors"><a href="#3-5-7-1-System-Errors" class="headerlink" title="3.5.7.1. System Errors"></a>3.5.7.1. System Errors</h4><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="3-5-7-2-Exceptions"><a href="#3-5-7-2-Exceptions" class="headerlink" title="3.5.7.2. Exceptions"></a>3.5.7.2. Exceptions</h4><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="3-5-7-3-Runtime-Exceptions"><a href="#3-5-7-3-Runtime-Exceptions" class="headerlink" title="3.5.7.3. Runtime Exceptions"></a>3.5.7.3. Runtime Exceptions</h4><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>考虑创建一个集中的异常报告机制</li>
 </ol>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vb">Visual Basic示例:集中的异常报告机制(定义部分)<br><span class="hljs-keyword">Sub</span> ReportException( _<br>  <span class="hljs-keyword">ByVal</span> className , _<br>  <span class="hljs-keyword">ByVal</span> thisException <span class="hljs-keyword">As</span> Exception _<br>)<br>  <span class="hljs-keyword">Dim</span> message <span class="hljs-keyword">As</span> <span class="hljs-type">String</span><br>  <span class="hljs-keyword">Dim</span> caption <span class="hljs-keyword">As</span> <span class="hljs-type">String</span><br>  message =<br>  <span class="hljs-string">&quot;Exception: &quot;</span> &amp; thisException .Message &amp;<br>  <span class="hljs-string">&quot;Class : &quot;</span> &amp; className &amp; ControlChars .CrLf &amp;<br>  <span class="hljs-string">&quot;Routine: &quot;</span> &amp; thisException . TargetSite . Narne &amp; ControlChars .CrLf<br>  caption = <span class="hljs-string">&quot;Exception&quot;</span><br>  MessageBox . Show( message , caption , MessageBoxButtons . OK, _<br>    MessageBoxlcon . Exclarmation )<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>集中的异常报告机制</li>
 <li>Visual Basic示例: 集中的异常报告机制(调用部分)</li>
 </ol>
 <figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vb"><span class="hljs-keyword">Try</span><br>…<br><span class="hljs-keyword">Catch</span> exceptionObject <span class="hljs-keyword">As</span> Exception<br>ReportException( CLASS_NAME , exceptionObject )<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Try</span><br></code></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>此处的异常报告只是一个非常简单的情况，实际开发中可以根据异常处理的需要开发或简或繁的代码</li>
 </ol>
-<h3 id="358-使用建议补"><a class="markdownIt-Anchor" href="#358-使用建议补"></a> 3.5.8. 使用建议(补)</h3>
-<ol>
-<li>考虑异常的替换方案
-<ol>
-<li>不要因为编程语言提供了异常而使用它：“深入一种语言去编程”</li>
+<h3 id="3-5-8-使用建议-补"><a href="#3-5-8-使用建议-补" class="headerlink" title="3.5.8. 使用建议(补)"></a>3.5.8. 使用建议(补)</h3><ol>
+<li>考虑异常的替换方案<ol>
+<li>不要因为编程语言提供了异常而使用它：”深入一种语言去编程”</li>
 <li>应自始至终考虑各种各样的错误处理机制</li>
 <li>思考，是否真的需要处理异常</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>  System.out.println(refVar.toString());<br>&#125;<br><span class="hljs-keyword">catch</span> (NullPointerException ex) &#123;<br>  System.out.println(<span class="hljs-string">&quot;refVar is null&quot;</span>);<br><br><span class="hljs-keyword">if</span> (refVar != <span class="hljs-literal">null</span>)<br>  System.out.println(refVar.toString());<br><span class="hljs-keyword">else</span><br>  System.out.println(<span class="hljs-string">&quot;refVar is null&quot;</span>);<br></code></pre></td></tr></table></figure>
-<h2 id="36-通过隔栏包容错误"><a class="markdownIt-Anchor" href="#36-通过隔栏包容错误"></a> 3.6. 通过隔栏包容错误</h2>
-<ol>
-<li>隔栏Barricade
-<ol>
+<h2 id="3-6-通过隔栏包容错误"><a href="#3-6-通过隔栏包容错误" class="headerlink" title="3.6. 通过隔栏包容错误"></a>3.6. 通过隔栏包容错误</h2><ol>
+<li>隔栏Barricade<ol>
 <li>以防御式编程为目的而进行隔离的一种方法</li>
-<li>把某些接口选定为&quot;安全&quot;区域的边界，对穿越安全区域边界的数据进行合法性校验</li>
+<li>把某些接口选定为”安全”区域的边界，对穿越安全区域边界的数据进行合法性校验</li>
 <li>隔栏可以将检验工作集中在特定的模块中，从而降低其它部分采用防御式编程的成本</li>
 </ol>
 </li>
-<li>隐喻：
-<ol>
+<li>隐喻：<ol>
 <li>船体外壳上装备的隔离舱</li>
 <li>手术室的消毒处理</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>在输入数据时将其转换为恰当的类型
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec10/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>在输入数据时将其转换为恰当的类型<ol>
 <li>输入数据通常是字符串或数字</li>
-<li>有时映射为&quot;是&quot;&quot;否&quot;等布尔变量，有时是枚举变量</li>
-<li>程序中长时间传递类型不明的数据，会增加程序的复杂度和崩溃的可能性
-<ol>
+<li>有时映射为”是””否”等布尔变量，有时是枚举变量</li>
+<li>程序中长时间传递类型不明的数据，会增加程序的复杂度和崩溃的可能性<ol>
 <li>应该在输入数据后立即将其转换到恰当的类型</li>
 </ol>
 </li>
 </ol>
 </li>
 </ol>
-<h3 id="361-隔栏vs断言"><a class="markdownIt-Anchor" href="#361-隔栏vs断言"></a> 3.6.1. 隔栏vs.断言</h3>
-<ol>
+<h3 id="3-6-1-隔栏vs-断言"><a href="#3-6-1-隔栏vs-断言" class="headerlink" title="3.6.1. 隔栏vs.断言"></a>3.6.1. 隔栏vs.断言</h3><ol>
 <li>隔栏的使用使断言和错误处理有了清晰的区分</li>
-<li>隔栏部分包含了&quot;脏数据&quot;：隔栏外部的程序应该使用错误处理技术，在那里对数据做任何的假定都是不安全的。</li>
-<li>通过隔离部分之后的是&quot;干净数据&quot;
-<ol>
+<li>隔栏部分包含了”脏数据”：隔栏外部的程序应该使用错误处理技术，在那里对数据做任何的假定都是不安全的。</li>
+<li>通过隔离部分之后的是”干净数据”<ol>
 <li>隔栏内部的程序就应使用断言技术，因为传进来的数据应该己在通过隔栏时被清理过了</li>
 <li>隔栏内子程序出现错误数据，就是程序里的问题</li>
 </ol>
 </li>
 </ol>
-<h3 id="362-辅助调试的代码"><a class="markdownIt-Anchor" href="#362-辅助调试的代码"></a> 3.6.2. 辅助调试的代码</h3>
-<ol>
+<h3 id="3-6-2-辅助调试的代码"><a href="#3-6-2-辅助调试的代码" class="headerlink" title="3.6.2. 辅助调试的代码"></a>3.6.2. 辅助调试的代码</h3><ol>
 <li>防御式编程的另一重要方面是使用调试助手(辅助调试的代码)，从而帮助快速检测错误</li>
 <li>误区： 产品级软件的种种限制也适用于开发中的软件，如性能、资源</li>
 <li>正确的认识：应该在开发期间牺牲一些速度和资源，从而换取可以让开发更顺畅的内置工具</li>
 <li>应该尽早地引入辅助调试的代码</li>
 </ol>
-<h1 id="4-进攻式编程offensive-programming"><a class="markdownIt-Anchor" href="#4-进攻式编程offensive-programming"></a> 4. 进攻式编程Offensive Programming</h1>
-<ol>
+<h1 id="4-进攻式编程Offensive-Programming"><a href="#4-进攻式编程Offensive-Programming" class="headerlink" title="4. 进攻式编程Offensive Programming"></a>4. 进攻式编程Offensive Programming</h1><ol>
 <li>进攻式编程是主动暴露可能出现错误的态度：在开发阶段让它显现出来，而在产品代码运行时让它能够自我恢复</li>
-<li>常用的进攻式编程方法
-<ol>
+<li>常用的进攻式编程方法<ol>
 <li>确保断言语句使程序终止运行</li>
 <li>完全填充分配到的所有内存</li>
 <li>完全填充己分配到的所有文件或流</li>
@@ -786,11 +702,9 @@
 </ol>
 </li>
 </ol>
-<h2 id="41-移除辅助调试代码的方法"><a class="markdownIt-Anchor" href="#41-移除辅助调试代码的方法"></a> 4.1. 移除辅助调试代码的方法</h2>
-<ol>
+<h2 id="4-1-移除辅助调试代码的方法"><a href="#4-1-移除辅助调试代码的方法" class="headerlink" title="4.1. 移除辅助调试代码的方法"></a>4.1. 移除辅助调试代码的方法</h2><ol>
 <li>辅助调试的代码会使软件的体积变得庞大且速度变慢</li>
-<li>使用类似ant和make这样的版本控制工具和make工具
-<ol>
+<li>使用类似ant和make这样的版本控制工具和make工具<ol>
 <li>在开发模式下，你可以让make工具把所有的调试代码都包含进来一起编译</li>
 <li>在产品模式下，又可以让make工具把那些你不希望包含在商用版本中的调试代码排除在外</li>
 </ol>
@@ -799,30 +713,26 @@
 <li>C++示例:直接使用预处理器来控制调试用的代码，所有使用辅助调试代码的地方都通过预处理器判断</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> DEBUG</span><br>…<br><span class="hljs-meta">#<span class="hljs-keyword">if</span> defined( DEBUG )</span><br><span class="hljs-comment">// debugging code</span><br>…<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
-<h2 id="43-使用内置的预处理器"><a class="markdownIt-Anchor" href="#43-使用内置的预处理器"></a> 4.3. 使用内置的预处理器</h2>
-<ol>
+<h2 id="4-3-使用内置的预处理器"><a href="#4-3-使用内置的预处理器" class="headerlink" title="4.3. 使用内置的预处理器"></a>4.3. 使用内置的预处理器</h2><ol>
 <li>另一种更简约的形式</li>
 <li>写一个能与预处理器指令同时使用的宏</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> DEBUG</span><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> defined( DEBUG )</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> DebugCode (code-fragment ) &#123;code-fragment &#125;</span><br><span class="hljs-meta">#<span class="hljs-keyword">else</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> DebugCode( code_fragment )</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br>. . .<br><span class="hljs-built_in">DebugCode</span>(<br>statement <span class="hljs-number">1</span>;<br>statement <span class="hljs-number">2</span>;<br>. . .<br>statement n;<br>);<br>. . .<br></code></pre></td></tr></table></figure>
-<h2 id="44-移除辅助调试代码的方法补"><a class="markdownIt-Anchor" href="#44-移除辅助调试代码的方法补"></a> 4.4. 移除辅助调试代码的方法(补)</h2>
-<ol>
+<h2 id="4-4-移除辅助调试代码的方法-补"><a href="#4-4-移除辅助调试代码的方法-补" class="headerlink" title="4.4. 移除辅助调试代码的方法(补)"></a>4.4. 移除辅助调试代码的方法(补)</h2><ol>
 <li>使用调试存根debugging stubs：开发代码中调用某子程序进行调试检查，产品代码中使用桩子程序替换它</li>
 <li>C++示例: 一段使用调试stub的子程序</li>
 <li>在开发阶段，CheckPointer()子程序会对传入的指针进行全面检查</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">DoSomething</span><span class="hljs-params">(</span></span><br><span class="hljs-params"><span class="hljs-function">  SOME_TYPE *pointer ;</span></span><br><span class="hljs-params"><span class="hljs-function">  ...</span></span><br><span class="hljs-params"><span class="hljs-function">  )</span> </span>&#123;<br>  <span class="hljs-comment">// check parameters passed in</span><br>  <span class="hljs-built_in">CheckPointer</span>( pointer ) ;<span class="hljs-comment">//这行代码将调用检查指针的子程序</span><br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="45-使用调试存根"><a class="markdownIt-Anchor" href="#45-使用调试存根"></a> 4.5. 使用调试存根</h2>
-<ol>
+<h2 id="4-5-使用调试存根"><a href="#4-5-使用调试存根" class="headerlink" title="4.5. 使用调试存根"></a>4.5. 使用调试存根</h2><ol>
 <li>C++示例:在开发阶段检查指针的子程序</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">CheckPointer</span><span class="hljs-params">( <span class="hljs-type">void</span> *pointer )</span> </span>&#123;<br>  <span class="hljs-comment">// 执行第1项检查—可能是检查它不为NULL</span><br>  <span class="hljs-comment">// 执行第2项检查—可能是检查它的地址是合法的</span><br>  <span class="hljs-comment">// 执行第3项检查—可能是检查它所指向的数据完好元损</span><br>  ...<br>  <span class="hljs-comment">// 执行第n项检查— …</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>C++示例:在产品代码中检查指针的子程序</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">CheckPointer</span><span class="hljs-params">( <span class="hljs-type">void</span> *pointer )</span> </span>&#123;<br>  <span class="hljs-comment">// no code, just return to caller</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="46-产品代码中应该保留多少防御式代码"><a class="markdownIt-Anchor" href="#46-产品代码中应该保留多少防御式代码"></a> 4.6. 产品代码中应该保留多少防御式代码</h2>
-<ol>
+<h2 id="4-6-产品代码中应该保留多少防御式代码"><a href="#4-6-产品代码中应该保留多少防御式代码" class="headerlink" title="4.6. 产品代码中应该保留多少防御式代码"></a>4.6. 产品代码中应该保留多少防御式代码</h2><ol>
 <li>开发阶段：显示出的错误越多越好，引入很多防御代码</li>
 <li>发布阶段：希望错误尽可能偃旗息鼓，不要影响代码执行</li>
 <li>保留那些检查重要错误的代码</li>
@@ -830,28 +740,24 @@
 <li>去掉可以导致程序硬性崩溃的代码：用户无法保存必要数据</li>
 <li>保留可以让程序稳妥地崩溃的代码：用于诊断潜在的严重错误</li>
 <li>为你的技术支持人员记录错误信息</li>
-<li>确认留在代码中的错误消息是友好的：“发生了内部错误”，可联系XX</li>
+<li>确认留在代码中的错误消息是友好的：”发生了内部错误”，可联系XX</li>
 </ol>
-<h1 id="5-如何对待防御式编程"><a class="markdownIt-Anchor" href="#5-如何对待防御式编程"></a> 5. 如何对待防御式编程</h1>
-<ol>
-<li>过度的防御式编程也会引起问题
-<ol>
+<h1 id="5-如何对待防御式编程"><a href="#5-如何对待防御式编程" class="headerlink" title="5. 如何对待防御式编程"></a>5. 如何对待防御式编程</h1><ol>
+<li>过度的防御式编程也会引起问题<ol>
 <li>程序会变得臃肿而缓慢</li>
 <li>增加了软件的复杂度</li>
 <li>防御式代码同样会有缺陷</li>
 </ol>
 </li>
-<li>正确的态度
-<ol>
+<li>正确的态度<ol>
 <li>采用防御的姿态</li>
 <li>考虑好什么地方进行防御</li>
 <li>因地制宜地调整防御式编程的优先级</li>
 </ol>
 </li>
 </ol>
-<h1 id="6-练习"><a class="markdownIt-Anchor" href="#6-练习"></a> 6. 练习</h1>
-<ol>
-<li>修改以下代码，使之变得更&quot;好&quot;</li>
+<h1 id="6-练习"><a href="#6-练习" class="headerlink" title="6. 练习"></a>6. 练习</h1><ol>
+<li>修改以下代码，使之变得更”好”</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">char</span> *unsafe_ <span class="hljs-title">copy</span> <span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> * source)</span></span>&#123;<br>  <span class="hljs-type">char</span> *buffer = <span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-number">10</span>] ;<br>  <span class="hljs-built_in">strcpy</span> (buffer, source) ;<br>  <span class="hljs-keyword">return</span> buffer;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">safercopy</span><span class="hljs-params">(<span class="hljs-type">int</span> from_ len, <span class="hljs-type">char</span> *from, <span class="hljs-type">int</span> to_ _len, <span class="hljs-type">char</span> *to)</span> </span>&#123;<br>  <span class="hljs-built_in">assert</span> (from != <span class="hljs-literal">NULL</span> &amp; to != <span class="hljs-literal">NULL</span> &amp;&amp; <span class="hljs-string">&quot;from and to can&#x27;t be NULL&quot;</span> ) ;<br>  <span class="hljs-type">int</span> i= <span class="hljs-number">0</span>;<br>  <span class="hljs-type">int</span> max = from_len&gt;to_len<span class="hljs-number">-1</span>?to_len<span class="hljs-number">-1</span>:from_len;<br>  <span class="hljs-comment">// to_ len mu5t have at least 1 byte </span><br>  <span class="hljs-keyword">if</span>(from_len &lt; <span class="hljs-number">0</span>||to_len &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>- <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; max; i++)&#123;<br>    to[i] = from [i] ;<br>  &#125;<br>  to[to_len - <span class="hljs-number">1</span>] =<span class="hljs-string">&#x27;\0&#x27;</span> ;<br>  ieturn i;<br>&#125;<br>=<br></code></pre></td></tr></table></figure>
               
@@ -944,9 +850,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec06-Behavioral%20Patterns/" title="2021-Software-System-Design-Lec06-Behavioral Patterns">
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Exam0-%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/" title="2021-Database-Development-Exam0-复习提纲">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Software-System-Design-Lec06-Behavioral Patterns</span>
+                        <span class="hidden-mobile">2021-Database-Development-Exam0-复习提纲</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -954,8 +860,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/" title="2021-Software-System-Design-Lec18-Evaluating Architecture">
-                        <span class="hidden-mobile">2021-Software-System-Design-Lec18-Evaluating Architecture</span>
+                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-10.%E6%97%A5%E5%B8%B8%E7%AE%A1%E7%90%86%E5%92%8C%E7%BB%B4%E6%8A%A4/" title="2018-Linux-system-basics-linux-10.日常管理和维护">
+                        <span class="hidden-mobile">2018-Linux-system-basics-linux-10.日常管理和维护</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2018-Linux-system-basics-linux-02.硬盘">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:09:37.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:46:20.406Z">
+<meta property="article:published_time" content="2022-02-16T11:02:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T08:59:46.057Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="课程笔记">
@@ -200,7 +200,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:02" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -273,12 +273,9 @@
             
             <div class="markdown-body">
               
-              <h1 id="1-第二章linux系统下硬盘基本知识"><a class="markdownIt-Anchor" href="#1-第二章linux系统下硬盘基本知识"></a> 1. 第二章：linux系统下硬盘基本知识</h1>
-<h2 id="11-分区命名方案"><a class="markdownIt-Anchor" href="#11-分区命名方案"></a> 1.1. 分区命名方案</h2>
-<ol>
+              <h1 id="1-第二章：linux系统下硬盘基本知识"><a href="#1-第二章：linux系统下硬盘基本知识" class="headerlink" title="1. 第二章：linux系统下硬盘基本知识"></a>1. 第二章：linux系统下硬盘基本知识</h1><h2 id="1-1-分区命名方案"><a href="#1-1-分区命名方案" class="headerlink" title="1.1. 分区命名方案"></a>1.1. 分区命名方案</h2><ol>
 <li>Linux系统使用字母和数字的组合来指代硬盘分区</li>
-<li>Linux系统使用一种更加灵活的命名方案，该命名方案是基于文件的，文件名的格式为/dev/xxyN
-<ol>
+<li>Linux系统使用一种更加灵活的命名方案，该命名方案是基于文件的，文件名的格式为/dev/xxyN<ol>
 <li>/dev/：这是Linux系统下所有设备文件所在的目录名。</li>
 <li>xx：分区名的前两个字母表示分区所在设备的类型，通常是hd(IDE硬盘)或sd(SCSI硬盘)。</li>
 <li>y：这个字母表示分区所在的设备</li>
@@ -286,38 +283,31 @@
 </ol>
 </li>
 </ol>
-<h2 id="12-磁盘分区和挂载目录"><a class="markdownIt-Anchor" href="#12-磁盘分区和挂载目录"></a> 1.2. 磁盘分区和挂载目录</h2>
-<ol>
+<h2 id="1-2-磁盘分区和挂载目录"><a href="#1-2-磁盘分区和挂载目录" class="headerlink" title="1.2. 磁盘分区和挂载目录"></a>1.2. 磁盘分区和挂载目录</h2><ol>
 <li>Linux系统处理分区及磁盘存储的方法与Windows截然不同</li>
-<li>Linux系统中的每一个分区都是构成支持一组文件和目录所必需的存储区的一部分。通过挂载进行实现。
-<ul>
+<li>Linux系统中的每一个分区都是构成支持一组文件和目录所必需的存储区的一部分。通过挂载进行实现。<ul>
 <li>挂载是将分区关联到某一目录的过程，挂载分区使起始于这个指定目录(通称为挂载目录)的存储区能够被使用。</li>
 <li>例如:如果/usr被挂载在了/root下，那么/usr下的所有文件和目录都在物理上位于/root下。</li>
 </ul>
 </li>
 </ol>
-<h2 id="13-磁盘分区方案"><a class="markdownIt-Anchor" href="#13-磁盘分区方案"></a> 1.3. 磁盘分区方案</h2>
-<h3 id="131-最简单的分区方案"><a class="markdownIt-Anchor" href="#131-最简单的分区方案"></a> 1.3.1. 最简单的分区方案</h3>
-<ol>
+<h2 id="1-3-磁盘分区方案"><a href="#1-3-磁盘分区方案" class="headerlink" title="1.3. 磁盘分区方案"></a>1.3. 磁盘分区方案</h2><h3 id="1-3-1-最简单的分区方案"><a href="#1-3-1-最简单的分区方案" class="headerlink" title="1.3.1. 最简单的分区方案"></a>1.3.1. 最简单的分区方案</h3><ol>
 <li>SWAP方案：交换分区，建议大小为物理内存的1-2倍</li>
 <li>/分区:建议大小在10GB以上</li>
 <li>问题：所有数据在/分区上，不安全，难备份</li>
 </ol>
-<h3 id="132-合理的分区方案"><a class="markdownIt-Anchor" href="#132-合理的分区方案"></a> 1.3.2. 合理的分区方案</h3>
-<ol>
+<h3 id="1-3-2-合理的分区方案"><a href="#1-3-2-合理的分区方案" class="headerlink" title="1.3.2. 合理的分区方案"></a>1.3.2. 合理的分区方案</h3><ol>
 <li>/boot分区：用来存放与Linux系统启动有关的程序，比如启动引导装载程序等，建议大小为100MB。</li>
 <li>/usr分区：用来存放Linux系统中的应用程序，其相关数据较多，建议大于9GB</li>
 <li>/var分区：用来存放Linux系统中经常变化的数据以及日志文件，建议大小为1GB。</li>
-<li>/分区：Linux系统的根目录，所有的目录都挂在这个目录下面，建议大小为2GB。</li>
-<li>SWAP分区：实现虚拟内存，建议大小是物理内存的1～2倍。
-<ul>
+<li>/分区：Linux系统的根目录，所有的目录都挂在这个目录下面，建议大小为2GB。 </li>
+<li>SWAP分区：实现虚拟内存，建议大小是物理内存的1～2倍。<ul>
 <li>用于实现linux虚拟内存的交换，当计算机上的物理内存不够用的时候可以调出虚拟内存来执行相应操作。</li>
 </ul>
 </li>
 <li>/home分区：存放普通用户的数据，是普通用户的宿主目录，建议大小为剩下的空间</li>
 </ol>
-<h3 id="133-关于如何具体安装fedora-17系统"><a class="markdownIt-Anchor" href="#133-关于如何具体安装fedora-17系统"></a> 1.3.3. 关于如何具体安装Fedora 17系统</h3>
-<ol>
+<h3 id="1-3-3-关于如何具体安装Fedora-17系统"><a href="#1-3-3-关于如何具体安装Fedora-17系统" class="headerlink" title="1.3.3. 关于如何具体安装Fedora 17系统"></a>1.3.3. 关于如何具体安装Fedora 17系统</h3><ol>
 <li>参见PPT</li>
 </ol>
 
@@ -411,9 +401,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-Shell%E7%BC%96%E7%A8%8B/" title="2018-Linux-system-basics-Shell编程">
+                      <a href="/2022/02/16/2020-OS/2020-OS-Lecture3-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" title="2020-OS-Lecture3-存储管理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2018-Linux-system-basics-Shell编程</span>
+                        <span class="hidden-mobile">2020-OS-Lecture3-存储管理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -421,8 +411,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-03.%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/" title="2018-Linux-system-basics-linux-03.图形界面">
-                        <span class="hidden-mobile">2018-Linux-system-basics-linux-03.图形界面</span>
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture02/" title="2019-COA19-lecture02">
+                        <span class="hidden-mobile">2019-COA19-lecture02</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

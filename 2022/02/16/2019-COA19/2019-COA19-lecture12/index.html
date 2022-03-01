@@ -33,8 +33,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/9.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/7.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/10.png">
-<meta property="article:published_time" content="2022-02-16T11:09:47.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:49:16.383Z">
+<meta property="article:published_time" content="2022-02-16T11:12:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:02:03.948Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="虚拟内存">
@@ -212,7 +212,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:12" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -285,102 +285,82 @@
             
             <div class="markdown-body">
               
-              <h2 id="virtual-memory"><a class="markdownIt-Anchor" href="#virtual-memory"></a> Virtual Memory</h2>
-<h1 id="1-内存管理"><a class="markdownIt-Anchor" href="#1-内存管理"></a> 1. 内存管理</h1>
-<ol>
+              <h2 id="Virtual-Memory"><a href="#Virtual-Memory" class="headerlink" title="Virtual Memory"></a>Virtual Memory</h2><h1 id="1-内存管理"><a href="#1-内存管理" class="headerlink" title="1. 内存管理"></a>1. 内存管理</h1><ol>
 <li>In the past, only OS and one program are in memory(过去只有操作系统和一个程序会使用内存)</li>
-<li>Currently, OS and multiple programs are in memory(现在，操作系统和多个程序使用内存)
-<ul>
+<li>Currently, OS and multiple programs are in memory(现在，操作系统和多个程序使用内存)<ul>
 <li>To avoid the idle of processor when the programs wait for I/O, it requires to load more programs in memory(为了避免程序在等待I/O的时候的处理器的空闲，处理器需要加载很多的程序进入内存)</li>
 </ul>
 </li>
-<li>Memory management(内存管理)
-<ul>
-<li>In multiprogramming system, the “user part” of memory should be further partitioned to fit multiple programs, which is dynamically carried out by OS(在多道程序设计系统中，内存的&quot;用户部分&quot;需要进一步划分以适应由操作系统动态执行的多个程序)</li>
-<li>Don’t consider “process” in this slide(在本节中不要考虑&quot;过程&quot;)</li>
+<li>Memory management(内存管理)<ul>
+<li>In multiprogramming system, the “user part” of memory should be further partitioned to fit multiple programs, which is dynamically carried out by OS(在多道程序设计系统中，内存的”用户部分”需要进一步划分以适应由操作系统动态执行的多个程序)</li>
+<li>Don’t consider “process” in this slide(在本节中不要考虑”过程”)</li>
 </ul>
 </li>
 </ol>
-<h1 id="2-加载更多程序的解决方案"><a class="markdownIt-Anchor" href="#2-加载更多程序的解决方案"></a> 2. 加载更多程序的解决方案</h1>
-<ol>
+<h1 id="2-加载更多程序的解决方案"><a href="#2-加载更多程序的解决方案" class="headerlink" title="2. 加载更多程序的解决方案"></a>2. 加载更多程序的解决方案</h1><ol>
 <li>Enlarge memory(增大内存)</li>
-<li>Using exchange and overlap techniques(使用交换和重叠技术)
-<ul>
+<li>Using exchange and overlap techniques(使用交换和重叠技术)<ul>
 <li>When no program is ready, OS loads other programs in(如果一个程序还没有准备好，操作系统加载另一个程序进来)</li>
 <li>Partitioning and paging(分区和分页)</li>
 </ul>
 </li>
-<li>Virtual memory(虚拟内存)
-<ul>
+<li>Virtual memory(虚拟内存)<ul>
 <li>Demand paging(按需分页)</li>
 <li>Virtual address(虚拟地址)</li>
 </ul>
 </li>
 </ol>
-<h1 id="3-分区partitioning"><a class="markdownIt-Anchor" href="#3-分区partitioning"></a> 3. 分区(Partitioning)</h1>
-<ol>
+<h1 id="3-分区-Partitioning"><a href="#3-分区-Partitioning" class="headerlink" title="3. 分区(Partitioning)"></a>3. 分区(Partitioning)</h1><ol>
 <li>什么是分区?</li>
 </ol>
-<h2 id="31-fixed-size-partition确定的分区策略"><a class="markdownIt-Anchor" href="#31-fixed-size-partition确定的分区策略"></a> 3.1. Fixed-size partition(确定的分区策略)</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-1-Fixed-size-partition-确定的分区策略"><a href="#3-1-Fixed-size-partition-确定的分区策略" class="headerlink" title="3.1. Fixed-size partition(确定的分区策略)"></a>3.1. Fixed-size partition(确定的分区策略)</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>OS: fixed size(确定大小)</li>
-<li>User program: fixed size with different lengths(确定的不同长度的程序)
-<ul>
+<li>User program: fixed size with different lengths(确定的不同长度的程序)<ul>
 <li>When load a program, put it in the smallest partition which has enough length(当加载一个程序的时候，把这个程序加载进入长度足够的最小的页里)</li>
 </ul>
 </li>
 <li>Drawback(缺点): waste of memory(浪费内存)</li>
-<li>操作系统如何<strong>分配分区</strong>？(<strong>重要</strong>)
-<ol>
+<li>操作系统如何<strong>分配分区</strong>？(<strong>重要</strong>)<ol>
 <li>选择一个目前是空的</li>
 <li>能够放的下的</li>
 <li>最小的</li>
 </ol>
 </li>
 </ol>
-<h2 id="32-variable-length-partition可变长的分区策略"><a class="markdownIt-Anchor" href="#32-variable-length-partition可变长的分区策略"></a> 3.2. Variable-length partition(可变长的分区策略)</h2>
-<ol>
+<h2 id="3-2-Variable-length-partition-可变长的分区策略"><a href="#3-2-Variable-length-partition-可变长的分区策略" class="headerlink" title="3.2. Variable-length partition(可变长的分区策略)"></a>3.2. Variable-length partition(可变长的分区策略)</h2><ol>
 <li>OS: fixed size(操作系统:定长)</li>
 <li>User program: as requirement(用户程序:按需)</li>
-<li>Drawback: the number of fragments increases<br />
-(碎片数量会增加)</li>
+<li>Drawback: the number of fragments increases<br>(碎片数量会增加)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="4-分页paging"><a class="markdownIt-Anchor" href="#4-分页paging"></a> 4. 分页(Paging)</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="4-分页-Paging"><a href="#4-分页-Paging" class="headerlink" title="4. 分页(Paging)"></a>4. 分页(Paging)</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>Basic idea
-<ul>
+<li>Basic idea<ul>
 <li>Divide the memory into fixed-size blocks, named <strong>page frame</strong>, and divide the program into fixed size blocks, named <strong>page</strong>(将内存分为一个个叫做<strong>页框</strong>的固定长度的块，然后将程序分为可以放进块的叫做<strong>页</strong>的部分)</li>
 <li>Load the pages into page frames(把页加载到页框里去)</li>
 </ul>
 </li>
 <li>Logical address: address in instruction(逻辑地址:指令中的地址)</li>
 <li>Physical address: address in memory(物理地址:内存中的地址)</li>
-<li>程序叫做页，放程序的地点叫做页框
-<ul>
+<li>程序叫做页，放程序的地点叫做页框<ul>
 <li>页放在哪里由OS决定，在我们的程序中写的是逻辑地址，由操作系统的决定物理地址。</li>
 <li>页放进去并不是连续的放入，记录页存在的位置</li>
 </ul>
 </li>
 <li>分页:将内存分成固定大小的页框，将需要存储成页，寻找空的页框放入(空的即可，因为一样大)，这样做会导致程序的不连续性，但是有页表来记录地址。</li>
 </ol>
-<h1 id="5-virtual-memory虚拟内存"><a class="markdownIt-Anchor" href="#5-virtual-memory虚拟内存"></a> 5. Virtual Memory(虚拟内存)</h1>
-<ol>
-<li>Problem
-<ul>
+<h1 id="5-Virtual-Memory-虚拟内存"><a href="#5-Virtual-Memory-虚拟内存" class="headerlink" title="5. Virtual Memory(虚拟内存)"></a>5. Virtual Memory(虚拟内存)</h1><ol>
+<li>Problem<ul>
 <li>The size of memory is limited, but the requirement of memory keeps increasing(内存的大小是有限的，但是对于内存的需求在不断的增加)</li>
 </ul>
 </li>
-<li>Basic idea
-<ul>
+<li>Basic idea<ul>
 <li>Demand paging: only load the active pages in paging(按需分页:只需要加载目前活跃的页)</li>
 <li>用不到页就暂时不放进来。</li>
 </ul>
 </li>
-<li>Essence(本质)
-<ul>
+<li>Essence(本质)<ul>
 <li>Programming in a logical address space larger than memory(在大于内存空间的逻辑空间进行编程)</li>
 <li>Only load the required programs and data in memory(只在内存中加载需要的程序和数据)</li>
 <li>Transfer the logical address to physical address by hardware(通过硬件来转换逻辑地址成物理地址)</li>
@@ -388,63 +368,51 @@
 </ul>
 </li>
 </ol>
-<h2 id="51-虚拟内存示例"><a class="markdownIt-Anchor" href="#51-虚拟内存示例"></a> 5.1. 虚拟内存示例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="5-1-虚拟内存示例"><a href="#5-1-虚拟内存示例" class="headerlink" title="5.1. 虚拟内存示例"></a>5.1. 虚拟内存示例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>先把程序加载到硬盘的特定区域，然后我们什么时候需要这个内存，我们移动到memory中去。</li>
-<li>存储是否被加载到物理内存中，如果被加载进入物理内存，则是物理地址。如果没有在里面则在Disk中
-<ul>
+<li>存储是否被加载到物理内存中，如果被加载进入物理内存，则是物理地址。如果没有在里面则在Disk中<ul>
 <li>如果已经满了，我们就使用替换策略进行替换。</li>
 </ul>
 </li>
 <li>内存中有的，Disk中也是有的，因为是<strong>拷贝</strong>关系</li>
 </ol>
-<h2 id="52-虚拟内存问题"><a class="markdownIt-Anchor" href="#52-虚拟内存问题"></a> 5.2. 虚拟内存问题</h2>
-<ol>
-<li>Size of page
-<ul>
+<h2 id="5-2-虚拟内存问题"><a href="#5-2-虚拟内存问题" class="headerlink" title="5.2. 虚拟内存问题"></a>5.2. 虚拟内存问题</h2><ol>
+<li>Size of page<ul>
 <li>4KB, 8KB, …</li>
 </ul>
 </li>
-<li>Mapping function(映射方式)
-<ul>
+<li>Mapping function(映射方式)<ul>
 <li>Associative mapping(全相联映射)</li>
 </ul>
 </li>
-<li>Types
-<ul>
+<li>Types<ul>
 <li>Page based virtual memory(基于分页的虚拟内存)</li>
 <li>Segment based virtual memory(基于分段的虚拟内存)</li>
 <li>Segment and page based virtual memory(基于分段和分页的虚拟内存)</li>
 </ul>
 </li>
-<li>Write policy
-<ul>
+<li>Write policy<ul>
 <li>Write back(写回策略)，直到被替换出来才修改Disk中的数据</li>
 </ul>
 </li>
-<li>速度比例:
-<ol>
+<li>速度比例:<ol>
 <li>Cache is 10 times faster than memory</li>
 <li>Memory is 100000 times faster than hard disk</li>
 </ol>
 </li>
 </ol>
-<h3 id="521-page-based-virtual-memory基于分页的虚拟内存"><a class="markdownIt-Anchor" href="#521-page-based-virtual-memory基于分页的虚拟内存"></a> 5.2.1. Page based Virtual Memory(基于分页的虚拟内存)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="5-2-1-Page-based-Virtual-Memory-基于分页的虚拟内存"><a href="#5-2-1-Page-based-Virtual-Memory-基于分页的虚拟内存" class="headerlink" title="5.2.1. Page based Virtual Memory(基于分页的虚拟内存)"></a>5.2.1. Page based Virtual Memory(基于分页的虚拟内存)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>Divide the main memory and virtual memory into pages with the same size(把主存和虚拟内存分成相同大小的页)
-<ul>
+<li>Divide the main memory and virtual memory into pages with the same size(把主存和虚拟内存分成相同大小的页)<ul>
 <li>Virtual page (VP) / logical page: page in virtual memory(虚拟页，简称虚页)</li>
 <li>Physical page (PP) / page frame: page in main memory(物理页，又叫页框)</li>
 </ul>
 </li>
-<li>Page table(页表)
-<ul>
+<li>Page table(页表)<ul>
 <li>A table contains the information of all <strong>VPs</strong>, including location(地址), valid bit(有效位，是否被加载到物理页中), dirty bit(脏位), r/w right et al.(页表中包含了所有的虚页，无论是否加载到主存中，都在页表中)</li>
 <li>Store in main memory(存在主存中)</li>
-<li>Virtual address(虚拟地址)
-<ul>
+<li>Virtual address(虚拟地址)<ul>
 <li>Virtual page number + offset in page(虚拟页的页号+页内偏移)</li>
 </ul>
 </li>
@@ -452,84 +420,68 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>如上是一个页表的实现
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>如上是一个页表的实现<ul>
 <li>如果虚页已经载入到了物理内存中，我们就要记录它的物理地址(location,valid = 1)</li>
 <li>location没写的存储的是指向硬盘(虚拟内存中)的指针</li>
 <li><strong>location == null:表示磁盘里面没有,而不是内存中没有</strong></li>
 <li>虚拟页号比物理页号要大一些，虚拟页号没必要存储，按照相应的物理页号位置来找虚拟页号的位置</li>
 </ul>
 </li>
-<li>如果location的长度是不同的(null，物理页号，指针)
-<ul>
+<li>如果location的长度是不同的(null，物理页号，指针)<ul>
 <li>我们必须按照最长的部分来等长存储，以免无法进行更换</li>
 </ul>
 </li>
 <li>可以把页表放置到Cache中(但是是放置比较常用的页表的行)</li>
-<li>页式的虚拟内存比分页好在哪里?
-<ol>
+<li>页式的虚拟内存比分页好在哪里?<ol>
 <li>程序员不需要考虑具体存储的物理地址。</li>
 <li>程序员可以有一个独享的大的内存。</li>
 </ol>
 </li>
 </ol>
-<h3 id="522-translation-lookaside-buffer快表tlb"><a class="markdownIt-Anchor" href="#522-translation-lookaside-buffer快表tlb"></a> 5.2.2. Translation Lookaside Buffer(快表，TLB)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="5-2-2-Translation-Lookaside-Buffer-快表，TLB"><a href="#5-2-2-Translation-Lookaside-Buffer-快表，TLB" class="headerlink" title="5.2.2. Translation Lookaside Buffer(快表，TLB)"></a>5.2.2. Translation Lookaside Buffer(快表，TLB)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>
-<p>The usage of page table increases the access of main memory(页表的使用增加了对主存的访问)</p>
-</li>
-<li>
-<p>To reduce memory access, load the frequently used items in page table to cache(为了去减少对内存的访问，我们将<strong>常用的页表的行</strong>放置到cache中去，需要在前面加上一个标记表示第几行)</p>
-</li>
-<li>
-<p>TLB: the page table items loaded in cache(加载到cache中的页表)</p>
+<li>The usage of page table increases the access of main memory(页表的使用增加了对主存的访问)</li>
+<li>To reduce memory access, load the frequently used items in page table to cache(为了去减少对内存的访问，我们将<strong>常用的页表的行</strong>放置到cache中去，需要在前面加上一个标记表示第几行)</li>
+<li><p>TLB: the page table items loaded in cache(加载到cache中的页表)</p>
 <ul>
 <li>Associative mapping, set associative mapping(常用全相联映射和组相联映射)</li>
 <li>Random replacement(随机替换策略)</li>
 </ul>
 </li>
-<li>
-<p>快表的实现流程图</p>
+<li><p>快表的实现流程图</p>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="5">
-<li>我们只要将虚拟页号(VA)根据页表(Page table)转换到物理页号(PA)中去
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>我们只要将虚拟页号(VA)根据页表(Page table)转换到物理页号(PA)中去<ul>
 <li>前提:在物理内存中:如果hit的话，直接传入物理地址。如果miss的话，我们到页表中去访问</li>
 <li>如果hit并且是invalid的情况下，我们用硬盘把页送到内存中去，然后到cache正常访问。</li>
 </ul>
 </li>
 <li>如果未在物理内存中的话，也就是发生了缺页操作，于是对于磁盘(虚拟内存)进行操作。(也就是invalid的状态)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>cache是内存的拷贝</li>
 <li><strong>TLB miss的情况下只是比hit的情况多一次内存访问</strong></li>
 <li><strong>TLB、页表valid表示在内存中</strong></li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="523-segment-based-virtual-memory基于分段的虚拟内存"><a class="markdownIt-Anchor" href="#523-segment-based-virtual-memory基于分段的虚拟内存"></a> 5.2.3. Segment based Virtual Memory(基于分段的虚拟内存)</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt12/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="5-2-3-Segment-based-Virtual-Memory-基于分段的虚拟内存"><a href="#5-2-3-Segment-based-Virtual-Memory-基于分段的虚拟内存" class="headerlink" title="5.2.3. Segment based Virtual Memory(基于分段的虚拟内存)"></a>5.2.3. Segment based Virtual Memory(基于分段的虚拟内存)</h3><ol>
 <li>Divide the program and data into segments with different lengths, and load the required segments into memory(将程序和数据分成不同长度的段，并将所需的段加载到内存中)</li>
-<li>Virtual address(虚拟地址)
-<ul>
+<li>Virtual address(虚拟地址)<ul>
 <li>Segment number + offset in segment(虚拟的段的地址 + 段内的偏移量)</li>
 </ul>
 </li>
-<li>Compared to page base virtual memory(和基于分页的虚拟内存的对比)
-<ol>
-<li>Page base virtual memory(基于分页的虚拟内存)
-<ul>
+<li>Compared to page base virtual memory(和基于分页的虚拟内存的对比)<ol>
+<li>Page base virtual memory(基于分页的虚拟内存)<ul>
 <li>Advantage: simple, low cost(简单，代价低)</li>
 <li>Disadvantage: instruction and data may cross pages(指令和数据可能会跨页)</li>
 </ul>
 </li>
-<li>Segment based virtual memory(基于分段的虚拟内存)
-<ul>
+<li>Segment based virtual memory(基于分段的虚拟内存)<ul>
 <li>Advantage: naturally divide program and data(自然地划分程序和数据)</li>
 <li>Disadvantage: not fixed length(长度不确定)</li>
 </ul>
@@ -537,38 +489,30 @@
 </ol>
 </li>
 </ol>
-<h3 id="524-segment-and-page-based-virtual-memory基于分段和分页的虚拟内存"><a class="markdownIt-Anchor" href="#524-segment-and-page-based-virtual-memory基于分段和分页的虚拟内存"></a> 5.2.4. Segment and Page based Virtual Memory(基于分段和分页的虚拟内存)</h3>
-<ol>
-<li>Divide the program and data into segments, and further divide the segments into pages(将程序和数据分段，然后将每一段在分到每一个页中去)
-<ul>
+<h3 id="5-2-4-Segment-and-Page-based-Virtual-Memory-基于分段和分页的虚拟内存"><a href="#5-2-4-Segment-and-Page-based-Virtual-Memory-基于分段和分页的虚拟内存" class="headerlink" title="5.2.4. Segment and Page based Virtual Memory(基于分段和分页的虚拟内存)"></a>5.2.4. Segment and Page based Virtual Memory(基于分段和分页的虚拟内存)</h3><ol>
+<li>Divide the program and data into segments, and further divide the segments into pages(将程序和数据分段，然后将每一段在分到每一个页中去)<ul>
 <li>Each segment has its page table(每一个段都有自己的页表)</li>
 </ul>
 </li>
-<li>Virtual address(虚拟内存)
-<ul>
+<li>Virtual address(虚拟内存)<ul>
 <li>Segment number + page number + offset in page(段号+页号+页内偏移量)</li>
 </ul>
 </li>
-<li>Advantage
-<ul>
+<li>Advantage<ul>
 <li>Program is shared and protected in segment(程序被保护和分开在段内)</li>
 </ul>
 </li>
-<li>Disadvantage
-<ul>
+<li>Disadvantage<ul>
 <li>Required multiple times table search(需要使用很多次表来进行搜素)</li>
 </ul>
 </li>
 </ol>
-<h1 id="6-编程作业的一些概念"><a class="markdownIt-Anchor" href="#6-编程作业的一些概念"></a> 6. 编程作业的一些概念</h1>
-<ol>
-<li>实模式:没有使用虚拟内存。(效率高)
-<ul>
+<h1 id="6-编程作业的一些概念"><a href="#6-编程作业的一些概念" class="headerlink" title="6. 编程作业的一些概念"></a>6. 编程作业的一些概念</h1><ol>
+<li>实模式:没有使用虚拟内存。(效率高)<ul>
 <li>也就是给你的地址就是实际地址。</li>
 </ul>
 </li>
-<li>段:是一个虚拟内存
-<ul>
+<li>段:是一个虚拟内存<ul>
 <li>段内是有权限的保护。</li>
 <li>访问页的时候是一样大的，但是访问段的时候是可大可小的。</li>
 <li>段是由越界风险的。</li>
@@ -576,8 +520,7 @@
 <li>具体要读的位置是base+偏移量</li>
 </ul>
 </li>
-<li>段页式:
-<ul>
+<li>段页式:<ul>
 <li>把本来连续的段拆成几个页。</li>
 <li>也就是要为每一个段建一个页表。</li>
 <li>也就是有段表和每一个段的页表。</li>
@@ -677,9 +620,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture06/" title="2019-COA19-lecture06">
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec13-Quality%20Attributes/" title="2021-Software-System-Design-Lec13-Quality Attributes">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-COA19-lecture06</span>
+                        <span class="hidden-mobile">2021-Software-System-Design-Lec13-Quality Attributes</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -687,8 +630,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%9C%E4%B8%9A%E8%AE%B2%E8%A7%A3/" title="2019-COA19-计算机组成与结构作业讲解">
-                        <span class="hidden-mobile">2019-COA19-计算机组成与结构作业讲解</span>
+                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%847.1-The%20Disjoint%20Set/" title="2019-Data-Structure-数据结构7.1-The Disjoint Set">
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构7.1-The Disjoint Set</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -24,8 +24,8 @@
 <meta property="og:description" content="2020-Internet-computing-Tec01-JQuery">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/tec01/1.png">
-<meta property="article:published_time" content="2022-02-16T11:10:01.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:19:00.598Z">
+<meta property="article:published_time" content="2022-02-16T11:12:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:22:15.134Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="实验">
 <meta property="article:tag" content="计算机网络">
@@ -202,7 +202,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:12" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -275,112 +275,91 @@
             
             <div class="markdown-body">
               
-              <h2 id="jquery"><a class="markdownIt-Anchor" href="#jquery"></a> JQuery</h2>
-<h1 id="1-简介"><a class="markdownIt-Anchor" href="#1-简介"></a> 1. 简介</h1>
-<ol>
+              <h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><ol>
 <li>简化DOM操作，AJAX调用和Event处理</li>
-<li>特点
-<ol>
+<li>特点<ol>
 <li>处理DOM是容易的</li>
 <li>多浏览器适配</li>
 </ol>
 </li>
 </ol>
-<h1 id="2-jquery安装"><a class="markdownIt-Anchor" href="#2-jquery安装"></a> 2. JQuery安装</h1>
-<ol>
-<li>网页中添加 jQuery 可以通过多种方法在网页中添加 jQuery。
-<ol>
-<li><a target="_blank" rel="noopener" href="http://jquery.com">jquery.com</a> 下载 jQuery 库。</li>
+<h1 id="2-JQuery安装"><a href="#2-JQuery安装" class="headerlink" title="2. JQuery安装"></a>2. JQuery安装</h1><ol>
+<li>网页中添加 jQuery 可以通过多种方法在网页中添加 jQuery。<ol>
+<li>jquery.com 下载 jQuery 库。</li>
 <li>从 CDN 中载入 jQuery, 如从 Google 中加载 jQuery。</li>
 </ol>
 </li>
-<li>有两个版本的 jQuery 可供下载。
-<ol>
+<li>有两个版本的 jQuery 可供下载。 <ol>
 <li>Production version - 用于实际的网站中，已被精简和压缩。</li>
 <li>Development version - 用于测试和开发(未压缩，是可读的代码)</li>
 </ol>
 </li>
-<li>下载 jQuery
-<ol>
-<li>jQuery 库是一个 JavaScript 文件，可以使用 HTML 的 <code>&lt;script&gt;</code> 标签引用它：</li>
+<li>下载 jQuery<ol>
+<li>jQuery 库是一个 JavaScript 文件，可以使用 HTML 的 <code>&lt;script&gt;</code> 标签引用它：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span> = <span class="hljs-string">&quot;jquery-1.10.2.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span> = <span class="hljs-string">&quot;jquery-1.10.2.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>
-<h1 id="3-jquery语法"><a class="markdownIt-Anchor" href="#3-jquery语法"></a> 3. JQuery语法</h1>
-<ol>
-<li>选择HTML元素，并对选取的元素执行某些操作
-<ol>
+<h1 id="3-JQuery语法"><a href="#3-JQuery语法" class="headerlink" title="3. JQuery语法"></a>3. JQuery语法</h1><ol>
+<li>选择HTML元素，并对选取的元素执行某些操作<ol>
 <li>选择器<code>.</code>:class</li>
 <li>选择器<code>#</code>:id</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">$(selector).<span class="hljs-title function_">action</span>()<br>$(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">hide</span>() - 隐藏当前元素<br>$(<span class="hljs-string">&quot;p&quot;</span>).<span class="hljs-title function_">hide</span>() - 隐藏所有 &lt;p&gt; 元素<br>$(<span class="hljs-string">&quot;p.test&quot;</span>).<span class="hljs-title function_">hide</span>() - 隐藏所有 <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;test&quot;</span> 的 &lt;p&gt; 元素<br>$(<span class="hljs-string">&quot;#test&quot;</span>).<span class="hljs-title function_">hide</span>() - 隐藏所有 id=<span class="hljs-string">&quot;test&quot;</span> 的元素<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>所有 jQuery 函数位于一个 document ready 函数中，这是为了防止文档在完全加载 (就绪)之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。 如果在文档没有完全加载之前就运行函数，操作可能失败。下面是两个具体的例子：
 <ol>
+<li>所有 jQuery 函数位于一个 document ready 函数中，这是为了防止文档在完全加载 (就绪)之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。 如果在文档没有完全加载之前就运行函数，操作可能失败。下面是两个具体的例子：<ol>
 <li>试图隐藏一个不存在的元素。</li>
 <li>获得未完全加载的图像的大小。</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><br>&#125;)<br></code></pre></td></tr></table></figure>
-<h1 id="4-jquery事件"><a class="markdownIt-Anchor" href="#4-jquery事件"></a> 4. JQuery事件</h1>
-<ol>
+<h1 id="4-JQuery事件"><a href="#4-JQuery事件" class="headerlink" title="4. JQuery事件"></a>4. JQuery事件</h1><ol>
 <li>页面对不同访问者的响应叫做事件。</li>
-<li>事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。
-<ol>
+<li>事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。<ol>
 <li>在元素上移动鼠标。</li>
 <li>选取单选按钮。</li>
-<li>点击元素。</li>
+<li>点击元素。 </li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/tec01/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="41-documentready"><a class="markdownIt-Anchor" href="#41-documentready"></a> 4.1. $(document).ready()</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/tec01/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-1-document-ready"><a href="#4-1-document-ready" class="headerlink" title="4.1. $(document).ready()"></a>4.1. $(document).ready()</h2><ol>
 <li>$(document).ready() 方法允许我们在文档完全加载完后执行函数。之前已经介绍过了。</li>
 </ol>
-<h2 id="42-click"><a class="markdownIt-Anchor" href="#42-click"></a> 4.2. click()</h2>
-<ol>
-<li>click() 方法是当按钮点击事件被触发时会调用一个函数。 在下面的实例中，当点击事件在某个 <code>&lt;p&gt;</code> 元素上触发时，隐藏当前的 <code>&lt;p&gt;</code> 元素。</li>
+<h2 id="4-2-click"><a href="#4-2-click" class="headerlink" title="4.2. click()"></a>4.2. click()</h2><ol>
+<li>click() 方法是当按钮点击事件被触发时会调用一个函数。 在下面的实例中，当点击事件在某个 <code>&lt;p&gt;</code> 元素上触发时，隐藏当前的 <code>&lt;p&gt;</code> 元素。 </li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;p&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>   $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">hide</span>();<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="43-mousedown"><a class="markdownIt-Anchor" href="#43-mousedown"></a> 4.3. mousedown()</h2>
-<ol>
+<h2 id="4-3-mousedown"><a href="#4-3-mousedown" class="headerlink" title="4.3. mousedown()"></a>4.3. mousedown()</h2><ol>
 <li>当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;#p1&quot;</span>).<span class="hljs-title function_">mousedown</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>   <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;鼠标在该段落上按下&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="44-mouseup"><a class="markdownIt-Anchor" href="#44-mouseup"></a> 4.4. mouseup()</h2>
-<ol>
+<h2 id="4-4-mouseup"><a href="#4-4-mouseup" class="headerlink" title="4.4. mouseup()"></a>4.4. mouseup()</h2><ol>
 <li>当在元素上松开鼠标按钮时，会发生 mouseup 事件。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;#p1&quot;</span>).<span class="hljs-title function_">mouseup</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>   <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;鼠标在该段落上松开&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="45-hover"><a class="markdownIt-Anchor" href="#45-hover"></a> 4.5. hover()</h2>
-<ol>
+<h2 id="4-5-hover"><a href="#4-5-hover" class="headerlink" title="4.5. hover()"></a>4.5. hover()</h2><ol>
 <li>hover()方法用于模拟光标悬停事件。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;#p1&quot;</span>).<span class="hljs-property">hover</span>&#123;<br>   <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>      <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;你进入了p1&quot;</span>);<br>   &#125;,<br>   <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>      <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;你离开了p1&quot;</span>);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="46-focus"><a class="markdownIt-Anchor" href="#46-focus"></a> 4.6. focus()</h2>
-<ol>
+<h2 id="4-6-focus"><a href="#4-6-focus" class="headerlink" title="4.6. focus()"></a>4.6. focus()</h2><ol>
 <li>当元素获得焦点时，发生 focus 事件。</li>
 <li>当通过鼠标点击选中元素或通过 tab 键定位到元素时，该元素就会获得焦点。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;input&quot;</span>).<span class="hljs-title function_">focus</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>   $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">css</span>(<span class="hljs-string">&quot;background-color&quot;</span>,<span class="hljs-string">&quot;#cccccc&quot;</span>);<span class="hljs-comment">//修改css</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="47-blur"><a class="markdownIt-Anchor" href="#47-blur"></a> 4.7. blur()</h2>
-<ol>
+<h2 id="4-7-blur"><a href="#4-7-blur" class="headerlink" title="4.7. blur()"></a>4.7. blur()</h2><ol>
 <li>当元素失去焦点时，发生 blur 事件。</li>
 <li>点击了另一个元素</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;input&quot;</span>).<span class="hljs-title function_">blur</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>   $(<span class="hljs-variable language_">this</span>).<span class="hljs-title function_">css</span>(<span class="hljs-string">&quot;background-color&quot;</span>,<span class="hljs-string">&quot;#ffffff&quot;</span>);<span class="hljs-comment">//修改css</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="48-事件绑定"><a class="markdownIt-Anchor" href="#48-事件绑定"></a> 4.8. 事件绑定</h2>
-<ol>
-<li>以绑定click为例</li>
+<h2 id="4-8-事件绑定"><a href="#4-8-事件绑定" class="headerlink" title="4.8. 事件绑定"></a>4.8. 事件绑定</h2><ol>
+<li>以绑定click为例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$().事件名(事件处理函数) 如： $(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br>$().<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;事件名&quot;</span>,事件处理函数) 如：$(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br>$().<span class="hljs-title function_">bind</span>(<span class="hljs-string">&quot;事件名&quot;</span>,事件处理函数) 如：$(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">bind</span>(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$().事件名(事件处理函数) 如： $(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br>$().<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;事件名&quot;</span>,事件处理函数) 如：$(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br>$().<span class="hljs-title function_">bind</span>(<span class="hljs-string">&quot;事件名&quot;</span>,事件处理函数) 如：$(<span class="hljs-string">&quot;#d&quot;</span>).<span class="hljs-title function_">bind</span>(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;)<br></code></pre></td></tr></table></figure>
-<h2 id="49-解除事件绑定"><a class="markdownIt-Anchor" href="#49-解除事件绑定"></a> 4.9. 解除事件绑定</h2>
-<ol>
+<h2 id="4-9-解除事件绑定"><a href="#4-9-解除事件绑定" class="headerlink" title="4.9. 解除事件绑定"></a>4.9. 解除事件绑定</h2><ol>
 <li>函数写在外面，才能通过名字绑定</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$().<span class="hljs-title function_">unbind</span>(<span class="hljs-string">&quot;事件名&quot;</span>) <br></code></pre></td></tr></table></figure>
@@ -474,9 +453,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-lecture03-%E5%B1%80%E5%9F%9F%E7%BD%91%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8A%80%E6%9C%AF/" title="2020-Internet-computing-lecture03-局域网数据链路层原理与技术">
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E5%A4%B4%E6%96%87%E4%BB%B6/" title="2020-C-plus-plus-advanced-programming-C++ 头文件">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Internet-computing-lecture03-局域网数据链路层原理与技术</span>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 头文件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -484,8 +463,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-exam/" title="2020-Internet-computing-exam">
-                        <span class="hidden-mobile">2020-Internet-computing-exam</span>
+                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-12-Linux%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" title="2018-Linux-system-basics-linux-12-Linux网络服务器配置">
+                        <span class="hidden-mobile">2018-Linux-system-basics-linux-12-Linux网络服务器配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

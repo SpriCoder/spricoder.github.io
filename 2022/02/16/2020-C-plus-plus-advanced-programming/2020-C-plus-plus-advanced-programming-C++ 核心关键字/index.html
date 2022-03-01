@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2020-C-plus-plus-advanced-programming-C++ 核心关键字">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:09:56.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:16:57.971Z">
+<meta property="article:published_time" content="2022-02-16T11:06:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:07:43.761Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C++">
@@ -200,7 +200,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:06" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -273,106 +273,84 @@
             
             <div class="markdown-body">
               
-              <h2 id="c核心特殊关键字"><a class="markdownIt-Anchor" href="#c核心特殊关键字"></a> c++核心特殊关键字</h2>
-<h1 id="1-friend关键字"><a class="markdownIt-Anchor" href="#1-friend关键字"></a> 1. friend关键字</h1>
-<ol>
+              <h2 id="c-核心特殊关键字"><a href="#c-核心特殊关键字" class="headerlink" title="c++核心特殊关键字"></a>c++核心特殊关键字</h2><h1 id="1-friend关键字"><a href="#1-friend关键字" class="headerlink" title="1. friend关键字"></a>1. friend关键字</h1><ol>
 <li>private和protected不能从声明它们的同一类外部访问。</li>
 <li>被friend关键字修饰的函数或类成为友元函数或友元类。</li>
 </ol>
-<h2 id="11-友元函数"><a class="markdownIt-Anchor" href="#11-友元函数"></a> 1.1. 友元函数</h2>
-<ol>
+<h2 id="1-1-友元函数"><a href="#1-1-友元函数" class="headerlink" title="1.1. 友元函数"></a>1.1. 友元函数</h2><ol>
 <li>友元函数是可以直接访问类的私有成员的非成员函数。(不需要通过public部分的接口)</li>
 <li>它是定义在类外的普通函数，它不属于任何类，但需要在类的定义中加以声明，声明时只需要在友元的名称前加上关键词friend。</li>
-<li>声明格式:<code>friend 类型 函数名(形式参数);</code>
-<ul>
+<li>声明格式:<code>friend 类型 函数名(形式参数);</code><ul>
 <li>友元函数的声明可以放在类的私有部分，也可以放在公有部分，这并没有区别。</li>
 <li>一个函数可以是多个类的友元函数，只要在多个类中声明即可。</li>
 </ul>
 </li>
 </ol>
-<h2 id="12-友元类"><a class="markdownIt-Anchor" href="#12-友元类"></a> 1.2. 友元类</h2>
-<ol>
+<h2 id="1-2-友元类"><a href="#1-2-友元类" class="headerlink" title="1.2. 友元类"></a>1.2. 友元类</h2><ol>
 <li>友元类的所有成员函数都是另一个类的友元函数，都可以访问另一个类中的隐藏信息(包含私有成员和保护成员)。</li>
 <li>语法:<code>friend class 类名;</code></li>
-<li>注意:
-<ol>
+<li>注意:<ol>
 <li>友元关系不能被继承。</li>
 <li>友元关系是单向的，不具有交换性。</li>
 <li>友元关系具有非传递性。</li>
 </ol>
 </li>
 </ol>
-<h1 id="2-this关键字"><a class="markdownIt-Anchor" href="#2-this关键字"></a> 2. this关键字</h1>
-<ol>
+<h1 id="2-this关键字"><a href="#2-this关键字" class="headerlink" title="2. this关键字"></a>2. this关键字</h1><ol>
 <li>在C++中，每一个对象都可以通过this指针来访问自己的地址。</li>
 <li>this是所有成员函数的隐藏参数。</li>
 </ol>
-<h2 id="21-用法"><a class="markdownIt-Anchor" href="#21-用法"></a> 2.1. 用法</h2>
-<ol>
+<h2 id="2-1-用法"><a href="#2-1-用法" class="headerlink" title="2.1. 用法"></a>2.1. 用法</h2><ol>
 <li>如果有某个变量和成员变量相同，那么用this来引用成员变量</li>
 <li>需要返回变量或结构体变量时，使用this关键字。</li>
 </ol>
-<h2 id="22-注意"><a class="markdownIt-Anchor" href="#22-注意"></a> 2.2. 注意</h2>
-<ol>
+<h2 id="2-2-注意"><a href="#2-2-注意" class="headerlink" title="2.2. 注意"></a>2.2. 注意</h2><ol>
 <li>友元函数没有this指针</li>
 <li>this关键字之能用于成员函数，不能被修饰static的函数。</li>
 <li>因为在C++中，this关键字是一个指向对象自己的指针，不能加点，而是用-&gt;</li>
 </ol>
-<h1 id="3-volatile"><a class="markdownIt-Anchor" href="#3-volatile"></a> 3. volatile</h1>
-<h2 id="31-易变性"><a class="markdownIt-Anchor" href="#31-易变性"></a> 3.1. 易变性</h2>
-<ol>
+<h1 id="3-volatile"><a href="#3-volatile" class="headerlink" title="3. volatile"></a>3. volatile</h1><h2 id="3-1-易变性"><a href="#3-1-易变性" class="headerlink" title="3.1. 易变性"></a>3.1. 易变性</h2><ol>
 <li>也就是在汇编层面上来讲，下一条语句不会直接使用上一条语句的volatile变量的寄存器内容，而是重新从内存读取。</li>
 </ol>
-<h2 id="32-不可优化"><a class="markdownIt-Anchor" href="#32-不可优化"></a> 3.2. 不可优化</h2>
-<ol>
+<h2 id="3-2-不可优化"><a href="#3-2-不可优化" class="headerlink" title="3.2. 不可优化"></a>3.2. 不可优化</h2><ol>
 <li>volatile告诉编译器，不要对这个变量进行优化，保证程序员写在代码中的指令一定会被执行。</li>
 </ol>
-<h2 id="33-顺序性"><a class="markdownIt-Anchor" href="#33-顺序性"></a> 3.3. 顺序性</h2>
-<ol>
+<h2 id="3-3-顺序性"><a href="#3-3-顺序性" class="headerlink" title="3.3. 顺序性"></a>3.3. 顺序性</h2><ol>
 <li>保证在多线程情况下的一定的处理顺序</li>
 </ol>
-<h2 id="34-参考"><a class="markdownIt-Anchor" href="#34-参考"></a> 3.4. 参考</h2>
-<p><a href = "https://www.cnblogs.com/god-of-death/p/7852394.html">解释volatile关键字</a></p>
-<h1 id="4-static-关键词"><a class="markdownIt-Anchor" href="#4-static-关键词"></a> 4. static 关键词</h1>
-<ol>
-<li>用static可以为类类型的所有对象所共有，像是全局对象，但又被约束在类类型的名字空间中。static定义的静态变量在函数执行后不会释放其存储空间。
-<ul>
+<h2 id="3-4-参考"><a href="#3-4-参考" class="headerlink" title="3.4. 参考"></a>3.4. 参考</h2><p><a href = "https://www.cnblogs.com/god-of-death/p/7852394.html">解释volatile关键字</a></p>
+<h1 id="4-static-关键词"><a href="#4-static-关键词" class="headerlink" title="4. static 关键词"></a>4. static 关键词</h1><ol>
+<li>用static可以为类类型的所有对象所共有，像是全局对象，但又被约束在类类型的名字空间中。static定义的静态变量在函数执行后不会释放其存储空间。<ul>
 <li>修饰一个全局变量只对定义在同一文件中的函数可见：其他文件可以定义相同名字的变量。</li>
 <li>修饰局部变量，这个变量值不会因为函数终止而丢失，该变量在全局函数区分配内存(局部变量在栈区)</li>
 </ul>
 </li>
 <li>可以实施封装，将其放在private和protected区域</li>
-<li>static成员没有this指针，它不是任何一个对象的组成部分，推荐使用&quot;类名::static成员名&quot;调用</li>
+<li>static成员没有this指针，它不是任何一个对象的组成部分，推荐使用”类名::static成员名”调用</li>
 </ol>
-<h2 id="41-成员函数"><a class="markdownIt-Anchor" href="#41-成员函数"></a> 4.1. 成员函数</h2>
-<ol>
+<h2 id="4-1-成员函数"><a href="#4-1-成员函数" class="headerlink" title="4.1. 成员函数"></a>4.1. 成员函数</h2><ol>
 <li>声明时候写static关键词</li>
 <li>定义时候不写static关键词</li>
 <li>不可以使用const以修饰其不改变其成员属性。<code>static void f() const&#123;&#125;;//error</code>，因为static函数不包含this指针</li>
 <li>不能使用virtual修饰其虚拟性</li>
-<li>目的:作为类作用域的全局函数。不能访问类的非静态数据成员。类的静态成员函数没有this指针，这导致
-<ol>
+<li>目的:作为类作用域的全局函数。不能访问类的非静态数据成员。类的静态成员函数没有this指针，这导致<ol>
 <li>不能直接存储类的非静态成员变量，调用非静态成员函数</li>
 <li>不能被声明为virtual</li>
 </ol>
 </li>
 </ol>
-<h2 id="42-数据成员"><a class="markdownIt-Anchor" href="#42-数据成员"></a> 4.2. 数据成员</h2>
-<ol>
+<h2 id="4-2-数据成员"><a href="#4-2-数据成员" class="headerlink" title="4.2. 数据成员"></a>4.2. 数据成员</h2><ol>
 <li>声明时候写static关键词</li>
 <li>定义时候不写static关键词，如果定义的时候加了，其实是变成了<strong>文件作用域</strong></li>
-<li><code>static const</code>数据成员
-<ol>
+<li><code>static const</code>数据成员<ol>
 <li>可以在类中声明并且初始化，然后在类定义之外再次进行定义</li>
 <li>或者在类中声明，但在类定义外进行定义。</li>
 </ol>
 </li>
 <li><strong>非const的static数据成员仅能在类中声明，并在类定义之外进行定义。</strong></li>
 </ol>
-<h1 id="5-const类型"><a class="markdownIt-Anchor" href="#5-const类型"></a> 5. const类型</h1>
-<ol>
-<li>const定义的常量在超出其作用域之后<strong>其空间会被释放</strong>
-<ol>
+<h1 id="5-const类型"><a href="#5-const类型" class="headerlink" title="5. const类型"></a>5. const类型</h1><ol>
+<li>const定义的常量在超出其作用域之后<strong>其空间会被释放</strong><ol>
 <li>const数据成员只在某个对象生存期内是常量</li>
 <li>对于整个类是可变的，因为类是可以创建多个对象，对于不同对象其const数据成员的值可以不同</li>
 </ol>
@@ -472,9 +450,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E6%95%B0%E6%8D%AE/" title="2020-C-plus-plus-advanced-programming-C++ 数据">
+                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Parser5-%E9%94%99%E8%AF%AF%E6%81%A2%E5%A4%8D/" title="2020-Compilation-Principle-Parser5-错误恢复">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 数据</span>
+                        <span class="hidden-mobile">2020-Compilation-Principle-Parser5-错误恢复</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +460,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/" title="2020-C-plus-plus-advanced-programming-C++ 动态内存">
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 动态内存</span>
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec6-%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8C%96%E4%B8%8E%E6%9C%80%E6%96%B0%E8%BF%9B%E5%B1%95/" title="2020-Devops-introduction-Lec6-软件架构演化与最新进展">
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec6-软件架构演化与最新进展</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

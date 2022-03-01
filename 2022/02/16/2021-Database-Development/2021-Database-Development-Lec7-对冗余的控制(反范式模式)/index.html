@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/2.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/3.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/4.png">
-<meta property="article:published_time" content="2022-02-16T11:10:12.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:04:15.946Z">
+<meta property="article:published_time" content="2022-02-16T11:07:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:32:55.125Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -205,7 +205,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:07" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -278,19 +278,16 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec7-对冗余的控制反范式模式"><a class="markdownIt-Anchor" href="#lec7-对冗余的控制反范式模式"></a> Lec7-对冗余的控制(反范式模式)</h2>
-<ol>
+              <h2 id="Lec7-对冗余的控制-反范式模式"><a href="#Lec7-对冗余的控制-反范式模式" class="headerlink" title="Lec7-对冗余的控制(反范式模式)"></a>Lec7-对冗余的控制(反范式模式)</h2><ol>
 <li>第一范式是一个字段只有一个值：存储和使用上的要求。比如身份证号的里面的年龄不能使用(拆分字段来使用不满足第一范式)</li>
 <li>第二范式是一条记录只能被唯一主键标识</li>
 <li>第三范式是一个字段全部和一个字段是没有函数依赖，比如年龄和出生日期</li>
 <li>打破范式是为了引入可控制的冗余</li>
 </ol>
-<h1 id="1-consider-the-introduction-of-controlled-redundancy"><a class="markdownIt-Anchor" href="#1-consider-the-introduction-of-controlled-redundancy"></a> 1. Consider the Introduction of Controlled Redundancy</h1>
-<ol>
+<h1 id="1-Consider-the-Introduction-of-Controlled-Redundancy"><a href="#1-Consider-the-Introduction-of-Controlled-Redundancy" class="headerlink" title="1. Consider the Introduction of Controlled Redundancy"></a>1. Consider the Introduction of Controlled Redundancy</h1><ol>
 <li>Determine whether introducing redundancy in a controlled manner by relaxing the normalization rules will improve system performance.</li>
 <li>放弃规范化，来控制冗余</li>
-<li>打破规范
-<ol>
+<li>打破规范<ol>
 <li>规范的打破导致实现的复杂化</li>
 <li>规范的弱化会降低灵活性</li>
 <li>规范的弱化会让更新变慢、查找变快</li>
@@ -298,15 +295,12 @@
 </li>
 <li>系统有低修改性和高查询率则选择打破规范是很好的选择。</li>
 </ol>
-<h1 id="2-denormalization"><a class="markdownIt-Anchor" href="#2-denormalization"></a> 2. Denormalization</h1>
-<ol>
+<h1 id="2-Denormalization"><a href="#2-Denormalization" class="headerlink" title="2. Denormalization"></a>2. Denormalization</h1><ol>
 <li>Refinement to relational schema such that the degree of normalization for a modified table is less than the degree of at least one of the original tables.</li>
 <li>Also use term more loosely to refer to situations where two tables are combined into one new table, which is still normalized but contains more nulls than original tables.</li>
 </ol>
-<h1 id="3-consider-the-introduction-of-controlled-redundancy"><a class="markdownIt-Anchor" href="#3-consider-the-introduction-of-controlled-redundancy"></a> 3. Consider the Introduction of Controlled Redundancy</h1>
-<ol>
-<li>Consider denormalization in following situations, specifically to speed up frequent or critical transactions:
-<ol>
+<h1 id="3-Consider-the-Introduction-of-Controlled-Redundancy"><a href="#3-Consider-the-Introduction-of-Controlled-Redundancy" class="headerlink" title="3. Consider the Introduction of Controlled Redundancy"></a>3. Consider the Introduction of Controlled Redundancy</h1><ol>
+<li>Consider denormalization in following situations, specifically to speed up frequent or critical transactions:<ol>
 <li>Pattern 1 Combining 1:1 relationships 合并一对一关系</li>
 <li>Pattern 2 Duplicating nonkey columns in 1:* relationships to reduce joins 一对多复制非关键字属性</li>
 <li>Pattern 3 Duplicating FK columns in 1:* relationships to reduce joins 一对多复制外部关键字</li>
@@ -318,46 +312,37 @@
 </li>
 <li>逆规范化是违反三范式的</li>
 </ol>
-<h2 id="31-pattern-1-combining-11-relationships"><a class="markdownIt-Anchor" href="#31-pattern-1-combining-11-relationships"></a> 3.1. Pattern 1 Combining 1:1 relationships</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-1-Pattern-1-Combining-1-1-relationships"><a href="#3-1-Pattern-1-Combining-1-1-relationships" class="headerlink" title="3.1. Pattern 1 Combining 1:1 relationships"></a>3.1. Pattern 1 Combining 1:1 relationships</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>大量的空间浪费</li>
 <li>Null的问题</li>
 </ol>
-<h2 id="32-pattern-2-duplicating-nonkey-columns-in-1-relationships-to-reduce-joins"><a class="markdownIt-Anchor" href="#32-pattern-2-duplicating-nonkey-columns-in-1-relationships-to-reduce-joins"></a> 3.2. Pattern 2 Duplicating nonkey columns in 1:* relationships to reduce joins</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-2-Pattern-2-Duplicating-nonkey-columns-in-1-relationships-to-reduce-joins"><a href="#3-2-Pattern-2-Duplicating-nonkey-columns-in-1-relationships-to-reduce-joins" class="headerlink" title="3.2. Pattern 2 Duplicating nonkey columns in 1:* relationships to reduce joins"></a>3.2. Pattern 2 Duplicating nonkey columns in 1:* relationships to reduce joins</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>可能需要触发器来同步修改属性</li>
-<li>额外注意
-<ol>
+<li>额外注意<ol>
 <li>钱的属性一般都要打破范式存储：订单应该是实际的价格</li>
 <li>历史价格的计算</li>
 </ol>
 </li>
 </ol>
-<h2 id="33-pattern-3-duplicating-fk-columns-in-1-relationship-to-reduce-joins"><a class="markdownIt-Anchor" href="#33-pattern-3-duplicating-fk-columns-in-1-relationship-to-reduce-joins"></a> 3.3. Pattern 3 Duplicating FK columns in 1:* relationship to reduce joins</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-3-Pattern-3-Duplicating-FK-columns-in-1-relationship-to-reduce-joins"><a href="#3-3-Pattern-3-Duplicating-FK-columns-in-1-relationship-to-reduce-joins" class="headerlink" title="3.3. Pattern 3 Duplicating FK columns in 1:* relationship to reduce joins"></a>3.3. Pattern 3 Duplicating FK columns in 1:* relationship to reduce joins</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>A要访问C，需要通过B，那么可以使用这个模式来避开B表</li>
 </ol>
-<h2 id="34-pattern-4-duplicating-columns-in-relationships-to-reduce-joins"><a class="markdownIt-Anchor" href="#34-pattern-4-duplicating-columns-in-relationships-to-reduce-joins"></a> 3.4. Pattern 4 Duplicating columns in <em>:</em> relationships to reduce joins</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="35-pattern-5-introducing-repeating-groups"><a class="markdownIt-Anchor" href="#35-pattern-5-introducing-repeating-groups"></a> 3.5. Pattern 5 Introducing repeating groups</h2>
-<ol>
-<li>引入地址、电话号码
-<ol>
+<h2 id="3-4-Pattern-4-Duplicating-columns-in-relationships-to-reduce-joins"><a href="#3-4-Pattern-4-Duplicating-columns-in-relationships-to-reduce-joins" class="headerlink" title="3.4. Pattern 4 Duplicating columns in : relationships to reduce joins"></a>3.4. Pattern 4 Duplicating columns in <em>:</em> relationships to reduce joins</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec7/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-5-Pattern-5-Introducing-repeating-groups"><a href="#3-5-Pattern-5-Introducing-repeating-groups" class="headerlink" title="3.5. Pattern 5 Introducing repeating groups"></a>3.5. Pattern 5 Introducing repeating groups</h2><ol>
+<li>引入地址、电话号码<ol>
 <li>将重复组到放到原表中：重复组数量不大、静态的</li>
 <li>主表中存放缺省的一个地址和电话号码，避开连接查询</li>
 </ol>
 </li>
 </ol>
-<h2 id="36-pattern-6-creating-extract-tables"><a class="markdownIt-Anchor" href="#36-pattern-6-creating-extract-tables"></a> 3.6. Pattern 6 Creating extract tables</h2>
-<ol>
+<h2 id="3-6-Pattern-6-Creating-extract-tables"><a href="#3-6-Pattern-6-Creating-extract-tables" class="headerlink" title="3.6. Pattern 6 Creating extract tables"></a>3.6. Pattern 6 Creating extract tables</h2><ol>
 <li>Reports can access derived data and perform multitable joins on same set of base tables. However, data report based on may be relatively static or may not have to be current.</li>
 <li>Can create a single, highly denormalized extract table based on tables required by reports, and allow users to access extract table directly instead of base tables.</li>
 </ol>
-<h2 id="37-pattern-7-partitioning-tables"><a class="markdownIt-Anchor" href="#37-pattern-7-partitioning-tables"></a> 3.7. Pattern 7 Partitioning tables</h2>
-<ol>
+<h2 id="3-7-Pattern-7-Partitioning-tables"><a href="#3-7-Pattern-7-Partitioning-tables" class="headerlink" title="3.7. Pattern 7 Partitioning tables"></a>3.7. Pattern 7 Partitioning tables</h2><ol>
 <li>Rather than combining tables, could decompose a table into a smaller number of partitions.</li>
 <li>Horizontal partition: distribute records across a number of (smaller) tables.</li>
 <li>Vertical partition: distribute columns across a number of (smaller) tables. PK duplicated to allow reconstruction.</li>
@@ -454,9 +439,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec6-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/" title="2021-Database-Development-Lec6-数据库模式设计之层次结构">
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-07-%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%8C%96%E4%B8%8E%E9%AA%8C%E8%AF%81/" title="2020-Software-Engineering-and-Computing-II-07-需求文档化与验证">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Database-Development-Lec6-数据库模式设计之层次结构</span>
+                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-07-需求文档化与验证</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -464,8 +449,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec8-%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" title="2021-Database-Development-Lec8-并发处理">
-                        <span class="hidden-mobile">2021-Database-Development-Lec8-并发处理</span>
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-7%20%E9%A1%B9%E7%9B%AE%E6%94%AF%E6%8C%81%E6%B4%BB%E5%8A%A8/" title="2021-software-quality-management-Lec-7 项目支持活动">
+                        <span class="hidden-mobile">2021-software-quality-management-Lec-7 项目支持活动</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/15.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/30.png">
-<meta property="article:published_time" content="2022-02-16T11:10:06.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:52:03.466Z">
+<meta property="article:published_time" content="2022-02-16T11:26:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:30:39.382Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="软件工程与计算II">
@@ -207,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:26" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -280,24 +280,19 @@
             
             <div class="markdown-body">
               
-              <h2 id="web-03-rest和json"><a class="markdownIt-Anchor" href="#web-03-rest和json"></a> web- 03-REST和JSON</h2>
-<h1 id="1-rest和json"><a class="markdownIt-Anchor" href="#1-rest和json"></a> 1. REST和JSON</h1>
-<h2 id="11-rest-style"><a class="markdownIt-Anchor" href="#11-rest-style"></a> 1.1. REST Style</h2>
-<h3 id="111-论文推荐"><a class="markdownIt-Anchor" href="#111-论文推荐"></a> 1.1.1. 论⽂(推荐)</h3>
-<blockquote>
+              <h2 id="web-03-REST和JSON"><a href="#web-03-REST和JSON" class="headerlink" title="web- 03-REST和JSON"></a>web- 03-REST和JSON</h2><h1 id="1-REST和JSON"><a href="#1-REST和JSON" class="headerlink" title="1. REST和JSON"></a>1. REST和JSON</h1><h2 id="1-1-REST-Style"><a href="#1-1-REST-Style" class="headerlink" title="1.1. REST Style"></a>1.1. REST Style</h2><h3 id="1-1-1-论⽂-推荐"><a href="#1-1-1-论⽂-推荐" class="headerlink" title="1.1.1. 论⽂(推荐)"></a>1.1.1. 论⽂(推荐)</h3><blockquote>
 <p>“The modern Web is one instance of a REST-style architecture.”</p>
-</blockquote>
 <ol>
 <li>⾃从Roy Fielding博⼠在2000年他的博⼠论⽂中提出REST(Representational State Transfer)⻛格的软件架构模式后，REST就基本上迅速取代了复杂⽽笨重的SOAP，成为Web API的标准了。</li>
 <li>REST是推导出来的，而不是突然想出来的</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>上图是推导过程:具体过程参考论文</li>
 <li>无状态才可以做到扩展，然后可以做一些负载均衡等等操作。</li>
 </ol>
-<h3 id="112-web-api-与前后端分离"><a class="markdownIt-Anchor" href="#112-web-api-与前后端分离"></a> 1.1.2. Web API 与前后端分离</h3>
-<ol>
+<h3 id="1-1-2-Web-API-与前后端分离"><a href="#1-1-2-Web-API-与前后端分离" class="headerlink" title="1.1.2. Web API 与前后端分离"></a>1.1.2. Web API 与前后端分离</h3><ol>
 <li>如果我们想要获取某个电商⽹站的某个商品，输⼊ <code>http://localhost:3000/products/123</code> ，就可以看到id为123的商品⻚⾯，但这个结果是HTML页面，它同时混合包含了Product的数据和Product的展示两个部分。对于⽤户来说，阅读起来没有问题，但是，如果机器读取，就很难从HTML中解析出Product的数据。</li>
 <li>如果⼀个URL返回的不是HTML，⽽是机器能直接解析的数据，这个URL就可以看成是⼀个Web API。⽐如，读取 <code>http://localhost:3000/api/products/123</code> ，如果能直接返回Product的数据，那么机器就可以直接读取。</li>
 <li>REST就是⼀种设计API的模式。最常⽤的数据格式是JSON。由于JSON能直接被JavaScript读取，所以，以JSON格式编写的REST⻛格的API具有简单、易读、易⽤的特点。</li>
@@ -305,60 +300,35 @@
 <li>此外，如果我们把前端⻚⾯看作是⼀种⽤于展示的客户端，那么API就是为客户端提供数据、操作数据的接⼝。这种设计可以获得极⾼的扩展性。例如，当⽤户需要在⼿机上购买商品时，只需要开发针对iOS和Android的两个客户端，通过客户端访问API，就可以完成通过浏览器⻚⾯提供的功能，⽽后端代码基本⽆需改动。</li>
 <li>当⼀个Web应⽤以API的形式对外提供功能时，整个应⽤的结构就扩展为：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-rest-api-规范"><a class="markdownIt-Anchor" href="#12-rest-api-规范"></a> 1.2. REST API 规范</h2>
-<ol>
-<li>编写REST API，实际上就是编写处理HTTP请求的async函数，不过，REST请求和普通的HTTP请求有⼏<br />
-个特殊的地⽅：
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-REST-API-规范"><a href="#1-2-REST-API-规范" class="headerlink" title="1.2. REST API 规范"></a>1.2. REST API 规范</h2><ol>
+<li>编写REST API，实际上就是编写处理HTTP请求的async函数，不过，REST请求和普通的HTTP请求有⼏<br>个特殊的地⽅：<ol>
 <li>REST请求仍然是标准的HTTP请求，但是，除了GET请求外，POST、PUT等请求的body是JSON数据格式，请求的 Content-Type 为 application/json ；</li>
 <li>REST响应返回的结果是JSON数据格式，因此，响应的 Content-Type 也是 application/json 。</li>
 </ol>
 </li>
 <li>REST规范定义了资源的通⽤访问格式，虽然它不是⼀个强制要求，但遵守该规范可以让⼈易于理解。</li>
-<li>例如，商品Product就是⼀种资源。获取所有Product的URL如下：</li>
+<li>例如，商品Product就是⼀种资源。获取所有Product的URL如下：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products<br></code></pre></td></tr></table></figure></li>
+<li>⽽获取某个指定的Product，例如，id为 123 的Product，其URL如下:<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure></li>
+<li>新建⼀个Product使⽤POST请求，JSON数据包含在body中，URL如下：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">POST <span class="hljs-regexp">/api/</span>products<br></code></pre></td></tr></table></figure></li>
+<li>更新⼀个Product使⽤PUT请求，例如，更新id为 123 的Product，其URL如下：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">PUT <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure></li>
+<li>删除⼀个Product使⽤DELETE请求，例如，删除id为 123 的Product，其URL如下：<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">DELETE</span> <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure></li>
+<li>资源还可以按层次组织。例如，获取某个Product的所有评论，使⽤：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products<span class="hljs-regexp">/123/</span>reviews<br></code></pre></td></tr></table></figure></li>
+<li>当我们只需要获取部分数据时，可通过参数限制返回的结果集，例如，返回第2⻚评论，每⻚10项，按<br>时间排序：<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">GET <span class="hljs-regexp">/api/</span>products<span class="hljs-regexp">/123/</span>reviews?page=<span class="hljs-number">2</span>&amp;<span class="hljs-keyword">size</span>=<span class="hljs-number">10</span>&amp;<span class="hljs-keyword">sort</span>=time<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>⽽获取某个指定的Product，例如，id为 123 的Product，其URL如下:</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
-<ol start="4">
-<li>新建⼀个Product使⽤POST请求，JSON数据包含在body中，URL如下：</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">POST <span class="hljs-regexp">/api/</span>products<br></code></pre></td></tr></table></figure>
-<ol start="5">
-<li>更新⼀个Product使⽤PUT请求，例如，更新id为 123 的Product，其URL如下：</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">PUT <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
-<ol start="6">
-<li>删除⼀个Product使⽤DELETE请求，例如，删除id为 123 的Product，其URL如下：</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">DELETE</span> <span class="hljs-regexp">/api/</span>products/<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
-<ol start="7">
-<li>资源还可以按层次组织。例如，获取某个Product的所有评论，使⽤：</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET <span class="hljs-regexp">/api/</span>products<span class="hljs-regexp">/123/</span>reviews<br></code></pre></td></tr></table></figure>
-<ol start="8">
-<li>当我们只需要获取部分数据时，可通过参数限制返回的结果集，例如，返回第2⻚评论，每⻚10项，按<br />
-时间排序：</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">GET <span class="hljs-regexp">/api/</span>products<span class="hljs-regexp">/123/</span>reviews?page=<span class="hljs-number">2</span>&amp;<span class="hljs-keyword">size</span>=<span class="hljs-number">10</span>&amp;<span class="hljs-keyword">sort</span>=time<br></code></pre></td></tr></table></figure>
-<h2 id="13-json"><a class="markdownIt-Anchor" href="#13-json"></a> 1.3. JSON</h2>
-<ol>
+<h2 id="1-3-JSON"><a href="#1-3-JSON" class="headerlink" title="1.3. JSON"></a>1.3. JSON</h2><ol>
 <li>JSON(JavaScript Object Notation，JavaScript对象表示法，读作/ˈdʒeɪsən/)是⼀种由道格拉斯·克罗克福特构想和设计、轻量级的数据交换语⾔，该语⾔以易于让⼈阅读的⽂字为基础，⽤来传输由属性值或者序列性的值组成的数据对象。尽管JSON是JavaScript的⼀个⼦集，但JSON是独⽴于语⾔的⽂本格式，并且采⽤了类似于C语⾔家族的⼀些习惯。</li>
 <li>JSON 数据格式与语⾔⽆关。即便它源⾃JavaScript，但当前很多编程语⾔都⽀持 JSON 式数据的⽣成和解析。JSON 的官⽅ MIME 类型是 application/json ，⽂件扩展名是 .json 。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>本质是⼀个正则表达式，JSON的parser是⼀个有限状态机。</li>
 </ol>
-<h1 id="2-restful介绍"><a class="markdownIt-Anchor" href="#2-restful介绍"></a> 2. RESTful介绍</h1>
-<h2 id="21-什么是restful"><a class="markdownIt-Anchor" href="#21-什么是restful"></a> 2.1. 什么是RESTFul</h2>
-<ol>
+<h1 id="2-RESTful介绍"><a href="#2-RESTful介绍" class="headerlink" title="2. RESTful介绍"></a>2. RESTful介绍</h1><h2 id="2-1-什么是RESTFul"><a href="#2-1-什么是RESTFul" class="headerlink" title="2.1. 什么是RESTFul"></a>2.1. 什么是RESTFul</h2><ol>
 <li>REST(RepresentationalState Transfer)是一种软件架构的设计风格(不是标准)，通过 HTTP接口处理数据，主要用于客户端和服务器的数据交互。该风格的具体特点——在服务器端，应用程序对象、数据库记录、算法、文本、图片等都是一个实体资源，使用 URI标识，所有资源都共享统一的接口(标准的HTTP方法)比如 GET、PUT、POST 和 DELETE，在客户端和服务器之间传输数据。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -454,9 +424,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-web-02-HTTP%E5%8D%8F%E8%AE%AE/" title="2020-Software-Engineering-and-Computing-II-web-02-HTTP协议">
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2020-C-plus-plus-advanced-programming-C++%20stack/" title="2020-C-plus-plus-advanced-programming-C++ stack">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-web-02-HTTP协议</span>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ stack</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -464,8 +434,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-09-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" title="2020-Software-Engineering-and-Computing-II-09-软件体系结构基础">
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-09-软件体系结构基础</span>
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2020-C-plus-plus-advanced-programming-C++%20Map/" title="2020-C-plus-plus-advanced-programming-C++ Map">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ Map</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

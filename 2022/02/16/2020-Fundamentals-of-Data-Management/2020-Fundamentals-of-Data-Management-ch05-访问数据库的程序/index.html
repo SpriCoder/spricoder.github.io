@@ -31,8 +31,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/6.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/7.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/8.png">
-<meta property="article:published_time" content="2022-02-16T11:09:10.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:54:47.277Z">
+<meta property="article:published_time" content="2022-02-16T11:05:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:18:49.852Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -209,7 +209,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:05" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -282,237 +282,197 @@
             
             <div class="markdown-body">
               
-              <h2 id="ch05-访问数据库的程序"><a class="markdownIt-Anchor" href="#ch05-访问数据库的程序"></a> ch05-访问数据库的程序</h2>
-<h1 id="1-嵌入式sqlesql-embedded-sql"><a class="markdownIt-Anchor" href="#1-嵌入式sqlesql-embedded-sql"></a> 1. 嵌入式SQL(ESQL， Embedded SQL)</h1>
-<ol>
+              <h2 id="ch05-访问数据库的程序"><a href="#ch05-访问数据库的程序" class="headerlink" title="ch05-访问数据库的程序"></a>ch05-访问数据库的程序</h2><h1 id="1-嵌入式SQL-ESQL，-Embedded-SQL"><a href="#1-嵌入式SQL-ESQL，-Embedded-SQL" class="headerlink" title="1. 嵌入式SQL(ESQL， Embedded SQL)"></a>1. 嵌入式SQL(ESQL， Embedded SQL)</h1><ol>
 <li>嵌入式SQL是将SQL语句嵌入到Java、C等语言成分中去</li>
 <li>标准PPT38-40页</li>
 <li>ESQL用来开发菜单应用</li>
 </ol>
-<h2 id="11-为什么要引入esql"><a class="markdownIt-Anchor" href="#11-为什么要引入esql"></a> 1.1. 为什么要引入ESQL?</h2>
-<ol>
+<h2 id="1-1-为什么要引入ESQL"><a href="#1-1-为什么要引入ESQL" class="headerlink" title="1.1. 为什么要引入ESQL?"></a>1.1. 为什么要引入ESQL?</h2><ol>
 <li>嵌入式SQL是将SQL嵌入到Java、C等语言成分中去。</li>
 <li>应用管理员和普通用户直接使用SQL的效率比较低。</li>
 </ol>
-<h2 id="12-c语言中的嵌入式sql"><a class="markdownIt-Anchor" href="#12-c语言中的嵌入式sql"></a> 1.2. C语言中的嵌入式SQL</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql select <span class="hljs-title function_">count</span><span class="hljs-params">(*)</span><br>  into :host_var<br>  from customers;<br></code></pre></td></tr></table></figure>
+<h2 id="1-2-C语言中的嵌入式SQL"><a href="#1-2-C语言中的嵌入式SQL" class="headerlink" title="1.2. C语言中的嵌入式SQL"></a>1.2. C语言中的嵌入式SQL</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql select <span class="hljs-title function_">count</span><span class="hljs-params">(*)</span><br>  into :host_var<br>  from customers;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>以<code>exec sql</code>开头，以<code>;</code>为结尾。</li>
 <li><code>into</code>子句,接受查询结果的宿主程序变量:<code>host variable(host_var)</code></li>
 </ol>
-<h2 id="13-esql和isql的语法不同"><a class="markdownIt-Anchor" href="#13-esql和isql的语法不同"></a> 1.3. ESQL和ISQL的语法不同</h2>
-<ol>
+<h2 id="1-3-ESQL和ISQL的语法不同"><a href="#1-3-ESQL和ISQL的语法不同" class="headerlink" title="1.3. ESQL和ISQL的语法不同"></a>1.3. ESQL和ISQL的语法不同</h2><ol>
 <li><code>:</code>的前缀来保存到宿主变量</li>
 <li>宿主变量常常被用来存储数据库的操作的结果，或者是用来作为SQL查询语言的输入</li>
 </ol>
-<h2 id="14-esql编程的步骤"><a class="markdownIt-Anchor" href="#14-esql编程的步骤"></a> 1.4. ESQL编程的步骤</h2>
-<h3 id="141-声明部分"><a class="markdownIt-Anchor" href="#141-声明部分"></a> 1.4.1. 声明部分</h3>
-<ol>
-<li>声明需要使用到的宿主变量，必须预先声明</li>
+<h2 id="1-4-ESQL编程的步骤"><a href="#1-4-ESQL编程的步骤" class="headerlink" title="1.4. ESQL编程的步骤"></a>1.4. ESQL编程的步骤</h2><h3 id="1-4-1-声明部分"><a href="#1-4-1-声明部分" class="headerlink" title="1.4.1. 声明部分"></a>1.4.1. 声明部分</h3><ol>
+<li>声明需要使用到的宿主变量，必须预先声明<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> cust_discnt<br><span class="hljs-type">int</span> cust_discnt<br><br>exec sql begin declare section;<br>    <span class="hljs-type">char</span> cust_id[<span class="hljs-number">5</span>];<br>    <span class="hljs-type">char</span> cust_name[<span class="hljs-number">14</span>];<br>    <span class="hljs-type">float</span> cust_discnt;<br>    <span class="hljs-type">char</span> user_name[<span class="hljs-number">20</span>], user_pwd[<span class="hljs-number">20</span>];<br>exec sql end declare section;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> cust_discnt<br><span class="hljs-type">int</span> cust_discnt<br><br>exec sql begin declare section;<br>    <span class="hljs-type">char</span> cust_id[<span class="hljs-number">5</span>];<br>    <span class="hljs-type">char</span> cust_name[<span class="hljs-number">14</span>];<br>    <span class="hljs-type">float</span> cust_discnt;<br>    <span class="hljs-type">char</span> user_name[<span class="hljs-number">20</span>], user_pwd[<span class="hljs-number">20</span>];<br>exec sql end declare section;<br></code></pre></td></tr></table></figure>
-<h3 id="142-条件控制"><a class="markdownIt-Anchor" href="#142-条件控制"></a> 1.4.2. 条件控制</h3>
-<ol>
-<li>错误或者其他条件的时候需要执行的控制操作</li>
-</ol>
+<h3 id="1-4-2-条件控制"><a href="#1-4-2-条件控制" class="headerlink" title="1.4.2. 条件控制"></a>1.4.2. 条件控制</h3><ol>
+<li><p>错误或者其他条件的时候需要执行的控制操作</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql whenever sqlerror <span class="hljs-keyword">goto</span> report_error;<br>exec sql whenever not found <span class="hljs-keyword">goto</span> notfound;<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>完成的程序实例</li>
-</ol>
+</li>
+<li><p>完成的程序实例</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql whenever sqlerror <span class="hljs-keyword">goto</span> handle_error ;<br>exec sql create table <span class="hljs-title function_">customers</span><br>	<span class="hljs-params">(cid <span class="hljs-type">char</span>(<span class="hljs-number">4</span>) not null, cname ...... )</span> ;<br><br>handle_error:<br>  exec sql whenever sqlerror <span class="hljs-keyword">continue</span> ;<br>  exec sql drop table customers ;<br>  exec sql disconnect ;<br>  <span class="hljs-built_in">fprintf</span>(<span class="hljs-built_in">stderr</span>, <span class="hljs-string">&quot;Couldn’t create customers table&quot;</span>);<br>  <span class="hljs-keyword">return</span>  –<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>可以使用一个变量存储错误码，进行不同的异常处理</li>
+</li>
+<li><p>可以使用一个变量存储错误码，进行不同的异常处理</p>
+</li>
 <li>从Oracle DB中获取到错误信息</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> ERRLEN 256	<span class="hljs-comment">/* maximum length of error message */</span></span><br><span class="hljs-type">int</span> errlength = ERRLEN;	<span class="hljs-comment">/* size of buffer */</span><br><span class="hljs-type">int</span> errsize;			<span class="hljs-comment">/* to contain actual message length */</span><br><span class="hljs-type">char</span> errbuf[ERRLEN];	<span class="hljs-comment">/* buffer to receive message */</span><br><br><span class="hljs-built_in">sqlglm</span>(errbuf, &amp;errlength, &amp;errsize);	<span class="hljs-comment">/* get the error message for Oracle DB  */</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.*s\n&quot;</span>, errsize, errbuf);<br></code></pre></td></tr></table></figure>
-<h3 id="143-连接到数据库"><a class="markdownIt-Anchor" href="#143-连接到数据库"></a> 1.4.3. 连接到数据库</h3>
-<ol>
-<li>SQL 99</li>
+<h3 id="1-4-3-连接到数据库"><a href="#1-4-3-连接到数据库" class="headerlink" title="1.4.3. 连接到数据库"></a>1.4.3. 连接到数据库</h3><ol>
+<li>SQL 99<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CONNECT TO target-server<br>	[AS connect-name] [USER username];<br>EXEC SQL CONNECT TO DEFAULT;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CONNECT TO target-server<br>	[AS connect-name] [USER username];<br>EXEC SQL CONNECT TO DEFAULT;<br></code></pre></td></tr></table></figure>
 <ul>
 <li>target-server:数据库名称</li>
 <li>connect-name:连接的Session名称</li>
 <li>username:用户名</li>
 </ul>
-<ol start="2">
-<li>Oracle</li>
+<ol>
+<li>Oracle<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CONNECT TO :user_name<br>  IDENTIFIED BY :user_pwd ;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CONNECT TO :user_name<br>  IDENTIFIED BY :user_pwd ;<br></code></pre></td></tr></table></figure>
 <ul>
 <li>user_name:Oracle用户名</li>
 <li>user_pwd:Oracle密码</li>
 </ul>
-<h3 id="144-应用程序主体"><a class="markdownIt-Anchor" href="#144-应用程序主体"></a> 1.4.4. 应用程序主体</h3>
-<ol>
+<h3 id="1-4-4-应用程序主体"><a href="#1-4-4-应用程序主体" class="headerlink" title="1.4.4. 应用程序主体"></a>1.4.4. 应用程序主体</h3><ol>
 <li>使用宿主语言进行交互</li>
-<li>通过ESQL进行交互</li>
+<li>通过ESQL进行交互<ol>
 <li>prompt():期望得到一个标记(因为函数的第二个参数为1)，然后将它读到对应数组中(第3个参数)，数组可容纳4个字符(第4个参数)加上1个空字符结束符。</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (prompt(cid_prompt, <span class="hljs-number">1</span>, cust_id, <span class="hljs-number">4</span>) &gt;= <span class="hljs-number">0</span>)<br>&#123;<br>	exec sql select cname, discnt<br>		into :cust_name, :cust_discnt<br>		from customers<br>		where cid = :cust_id;<br>  exec sql commit work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CUSTOMER&#x27;S NAME IS  %s AND DISCNT IS  %5.1f\n&quot;</span>, cust_name, cust_discnt);<br>    <span class="hljs-keyword">continue</span>;                                 <br>notfound:<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Can&#x27;t find customer %s, continuing\n&quot;</span>, cust_id);<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>注意在关闭连接之前务必要提交或回滚事物</li>
+</li>
 </ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (prompt(cid_prompt, <span class="hljs-number">1</span>, cust_id, <span class="hljs-number">4</span>) &gt;= <span class="hljs-number">0</span>)<br>&#123;<br>	exec sql select cname, discnt<br>		into :cust_name, :cust_discnt<br>		from customers<br>		where cid = :cust_id;<br>  exec sql commit work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;CUSTOMER&#x27;S NAME IS  %s AND DISCNT IS  %5.1f\n&quot;</span>, cust_name, cust_discnt);<br>    <span class="hljs-keyword">continue</span>;                                 <br>notfound:<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Can&#x27;t find customer %s, continuing\n&quot;</span>, cust_id);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li><p>注意在关闭连接之前务必要提交或回滚事物</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL COMMIT WORK ;<br><br>EXEC SQL ROLLBACK WORK ;<br></code></pre></td></tr></table></figure>
-<ol start="4">
-<li>Indicator Variables(指示符变量)</li>
+</li>
+<li><p>Indicator Variables(指示符变量)</p>
+<ol>
 <li><code>0</code>：一个数据库值，非空，赋值给host variable</li>
 <li><code>&gt;0</code>：截断的数据库字符串已分配给主机变量</li>
 <li><code>=-1</code>：数据库的值为空，宿主变量是一个没有意义的值</li>
 </ol>
+</li>
+</ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">cd_ind = <span class="hljs-number">-1</span>;<br>exec sql update customers<br>  <span class="hljs-built_in">set</span> discnt = :cust_discnt INDICATOR :cd_ind<br>  where cid = :cust_id;<br></code></pre></td></tr></table></figure>
-<h3 id="145-断开数据库"><a class="markdownIt-Anchor" href="#145-断开数据库"></a> 1.4.5. 断开数据库</h3>
-<ol>
-<li>SQL99</li>
-</ol>
+<h3 id="1-4-5-断开数据库"><a href="#1-4-5-断开数据库" class="headerlink" title="1.4.5. 断开数据库"></a>1.4.5. 断开数据库</h3><ol>
+<li><p>SQL99</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL DISCONNECT connect-name ;<br><span class="hljs-comment">//或</span><br>EXEC SQL DISCONNECT CURRENT ;<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>Oracle:</li>
-</ol>
+</li>
+<li><p>Oracle:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql commit release;<br><span class="hljs-comment">//或</span><br>exec sql rollback release;<br></code></pre></td></tr></table></figure>
-<h2 id="15-esql和c的编程运行过程"><a class="markdownIt-Anchor" href="#15-esql和c的编程运行过程"></a> 1.5. ESQL和C的编程运行过程</h2>
-<ol>
+</li>
+</ol>
+<h2 id="1-5-ESQL和C的编程运行过程"><a href="#1-5-ESQL和C的编程运行过程" class="headerlink" title="1.5. ESQL和C的编程运行过程"></a>1.5. ESQL和C的编程运行过程</h2><ol>
 <li>PreCompiler</li>
 <li>C-Compiler</li>
 <li>Executable Code</li>
 </ol>
-<h2 id="16-使用游标进行复杂查询"><a class="markdownIt-Anchor" href="#16-使用游标进行复杂查询"></a> 1.6. 使用游标进行复杂查询</h2>
-<ol>
+<h2 id="1-6-使用游标进行复杂查询"><a href="#1-6-使用游标进行复杂查询" class="headerlink" title="1.6. 使用游标进行复杂查询"></a>1.6. 使用游标进行复杂查询</h2><ol>
 <li>One-Row-at-a-Time Principle：一次只有一行原则</li>
 </ol>
-<h3 id="161-声明游标"><a class="markdownIt-Anchor" href="#161-声明游标"></a> 1.6.1. 声明游标</h3>
-<ol>
+<h3 id="1-6-1-声明游标"><a href="#1-6-1-声明游标" class="headerlink" title="1.6.1. 声明游标"></a>1.6.1. 声明游标</h3><ol>
 <li>游标声明语法</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL DECLARE cursor-name CURSOR FOR<br>	subquery<br>	[ ORDER BY ...... ]<br>	[ FOR &#123; READ ONLY |<br>		   UPDATE [ OF columnname, ...... ] &#125; ]  ;<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>声明游标例子：</li>
+<ol>
+<li>声明游标例子：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL DECLARE <span class="hljs-title function_">agent_dollars</span><span class="hljs-params">(cursor name)</span> CURSOR FOR<br>  select aid, <span class="hljs-title function_">sum</span><span class="hljs-params">(dollars)</span><br>  from orders<br>  where cid = :cust_id<br>  group by aid ;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL DECLARE <span class="hljs-title function_">agent_dollars</span><span class="hljs-params">(cursor name)</span> CURSOR FOR<br>  select aid, <span class="hljs-title function_">sum</span><span class="hljs-params">(dollars)</span><br>  from orders<br>  where cid = :cust_id<br>  group by aid ;<br></code></pre></td></tr></table></figure>
-<h3 id="162-开启游标"><a class="markdownIt-Anchor" href="#162-开启游标"></a> 1.6.2. 开启游标</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL OPEN agent_dollars;<br></code></pre></td></tr></table></figure>
+<h3 id="1-6-2-开启游标"><a href="#1-6-2-开启游标" class="headerlink" title="1.6.2. 开启游标"></a>1.6.2. 开启游标</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL OPEN agent_dollars;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>一定要在之前声明游标，之后游标会放置到了结果集合的第一行。</li>
 </ol>
-<h3 id="163-游标拉取一行"><a class="markdownIt-Anchor" href="#163-游标拉取一行"></a> 1.6.3. 游标拉取一行</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (TRUE) &#123;	<span class="hljs-comment">/* loop to fetch rows */</span><br>  exec sql fetch agent_dollars<br>            into :agent_id, :dollar_sum;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s %11.2f\n&quot;</span>,agent_id,dollar_sum);<br>&#125;<span class="hljs-comment">/* end fetch loop */</span><br></code></pre></td></tr></table></figure>
+<h3 id="1-6-3-游标拉取一行"><a href="#1-6-3-游标拉取一行" class="headerlink" title="1.6.3. 游标拉取一行"></a>1.6.3. 游标拉取一行</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (TRUE) &#123;	<span class="hljs-comment">/* loop to fetch rows */</span><br>  exec sql fetch agent_dollars<br>            into :agent_id, :dollar_sum;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s %11.2f\n&quot;</span>,agent_id,dollar_sum);<br>&#125;<span class="hljs-comment">/* end fetch loop */</span><br></code></pre></td></tr></table></figure>
 <ol>
 <li>操作:首先要向下滚动一行，然后将本行的数据传递到变量中</li>
 </ol>
-<h3 id="164-关闭游标"><a class="markdownIt-Anchor" href="#164-关闭游标"></a> 1.6.4. 关闭游标</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CLOSE agent_dollars;<br></code></pre></td></tr></table></figure>
+<h3 id="1-6-4-关闭游标"><a href="#1-6-4-关闭游标" class="headerlink" title="1.6.4. 关闭游标"></a>1.6.4. 关闭游标</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL CLOSE agent_dollars;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>操作:关闭游标，释放DBMS的结果集</li>
 <li>关闭之后就可以再次打开</li>
 </ol>
-<h2 id="17-fetch结束后的异常操作"><a class="markdownIt-Anchor" href="#17-fetch结束后的异常操作"></a> 1.7. fetch结束后的异常操作</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql whenever not found <span class="hljs-keyword">goto</span> finish;<br><span class="hljs-keyword">while</span> (TRUE) &#123;<br>  exec sql fetch ... into ...;<br>&#125;<br><br>finish: exec sql close agent_dollars;<br></code></pre></td></tr></table></figure>
-<h2 id="18-whenever语句"><a class="markdownIt-Anchor" href="#18-whenever语句"></a> 1.8. Whenever语句</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL WHENEVER condition action;<br></code></pre></td></tr></table></figure>
+<h2 id="1-7-fetch结束后的异常操作"><a href="#1-7-fetch结束后的异常操作" class="headerlink" title="1.7. fetch结束后的异常操作"></a>1.7. fetch结束后的异常操作</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">exec sql whenever not found <span class="hljs-keyword">goto</span> finish;<br><span class="hljs-keyword">while</span> (TRUE) &#123;<br>  exec sql fetch ... into ...;<br>&#125;<br><br>finish: exec sql close agent_dollars;<br></code></pre></td></tr></table></figure>
+<h2 id="1-8-Whenever语句"><a href="#1-8-Whenever语句" class="headerlink" title="1.8. Whenever语句"></a>1.8. Whenever语句</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL WHENEVER condition action;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>逻辑上类似:<code>if( condition ) &#123; action &#125;</code></li>
-<li>只有当遇到一条后续的Whenever语句覆盖了前面的Whenever语句时，才可以改变程序的动作。(在程序的不同的论域)</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL WHENEVER sqlerror stop;<br>EXEC SQL WHENEVER sqlerror <span class="hljs-keyword">continue</span>;<span class="hljs-comment">//覆盖上一条</span><br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>价值:
-<ol>
+<li>只有当遇到一条后续的Whenever语句覆盖了前面的Whenever语句时，才可以改变程序的动作。(在程序的不同的论域)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">EXEC SQL WHENEVER sqlerror stop;<br>EXEC SQL WHENEVER sqlerror <span class="hljs-keyword">continue</span>;<span class="hljs-comment">//覆盖上一条</span><br></code></pre></td></tr></table></figure></li>
+<li>价值:<ol>
 <li>一个条件陷阱能够大大减少处理错误返回的代码行数。</li>
 <li>可以保证下不同数据库系统之间进行最大限度地移植。</li>
 </ol>
 </li>
 </ol>
-<h3 id="181-condition"><a class="markdownIt-Anchor" href="#181-condition"></a> 1.8.1. CONDITION</h3>
-<ol>
+<h3 id="1-8-1-CONDITION"><a href="#1-8-1-CONDITION" class="headerlink" title="1.8.1. CONDITION"></a>1.8.1. CONDITION</h3><ol>
 <li>SQLERROR:当出现编程错误时，可以终止程序运行</li>
-<li>NOT FOUND:
-<ol>
+<li>NOT FOUND:<ol>
 <li>Select、Fetch、Insert、Update或者Delete子句没有行被影响到。</li>
 <li>经常被用在结束循环、修改控制流的时候</li>
 </ol>
 </li>
-<li>SQLWARNING
-<ol>
+<li>SQLWARNING<ol>
 <li>非错误但值得注意的情况，不会影响程序的执行</li>
 <li>他需要:<code>EXEC SQL INCLUDE sqlca;</code></li>
 </ol>
 </li>
 </ol>
-<h3 id="182-actions-操作"><a class="markdownIt-Anchor" href="#182-actions-操作"></a> 1.8.2. ACTIONS 操作</h3>
-<ol>
+<h3 id="1-8-2-ACTIONS-操作"><a href="#1-8-2-ACTIONS-操作" class="headerlink" title="1.8.2. ACTIONS 操作"></a>1.8.2. ACTIONS 操作</h3><ol>
 <li>CONTINUE:不执行任何操作，程序按照正常流程继续</li>
 <li>GOTO [tag]:对应的条件用Whenever语句覆盖</li>
 <li>STOP:停止执行或程序、回滚当前事务、断开数据库连接</li>
 <li>DO function | BREAK | CONTINUE:使用c语言调用，从此函数返回后，控制流从引发条件的ESQL语句之后的语句继续。</li>
 </ol>
-<h2 id="19-数据类型"><a class="markdownIt-Anchor" href="#19-数据类型"></a> 1.9. 数据类型</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="110-事务编程"><a class="markdownIt-Anchor" href="#110-事务编程"></a> 1.10. 事务编程</h2>
-<ol>
+<h2 id="1-9-数据类型"><a href="#1-9-数据类型" class="headerlink" title="1.9. 数据类型"></a>1.9. 数据类型</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-10-事务编程"><a href="#1-10-事务编程" class="headerlink" title="1.10. 事务编程"></a>1.10. 事务编程</h2><ol>
 <li>事务的概念:将几个SQL语句组合成一个不可分割的，全有或全无的事务包。</li>
 <li>事务的保证和加锁:详细的在第10章完成讲解</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>事务死锁:</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/4.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1101-事务内容"><a class="markdownIt-Anchor" href="#1101-事务内容"></a> 1.10.1. 事务内容</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/4.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-10-1-事务内容"><a href="#1-10-1-事务内容" class="headerlink" title="1.10.1. 事务内容"></a>1.10.1. 事务内容</h3><ol>
 <li>操作过程中会出现数据的不一致视图(比如没有到账)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1102-事务过程"><a class="markdownIt-Anchor" href="#1102-事务过程"></a> 1.10.2. 事务过程</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-10-2-事务过程"><a href="#1-10-2-事务过程" class="headerlink" title="1.10.2. 事务过程"></a>1.10.2. 事务过程</h3><ol>
 <li>开始事务:在需要开始事务的时候开始事务</li>
 <li>结束事务:成功结束事务，提交事务;失败停止，开始回滚，并且暂时不可见。</li>
 </ol>
-<h3 id="1103-事务例子"><a class="markdownIt-Anchor" href="#1103-事务例子"></a> 1.10.3. 事务例子</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;prompt.h&quot;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  <span class="hljs-comment">// 变量声明</span><br>  exec sql begin declare section;<br>    <span class="hljs-type">char</span> acctfrom[<span class="hljs-number">11</span>], acctto[<span class="hljs-number">11</span>];<br>    <span class="hljs-type">double</span> dollars;<br>  exec sql end declare section;<br>  <span class="hljs-type">char</span> dollarstr[<span class="hljs-number">20</span>];<br>  <span class="hljs-comment">//连接到默认数据库</span><br>  exec sql connect to <span class="hljs-keyword">default</span>;<br>  <span class="hljs-comment">//设置事务管理级别</span><br>  exec sql set transaction isolation level serializable;<br>  <span class="hljs-comment">//开始循环处理</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>    ......<br>    exec sql whenever sqlerror <span class="hljs-keyword">goto</span> do_rollback;<br>    exec sql update accounts set balance = balance - :dollars where acct = :acctfrom;<br>    exec sql update accounts set balance = balance + :dollars where acct = :acctto;<br>    exec sql commit work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Transfer complete.\n&quot;</span>);<br>    <span class="hljs-keyword">continue</span>;<br>    <br>  do_rollback:<br>    exec sql rollback work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Trans failed.\n&quot;</span>);<br>  &#125;<br>  exec sql disconnect current;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="111-部分零散情况"><a class="markdownIt-Anchor" href="#111-部分零散情况"></a> 1.11. 部分零散情况</h2>
-<ol>
-<li>空值
-<ol>
+<h3 id="1-10-3-事务例子"><a href="#1-10-3-事务例子" class="headerlink" title="1.10.3. 事务例子"></a>1.10.3. 事务例子</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;prompt.h&quot;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  <span class="hljs-comment">// 变量声明</span><br>  exec sql begin declare section;<br>    <span class="hljs-type">char</span> acctfrom[<span class="hljs-number">11</span>], acctto[<span class="hljs-number">11</span>];<br>    <span class="hljs-type">double</span> dollars;<br>  exec sql end declare section;<br>  <span class="hljs-type">char</span> dollarstr[<span class="hljs-number">20</span>];<br>  <span class="hljs-comment">//连接到默认数据库</span><br>  exec sql connect to <span class="hljs-keyword">default</span>;<br>  <span class="hljs-comment">//设置事务管理级别</span><br>  exec sql set transaction isolation level serializable;<br>  <span class="hljs-comment">//开始循环处理</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>    ......<br>    exec sql whenever sqlerror <span class="hljs-keyword">goto</span> do_rollback;<br>    exec sql update accounts set balance = balance - :dollars where acct = :acctfrom;<br>    exec sql update accounts set balance = balance + :dollars where acct = :acctto;<br>    exec sql commit work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Transfer complete.\n&quot;</span>);<br>    <span class="hljs-keyword">continue</span>;<br>    <br>  do_rollback:<br>    exec sql rollback work;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Trans failed.\n&quot;</span>);<br>  &#125;<br>  exec sql disconnect current;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="1-11-部分零散情况"><a href="#1-11-部分零散情况" class="headerlink" title="1.11. 部分零散情况"></a>1.11. 部分零散情况</h2><ol>
+<li>空值<ol>
 <li>字符空值:<code>\0</code></li>
 <li>数字空值:0</li>
 </ol>
 </li>
 <li>空格为终止符。</li>
 </ol>
-<h1 id="2-dynamic-sql-动态sql语句"><a class="markdownIt-Anchor" href="#2-dynamic-sql-动态sql语句"></a> 2. Dynamic SQL 动态SQL语句</h1>
-<ol>
+<h1 id="2-Dynamic-SQL-动态SQL语句"><a href="#2-Dynamic-SQL-动态SQL语句" class="headerlink" title="2. Dynamic SQL 动态SQL语句"></a>2. Dynamic SQL 动态SQL语句</h1><ol>
 <li>允许我们在主机变量中构造一个字符串以用作SQL语句。</li>
 </ol>
-<h2 id="21-立即执行"><a class="markdownIt-Anchor" href="#21-立即执行"></a> 2.1. 立即执行</h2>
-<ol>
+<h2 id="2-1-立即执行"><a href="#2-1-立即执行" class="headerlink" title="2.1. 立即执行"></a>2.1. 立即执行</h2><ol>
 <li>立即执行:<code>EXECUTE IMMEDIATE :host_var;</code></li>
 </ol>
-<h2 id="22-准备-执行和使用"><a class="markdownIt-Anchor" href="#22-准备-执行和使用"></a> 2.2. 准备、执行和使用</h2>
-<ol>
+<h2 id="2-2-准备、执行和使用"><a href="#2-2-准备、执行和使用" class="headerlink" title="2.2. 准备、执行和使用"></a>2.2. 准备、执行和使用</h2><ol>
 <li>准备、执行和使用:<code>PREPARE handle FROM :stmt_string;</code>,<code>EXECUTE handle USING :host_var;</code></li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br>exec sql include sqlca;<br>exec sql begin declare section;<br>  <span class="hljs-type">char</span> cust_id[<span class="hljs-number">5</span>], sqltext[<span class="hljs-number">256</span>];<br>exec sql end declare section;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-built_in">strcpy</span>(sqltext, <span class="hljs-string">&quot;delete from customers where cid = ?&quot;</span>);<br>  exec sql whenever sqlerror <span class="hljs-keyword">goto</span> report_error;<br>  exec sql connect to testdb;<br>  exec sql prepare delcust from :sqltext;<br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-comment">/* input customer’s id to cust_id */</span><br>    exec sql execute delcust <span class="hljs-keyword">using</span> :cust_id;<br>    exec sql commit work;<br>  &#125;<br>  ......<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="23-动态选择"><a class="markdownIt-Anchor" href="#23-动态选择"></a> 2.3. 动态选择</h2>
-<ol>
+<h2 id="2-3-动态选择"><a href="#2-3-动态选择" class="headerlink" title="2.3. 动态选择"></a>2.3. 动态选择</h2><ol>
 <li>动态选择:The Describe Statement and the SQLDA</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="24-前沿编程概念"><a class="markdownIt-Anchor" href="#24-前沿编程概念"></a> 2.4. 前沿编程概念</h2>
-<h3 id="241-scrollable-cursors-可滚动游标"><a class="markdownIt-Anchor" href="#241-scrollable-cursors-可滚动游标"></a> 2.4.1. Scrollable Cursors 可滚动游标</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//指针循环</span><br>EXEC SQL DECLARE cursor_name<br>  [ INSENSITIVE ]  [ SCROLL ]<br>  CURSOR  [ WITH  HOLD ]  FOR<br>    subquery  &#123; UNION  subquery &#125;<br>    [ ORDER  BY ...... ]<br>  [ FOR  READ  ONLY  |<br>    FOR  UPDATE  OF  columnname ...... ];<br><span class="hljs-comment">//执行指针</span><br>EXEC SQL FETCH<br>      [ &#123; NEXT | PRIOR | FIRST | LAST |<br>      &#123; ABSOLUTE | RELATIVE &#125; value_spec &#125; FROM ]<br>      cursor_name INTO ......;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-4-前沿编程概念"><a href="#2-4-前沿编程概念" class="headerlink" title="2.4. 前沿编程概念"></a>2.4. 前沿编程概念</h2><h3 id="2-4-1-Scrollable-Cursors-可滚动游标"><a href="#2-4-1-Scrollable-Cursors-可滚动游标" class="headerlink" title="2.4.1. Scrollable Cursors 可滚动游标"></a>2.4.1. Scrollable Cursors 可滚动游标</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//指针循环</span><br>EXEC SQL DECLARE cursor_name<br>  [ INSENSITIVE ]  [ SCROLL ]<br>  CURSOR  [ WITH  HOLD ]  FOR<br>    subquery  &#123; UNION  subquery &#125;<br>    [ ORDER  BY ...... ]<br>  [ FOR  READ  ONLY  |<br>    FOR  UPDATE  OF  columnname ...... ];<br><span class="hljs-comment">//执行指针</span><br>EXEC SQL FETCH<br>      [ &#123; NEXT | PRIOR | FIRST | LAST |<br>      &#123; ABSOLUTE | RELATIVE &#125; value_spec &#125; FROM ]<br>      cursor_name INTO ......;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>和正常游标不同的是:可以随意滚动，而不需要关闭再次打开游标</li>
 <li>正常游标只能从前到后，不能回退，如果要回退需要关闭。</li>
 <li>支持绝对行(ABSOLUTE)</li>
 </ol>
-<h3 id="242-游标敏感性"><a class="markdownIt-Anchor" href="#242-游标敏感性"></a> 2.4.2. 游标敏感性</h3>
-<ol>
+<h3 id="2-4-2-游标敏感性"><a href="#2-4-2-游标敏感性" class="headerlink" title="2.4.2. 游标敏感性"></a>2.4.2. 游标敏感性</h3><ol>
 <li>游标的打开可能会影响到锁的问题，但是这种隔离可能在并发条件下产生副作用。</li>
 <li>INSENSITIVE关键字表示这个游标式不敏感的，打开的时候已经对当前列完成了快照</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/7.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/7.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch05/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -604,9 +564,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch01-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0/" title="2020-Fundamentals-of-Data-Management-ch01-数据库概述">
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec5-%E7%9C%8B%E6%9D%BF/" title="2020-Devops-introduction-Lec5-看板">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Fundamentals-of-Data-Management-ch01-数据库概述</span>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec5-看板</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -614,8 +574,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Server-Development/2021-Server-Development-Exam1-%E9%A2%98%E7%9B%AE%E5%A4%8D%E4%B9%A0/" title="2021-Server-Development-Exam1-题目复习">
-                        <span class="hidden-mobile">2021-Server-Development-Exam1-题目复习</span>
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec5-%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0/" title="2021-Database-Development-Lec5-数据表的物理实现">
+                        <span class="hidden-mobile">2021-Database-Development-Lec5-数据表的物理实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -35,8 +35,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/10.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/11.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/12.png">
-<meta property="article:published_time" content="2022-02-16T11:10:12.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:04:30.105Z">
+<meta property="article:published_time" content="2022-02-16T11:08:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:33:00.358Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="性能">
@@ -214,7 +214,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:08" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -287,66 +287,53 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec8-并发处理"><a class="markdownIt-Anchor" href="#lec8-并发处理"></a> Lec8-并发处理</h2>
-<h1 id="1-处理并发和大数据量"><a class="markdownIt-Anchor" href="#1-处理并发和大数据量"></a> 1. 处理并发和大数据量</h1>
-<h2 id="11-索引的优点"><a class="markdownIt-Anchor" href="#11-索引的优点"></a> 1.1. 索引的优点</h2>
-<ol>
+              <h2 id="Lec8-并发处理"><a href="#Lec8-并发处理" class="headerlink" title="Lec8-并发处理"></a>Lec8-并发处理</h2><h1 id="1-处理并发和大数据量"><a href="#1-处理并发和大数据量" class="headerlink" title="1. 处理并发和大数据量"></a>1. 处理并发和大数据量</h1><h2 id="1-1-索引的优点"><a href="#1-1-索引的优点" class="headerlink" title="1.1. 索引的优点"></a>1.1. 索引的优点</h2><ol>
 <li>一个有三个字段的表，前两个字段为整数（1-50000）第一个字段是PK，第二个字段没有索引。第三个名为label字段是字符型，长度30-50的随机字符串</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">/* 5000次/s */</span><br><span class="hljs-keyword">select</span> label<br>  <span class="hljs-keyword">from</span> test_table<br>    <span class="hljs-keyword">where</span> indexed_column <span class="hljs-operator">=</span> random <span class="hljs-keyword">value</span><br><span class="hljs-comment">/* 25次/s */</span><br><span class="hljs-keyword">select</span> label<br>  <span class="hljs-keyword">from</span> test_table<br>    <span class="hljs-keyword">where</span> unindexed_column <span class="hljs-operator">=</span> random <span class="hljs-keyword">value</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p>响应时间不到一秒，仍然可能隐藏着重大的性能问题，不要相信<strong>单独某次测试</strong>。</p>
+<ol>
+<li><p>响应时间不到一秒，仍然可能隐藏着重大的性能问题，不要相信<strong>单独某次测试</strong>。</p>
 </li>
-<li>
-<p>低频率查询（500次/分钟）：有部分没有索引的列在0.1s之间</p>
+<li><p>低频率查询（500次/分钟）：有部分没有索引的列在0.1s之间</p>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>高频率查询（5000次/分钟）：1s中80次请求，比较正常的速率，此时已经大部分超过0.1s，并发数在100左右</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>超高频率查询（10000次/分钟）:<strong>负载增加未必是造成性能问题的原因</strong>，它只不过使性能问题暴露出来了而已，并发数在150-200左右。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-排队"><a class="markdownIt-Anchor" href="#12-排队"></a> 1.2. 排队</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-排队"><a href="#1-2-排队" class="headerlink" title="1.2. 排队"></a>1.2. 排队</h2><ol>
 <li>高并发会导致请求排队</li>
-<li>数据库引擎是否能快速服务
-<ol>
+<li>数据库引擎是否能快速服务<ol>
 <li>数据库引擎性能（引擎、硬件、I/O系统效率…）</li>
 <li>数据服务的请求复杂度</li>
 <li>快查询也会被慢查询拖累</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-并发修改数据"><a class="markdownIt-Anchor" href="#2-并发修改数据"></a> 2. 并发修改数据</h1>
-<h2 id="21-加锁"><a class="markdownIt-Anchor" href="#21-加锁"></a> 2.1. 加锁</h2>
-<ol>
-<li>锁的粒度
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-并发修改数据"><a href="#2-并发修改数据" class="headerlink" title="2. 并发修改数据"></a>2. 并发修改数据</h1><h2 id="2-1-加锁"><a href="#2-1-加锁" class="headerlink" title="2.1. 加锁"></a>2.1. 加锁</h2><ol>
+<li>锁的粒度<ol>
 <li>整个数据库、存储被修改的表的那部分物理单元、要修改的表、包含目标数据的的块和页、包含受影响数据的记录、记录中的字段</li>
 <li>只有使用了索引才能使用到行锁(行锁是细粒度锁)：只要更新的不是一行，都可以并行执行。</li>
 <li>尽量先比较小粒度的锁</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-加锁处理"><a class="markdownIt-Anchor" href="#22-加锁处理"></a> 2.2. 加锁处理</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-加锁处理"><a href="#2-2-加锁处理" class="headerlink" title="2.2. 加锁处理"></a>2.2. 加锁处理</h2><ol>
 <li>不要随便使用表级锁</li>
-<li>尽量缩短加锁时间
-<ol>
+<li>尽量缩短加锁时间<ol>
 <li>事务要尽量的小</li>
 <li>Delete没有where，用truncate</li>
 </ol>
 </li>
 <li>索引也需要维护：更新索引代价高</li>
-<li>语句性能高，未必程序性能高
-<ol>
+<li>语句性能高，未必程序性能高<ol>
 <li>尽可能避免SQL语句上的循环处理：避免将SQL在循环体中执行</li>
 <li>尽量减少程序和数据库之间的交互次数：尽可能一次完成所有的操作(尽可能一次性查找多的数据集本地处理)</li>
 <li>充分利用DBMS提供的机制，使跨机器交互的次数降至最少</li>
@@ -354,150 +341,123 @@
 </ol>
 </li>
 </ol>
-<h2 id="23-加锁与提交"><a class="markdownIt-Anchor" href="#23-加锁与提交"></a> 2.3. 加锁与提交</h2>
-<ol>
+<h2 id="2-3-加锁与提交"><a href="#2-3-加锁与提交" class="headerlink" title="2.3. 加锁与提交"></a>2.3. 加锁与提交</h2><ol>
 <li>想要使加锁时间最短，必须频繁的提交(提交也是由代价的)</li>
 <li>但如果每个逻辑单元完成后都提交会增加大量开销</li>
-<li>数据库最大的开销是日志的记录(频繁的提交)，是否需要进行缓存之后大规模数据提交，下图横轴是每x条记录提交一次
-<ol>
+<li>数据库最大的开销是日志的记录(频繁的提交)，是否需要进行缓存之后大规模数据提交，下图横轴是每x条记录提交一次<ol>
 <li>批处理文件要减少频繁提交</li>
-<li>其他文件可以相对频繁提交，降低回滚的影响，减少加锁的时间。</li>
+<li>其他文件可以相对频繁提交，降低回滚的影响，减少加锁的时间。 </li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="24-加锁与可伸缩性"><a class="markdownIt-Anchor" href="#24-加锁与可伸缩性"></a> 2.4. 加锁与可伸缩性</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-4-加锁与可伸缩性"><a href="#2-4-加锁与可伸缩性" class="headerlink" title="2.4. 加锁与可伸缩性"></a>2.4. 加锁与可伸缩性</h2><ol>
 <li>与表级锁相比，行级锁能产生更佳的吞吐量</li>
 <li>行级锁大都性能曲线很快达到极限</li>
 <li>但是不同的数据库产品不太一样：用来选择数据库产品的逻辑</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="25-资源竞争"><a class="markdownIt-Anchor" href="#25-资源竞争"></a> 2.5. 资源竞争</h2>
-<h3 id="251-插入与竞争"><a class="markdownIt-Anchor" href="#251-插入与竞争"></a> 2.5.1. 插入与竞争</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-5-资源竞争"><a href="#2-5-资源竞争" class="headerlink" title="2.5. 资源竞争"></a>2.5. 资源竞争</h2><h3 id="2-5-1-插入与竞争"><a href="#2-5-1-插入与竞争" class="headerlink" title="2.5.1. 插入与竞争"></a>2.5.1. 插入与竞争</h3><ol>
 <li>Table 是有14个字段、两个唯一性索引的表</li>
 <li>主键为系统产生的编号，而真正的键是由短字符串和日期值组成的复合键，必须满足唯一性约束(通过唯一性索引强制实施)</li>
 <li>使用随机数字段代替自增字段，避免出现问题</li>
 <li>还需要写UNDO字段，来备份RollBack，但是写日志还是有竞争的。</li>
 <li>可以更精细的设计数据库的日志文件</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="252-解决资源竞争的方案"><a class="markdownIt-Anchor" href="#252-解决资源竞争的方案"></a> 2.5.2. 解决资源竞争的方案</h3>
-<ol>
-<li>DBA解决方案：与业务逻辑弱相关或无关
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-5-2-解决资源竞争的方案"><a href="#2-5-2-解决资源竞争的方案" class="headerlink" title="2.5.2. 解决资源竞争的方案"></a>2.5.2. 解决资源竞争的方案</h3><ol>
+<li>DBA解决方案：与业务逻辑弱相关或无关<ol>
 <li>事务空间（Transaction space）：调整事务锁占空间的大小，事务条目占用是重要原因，DBA可以增加分配给事务条目的空间来解决</li>
 <li>可用列表（Free list）：insert操作在不同物理块中，可以借助存储管理手段</li>
 </ol>
 </li>
-<li>架构解决方案
-<ol>
+<li>架构解决方案<ol>
 <li>分区（Partitioning）</li>
 <li>逆序索引（Reverse index）</li>
 <li>索引组织表（Index organized table）：原本资源竞争包括基本表和索引，但是现在索引和基本表合并了，可以降低冲突发生的位置</li>
 </ol>
 </li>
-<li>开发解决方案
-<ol>
+<li>开发解决方案<ol>
 <li>调节并发数：限制最高的session数量</li>
 <li>不使用系统产生键：如果键没有意义，那不妨使用随机值</li>
 </ol>
 </li>
 </ol>
-<h3 id="253-解决资源竞争的方法的案例"><a class="markdownIt-Anchor" href="#253-解决资源竞争的方法的案例"></a> 2.5.3. 解决资源竞争的方法的案例</h3>
-<ol>
-<li>限制insert操作之间竞争的技术
-<ol>
+<h3 id="2-5-3-解决资源竞争的方法的案例"><a href="#2-5-3-解决资源竞争的方法的案例" class="headerlink" title="2.5.3. 解决资源竞争的方法的案例"></a>2.5.3. 解决资源竞争的方法的案例</h3><ol>
+<li>限制insert操作之间竞争的技术<ol>
 <li>DBA：不显著</li>
 <li>架构：索引强制约束，导致索引的竞争增加，导致CPU计算资源成为瓶颈</li>
 <li>开发者：小范围生成随机数(2倍预计)会导致多次碰撞(还有redo的消耗)，大范围生成随机数则没有这个碰撞(100倍)</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Session数较少时竞争限制技术的表现:下图是4个session的情况：有些技术需要已处于饱和状态的CPU提供资源，所以不能带来性能上的改善</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="254-案例总结"><a class="markdownIt-Anchor" href="#254-案例总结"></a> 2.5.4. 案例总结</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-5-4-案例总结"><a href="#2-5-4-案例总结" class="headerlink" title="2.5.4. 案例总结"></a>2.5.4. 案例总结</h3><ol>
 <li>上述案例的瓶颈是主键索引</li>
 <li>上述案例避免竞争的方法是避免使用顺序产生的代理键……</li>
 <li>总结：与加锁不同，数据库竞争是可以改善的。架构师、开发者和DBA都可以从各自的角度改善竞争。</li>
 </ol>
-<h1 id="3-应付大数据量"><a class="markdownIt-Anchor" href="#3-应付大数据量"></a> 3. 应付大数据量</h1>
-<h2 id="31-增长的数据量"><a class="markdownIt-Anchor" href="#31-增长的数据量"></a> 3.1. 增长的数据量</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="32-操作对数据量增加的敏感程度"><a class="markdownIt-Anchor" href="#32-操作对数据量增加的敏感程度"></a> 3.2. 操作对数据量增加的敏感程度</h2>
-<ol>
+<h1 id="3-应付大数据量"><a href="#3-应付大数据量" class="headerlink" title="3. 应付大数据量"></a>3. 应付大数据量</h1><h2 id="3-1-增长的数据量"><a href="#3-1-增长的数据量" class="headerlink" title="3.1. 增长的数据量"></a>3.1. 增长的数据量</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-操作对数据量增加的敏感程度"><a href="#3-2-操作对数据量增加的敏感程度" class="headerlink" title="3.2. 操作对数据量增加的敏感程度"></a>3.2. 操作对数据量增加的敏感程度</h2><ol>
 <li>受数据量的增加，影响不大</li>
 <li>受数据量的增加，线性影响</li>
 <li>受数据量的增加，非线性影响</li>
 </ol>
-<h3 id="321-影响不大"><a class="markdownIt-Anchor" href="#321-影响不大"></a> 3.2.1. 影响不大</h3>
-<ol>
+<h3 id="3-2-1-影响不大"><a href="#3-2-1-影响不大" class="headerlink" title="3.2.1. 影响不大"></a>3.2.1. 影响不大</h3><ol>
 <li>主键检索等值单一查询</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">declare</span><br>n_id number;<br><span class="hljs-keyword">cursor</span> c <span class="hljs-keyword">is</span> <span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">where</span> order_id <span class="hljs-keyword">between</span> <span class="hljs-number">10000</span> <span class="hljs-keyword">and</span> <span class="hljs-number">20000</span>;<br><span class="hljs-keyword">begin</span><br>   <span class="hljs-keyword">open</span> c;<br>   loop<br>      <span class="hljs-keyword">fetch</span> c <span class="hljs-keyword">into</span> n_id;<br>      exit <span class="hljs-keyword">when</span> c<span class="hljs-operator">%</span>notfound;<br>   <span class="hljs-keyword">end</span> loop;<br>   <span class="hljs-keyword">close</span> c;<br><span class="hljs-keyword">end</span>;<br># PL<span class="hljs-operator">/</span><span class="hljs-keyword">SQL</span> <span class="hljs-keyword">procedure</span> successfully completed.<br># Elapsed: <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00.27</span><br><br><span class="hljs-keyword">declare</span><br>n_id number;<br><span class="hljs-keyword">begin</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">10000</span> .. <span class="hljs-number">20000</span><br>loop<br>   <span class="hljs-keyword">select</span> customer_id<br>   <span class="hljs-keyword">into</span> n_id<br>   <span class="hljs-keyword">from</span> orders<br>   <span class="hljs-keyword">where</span> order_id <span class="hljs-operator">=</span> i;<br><span class="hljs-keyword">end</span> loop;<br><span class="hljs-keyword">end</span>;<br># PL<span class="hljs-operator">/</span><span class="hljs-keyword">SQL</span> <span class="hljs-keyword">procedure</span> successfully completed.<br># Elapsed: <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00.63</span><br></code></pre></td></tr></table></figure>
-<h3 id="322-线性影响"><a class="markdownIt-Anchor" href="#322-线性影响"></a> 3.2.2. 线性影响</h3>
-<ol>
+<h3 id="3-2-2-线性影响"><a href="#3-2-2-线性影响" class="headerlink" title="3.2.2. 线性影响"></a>3.2.2. 线性影响</h3><ol>
 <li>返回记录数量和查询毫无关系：比如10万条找最大值和100万条找最大值的时间不同</li>
 <li>SQL操作的数据和最后返回的结果无关（聚合函数）</li>
-<li>可选的唯一方法：引入其他条件（例如时间范围）
-<ol>
+<li>可选的唯一方法：引入其他条件（例如时间范围）<ol>
 <li>设定上限(完成限制)</li>
 <li>不是单纯的技术问题</li>
 <li>还依赖于业务需求</li>
 </ol>
 </li>
 </ol>
-<h3 id="323-非线性影响"><a class="markdownIt-Anchor" href="#323-非线性影响"></a> 3.2.3. 非线性影响</h3>
-<ol>
+<h3 id="3-2-3-非线性影响"><a href="#3-2-3-非线性影响" class="headerlink" title="3.2.3. 非线性影响"></a>3.2.3. 非线性影响</h3><ol>
 <li>排序性能影响非线性</li>
-<li>排序性能减低间歇性
-<ol>
+<li>排序性能减低间歇性<ol>
 <li>因为较小型的排序全部在内存中执行，而较大型的排序（涉及多个有序子集的合并）则需要将有序子集临时存储到硬盘中。所以通过调整分配给排序的内存数量来改善排序密集型操作的性能是常见且有效地调优技巧。</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs sql">ORDERS<br>order_id        <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) (<span class="hljs-keyword">primary</span> key)<br>customer_id     <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>)<br>order_date      datetime<br>order_shipping  <span class="hljs-type">char</span>(<span class="hljs-number">1</span>)<br>order_comment   <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>)<br><br># <span class="hljs-keyword">primary</span> key<span class="hljs-operator">-</span>based <span class="hljs-keyword">search</span>:<br><span class="hljs-keyword">select</span> order_date<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">where</span> order_id <span class="hljs-operator">=</span> ?<br><br># sort:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> order_date<br><br># <span class="hljs-keyword">grouping</span>:<br><span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br><span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;</span> <span class="hljs-number">3</span><br><br><br># maximum <span class="hljs-keyword">value</span> <span class="hljs-keyword">in</span> a nonindexed <span class="hljs-keyword">column</span>:<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(order_date)<br><span class="hljs-keyword">from</span> orders<br><br># &quot;top 5&quot; customers <span class="hljs-keyword">by</span> number <span class="hljs-keyword">of</span> orders:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br>      <span class="hljs-keyword">from</span> orders<br>      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br>      <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span> <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> sorted_customers<br>limit <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
-<ol start="6">
+<ol>
 <li>记录数大概从8000-1000000之间，不同的cid大概3000个</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="4-大数据的处理逻辑"><a class="markdownIt-Anchor" href="#4-大数据的处理逻辑"></a> 4. 大数据的处理逻辑</h1>
-<h2 id="41-综合的考量"><a class="markdownIt-Anchor" href="#41-综合的考量"></a> 4.1. 综合的考量</h2>
-<ol>
-<li>数据量增加对性能的预估
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="4-大数据的处理逻辑"><a href="#4-大数据的处理逻辑" class="headerlink" title="4. 大数据的处理逻辑"></a>4. 大数据的处理逻辑</h1><h2 id="4-1-综合的考量"><a href="#4-1-综合的考量" class="headerlink" title="4.1. 综合的考量"></a>4.1. 综合的考量</h2><ol>
+<li>数据量增加对性能的预估<ol>
 <li>隐藏在查询背后对数据量的高敏感性</li>
 <li>比如max()对高数据量的敏感，而直接引起子查询性能缓慢降低，必须使用非关联子查询。</li>
 </ol>
 </li>
-<li>排序的影响:最关键的问题是排序的数据是否都在内存中(有无磁盘消耗)
-<ol>
+<li>排序的影响:最关键的问题是排序的数据是否都在内存中(有无磁盘消耗)<ol>
 <li>字节数量而不是记录数量</li>
 <li>也就是被排序的总数据量</li>
 <li>Join应该延后到查询的最后阶段：对尽可能少的数据进行排序</li>
 </ol>
 </li>
-<li>Join延迟到查询的最后阶段
-<ol>
+<li>Join延迟到查询的最后阶段<ol>
 <li>例子：查询一年内的10大客户的名称和地址</li>
 <li>目标，对尽量少的数据进行排序</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br>  <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span>  c.customer_name,<br>                c.customer_address,<br>                c.customer_postal_code,<br>                c.customer_state,<br>                c.customer_country<br>                <span class="hljs-built_in">sum</span>(d.amount)<br>    <span class="hljs-keyword">from</span> customers c,<br>          orders_o,<br>          order_detail d<br>    <span class="hljs-keyword">where</span> c.customer_id <span class="hljs-operator">=</span> o.customer_id<br>      <span class="hljs-keyword">and</span> o.order_date <span class="hljs-operator">&gt;=</span> <span class="hljs-keyword">some</span> <span class="hljs-type">date</span> expression<br>      <span class="hljs-keyword">and</span> o.order_id <span class="hljs-operator">=</span> d.order_id<br>    <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span>  c.customer_name,<br>              c.customer_address,<br>              c.customer_postal_code,<br>              c.customer_state,<br>              c.customer_country<br>    <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">6</span> <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> A<br>  limit <span class="hljs-number">10</span><br><br># 改写<span class="hljs-keyword">sql</span>代码，在深层先完成(降低中间结果集的大小)<br><span class="hljs-keyword">select</span>  c.customer_name,<br>        c.customer_address,<br>        c.customer_postal_code,<br>        c.customer_state,<br>        c.customer_country<br>        b.amount<br>    <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span>  a.customer_id,<br>                  a.amount<br>      <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> o.customer_id,<br>                  <span class="hljs-built_in">sum</span>(d.amount) <span class="hljs-keyword">as</span> amount<br>        <span class="hljs-keyword">from</span>  orders_o,<br>              order_detail d<br>        <span class="hljs-keyword">where</span> o.order_date <span class="hljs-operator">&gt;=</span> <span class="hljs-keyword">some</span> <span class="hljs-type">date</span> expression<br>          <span class="hljs-keyword">and</span> o.order_id <span class="hljs-operator">=</span> d.order_id<br>        <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> o.customer_id<br>        <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span> <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> a<br>      limit <span class="hljs-number">10</span>) <span class="hljs-keyword">as</span> b,<br>      customers c<br>  <span class="hljs-keyword">where</span> c.customer_id <span class="hljs-operator">=</span> b.customer_id<br>  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> b.amount <span class="hljs-keyword">desc</span><br></code></pre></td></tr></table></figure>
-<h2 id="42-消除关联子查询"><a class="markdownIt-Anchor" href="#42-消除关联子查询"></a> 4.2. 消除关联子查询</h2>
-<ol>
+<h2 id="4-2-消除关联子查询"><a href="#4-2-消除关联子查询" class="headerlink" title="4.2. 消除关联子查询"></a>4.2. 消除关联子查询</h2><ol>
 <li>例子：每小时以批处理的形式更新安全管理表</li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-comment">/*+ append */</span> <span class="hljs-keyword">into</span> fast_scrty<br>  ( emplid,<br>    rowsecclass,<br>    access_cd,<br>    empl_rcd,<br>    name,<br>    last_name_srch,<br>    setid_dept,<br>    deptid,<br>    name_ac,<br>    per_status,<br>    scrty_ovrd_type)<br>  <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span><br>    emplid,<br>    rowsecclass,<br>    access_cd,<br>    empl_rcd,<br>    name,<br>    last_name_srch,<br>    setid_dept,<br>    deptid,<br>    name_ac,<br>    per_status,<br>    <span class="hljs-string">&#x27;N&#x27;</span><br>  <span class="hljs-keyword">from</span> pers_search_fast<br></code></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 所有的查询都是关联子查询<br># 条件的可选择性差<br><span class="hljs-keyword">select</span>  a.emplid,<br>        sec.rowsecclass,<br>        sec.access_cd,<br>        job.empl_rcd,<br>        b.name,<br>        b.last_name_srch,<br>        job.setid_dept,<br>        job.deptid,<br>        b.name_ac,<br>        a.per_status<br><span class="hljs-keyword">from</span>  person a,<br>      person_name b,<br>      job,<br>      scrty_tbl_dept sec<br><span class="hljs-keyword">where</span> a.emplid <span class="hljs-operator">=</span> b.emplid<br>  <span class="hljs-keyword">and</span> b.emplid <span class="hljs-operator">=</span> job.emplid<br>  <span class="hljs-keyword">and</span> (job.effdt<span class="hljs-operator">=</span><br>      ( <span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(job2.effdt)<br>         <span class="hljs-keyword">from</span> job job2<br>         <span class="hljs-keyword">where</span> job.emplid <span class="hljs-operator">=</span> job2.emplid<br>           <span class="hljs-keyword">and</span> job.empl<span class="hljs-operator">-</span>rcd <span class="hljs-operator">=</span> job2.empl_rcd<br>           <span class="hljs-keyword">and</span> job2.effdt <span class="hljs-operator">&lt;=</span><br>                  to_date(to_char(sysdate,<br>                     <span class="hljs-string">&#x27;YYYY-MM-DD&#x27;</span>),<span class="hljs-string">&#x27;YYYY-MM-DD&#x27;</span>))<br>      <span class="hljs-keyword">and</span> job.effseq <span class="hljs-operator">=</span><br>            ( <span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(job3.effseq)<br>               <span class="hljs-keyword">from</span> job job3<br>               <span class="hljs-keyword">where</span> job.emplid <span class="hljs-operator">=</span> job3.emplid<br>                  <span class="hljs-keyword">and</span> job.empl_rcd <span class="hljs-operator">=</span> job3.empl_rcd<br>                  <span class="hljs-keyword">and</span> job.effdt <span class="hljs-operator">=</span> job3.effdt ) )<br>  <span class="hljs-keyword">and</span> sec.access_cd <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Y&#x27;</span><br>  <span class="hljs-keyword">and</span> <span class="hljs-keyword">exists</span><br>      ( <span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;X&#x27;</span><br>         <span class="hljs-keyword">from</span> treenode tn<br>         <span class="hljs-keyword">where</span> tn.setid <span class="hljs-operator">=</span> sec.setid<br>           <span class="hljs-keyword">and</span> tn.setid <span class="hljs-operator">=</span> job.setid_dept<br>           <span class="hljs-keyword">and</span> tn.tree_name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;DEPT_SECURITY&#x27;</span><br>           <span class="hljs-keyword">and</span> tn.effdt <span class="hljs-operator">=</span> sec.tree_effdt<br>           <span class="hljs-keyword">and</span> tn.tree_node <span class="hljs-operator">=</span> job.deptid<br>           <span class="hljs-keyword">and</span> tn.tree_node_num  <span class="hljs-keyword">between</span> sec.tree_node_num<br>               <span class="hljs-keyword">and</span> sec.tree_node_num_end<br>           <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span><br>               ( <span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;X&#x27;</span><br>                  <span class="hljs-keyword">from</span> scrty_tbl_dept sec2<br>                  <span class="hljs-keyword">where</span> sec.rowsecclass <span class="hljs-operator">=</span> sec2.rowsecclass<br>                    <span class="hljs-keyword">and</span> sec.setid <span class="hljs-operator">=</span> sec2.setid<br>                    <span class="hljs-keyword">and</span> sec.tree_node_num <span class="hljs-operator">&lt;&gt;</span> sec2.tree_node_num<br>                    <span class="hljs-keyword">and</span> tn.tree_node_num<br>                        <span class="hljs-keyword">between</span> sec2.tree_node_num<br>                        <span class="hljs-keyword">and</span> sec2.tree_node_num_end<br>                    <span class="hljs-keyword">and</span> sec2.tree_node_num<br>                        <span class="hljs-keyword">between</span> sec.tree_node_num<br>                        <span class="hljs-keyword">and</span> sec.tree_node_num_end ))<br></code></pre></td></tr></table></figure>
-<h2 id="43-通过分区提高性能"><a class="markdownIt-Anchor" href="#43-通过分区提高性能"></a> 4.3. 通过分区提高性能</h2>
-<ol>
+<h2 id="4-3-通过分区提高性能"><a href="#4-3-通过分区提高性能" class="headerlink" title="4.3. 通过分区提高性能"></a>4.3. 通过分区提高性能</h2><ol>
 <li>记住，单边范围条件不能充分利用索引和分区</li>
 <li>所有的更新操作中，删除（delete）最优可能造成麻烦</li>
 <li>当数据量大到一定程度，不得不进入“读写分离”的数据仓库领域</li>
@@ -595,9 +555,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec7-%E5%AF%B9%E5%86%97%E4%BD%99%E7%9A%84%E6%8E%A7%E5%88%B6(%E5%8F%8D%E8%8C%83%E5%BC%8F%E6%A8%A1%E5%BC%8F)/" title="2021-Database-Development-Lec7-对冗余的控制(反范式模式)">
+                      <a href="/2022/02/16/2020-OS/2020-OS-Exam2-%E8%80%83%E8%AF%95/" title="2020-OS-Exam2-考试">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Database-Development-Lec7-对冗余的控制(反范式模式)</span>
+                        <span class="hidden-mobile">2020-OS-Exam2-考试</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -605,8 +565,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec9-%E4%B8%BA%E6%80%A7%E8%83%BD%E8%80%8C%E8%AE%BE%E8%AE%A1/" title="2021-Database-Development-Lec9-为性能而设计">
-                        <span class="hidden-mobile">2021-Database-Development-Lec9-为性能而设计</span>
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Lec-8%20%E5%AE%9A%E9%87%8F%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BB%BF%E7%9C%9F%E5%BB%BA%E6%A8%A1/" title="2021-software-quality-management-Lec-8 定量管理与仿真建模">
+                        <span class="hidden-mobile">2021-software-quality-management-Lec-8 定量管理与仿真建模</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

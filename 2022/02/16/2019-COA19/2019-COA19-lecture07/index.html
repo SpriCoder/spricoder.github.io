@@ -34,8 +34,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-9.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-10.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-11.png">
-<meta property="article:published_time" content="2022-02-16T11:09:46.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:48:24.651Z">
+<meta property="article:published_time" content="2022-02-16T11:07:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:01:41.012Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="COA">
@@ -212,7 +212,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:07" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -285,82 +285,65 @@
             
             <div class="markdown-body">
               
-              <h2 id="internal-memory"><a class="markdownIt-Anchor" href="#internal-memory"></a> Internal Memory</h2>
-<h1 id="1-回顾存储器"><a class="markdownIt-Anchor" href="#1-回顾存储器"></a> 1. 回顾:存储器</h1>
-<ol>
-<li>存储器由一定数量的单元构成，每个单元可以被唯一标识，每个单元都有存储一个数值的能力。
-<ol>
+              <h2 id="Internal-Memory"><a href="#Internal-Memory" class="headerlink" title="Internal Memory"></a>Internal Memory</h2><h1 id="1-回顾-存储器"><a href="#1-回顾-存储器" class="headerlink" title="1. 回顾:存储器"></a>1. 回顾:存储器</h1><ol>
+<li>存储器由一定数量的单元构成，每个单元可以被唯一标识，每个单元都有存储一个数值的能力。<ol>
 <li>地址：单元的唯一标识符(采用二进制)</li>
 <li>地址空间：可唯一标识的单元总数</li>
-<li>寻址能力：<strong>存储在每个单元中的信息的位数</strong>
-<ul>
+<li>寻址能力：<strong>存储在每个单元中的信息的位数</strong><ul>
 <li>大多数存储器是字节寻址的，而执行科学计算的计算机通常是64位寻址的，也就是2<sup>64</sup></li>
 <li>字节可寻址(64b/32b)、字可寻址(8b)、按位寻址(1b)</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>寻址能力的影响因素:归根结底是因为设计时的地址的长度。
-<ol>
+<li>寻址能力的影响因素:归根结底是因为设计时的地址的长度。  <ol>
 <li>地址总线的根数</li>
 <li>寻址机制的不同</li>
 </ol>
 </li>
-<li>计算机的内存真正能真正使用的内存大小的影响因素:
-<ol>
+<li>计算机的内存真正能真正使用的内存大小的影响因素:<ol>
 <li>地址空间</li>
 <li>寻址能力</li>
 <li>最终是由上面两个之一来决定的。</li>
 <li>例子:4G内存的电脑加上8G的内存条，不会变快，因为寻址能力不会变强，被制约。</li>
 </ol>
 </li>
-<li>地址空间越大，容量会越大吗？
-<ul>
+<li>地址空间越大，容量会越大吗？<ul>
 <li>不一定，每个单元(屋子)的大小不同。</li>
 </ul>
 </li>
 </ol>
-<h2 id="11-主存结构"><a class="markdownIt-Anchor" href="#11-主存结构"></a> 1.1. 主存结构</h2>
-<ol>
+<h2 id="1-1-主存结构"><a href="#1-1-主存结构" class="headerlink" title="1.1. 主存结构"></a>1.1. 主存结构</h2><ol>
 <li>主存存储器由多达2<sup>n</sup>个可寻址的字组成，每个字有一个n位的地址。</li>
 <li>比如一个存储器是64M *16位的，那么就是16位的数据，64MB是地址数量。</li>
 <li>一个字节(1 B = 8 b),(1KB = 2<sup>10</sup>B = 2<sup>13</sup>b)</li>
 </ol>
-<h1 id="2-main-memory"><a class="markdownIt-Anchor" href="#2-main-memory"></a> 2. Main memory</h1>
-<ol>
+<h1 id="2-Main-memory"><a href="#2-Main-memory" class="headerlink" title="2. Main memory"></a>2. Main memory</h1><ol>
 <li>这一章主要是来讲在在内存金字塔中的cache下面的主存Main Memory部分。</li>
 </ol>
-<h2 id="21-semiconductor-main-memory半导体主存储器"><a class="markdownIt-Anchor" href="#21-semiconductor-main-memory半导体主存储器"></a> 2.1. Semiconductor Main Memory(半导体主存储器)</h2>
-<ol>
+<h2 id="2-1-Semiconductor-Main-Memory-半导体主存储器"><a href="#2-1-Semiconductor-Main-Memory-半导体主存储器" class="headerlink" title="2.1. Semiconductor Main Memory(半导体主存储器)"></a>2.1. Semiconductor Main Memory(半导体主存储器)</h2><ol>
 <li>The use of semiconductor chips for main memory is almost universal</li>
 <li><strong>Memory cell(存储位元)</strong>: 是最基本的组成部分，basic element of semiconductor memory，</li>
-<li>Properties
-<ol>
+<li>Properties<ol>
 <li>呈现两种稳态:稳定或者半稳定的保持两个状态,分别代表0和1。They exhibit two stable (or semi-stable) states, which can be used to represent binaries 1 and 0</li>
 <li>能够写入信息(至少一次)来设置状态。They are capable of being written into (at least once), to set the state</li>
 <li>可以被读出状态信息。They are capable of being read to sense the state</li>
 </ol>
 </li>
 </ol>
-<h3 id="211-memory-cell-operation存储器位元操作"><a class="markdownIt-Anchor" href="#211-memory-cell-operation存储器位元操作"></a> 2.1.1. Memory Cell Operation(存储器位元操作)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="3-semiconductor-memory-types半导体存储器类型"><a class="markdownIt-Anchor" href="#3-semiconductor-memory-types半导体存储器类型"></a> 3. Semiconductor Memory Types(半导体存储器类型)</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-1-1-Memory-Cell-Operation-存储器位元操作"><a href="#2-1-1-Memory-Cell-Operation-存储器位元操作" class="headerlink" title="2.1.1. Memory Cell Operation(存储器位元操作)"></a>2.1.1. Memory Cell Operation(存储器位元操作)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="3-Semiconductor-Memory-Types-半导体存储器类型"><a href="#3-Semiconductor-Memory-Types-半导体存储器类型" class="headerlink" title="3. Semiconductor Memory Types(半导体存储器类型)"></a>3. Semiconductor Memory Types(半导体存储器类型)</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>讲述的所有的存储器都是随机访问存储器</li>
 </ol>
-<h2 id="31-read-write-memory读写存储器"><a class="markdownIt-Anchor" href="#31-read-write-memory读写存储器"></a> 3.1. Read-write memory(读写存储器)</h2>
-<h3 id="311-ram随机访问存储器"><a class="markdownIt-Anchor" href="#311-ram随机访问存储器"></a> 3.1.1. RAM(随机访问存储器)</h3>
-<ol>
+<h2 id="3-1-Read-write-memory-读写存储器"><a href="#3-1-Read-write-memory-读写存储器" class="headerlink" title="3.1. Read-write memory(读写存储器)"></a>3.1. Read-write memory(读写存储器)</h2><h3 id="3-1-1-RAM-随机访问存储器"><a href="#3-1-1-RAM-随机访问存储器" class="headerlink" title="3.1.1. RAM(随机访问存储器)"></a>3.1.1. RAM(随机访问存储器)</h3><ol>
 <li>Random-Access Memory(随机访问存储器)</li>
-<li>Characteristics
-<ul>
+<li>Characteristics<ul>
 <li>Reading/writing can be easy and rapid(可以被轻松地时常地写入写出)</li>
 <li><strong>Volatile(易失性)</strong>:一旦断电，存储的数据丢失。<em>极其重要</em></li>
 </ul>
 </li>
-<li>Types
-<ul>
+<li>Types<ul>
 <li>DRAM: Dynamic RAM(动态:动态是指一种存储电荷丢失的趋势)</li>
 <li>SRAM: Static RAM(静态)</li>
 </ul>
@@ -368,69 +351,55 @@
 <li>这里面的单元是指寻址单元而不是Cell</li>
 <li>DRAM和SRAM都具有易失性</li>
 </ol>
-<h3 id="312-dram动态随机访问存储器"><a class="markdownIt-Anchor" href="#312-dram动态随机访问存储器"></a> 3.1.2. DRAM(动态随机访问存储器)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-1-2-DRAM-动态随机访问存储器"><a href="#3-1-2-DRAM-动态随机访问存储器" class="headerlink" title="3.1.2. DRAM(动态随机访问存储器)"></a>3.1.2. DRAM(动态随机访问存储器)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>Store data as charge on capacitors(电容器)
-<ul>
+<li>Store data as charge on capacitors(电容器)<ul>
 <li>The presence or absence of charge in a capacitor is interpreted as a binary 1 or 0(电容器中存在或不存在电荷被识别为1或者0)</li>
 </ul>
 </li>
-<li>Require periodic charge refreshing to maintain data storage(需要时常刷新来保证数据)
-<ul>
+<li>Require periodic charge refreshing to maintain data storage(需要时常刷新来保证数据)<ul>
 <li>Reason: capacitors have a natural tendency to discharge(电容器有丢失电荷的倾向)</li>
-<li>A threshold value determines whether the charge is interpreted as 1 or 0(存在一个阈值来决断他是0还是1)
-<ul>
+<li>A threshold value determines whether the charge is interpreted as 1 or 0(存在一个阈值来决断他是0还是1)<ul>
 <li>It is essentially an analog(模拟) device(它本质上是一个模拟设备)</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>为什么我们会选择二进制:因为我们通过电容来存储二进制的结果。
-<ul>
+<li>为什么我们会选择二进制:因为我们通过电容来存储二进制的结果。<ul>
 <li>因为无法进行区分电压区间。(难以控制，比较复杂)</li>
-<li>解决问题:我们刷新，给该有电的电容充电。
-<ul>
+<li>解决问题:我们刷新，给该有电的电容充电。<ul>
 <li>刷新是异步刷新。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="313-sram静态随机访问存储器"><a class="markdownIt-Anchor" href="#313-sram静态随机访问存储器"></a> 3.1.3. SRAM(静态随机访问存储器)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-1-3-SRAM-静态随机访问存储器"><a href="#3-1-3-SRAM-静态随机访问存储器" class="headerlink" title="3.1.3. SRAM(静态随机访问存储器)"></a>3.1.3. SRAM(静态随机访问存储器)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-4.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>不会漏电，只要有电，不需要刷新数据就可以保存。</li>
-<li>Store data with traditional flip-flop logic-gate configurations(用传统的触发器逻辑门来存储数据)
-<ul>
+<li>Store data with traditional flip-flop logic-gate configurations(用传统的触发器逻辑门来存储数据)<ul>
 <li>The same logic elements used in the processor(相同的逻辑部件被应用在处理器中)</li>
 </ul>
 </li>
 <li>Hold its data as long as power is supplied to it(它会在有电的时候存储数据)</li>
 </ol>
-<h3 id="314-内存中dram和sram的不同使用"><a class="markdownIt-Anchor" href="#314-内存中dram和sram的不同使用"></a> 3.1.4. 内存中DRAM和SRAM的不同使用</h3>
-<ol>
+<h3 id="3-1-4-内存中DRAM和SRAM的不同使用"><a href="#3-1-4-内存中DRAM和SRAM的不同使用" class="headerlink" title="3.1.4. 内存中DRAM和SRAM的不同使用"></a>3.1.4. 内存中DRAM和SRAM的不同使用</h3><ol>
 <li>无论多贵的电脑里面，内存用的都是DRAM。</li>
-<li>为什么呢？
-<ol>
+<li>为什么呢？<ol>
 <li>SRAM的集成度低，造成其体积比较大。</li>
 <li>DRAM的集成度高。</li>
 </ol>
 </li>
 <li>DRAM多用于主存，SRAM多用于寄存器。</li>
 </ol>
-<h3 id="315-dram和sram的区别"><a class="markdownIt-Anchor" href="#315-dram和sram的区别"></a> 3.1.5. DRAM和SRAM的区别</h3>
-<ol>
-<li>Similarity(相同点)
-<ul>
+<h3 id="3-1-5-DRAM和SRAM的区别"><a href="#3-1-5-DRAM和SRAM的区别" class="headerlink" title="3.1.5. DRAM和SRAM的区别"></a>3.1.5. DRAM和SRAM的区别</h3><ol>
+<li>Similarity(相同点)<ul>
 <li>Volatile(易失性)</li>
 <li>i.e. power must be continuously supplied to the memory to preserve the bit values(电被持续性地供给存储器来保持其中数据的值)</li>
 </ul>
 </li>
-<li>Differences(不同点)
-<ol>
-<li>DRAM has simpler and smaller cells than SRAM, but requires the supporting refresh circuitry(DRAM有比SRAM更简单更小的单元，但是需要周期性的刷新)
-<ul>
+<li>Differences(不同点)<ol>
+<li>DRAM has simpler and smaller cells than SRAM, but requires the supporting refresh circuitry(DRAM有比SRAM更简单更小的单元，但是需要周期性的刷新)<ul>
 <li>A DRAM is more dense and less expensive than a corresponding SRAM(DRAM相对于SRAM更加高密度并且廉价)</li>
 <li>DRAMs tend to be favored for large memory requirements(DRAMS经常被用在数据量比较大的存储的时候)</li>
 </ul>
@@ -441,24 +410,19 @@
 </li>
 <li>非易失的内存已经被发明出来了。</li>
 </ol>
-<h3 id="316-advanced-dram-organization高级dram组织"><a class="markdownIt-Anchor" href="#316-advanced-dram-organization高级dram组织"></a> 3.1.6. Advanced DRAM Organization(高级DRAM组织)</h3>
-<ol>
-<li>Problem
-<ul>
+<h3 id="3-1-6-Advanced-DRAM-Organization-高级DRAM组织"><a href="#3-1-6-Advanced-DRAM-Organization-高级DRAM组织" class="headerlink" title="3.1.6. Advanced DRAM Organization(高级DRAM组织)"></a>3.1.6. Advanced DRAM Organization(高级DRAM组织)</h3><ol>
+<li>Problem<ul>
 <li>The traditional DRAM chip is constrained both by its internal architecture and by its interface to the processor’s memory bus(传统的DRAM芯片被其内部结构和与处理器的存储总线限制)</li>
 </ul>
 </li>
-<li>Types
-<ul>
+<li>Types<ul>
 <li>Synchronous DRAM (SDRAM)同步DRAM</li>
 <li>DDR SDRAM (DDR)</li>
 </ul>
 </li>
 </ol>
-<h3 id="317-synchronous-dramsdram-同步dram"><a class="markdownIt-Anchor" href="#317-synchronous-dramsdram-同步dram"></a> 3.1.7. Synchronous DRAM(SDRAM 同步DRAM)</h3>
-<ol>
-<li>Traditional DRAM is <strong>asynchronous</strong>(异步的)
-<ol>
+<h3 id="3-1-7-Synchronous-DRAM-SDRAM-同步DRAM"><a href="#3-1-7-Synchronous-DRAM-SDRAM-同步DRAM" class="headerlink" title="3.1.7. Synchronous DRAM(SDRAM 同步DRAM)"></a>3.1.7. Synchronous DRAM(SDRAM 同步DRAM)</h3><ol>
+<li>Traditional DRAM is <strong>asynchronous</strong>(异步的)<ol>
 <li>The processor presents addresses and control levels to the memory, indicating that a set of data at a particular location in memory should be either read from or written into the DRAM(处理器向内存显示地址和控制级别，指示内存中某个特定位置的一组数据应该从DRAM中读取或写入)</li>
 <li>The DRAM performs various internal functions, such as activating the high capacitance of the row and column lines, sensing the data, and routing the data out through the output buffers, and the processor must simply wait through this delay(DRAM执行各种内部功能，例如激活行和列线的高电容、感知数据并通过输出缓冲区将数据路由出去，处理器必须简单地等待这个<strong>延迟</strong>。)</li>
 <li>After a delay, the DRAM either writes or reads the data(在延迟之后，DRAM既可以写入也可以读入数据)</li>
@@ -466,51 +430,43 @@
 </li>
 <li>有了同步存取机制，DRAM就可能在系统时钟的控制下输入和输出数据。处理器或其他控制器发出指令和地址信息，他们被DRAM锁存。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>SDRAM exchanges data with the processor synchronized to an external clock signal and running at the full speed of the processor/memory bus without imposing wait states(SDRAM与外部时钟信号同步并以处理器/内存总线的全速运行的处理器交换数据，而不施加等待状态。)</li>
 <li>Since SDRAM moves data in time with system clock, CPU knows when data will be ready(由于SDRAM随系统时钟及时移动数据，cpu知道数据何时准备好。 )</li>
 </ol>
-<hr />
+<hr>
 <ol>
 <li>数据读写是在时钟周期的上升点进行</li>
 <li>异步是需要再次沟通的，而同步是减少一些交互，确定具体的交互时间。(也就是延迟时间)</li>
 <li>书:111页</li>
 </ol>
-<h3 id="318-ddr-dramdouble-data-rate-sdram"><a class="markdownIt-Anchor" href="#318-ddr-dramdouble-data-rate-sdram"></a> 3.1.8. DDR DRAM(Double-data-rate SDRAM)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-1-8-DDR-DRAM-Double-data-rate-SDRAM"><a href="#3-1-8-DDR-DRAM-Double-data-rate-SDRAM" class="headerlink" title="3.1.8. DDR DRAM(Double-data-rate SDRAM)"></a>3.1.8. DDR DRAM(Double-data-rate SDRAM)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>在上升的时候可以处理，在下降的时候也是可以进行处理的，在一个存储周期可以读写两次。</li>
-<li>Double-data-rate SDRAM
-<ul>
+<li>Double-data-rate SDRAM<ul>
 <li>Send data twice per clock cycle, once on the rising edge of the clock pulse and once on the falling edge (每个时钟周期传递两次数据，一次在时钟脉冲上升的时候，一次是在时钟脉冲下降的时候)</li>
 </ul>
 </li>
-<li>Comparison of DDR, DDR2 and DDR3
-<ul>
+<li>Comparison of DDR, DDR2 and DDR3<ul>
 <li>Increase operational frequency(增加操作的频率)</li>
 <li>Increase the prefetch buffer(增加提前读取的缓冲)</li>
 </ul>
 </li>
 </ol>
-<h2 id="32-read-only-memory只读存储器"><a class="markdownIt-Anchor" href="#32-read-only-memory只读存储器"></a> 3.2. Read-only memory(只读存储器)</h2>
-<h3 id="321-rom只读存储器"><a class="markdownIt-Anchor" href="#321-rom只读存储器"></a> 3.2.1. ROM(只读存储器)</h3>
-<ol>
+<h2 id="3-2-Read-only-memory-只读存储器"><a href="#3-2-Read-only-memory-只读存储器" class="headerlink" title="3.2. Read-only memory(只读存储器)"></a>3.2. Read-only memory(只读存储器)</h2><h3 id="3-2-1-ROM-只读存储器"><a href="#3-2-1-ROM-只读存储器" class="headerlink" title="3.2.1. ROM(只读存储器)"></a>3.2.1. ROM(只读存储器)</h3><ol>
 <li>必须以掩码的方式写好给我，之后就不能更改了。含有的是不能改变的永久性数据。</li>
 <li>Read-only memory</li>
-<li>Characteristics
-<ul>
+<li>Characteristics<ul>
 <li>Nonvolatile(非易失性): no power source is required to maintain the bit(不需要提供电来保持数据的位)</li>
 <li>Possible to read a ROM but not possible to write new data(POM可以被读出但是不可以被写入)</li>
 </ul>
 </li>
-<li>Applications
-<ul>
+<li>Applications<ul>
 <li>Microprogramming, library subroutines, system programs, function tables(微程序设计，库子程序，系统程序，功能表)</li>
 </ul>
 </li>
-<li>Problems
-<ol>
+<li>Problems<ol>
 <li>Data insertion incurs a relatively large fixed cost(数据插入会产生较大的固定成本)</li>
 <li>No room for error: If one bit is wrong, the whole batch of ROMs must be thrown out(没有容错的空间:一位出错，就必须抛出整批的Error)</li>
 </ol>
@@ -518,22 +474,18 @@
 <li>例子:<strong>用于做恢复出厂设置的系统盘</strong>,不会有别的危险，因为是不可写的。</li>
 <li>多用于微编程、系统程序、函数表</li>
 </ol>
-<h3 id="322-prom可编程rom-programmed-rom"><a class="markdownIt-Anchor" href="#322-prom可编程rom-programmed-rom"></a> 3.2.2. PROM(可编程ROM programmed ROM)</h3>
-<ol>
+<h3 id="3-2-2-PROM-可编程ROM-programmed-ROM"><a href="#3-2-2-PROM-可编程ROM-programmed-ROM" class="headerlink" title="3.2.2. PROM(可编程ROM programmed ROM)"></a>3.2.2. PROM(可编程ROM programmed ROM)</h3><ol>
 <li>Programmable ROM</li>
-<li>Characteristics
-<ol>
+<li>Characteristics<ol>
 <li>Nonvolatile(不是易失性的)</li>
-<li>Can be written only once
-<ul>
+<li>Can be written only once<ul>
 <li>Electrically(电写入)</li>
 <li>Special equipment is required for writing(写入需要特殊仪器)</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>Compared to ROM
-<ul>
+<li>Compared to ROM<ul>
 <li>PROMs provide flexibility and convenience(PROMs提供了灵活性和便利性)</li>
 <li>The ROM remains attractive for high-volume production runs(ROM对于大容量生产运行仍然具有吸引力)</li>
 </ul>
@@ -541,170 +493,138 @@
 <li>例子:写入一些保密程序之类的。</li>
 <li>为什么用ROM不用PROM:在量产的时候PROM成本高。</li>
 </ol>
-<h2 id="33-read-mostly-memory主要是进行读操作的存储器"><a class="markdownIt-Anchor" href="#33-read-mostly-memory主要是进行读操作的存储器"></a> 3.3. Read-Mostly Memory(主要是进行读操作的存储器)</h2>
-<ol>
-<li>Characteristics
-<ul>
+<h2 id="3-3-Read-Mostly-Memory-主要是进行读操作的存储器"><a href="#3-3-Read-Mostly-Memory-主要是进行读操作的存储器" class="headerlink" title="3.3. Read-Mostly Memory(主要是进行读操作的存储器)"></a>3.3. Read-Mostly Memory(主要是进行读操作的存储器)</h2><ol>
+<li>Characteristics<ul>
 <li>Read operations are far more frequent than write operations(读出的操作比写入操作更加频繁)</li>
 <li><strong>Nonvolatile</strong> storage(非易失性存储)</li>
 </ul>
 </li>
-<li>Types
-<ul>
+<li>Types<ul>
 <li>EPROM</li>
 <li>EEPROM</li>
 <li>Flash memory</li>
 </ul>
 </li>
-<li>为什么不能替代RAM?
-<ul>
+<li>为什么不能替代RAM?<ul>
 <li>写起来并不方便(慢)</li>
 </ul>
 </li>
-<li>为什么不能替代ROM?
-<ul>
+<li>为什么不能替代ROM?<ul>
 <li>他本身是可以修改的，造价比ROM贵。</li>
 </ul>
 </li>
 </ol>
-<h3 id="331-eprom光可擦除可编程只读存储器"><a class="markdownIt-Anchor" href="#331-eprom光可擦除可编程只读存储器"></a> 3.3.1. EPROM(光可擦除/可编程只读存储器)</h3>
-<ol>
+<h3 id="3-3-1-EPROM-光可擦除-可编程只读存储器"><a href="#3-3-1-EPROM-光可擦除-可编程只读存储器" class="headerlink" title="3.3.1. EPROM(光可擦除/可编程只读存储器)"></a>3.3.1. EPROM(光可擦除/可编程只读存储器)</h3><ol>
 <li>Erasable programmable read-only memory</li>
-<li>Characteristics
-<ol>
+<li>Characteristics<ol>
 <li>Read and written electrically(电写入读出)</li>
-<li>Erasure: exposure of the packaged chip to ultraviolet radiation before a write operation(在写入前，<strong>擦除需要专门的紫外线仪器</strong>)
-<ul>
+<li>Erasure: exposure of the packaged chip to ultraviolet radiation before a write operation(在写入前，<strong>擦除需要专门的紫外线仪器</strong>)<ul>
 <li>All the storage cells will be the same initial state(所有的存储单元会被处理成相同的状态)</li>
 <li>Take as much as 20 minutes(耗时20min)</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>Compared to PROM
-<ul>
+<li>Compared to PROM<ul>
 <li>EPROM is more expensive, but it can be updated multiple times(比较贵，但是可以被更新)</li>
 </ul>
 </li>
 <li>写入时电写入，擦除使用紫外线照射20min左右，清楚全部数据</li>
 </ol>
-<h3 id="332-eeprom电可擦除可编程只读存储器"><a class="markdownIt-Anchor" href="#332-eeprom电可擦除可编程只读存储器"></a> 3.3.2. EEPROM(电可擦除/可编程只读存储器)</h3>
-<ol>
+<h3 id="3-3-2-EEPROM-电可擦除-可编程只读存储器"><a href="#3-3-2-EEPROM-电可擦除-可编程只读存储器" class="headerlink" title="3.3.2. EEPROM(电可擦除/可编程只读存储器)"></a>3.3.2. EEPROM(电可擦除/可编程只读存储器)</h3><ol>
 <li>Electrically erasable programmable read-only memory</li>
-<li>Characteristics
-<ol>
+<li>Characteristics<ol>
 <li>Can be written into at any time without erasing prior contents(可以在任何时候读入和更新字符，不需要擦除)</li>
 <li>Update the byte or bytes addressed only(仅仅根据数据的地址进行更新)</li>
 <li>Write operation takes several hundred microseconds per byte(写入操作耗时: 几百 ms/byte)</li>
 </ol>
 </li>
-<li>Compared to EPROM
-<ul>
+<li>Compared to EPROM<ul>
 <li>EEPROM is more expensive than EPROM and also is less dense(EEPROM比EPROM贵，密度低)。</li>
 </ul>
 </li>
 <li>实际上你直接写就行了，而且是字节级来改变。</li>
-<li>为什么不替代ROM?
-<ul>
+<li>为什么不替代ROM?<ul>
 <li>因为它写起来很慢，操作速度比较慢。</li>
 <li>比EPROM写入要快</li>
 </ul>
 </li>
 <li>集成度比较低</li>
 </ol>
-<h3 id="333-flash-mmory快闪存存储器"><a class="markdownIt-Anchor" href="#333-flash-mmory快闪存存储器"></a> 3.3.3. Flash Mmory(快闪存存储器)</h3>
-<ol>
+<h3 id="3-3-3-Flash-Mmory-快闪存存储器"><a href="#3-3-3-Flash-Mmory-快闪存存储器" class="headerlink" title="3.3.3. Flash Mmory(快闪存存储器)"></a>3.3.3. Flash Mmory(快闪存存储器)</h3><ol>
 <li>擦除速度比EPROM快，而比EEPROM慢，并且是一段一段擦除</li>
 <li>继承度高。</li>
-<li>Characteristics
-<ol>
+<li>Characteristics<ol>
 <li>Electrically erasing(电擦除)</li>
 <li>Erased in up to a few seconds, much faster than EPROM(可以在几秒内进行擦除)</li>
 <li>Possible to erase on block-level but not byte-level(可以在时钟级别上进行擦除而不是在字节级别上)</li>
 <li>Achieve as high density as EPROM (compared with EEPROM)(达到了和EPROM一样的高密度)</li>
 </ol>
 </li>
-<li>Compared to EPROM and EEPROM
-<ul>
+<li>Compared to EPROM and EEPROM<ul>
 <li>Intermediate between EPROM and EEPROM in both cost and functionality(综合价值和功能，在EPROM和EEPROM的中间)</li>
 </ul>
 </li>
 </ol>
-<h2 id="34-from-cell-to-main-memory从存储位元到主存储器"><a class="markdownIt-Anchor" href="#34-from-cell-to-main-memory从存储位元到主存储器"></a> 3.4. From Cell to Main Memory(从存储位元到主存储器)</h2>
-<h3 id="341-cell存储位元"><a class="markdownIt-Anchor" href="#341-cell存储位元"></a> 3.4.1. Cell(存储位元)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="3-4-From-Cell-to-Main-Memory-从存储位元到主存储器"><a href="#3-4-From-Cell-to-Main-Memory-从存储位元到主存储器" class="headerlink" title="3.4. From Cell to Main Memory(从存储位元到主存储器)"></a>3.4. From Cell to Main Memory(从存储位元到主存储器)</h2><h3 id="3-4-1-Cell-存储位元"><a href="#3-4-1-Cell-存储位元" class="headerlink" title="3.4.1. Cell(存储位元)"></a>3.4.1. Cell(存储位元)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>每个寻址单元内的数据不能进行局部修改,都是整体修改。</li>
-<li>Addressable unit
-<ol>
+<li>Addressable unit<ol>
 <li>Composed of the cells with the same address(由有地址的单元格组成)</li>
-<li>Addressing mode
-<ul>
+<li>Addressing mode<ul>
 <li>Byte (common)</li>
 <li>Word</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>现在大多数都是字节可寻址，而之前是字可寻址。
-<ul>
+<li>现在大多数都是字节可寻址，而之前是字可寻址。<ul>
 <li>而有的天文、数学计算机是有区别的。</li>
 </ul>
 </li>
 </ol>
-<h3 id="342-存储阵列"><a class="markdownIt-Anchor" href="#342-存储阵列"></a> 3.4.2. 存储阵列</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3-4-2-存储阵列"><a href="#3-4-2-存储阵列" class="headerlink" title="3.4.2. 存储阵列"></a>3.4.2. 存储阵列</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>为什么是用方形结构?
-<ul>
+<li>为什么是用方形结构?<ul>
 <li>假设一侧有2<sup>10</sup>根线。</li>
 <li>那么如果是线性的，需要2<sup>11</sup>根线，方形更加节约。</li>
 </ul>
 </li>
 <li>选中就是对行和列进行加电，然后同时被加电的地方被选中。</li>
-<li>能够随机访问的原因？
-<ul>
+<li>能够随机访问的原因？<ul>
 <li>因为我们都是读取地址，然后找到行，找到列，然后选中。所以无论什么单元，都是一样的访问时间。</li>
 </ul>
 </li>
 <li>寻址单元</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="343-数据传输率"><a class="markdownIt-Anchor" href="#343-数据传输率"></a> 3.4.3. 数据传输率</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-4-3-数据传输率"><a href="#3-4-3-数据传输率" class="headerlink" title="3.4.3. 数据传输率"></a>3.4.3. 数据传输率</h3><ol>
 <li>数据传输率 = n/T,其中n是位数，T是存取时间(储存周期)</li>
 </ol>
-<h3 id="344-refreshing刷新"><a class="markdownIt-Anchor" href="#344-refreshing刷新"></a> 3.4.4. Refreshing(刷新)</h3>
-<ol>
-<li>Centralized refresh(集中刷新)
-<ul>
+<h3 id="3-4-4-Refreshing-刷新"><a href="#3-4-4-Refreshing-刷新" class="headerlink" title="3.4.4. Refreshing(刷新)"></a>3.4.4. Refreshing(刷新)</h3><ol>
+<li>Centralized refresh(集中刷新)<ul>
 <li>Stop read/write operation, and refresh each line(停止一切读写操作，进行刷新)</li>
 <li>The memory cannot be operated when refreshing(在刷新的时候。内存不可以被操作)</li>
 </ul>
 </li>
-<li>Decentralized refresh(非集中刷新)
-<ul>
+<li>Decentralized refresh(非集中刷新)<ul>
 <li>Refresh in each storage cycle when the read/write operation is finished(每一个读写周期(存储周期)刷新一次)</li>
 <li>Increase the time of each storage cycle</li>
 </ul>
 </li>
-<li>Asynchronous refresh(异步刷新)
-<ul>
+<li>Asynchronous refresh(异步刷新)<ul>
 <li>Refresh each line in 64ms(每64ms刷新一次)</li>
 <li>High efficiency (common)(高效的)</li>
 </ul>
 </li>
-<li>存在卡顿(按照行或者按照列来充电)问题
-<ul>
+<li>存在卡顿(按照行或者按照列来充电)问题<ul>
 <li>一般在一个刷新周期中，优先刷新一部分的电</li>
 <li>如果在一个刷新周期中，有总被使用的，那么我们需要在快到了的时候，停止他，给它充电。</li>
 </ul>
 </li>
 </ol>
-<h3 id="345-chips-芯片"><a class="markdownIt-Anchor" href="#345-chips-芯片"></a> 3.4.5. Chips 芯片</h3>
-<ol>
-<li>Chip
-<ol>
+<h3 id="3-4-5-Chips-芯片"><a href="#3-4-5-Chips-芯片" class="headerlink" title="3.4.5. Chips 芯片"></a>3.4.5. Chips 芯片</h3><ol>
+<li>Chip<ol>
 <li>Address: A0 – A19</li>
 <li>Data: D0 – D7</li>
 <li>Vcc: power supply</li>
@@ -718,56 +638,45 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="346-内存板-module-organization"><a class="markdownIt-Anchor" href="#346-内存板-module-organization"></a> 3.4.6. 内存板 Module organization</h3>
-<ol>
-<li>Number of bits extended(位扩展)
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-4-6-内存板-Module-organization"><a href="#3-4-6-内存板-Module-organization" class="headerlink" title="3.4.6. 内存板 Module organization"></a>3.4.6. 内存板 Module organization</h3><ol>
+<li>Number of bits extended(位扩展)<ol>
 <li>Address line: no change 不变</li>
 <li>Data line: increased 变长</li>
 <li>Use eight 4K<em>1 bit chips to organize 4K</em>8 bit memory</li>
 </ol>
 </li>
-<li>Length of words extended(字扩展)
-<ol>
+<li>Length of words extended(字扩展)<ol>
 <li>Address line: increased 增加</li>
 <li>Data line: no change 不变</li>
 <li>Use four 16K<em>8 bit chips to organize 64K</em>8 bit memory</li>
 </ol>
 </li>
-<li>Both extended(位字扩展)
-<ol>
+<li>Both extended(位字扩展)<ol>
 <li>Address line: increased</li>
 <li>Data line: increased</li>
 <li>Use 8 16K<em>4 bit chips to organize 64K</em>8 bit memory</li>
 </ol>
 </li>
-<li>如图，这四块可能最后改装成什么
-<ul>
-<li>位扩展:有可能变成2000*2000(8 Bits)扩展个数，从同样的位置读出来数据然后拼接成一个更长的数据。
-<ul>
+<li>如图，这四块可能最后改装成什么<ul>
+<li>位扩展:有可能变成2000*2000(8 Bits)扩展个数，从同样的位置读出来数据然后拼接成一个更长的数据。<ul>
 <li>数据线会扩展</li>
 </ul>
 </li>
-<li>字扩展:还有可能变成1000*1000(32 Bits)扩充位数。
-<ul>
+<li>字扩展:还有可能变成1000*1000(32 Bits)扩充位数。<ul>
 <li>我们会对地址线进行扩展</li>
 </ul>
 </li>
-<li>因为主要是为了保存成方形的。<br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-11.png" srcset="/img/loading.gif" lazyload alt="" /></li>
+<li>因为主要是为了保存成方形的。<br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt7/cpt7-11.png" srcset="/img/loading.gif" lazyload alt=""></li>
 </ul>
 </li>
 </ol>
-<h3 id="347-slots插槽"><a class="markdownIt-Anchor" href="#347-slots插槽"></a> 3.4.7. Slots(插槽)</h3>
-<ol>
-<li>Slots(插槽)
-<ul>
+<h3 id="3-4-7-Slots-插槽"><a href="#3-4-7-Slots-插槽" class="headerlink" title="3.4.7. Slots(插槽)"></a>3.4.7. Slots(插槽)</h3><ol>
+<li>Slots(插槽)<ul>
 <li>Combine multiple memory modules(集合多种存储模块)</li>
 </ul>
 </li>
-<li>Main Memory
-<ul>
+<li>Main Memory<ul>
 <li>Main memory = RAM + ROM</li>
 <li>Main memory capacity = RAM capacity</li>
 </ul>
@@ -865,9 +774,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture03/" title="2019-COA19-lecture03">
+                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book1-%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E5%AF%BC%E8%AE%BA/" title="2020-Demand-and-business-model-innovation-Book1-需求工程导论">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-COA19-lecture03</span>
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Book1-需求工程导论</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -875,8 +784,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture13/" title="2019-COA19-lecture13">
-                        <span class="hidden-mobile">2019-COA19-lecture13</span>
+                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844-Tree/" title="2019-Data-Structure-数据结构4-Tree">
+                        <span class="hidden-mobile">2019-Data-Structure-数据结构4-Tree</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

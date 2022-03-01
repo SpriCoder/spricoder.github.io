@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-Data-Integration-Hw2-第二次作业说明">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:10:04.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:59:24.711Z">
+<meta property="article:published_time" content="2022-02-16T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:31:43.430Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="作业">
 <meta property="article:tag" content="数据集成">
@@ -199,7 +199,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:00" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -272,14 +272,11 @@
             
             <div class="markdown-body">
               
-              <h2 id="hw2-第二次作业说明"><a class="markdownIt-Anchor" href="#hw2-第二次作业说明"></a> Hw2-第二次作业说明</h2>
-<ol>
+              <h2 id="Hw2-第二次作业说明"><a href="#Hw2-第二次作业说明" class="headerlink" title="Hw2-第二次作业说明"></a>Hw2-第二次作业说明</h2><ol>
 <li>路线一不建议做，但是也会根据工作量进行评分，自由扩展功能</li>
-<li>路线二：
-<ol>
+<li>路线二：<ol>
 <li>作业一：批处理集成 + 实时数据集成，批处理数据集成，找到一个简单的规律</li>
-<li>作业二：
-<ol>
+<li>作业二：<ol>
 <li>电商平台，提供比较丰富的数据源</li>
 <li>整个业务框架，完成数据集成的部分</li>
 <li>技术框架，并搭建(大部分工具安装即可)</li>
@@ -289,8 +286,7 @@
 <li>sqoop拉取到本地需要持久化。</li>
 <li>从4月10日开始推，然后拉取数据，只需要拉取下来，然后尝试发现规律即可</li>
 <li>下下周的时候做交流：包括拉取数据、数据分析找规律过程</li>
-<li>数据
-<ol>
+<li>数据<ol>
 <li>表数据已经发布</li>
 <li>流式数据明天开始发布</li>
 </ol>
@@ -304,51 +300,42 @@
 </li>
 <li>路线三：金融知识图谱的构建与应用(4月中旬至少有一次)</li>
 </ol>
-<h1 id="1-各小组分享和交流"><a class="markdownIt-Anchor" href="#1-各小组分享和交流"></a> 1. 各小组分享和交流</h1>
-<ol>
+<h1 id="1-各小组分享和交流"><a href="#1-各小组分享和交流" class="headerlink" title="1. 各小组分享和交流"></a>1. 各小组分享和交流</h1><ol>
 <li>ip地址不一样，重新配置(调为一个网段)：将nat修改为桥接</li>
 <li>hive没开启10000端口监听</li>
 </ol>
-<h2 id="11-静态数据分析"><a class="markdownIt-Anchor" href="#11-静态数据分析"></a> 1.1. 静态数据分析</h2>
-<ol>
-<li>思路
-<ol>
+<h2 id="1-1-静态数据分析"><a href="#1-1-静态数据分析" class="headerlink" title="1.1. 静态数据分析"></a>1.1. 静态数据分析</h2><ol>
+<li>思路<ol>
 <li>2019年基于区段的机器人流量的分段分析(查一些文献来完成)</li>
 <li>捆绑销售(KNN分析特征相近、aprioir算法)</li>
 <li>用户画像</li>
 </ol>
 </li>
-<li>分析点：
-<ol>
+<li>分析点：<ol>
 <li>某一个商品在某个时间段大量下单</li>
 <li>某一个时间段有大量商品下单(问题是不是在一个购物车内)</li>
 <li>购买最多</li>
 <li>商品复购率、热门产品</li>
 </ol>
 </li>
-<li>绘图：
-<ol>
+<li>绘图：<ol>
 <li>timestamp和item_id绘图，一个颜色是一个user_id(一个timestamp下单很多，但是可能是一个购物车内的)</li>
 </ol>
 </li>
-<li>其他技术点：
-<ol>
+<li>其他技术点：<ol>
 <li>Java:AtomicReference</li>
 <li>Flink:进行实时数据分析</li>
 </ol>
 </li>
-<li>问题
-<ol>
+<li>问题<ol>
 <li>流数据USER_ID都是6位，静态数据里面USER_ID都是7位需要检查</li>
 <li>流数据的时间是实际时间，数据库表是时间戳</li>
 <li>静态数据有脏数据</li>
 </ol>
 </li>
 </ol>
-<h2 id="12-流数据分析"><a class="markdownIt-Anchor" href="#12-流数据分析"></a> 1.2. 流数据分析</h2>
-<ol>
-<li>撞库机器人：
-<ol>
+<h2 id="1-2-流数据分析"><a href="#1-2-流数据分析" class="headerlink" title="1.2. 流数据分析"></a>1.2. 流数据分析</h2><ol>
+<li>撞库机器人：<ol>
 <li>中位数不容易受到异常值影响，取中位数作为真人用户的正常频率</li>
 <li>单一IP登录的成功率比整体IP登录的成功率低</li>
 </ol>
@@ -357,8 +344,7 @@
 <li>刷单机器人：</li>
 <li>爬虫机器人：</li>
 </ol>
-<h2 id="13-数据可视化"><a class="markdownIt-Anchor" href="#13-数据可视化"></a> 1.3. 数据可视化</h2>
-
+<h2 id="1-3-数据可视化"><a href="#1-3-数据可视化" class="headerlink" title="1.3. 数据可视化"></a>1.3. 数据可视化</h2>
               
             </div>
             <hr/>
@@ -447,9 +433,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Data-Integration/2021-Data-Integration-Lec2-xml/" title="2021-Data-Integration-Lec2-xml">
+                      <a href="/2022/02/16/2020-Software-Test/2020-Software-Test-%E7%99%BD%E7%9B%92%E6%B5%8B%E8%AF%95/" title="2020-Software-Test-白盒测试">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Data-Integration-Lec2-xml</span>
+                        <span class="hidden-mobile">2020-Software-Test-白盒测试</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -457,8 +443,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Data-Integration/2021-Data-Integration-Lec0-Introduction/" title="2021-Data-Integration-Lec0-Introduction">
-                        <span class="hidden-mobile">2021-Data-Integration-Lec0-Introduction</span>
+                      <a href="/2022/02/16/2021-Data-Integration/2021-Data-Integration-Hw3-%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A%E8%AF%B4%E6%98%8E/" title="2021-Data-Integration-Hw3-第三次作业说明">
+                        <span class="hidden-mobile">2021-Data-Integration-Hw3-第三次作业说明</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

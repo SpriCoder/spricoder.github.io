@@ -25,8 +25,8 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/1.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/2.png">
-<meta property="article:published_time" content="2022-02-16T11:09:10.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:52:02.850Z">
+<meta property="article:published_time" content="2022-02-16T11:01:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:19:37.973Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -203,7 +203,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:01" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -276,43 +276,35 @@
             
             <div class="markdown-body">
               
-              <h2 id="数据库概述"><a class="markdownIt-Anchor" href="#数据库概述"></a> 数据库概述</h2>
-<h1 id="1-数据库的基本概念"><a class="markdownIt-Anchor" href="#1-数据库的基本概念"></a> 1. 数据库的基本概念</h1>
-<h2 id="11-数据库管理系统dbms-database-management-system"><a class="markdownIt-Anchor" href="#11-数据库管理系统dbms-database-management-system"></a> 1.1. 数据库管理系统(DBMS - database management system)</h2>
-<ol>
+              <h2 id="数据库概述"><a href="#数据库概述" class="headerlink" title="数据库概述"></a>数据库概述</h2><h1 id="1-数据库的基本概念"><a href="#1-数据库的基本概念" class="headerlink" title="1. 数据库的基本概念"></a>1. 数据库的基本概念</h1><h2 id="1-1-数据库管理系统-DBMS-database-management-system"><a href="#1-1-数据库管理系统-DBMS-database-management-system" class="headerlink" title="1.1. 数据库管理系统(DBMS - database management system)"></a>1.1. 数据库管理系统(DBMS - database management system)</h2><ol>
 <li>DBSM是DB的管理软件，是一种软件产品，将一个企业的数据以记录的形式在计算机中保存起来。</li>
 </ol>
-<h2 id="12-数据库-database"><a class="markdownIt-Anchor" href="#12-数据库-database"></a> 1.2. 数据库 (Database)</h2>
-<ol>
+<h2 id="1-2-数据库-Database"><a href="#1-2-数据库-Database" class="headerlink" title="1.2. 数据库 (Database)"></a>1.2. 数据库 (Database)</h2><ol>
 <li>为同一个目的而保存起来的所有数据的集合称为数据库</li>
 </ol>
-<h1 id="2-数据库用户"><a class="markdownIt-Anchor" href="#2-数据库用户"></a> 2. 数据库用户</h1>
-<ol>
-<li>最终用户(交互式用户)</li>
+<h1 id="2-数据库用户"><a href="#2-数据库用户" class="headerlink" title="2. 数据库用户"></a>2. 数据库用户</h1><ol>
+<li>最终用户(交互式用户)<ol>
 <li>临时用户(用SQL语句访问DBMS的用户)</li>
 <li>缺乏经验的用户(通过菜单访问DBMS的用户)</li>
+</ol>
+</li>
 <li>应用管理员(编写菜单程序的程序员)</li>
 <li>数据库管理员(DBA):在数据库系统中，负责数据库的设计、建立、日常管理和运行维护的人员。</li>
 </ol>
-<h1 id="3-数据模型data-model"><a class="markdownIt-Anchor" href="#3-数据模型data-model"></a> 3. 数据模型(data model)</h1>
-<h2 id="31-hierarchical层次数据模型"><a class="markdownIt-Anchor" href="#31-hierarchical层次数据模型"></a> 3.1. Hierarchical：层次数据模型</h2>
-<ol>
+<h1 id="3-数据模型-data-model"><a href="#3-数据模型-data-model" class="headerlink" title="3. 数据模型(data model)"></a>3. 数据模型(data model)</h1><h2 id="3-1-Hierarchical：层次数据模型"><a href="#3-1-Hierarchical：层次数据模型" class="headerlink" title="3.1. Hierarchical：层次数据模型"></a>3.1. Hierarchical：层次数据模型</h2><ol>
 <li>把数据组织成了一棵根在上、叶再下的有向树</li>
 <li>不同的记录按照层次结构进组织</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="32-network网状数据模型"><a class="markdownIt-Anchor" href="#32-network网状数据模型"></a> 3.2. Network：网状数据模型</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-Network：网状数据模型"><a href="#3-2-Network：网状数据模型" class="headerlink" title="3.2. Network：网状数据模型"></a>3.2. Network：网状数据模型</h2><ol>
 <li>把数据组织称有向无环图</li>
 <li>层次模型的概括，其中一层中的一组记录可能在下一层向上具有两个不同的包含层次。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="33-relational关系模型"><a class="markdownIt-Anchor" href="#33-relational关系模型"></a> 3.3. Relational：关系模型</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch01/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-3-Relational：关系模型"><a href="#3-3-Relational：关系模型" class="headerlink" title="3.3. Relational：关系模型"></a>3.3. Relational：关系模型</h2><ol>
 <li>一个利用关系模型的数据库管理系统被称为是关系数据库管理系统(RDBMS)</li>
 </ol>
-<h2 id="34-object-oriented面向对象模型"><a class="markdownIt-Anchor" href="#34-object-oriented面向对象模型"></a> 3.4. Object-Oriented：面向对象模型</h2>
-
+<h2 id="3-4-Object-Oriented：面向对象模型"><a href="#3-4-Object-Oriented：面向对象模型" class="headerlink" title="3.4. Object-Oriented：面向对象模型"></a>3.4. Object-Oriented：面向对象模型</h2>
               
             </div>
             <hr/>
@@ -403,9 +395,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Crash%20Course%20Computer%20Science/" title="2020-Compilation-Principle-Crash Course Computer Science">
+                      <a href="/2022/02/16/2020-Fundamentals-of-Data-Science/2020-Fundamentals-of-Data-Science-02-%E6%A6%82%E7%8E%87%E5%9F%BA%E7%A1%80/" title="2020-Fundamentals-of-Data-Science-02-概率基础">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Compilation-Principle-Crash Course Computer Science</span>
+                        <span class="hidden-mobile">2020-Fundamentals-of-Data-Science-02-概率基础</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -413,8 +405,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch05-%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%A8%8B%E5%BA%8F/" title="2020-Fundamentals-of-Data-Management-ch05-访问数据库的程序">
-                        <span class="hidden-mobile">2020-Fundamentals-of-Data-Management-ch05-访问数据库的程序</span>
+                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec01-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" title="2020-Introduction-to-Embedded-Systems-lec01-嵌入式系统概论">
+                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec01-嵌入式系统概论</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

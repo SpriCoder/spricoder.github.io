@@ -36,8 +36,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/11.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/12.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/13.png">
-<meta property="article:published_time" content="2022-02-16T11:09:23.000Z">
-<meta property="article:modified_time" content="2022-02-16T14:22:46.440Z">
+<meta property="article:published_time" content="2022-02-16T11:08:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:39:18.365Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="设计模式">
@@ -214,7 +214,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:08" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -287,32 +287,25 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec08-bridge-and-decorator"><a class="markdownIt-Anchor" href="#lec08-bridge-and-decorator"></a> Lec08-Bridge and Decorator</h2>
-<h1 id="1-桥接模式"><a class="markdownIt-Anchor" href="#1-桥接模式"></a> 1. 桥接模式</h1>
-<h2 id="11-模式动机"><a class="markdownIt-Anchor" href="#11-模式动机"></a> 1.1. 模式动机</h2>
-<ol>
-<li>设想如果要绘制矩形、圆形、椭圆、正方形，我们至少需要4个形状类，但是如果绘制的图形需要具有不同的颜色，如红色、绿色、蓝色等，此时至少有如下两种设计方案：
-<ol>
+              <h2 id="Lec08-Bridge-and-Decorator"><a href="#Lec08-Bridge-and-Decorator" class="headerlink" title="Lec08-Bridge and Decorator"></a>Lec08-Bridge and Decorator</h2><h1 id="1-桥接模式"><a href="#1-桥接模式" class="headerlink" title="1. 桥接模式"></a>1. 桥接模式</h1><h2 id="1-1-模式动机"><a href="#1-1-模式动机" class="headerlink" title="1.1. 模式动机"></a>1.1. 模式动机</h2><ol>
+<li>设想如果要绘制矩形、圆形、椭圆、正方形，我们至少需要4个形状类，但是如果绘制的图形需要具有不同的颜色，如红色、绿色、蓝色等，此时至少有如下两种设计方案：<ol>
 <li>第一种设计方案是为每一种形状都提供一套各种颜色的版本。</li>
 <li>第二种设计方案是根据实际需要对形状和颜色进行组合。</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>对于有<strong>两个变化维度（即两个变化的原因）<strong>的系统，采用</strong>方案二</strong>来进行设计系统中类的个数更少，且系统扩展更为方便。设计方案二即是桥接模式的应用。桥接模式<strong>将继承关系转换为关联关系</strong>，从而<strong>降低了类与类之间的耦合</strong>，减少了<strong>代码编写量</strong>。</li>
+<li>对于有<strong>两个变化维度（即两个变化的原因）</strong>的系统，采用<strong>方案二</strong>来进行设计系统中类的个数更少，且系统扩展更为方便。设计方案二即是桥接模式的应用。桥接模式<strong>将继承关系转换为关联关系</strong>，从而<strong>降低了类与类之间的耦合</strong>，减少了<strong>代码编写量</strong>。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-模式定义"><a class="markdownIt-Anchor" href="#12-模式定义"></a> 1.2. 模式定义</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-模式定义"><a href="#1-2-模式定义" class="headerlink" title="1.2. 模式定义"></a>1.2. 模式定义</h2><ol>
 <li>桥接模式(Bridge Pattern)：<strong>将抽象部分与它的实现部分分离，使它们都可以独立地变化</strong>。它是一种对象结构型模式，又称为柄体(Handle and Body)模式或接口(Interface)模式。</li>
 <li>Bridge Pattern: Decouple an abstraction from  its implementation so that the two can vary  independently.</li>
 </ol>
-<h2 id="13-模式结构"><a class="markdownIt-Anchor" href="#13-模式结构"></a> 1.3. 模式结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-3-模式结构"><a href="#1-3-模式结构" class="headerlink" title="1.3. 模式结构"></a>1.3. 模式结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>桥接模式包含如下角色：
-<ol>
+<li>桥接模式包含如下角色：<ol>
 <li>Abstraction：抽象类</li>
 <li>RefinedAbstraction：扩充抽象类</li>
 <li>Implementor：实现类接口</li>
@@ -320,10 +313,8 @@
 </ol>
 </li>
 </ol>
-<h2 id="14-模式分析"><a class="markdownIt-Anchor" href="#14-模式分析"></a> 1.4. 模式分析</h2>
-<ol>
-<li>理解桥接模式，重点需要理解如何将<strong>抽象化(Abstraction)与实现化(Implementation)脱耦</strong>，使得二者可以独立地变化。
-<ol>
+<h2 id="1-4-模式分析"><a href="#1-4-模式分析" class="headerlink" title="1.4. 模式分析"></a>1.4. 模式分析</h2><ol>
+<li>理解桥接模式，重点需要理解如何将<strong>抽象化(Abstraction)与实现化(Implementation)脱耦</strong>，使得二者可以独立地变化。<ol>
 <li><strong>抽象化</strong>：抽象化就是忽略一些信息，把不同的实体当作同样的实体对待。在面向对象中，<strong>将对象的共同性质抽取出来形成类的过程即为抽象化的过程</strong>。</li>
 <li><strong>实现化</strong>：<strong>针对抽象化给出的具体实现，就是实现化</strong>，抽象化与实现化是一对互逆的概念，实现化产生的对象比抽象化更具体，是对抽象化事物的进一步具体化的产物。</li>
 <li><strong>脱耦</strong>：脱耦就是<strong>将抽象化和实现化之间的耦合解脱开，或者说是将它们之间的强关联改换成弱关联，将两个角色之间的继承关系改为关联关系</strong>。桥接模式中的所谓脱耦，就是指在一个软件系统的抽象化和实现化之间使用关联关系（组合或者聚合关系）而不是继承关系，从而使两者可以相对独立地变化，这就是桥接模式的用意。</li>
@@ -332,42 +323,34 @@
 <li>典型的实现类接口代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Implementor</span>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operationImpl</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>典型的抽象类代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Abstraction</span>&#123;<br>  <span class="hljs-keyword">protected</span> Implementor impl;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setImpl</span><span class="hljs-params">(Implementor impl)</span>&#123;<br>    <span class="hljs-built_in">this</span>.impl=impl;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>典型的扩充抽象类代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RefinedAbstraction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Abstraction</span><br>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span><br>  &#123;<br>    <span class="hljs-comment">//代码</span><br>    impl.operationImpl();<br>    <span class="hljs-comment">//代码</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="15-桥接模式实例与解析"><a class="markdownIt-Anchor" href="#15-桥接模式实例与解析"></a> 1.5. 桥接模式实例与解析</h2>
-<h3 id="151-实例一模拟毛笔"><a class="markdownIt-Anchor" href="#151-实例一模拟毛笔"></a> 1.5.1. 实例一：模拟毛笔</h3>
-<ol>
+<h2 id="1-5-桥接模式实例与解析"><a href="#1-5-桥接模式实例与解析" class="headerlink" title="1.5. 桥接模式实例与解析"></a>1.5. 桥接模式实例与解析</h2><h3 id="1-5-1-实例一：模拟毛笔"><a href="#1-5-1-实例一：模拟毛笔" class="headerlink" title="1.5.1. 实例一：模拟毛笔"></a>1.5.1. 实例一：模拟毛笔</h3><ol>
 <li>现需要提供大中小3种型号的画笔，能够绘制5种不同颜色，如果使用蜡笔，我们需要准备3*5=15支蜡笔，也就是说必须准备15个具体的蜡笔类。而如果使用毛笔的话，只需要3种型号的毛笔，外加5个颜料盒，用3+5=8个类就可以实现15支蜡笔的功能。本实例使用桥接模式来模拟毛笔的使用过程。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="16-实例二跨平台视频播放器"><a class="markdownIt-Anchor" href="#16-实例二跨平台视频播放器"></a> 1.6. 实例二：跨平台视频播放器</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-6-实例二：跨平台视频播放器"><a href="#1-6-实例二：跨平台视频播放器" class="headerlink" title="1.6. 实例二：跨平台视频播放器"></a>1.6. 实例二：跨平台视频播放器</h2><ol>
 <li>如果需要开发一个跨平台视频播放器，可以在不同操作系统平台（如Windows、Linux、Unix等）上播放多种格式的视频文件，常见的视频格式包括MPEG、RMVB、AVI、WMV等。现使用桥接模式设计该播放器。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="17-模式优缺点"><a class="markdownIt-Anchor" href="#17-模式优缺点"></a> 1.7. 模式优缺点</h2>
-<h3 id="171-桥接模式的优点"><a class="markdownIt-Anchor" href="#171-桥接模式的优点"></a> 1.7.1. 桥接模式的优点</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-7-模式优缺点"><a href="#1-7-模式优缺点" class="headerlink" title="1.7. 模式优缺点"></a>1.7. 模式优缺点</h2><h3 id="1-7-1-桥接模式的优点"><a href="#1-7-1-桥接模式的优点" class="headerlink" title="1.7.1. 桥接模式的优点"></a>1.7.1. 桥接模式的优点</h3><ol>
 <li><strong>分离抽象接口及其实现部分。</strong></li>
 <li>桥接模式有时类似于多继承方案，但是多继承方案违背了类的单一职责原则（即一个类只有一个变化的原因），复用性比较差，而且多继承结构中类的个数非常庞大，<strong>桥接模式是比多继承方案更好的解决方法</strong>。</li>
 <li>桥接模式<strong>提高了系统的可扩充性</strong>，在两个变化维度中任意扩展一个维度，都不需要修改原有系统。</li>
 <li><strong>实现细节对客户透明，可以对用户隐藏实现细节。</strong></li>
 </ol>
-<h3 id="172-桥接模式的缺点"><a class="markdownIt-Anchor" href="#172-桥接模式的缺点"></a> 1.7.2. 桥接模式的缺点</h3>
-<ol>
+<h3 id="1-7-2-桥接模式的缺点"><a href="#1-7-2-桥接模式的缺点" class="headerlink" title="1.7.2. 桥接模式的缺点"></a>1.7.2. 桥接模式的缺点</h3><ol>
 <li>桥接模式的引入会<strong>增加系统的理解与设计难度</strong>，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程。</li>
 <li>桥接模式要求正确识别出系统中两个独立变化的维度，因此<strong>其使用范围具有一定的局限性</strong>。</li>
 </ol>
-<h2 id="18-模式适用环境"><a class="markdownIt-Anchor" href="#18-模式适用环境"></a> 1.8. 模式适用环境</h2>
-<ol>
-<li>在以下情况下可以使用桥接模式：
-<ol>
+<h2 id="1-8-模式适用环境"><a href="#1-8-模式适用环境" class="headerlink" title="1.8. 模式适用环境"></a>1.8. 模式适用环境</h2><ol>
+<li>在以下情况下可以使用桥接模式：<ol>
 <li>如果一个系统<strong>需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系</strong>，通过桥接模式可以使它们在抽象层建立一个关联关系。</li>
 <li><strong>抽象化角色和实现化角色可以以继承的方式独立扩展而互不影响</strong>，在程序运行时可以动态将一个抽象化子类的对象和一个实现化子类的对象进行组合，即系统需要对抽象化角色和实现化角色进行动态耦合。</li>
 <li>一个类<strong>存在两个独立变化的维度</strong>，且这两个维度都需要进行扩展。</li>
@@ -376,27 +359,21 @@
 </ol>
 </li>
 </ol>
-<h2 id="19-模式应用"><a class="markdownIt-Anchor" href="#19-模式应用"></a> 1.9. 模式应用</h2>
-<ol>
+<h2 id="1-9-模式应用"><a href="#1-9-模式应用" class="headerlink" title="1.9. 模式应用"></a>1.9. 模式应用</h2><ol>
 <li>Java语言通过Java虚拟机实现了平台的无关性。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>一个 Java桌面软件总是带有所在操作系统的视感(<strong>LookAndFeel</strong>)，如果一个Java软件是在Unix系统上开发的，那么开发人员看到的是Motif用户界面的视感；在Windows上面使用这个系统的用户看到的是Windows用户界面的视感；而一个在Macintosh上面使用的用户看到的则是Macintosh用户界面的视感，Java语言是通过所谓的Peer架构做到这一点的。Java为AWT中的每一个GUI构件都提供了一个Peer构件，<strong>在AWT中的Peer架构就使用了桥接模式</strong>。</li>
 <li>JDBC驱动程序也是桥接模式的应用之一。使用JDBC驱动程序的应用系统就是抽象角色，而所使用的数据库是实现角色。<strong>一个JDBC驱动程序可以动态地将一个特定类型的数据库与一个Java应用程序绑定在一起，从而实现抽象角色与实现角色的动态耦合</strong>。</li>
 </ol>
-<h2 id="110-模式扩展"><a class="markdownIt-Anchor" href="#110-模式扩展"></a> 1.10. 模式扩展</h2>
-<h3 id="1101-适配器模式与桥接模式的联用"><a class="markdownIt-Anchor" href="#1101-适配器模式与桥接模式的联用"></a> 1.10.1. 适配器模式与桥接模式的联用</h3>
-<ol>
+<h2 id="1-10-模式扩展"><a href="#1-10-模式扩展" class="headerlink" title="1.10. 模式扩展"></a>1.10. 模式扩展</h2><h3 id="1-10-1-适配器模式与桥接模式的联用"><a href="#1-10-1-适配器模式与桥接模式的联用" class="headerlink" title="1.10.1. 适配器模式与桥接模式的联用"></a>1.10.1. 适配器模式与桥接模式的联用</h3><ol>
 <li>桥接模式和适配器模式用于设计的不同阶段，<strong>桥接模式用于系统的初步设计</strong>，对于存在两个独立变化维度的类可以将其分为抽象化和实现化两个角色，使它们可以分别进行变化；而在初步设计完成之后，<strong>当发现系统与已有类无法协同工作时，可以采用适配器模式</strong>。但有时候在设计初期也需要考虑适配器模式，特别是那些涉及到大量第三方应用接口的情况。</li>
 </ol>
-<h3 id="1102-适配器模式与桥接模式的联用"><a class="markdownIt-Anchor" href="#1102-适配器模式与桥接模式的联用"></a> 1.10.2. 适配器模式与桥接模式的联用</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="111-小结"><a class="markdownIt-Anchor" href="#111-小结"></a> 1.11. 小结</h2>
-<ol>
+<h3 id="1-10-2-适配器模式与桥接模式的联用"><a href="#1-10-2-适配器模式与桥接模式的联用" class="headerlink" title="1.10.2. 适配器模式与桥接模式的联用"></a>1.10.2. 适配器模式与桥接模式的联用</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-11-小结"><a href="#1-11-小结" class="headerlink" title="1.11. 小结"></a>1.11. 小结</h2><ol>
 <li>桥接模式将抽象部分与它的实现部分分离，使它们都可以独立地变化。它是一种对象结构型模式，又称为柄体(Handle and Body)模式或接口(Interface)模式。</li>
-<li>桥接模式包含如下四个角色：
-<ol>
+<li>桥接模式包含如下四个角色：<ol>
 <li>抽象类中定义了一个实现类接口类型的对象并可以维护该对象</li>
 <li>扩充抽象类扩充由抽象类定义的接口，它实现了在抽象类中定义的抽象业务方法，在扩充抽象类中可以调用在实现类接口中定义的业务方法</li>
 <li>实现类接口定义了实现类的接口，实现类接口仅提供基本操作，而抽象类定义的接口可能会做更多更复杂的操作</li>
@@ -404,36 +381,29 @@
 </ol>
 </li>
 <li>在桥接模式中，抽象化(Abstraction)与实现化(Implementation)脱耦，它们可以沿着各自的维度独立变化。</li>
-<li>桥接模式
-<ol>
+<li>桥接模式<ol>
 <li>主要优点是分离抽象接口及其实现部分，是比多继承方案更好的解决方法，桥接模式还提高了系统的可扩充性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统，实现细节对客户透明，可以对用户隐藏实现细节</li>
 <li>主要缺点是增加系统的理解与设计难度，且识别出系统中两个独立变化的维度并不是一件容易的事情</li>
 </ol>
 </li>
 <li>桥接模式适用情况包括：需要在构件的抽象化角色和具体化角色之间增加更多的灵活性，避免在两个层次之间建立静态的继承联系；抽象化角色和实现化角色可以以继承的方式独立扩展而互不影响；一个类存在两个独立变化的维度，且这两个维度都需要进行扩展；设计要求需要独立管理抽象化角色和具体化角色；不希望使用继承或因为多层次继承导致系统类的个数急剧增加的系统。</li>
 </ol>
-<h1 id="2-装饰模式"><a class="markdownIt-Anchor" href="#2-装饰模式"></a> 2. 装饰模式</h1>
-<h2 id="21-模式动机"><a class="markdownIt-Anchor" href="#21-模式动机"></a> 2.1. 模式动机</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-装饰模式"><a href="#2-装饰模式" class="headerlink" title="2. 装饰模式"></a>2. 装饰模式</h1><h2 id="2-1-模式动机"><a href="#2-1-模式动机" class="headerlink" title="2.1. 模式动机"></a>2.1. 模式动机</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>一般有两种方式可以实现给一个类或对象增加行为：
-<ol>
+<li>一般有两种方式可以实现给一个类或对象增加行为：<ol>
 <li><strong>继承机制</strong>，使用继承机制是给现有类添加功能的一种有效途径，通过继承一个现有类可以使得子类在拥有自身方法的同时还拥有父类的方法。但是这种方法是静态的，用户不能控制增加行为的方式和时机。</li>
 <li><strong>关联机制</strong>，即将一个类的对象嵌入另一个对象中，由另一个对象来决定是否调用嵌入对象的行为以便扩展自己的行为。</li>
 </ol>
 </li>
 <li>装饰模式以<strong>对客户透明的方式动态地给一个对象附加上更多的责任</strong>，换言之，客户端并不会觉得对象在装饰前和装饰后有什么不同。装饰模式可以在<strong>不需要创造更多子类的情况下，将对象的功能加以扩展</strong>。这就是装饰模式的模式动机。</li>
 </ol>
-<h2 id="22-模式定义"><a class="markdownIt-Anchor" href="#22-模式定义"></a> 2.2. 模式定义</h2>
-<ol>
-<li>装饰模式(Decorator Pattern) ：<strong>动态地给一个对象增加一些额外的职责</strong>(Responsibility)，就增加对象功能来说，装饰模式比生成子类实现更为灵活。其别名也可以称为<strong>包装器</strong>(Wrapper)，与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为&quot;油漆工模式&quot;，它是一种<strong>对象结构型模式</strong>。</li>
+<h2 id="2-2-模式定义"><a href="#2-2-模式定义" class="headerlink" title="2.2. 模式定义"></a>2.2. 模式定义</h2><ol>
+<li>装饰模式(Decorator Pattern) ：<strong>动态地给一个对象增加一些额外的职责</strong>(Responsibility)，就增加对象功能来说，装饰模式比生成子类实现更为灵活。其别名也可以称为<strong>包装器</strong>(Wrapper)，与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为”油漆工模式”，它是一种<strong>对象结构型模式</strong>。</li>
 <li>Decorator Pattern: Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to  subclassing for extending functionality.</li>
 </ol>
-<h2 id="23-模式结构"><a class="markdownIt-Anchor" href="#23-模式结构"></a> 2.3. 模式结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-3-模式结构"><a href="#2-3-模式结构" class="headerlink" title="2.3. 模式结构"></a>2.3. 模式结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>装饰模式包含如下角色：
-<ol>
+<li>装饰模式包含如下角色：<ol>
 <li>Component: 抽象构件</li>
 <li>ConcreteComponent: 具体构件</li>
 <li>Decorator: 抽象装饰类</li>
@@ -445,67 +415,55 @@
 <li>典型的抽象装饰类代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Decorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Component</span><br>&#123;<br>  <span class="hljs-keyword">private</span> Component component;<br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Decorator</span><span class="hljs-params">(Component component)</span><br>  &#123;<br>    <span class="hljs-built_in">this</span>.component=component;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span><br>   &#123;<br>   component.operation();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="5">
+<ol>
 <li>典型的具体装饰类代码：</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Decorator</span><br>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteDecorator</span><span class="hljs-params">(Component component)</span><br>  &#123;<br>    <span class="hljs-built_in">super</span>(component);<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span><br>  &#123;<br>    <span class="hljs-built_in">super</span>.operation();<br>    addedBehavior();<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addedBehavior</span><span class="hljs-params">()</span><br>  &#123;<br>    <span class="hljs-comment">//新增方法</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="24-装饰模式实例与解析"><a class="markdownIt-Anchor" href="#24-装饰模式实例与解析"></a> 2.4. 装饰模式实例与解析</h2>
-<h3 id="241-实例一变形金刚"><a class="markdownIt-Anchor" href="#241-实例一变形金刚"></a> 2.4.1. 实例一：变形金刚</h3>
-<ol>
+<h2 id="2-4-装饰模式实例与解析"><a href="#2-4-装饰模式实例与解析" class="headerlink" title="2.4. 装饰模式实例与解析"></a>2.4. 装饰模式实例与解析</h2><h3 id="2-4-1-实例一：变形金刚"><a href="#2-4-1-实例一：变形金刚" class="headerlink" title="2.4.1. 实例一：变形金刚"></a>2.4.1. 实例一：变形金刚</h3><ol>
 <li>变形金刚在变形之前是一辆汽车，它可以在陆地上移动。当它变成机器人之后除了能够在陆地上移动之外，还可以说话；如果需要，它还可以变成飞机，除了在陆地上移动还可以在天空中飞翔。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="242-实例二多重加密系统"><a class="markdownIt-Anchor" href="#242-实例二多重加密系统"></a> 2.4.2. 实例二：多重加密系统</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2-4-2-实例二：多重加密系统"><a href="#2-4-2-实例二：多重加密系统" class="headerlink" title="2.4.2. 实例二：多重加密系统"></a>2.4.2. 实例二：多重加密系统</h3><ol>
 <li>某系统提供了一个数据加密功能，可以对字符串进行加密。最简单的加密算法通过对字母进行移位来实现，同时还提供了稍复杂的逆向输出加密，还提供了更为高级的求模加密。用户先使用最简单的加密算法对字符串进行加密，如果觉得还不够可以对加密之后的结果使用其他加密算法进行二次加密，当然也可以进行第三次加密。现使用装饰模式设计该多重加密系统。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="25-模式优缺点"><a class="markdownIt-Anchor" href="#25-模式优缺点"></a> 2.5. 模式优缺点</h2>
-<h3 id="251-装饰模式的优点"><a class="markdownIt-Anchor" href="#251-装饰模式的优点"></a> 2.5.1. 装饰模式的优点</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-5-模式优缺点"><a href="#2-5-模式优缺点" class="headerlink" title="2.5. 模式优缺点"></a>2.5. 模式优缺点</h2><h3 id="2-5-1-装饰模式的优点"><a href="#2-5-1-装饰模式的优点" class="headerlink" title="2.5.1. 装饰模式的优点"></a>2.5.1. 装饰模式的优点</h3><ol>
 <li>装饰模式与继承关系的目的都是要扩展对象的功能，但是<strong>装饰模式可以提供比继承更多的灵活性</strong>。</li>
 <li>可以<strong>通过一种动态的方式来扩展一个对象的功能</strong>，通过配置文件可以在运行时选择不同的装饰器，从而实现不同的行为。</li>
 <li><strong>通过使用不同的具体装饰类以及这些装饰类的排列组合，可以创造出很多不同行为的组合</strong>。可以使用多个具体装饰类来装饰同一对象，得到功能更为强大的对象。</li>
-<li><strong>具体构件类与具体装饰类可以独立变化</strong>，用户可以根据需要增加新的具体构件类和具体装饰类，在使用时再对其进行组合，原有代码无须改变，符合&quot;开闭原则&quot;。</li>
+<li><strong>具体构件类与具体装饰类可以独立变化</strong>，用户可以根据需要增加新的具体构件类和具体装饰类，在使用时再对其进行组合，原有代码无须改变，符合”开闭原则”。</li>
 </ol>
-<h3 id="252-装饰模式的缺点"><a class="markdownIt-Anchor" href="#252-装饰模式的缺点"></a> 2.5.2. 装饰模式的缺点</h3>
-<ol>
+<h3 id="2-5-2-装饰模式的缺点"><a href="#2-5-2-装饰模式的缺点" class="headerlink" title="2.5.2. 装饰模式的缺点"></a>2.5.2. 装饰模式的缺点</h3><ol>
 <li>使用装饰模式进行系统设计时将<strong>产生很多小对象</strong>，这些对象的区别在于它们之间相互连接的方式有所不同，而不是它们的类或者属性值有所不同，同时还将产生很多具体装饰类。这些装饰类和小对象的产生将增加系统的复杂度，加大学习与理解的难度。</li>
 <li>这种比继承更加灵活机动的特性，也同时意味着<strong>装饰模式比继承更加易于出错，排错也很困难，对于多次装饰的对象，调试时寻找错误可能需要逐级排查，较为烦琐</strong>。</li>
 </ol>
-<h2 id="26-模式适用环境"><a class="markdownIt-Anchor" href="#26-模式适用环境"></a> 2.6. 模式适用环境</h2>
-<ol>
-<li>在以下情况下可以使用装饰模式：
-<ol>
+<h2 id="2-6-模式适用环境"><a href="#2-6-模式适用环境" class="headerlink" title="2.6. 模式适用环境"></a>2.6. 模式适用环境</h2><ol>
+<li>在以下情况下可以使用装饰模式：<ol>
 <li>在不影响其他对象的情况下，<strong>以动态、透明的方式给单个对象添加职责</strong>。</li>
 <li>需要<strong>动态地给一个对象增加功能</strong>，这些功能也可以<strong>动态地被撤销</strong>。</li>
 <li><strong>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时</strong>。不能采用继承的情况主要有两类：第一类是系统中存在大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长；第二类是因为类定义不能继承（如final类）。</li>
 </ol>
 </li>
 </ol>
-<h2 id="27-模式应用"><a class="markdownIt-Anchor" href="#27-模式应用"></a> 2.7. 模式应用</h2>
+<h2 id="2-7-模式应用"><a href="#2-7-模式应用" class="headerlink" title="2.7. 模式应用"></a>2.7. 模式应用</h2><ol>
+<li><p>在javax.swing包中，可以通过装饰模式动态给一些构件增加新的行为或改善其外观显示。</p>
 <ol>
-<li>在javax.swing包中，可以通过装饰模式动态给一些构件增加新的行为或改善其外观显示。
-<ol>
-<li>如JList构件本身并不支持直接滚动，即没有滚动条，要创建可以滚动的列表，可以使用如下代码实现：</li>
-</ol>
+<li>如JList构件本身并不支持直接滚动，即没有滚动条，要创建可以滚动的列表，可以使用如下代码实现：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">JList</span> <span class="hljs-variable">list</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JList</span>();<br><span class="hljs-type">JScrollPane</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JScrollPane</span>(list);<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">JList</span> <span class="hljs-variable">list</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JList</span>();<br><span class="hljs-type">JScrollPane</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JScrollPane</span>(list);<br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>装饰模式在JDK中最经典的实例是Java IO。
+</li>
+<li><p>装饰模式在JDK中最经典的实例是Java IO。</p>
 <ol>
 <li>以InputStream为例：</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>抽象装饰类：FilterInputStream</li>
-</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li><p>抽象装饰类：FilterInputStream</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">volatile</span> InputStream in;<br><span class="hljs-keyword">protected</span> <span class="hljs-title function_">FilterInputStream</span><span class="hljs-params">(InputStream in)</span> &#123;<br><span class="hljs-built_in">this</span>.in = in;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="4">
-<li>角色分配：
+</li>
+<li><p>角色分配：</p>
 <ol>
 <li>抽象构件类：InputStream</li>
 <li>具体构件类：FileInputStream、ByteArrayInputStream等</li>
@@ -513,42 +471,36 @@
 <li>具体装饰类：BufferedInputStream、DataInputStream等</li>
 </ol>
 </li>
-<li>客户端使用：</li>
+<li>客户端使用：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">FileInputStream inFS=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;temp/fileSrc.txt&quot;</span>);<br>BufferedInputStream inBS=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(inFS);<br><span class="hljs-comment">//定义一个字节数组，用于存放缓冲数据</span><br><span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>inBS.read(data);<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">FileInputStream inFS=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;temp/fileSrc.txt&quot;</span>);<br>BufferedInputStream inBS=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(inFS);<br><span class="hljs-comment">//定义一个字节数组，用于存放缓冲数据</span><br><span class="hljs-type">byte</span>[] data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>inBS.read(data);<br></code></pre></td></tr></table></figure>
-<h2 id="28-模式扩展"><a class="markdownIt-Anchor" href="#28-模式扩展"></a> 2.8. 模式扩展</h2>
-<ol>
-<li>装饰模式的简化-需要注意的问题
-<ol>
+<h2 id="2-8-模式扩展"><a href="#2-8-模式扩展" class="headerlink" title="2.8. 模式扩展"></a>2.8. 模式扩展</h2><ol>
+<li>装饰模式的简化-需要注意的问题<ol>
 <li><strong>一个装饰类的接口必须与被装饰类的接口保持相同</strong>，对于客户端来说无论是装饰之前的对象还是装饰之后的对象都可以一致对待。</li>
-<li>尽量保持具体构件类Component作为一个&quot;轻&quot;类，也就是说<strong>不要把太多的逻辑和状态放在具体构件类中</strong>，可以通过装饰类对其进行扩展。</li>
+<li>尽量保持具体构件类Component作为一个”轻”类，也就是说<strong>不要把太多的逻辑和状态放在具体构件类中</strong>，可以通过装饰类对其进行扩展。</li>
 <li><strong>如果只有一个具体构件类而没有抽象构件类，那么抽象装饰类可以作为具体构件类的直接子类</strong>。</li>
 </ol>
 </li>
 <li>装饰模式的简化</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li><strong>透明</strong>装饰模式（多重加密系统）
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec08/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li><strong>透明</strong>装饰模式（多重加密系统）<ol>
 <li>在透明装饰模式中，要求<strong>客户端完全针对抽象编程</strong>，装饰模式的透明性要求客户端程序不应该声明具体构件类型和具体装饰类型，而应该全部声明为抽象构件类型。</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">Cipher sc,cc,ac;<br>sc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleCipher</span>();<br>cc=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ComplexCipher</span>(sc);<br>ac=<span class="hljs-keyword">new</span> <span class="hljs-title class_">AdvancedCipher</span>(cc);<br></code></pre></td></tr></table></figure>
-<ol start="4">
-<li><strong>半透明</strong>装饰模式（变形金刚）
 <ol>
-<li>**半透明(semi-transparent)**的装饰模式允许用户在客户端声明具体装饰者类型的对象，调用在具体装饰者中新增的方法。</li>
+<li><strong>半透明</strong>装饰模式（变形金刚）<ol>
+<li><strong>半透明(semi-transparent)</strong>的装饰模式允许用户在客户端声明具体装饰者类型的对象，调用在具体装饰者中新增的方法。</li>
 </ol>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Transform camaro;<br>camaro=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>();<br>camaro.move();<br>Robot bumblebee=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Robot</span>(camaro);<br>bumblebee.move();<br>bumblebee.say();<br></code></pre></td></tr></table></figure>
-<h2 id="29-小结"><a class="markdownIt-Anchor" href="#29-小结"></a> 2.9. 小结</h2>
-<ol>
+<h2 id="2-9-小结"><a href="#2-9-小结" class="headerlink" title="2.9. 小结"></a>2.9. 小结</h2><ol>
 <li>装饰模式用于动态地给一个对象增加一些额外的职责，就增加对象功能来说，装饰模式比生成子类实现更为灵活。它是一种对象结构型模式。</li>
-<li>装饰模式包含四个角色
-<ol>
+<li>装饰模式包含四个角色<ol>
 <li>抽象构件定义了对象的接口，可以给这些对象动态增加职责（方法）</li>
 <li>具体构件定义了具体的构件对象，实现了在抽象构件中声明的方法，装饰器可以给它增加额外的职责（方法）</li>
 <li>抽象装饰类是抽象构件类的子类，用于给具体构件增加职责，但是具体职责在其子类中实现</li>
@@ -556,21 +508,18 @@
 </ol>
 </li>
 <li>使用装饰模式来实现扩展比继承更加灵活，它以对客户透明的方式动态地给一个对象附加更多的责任。装饰模式可以在不需要创造更多子类的情况下，将对象的功能加以扩展。</li>
-<li>装饰模式
-<ol>
+<li>装饰模式<ol>
 <li>主要优点在于可以提供比继承更多的灵活性，可以通过一种动态的方式来扩展一个对象的功能，并通过使用不同的具体装饰类以及这些装饰类的排列组合，可以创造出很多不同行为的组合，而且具体构件类与具体装饰类可以独立变化，用户可以根据需要增加新的具体构件类和具体装饰类</li>
 <li>主要缺点在于使用装饰模式进行系统设计时将产生很多小对象，而且装饰模式比继承更加易于出错，排错也很困难，对于多次装饰的对象，调试时寻找错误可能需要逐级排查，较为烦琐。</li>
 </ol>
 </li>
-<li>装饰模式适用情况包括
-<ol>
+<li>装饰模式适用情况包括<ol>
 <li>在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责</li>
 <li>需要动态地给一个对象增加功能，这些功能也可以动态地被撤销</li>
 <li>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。</li>
 </ol>
 </li>
-<li>装饰模式可分为透明装饰模式和半透明装饰模式
-<ol>
+<li>装饰模式可分为透明装饰模式和半透明装饰模式<ol>
 <li>在透明装饰模式中，要求客户端完全针对抽象编程，装饰模式的透明性要求客户端程序不应该声明具体构件类型和具体装饰类型，而应该全部声明为抽象构件类型</li>
 <li>半透明装饰模式允许用户在客户端声明具体装饰者类型的对象，调用在具体装饰者中新增的方法。</li>
 </ol>
@@ -667,9 +616,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec03-Factory/" title="2021-Software-System-Design-Lec03-Factory">
+                      <a href="/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Lec-8%20%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" title="2021-human-computer-interaction-Lec-8 交互式系统的设计">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-Software-System-Design-Lec03-Factory</span>
+                        <span class="hidden-mobile">2021-human-computer-interaction-Lec-8 交互式系统的设计</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -677,8 +626,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Lec13-Quality%20Attributes/" title="2021-Software-System-Design-Lec13-Quality Attributes">
-                        <span class="hidden-mobile">2021-Software-System-Design-Lec13-Quality Attributes</span>
+                      <a href="/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Exam02-%E5%A4%8D%E4%B9%A0%E6%8F%90%E7%BA%B2/" title="2020-Business-Intelligence-Exam02-复习提纲">
+                        <span class="hidden-mobile">2020-Business-Intelligence-Exam02-复习提纲</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

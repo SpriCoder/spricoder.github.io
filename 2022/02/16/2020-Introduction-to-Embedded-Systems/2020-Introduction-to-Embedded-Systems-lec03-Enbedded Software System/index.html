@@ -40,8 +40,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/16.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/17.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/18.png">
-<meta property="article:published_time" content="2022-02-16T11:09:38.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:28:48.359Z">
+<meta property="article:published_time" content="2022-02-16T11:03:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:23:54.221Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="嵌入式系统导论">
@@ -217,7 +217,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:03" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -290,70 +290,57 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec03-enbedded-software-system"><a class="markdownIt-Anchor" href="#lec03-enbedded-software-system"></a> lec03-Enbedded Software System</h2>
-<h1 id="1-嵌入式系统硬件"><a class="markdownIt-Anchor" href="#1-嵌入式系统硬件"></a> 1. 嵌入式系统硬件</h1>
-<ol>
+              <h2 id="lec03-Enbedded-Software-System"><a href="#lec03-Enbedded-Software-System" class="headerlink" title="lec03-Enbedded Software System"></a>lec03-Enbedded Software System</h2><h1 id="1-嵌入式系统硬件"><a href="#1-嵌入式系统硬件" class="headerlink" title="1. 嵌入式系统硬件"></a>1. 嵌入式系统硬件</h1><ol>
 <li>嵌入式系统硬件经常在循环中使用(“循环中的硬件”)：网络物理系统</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="11-硬件平台架构"><a class="markdownIt-Anchor" href="#11-硬件平台架构"></a> 1.1. 硬件平台架构</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-1-硬件平台架构"><a href="#1-1-硬件平台架构" class="headerlink" title="1.1. 硬件平台架构"></a>1.1. 硬件平台架构</h2><ol>
 <li>包含很多部分：CPU、bus、memory、I/O devices: 网络，传感器，执行器等。</li>
 <li>每个部分有多大/多快？</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-流行的微处理器单片机"><a class="markdownIt-Anchor" href="#12-流行的微处理器单片机"></a> 1.2. 流行的微处理器(单片机)</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-流行的微处理器-单片机"><a href="#1-2-流行的微处理器-单片机" class="headerlink" title="1.2. 流行的微处理器(单片机)"></a>1.2. 流行的微处理器(单片机)</h2><ol>
 <li>ARM:做嵌入式设备很久，市场占有率比较高。</li>
 <li>MIPS(学院派):美国计算机协会(ACM)宣布 John L. Hennessy 和 David A. Patterson 荣获 2017 年年图灵奖。</li>
 <li>PowerPC</li>
 <li>X86</li>
 </ol>
-<h2 id="13-冯诺依曼结构计算机"><a class="markdownIt-Anchor" href="#13-冯诺依曼结构计算机"></a> 1.3. 冯诺依曼结构计算机</h2>
-<ol>
+<h2 id="1-3-冯诺依曼结构计算机"><a href="#1-3-冯诺依曼结构计算机" class="headerlink" title="1.3. 冯诺依曼结构计算机"></a>1.3. 冯诺依曼结构计算机</h2><ol>
 <li>存储器保存数据，指令。</li>
 <li>中央处理器(CPU)从内存中获取指令。</li>
 <li>分开的CPU和内存区分可编程计算机。</li>
 <li>CPU寄存器可提供帮助：程序计数器(PC)，指令寄存器(IR)，通用寄存器等。</li>
 <li>嵌入式中两个版本的CPU都有</li>
 </ol>
-<h2 id="14-harvard"><a class="markdownIt-Anchor" href="#14-harvard"></a> 1.4. Harvard</h2>
-<ol>
+<h2 id="1-4-Harvard"><a href="#1-4-Harvard" class="headerlink" title="1.4. Harvard"></a>1.4. Harvard</h2><ol>
 <li>Harvard 不能使用自我修改的代码。</li>
 <li>Harvard 允许同时进行两次内存提取。</li>
-<li>大多数DSP(数据信号处理，Digital Signal Process)使用 Harvard 架构来传输数据：
-<ol>
+<li>大多数DSP(数据信号处理，Digital Signal Process)使用 Harvard 架构来传输数据：<ol>
 <li>更大的内存带宽</li>
 <li>更可预测的带宽</li>
 </ol>
 </li>
 </ol>
-<h2 id="15-risc-vs-cisc"><a class="markdownIt-Anchor" href="#15-risc-vs-cisc"></a> 1.5. RISC vs. CISC</h2>
-<ol>
+<h2 id="1-5-RISC-vs-CISC"><a href="#1-5-RISC-vs-CISC" class="headerlink" title="1.5. RISC vs. CISC"></a>1.5. RISC vs. CISC</h2><ol>
 <li>Complex instruction set computer (CISC): 复杂指令集计算机：许多寻址模式、多种操作</li>
 <li>Reduced instruction set computer (RISC): 精简指令集计算机：加载/存储、可传递指令</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="16-risc-v"><a class="markdownIt-Anchor" href="#16-risc-v"></a> 1.6. RISC-V</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-6-RISC-V"><a href="#1-6-RISC-V" class="headerlink" title="1.6. RISC-V"></a>1.6. RISC-V</h2><ol>
 <li>简单、完全开源并且免费</li>
 <li>将基准指令和扩展指令分开，可以通过扩展指令做定制化的模块和扩展:RISC-V的基准指令确定后将不不会再有变化，这是RISC-V稳定性的重要保障。</li>
 <li>32、64、128位指令集</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="17-设计系统芯片之前需要考虑的五件事"><a class="markdownIt-Anchor" href="#17-设计系统芯片之前需要考虑的五件事"></a> 1.7. 设计系统芯片之前需要考虑的五件事</h2>
-<p>成本、生态系统、碎片化风险、安全性、设计保证</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="18-编程模型"><a class="markdownIt-Anchor" href="#18-编程模型"></a> 1.8. 编程模型</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-7-设计系统芯片之前需要考虑的五件事"><a href="#1-7-设计系统芯片之前需要考虑的五件事" class="headerlink" title="1.7. 设计系统芯片之前需要考虑的五件事"></a>1.7. 设计系统芯片之前需要考虑的五件事</h2><p>成本、生态系统、碎片化风险、安全性、设计保证</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-8-编程模型"><a href="#1-8-编程模型" class="headerlink" title="1.8. 编程模型"></a>1.8. 编程模型</h2><ol>
 <li>编程模型：对程序员可见的寄存器。</li>
 <li>一些寄存器不可见(IR)</li>
 </ol>
-<h2 id="19-嵌入式微处理器的分类"><a class="markdownIt-Anchor" href="#19-嵌入式微处理器的分类"></a> 1.9. 嵌入式微处理器的分类</h2>
-<ol>
+<h2 id="1-9-嵌入式微处理器的分类"><a href="#1-9-嵌入式微处理器的分类" class="headerlink" title="1.9. 嵌入式微处理器的分类"></a>1.9. 嵌入式微处理器的分类</h2><ol>
 <li>嵌入式微处理器种类繁多，按位数可分为4位、8位、16位、32位和64位。</li>
-<li>根据功能不同，嵌入式微处理器分为四种：
-<ol>
+<li>根据功能不同，嵌入式微处理器分为四种：<ol>
 <li>嵌入式微处理单元(MPU)</li>
 <li>嵌入式微控制器(MCU)</li>
 <li>嵌入式DSP处理器</li>
@@ -361,43 +348,37 @@
 </ol>
 </li>
 </ol>
-<h2 id="110-嵌入式微处理单元mpu"><a class="markdownIt-Anchor" href="#110-嵌入式微处理单元mpu"></a> 1.10. 嵌入式微处理单元(MPU)</h2>
-<ol>
-<li>嵌入式微处理器就是和通用计算机的处理器对应的CPU。
-<ol>
+<h2 id="1-10-嵌入式微处理单元-MPU"><a href="#1-10-嵌入式微处理单元-MPU" class="headerlink" title="1.10. 嵌入式微处理单元(MPU)"></a>1.10. 嵌入式微处理单元(MPU)</h2><ol>
+<li>嵌入式微处理器就是和通用计算机的处理器对应的CPU。<ol>
 <li>功能和微处理器基本一样,是具有32位以上的处理器,具有较高的性能.</li>
 <li>具有体积小,功耗少,成本低,可靠性高的特点.</li>
 <li>有的可提供工业级应用</li>
 </ol>
 </li>
-<li>流行的嵌入式微处理器:
-<ol>
+<li>流行的嵌入式微处理器:<ol>
 <li>ARM(ARM公司): Cortex-A8/A9/A15/A75/A76</li>
 <li>Power</li>
 <li>MIPS(MIPS公司)</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="111-嵌入式微控制器mcumicrocontroller-unit"><a class="markdownIt-Anchor" href="#111-嵌入式微控制器mcumicrocontroller-unit"></a> 1.11. 嵌入式微控制器(MCU，Microcontroller Unit)</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-11-嵌入式微控制器-MCU，Microcontroller-Unit"><a href="#1-11-嵌入式微控制器-MCU，Microcontroller-Unit" class="headerlink" title="1.11. 嵌入式微控制器(MCU，Microcontroller Unit)"></a>1.11. 嵌入式微控制器(MCU，Microcontroller Unit)</h2><ol>
 <li>嵌入式微控制器就是将整个计算机系统的主要硬件集成到一块芯片中,芯片内部集成ROM/EPROM, RAM, 总线, 总线逻辑, 定时/计数器, Watchdog, I/O, 串行口等各种必要功能和外设.</li>
-<li>特点：
-<ol>
+<li>特点：<ol>
 <li>一个系列的微控制器具有多种衍生产品;</li>
 <li>单片化,体积大大减小,功耗和成本降低,可靠性提高;</li>
 <li>是目前嵌入式工业的主流,约占嵌入式系统50%的份额;</li>
 <li>多是8位和16位处理器，32位的也不多</li>
 </ol>
 </li>
-<li>流行的嵌入式微控制器
-<ol>
+<li>流行的嵌入式微控制器<ol>
 <li>通用系列:8051,Coldfire的MC683xx(32位)，Cortex-M0/3/4/7/M33/M35P</li>
 <li>半通用系列:支持I2C,CAN BUS及众多专用MCU和兼容系列</li>
 </ol>
 </li>
 </ol>
-<h2 id="112-时间和温度系统的硬件架构图"><a class="markdownIt-Anchor" href="#112-时间和温度系统的硬件架构图"></a> 1.12. 时间和温度系统的硬件架构图</h2>
+<h2 id="1-12-时间和温度系统的硬件架构图"><a href="#1-12-时间和温度系统的硬件架构图" class="headerlink" title="1.12. 时间和温度系统的硬件架构图"></a>1.12. 时间和温度系统的硬件架构图</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -407,63 +388,53 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/8.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/9.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/8.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/9.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>左侧部分是芯片，<strong>存储也会被集成到芯片中</strong></p>
 </blockquote>
-<h2 id="113-nxp-imx-rt系列跨界处理器"><a class="markdownIt-Anchor" href="#113-nxp-imx-rt系列跨界处理器"></a> 1.13. <code>NXP i.MX RT</code>系列跨界处理器</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="114-嵌入式dsp"><a class="markdownIt-Anchor" href="#114-嵌入式dsp"></a> 1.14. 嵌入式DSP</h2>
-<ol>
+<h2 id="1-13-NXP-i-MX-RT系列跨界处理器"><a href="#1-13-NXP-i-MX-RT系列跨界处理器" class="headerlink" title="1.13. NXP i.MX RT系列跨界处理器"></a>1.13. <code>NXP i.MX RT</code>系列跨界处理器</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-14-嵌入式DSP"><a href="#1-14-嵌入式DSP" class="headerlink" title="1.14. 嵌入式DSP"></a>1.14. 嵌入式DSP</h2><ol>
 <li>嵌入式DSP是专门用于信号处理方面的处理器，其在系统结构和指令算法方面进行了特殊设计，具有很高的编译效率和指令执行速度。</li>
-<li>应用领域：
-<ol>
+<li>应用领域：<ol>
 <li>数字滤波</li>
 <li>频谱分析</li>
 <li>FFT</li>
 </ol>
 </li>
-<li>流行的嵌入式DSP
-<ol>
+<li>流行的嵌入式DSP<ol>
 <li>德州仪器器(TI)，c6000 与 c5000</li>
 <li>模拟器件公司(ADI)</li>
 <li>摩托罗拉(Motorola) 公司</li>
 </ol>
 </li>
 </ol>
-<h2 id="115-嵌入式soc"><a class="markdownIt-Anchor" href="#115-嵌入式soc"></a> 1.15. 嵌入式SoC</h2>
-<ol>
+<h2 id="1-15-嵌入式SoC"><a href="#1-15-嵌入式SoC" class="headerlink" title="1.15. 嵌入式SoC"></a>1.15. 嵌入式SoC</h2><ol>
 <li>嵌入式SoC是追求产品系统最大包容的集成器器件。绝大多数系统构件都在一个系统芯片内部。</li>
 <li>特点：结构简洁、体积小、功耗小、可靠性高、设计生产效率高</li>
 <li>流行的SoC：高通骁龙(Snapdragon)、海思</li>
 </ol>
-<h2 id="116-fpga"><a class="markdownIt-Anchor" href="#116-fpga"></a> 1.16. FPGA</h2>
-<ol>
+<h2 id="1-16-FPGA"><a href="#1-16-FPGA" class="headerlink" title="1.16. FPGA"></a>1.16. FPGA</h2><ol>
 <li>现场可编程门阵列列</li>
 <li>赛灵思、阿尔特拉(被英特尔收购)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="117-dsp与fpga"><a class="markdownIt-Anchor" href="#117-dsp与fpga"></a> 1.17. DSP与FPGA</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="118-ti嵌入式处理产品组合"><a class="markdownIt-Anchor" href="#118-ti嵌入式处理产品组合"></a> 1.18. TI嵌入式处理产品组合</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-17-DSP与FPGA"><a href="#1-17-DSP与FPGA" class="headerlink" title="1.17. DSP与FPGA"></a>1.17. DSP与FPGA</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-18-TI嵌入式处理产品组合"><a href="#1-18-TI嵌入式处理产品组合" class="headerlink" title="1.18. TI嵌入式处理产品组合"></a>1.18. TI嵌入式处理产品组合</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>公司的产品线</p>
 </blockquote>
-<h1 id="2-嵌入式系统产品"><a class="markdownIt-Anchor" href="#2-嵌入式系统产品"></a> 2. 嵌入式系统产品</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-嵌入式系统产品"><a href="#2-嵌入式系统产品" class="headerlink" title="2. 嵌入式系统产品"></a>2. 嵌入式系统产品</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>M是最底层的</p>
 </blockquote>
-<h1 id="3-嵌入式微处理器的特点"><a class="markdownIt-Anchor" href="#3-嵌入式微处理器的特点"></a> 3. 嵌入式微处理器的特点</h1>
-<ol>
+<h1 id="3-嵌入式微处理器的特点"><a href="#3-嵌入式微处理器的特点" class="headerlink" title="3. 嵌入式微处理器的特点"></a>3. 嵌入式微处理器的特点</h1><ol>
 <li>基础是通用微处理器</li>
-<li>与通用微处理器相比的区别：
-<ol>
+<li>与通用微处理器相比的区别：<ol>
 <li>体积小、重量轻、可靠性高</li>
 <li>功耗低</li>
 <li>成本低：片上存储、引脚与封装、代码密度</li>
@@ -471,14 +442,11 @@
 </ol>
 </li>
 </ol>
-<h1 id="4-选择微控制器的标准"><a class="markdownIt-Anchor" href="#4-选择微控制器的标准"></a> 4. 选择微控制器的标准</h1>
-<blockquote>
-<p>如何选择一个适合的微服务控制器?<br />
-嵌入式系统都是实时系统，需要考虑效率</p>
+<h1 id="4-选择微控制器的标准"><a href="#4-选择微控制器的标准" class="headerlink" title="4. 选择微控制器的标准"></a>4. 选择微控制器的标准</h1><blockquote>
+<p>如何选择一个适合的微服务控制器?<br>嵌入式系统都是实时系统，需要考虑效率</p>
 </blockquote>
 <ol>
-<li>有效且经济地满足任务的计算需求
-<ol>
+<li>有效且经济地满足任务的计算需求<ol>
 <li>速度，ROM和RAM的数量，I / O端口和计时器的数量，大小，包装，功耗</li>
 <li>容易升级</li>
 <li>单位成本</li>
@@ -487,8 +455,7 @@
 <li>软件开发工具的可用性：汇编器，调试器，C编译器，仿真器，模拟器，技术支持(开源框架可能没有多少人维护)</li>
 <li>微控制器的广泛可用性和可靠来源。</li>
 </ol>
-<h1 id="5-arm-ltd"><a class="markdownIt-Anchor" href="#5-arm-ltd"></a> 5. ARM Ltd</h1>
-<ol>
+<h1 id="5-ARM-Ltd"><a href="#5-ARM-Ltd" class="headerlink" title="5. ARM Ltd"></a>5. ARM Ltd</h1><ol>
 <li>成立于1990年11月：从Acorn Computers剥离出来</li>
 <li>设计ARM系列的RISC处理器内核</li>
 <li>将ARM核心设计许可给制造并销售给客户的半导体合作伙伴：ARM本身并不制造硅</li>
@@ -498,25 +465,20 @@
 <blockquote>
 <p>源自英国，售卖知识产权盈利</p>
 </blockquote>
-<h2 id="51-与arm合作伙伴联系"><a class="markdownIt-Anchor" href="#51-与arm合作伙伴联系"></a> 5.1. 与ARM合作伙伴联系</h2>
-<ol>
+<h2 id="5-1-与ARM合作伙伴联系"><a href="#5-1-与ARM合作伙伴联系" class="headerlink" title="5.1. 与ARM合作伙伴联系"></a>5.1. 与ARM合作伙伴联系</h2><ol>
 <li>ARM有非常大规模的生态链</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="52-arm处理器的分类"><a class="markdownIt-Anchor" href="#52-arm处理器的分类"></a> 5.2. ARM处理器的分类</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="53-arm架构"><a class="markdownIt-Anchor" href="#53-arm架构"></a> 5.3. ARM架构</h2>
-<ol>
-<li>典型的RISC架构：
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-2-ARM处理器的分类"><a href="#5-2-ARM处理器的分类" class="headerlink" title="5.2. ARM处理器的分类"></a>5.2. ARM处理器的分类</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-3-ARM架构"><a href="#5-3-ARM架构" class="headerlink" title="5.3. ARM架构"></a>5.3. ARM架构</h2><ol>
+<li>典型的RISC架构：<ol>
 <li>大型统一寄存器文件</li>
 <li>加载/存储架构</li>
 <li>简单的寻址模式</li>
 <li>统一和固定长度的指令字段</li>
 </ol>
 </li>
-<li>增强功能：
-<ol>
+<li>增强功能：<ol>
 <li>每条指令控制ALU和移位器</li>
 <li>自动递增和自动递减寻址模式</li>
 <li>多次加载/存储</li>
@@ -525,41 +487,35 @@
 </li>
 <li>结果：高性能、低码量、低功耗、低硅面积</li>
 </ol>
-<h2 id="54-管道组织"><a class="markdownIt-Anchor" href="#54-管道组织"></a> 5.4. 管道组织</h2>
-<ol>
+<h2 id="5-4-管道组织"><a href="#5-4-管道组织" class="headerlink" title="5.4. 管道组织"></a>5.4. 管道组织</h2><ol>
 <li>提高速度：大多数指令在单个周期内执行</li>
-<li>版本：
-<ol>
+<li>版本：<ol>
 <li>3级(ARM7TDMI及更早版本)</li>
 <li>5级(ARMS，ARM9TDMI)</li>
 <li>6级(ARM10TDMI)</li>
 </ol>
 </li>
-<li>管道刷新并在分支上重新填充，导致执行速度变慢
-<ol>
+<li>管道刷新并在分支上重新填充，导致执行速度变慢<ol>
 <li>分支指令if，会导致预取指令失败，然后清空流水线，再取，分支指令可能会带来性能下降</li>
 <li>有一个部分的分支嵌套过多，对嵌入式设备非常严重</li>
 </ol>
 </li>
 <li>指令集中的特殊功能消除了代码中的小跳动，从而获得了流水线中的最佳流程</li>
 </ol>
-<h2 id="55-meltdown-spectre"><a class="markdownIt-Anchor" href="#55-meltdown-spectre"></a> 5.5. Meltdown &amp; Spectre</h2>
-<ol>
+<h2 id="5-5-Meltdown-amp-Spectre"><a href="#5-5-Meltdown-amp-Spectre" class="headerlink" title="5.5. Meltdown &amp; Spectre"></a>5.5. Meltdown &amp; Spectre</h2><ol>
 <li>近20年年的Intel、AMD、Qualcomm厂家和其它ARM的处理器受到影响；</li>
 <li>因为此次CPU漏洞的特殊性，包括Linux、Windows、OSX等在内的操作系统平台参与了修复；</li>
 <li>Firefox、Chrome、Edge等浏览器也发布了相关的安全公告和缓解方案；</li>
 </ol>
-<h2 id="56-字节序"><a class="markdownIt-Anchor" href="#56-字节序"></a> 5.6. 字节序</h2>
-<ol>
+<h2 id="5-6-字节序"><a href="#5-6-字节序" class="headerlink" title="5.6. 字节序"></a>5.6. 字节序</h2><ol>
 <li>位与字节/字顺序之间的关系定义了字节序：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="6-选择微控制器的10个步骤"><a class="markdownIt-Anchor" href="#6-选择微控制器的10个步骤"></a> 6. 选择微控制器的10个步骤</h1>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="6-选择微控制器的10个步骤"><a href="#6-选择微控制器的10个步骤" class="headerlink" title="6. 选择微控制器的10个步骤"></a>6. 选择微控制器的10个步骤</h1><ol>
 <li>Step 1: 列出所需的硬件接口(保证物理上，设备可以连接到未处理器上)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec3/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>Step 2: 检查软件架构</li>
 <li>Step 3: 选择架构</li>
 <li>Step 4: 确定内存需求</li>
@@ -665,9 +621,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec0-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E5%AF%BC%E8%A8%80/" title="2020-Introduction-to-Embedded-Systems-lec0-嵌入式系统概论导言">
+                      <a href="/2022/02/16/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch03-%E5%9F%BA%E6%9C%ACSQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/" title="2020-Fundamentals-of-Data-Management-ch03-基本SQL查询语言">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec0-嵌入式系统概论导言</span>
+                        <span class="hidden-mobile">2020-Fundamentals-of-Data-Management-ch03-基本SQL查询语言</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -675,8 +631,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec04-Memory%20Architectures/" title="2020-Introduction-to-Embedded-Systems-lec04-Memory Architectures">
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec04-Memory Architectures</span>
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-03-%E5%AE%9E%E4%BE%8B%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0/" title="2020-Software-Engineering-and-Computing-II-03-实例项目描述">
+                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-03-实例项目描述</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

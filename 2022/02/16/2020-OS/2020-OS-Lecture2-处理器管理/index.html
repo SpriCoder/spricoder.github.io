@@ -101,8 +101,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/76.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/77.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/78.png">
-<meta property="article:published_time" content="2022-02-16T11:09:18.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:35:03.126Z">
+<meta property="article:published_time" content="2022-02-16T11:02:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:24:58.527Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="中断">
@@ -282,7 +282,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:02" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -305,7 +305,7 @@
         
         
         
-          204 分钟
+          196 分钟
         
       </span>
     
@@ -355,37 +355,30 @@
             
             <div class="markdown-body">
               
-              <h2 id="lecture2-处理器管理"><a class="markdownIt-Anchor" href="#lecture2-处理器管理"></a> Lecture2-处理器管理</h2>
-<ol>
-<li><strong>处理器管理</strong>是操作系统的重要组成部分
-<ol>
+              <h2 id="Lecture2-处理器管理"><a href="#Lecture2-处理器管理" class="headerlink" title="Lecture2-处理器管理"></a>Lecture2-处理器管理</h2><ol>
+<li><strong>处理器管理</strong>是操作系统的重要组成部分<ol>
 <li>处理器负责<strong>管理、调度和分配</strong>计算机系统的重要资源，并控制程序执行</li>
 <li>处理器管理中最重要的是<strong>处理器调度</strong>，即进程调度，也就是控制、协调进程对处理器的竞争。</li>
 </ol>
 </li>
-<li>进程与线程
-<ol>
+<li>进程与线程<ol>
 <li>进程是资源分配和管理的单位</li>
 <li>线程是处理器调度的基本单位。</li>
 </ol>
 </li>
-<li>管态与目态
-<ol>
+<li>管态与目态<ol>
 <li>管态又叫特权态(内核态、核心态)，可以执行特权指令，执行资源管理程序、为应用程序执行提供良好运行环境的各种原语等。</li>
 <li>目态又叫用户态(普通态)，只能执行非特权指令</li>
 </ol>
 </li>
 </ol>
-<h1 id="1-处理器和寄存器"><a class="markdownIt-Anchor" href="#1-处理器和寄存器"></a> 1. 处理器和寄存器</h1>
-<h2 id="11-处理器"><a class="markdownIt-Anchor" href="#11-处理器"></a> 1.1. 处理器</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="1-处理器和寄存器"><a href="#1-处理器和寄存器" class="headerlink" title="1. 处理器和寄存器"></a>1. 处理器和寄存器</h1><h2 id="1-1-处理器"><a href="#1-1-处理器" class="headerlink" title="1.1. 处理器"></a>1.1. 处理器</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>部件简单示意图</p>
 </blockquote>
 <ol>
 <li>上图各组件通过<strong>内部总线</strong>连接起来，构成一个<strong>不包含通用寄存器、I/O相关寄存器、地址寄存器、数据寄存器和Cache</strong>的示意图。</li>
-<li>CPU中的各组件描述
-<ol>
+<li>CPU中的各组件描述<ol>
 <li>算数逻辑单元：计算结束之后会将结果的标志放置到标志寄存器Flag中。</li>
 <li>控制单元：包含重要的指令译码器ID，而指令是放置在指令暂存器IR中。</li>
 <li>程序计数器PC：下一条指令的地址</li>
@@ -395,21 +388,16 @@
 <li>通过<strong>系统总线</strong>来访问内存中的数据，首先设置地址和数据，然后通过控制来完成数据的读取和写回。</li>
 <li>时钟等<strong>外部信号</strong>来反应到处理器线程中来。</li>
 </ol>
-<h2 id="12-寄存器"><a class="markdownIt-Anchor" href="#12-寄存器"></a> 1.2. 寄存器</h2>
-<h3 id="121-用户程序可见寄存器"><a class="markdownIt-Anchor" href="#121-用户程序可见寄存器"></a> 1.2.1. 用户程序可见寄存器</h3>
-<ol>
+<h2 id="1-2-寄存器"><a href="#1-2-寄存器" class="headerlink" title="1.2. 寄存器"></a>1.2. 寄存器</h2><h3 id="1-2-1-用户程序可见寄存器"><a href="#1-2-1-用户程序可见寄存器" class="headerlink" title="1.2.1. 用户程序可见寄存器"></a>1.2.1. 用户程序可见寄存器</h3><ol>
 <li>可以使程序员减少访问主存储器的次数，提高指令执行的效率</li>
-<li>所有程序可使用，包括应用程序和系统程序
-<ol>
+<li>所有程序可使用，包括应用程序和系统程序<ol>
 <li>数据(通用)寄存器:AX、BX、CX、DX等</li>
 <li>地址寄存器:索引(SI、DI)、栈指针(SP、BP)、段地址(CS、DS、SS、ES)、页表寄存器等</li>
 </ol>
 </li>
 </ol>
-<h3 id="122-控制和状态寄存器"><a class="markdownIt-Anchor" href="#122-控制和状态寄存器"></a> 1.2.2. 控制和状态寄存器</h3>
-<ol>
-<li>控制和状态寄存器用于控制处理器的操作，主要是被具有特权的操作系统程序使用，以控制程序的执行
-<ol>
+<h3 id="1-2-2-控制和状态寄存器"><a href="#1-2-2-控制和状态寄存器" class="headerlink" title="1.2.2. 控制和状态寄存器"></a>1.2.2. 控制和状态寄存器</h3><ol>
+<li>控制和状态寄存器用于控制处理器的操作，主要是被具有特权的操作系统程序使用，以控制程序的执行<ol>
 <li>程序计数器PC：存储将取指令的地址</li>
 <li>指令寄存器IR：存储最近使用的指令</li>
 <li>条件码CC：CPU为指令操作结果设置的位，标志正/负/零/溢出等结果</li>
@@ -417,6 +405,7 @@
 </li>
 <li>标志位</li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -447,75 +436,62 @@
 </tr>
 </tbody>
 </table>
-<h3 id="123-程序状态字psw"><a class="markdownIt-Anchor" href="#123-程序状态字psw"></a> 1.2.3. 程序状态字PSW</h3>
-<ol>
-<li>PSW既是操作系统的概念，指记录当前程序运行的<strong>动态信息</strong>，通常包含：
-<ol>
+</div>
+<h3 id="1-2-3-程序状态字PSW"><a href="#1-2-3-程序状态字PSW" class="headerlink" title="1.2.3. 程序状态字PSW"></a>1.2.3. 程序状态字PSW</h3><ol>
+<li>PSW既是操作系统的概念，指记录当前程序运行的<strong>动态信息</strong>，通常包含：<ol>
 <li>程序计数器、指令寄存器、条件码</li>
 <li>中断字、中断允许/禁止、中断屏蔽、处理器模式、内存保护、调试控制</li>
 </ol>
 </li>
-<li>PSW也是计算机系统的<strong>寄存器</strong>
-<ol>
+<li>PSW也是计算机系统的<strong>寄存器</strong><ol>
 <li>通常设置一组控制与状态寄存器</li>
 <li>也可以专设一个PSW寄存器</li>
 </ol>
 </li>
-<li>标志划分为三组:<strong>状态标志、控制标志和系统标志</strong>(更多见P58)
-<ol>
+<li>标志划分为三组:<strong>状态标志、控制标志和系统标志</strong>(更多见P58)<ol>
 <li>状态标志：使得一条指令的执行结果影响其后指令的执行，比如溢出等标志</li>
 <li>控制指令：控制操作系统行为，比如模式转换等。</li>
 <li>系统标志：与进程管理有关，用于保护模式。</li>
 </ol>
 </li>
 </ol>
-<h1 id="2-指令与处理器模式"><a class="markdownIt-Anchor" href="#2-指令与处理器模式"></a> 2. 指令与处理器模式</h1>
-<h2 id="21-机器指令"><a class="markdownIt-Anchor" href="#21-机器指令"></a> 2.1. 机器指令</h2>
-<ol>
+<h1 id="2-指令与处理器模式"><a href="#2-指令与处理器模式" class="headerlink" title="2. 指令与处理器模式"></a>2. 指令与处理器模式</h1><h2 id="2-1-机器指令"><a href="#2-1-机器指令" class="headerlink" title="2.1. 机器指令"></a>2.1. 机器指令</h2><ol>
 <li><strong>机器指令</strong>是计算机系统执行的基本命令，是中央处理器执行的基本单位。</li>
 <li>指令由一个或多个字节组成，包括操作码字段、一个或多个操作数地址字段、以及一些表征机器状态的状态字以及特征码。</li>
 <li>指令完成各种算术逻辑运算、数据传输、控制流跳转。</li>
 </ol>
-<h2 id="22-指令执行过程"><a class="markdownIt-Anchor" href="#22-指令执行过程"></a> 2.2. 指令执行过程</h2>
-<ol>
+<h2 id="2-2-指令执行过程"><a href="#2-2-指令执行过程" class="headerlink" title="2.2. 指令执行过程"></a>2.2. 指令执行过程</h2><ol>
 <li>CPU根据PC<strong>取出指令</strong>，放入IR，并对指令译码，然后发出各种控制命令，执行微操作系列，从而完成一条指令的执行</li>
-<li><strong>一种</strong>指令执行步骤如下：(还有更加细分，这只是一种示例)
-<ol>
+<li><strong>一种</strong>指令执行步骤如下：(还有更加细分，这只是一种示例)<ol>
 <li>取指：根据PC从存储器或高速缓冲存储器中取指令到IR</li>
 <li>解码：解译IR中的指令来决定其执行行为</li>
 <li>执行：连接到CPU部件，执行运算，产生结果并写回，同时在CC里设置运算结论标志；跳转指令操作PC，其他指令递增PC值</li>
 </ol>
 </li>
 </ol>
-<h2 id="23-指令执行周期与指令流水线"><a class="markdownIt-Anchor" href="#23-指令执行周期与指令流水线"></a> 2.3. 指令执行周期与指令流水线</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-3-指令执行周期与指令流水线"><a href="#2-3-指令执行周期与指令流水线" class="headerlink" title="2.3. 指令执行周期与指令流水线"></a>2.3. 指令执行周期与指令流水线</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>现在的操作系统不是顺序地完成指令执行，而是选择使用指令流水线的方式来执行指令</p>
 </blockquote>
-<h2 id="24-特权指令与非特权指令"><a class="markdownIt-Anchor" href="#24-特权指令与非特权指令"></a> 2.4. 特权指令与非特权指令</h2>
-<blockquote>
+<h2 id="2-4-特权指令与非特权指令"><a href="#2-4-特权指令与非特权指令" class="headerlink" title="2.4. 特权指令与非特权指令"></a>2.4. 特权指令与非特权指令</h2><blockquote>
 <p>用户程序并非能够使用全部机器指令，那些与计算机核心资源相关的特殊指令会被保护</p>
 </blockquote>
 <ol>
 <li>比如：启动I/O指令(启动打印机，打印文件会细分成按照行打印，可能导致逻辑上的失败)、置PC指令(多道程序调用)等等</li>
 <li>核心资源相关的指令只能被操作系统程序使用(作为特权指令，不允许在用户态使用这些命令)</li>
 </ol>
-<h3 id="241-特权指令"><a class="markdownIt-Anchor" href="#241-特权指令"></a> 2.4.1. 特权指令</h3>
-<ol>
+<h3 id="2-4-1-特权指令"><a href="#2-4-1-特权指令" class="headerlink" title="2.4.1. 特权指令"></a>2.4.1. 特权指令</h3><ol>
 <li>只有操作系统本身可以使用的指令，在内核态才能调用的命令，不仅仅影响运行程序本身，还会干扰其他程序及操作系统。</li>
 <li>比如改变机器状态、修改寄存器值、置中断屏蔽位、加载程序状态字等。</li>
-<li>如果应用程序执行特权指令则会导致非法执行而产生保护中断，进而转向操作系统的&quot;用户非法执行特权指令&quot;的异常处理程序处理。</li>
+<li>如果应用程序执行特权指令则会导致非法执行而产生保护中断，进而转向操作系统的”用户非法执行特权指令”的异常处理程序处理。</li>
 </ol>
-<h3 id="242-非特权指令"><a class="markdownIt-Anchor" href="#242-非特权指令"></a> 2.4.2. 非特权指令</h3>
-<ol>
+<h3 id="2-4-2-非特权指令"><a href="#2-4-2-非特权指令" class="headerlink" title="2.4.2. 非特权指令"></a>2.4.2. 非特权指令</h3><ol>
 <li>所有的用户程序都能够使用的指令，在用户态和内核态都可以调用的命令。</li>
 <li>非特权命令在目态和管态的情况下都能工作。</li>
 </ol>
-<h2 id="25-处理器模式"><a class="markdownIt-Anchor" href="#25-处理器模式"></a> 2.5. 处理器模式</h2>
-<ol>
+<h2 id="2-5-处理器模式"><a href="#2-5-处理器模式" class="headerlink" title="2.5. 处理器模式"></a>2.5. 处理器模式</h2><ol>
 <li>计算机通过设置处理器模式实现特权指令管理</li>
-<li>计算器一般设置0、1、2、3等四种运行模式(保护级别)
-<ul>
+<li>计算器一般设置0、1、2、3等四种运行模式(保护级别)<ul>
 <li>0:内核级，操作系统内核，可以执行全部指令，包括中断处理、处理I/O操作等命令</li>
 <li>1:系统调用级，执行系统调用，获得特定的和受保护的程序服务</li>
 <li>2:共享库级，可以多个运行进程共享，允许调用库函数，读取但不修改相关数据。</li>
@@ -526,11 +502,9 @@
 <li>一般来说，现代操作系统只使用0和3两种模式，对应于内核模式和用户模式</li>
 <li>处理器模式是由处理器模式位决定的。</li>
 </ol>
-<h2 id="26-处理器模式切换"><a class="markdownIt-Anchor" href="#26-处理器模式切换"></a> 2.6. 处理器模式切换</h2>
-<ol>
+<h2 id="2-6-处理器模式切换"><a href="#2-6-处理器模式切换" class="headerlink" title="2.6. 处理器模式切换"></a>2.6. 处理器模式切换</h2><ol>
 <li>简称模式切换，包括<code>用户模式-&gt;内核模式</code>和<code>内核模式-&gt;用户模式</code>的两种切换。</li>
-<li><strong>中断、异常或系统异常</strong>等事件导致用户程序向OS内核切换，触发：<code>用户模式-&gt;内核模式</code>，以下三种方式是唯一能触发的方式:
-<ol>
+<li><strong>中断、异常或系统异常</strong>等事件导致用户程序向OS内核切换，触发：<code>用户模式-&gt;内核模式</code>，以下三种方式是唯一能触发的方式:<ol>
 <li>程序请求操作系统服务，执行系统调用</li>
 <li>程序运行时发生异常(如发生程序性中断，或者目态执行特权指令)</li>
 <li>程序运行时发生并响应中断(一般是I/O中断)</li>
@@ -539,27 +513,28 @@
 <li>我们可以认为中断和异常是用户态到内核态转换的仅有途径。</li>
 <li>OS内核处理完成后，调用中断返回指令(如Intel的iret)触发：<code>内核模式-&gt;用户模式</code>，操作系统将控制权转交给应用进程。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="27-系统调用示例"><a class="markdownIt-Anchor" href="#27-系统调用示例"></a> 2.7. 系统调用示例</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/31.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-7-系统调用示例"><a href="#2-7-系统调用示例" class="headerlink" title="2.7. 系统调用示例"></a>2.7. 系统调用示例</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/29.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/30.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/29.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/30.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
-<h1 id="3-栈空间"><a class="markdownIt-Anchor" href="#3-栈空间"></a> 3. 栈空间</h1>
-<h2 id="31-用户栈"><a class="markdownIt-Anchor" href="#31-用户栈"></a> 3.1. 用户栈</h2>
-<ol>
+</div>
+<h1 id="3-栈空间"><a href="#3-栈空间" class="headerlink" title="3. 栈空间"></a>3. 栈空间</h1><h2 id="3-1-用户栈"><a href="#3-1-用户栈" class="headerlink" title="3.1. 用户栈"></a>3.1. 用户栈</h2><ol>
 <li>用户栈是<strong>用户进程</strong>空间中开辟的一块区域，用于保存应用程序的子程序(函数)间相互调用的参数、返回值、返回点以及子程序的局部变量。</li>
 <li>如果只有用户栈，没有核心栈，那么操作系统则很难对核心栈的数据提供相应的保护措施。</li>
 </ol>
-<h2 id="32-核心栈"><a class="markdownIt-Anchor" href="#32-核心栈"></a> 3.2. 核心栈</h2>
-<ol>
-<li>核心栈也叫系统栈或内核栈，是内存中属于操作系统空间的一块区域，其用途包含以下两种:
-<ol>
+<h2 id="3-2-核心栈"><a href="#3-2-核心栈" class="headerlink" title="3.2. 核心栈"></a>3.2. 核心栈</h2><ol>
+<li>核心栈也叫系统栈或内核栈，是内存中属于操作系统空间的一块区域，其用途包含以下两种:<ol>
 <li>保存中断现场，嵌套中断</li>
 <li>保存操作系统程序(函数)间相互调用的参数、返回值、返回点以及程序局部变量。</li>
 </ol>
@@ -567,38 +542,31 @@
 <li><strong>每个进程</strong>有一个核心栈:可读可写不可执行，大小有限</li>
 <li>硬件栈指针只有一个</li>
 </ol>
-<h1 id="4-中断"><a class="markdownIt-Anchor" href="#4-中断"></a> 4. 中断</h1>
-<h2 id="41-中断-异常和系统异常"><a class="markdownIt-Anchor" href="#41-中断-异常和系统异常"></a> 4.1. 中断、异常和系统异常</h2>
-<ol>
+<h1 id="4-中断"><a href="#4-中断" class="headerlink" title="4. 中断"></a>4. 中断</h1><h2 id="4-1-中断、异常和系统异常"><a href="#4-1-中断、异常和系统异常" class="headerlink" title="4.1. 中断、异常和系统异常"></a>4.1. 中断、异常和系统异常</h2><ol>
 <li><strong>广义的中断</strong>是指程序执行过程中，遇到急需处理的事件时，暂时<strong>中止CPU</strong>上现行程序的运行，转去执行相应的事件处理程序，待处理完成后再返回原程序被中断处或调度其他程序执行的过程</li>
 <li><strong>狭义的中断</strong>指来源于<strong>处理器之外的中断事件</strong>，即与当前运行指令无关的中断事件，如I/O中断(为打印机结束后进行善后)、时钟中断(计算机系统计时，多一段时间就要更新系统时间)、外部信号中断(关机)等</li>
 <li><strong>异常</strong>指<strong>当前运行指令引起的中断事件</strong>，如地址异常(访问其他程序的内存、读写没有权利读写的内存、虚拟地址的异常)、算术异常(数字溢出、对0除法)、处理器硬件故障(奇偶校验位错误)等</li>
 <li><strong>来自于CPU内部的广义中断事件</strong>我们称之为<strong>异常</strong>，和狭义的中断构成了广义的中断。</li>
 <li><strong>系统异常</strong>指<strong>执行陷入指令而触发系统调用引起的中断事件</strong>，如请求设备、请求I/O、创建进程等，与硬件无关(通过系统异常请求服务)，系统异常可以被认为是异常中的一类</li>
 </ol>
-<h2 id="42-操作系统与中断"><a class="markdownIt-Anchor" href="#42-操作系统与中断"></a> 4.2. 操作系统与中断</h2>
-<ol>
+<h2 id="4-2-操作系统与中断"><a href="#4-2-操作系统与中断" class="headerlink" title="4.2. 操作系统与中断"></a>4.2. 操作系统与中断</h2><ol>
 <li>操作系统是<strong>中断驱动</strong>的；换言之，<strong>中断是激活操作系统的唯一方式</strong>。</li>
 <li>操作系统要求计算机硬件系统为其设置相应的<strong>中断激活的硬件机制</strong>，再配合操作系统的内核程序共同完成中断驱动方式，这个是操作系统实现的<strong>最根本的基础</strong>，中断处理需要借助硬件电路</li>
 </ol>
-<h2 id="43-中断源分类"><a class="markdownIt-Anchor" href="#43-中断源分类"></a> 4.3. 中断源分类</h2>
-<p>由硬件发出或产生的中断称为硬中断，按硬中断事件的来源和实现手段可将终端划分为外中断和内中断。</p>
-<h3 id="431-外中断"><a class="markdownIt-Anchor" href="#431-外中断"></a> 4.3.1. 外中断</h3>
-<ol>
+<h2 id="4-3-中断源分类"><a href="#4-3-中断源分类" class="headerlink" title="4.3. 中断源分类"></a>4.3. 中断源分类</h2><p>由硬件发出或产生的中断称为硬中断，按硬中断事件的来源和实现手段可将终端划分为外中断和内中断。</p>
+<h3 id="4-3-1-外中断"><a href="#4-3-1-外中断" class="headerlink" title="4.3.1. 外中断"></a>4.3.1. 外中断</h3><ol>
 <li>外中断又称中断或异步中断，是指来自处理器之外的中断信号，包括时钟中断、键盘中断、它机中断和外部设备等、</li>
 <li>外中断又可以分为可屏蔽中断和不可屏蔽中断，各个中断具有不同中断优先级。</li>
 </ol>
-<h3 id="432-内中断"><a class="markdownIt-Anchor" href="#432-内中断"></a> 4.3.2. 内中断</h3>
-<ol>
-<li>内中断又称异常或同步中断，是指来自处理器内部的中断信号，通常是由于程序执行过程中，发现与当前指令相关的、不正常或错误的时间，内中断可分为:
-<ol>
+<h3 id="4-3-2-内中断"><a href="#4-3-2-内中断" class="headerlink" title="4.3.2. 内中断"></a>4.3.2. 内中断</h3><ol>
+<li>内中断又称异常或同步中断，是指来自处理器内部的中断信号，通常是由于程序执行过程中，发现与当前指令相关的、不正常或错误的时间，内中断可分为:<ol>
 <li>访管中断，由执行系统调用而引起</li>
 <li>硬件故障中断，如电源失效、奇偶校验错误、总线超时等</li>
 <li>程序性异常，如非法操作、地址越界、页面故障、调试指令、除数为0和浮点溢出等。</li>
 </ol>
 </li>
 </ol>
-<h2 id="44-中断和异常区别p60"><a class="markdownIt-Anchor" href="#44-中断和异常区别p60"></a> 4.4. 中断和异常区别(P60)</h2>
+<h2 id="4-4-中断和异常区别-P60"><a href="#4-4-中断和异常区别-P60" class="headerlink" title="4.4. 中断和异常区别(P60)"></a>4.4. 中断和异常区别(P60)</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -613,7 +581,7 @@
 </tr>
 <tr>
 <td>内核态、用户态</td>
-<td>大部分在用户态，内核态唯一的异常是&quot;缺页异常&quot;</td>
+<td>大部分在用户态，内核态唯一的异常是”缺页异常”</td>
 </tr>
 <tr>
 <td>一般中断处理程序提供的服务不是当前进程需要的</td>
@@ -633,22 +601,19 @@
 </tr>
 </tbody>
 </table>
-<h1 id="5-中断事件处理原则"><a class="markdownIt-Anchor" href="#5-中断事件处理原则"></a> 5. 中断事件处理原则</h1>
-<h2 id="51-中断源处理器硬件故障中断事件硬中断"><a class="markdownIt-Anchor" href="#51-中断源处理器硬件故障中断事件硬中断"></a> 5.1. 中断源:处理器硬件故障中断事件(硬中断)</h2>
-<ol>
+</div>
+<h1 id="5-中断事件处理原则"><a href="#5-中断事件处理原则" class="headerlink" title="5. 中断事件处理原则"></a>5. 中断事件处理原则</h1><h2 id="5-1-中断源-处理器硬件故障中断事件-硬中断"><a href="#5-1-中断源-处理器硬件故障中断事件-硬中断" class="headerlink" title="5.1. 中断源:处理器硬件故障中断事件(硬中断)"></a>5.1. 中断源:处理器硬件故障中断事件(硬中断)</h2><ol>
 <li>由处理器、内存储器、总线等硬件故障引起，除了极少类的校验错误可以恢复以外，是<strong>非常严重</strong>的中断。</li>
 <li>处理原则为：保护现场，停止设备，停止CPU，向操作员报告，等待人工干预</li>
 <li>电脑会配置一个小电容保证尽可能较少硬件损伤</li>
 </ol>
-<h2 id="52-中断源程序性中断事件"><a class="markdownIt-Anchor" href="#52-中断源程序性中断事件"></a> 5.2. 中断源:程序性中断事件</h2>
-<blockquote>
+<h2 id="5-2-中断源-程序性中断事件"><a href="#5-2-中断源-程序性中断事件" class="headerlink" title="5.2. 中断源:程序性中断事件"></a>5.2. 中断源:程序性中断事件</h2><blockquote>
 <p>处理器执行机器指令引起</p>
 </blockquote>
 <ol>
 <li>语法错误：由编译程序发现</li>
 <li>逻辑错误：由测试程序发现</li>
-<li>程序运行过程中产生异常
-<ol>
+<li>程序运行过程中产生异常<ol>
 <li>除数为零、操作数溢出等算术异常：简单处理，报告用户；也可以由用户编写中断续元程序处理</li>
 <li>非法指令、用户态使用特权指令、地址越界、非法存取等指令异常：终止进程</li>
 <li>终止进程指令：终止进程</li>
@@ -656,10 +621,8 @@
 </ol>
 </li>
 </ol>
-<h2 id="53-中断源io中断事件"><a class="markdownIt-Anchor" href="#53-中断源io中断事件"></a> 5.3. 中断源:I/O中断事件</h2>
-<ol>
-<li>来源于外围设备报告I/O状态的中断事件
-<ol>
+<h2 id="5-3-中断源-I-O中断事件"><a href="#5-3-中断源-I-O中断事件" class="headerlink" title="5.3. 中断源:I/O中断事件"></a>5.3. 中断源:I/O中断事件</h2><ol>
+<li>来源于外围设备报告I/O状态的中断事件<ol>
 <li>I/O完成：调整进程状态，释放等待进程</li>
 <li>I/O出错：先向设备发命令索取状态字，分析产生故障的确切原因，再执行复执或请求人工干预，</li>
 <li>I/O异常：等待人工干预，缺纸，人工加纸</li>
@@ -668,11 +631,9 @@
 </li>
 <li>狭义中断事件</li>
 </ol>
-<h2 id="54-中断源自愿性中断事件访管中断"><a class="markdownIt-Anchor" href="#54-中断源自愿性中断事件访管中断"></a> 5.4. 中断源:自愿性中断事件(访管中断)</h2>
-<ol>
+<h2 id="5-4-中断源-自愿性中断事件-访管中断"><a href="#5-4-中断源-自愿性中断事件-访管中断" class="headerlink" title="5.4. 中断源:自愿性中断事件(访管中断)"></a>5.4. 中断源:自愿性中断事件(访管中断)</h2><ol>
 <li>处理器执行陷入指令请求OS服务引起；在操作系统中，它一般又被称作系统调用，比如请求分配外设、请求I/O等等</li>
-<li>处理流程是：
-<ol>
+<li>处理流程是：<ol>
 <li>程序执行访管指令，并通过适当方式指明系统调用号。</li>
 <li>通过中断机制进入访管中断处理程序，现场信息被保护到<strong>核心栈</strong>，按功能号实现跳转。</li>
 <li>通过系统调用入口地址表找到对应中断服务历程的入口地址</li>
@@ -680,84 +641,69 @@
 </ol>
 </li>
 </ol>
-<h2 id="55-中断源外部中断事件"><a class="markdownIt-Anchor" href="#55-中断源外部中断事件"></a> 5.5. 中断源:外部中断事件</h2>
-<ol>
-<li>由外围设备发出的信号引起的中断事件
-<ol>
+<h2 id="5-5-中断源-外部中断事件"><a href="#5-5-中断源-外部中断事件" class="headerlink" title="5.5. 中断源:外部中断事件"></a>5.5. 中断源:外部中断事件</h2><ol>
+<li>由外围设备发出的信号引起的中断事件<ol>
 <li>时钟中断、间隔时钟中断：记时与时间片处理，最常见</li>
 <li>设备报到与结束中断：调整设备表</li>
 <li>键盘/鼠标信号中断：根据信号作出相应反应</li>
 <li>关机/重启动中断：写回文件，停止设备与CPU</li>
 </ol>
 </li>
-<li>时钟可以分为绝对时钟和间隔时钟
-<ol>
+<li>时钟可以分为绝对时钟和间隔时钟<ol>
 <li>绝对时钟:固定周期发出中断请求</li>
 <li>间隔时钟:每个时间切换点,将间隔时钟的内容减1，其值为0的时候，产生间隔时钟中断。</li>
 </ol>
 </li>
-<li>时钟间隔定时器
-<ol>
+<li>时钟间隔定时器<ol>
 <li>real:按照实际经过的时间计时</li>
 <li>virtual:仅在用户态下执行才计时</li>
 <li>profile:进程执行用户态或用户态时都计时，当计时到达发送信号</li>
 </ol>
 </li>
 </ol>
-<h1 id="6-中断系统"><a class="markdownIt-Anchor" href="#6-中断系统"></a> 6. 中断系统</h1>
-<ol>
-<li>中断系统是计算机系统中响应和处理中断的系统，包括硬件子系统和软件子系统两部分
-<ol>
+<h1 id="6-中断系统"><a href="#6-中断系统" class="headerlink" title="6. 中断系统"></a>6. 中断系统</h1><ol>
+<li>中断系统是计算机系统中响应和处理中断的系统，包括硬件子系统和软件子系统两部分<ol>
 <li><strong>中断响应</strong>由硬件子系统完成</li>
 <li><strong>中断处理</strong>由软件子系统完成</li>
 </ol>
 </li>
 <li>中断系统是操作系统的基础，中断系统也是软硬件协同系统的典型例子</li>
 </ol>
-<h2 id="61-中断响应处理与指令执行周期"><a class="markdownIt-Anchor" href="#61-中断响应处理与指令执行周期"></a> 6.1. 中断响应处理与指令执行周期</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="6-1-中断响应处理与指令执行周期"><a href="#6-1-中断响应处理与指令执行周期" class="headerlink" title="6.1. 中断响应处理与指令执行周期"></a>6.1. 中断响应处理与指令执行周期</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>在指令执行周期最后增加一个微操作，以响应中断，CPU在完成执行阶段后，如果允许中断，则进入中断阶段</p>
 </blockquote>
-<h2 id="62-中断装置"><a class="markdownIt-Anchor" href="#62-中断装置"></a> 6.2. 中断装置</h2>
-<ol>
+<h2 id="6-2-中断装置"><a href="#6-2-中断装置" class="headerlink" title="6.2. 中断装置"></a>6.2. 中断装置</h2><ol>
 <li>计算机系统中<strong>发现并响应中断/异常</strong>的硬件装置称为中断装置</li>
 <li>由于中断源的多样性，硬件实现的中断装置有多种，分别处理不同类型的中断</li>
-<li>这些中断装置因计算机而异，通常有：
-<ol>
+<li>这些中断装置因计算机而异，通常有：<ol>
 <li>处理器外的中断：由<strong>中断控制器</strong>发现和响应</li>
 <li>处理器内的异常：由<strong>指令的控制逻辑和实现线路</strong>发现和响应，相应机制称为<strong>陷阱</strong></li>
 <li>请求OS服务的系统异常：处理器执行<strong>陷入指令</strong>时直接触发，相应机制称为<strong>系统陷阱</strong></li>
 </ol>
 </li>
 </ol>
-<h2 id="63-中断控制器"><a class="markdownIt-Anchor" href="#63-中断控制器"></a> 6.3. 中断控制器</h2>
-<ol>
-<li><strong>中断控制器</strong>：CPU中的一个控制部件，包括中断控制逻辑线路和中断寄存器，中断控制器会记录中断是<strong>来自哪里</strong>
-<ol>
+<h2 id="6-3-中断控制器"><a href="#6-3-中断控制器" class="headerlink" title="6.3. 中断控制器"></a>6.3. 中断控制器</h2><ol>
+<li><strong>中断控制器</strong>：CPU中的一个控制部件，包括中断控制逻辑线路和中断寄存器，中断控制器会记录中断是<strong>来自哪里</strong><ol>
 <li>狭义中断:(异步过程)外部设备向其发出中断请求IRQ，在中断寄存器中设置已发生的中断</li>
 <li>(同步过程)指令处理结束前，会检查中断寄存器，若有不被屏蔽的中断产生，则改变处理器内操作的顺序，引出操作系统中的中断处理程序</li>
 </ol>
 </li>
 <li>狭义中断是异步进程，CPU正在做的事情和中断可能是两个不同部分</li>
 </ol>
-<h2 id="64-陷阱与系统陷阱"><a class="markdownIt-Anchor" href="#64-陷阱与系统陷阱"></a> 6.4. 陷阱与系统陷阱</h2>
-<blockquote>
+<h2 id="6-4-陷阱与系统陷阱"><a href="#6-4-陷阱与系统陷阱" class="headerlink" title="6.4. 陷阱与系统陷阱"></a>6.4. 陷阱与系统陷阱</h2><blockquote>
 <p>陷阱与系统陷阱：指令的逻辑和实现线路的一部分</p>
-</blockquote>
 <ol>
 <li>执行指令出现异常后，会根据异常情况转向操作系统的异常处理程序</li>
 <li>出现虚拟地址异常后，需要重新执行指令，往往越过陷阱独立设置页面异常处理程序</li>
 <li>执行陷入指令后，越过陷阱处理，触发系统陷阱，激活系统调用处理程序</li>
 </ol>
-<h2 id="65-中断程序的处理中断异常响应过程"><a class="markdownIt-Anchor" href="#65-中断程序的处理中断异常响应过程"></a> 6.5. 中断程序的处理&amp;中断/异常响应过程</h2>
-<ol>
+</blockquote>
+<h2 id="6-5-中断程序的处理-amp-中断-异常响应过程"><a href="#6-5-中断程序的处理-amp-中断-异常响应过程" class="headerlink" title="6.5. 中断程序的处理&amp;中断/异常响应过程"></a>6.5. 中断程序的处理&amp;中断/异常响应过程</h2><ol>
 <li>中断处理程序：操作系统处理中断事件的控制程序, 主要任务是处理<strong>中断事件和恢复正常</strong>操作。</li>
 <li>是一个软件过程</li>
-<li>中断/异常响应过程
-<ol>
-<li>发现中断源，提出中断请求(选择响应哪一个程序)
-<ol>
+<li>中断/异常响应过程<ol>
+<li>发现中断源，提出中断请求(选择响应哪一个程序)<ol>
 <li>发现中断寄存器中记录的中断</li>
 <li>决定这些中断是否被屏蔽</li>
 <li>当有多个要响应的中断源时，根据规定的优先级选择一个</li>
@@ -769,25 +715,20 @@
 </ol>
 </li>
 </ol>
-<h2 id="66-恢复正常操作"><a class="markdownIt-Anchor" href="#66-恢复正常操作"></a> 6.6. 恢复正常操作</h2>
-<ol>
+<h2 id="6-6-恢复正常操作"><a href="#6-6-恢复正常操作" class="headerlink" title="6.6. 恢复正常操作"></a>6.6. 恢复正常操作</h2><ol>
 <li>情况一：对于某些中断，在处理完毕后，直接返回刚刚被中断的进程，比如计时中断。</li>
 <li>情况二：对于其他一些中断，需要中断当前进程的运行，调整进程队列，启动进程调度，选择下一个执行的进程并恢复其执行，比如请求输入输出。</li>
 <li>无论是哪个都是从内核态到用户态。</li>
 </ol>
-<h2 id="67-中断系统处理流程"><a class="markdownIt-Anchor" href="#67-中断系统处理流程"></a> 6.7. 中断系统处理流程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="6-7-中断系统处理流程"><a href="#6-7-中断系统处理流程" class="headerlink" title="6.7. 中断系统处理流程"></a>6.7. 中断系统处理流程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>硬件设计受到操作系统的要求。</li>
 <li>操作系统:大型软件系统，大型紧密结合软硬件设备的系统。</li>
 </ol>
-<h1 id="7-多中断的响应与处理"><a class="markdownIt-Anchor" href="#7-多中断的响应与处理"></a> 7. 多中断的响应与处理</h1>
-<h2 id="71-中断优先级"><a class="markdownIt-Anchor" href="#71-中断优先级"></a> 7.1. 中断优先级</h2>
-<ol>
+<h1 id="7-多中断的响应与处理"><a href="#7-多中断的响应与处理" class="headerlink" title="7. 多中断的响应与处理"></a>7. 多中断的响应与处理</h1><h2 id="7-1-中断优先级"><a href="#7-1-中断优先级" class="headerlink" title="7.1. 中断优先级"></a>7.1. 中断优先级</h2><ol>
 <li>当计算机同时检测到多个中断时, 中断装置响应中断的顺序。</li>
 <li>有优先度的响应中断：将紧迫程度相当的中断源归为同一级别，将紧迫程度差距较大的中断源归为不同级别。</li>
-<li>一种可能的处理次序：(对几十个人使用的大型计算机系统很合理)，可以借助软硬件分别来完成实现。
-<ol>
+<li>一种可能的处理次序：(对几十个人使用的大型计算机系统很合理)，可以借助软硬件分别来完成实现。<ol>
 <li>处理机硬件故障中断事件。</li>
 <li>自愿性中断事件。</li>
 <li>程序性中断事件。</li>
@@ -798,11 +739,9 @@
 </li>
 <li>不同类型的操作系统有不同的中断优先级:PC做出关机操作表示放弃当前的所有的操作，所以重启动和关机中断是优先级最高的中断。</li>
 </ol>
-<h2 id="72-中断屏蔽"><a class="markdownIt-Anchor" href="#72-中断屏蔽"></a> 7.2. 中断屏蔽</h2>
-<ol>
+<h2 id="7-2-中断屏蔽"><a href="#7-2-中断屏蔽" class="headerlink" title="7.2. 中断屏蔽"></a>7.2. 中断屏蔽</h2><ol>
 <li>当计算机检测到中断时, 中断装置通过中断屏蔽位决定是否响应已发生的中断。</li>
-<li>有选择的响应中断：由计算机决定。
-<ol>
+<li>有选择的响应中断：由计算机决定。<ol>
 <li>延迟或禁止某些中断的响应以避免共享数据结构受到破坏。</li>
 <li>协调中断响应与终端处理的关系，保证优先级顺序。</li>
 <li>防止同级中断互相干扰。</li>
@@ -810,14 +749,12 @@
 </li>
 <li>计算机均配置可编程中断控制器。</li>
 </ol>
-<h2 id="73-中断的嵌套处理"><a class="markdownIt-Anchor" href="#73-中断的嵌套处理"></a> 7.3. 中断的嵌套处理</h2>
-<ol>
+<h2 id="7-3-中断的嵌套处理"><a href="#7-3-中断的嵌套处理" class="headerlink" title="7.3. 中断的嵌套处理"></a>7.3. 中断的嵌套处理</h2><ol>
 <li>当计算机响应中断后，在中断处理过程中，可以再响应其他中断</li>
 <li>操作系统是性能攸关的程序系统，且中断响应处理有硬件要求，考虑系统效率和实现代价问题，中断的嵌套处理应限制在一定层数内，如3层</li>
 <li>中断的嵌套处理改变中断处理次序，<strong>先响应的有可能后处理</strong></li>
 </ol>
-<h2 id="74-多中断的响应与处理"><a class="markdownIt-Anchor" href="#74-多中断的响应与处理"></a> 7.4. 多中断的响应与处理</h2>
-<blockquote>
+<h2 id="7-4-多中断的响应与处理"><a href="#7-4-多中断的响应与处理" class="headerlink" title="7.4. 多中断的响应与处理"></a>7.4. 多中断的响应与处理</h2><blockquote>
 <p>决定了中断处理次序的因素</p>
 </blockquote>
 <ol>
@@ -826,48 +763,37 @@
 <li>中断可以<strong>嵌套</strong>处理, 但嵌套的层数应有限制</li>
 <li>中断的嵌套处理改变了中断处理的次序</li>
 </ol>
-<h2 id="75-多重中断处理"><a class="markdownIt-Anchor" href="#75-多重中断处理"></a> 7.5. 多重中断处理</h2>
-<h3 id="751-顺序中断处理串行处理"><a class="markdownIt-Anchor" href="#751-顺序中断处理串行处理"></a> 7.5.1. 顺序中断处理(串行处理)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="7-5-多重中断处理"><a href="#7-5-多重中断处理" class="headerlink" title="7.5. 多重中断处理"></a>7.5. 多重中断处理</h2><h3 id="7-5-1-顺序中断处理-串行处理"><a href="#7-5-1-顺序中断处理-串行处理" class="headerlink" title="7.5.1. 顺序中断处理(串行处理)"></a>7.5.1. 顺序中断处理(串行处理)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>X、Y两个中断同时发生，如下图所以，系统先响应X，屏蔽Y，待X响应完成后，系统再响应并处理Y</p>
 </blockquote>
-<h3 id="752-嵌套中断处理嵌套处理"><a class="markdownIt-Anchor" href="#752-嵌套中断处理嵌套处理"></a> 7.5.2. 嵌套中断处理(嵌套处理)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="7-5-2-嵌套中断处理-嵌套处理"><a href="#7-5-2-嵌套中断处理-嵌套处理" class="headerlink" title="7.5.2. 嵌套中断处理(嵌套处理)"></a>7.5.2. 嵌套中断处理(嵌套处理)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>X、Y两个中断同时发生，根据中断有限级，先响应中断X，因为没有屏蔽Y，则响应并处理Y，处理Y完成后，再处理X。</p>
 </blockquote>
-<h3 id="753-即时处理"><a class="markdownIt-Anchor" href="#753-即时处理"></a> 7.5.3. 即时处理</h3>
-<ol>
+<h3 id="7-5-3-即时处理"><a href="#7-5-3-即时处理" class="headerlink" title="7.5.3. 即时处理"></a>7.5.3. 即时处理</h3><ol>
 <li>在运行中断处理程序时，如果出现程序性中断事件，在一般情况下，表明此时中断程序有异常，应对其立即响应并处理。</li>
 </ol>
-<h2 id="76-中断处理的例子linux内核处理流程"><a class="markdownIt-Anchor" href="#76-中断处理的例子linux内核处理流程"></a> 7.6. 中断处理的例子：Linux内核处理流程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="7-6-中断处理的例子：Linux内核处理流程"><a href="#7-6-中断处理的例子：Linux内核处理流程" class="headerlink" title="7.6. 中断处理的例子：Linux内核处理流程"></a>7.6. 中断处理的例子：Linux内核处理流程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>中断信号源:中断向量
-<ol>
+<li>中断信号源:中断向量<ol>
 <li>中断，分为所有外部设备产生的屏蔽中断请求，和硬件故障等紧迫时间引发的非屏蔽中断。</li>
 <li>异常:CPU发出的中断信号，主要有故障、陷阱、终止和编程异常等</li>
 </ol>
 </li>
 <li>更多见P66-71页</li>
 </ol>
-<h1 id="8-进程及其状态"><a class="markdownIt-Anchor" href="#8-进程及其状态"></a> 8. 进程及其状态</h1>
-<h2 id="81-进程的提出"><a class="markdownIt-Anchor" href="#81-进程的提出"></a> 8.1. 进程的提出</h2>
-<ol>
+<h1 id="8-进程及其状态"><a href="#8-进程及其状态" class="headerlink" title="8. 进程及其状态"></a>8. 进程及其状态</h1><h2 id="8-1-进程的提出"><a href="#8-1-进程的提出" class="headerlink" title="8.1. 进程的提出"></a>8.1. 进程的提出</h2><ol>
 <li>操作系统必须全方位地管理计算机系统中运行的程序。因此，操作系统为正在运行程序建立一个管理实体:<strong>进程</strong></li>
 </ol>
-<h2 id="82-进程的概念"><a class="markdownIt-Anchor" href="#82-进程的概念"></a> 8.2. 进程的概念</h2>
-<ol>
-<li><strong>进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动</strong>。
-<ol>
+<h2 id="8-2-进程的概念"><a href="#8-2-进程的概念" class="headerlink" title="8.2. 进程的概念"></a>8.2. 进程的概念</h2><ol>
+<li><strong>进程是一个具有一定独立功能的程序关于某个数据集合的一次运行活动</strong>。<ol>
 <li>具有一定独立功能的程序:进程是相对独立的</li>
 <li>关于某个数据集合:对于不同数据集合的操作不是同一个进程。</li>
 <li>一次运行活动:有生命周期</li>
 </ol>
 </li>
-<li><strong>进程是操作系统进行资源分配和调度的一个独立单位</strong>:这只限于单线程单进程的情况下
-<ol>
+<li><strong>进程是操作系统进行资源分配和调度的一个独立单位</strong>:这只限于单线程单进程的情况下<ol>
 <li>资源分配:除了CPU之外的资源的分配，比如内存和外设等</li>
 <li>单线程情况下，进程的资源分配和调度就是处理器的。</li>
 <li>调度特指处理器的调度</li>
@@ -876,16 +802,14 @@
 <li>有的将进程叫做process，Linux以及一些企业中，把进程称为Task。</li>
 <li>进程可以看为可运行程序加载到内存，配合相应的数据集，在操作系统中的一个实例，程序可以多次被加载进入成为进程。</li>
 </ol>
-<h2 id="83-进程的属性"><a class="markdownIt-Anchor" href="#83-进程的属性"></a> 8.3. 进程的属性</h2>
-<ol>
+<h2 id="8-3-进程的属性"><a href="#8-3-进程的属性" class="headerlink" title="8.3. 进程的属性"></a>8.3. 进程的属性</h2><ol>
 <li><strong>动态性</strong>:进程是程序在数据结合上的一次执行过程，是动态概念，同时它有声明周期，而程序是一组有序指令序列，是静态概念，所以程序作为系统中的一种资源是永久存在的。</li>
 <li><strong>共享性</strong>:同一程序同时运行于不同数据集合上时都是不同的进程，即不同的进程可以运行相同的程序。</li>
 <li><strong>独立性</strong>:每个进程是操作系统中的一个独立实体。有自己的虚存空间、程序计数器和内部状态.</li>
 <li><strong>制约性</strong>:进程因共享资源或协同工作产生相互制约关系，造成进程执行速度的不可预测性，必须对进程的执行次序或相对执行速度予以协调。</li>
 <li><strong>并发性</strong>:多个进程的执行在时间上可以重叠。</li>
 </ol>
-<h2 id="84-进程的组成"><a class="markdownIt-Anchor" href="#84-进程的组成"></a> 8.4. 进程的组成</h2>
-<blockquote>
+<h2 id="8-4-进程的组成"><a href="#8-4-进程的组成" class="headerlink" title="8.4. 进程的组成"></a>8.4. 进程的组成</h2><blockquote>
 <p>一个进程包括五个实体部分，分别是：</p>
 </blockquote>
 <ol>
@@ -895,86 +819,69 @@
 <li>(运行程序的)通用寄存器信息R</li>
 <li>(OS控制程序执行的)程序状态字信息PSW</li>
 </ol>
-<h2 id="85-单线程结构进程和多线程结构进程"><a class="markdownIt-Anchor" href="#85-单线程结构进程和多线程结构进程"></a> 8.5. 单线程结构进程和多线程结构进程</h2>
-<ol>
+<h2 id="8-5-单线程结构进程和多线程结构进程"><a href="#8-5-单线程结构进程和多线程结构进程" class="headerlink" title="8.5. 单线程结构进程和多线程结构进程"></a>8.5. 单线程结构进程和多线程结构进程</h2><ol>
 <li>单线程结构进程:进程级别，负责完成资源分配和CPU调度。</li>
 <li>多线程结构进程:线程级别，负责完成资源分配(进程完成)和CPU调度(代表一个执行流)，并且一个进程中可以包含很多线程。</li>
 <li>操作系统最开始设计的时候并没有设计多线程。</li>
 </ol>
-<h2 id="86-进程举例"><a class="markdownIt-Anchor" href="#86-进程举例"></a> 8.6. 进程举例</h2>
-<ol>
+<h2 id="8-6-进程举例"><a href="#8-6-进程举例" class="headerlink" title="8.6. 进程举例"></a>8.6. 进程举例</h2><ol>
 <li>以下的程序与数据集都是内存级的。</li>
 <li>不同时段针对同一个外存数据文件运行同一个外存程序文件意味着完全不同的(P, C, D, R, Psw)</li>
 </ol>
-<h3 id="861-无关进程"><a class="markdownIt-Anchor" href="#861-无关进程"></a> 8.6.1. 无关进程</h3>
-<p>不同程序在不同数据集上运行：构成两个无关进程</p>
-<h3 id="862-共享数据的交往进程"><a class="markdownIt-Anchor" href="#862-共享数据的交往进程"></a> 8.6.2. 共享数据的交往进程</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="8-6-1-无关进程"><a href="#8-6-1-无关进程" class="headerlink" title="8.6.1. 无关进程"></a>8.6.1. 无关进程</h3><p>不同程序在不同数据集上运行：构成两个无关进程</p>
+<h3 id="8-6-2-共享数据的交往进程"><a href="#8-6-2-共享数据的交往进程" class="headerlink" title="8.6.2. 共享数据的交往进程"></a>8.6.2. 共享数据的交往进程</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>不同程序在相同数据集上运行：构成两个共享数据的交往进程</p>
 </blockquote>
-<h3 id="863-共享代码的无关进程"><a class="markdownIt-Anchor" href="#863-共享代码的无关进程"></a> 8.6.3. 共享代码的无关进程</h3>
-<ol>
+<h3 id="8-6-3-共享代码的无关进程"><a href="#8-6-3-共享代码的无关进程" class="headerlink" title="8.6.3. 共享代码的无关进程"></a>8.6.3. 共享代码的无关进程</h3><ol>
 <li>相同代码在不同数据集上运行：构成两个共享代码的无关进程</li>
 <li>共享的代码称为<strong>可再入</strong>程序，如编辑器<strong>可再入程序</strong>是<strong>纯代码</strong>的，可再入程序必须是纯代码的</li>
 </ol>
-<h3 id="864-共享代码和数据的进程"><a class="markdownIt-Anchor" href="#864-共享代码和数据的进程"></a> 8.6.4. 共享代码和数据的进程</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="8-6-4-共享代码和数据的进程"><a href="#8-6-4-共享代码和数据的进程" class="headerlink" title="8.6.4. 共享代码和数据的进程"></a>8.6.4. 共享代码和数据的进程</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>可以共享代码或者共享数据</p>
 </blockquote>
-<h1 id="9-进程状态和转换"><a class="markdownIt-Anchor" href="#9-进程状态和转换"></a> 9. 进程状态和转换</h1>
-<h2 id="91-进程三态模型"><a class="markdownIt-Anchor" href="#91-进程三态模型"></a> 9.1. 进程三态模型</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="9-进程状态和转换"><a href="#9-进程状态和转换" class="headerlink" title="9. 进程状态和转换"></a>9. 进程状态和转换</h1><h2 id="9-1-进程三态模型"><a href="#9-1-进程三态模型" class="headerlink" title="9.1. 进程三态模型"></a>9.1. 进程三态模型</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>只要操作系统支持多道程序设计，就必须要设计进程转换模型来管理，必须实现<strong>三个进程状态和四个跳转关系</strong>，进程状态转换一定有<strong>内核</strong>的参与。</li>
 <li>运行被中断进程时需要找到被中断时的信息并恢复。</li>
 </ol>
-<h3 id="911-三种状态"><a class="markdownIt-Anchor" href="#911-三种状态"></a> 9.1.1. 三种状态</h3>
-<ol>
+<h3 id="9-1-1-三种状态"><a href="#9-1-1-三种状态" class="headerlink" title="9.1.1. 三种状态"></a>9.1.1. 三种状态</h3><ol>
 <li><strong>运行态</strong>:进程占有处理器正在运行的状态。</li>
 <li><strong>就绪态</strong>:进程具备运行条件，等待系统分配处理器以便运行的状态，面向调度的，处理器只会挑选就绪态进程(就绪队列进程)</li>
 <li><strong>等待态</strong>:又称阻塞态或睡眠态，指进程不具备运行条件，正在等待某个事件完成的状态，暂时被剥夺处理机会。</li>
 <li>处于运行态个数不能大于处理器个数。</li>
 <li>进程创建后一般是处于就绪态</li>
 </ol>
-<h3 id="912-四种状态转换"><a class="markdownIt-Anchor" href="#912-四种状态转换"></a> 9.1.2. 四种状态转换</h3>
-<ol>
-<li>运行态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>等待态：等待资源、I/O、信号量</li>
-<li>等待态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>就绪态：资源满足、I/O结束、信号量完成</li>
-<li>运行态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>就绪态：运行时间片到(倒计时到，不缺少其他东西，只缺少CPU，退回就绪态)、有更高优先权进程，低级调度问题</li>
-<li>以上四个状态转换，一个不能少，一个也不能多，其他的转换不存在的原因如下：
-<ol>
+<h3 id="9-1-2-四种状态转换"><a href="#9-1-2-四种状态转换" class="headerlink" title="9.1.2. 四种状态转换"></a>9.1.2. 四种状态转换</h3><ol>
+<li>运行态$\rightarrow$等待态：等待资源、I/O、信号量</li>
+<li>等待态$\rightarrow$就绪态：资源满足、I/O结束、信号量完成</li>
+<li>运行态$\rightarrow$就绪态：运行时间片到(倒计时到，不缺少其他东西，只缺少CPU，退回就绪态)、有更高优先权进程，低级调度问题</li>
+<li>以上四个状态转换，一个不能少，一个也不能多，其他的转换不存在的原因如下：<ol>
 <li>没有就绪态到等待态:到等待态需要内核参与。</li>
 <li>没有等待态到运行态:等待的资源还没有就绪，无法进入运行态。</li>
 </ol>
 </li>
 </ol>
-<h3 id="913-时间片与进程转换"><a class="markdownIt-Anchor" href="#913-时间片与进程转换"></a> 9.1.3. 时间片与进程转换</h3>
-<ol>
+<h3 id="9-1-3-时间片与进程转换"><a href="#9-1-3-时间片与进程转换" class="headerlink" title="9.1.3. 时间片与进程转换"></a>9.1.3. 时间片与进程转换</h3><ol>
 <li>时间片用完，计算没有做完，被抢占的进程<code>运行态-&gt;就绪态</code>：启动内核的处理器调度算法.</li>
 <li>时间片内，用户进程发生中断或系统调用，<code>运行态-&gt;等待态</code></li>
 <li>时间片内，用户进程完成全部计算完成退出系统，<code>运行态-&gt;终止态</code>，激活内核，时间片被撤销。</li>
 </ol>
-<h3 id="914-进程三态模型总结与扩展"><a class="markdownIt-Anchor" href="#914-进程三态模型总结与扩展"></a> 9.1.4. 进程三态模型总结与扩展</h3>
-<ol>
+<h3 id="9-1-4-进程三态模型总结与扩展"><a href="#9-1-4-进程三态模型总结与扩展" class="headerlink" title="9.1.4. 进程三态模型总结与扩展"></a>9.1.4. 进程三态模型总结与扩展</h3><ol>
 <li>进程映像定义其数据结构和存储结构</li>
 <li>状态转化模型(队列模型)定义其生命周期和状态转换</li>
 <li>然后围绕以上两部分开发出相应的操作和算法</li>
 <li>进程状态和模型与信号量同样相关，后续深入讨论。</li>
 </ol>
-<h2 id="92-进程七态模型p74"><a class="markdownIt-Anchor" href="#92-进程七态模型p74"></a> 9.2. 进程七态模型(P74)</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="921-新添加的状态"><a class="markdownIt-Anchor" href="#921-新添加的状态"></a> 9.2.1. 新添加的状态</h3>
-<ol>
-<li><strong>新建态</strong>:对应于进程被创建的状态，尚未进入就绪队列，创建进程的两个步骤
-<ol>
+<h2 id="9-2-进程七态模型-P74"><a href="#9-2-进程七态模型-P74" class="headerlink" title="9.2. 进程七态模型(P74)"></a>9.2. 进程七态模型(P74)</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="9-2-1-新添加的状态"><a href="#9-2-1-新添加的状态" class="headerlink" title="9.2.1. 新添加的状态"></a>9.2.1. 新添加的状态</h3><ol>
+<li><strong>新建态</strong>:对应于进程被创建的状态，尚未进入就绪队列，创建进程的两个步骤<ol>
 <li>为新进程分配所需资源和建立必要的管理信息</li>
 <li>设置进程为就绪态，等待被调度执行</li>
 </ol>
 </li>
-<li>终止态:
-<ol>
+<li>终止态:<ol>
 <li>进程完成认为到达正常结束点</li>
 <li>出现无法克服的错误而异常终止</li>
 <li>操作系统及有终止权的进程所终止时所处的状态，处于终止态的进程不再被调度执行</li>
@@ -984,60 +891,48 @@
 <li>挂起就绪态:表明进程具备运行条件，但目前在外存中，只有它被对换到内存才能调度执行。</li>
 <li>挂起等待态:表明进程正在等待某一个事件发生且在外存中。</li>
 </ol>
-<h3 id="922-进程挂起的源头"><a class="markdownIt-Anchor" href="#922-进程挂起的源头"></a> 9.2.2. 进程挂起的源头</h3>
-<ol>
+<h3 id="9-2-2-进程挂起的源头"><a href="#9-2-2-进程挂起的源头" class="headerlink" title="9.2.2. 进程挂起的源头"></a>9.2.2. 进程挂起的源头</h3><ol>
 <li>到目前为止:随着不断创建进程，当系统资源尤其是内存资源已经不能满足进程运行的要求时，必须把某些进程挂起，对换到磁盘对换区中，释放它占有的某些资源，暂时不参与低级调度，起到平滑系统负荷的目的；也可能系统出现故障，需要暂时挂起一些进程，以便故障消除后再接触挂起并恢复进程运行。</li>
 <li>进程挂起的原因是多种多样的。</li>
 </ol>
-<h2 id="93-进程挂起"><a class="markdownIt-Anchor" href="#93-进程挂起"></a> 9.3. 进程挂起</h2>
-<h3 id="931-进程挂起的概念"><a class="markdownIt-Anchor" href="#931-进程挂起的概念"></a> 9.3.1. 进程挂起的概念</h3>
-<ol>
+<h2 id="9-3-进程挂起"><a href="#9-3-进程挂起" class="headerlink" title="9.3. 进程挂起"></a>9.3. 进程挂起</h2><h3 id="9-3-1-进程挂起的概念"><a href="#9-3-1-进程挂起的概念" class="headerlink" title="9.3.1. 进程挂起的概念"></a>9.3.1. 进程挂起的概念</h3><ol>
 <li>OS无法预期进程的数目与资源需求，计算机系统在运行过程中可能出现资源不足的情况</li>
 <li>运行资源不足表现为<strong>性能低</strong>和<strong>死锁</strong>两种情况。</li>
 <li>解决办法：剥夺某些进程的<strong>内存及其他资源</strong>，调入OS管理的<strong>对换区</strong>，不参加进程调度，待适当时候再调入内存、恢复资源、参与运行，这就是<strong>进程挂起</strong></li>
-<li>挂起态与等待态有着本质区别
-<ol>
+<li>挂起态与等待态有着本质区别<ol>
 <li>进程挂起:<strong>没有任何资源</strong></li>
 <li>进程等待:<strong>占有已申请到的资源处于等待</strong></li>
 </ol>
 </li>
 <li>结束挂起状态的命令只能由<strong>操作系统和父进程</strong>发出。</li>
 </ol>
-<h3 id="932-进程挂起的选择与恢复"><a class="markdownIt-Anchor" href="#932-进程挂起的选择与恢复"></a> 9.3.2. 进程挂起的选择与恢复</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="9-3-2-进程挂起的选择与恢复"><a href="#9-3-2-进程挂起的选择与恢复" class="headerlink" title="9.3.2. 进程挂起的选择与恢复"></a>9.3.2. 进程挂起的选择与恢复</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>挂起的选择：
-<ol>
+<li>挂起的选择：<ol>
 <li>一般选择<strong>等待态</strong>进程进入<strong>挂起等待态</strong></li>
 <li>也可选择<strong>就绪态</strong>进程进入<strong>挂起就绪态</strong></li>
 <li><strong>运行态</strong>进程还可以挂起自己</li>
 </ol>
 </li>
-<li>挂起的恢复
-<ol>
+<li>挂起的恢复<ol>
 <li>等待事件结束后，<strong>挂起等待态</strong>进入<strong>挂起就绪态</strong></li>
 <li>一般选择<strong>挂起就绪态</strong>进程予以恢复</li>
 <li>操作系统极其空闲才会选择调入<strong>挂起等待态</strong>的进程</li>
 </ol>
 </li>
 </ol>
-<h3 id="933-挂起进程的特点"><a class="markdownIt-Anchor" href="#933-挂起进程的特点"></a> 9.3.3. 挂起进程的特点</h3>
-<ol>
+<h3 id="9-3-3-挂起进程的特点"><a href="#9-3-3-挂起进程的特点" class="headerlink" title="9.3.3. 挂起进程的特点"></a>9.3.3. 挂起进程的特点</h3><ol>
 <li>进程不能被立即执行</li>
 <li>进程可能会有等待事件，但是等待事件是独立于挂起条件的，事件结束并不能导致进程具备执行条件</li>
 <li>由于操作系统、父进程或进程自身阻止其运行</li>
 </ol>
-<h2 id="94-补充svr4-进程状态模型"><a class="markdownIt-Anchor" href="#94-补充svr4-进程状态模型"></a> 9.4. 补充：SVR4 进程状态模型</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="9-4-补充：SVR4-进程状态模型"><a href="#9-4-补充：SVR4-进程状态模型" class="headerlink" title="9.4. 补充：SVR4 进程状态模型"></a>9.4. 补充：SVR4 进程状态模型</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/33.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>preempted:抢占，虚线表示合为一体。</p>
 </blockquote>
-<h1 id="10-进程的描述与组成"><a class="markdownIt-Anchor" href="#10-进程的描述与组成"></a> 10. 进程的描述与组成</h1>
-<p>进程的设计时要考虑进程的声明周期，从而引入三态模型</p>
-<h2 id="101-进程映像process-image"><a class="markdownIt-Anchor" href="#101-进程映像process-image"></a> 10.1. 进程映像，Process Image</h2>
-<ol>
-<li>某一时刻进程的内容及其执行状态集合：
-<ol>
+<h1 id="10-进程的描述与组成"><a href="#10-进程的描述与组成" class="headerlink" title="10. 进程的描述与组成"></a>10. 进程的描述与组成</h1><p>进程的设计时要考虑进程的声明周期，从而引入三态模型</p>
+<h2 id="10-1-进程映像，Process-Image"><a href="#10-1-进程映像，Process-Image" class="headerlink" title="10.1. 进程映像，Process Image"></a>10.1. 进程映像，Process Image</h2><ol>
+<li>某一时刻进程的内容及其执行状态集合：<ol>
 <li>进程控制块: 每个进程捆绑一个，保存进程的标识信息、现场信息和控制信息。进程创建时创建进程控制块，进程撤销时回收进程控制块，与进程一一对应。</li>
 <li>进程程序块: 进程执行的程序空间，规定进程一次运行所应完成的功能。</li>
 <li>进程数据块: 进程处理的数据空间，是进程的私有地址空间，包括各类私有数据、处理函数的用户栈和可修改的程序</li>
@@ -1048,15 +943,13 @@
 <li>进程映像是<strong>内存级</strong>的物理实体，又称为进程的内存映像</li>
 <li>进程的内存映像示意图</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="102-进程控制块process-control-blockpcb又称进程描述符"><a class="markdownIt-Anchor" href="#102-进程控制块process-control-blockpcb又称进程描述符"></a> 10.2. 进程控制块，Process Control Block，PCB，又称进程描述符</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="10-2-进程控制块，Process-Control-Block，PCB，又称进程描述符"><a href="#10-2-进程控制块，Process-Control-Block，PCB，又称进程描述符" class="headerlink" title="10.2. 进程控制块，Process Control Block，PCB，又称进程描述符"></a>10.2. 进程控制块，Process Control Block，PCB，又称进程描述符</h2><ol>
 <li>进程控制块PCB是OS用于记录和刻画<strong>进程状态及环境信息</strong>的数据结构，是进程存在的唯一标识，是操作系统刻画进程的执行状态及环境信息的数据结构，是进程动态特征的汇集，是操作系统掌握进程的唯一资料结构和进程调度的主要依据</li>
 <li>包括标识信息、现场信息和控制信息。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1021-标识信息"><a class="markdownIt-Anchor" href="#1021-标识信息"></a> 10.2.1. 标识信息</h3>
-<blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="10-2-1-标识信息"><a href="#10-2-1-标识信息" class="headerlink" title="10.2.1. 标识信息"></a>10.2.1. 标识信息</h3><blockquote>
 <p>用于存放唯一标识该进程的信息</p>
 </blockquote>
 <ol>
@@ -1065,8 +958,7 @@
 <li>用户定义的进程名</li>
 <li>用户定义的进程组名</li>
 </ol>
-<h3 id="1022-现场信息"><a class="markdownIt-Anchor" href="#1022-现场信息"></a> 10.2.2. 现场信息</h3>
-<blockquote>
+<h3 id="10-2-2-现场信息"><a href="#10-2-2-现场信息" class="headerlink" title="10.2.2. 现场信息"></a>10.2.2. 现场信息</h3><blockquote>
 <p>用于存放该进程运行时的处理器现场信息</p>
 </blockquote>
 <ol>
@@ -1074,8 +966,7 @@
 <li>控制与状态寄存器内容：PC、IR、PSW</li>
 <li>栈指针内容：核心栈与用户栈指针</li>
 </ol>
-<h3 id="1023-控制信息"><a class="markdownIt-Anchor" href="#1023-控制信息"></a> 10.2.3. 控制信息</h3>
-<blockquote>
+<h3 id="10-2-3-控制信息"><a href="#10-2-3-控制信息" class="headerlink" title="10.2.3. 控制信息"></a>10.2.3. 控制信息</h3><blockquote>
 <p>用于存放与管理、调度进程相关的信息</p>
 </blockquote>
 <ol>
@@ -1087,14 +978,11 @@
 <li>处理器使用信息：占用的处理器、时间片、处理器使用时间/已执行总时间、记账信息</li>
 <li>资源清单信息：如正占有的资源、已使用的资源</li>
 </ol>
-<h2 id="103-进程上下文process-context"><a class="markdownIt-Anchor" href="#103-进程上下文process-context"></a> 10.3. 进程上下文，Process context</h2>
-<ol>
+<h2 id="10-3-进程上下文，Process-context"><a href="#10-3-进程上下文，Process-context" class="headerlink" title="10.3. 进程上下文，Process context"></a>10.3. 进程上下文，Process context</h2><ol>
 <li>进程的执行需要环境支持，包括CPU现场和Cache中的执行信息。</li>
 <li>在操作系统中，进程物理实体和支持进程运行的环境合称<strong>进程上下文</strong>。</li>
-<li>OS中的进程物理实体和支持进程运行的环境合成进程上下文，包括以下：
-<ol>
-<li>用户级上下文：
-<ol>
+<li>OS中的进程物理实体和支持进程运行的环境合成进程上下文，包括以下：<ol>
+<li>用户级上下文：<ol>
 <li>用户程序块(可执行的机器指令序列)</li>
 <li>用户数据区(进程可访问的信息)</li>
 <li>用户栈(存放函数调用过程中的信息)</li>
@@ -1102,16 +990,14 @@
 <li>对换至磁盘的分段或页面仍然是用户级上下文的组成部分。</li>
 </ol>
 </li>
-<li>寄存器上下文(存储在进程控制块中)：
-<ol>
+<li>寄存器上下文(存储在进程控制块中)：<ol>
 <li>处理器状态寄存器(进程当前状态)</li>
 <li>指令计数器(下一条该执行的指令地址)</li>
 <li>PSW/栈指针(指向用户栈或核心栈当前地址)</li>
 <li>通用寄存器等</li>
 </ol>
 </li>
-<li>系统级上下文
-<ol>
+<li>系统级上下文<ol>
 <li>PCB(Process Control Block，进程的状态)</li>
 <li>内存区管理信息(进程页表或段表)</li>
 <li>核心栈(进程内核态运行时的工作区)</li>
@@ -1121,23 +1007,20 @@
 </li>
 <li>进程上下文刻画了进程的执行情况</li>
 </ol>
-<h2 id="104-进程队列及其管理"><a class="markdownIt-Anchor" href="#104-进程队列及其管理"></a> 10.4. 进程队列及其管理</h2>
-<ol>
-<li>进程队列分类
-<ol>
+<h2 id="10-4-进程队列及其管理"><a href="#10-4-进程队列及其管理" class="headerlink" title="10.4. 进程队列及其管理"></a>10.4. 进程队列及其管理</h2><ol>
+<li>进程队列分类<ol>
 <li>运行队列：通常只有一个进程</li>
 <li>等待(阻塞)队列:也是有机会被调入，他等待的资源或事件完成后，调入就绪队列。</li>
 <li>就绪队列:从就绪队列中挑选进程调入运行，按照优先级或FCFS的原则排队</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>最后通过系统调用结束处理，进程实现的队列模型不适合使用堆栈(堆栈是先进后出的)</p>
 </blockquote>
-<ol start="2">
-<li>进程队列组织方式
 <ol>
+<li>进程队列组织方式<ol>
 <li>链接方式：采用单向链接或双向链接。</li>
 <li>索引方式：利用索引表记录不同状态进程的PCB地址或在PCB表中的编号</li>
 <li>核心是完成入队和出队操作</li>
@@ -1145,10 +1028,8 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="11-进程的管理"><a class="markdownIt-Anchor" href="#11-进程的管理"></a> 11. 进程的管理</h1>
-<h2 id="111-概念级的os进程管理软件"><a class="markdownIt-Anchor" href="#111-概念级的os进程管理软件"></a> 11.1. 概念级的OS进程管理软件</h2>
-<blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="11-进程的管理"><a href="#11-进程的管理" class="headerlink" title="11. 进程的管理"></a>11. 进程的管理</h1><h2 id="11-1-概念级的OS进程管理软件"><a href="#11-1-概念级的OS进程管理软件" class="headerlink" title="11.1. 概念级的OS进程管理软件"></a>11.1. 概念级的OS进程管理软件</h2><blockquote>
 <p>关键的进程管理软件包括：</p>
 </blockquote>
 <ol>
@@ -1159,43 +1040,36 @@
 <li>进程通信程序(多个程序包)</li>
 <li>终端登录与作业控制程序、性能监控程序、审计程序等外围程序</li>
 </ol>
-<h2 id="112-部分进程管理原语p81"><a class="markdownIt-Anchor" href="#112-部分进程管理原语p81"></a> 11.2. 部分进程管理原语(P81)</h2>
-<ol>
-<li><strong>进程创建</strong>：
-<ol>
+<h2 id="11-2-部分进程管理原语-P81"><a href="#11-2-部分进程管理原语-P81" class="headerlink" title="11.2. 部分进程管理原语(P81)"></a>11.2. 部分进程管理原语(P81)</h2><ol>
+<li><strong>进程创建</strong>：<ol>
 <li>操作系统初始启动时会创建承担系统资源分配和控制管理的一些系统进程，同时会创建一个所有用户集成的祖先，其他用户进程实在用户程序被提价与选中运行时被创建的。</li>
 <li>操作系统通常将创建关系通过父子进程的关系来表示。</li>
 <li>创建原语：进程表加一项、申请PCB(进程控制块)并初始化、生成唯一进程标识、建立进程映像、分配各种资源、移入就绪队列、通知操作系统某些模块</li>
 </ol>
 </li>
-<li><strong>进程撤销</strong>：
-<ol>
+<li><strong>进程撤销</strong>：<ol>
 <li>完成特定工作或出现严重错误后需要撤销，分为正常撤销和非正常撤销。</li>
 <li>产生原因：运行结束、执行非法指令、用户态执行特权指令、时间配额到、等待时间超时、越界错误、共享内存区非法使用、程序性故障等。</li>
 <li>撤销原语：从队列中移除、归还资源、撤销标识、回收PCB、移除进程表项</li>
 </ol>
 </li>
-<li><strong>进程阻塞</strong>：
-<ol>
+<li><strong>进程阻塞</strong>：<ol>
 <li>使得进程让出处理器转而等待一个事件，比如等待资源等，阻塞是同步时间。</li>
 <li>阻塞原语：保存现场信息、修改PCB、移入等待队列、调度其他进程执行</li>
 </ol>
 </li>
-<li><strong>进程唤醒</strong>：
-<ol>
+<li><strong>进程唤醒</strong>：<ol>
 <li>等待时间完成时产生一个中断，激活操作系统，在系统的控制下将被阻塞进程唤醒</li>
 <li>唤醒原语：等待队列中移出、修改PCB、移入就绪队列(该进程优先级高于运行进程触发抢占)</li>
 </ol>
 </li>
-<li><strong>进程挂起</strong>：
-<ol>
+<li><strong>进程挂起</strong>：<ol>
 <li>出现引起挂起的事件时，系统或进程会利用挂起原语把指定进程或处于等待态的进程挂起。</li>
 <li>挂起原语：修改状态并出入相关队列、收回内存等资源送至对换区。</li>
 <li>挂起原语可以由进程自己或其他进程调起。</li>
 </ol>
 </li>
-<li><strong>进程激活</strong>：
-<ol>
+<li><strong>进程激活</strong>：<ol>
 <li>当系统资源尤其是内存资源充裕或请求激活进程时，系统或相关进程会调用激活原语将指定进车行激活。</li>
 <li>激活原语：分配内存，修改状态并出入相关队列。</li>
 <li>激活原语只能由其他进程调用。</li>
@@ -1203,22 +1077,18 @@
 </li>
 <li>其他：如修改进程特权，以上是一个进程控制的流程</li>
 </ol>
-<h2 id="113-原语与进程控制原语primitive"><a class="markdownIt-Anchor" href="#113-原语与进程控制原语primitive"></a> 11.3. 原语与进程控制原语(Primitive)</h2>
-<ol>
+<h2 id="11-3-原语与进程控制原语-Primitive"><a href="#11-3-原语与进程控制原语-Primitive" class="headerlink" title="11.3. 原语与进程控制原语(Primitive)"></a>11.3. 原语与进程控制原语(Primitive)</h2><ol>
 <li>进程控制过程中<strong>涉及对OS核心数据结构</strong>(进程表/PCB池/队列/资源表)的修改，不是进程处理的所有指令都是。</li>
 <li>为防止与时间有关的错误，应使用<strong>原语</strong></li>
 <li><strong>原语是由若干条指令构成的完成某种特定功能的程序，执行上具有不可分割性</strong>(保证对核心资源的访问是正确的，原语涉及到的资源都是共享核心资源，只能是唯一的)，进入原语区间，立刻关闭中断完成，然后再开中断响应。</li>
 <li>原语的执行可以通过<strong>关中断实现</strong>，进程控制使用的原语被称为<strong>进程控制原语</strong>，另一类常用原语是<strong>进程通信原语</strong></li>
 </ol>
-<h2 id="114-进程切换与模式切换状态转换"><a class="markdownIt-Anchor" href="#114-进程切换与模式切换状态转换"></a> 11.4. 进程切换与模式切换(状态转换)</h2>
-<h3 id="1141-进程切换"><a class="markdownIt-Anchor" href="#1141-进程切换"></a> 11.4.1. 进程切换</h3>
-<ol>
+<h2 id="11-4-进程切换与模式切换-状态转换"><a href="#11-4-进程切换与模式切换-状态转换" class="headerlink" title="11.4. 进程切换与模式切换(状态转换)"></a>11.4. 进程切换与模式切换(状态转换)</h2><h3 id="11-4-1-进程切换"><a href="#11-4-1-进程切换" class="headerlink" title="11.4.1. 进程切换"></a>11.4.1. 进程切换</h3><ol>
 <li>进程切换指从正在运行的进程中收回处理器，让待运行进程来占有处理器运行</li>
 <li>进程切换实质上就是被中断运行进程与待运行进程的上下文切换。</li>
 <li>进程切换必然发生在内核态而非用户态。</li>
 </ol>
-<h3 id="1142-进程切换的工作过程"><a class="markdownIt-Anchor" href="#1142-进程切换的工作过程"></a> 11.4.2. 进程切换的工作过程</h3>
-<ol>
+<h3 id="11-4-2-进程切换的工作过程"><a href="#11-4-2-进程切换的工作过程" class="headerlink" title="11.4.2. 进程切换的工作过程"></a>11.4.2. 进程切换的工作过程</h3><ol>
 <li>(中断/异常等触发)正向模式切换并压入PSW/PC</li>
 <li>保存被中断进程的现场信息</li>
 <li>处理具体中断/异常</li>
@@ -1232,8 +1102,7 @@
 <li>恢复被选中进程的现场信息进入处理器</li>
 <li>(中断返回指令触发)逆向模式转换并弹出PSW/PC</li>
 </ol>
-<h3 id="1143-进程切换的发生时机"><a class="markdownIt-Anchor" href="#1143-进程切换的发生时机"></a> 11.4.3. 进程切换的发生时机</h3>
-<blockquote>
+<h3 id="11-4-3-进程切换的发生时机"><a href="#11-4-3-进程切换的发生时机" class="headerlink" title="11.4.3. 进程切换的发生时机"></a>11.4.3. 进程切换的发生时机</h3><blockquote>
 <p>进程切换一定发生在<strong>中断/异常/系统调用处理</strong>过程中，常见的情况是：</p>
 </blockquote>
 <ol>
@@ -1241,49 +1110,40 @@
 <li>时间片中断、I/O中断后发现更高优先级进程，导致被中断进程转入就绪态</li>
 <li>终止用系统调用、不能继续执行的异常导致被中断进程进入终止态</li>
 </ol>
-<h3 id="1144-内核不能执行调度和切换的情况"><a class="markdownIt-Anchor" href="#1144-内核不能执行调度和切换的情况"></a> 11.4.4. 内核不能执行调度和切换的情况</h3>
-<ol>
+<h3 id="11-4-4-内核不能执行调度和切换的情况"><a href="#11-4-4-内核不能执行调度和切换的情况" class="headerlink" title="11.4.4. 内核不能执行调度和切换的情况"></a>11.4.4. 内核不能执行调度和切换的情况</h3><ol>
 <li>内核正在处理中断的过程中</li>
 <li>进程运行在内核临界区</li>
 <li>内核处在需要屏蔽中断的原子操作过程中。</li>
 </ol>
-<h3 id="1145-模式切换状态转换"><a class="markdownIt-Anchor" href="#1145-模式切换状态转换"></a> 11.4.5. 模式切换(状态转换)</h3>
-<ol>
+<h3 id="11-4-5-模式切换-状态转换"><a href="#11-4-5-模式切换-状态转换" class="headerlink" title="11.4.5. 模式切换(状态转换)"></a>11.4.5. 模式切换(状态转换)</h3><ol>
 <li>进程切换必须在操作系统内核模式下完成，这就需要用到模式切换。</li>
-<li>模式切换又称处理器状态切换，包括：
-<ol>
+<li>模式切换又称处理器状态切换，包括：<ol>
 <li>用户模式到内核模式由<strong>中断/异常/系统调用</strong>中断用户进程执行而触发</li>
 <li>内核模式到用户模式OS执行<strong>中断返回指令</strong>将控制权交还用户进程而触发</li>
 </ol>
 </li>
 </ol>
-<h3 id="1146-模式切换状态转换的基本工作任务"><a class="markdownIt-Anchor" href="#1146-模式切换状态转换的基本工作任务"></a> 11.4.6. 模式切换(状态转换)的基本工作任务</h3>
-<ol>
-<li>中断装置完成正向模式切换，包括：
-<ol>
+<h3 id="11-4-6-模式切换-状态转换-的基本工作任务"><a href="#11-4-6-模式切换-状态转换-的基本工作任务" class="headerlink" title="11.4.6. 模式切换(状态转换)的基本工作任务"></a>11.4.6. 模式切换(状态转换)的基本工作任务</h3><ol>
+<li>中断装置完成正向模式切换，包括：<ol>
 <li>处理器模式转为内核模式</li>
 <li>保存当前进程的PC/PSW值到核心栈</li>
 <li>转向中断/异常/系统调用处理程序</li>
 </ol>
 </li>
-<li>中断返回指令完成逆向模式转换，包括：
-<ol>
+<li>中断返回指令完成逆向模式转换，包括：<ol>
 <li>从<strong>待运行进程核心栈</strong>中弹出PSW/PC值</li>
 <li>处理器模式转为用户模式</li>
 </ol>
 </li>
 </ol>
-<h3 id="1147-模式切换状态转换的处理器情况"><a class="markdownIt-Anchor" href="#1147-模式切换状态转换的处理器情况"></a> 11.4.7. 模式切换(状态转换)的处理器情况</h3>
-<ol>
+<h3 id="11-4-7-模式切换-状态转换-的处理器情况"><a href="#11-4-7-模式切换-状态转换-的处理器情况" class="headerlink" title="11.4.7. 模式切换(状态转换)的处理器情况"></a>11.4.7. 模式切换(状态转换)的处理器情况</h3><ol>
 <li>用户空间中，处于进程上下文，应用进程在用户态下运行，使用用户栈。</li>
 <li>内核空间中，处于进程上下文，内核代表进程在内核态下运行，使用核心栈。</li>
 <li>内核空间中，处于中断上下文，与任何进程无关，中断服务例程在内核态下处理特定中断。</li>
 <li>内核空间中，内核线程(无用户地址空间的进程)运行于内核态。</li>
 </ol>
-<h3 id="1148-进程切换与模式切换状态转换"><a class="markdownIt-Anchor" href="#1148-进程切换与模式切换状态转换"></a> 11.4.8. 进程切换与模式切换(状态转换)</h3>
-<ol>
-<li>一些中断/异常不会引起进程状态转换，不会引起进程切换，只是在处理完成后把控制权交回给被中断进程，处理流程是：
-<ol>
+<h3 id="11-4-8-进程切换与模式切换-状态转换"><a href="#11-4-8-进程切换与模式切换-状态转换" class="headerlink" title="11.4.8. 进程切换与模式切换(状态转换)"></a>11.4.8. 进程切换与模式切换(状态转换)</h3><ol>
+<li>一些中断/异常不会引起进程状态转换，不会引起进程切换，只是在处理完成后把控制权交回给被中断进程，处理流程是：<ol>
 <li>(中断/异常触发)正向模式切换压入PSW/PC</li>
 <li>保存被中断进程的现场信息</li>
 <li>处理中断/异常</li>
@@ -1294,19 +1154,14 @@
 <li>比如计时中断，中断处理完成后直接恢复</li>
 <li>模式切换是进程仍在自己的上下文进行处理，仅仅是处理器状态发生了变化，内核仍然被中断进程的上下文中进行处理。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/80.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="12-多线程技术概述"><a class="markdownIt-Anchor" href="#12-多线程技术概述"></a> 12. 多线程技术概述</h1>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/80.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="12-多线程技术概述"><a href="#12-多线程技术概述" class="headerlink" title="12. 多线程技术概述"></a>12. 多线程技术概述</h1><ol>
 <li>最开始设计进程的时候并没有体现线程的概念</li>
 </ol>
-<h2 id="121-单线程结构"><a class="markdownIt-Anchor" href="#121-单线程结构"></a> 12.1. 单线程结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="12-1-单线程结构"><a href="#12-1-单线程结构" class="headerlink" title="12.1. 单线程结构"></a>12.1. 单线程结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>传统进程是单线程结构进程</p>
-</blockquote>
-<h3 id="1211-单线程结构进程的问题"><a class="markdownIt-Anchor" href="#1211-单线程结构进程的问题"></a> 12.1.1. 单线程结构进程的问题</h3>
-<blockquote>
-<p>单线程结构进程在并发程序设计上存在的问题</p>
+<h3 id="12-1-1-单线程结构进程的问题"><a href="#12-1-1-单线程结构进程的问题" class="headerlink" title="12.1.1. 单线程结构进程的问题"></a>12.1.1. 单线程结构进程的问题</h3><p>单线程结构进程在并发程序设计上存在的问题</p>
 </blockquote>
 <ol>
 <li>进程<strong>切换</strong>开销大:10个人干100天的活动-&gt;开会等活动产生的开销，进程切换要进行模式切换，然后再启动进程调度，选择一个就绪进程占用处理器，恢复现场，然后再反向进行。</li>
@@ -1314,10 +1169,8 @@
 <li>限制了进程<strong>并发的粒度</strong>:如果没有线程概念，那么进程中本身不可以并发，粒度比较高</li>
 <li>降低了<strong>并行计算的效率</strong></li>
 </ol>
-<h3 id="1212-解决问题的思路"><a class="markdownIt-Anchor" href="#1212-解决问题的思路"></a> 12.1.2. 解决问题的思路</h3>
-<ol>
-<li>把进程的两项功能分离开来
-<ol>
+<h3 id="12-1-2-解决问题的思路"><a href="#12-1-2-解决问题的思路" class="headerlink" title="12.1.2. 解决问题的思路"></a>12.1.2. 解决问题的思路</h3><ol>
+<li>把进程的两项功能分离开来<ol>
 <li>独立分配资源(进程概念上)，进程作为系统资源分配和保护的<strong>独立单位</strong>，不需要频繁地切换</li>
 <li>被调度分派执行(线程概念上)，线程作为系统调度和分派的基本单位，能轻装运行，会被频繁地调度和切换</li>
 </ol>
@@ -1325,23 +1178,18 @@
 <li>线程的出现会减少进程并发执行所付出的时空开销，使得并发粒度更细、并发性更好</li>
 <li>两项功能绑定就是单线程进程，两项功能分离就是多线程进程。</li>
 </ol>
-<h2 id="122-多线程结构进程"><a class="markdownIt-Anchor" href="#122-多线程结构进程"></a> 12.2. 多线程结构进程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1221-多线程环境下进程的概念"><a class="markdownIt-Anchor" href="#1221-多线程环境下进程的概念"></a> 12.2.1. 多线程环境下进程的概念</h3>
-<ol>
-<li>在多线程环境中，进程是操作系统中除处理器以外的资源分配和保护的<strong>独立单位</strong>。具有:
-<ol>
+<h2 id="12-2-多线程结构进程"><a href="#12-2-多线程结构进程" class="headerlink" title="12.2. 多线程结构进程"></a>12.2. 多线程结构进程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="12-2-1-多线程环境下进程的概念"><a href="#12-2-1-多线程环境下进程的概念" class="headerlink" title="12.2.1. 多线程环境下进程的概念"></a>12.2.1. 多线程环境下进程的概念</h3><ol>
+<li>在多线程环境中，进程是操作系统中除处理器以外的资源分配和保护的<strong>独立单位</strong>。具有:<ol>
 <li>用来容纳进程映像的虚拟地址空间</li>
 <li>对进程、文件和设备的存取保护机制</li>
 </ol>
 </li>
 </ol>
-<h3 id="1222-多线程环境下线程的概念"><a class="markdownIt-Anchor" href="#1222-多线程环境下线程的概念"></a> 12.2.2. 多线程环境下线程的概念</h3>
-<ol>
+<h3 id="12-2-2-多线程环境下线程的概念"><a href="#12-2-2-多线程环境下线程的概念" class="headerlink" title="12.2.2. 多线程环境下线程的概念"></a>12.2.2. 多线程环境下线程的概念</h3><ol>
 <li>线程是进程能够并发执行的实体，是进程的组成单位，也是处理器调度和分派的基本单位。</li>
 <li>进程是一条执行路径，有独立的程序计数器，未运行时保护线程上下文。</li>
-<li>同一个进程中的所有线程共享进程获得的主存空间和资源。它具有：
-<ol>
+<li>同一个进程中的所有线程共享进程获得的主存空间和资源。它具有：<ol>
 <li>线程执行状态</li>
 <li>受保护的线程上下文，当线程不运行时，用于存储现场信息</li>
 <li>独立的程序指令计数器</li>
@@ -1351,10 +1199,8 @@
 </ol>
 </li>
 </ol>
-<h3 id="1223-多线程结构进程中的进程与线程"><a class="markdownIt-Anchor" href="#1223-多线程结构进程中的进程与线程"></a> 12.2.3. 多线程结构进程中的进程与线程</h3>
-<ol>
-<li>于是，进程可以分为两部分:
-<ol>
+<h3 id="12-2-3-多线程结构进程中的进程与线程"><a href="#12-2-3-多线程结构进程中的进程与线程" class="headerlink" title="12.2.3. 多线程结构进程中的进程与线程"></a>12.2.3. 多线程结构进程中的进程与线程</h3><ol>
+<li>于是，进程可以分为两部分:<ol>
 <li>资源集合</li>
 <li>线程集合。</li>
 </ol>
@@ -1364,24 +1210,20 @@
 <li>线程封装执行信息，包括状态信息、寄存器、执行栈（用户栈指针与核心栈指针）和局部变量、过程调用参数、返回值等私有部分的管理。</li>
 <li>由于线程具有传统进程的许多特征，所以也把线程称为轻量级进程(Light Weight Process,LWP)</li>
 </ol>
-<h3 id="1224-多线程环境下线程的状态与调度"><a class="markdownIt-Anchor" href="#1224-多线程环境下线程的状态与调度"></a> 12.2.4. 多线程环境下线程的状态与调度</h3>
-<ol>
+<h3 id="12-2-4-多线程环境下线程的状态与调度"><a href="#12-2-4-多线程环境下线程的状态与调度" class="headerlink" title="12.2.4. 多线程环境下线程的状态与调度"></a>12.2.4. 多线程环境下线程的状态与调度</h3><ol>
 <li>线程状态有运行、就绪和等待和终止，(没有挂起状态时因为挂起和资源有关，而进程是资源管理的单位，与线程无关)</li>
 <li>与线程状态变化有关的线程操作有：孵化、封锁、活化、剥夺、指派、结束</li>
-<li>OS感知线程环境下：
-<ol>
+<li>OS感知线程环境下：<ol>
 <li>处理器调度的对象是线程</li>
 <li>线程的存在、状态等都需要被操作系统内核感知到，进程没有三状态，或者说只有挂起状态。</li>
 </ol>
 </li>
-<li>OS不感知线程环境下：
-<ol>
+<li>OS不感知线程环境下：<ol>
 <li>处理器调度的单位仍然是进程</li>
 <li>用户空间中的用户调度程序调度线程，内核不参加线程调度。</li>
 </ol>
 </li>
-<li>状态转换模型
-<ol>
+<li>状态转换模型<ol>
 <li>运行态-&gt;终止态(撤销Return)</li>
 <li>运行态-&gt;就绪态(中断系统)</li>
 <li>运行态-&gt;就绪态(时间片用完)</li>
@@ -1390,127 +1232,113 @@
 </li>
 <li>DBMS:Client(请求方，Request)和Server(应答，Response)，Client频繁请求，Server频繁响应，Jacketing避免阻塞</li>
 </ol>
-<h2 id="123-并发多线程程序设计的优点"><a class="markdownIt-Anchor" href="#123-并发多线程程序设计的优点"></a> 12.3. 并发多线程程序设计的优点</h2>
-<ol>
+<h2 id="12-3-并发多线程程序设计的优点"><a href="#12-3-并发多线程程序设计的优点" class="headerlink" title="12.3. 并发多线程程序设计的优点"></a>12.3. 并发多线程程序设计的优点</h2><ol>
 <li>快速线程切换：改变堆栈和寄存器，不需要改变地址空间</li>
 <li>减少(系统)管理开销：线程的创建和撤销要简单很多</li>
 <li>(线程)通信易于实现：自动共享进程的内存和文件</li>
 <li>并行程度提高</li>
 <li>节省内存空间</li>
 </ol>
-<h2 id="124-多线程技术的应用"><a class="markdownIt-Anchor" href="#124-多线程技术的应用"></a> 12.4. 多线程技术的应用</h2>
-<ol>
+<h2 id="12-4-多线程技术的应用"><a href="#12-4-多线程技术的应用" class="headerlink" title="12.4. 多线程技术的应用"></a>12.4. 多线程技术的应用</h2><ol>
 <li>前台和后台工作:word的输入和拼写检查</li>
 <li>C/S应用模式:用户和服务器，其他线程调用</li>
 <li>加快执行速度</li>
 <li>设计用户接口</li>
 </ol>
-<h1 id="13-klt与ult"><a class="markdownIt-Anchor" href="#13-klt与ult"></a> 13. KLT与ULT</h1>
-<h2 id="131-内核级线程-klt-kernel-level-threads"><a class="markdownIt-Anchor" href="#131-内核级线程-klt-kernel-level-threads"></a> 13.1. 内核级线程 KLT, Kernel-Level Threads</h2>
-<ol>
+<h1 id="13-KLT与ULT"><a href="#13-KLT与ULT" class="headerlink" title="13. KLT与ULT"></a>13. KLT与ULT</h1><h2 id="13-1-内核级线程-KLT-Kernel-Level-Threads"><a href="#13-1-内核级线程-KLT-Kernel-Level-Threads" class="headerlink" title="13.1. 内核级线程 KLT, Kernel-Level Threads"></a>13.1. 内核级线程 KLT, Kernel-Level Threads</h2><ol>
 <li>线程管理的所有工作由<strong>OS内核</strong>来做，并提供了一个应用程序设计接口API，供开发者使用KLT，</li>
 <li>创建时：内核为其创建进程和一个基线程，线程实行过程中通过内核的创建线程原语来创建其他线程。</li>
 <li>OS直接调度KLT，KLT用于解决物理并行性问题，内核可以感知到所有的内核级线程，可以控制器其数据结构，内核调度在线程的基础上进行。</li>
 </ol>
-<h3 id="1311-内核级线程示意图"><a class="markdownIt-Anchor" href="#1311-内核级线程示意图"></a> 13.1.1. 内核级线程示意图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1312-内核级线程的特点"><a class="markdownIt-Anchor" href="#1312-内核级线程的特点"></a> 13.1.2. 内核级线程的特点</h3>
-<ol>
-<li>优点：
-<ol>
+<h3 id="13-1-1-内核级线程示意图"><a href="#13-1-1-内核级线程示意图" class="headerlink" title="13.1.1. 内核级线程示意图"></a>13.1.1. 内核级线程示意图</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="13-1-2-内核级线程的特点"><a href="#13-1-2-内核级线程的特点" class="headerlink" title="13.1.2. 内核级线程的特点"></a>13.1.2. 内核级线程的特点</h3><ol>
+<li>优点：<ol>
 <li>在多处理器上内核可以同时调度统一进程的多个线程运行。</li>
 <li>进程中的某一线程被阻塞了，内核能调度同一进程的其它线程占有处理器运行，也可以运行其他进程。</li>
 <li>由于内核比较小，内核自身也可用多线程技术实现，能提高操作系统的执行速度和效率。</li>
 </ol>
 </li>
-<li>缺陷：
-<ol>
+<li>缺陷：<ol>
 <li>应用程序线程在用户态运行，线程调度和管理在内核实现，在同一进程中，控制权从一个线程传送到另一个线程时需要模式切换，系统开销较大。</li>
 <li>线程调度开销大，线程通信开销小。</li>
 </ol>
 </li>
 </ol>
-<h2 id="132-用户级线程ult-user-level-threads"><a class="markdownIt-Anchor" href="#132-用户级线程ult-user-level-threads"></a> 13.2. 用户级线程ULT, User-Level Threads</h2>
-<ol>
+<h2 id="13-2-用户级线程ULT-User-Level-Threads"><a href="#13-2-用户级线程ULT-User-Level-Threads" class="headerlink" title="13.2. 用户级线程ULT, User-Level Threads"></a>13.2. 用户级线程ULT, User-Level Threads</h2><ol>
 <li>用户空间运行的线程库，提供多线程应用程序的开发和运行支撑环境。任何应用程序均需通过线程库进行程序设计，再与线程库连接后运行</li>
 <li>线程管理的所有工作都由<strong>应用程序</strong>完成，<strong>内核没有</strong>感知到线程的存在，内核感知到的单位是进程。</li>
 </ol>
-<h3 id="1321-用户级线程示意图"><a class="markdownIt-Anchor" href="#1321-用户级线程示意图"></a> 13.2.1. 用户级线程示意图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1322-用户级线程的特点"><a class="markdownIt-Anchor" href="#1322-用户级线程的特点"></a> 13.2.2. 用户级线程的特点</h3>
-<ol>
-<li>优点：
-<ol>
+<h3 id="13-2-1-用户级线程示意图"><a href="#13-2-1-用户级线程示意图" class="headerlink" title="13.2.1. 用户级线程示意图"></a>13.2.1. 用户级线程示意图</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="13-2-2-用户级线程的特点"><a href="#13-2-2-用户级线程的特点" class="headerlink" title="13.2.2. 用户级线程的特点"></a>13.2.2. 用户级线程的特点</h3><ol>
+<li>优点：<ol>
 <li>节省开销和内核资源:所有线程管理数据结构均在进程的用户空间中，线程切换不需要内核模式，能<strong>节省模式切换开销和内核的宝贵资源</strong>。</li>
 <li>允许进程按应用特定需要选择调度算法，甚至根据应用需求裁剪调度算法。</li>
 <li>可移植性好:能运行在任何OS上，内核在支持ULT方面不需要做任何工作。</li>
 <li>ULT可以解决逻辑并行性问题。</li>
 </ol>
 </li>
-<li>缺点：
-<ol>
+<li>缺点：<ol>
 <li>不能利用多处理器的优点，OS调度进程，仅有一个ULT能执行。</li>
 <li>一个ULT的阻塞，将引起整个进程的阻塞:不能完成切换线程，因为内核感知不到进程中的线程的存在。</li>
 </ol>
 </li>
 <li>ULT可以解决逻辑并行性问题。</li>
 </ol>
-<h2 id="133-jacketing技术"><a class="markdownIt-Anchor" href="#133-jacketing技术"></a> 13.3. Jacketing技术</h2>
-<ol>
-<li>把阻塞式系统调用改造成非阻塞式的:解决一个ULT的阻塞导致整个进程阻塞，避免进程因此从运行态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>阻塞态，如此的频繁切换会带来比较大的开销。</li>
+<h2 id="13-3-Jacketing技术"><a href="#13-3-Jacketing技术" class="headerlink" title="13.3. Jacketing技术"></a>13.3. Jacketing技术</h2><ol>
+<li>把阻塞式系统调用改造成非阻塞式的:解决一个ULT的阻塞导致整个进程阻塞，避免进程因此从运行态$\rightarrow$阻塞态，如此的频繁切换会带来比较大的开销。</li>
 <li>当线程陷入系统调用时，执行Jacketing程序。</li>
 <li>由Jacketing程序来检查资源使用情况，以决定是否执行<strong>进程切换</strong>或<strong>传递控制权给另一个线程</strong></li>
 </ol>
-<h2 id="134-用户级线程-vs-内核级线程"><a class="markdownIt-Anchor" href="#134-用户级线程-vs-内核级线程"></a> 13.4. 用户级线程 vs. 内核级线程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="13-4-用户级线程-vs-内核级线程"><a href="#13-4-用户级线程-vs-内核级线程" class="headerlink" title="13.4. 用户级线程 vs. 内核级线程"></a>13.4. 用户级线程 vs. 内核级线程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>受限条件下的并行:受限条件是同步关系(等待)</li>
 <li>ULT适用于解决逻辑并行性问题</li>
 <li>KLT适用于解决物理并行性问题</li>
 </ol>
-<h2 id="135-多线程实现的混合式策略"><a class="markdownIt-Anchor" href="#135-多线程实现的混合式策略"></a> 13.5. 多线程实现的混合式策略</h2>
-<ol>
+<h2 id="13-5-多线程实现的混合式策略"><a href="#13-5-多线程实现的混合式策略" class="headerlink" title="13.5. 多线程实现的混合式策略"></a>13.5. 多线程实现的混合式策略</h2><ol>
 <li>在用户空间完成所有的线程的创建工作。</li>
 <li>单应用的多个ULT可以映射成一些KLT，通过调整KLT数目，可以达到较好的并行效果。</li>
 <li>在混合式线程中，内核必须支持内核级多线程的建立、调度和管理，同时也允许应用程序建立、调度和管理用户级线程。</li>
 <li>用户级线程的切换仅在用户空间中且仅需要少量机器指令，而内核级线程需要用户态到内核态到用户态的完整上下文切换，修改内存映像，使得高速缓存失效，导致数量级的延迟。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1351-多线程实现混合式策略的特点"><a class="markdownIt-Anchor" href="#1351-多线程实现混合式策略的特点"></a> 13.5.1. 多线程实现混合式策略的特点</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="13-5-1-多线程实现混合式策略的特点"><a href="#13-5-1-多线程实现混合式策略的特点" class="headerlink" title="13.5.1. 多线程实现混合式策略的特点"></a>13.5.1. 多线程实现混合式策略的特点</h3><ol>
 <li>合并了用户级线程/内核级线程设施</li>
 <li>线程创建完全在用户空间中完成，线程的调度和同步也在应用程序中进行</li>
 <li>一个应用中的多个用户级线程被映射到一些(小于等于用户级线程数目)内核级线程上</li>
 <li>程序员可以针对特定应用和机器调节内核级线程的数目，以达到整体最佳结果</li>
 <li>该方法将会结合纯粹用户级线程方法和内核级线程方法的优点，同时减少它们的缺点</li>
 </ol>
-<h3 id="1352-线程混合式策略下的线程状态"><a class="markdownIt-Anchor" href="#1352-线程混合式策略下的线程状态"></a> 13.5.2. 线程混合式策略下的线程状态</h3>
-<ol>
+<h3 id="13-5-2-线程混合式策略下的线程状态"><a href="#13-5-2-线程混合式策略下的线程状态" class="headerlink" title="13.5.2. 线程混合式策略下的线程状态"></a>13.5.2. 线程混合式策略下的线程状态</h3><ol>
 <li>KLT的三态模型，由系统调度负责</li>
 <li>ULT的三态模型，由用户调度负责</li>
 <li>活跃态的ULT代表绑定KLT的三态</li>
 <li>活跃态的ULT运行时可激活用户调度，非阻塞系统调用可使用Jacketing启动用户调度，调整活跃态ULT</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>为什么是活跃态绑定KLT的三态？</li>
 <li>因为如果绑定的KLT不再运行，则也不再运行。活跃态代表了KLT，可能是运行态、可运行态、阻塞态</li>
 </ol>
-<h3 id="1353-多线程实现的各种策略总结"><a class="markdownIt-Anchor" href="#1353-多线程实现的各种策略总结"></a> 13.5.3. 多线程实现的各种策略总结</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="13-5-3-多线程实现的各种策略总结"><a href="#13-5-3-多线程实现的各种策略总结" class="headerlink" title="13.5.3. 多线程实现的各种策略总结"></a>13.5.3. 多线程实现的各种策略总结</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>混合式多线程合并了内核级多线程和用户级多线程的优势，甚至可以指派到CPU，或由操作系统绑定。</p>
 </blockquote>
-<h3 id="1354-solris-多线程技术"><a class="markdownIt-Anchor" href="#1354-solris-多线程技术"></a> 13.5.4. Solris 多线程技术</h3>
+<h3 id="13-5-4-Solris-多线程技术"><a href="#13-5-4-Solris-多线程技术" class="headerlink" title="13.5.4. Solris 多线程技术"></a>13.5.4. Solris 多线程技术</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/28.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/34.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/28.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/34.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
+</div>
 <blockquote>
 <p>包含了多种情况，上图引入了轻量级线程，将轻量级线程与内核级线程映射，原来的多线程设计是Process2，只有一个处理进程，允许给一个进程配置超过一个处理器。</p>
 </blockquote>
@@ -1524,24 +1352,18 @@
 <blockquote>
 <p>一个进程的线程可以被分发到各个位置上并行完成，处理器只能感知进程，不能感知线程，并且只会将一个处理器分配给线程，然后用户空间将得到的处理器分配给线程。</p>
 </blockquote>
-<h1 id="14-处理器调用"><a class="markdownIt-Anchor" href="#14-处理器调用"></a> 14. 处理器调用</h1>
-<h2 id="141-处理器调度层次"><a class="markdownIt-Anchor" href="#141-处理器调度层次"></a> 14.1. 处理器调度层次</h2>
-<ol>
+<h1 id="14-处理器调用"><a href="#14-处理器调用" class="headerlink" title="14. 处理器调用"></a>14. 处理器调用</h1><h2 id="14-1-处理器调度层次"><a href="#14-1-处理器调度层次" class="headerlink" title="14.1. 处理器调度层次"></a>14.1. 处理器调度层次</h2><ol>
 <li>高级调度：又称长程调度、作业调度，决定能否加入到执行的进程池中，管理从创建进程到调度运行再到结束阶段后的善后部分的全过程。</li>
 <li>中级调度，又称平衡调度、中程调度，根据内存资源情况决定内存中所能容纳的进程数目，并完成外存和内存中的进程对换工作。</li>
 <li>低级调度：又称短程调度、进程调度/线程调度，根据某种原则决定就绪队列中哪个进程/线程获得处理器，并将处理器让出给它使用。</li>
 </ol>
-<h3 id="1411-处理器调度层次与进程状态转换"><a class="markdownIt-Anchor" href="#1411-处理器调度层次与进程状态转换"></a> 14.1.1. 处理器调度层次与进程状态转换</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="14-1-1-处理器调度层次与进程状态转换"><a href="#14-1-1-处理器调度层次与进程状态转换" class="headerlink" title="14.1.1. 处理器调度层次与进程状态转换"></a>14.1.1. 处理器调度层次与进程状态转换</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>这个说明录入各级调度和七态模型的情况，三个框分别表明不同调度层次，如上图所示。资源紧张时挂起，资源空闲时解挂</p>
 </blockquote>
-<h3 id="1412-处理器调度层次与关键状态转换"><a class="markdownIt-Anchor" href="#1412-处理器调度层次与关键状态转换"></a> 14.1.2. 处理器调度层次与关键状态转换</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1413-高级调度"><a class="markdownIt-Anchor" href="#1413-高级调度"></a> 14.1.3. 高级调度</h3>
-<ol>
-<li>在分时操作系统中，高级调度决定：
-<ol>
+<h3 id="14-1-2-处理器调度层次与关键状态转换"><a href="#14-1-2-处理器调度层次与关键状态转换" class="headerlink" title="14.1.2. 处理器调度层次与关键状态转换"></a>14.1.2. 处理器调度层次与关键状态转换</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="14-1-3-高级调度"><a href="#14-1-3-高级调度" class="headerlink" title="14.1.3. 高级调度"></a>14.1.3. 高级调度</h3><ol>
+<li>在分时操作系统中，高级调度决定：<ol>
 <li>是否接受一个终端用户的连接</li>
 <li>命令能否被系统接纳并构成进程</li>
 <li>新建态进程是否加入就绪进程队列</li>
@@ -1549,91 +1371,74 @@
 </li>
 <li>批处理OS中，高级调度又称为作业调度，功能是按照某种原则从后备作业队列中选取作业进入主存，并为作业做好运行前的准备工作和完成后的善后工作</li>
 </ol>
-<h3 id="1414-中级调度"><a class="markdownIt-Anchor" href="#1414-中级调度"></a> 14.1.4. 中级调度</h3>
-<ol>
+<h3 id="14-1-4-中级调度"><a href="#14-1-4-中级调度" class="headerlink" title="14.1.4. 中级调度"></a>14.1.4. 中级调度</h3><ol>
 <li>引进中级调度是为了提高内存利用率和作业吞吐量</li>
 <li>中级调度决定那些进程被允许驻留在主存中参与竞争处理器及其他资源，起到短期调整系统负荷的作用</li>
-<li>中级调度把一些进程换出主存，从而使之进入&quot;挂起&quot;状态，不参与进程调度，以平顺系统的负载</li>
+<li>中级调度把一些进程换出主存，从而使之进入”挂起”状态，不参与进程调度，以平顺系统的负载</li>
 </ol>
-<h3 id="1415-低级调度"><a class="markdownIt-Anchor" href="#1415-低级调度"></a> 14.1.5. 低级调度</h3>
-<ol>
+<h3 id="14-1-5-低级调度"><a href="#14-1-5-低级调度" class="headerlink" title="14.1.5. 低级调度"></a>14.1.5. 低级调度</h3><ol>
 <li>低级调度：又称处理器调度、进程调度、短程调度，按照某种原则把处理器分配给就绪态进程或内核级线程</li>
 <li>进程调度程序：又称分派程序，操作系统中实现处理器调度的程序，是操作系统的最<strong>核心部分</strong></li>
 <li>处理器<strong>调度策略</strong>的优劣直接影响到整个系统的性能，这个进程被很多操作系统称为0号进程，所有进程的<strong>父进程</strong></li>
 <li>低级调度主要是负责记录进程或内核级线程的状态、决定某个进程或内核级线程什么时候获得处理器以及占用时间、将处理器分配给进程或内核级线程、回收处理器。</li>
 </ol>
-<h3 id="1416-综述三级调度"><a class="markdownIt-Anchor" href="#1416-综述三级调度"></a> 14.1.6. 综述三级调度</h3>
-<ol>
+<h3 id="14-1-6-综述三级调度"><a href="#14-1-6-综述三级调度" class="headerlink" title="14.1.6. 综述三级调度"></a>14.1.6. 综述三级调度</h3><ol>
 <li>一般操作系统都配置了高级调度和低级调度，而功能完善的操作系统为了提高内存利用率和作业吞吐率引进了中级调度。</li>
 <li>因此，从处理器调度的层次来讲，可以划分为三级调度模型和两级调度模型。</li>
 </ol>
-<h2 id="142-cpu从进程到进程的切换"><a class="markdownIt-Anchor" href="#142-cpu从进程到进程的切换"></a> 14.2. CPU从进程到进程的切换</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/35.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="14-2-CPU从进程到进程的切换"><a href="#14-2-CPU从进程到进程的切换" class="headerlink" title="14.2. CPU从进程到进程的切换"></a>14.2. CPU从进程到进程的切换</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/35.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>内核态进程占用时间不应该过多，应当尽量避免频繁的模式切换
-<ol>
+<li>内核态进程占用时间不应该过多，应当尽量避免频繁的模式切换<ol>
 <li>正向切换(从用户态转换到内核态):Trap、系统调用、中断</li>
 <li>反向切换(从内核态转换到用户态):ret</li>
 </ol>
 </li>
 </ul>
-<h2 id="143-进程抽象"><a class="markdownIt-Anchor" href="#143-进程抽象"></a> 14.3. 进程抽象</h2>
-<p>我们需要不断完善中断处理子系统，内核态是将特权指令和非特权指令混搭使用。</p>
-<h1 id="15-处理器调度算法"><a class="markdownIt-Anchor" href="#15-处理器调度算法"></a> 15. 处理器调度算法</h1>
-<h2 id="151-选择处理器调度算法的原则"><a class="markdownIt-Anchor" href="#151-选择处理器调度算法的原则"></a> 15.1. 选择处理器调度算法的原则</h2>
-<blockquote>
+<h2 id="14-3-进程抽象"><a href="#14-3-进程抽象" class="headerlink" title="14.3. 进程抽象"></a>14.3. 进程抽象</h2><p>我们需要不断完善中断处理子系统，内核态是将特权指令和非特权指令混搭使用。</p>
+<h1 id="15-处理器调度算法"><a href="#15-处理器调度算法" class="headerlink" title="15. 处理器调度算法"></a>15. 处理器调度算法</h1><h2 id="15-1-选择处理器调度算法的原则"><a href="#15-1-选择处理器调度算法的原则" class="headerlink" title="15.1. 选择处理器调度算法的原则"></a>15.1. 选择处理器调度算法的原则</h2><blockquote>
 <p>在以下的五个方面进行巧妙的平衡来完成操作系统的设计。</p>
 </blockquote>
 <ol>
 <li>资源利用率：使得CPU或其他资源的使用率尽可能高且能够并行工作</li>
 </ol>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">利</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">率</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">效</mi><mi mathvariant="normal">工</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">总</mi><mi mathvariant="normal">运</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">总</mi><mi mathvariant="normal">运</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo>=</mo><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">效</mi><mi mathvariant="normal">工</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo>+</mo><mi>C</mi><mi>P</mi><mi>U</mi><mi mathvariant="normal">空</mi><mi mathvariant="normal">闲</mi><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-   &amp;CPU利用率 = \frac{CPU有效工作时间}{CPU总运行时间} \\
-   &amp;CPU总运行时间 = CPU有效工作时间 + CPU空闲等待时间 \\
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.84633em;vertical-align:-1.673165em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.173165em;"><span style="top:-4.173165em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"></span></span><span style="top:-2.3471650000000004em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.673165em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.173165em;"><span style="top:-4.173165em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mord"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">利</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">率</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">效</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.3471650000000004em;"><span class="pstrut" style="height:3.3603300000000003em;"></span><span class="mord"><span class="mord"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">效</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">空</span><span class="mord cjk_fallback">闲</span><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.673165em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<ol start="2">
+<script type="math/tex; mode=display">
+\begin{aligned}
+   &CPU利用率 = \frac{CPU有效工作时间}{CPU总运行时间} \\
+   &CPU总运行时间 = CPU有效工作时间 + CPU空闲等待时间 \\
+\end{aligned}</script><ol>
 <li>吞吐量：单位事假内CPU处理作业的个数，服务器的TPS，例如12306或淘宝</li>
 <li>公平性：确保每个用户每个进程获得合理的CPU份额或其他资源份额</li>
-<li>响应时间：
-<ol>
+<li>响应时间：<ol>
 <li>使交互式用户的响应时间尽可能小，或尽快处理实时任务</li>
 <li>细分包含输入的程序命令传送到CPU时间、CPU处理请求命令的时间、处理所形成的响应回送到终端显示器的时间。</li>
 </ol>
 </li>
 <li>周转时间：提交给系统开始到执行完成获得结果为止的这段时间间隔称周转时间，应该使周转时间或平均周转时间尽可能短。</li>
 </ol>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi>i</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><msub><mi>t</mi><mi>i</mi></msub><mo>=</mo><mi mathvariant="normal">完</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">刻</mi><msub><mi>t</mi><mi>f</mi></msub><mo>−</mo><mi mathvariant="normal">提</mi><mi mathvariant="normal">交</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">刻</mi><msub><mi>t</mi><mi>s</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi>T</mi><mo>=</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>t</mi><mi>i</mi></msub></mrow><mi>n</mi></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><msub><mi>t</mi><mi>i</mi></msub></mrow><mrow><mi mathvariant="normal">运</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><msub><mi>t</mi><mi>k</mi></msub></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">做</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi>W</mi><mo>=</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>w</mi><mi>i</mi></msub></mrow><mi>n</mi></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-   &amp;作业i周转时间t_i = 完成时刻t_f - 提交时刻t_s \\
-   &amp;平均作业周转时间T = \frac{\sum\limits_{i=1}\limits^nt_i}{n}\\
-   &amp;作业带权周转时间w_i = \frac{周转时间t_i}{运行时间t_k} \\
-   &amp;平均带权做作业周转时间W =\frac{\sum\limits_{i=1}\limits^nw_i}{n}
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:11.338211999999999em;vertical-align:-5.419105999999999em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:5.919105999999999em;"><span style="top:-9.798172em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"></span></span><span style="top:-6.419105999999998em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"></span></span><span style="top:-4.141026em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"></span></span><span style="top:-0.28596000000000055em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:5.419105999999999em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:5.919105999999999em;"><span style="top:-9.798172em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">业</span><span class="mord mathdefault">i</span><span class="mord cjk_fallback">周</span><span class="mord cjk_fallback">转</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord cjk_fallback">完</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">刻</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">交</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">刻</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-6.419105999999998em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">平</span><span class="mord cjk_fallback">均</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">业</span><span class="mord cjk_fallback">周</span><span class="mord cjk_fallback">转</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7190659999999998em;"><span style="top:-2.6653970000000005em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span><span style="top:-3.5813970000000004em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.719066em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-4.141026em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">业</span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">权</span><span class="mord cjk_fallback">周</span><span class="mord cjk_fallback">转</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.29208em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">周</span><span class="mord cjk_fallback">转</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-0.28596000000000055em;"><span class="pstrut" style="height:4.719066em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">平</span><span class="mord cjk_fallback">均</span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">权</span><span class="mord cjk_fallback">做</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">业</span><span class="mord cjk_fallback">周</span><span class="mord cjk_fallback">转</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7190659999999998em;"><span style="top:-2.6653970000000005em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span><span style="top:-3.5813970000000004em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.719066em;"><span class="pstrut" style="height:3.3513970000000004em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:5.419105999999999em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="152-短程调度准则"><a class="markdownIt-Anchor" href="#152-短程调度准则"></a> 15.2. 短程调度准则</h2>
-<ol>
-<li>与性能相关
-<ol>
+<script type="math/tex; mode=display">
+\begin{aligned}
+   &作业i周转时间t_i = 完成时刻t_f - 提交时刻t_s \\
+   &平均作业周转时间T = \frac{\sum\limits_{i=1}\limits^nt_i}{n}\\
+   &作业带权周转时间w_i = \frac{周转时间t_i}{运行时间t_k} \\
+   &平均带权做作业周转时间W =\frac{\sum\limits_{i=1}\limits^nw_i}{n}
+\end{aligned}</script><h2 id="15-2-短程调度准则"><a href="#15-2-短程调度准则" class="headerlink" title="15.2. 短程调度准则"></a>15.2. 短程调度准则</h2><ol>
+<li>与性能相关<ol>
 <li>面向用户：周转时间、响应时间、最后期限</li>
 <li>面向系统：吞吐量、处理器利用率</li>
 </ol>
 </li>
-<li>与性能无关
-<ol>
+<li>与性能无关<ol>
 <li>面向用户：可预测性</li>
 <li>面向系统：公平、强制优先级、平衡资源</li>
 </ol>
 </li>
 </ol>
-<h2 id="153-低级调度的主要功能"><a class="markdownIt-Anchor" href="#153-低级调度的主要功能"></a> 15.3. 低级调度的主要功能</h2>
-<ol>
+<h2 id="15-3-低级调度的主要功能"><a href="#15-3-低级调度的主要功能" class="headerlink" title="15.3. 低级调度的主要功能"></a>15.3. 低级调度的主要功能</h2><ol>
 <li>调度：实现调度策略，确定就绪态进程/线程竞争使用处理器的次序的裁决原则。</li>
 <li>分派：实现调度机制，确定如何时分复用CPU，处理上下文切换，完成进程/线程同CPU的绑定以及放弃的实际工作</li>
 </ol>
-<h2 id="154-调度的模式"><a class="markdownIt-Anchor" href="#154-调度的模式"></a> 15.4. 调度的模式</h2>
-<ol>
-<li>抢占式(剥夺式)调度：当前正在运行的进程可能被操作系统中断，并转移到就绪态。处理器剥夺原则：
-<ol>
+<h2 id="15-4-调度的模式"><a href="#15-4-调度的模式" class="headerlink" title="15.4. 调度的模式"></a>15.4. 调度的模式</h2><ol>
+<li>抢占式(剥夺式)调度：当前正在运行的进程可能被操作系统中断，并转移到就绪态。处理器剥夺原则：<ol>
 <li>高优先级进程/线程可剥夺低优先级进程/线程。</li>
 <li>运行进程/线程时间片用完后被剥夺。</li>
 </ol>
@@ -1641,25 +1446,21 @@
 <li>非抢占式(非剥夺式)调度：一个进程一旦处于运行态，它就不断执行直到终止，或者为等待I/O或请求某些操作系统服务而阻塞自己。</li>
 <li>与非抢占式调度相比，抢占式调度可能会导致较大的开销，但是可能对所有进程提供更好的服务，可以避免任何一个进程独占处理器太长时间</li>
 </ol>
-<h2 id="155-优先数调度算法"><a class="markdownIt-Anchor" href="#155-优先数调度算法"></a> 15.5. 优先数调度算法</h2>
-<ol>
+<h2 id="15-5-优先数调度算法"><a href="#15-5-优先数调度算法" class="headerlink" title="15.5. 优先数调度算法"></a>15.5. 优先数调度算法</h2><ol>
 <li>操作系统往往无法判断进程会使用CPU多久，所以现代操作系统一般会使用时间片轮转来完成调度。</li>
 <li>排列论:随机过程(Stochastic Process，Markor)</li>
 </ol>
-<h3 id="1551-根据分配给进程的优先数决定运行进程"><a class="markdownIt-Anchor" href="#1551-根据分配给进程的优先数决定运行进程"></a> 15.5.1. 根据分配给进程的优先数决定运行进程</h3>
-<ol>
+<h3 id="15-5-1-根据分配给进程的优先数决定运行进程"><a href="#15-5-1-根据分配给进程的优先数决定运行进程" class="headerlink" title="15.5.1. 根据分配给进程的优先数决定运行进程"></a>15.5.1. 根据分配给进程的优先数决定运行进程</h3><ol>
 <li>抢占式(Preemptive)优先数调度算法，出现高优先级则中断，抢占一定是从运行态到就绪态的转换，抢占点的安排可能不一样，在实时系统中将抢占点提前，不等一个进程使用完时间片，而是新进程到达就发生抢占，或者时间片用完抢占。</li>
 <li>非抢占式(non-preemptive)优先数调度算法，出现CPU空闲再选择。</li>
 </ol>
-<h3 id="1552-优先数的确定准则"><a class="markdownIt-Anchor" href="#1552-优先数的确定准则"></a> 15.5.2. 优先数的确定准则</h3>
-<ol>
+<h3 id="15-5-2-优先数的确定准则"><a href="#15-5-2-优先数的确定准则" class="headerlink" title="15.5.2. 优先数的确定准则"></a>15.5.2. 优先数的确定准则</h3><ol>
 <li>进程负担任务的紧迫程度</li>
 <li>进程的交互性</li>
 <li>进程使用外设的频度:使用外设的优先</li>
 <li>进程进入系统的时间长短:公平性和周转的问题</li>
 </ol>
-<h3 id="1553-调度算法分类"><a class="markdownIt-Anchor" href="#1553-调度算法分类"></a> 15.5.3. 调度算法分类</h3>
-<ol>
+<h3 id="15-5-3-调度算法分类"><a href="#15-5-3-调度算法分类" class="headerlink" title="15.5.3. 调度算法分类"></a>15.5.3. 调度算法分类</h3><ol>
 <li>FCFS (先来先服务) 非抢占</li>
 <li>RR (时间片轮转) 抢占</li>
 <li>SPN (最短进程优先) 非抢占，真正操作系统没有办法使用</li>
@@ -1667,27 +1468,22 @@
 <li>HRRF (最高响应比优先) 非抢占，真正操作系统没有办法使用</li>
 <li>Feedback (多级反馈调度) 抢占</li>
 </ol>
-<h2 id="156-与进入系统时间相关的优先数"><a class="markdownIt-Anchor" href="#156-与进入系统时间相关的优先数"></a> 15.6. 与进入系统时间相关的优先数</h2>
-<ol>
+<h2 id="15-6-与进入系统时间相关的优先数"><a href="#15-6-与进入系统时间相关的优先数" class="headerlink" title="15.6. 与进入系统时间相关的优先数"></a>15.6. 与进入系统时间相关的优先数</h2><ol>
 <li>计算时间短(作业/进程)优先</li>
 <li>剩余计算时间短进程优先：商业操作系统可以这么处理，但是别的可能有一定的问题。</li>
 <li>响应比高者(作业/进程)优先：</li>
 </ol>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">响</mi><mi mathvariant="normal">应</mi><mi mathvariant="normal">比</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo>+</mo><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mspace width="2em"/><mspace width="2em"/><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mrow><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-   &amp;响应比 = \frac{等待时间 + 期待服务时间}{期待服务时间}\\
-   &amp;\qquad\qquad = 1 + \frac{等待时间}{期待服务时间} \\ 
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.072330000000001em;vertical-align:-1.786165000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.286165em;"><span style="top:-4.286165em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"></span></span><span style="top:-2.4601649999999995em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.786165000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.286165em;"><span style="top:-4.286165em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">响</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">比</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603300000000002em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.4601649999999995em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.786165000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<ol start="4">
+<script type="math/tex; mode=display">
+\begin{aligned}
+   &响应比 = \frac{等待时间 + 期待服务时间}{期待服务时间}\\
+   &\qquad\qquad = 1 + \frac{等待时间}{期待服务时间} \\ 
+\end{aligned}</script><ol>
 <li>先来先服务：先进队先被选择：多用于高级调度；低级调度中，以<strong>计算</strong>为主的进程过于优越</li>
 </ol>
-<h1 id="16-具体调度算法"><a class="markdownIt-Anchor" href="#16-具体调度算法"></a> 16. 具体调度算法</h1>
-<h2 id="161-fcfs-先来先服务"><a class="markdownIt-Anchor" href="#161-fcfs-先来先服务"></a> 16.1. FCFS (先来先服务)</h2>
-<ol>
+<h1 id="16-具体调度算法"><a href="#16-具体调度算法" class="headerlink" title="16. 具体调度算法"></a>16. 具体调度算法</h1><h2 id="16-1-FCFS-先来先服务"><a href="#16-1-FCFS-先来先服务" class="headerlink" title="16.1. FCFS (先来先服务)"></a>16.1. FCFS (先来先服务)</h2><ol>
 <li>当某个进程就绪时，就加入就绪队列(ready queue)，当前正在运行的进程停止执行时，选择在就绪队列到达时间最长的进程运行</li>
 <li>平均作业周转时间与作业提交和调度顺序有关。</li>
-<li>两个弊端
-<ol>
+<li>两个弊端<ol>
 <li>一个短进程可能不得不等待很长时间才能获得执行，导致吞吐率很难提高，加权中转时间会上升，最差的情况就是计算型死循环，导致完全无法调度。</li>
 <li>偏袒计算为主的进程:I/O多的进程不得不等待计算为主的进程做完，因为需要等待资源，离开后需要重新排队。</li>
 </ol>
@@ -1695,49 +1491,45 @@
 <li>性能会非常差，不被现在的操作系统使用。</li>
 <li>先来先服务算法示例：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/38.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="6">
-<li>平均作业周转时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>+</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mn>7</mn><mo>+</mo><mn>9</mn><mo>+</mo><mn>12</mn><mo>+</mo><mn>12</mn></mrow><mn>5</mn></mfrac><mo>=</mo><mn>8.6</mn></mrow><annotation encoding="application/x-tex">T + \frac{3 + 7 + 9 + 12 + 12}{5} = 8.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">+</span><span class="mord mtight">7</span><span class="mbin mtight">+</span><span class="mord mtight">9</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mord mtight">2</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mord">.</span><span class="mord">6</span></span></span></span></li>
-<li>平均带权作业周转时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>+</mo><mfrac><mrow><mfrac><mn>3</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>7</mn><mn>6</mn></mfrac><mo>+</mo><mfrac><mn>9</mn><mn>4</mn></mfrac><mo>+</mo><mfrac><mn>12</mn><mn>5</mn></mfrac><mo>+</mo><mfrac><mn>12</mn><mn>2</mn></mfrac></mrow><mn>5</mn></mfrac><mo>≈</mo><mn>2.563</mn></mrow><annotation encoding="application/x-tex">T + \frac{\frac{3}{3} + \frac{7}{6} + \frac{9}{4} + \frac{12}{5} + \frac{12}{2}}{5} \approx 2.563</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.48682em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.14182em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">5</span><span class="mord">6</span><span class="mord">3</span></span></span></span></li>
-</ol>
-<h2 id="162-spn-最短进程优先"><a class="markdownIt-Anchor" href="#162-spn-最短进程优先"></a> 16.2. SPN (最短进程优先)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/38.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>平均作业周转时间$T + \frac{3 + 7 + 9 + 12 + 12}{5} = 8.6$</li>
+<li>平均带权作业周转时间$T + \frac{\frac{3}{3} + \frac{7}{6} + \frac{9}{4} + \frac{12}{5} + \frac{12}{2}}{5} \approx 2.563$</li>
+</ol>
+<h2 id="16-2-SPN-最短进程优先"><a href="#16-2-SPN-最短进程优先" class="headerlink" title="16.2. SPN (最短进程优先)"></a>16.2. SPN (最短进程优先)</h2><ol>
 <li>SPN是一种<strong>非抢占式</strong>调度，会选择处理时间最短的进程，短进程将会越过长进程，优先获得调度，又称为SJF。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/47.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>平均作业周转时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mn>7</mn><mo>+</mo><mn>11</mn><mo>+</mo><mn>14</mn><mo>+</mo><mn>3</mn></mrow><mn>5</mn></mfrac><mo>=</mo><mn>7.6</mn></mrow><annotation encoding="application/x-tex">T = \frac{3 + 7 + 11 + 14 + 3}{5} = 7.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">+</span><span class="mord mtight">7</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mord mtight">4</span><span class="mbin mtight">+</span><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord">.</span><span class="mord">6</span></span></span></span></li>
-<li>平均带权作业周转时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi><mo>=</mo><mfrac><mrow><mfrac><mn>3</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>7</mn><mn>6</mn></mfrac><mo>+</mo><mfrac><mn>11</mn><mn>4</mn></mfrac><mo>+</mo><mfrac><mn>14</mn><mn>5</mn></mfrac><mo>+</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><mn>5</mn></mfrac><mo>≈</mo><mn>1.843</mn></mrow><annotation encoding="application/x-tex">W = \frac{\frac{3}{3} + \frac{7}{6} + \frac{11}{4} + \frac{14}{5} + \frac{3}{2}}{5} \approx 1.843</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.48682em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.14182em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.5508em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443142857142858em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">8</span><span class="mord">4</span><span class="mord">3</span></span></span></span></li>
-<li>问题:
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/47.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>平均作业周转时间$T = \frac{3 + 7 + 11 + 14 + 3}{5} = 7.6$</li>
+<li>平均带权作业周转时间$W = \frac{\frac{3}{3} + \frac{7}{6} + \frac{11}{4} + \frac{14}{5} + \frac{3}{2}}{5} \approx 1.843$</li>
+<li>问题:<ol>
 <li>需要预知作业所需的CPU运行时间</li>
 <li>忽略了作业的等待时间：只要持续不断地提供更短的进程，长进程就有可能饿死，同样也会服务不到。</li>
 <li>分时、实时处理仍然不理想。</li>
 </ol>
 </li>
 </ol>
-<h2 id="163-srtshortest-remaining-time最短剩余时间优先"><a class="markdownIt-Anchor" href="#163-srtshortest-remaining-time最短剩余时间优先"></a> 16.3. SRT，Shortest Remaining Time，最短剩余时间优先</h2>
-<ol>
+<h2 id="16-3-SRT，Shortest-Remaining-Time，最短剩余时间优先"><a href="#16-3-SRT，Shortest-Remaining-Time，最短剩余时间优先" class="headerlink" title="16.3. SRT，Shortest Remaining Time，最短剩余时间优先"></a>16.3. SRT，Shortest Remaining Time，最短剩余时间优先</h2><ol>
 <li>SRT是一种<strong>抢占式</strong>调度，调度器总是选择预期剩余时间更短的进程</li>
 <li>当一个新进程加入就绪队列，他可能比当前运行的进程具有更短的剩余时间，只要新进程进入就绪队列，调度器就可能抢占当前正在运行的进程</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/48.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
-<li>平均等待时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>0</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>15</mn><mo>−</mo><mn>6</mn><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>8</mn><mo>−</mo><mn>4</mn><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>20</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>6</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>10</mn><mo>−</mo><mn>2</mn><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><mn>5</mn></mfrac><mo>=</mo><mn>3.2</mn></mrow><annotation encoding="application/x-tex">=\frac{(3 - 3 - 0) + (15 - 6 - 2) + (8 - 4 - 4) + (20 - 5 - 6) + (10 - 2 - 8)}{5} = 3.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mbin mtight">−</span><span class="mord mtight">3</span><span class="mbin mtight">−</span><span class="mord mtight">0</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mord mtight">5</span><span class="mbin mtight">−</span><span class="mord mtight">6</span><span class="mbin mtight">−</span><span class="mord mtight">2</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">8</span><span class="mbin mtight">−</span><span class="mord mtight">4</span><span class="mbin mtight">−</span><span class="mord mtight">4</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mbin mtight">−</span><span class="mord mtight">5</span><span class="mbin mtight">−</span><span class="mord mtight">6</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mbin mtight">−</span><span class="mord mtight">2</span><span class="mbin mtight">−</span><span class="mord mtight">8</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">.</span><span class="mord">2</span></span></span></span></li>
-<li>平均周转时间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mn>0</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>15</mn><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>8</mn><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>20</mn><mo>−</mo><mn>6</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>10</mn><mo>−</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><mn>5</mn></mfrac><mo>=</mo><mn>7.2</mn></mrow><annotation encoding="application/x-tex">=\frac{(3 - 0) + (15 - 2) + (8 - 4) + (20 - 6) + (10 - 8)}{5} = 7.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mbin mtight">−</span><span class="mord mtight">0</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mord mtight">5</span><span class="mbin mtight">−</span><span class="mord mtight">2</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">8</span><span class="mbin mtight">−</span><span class="mord mtight">4</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mord mtight">0</span><span class="mbin mtight">−</span><span class="mord mtight">6</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mord mtight">0</span><span class="mbin mtight">−</span><span class="mord mtight">8</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord">.</span><span class="mord">2</span></span></span></span></li>
-</ol>
-<h2 id="164-hrrn-最高响应比优先highest-response-ratio-next"><a class="markdownIt-Anchor" href="#164-hrrn-最高响应比优先highest-response-ratio-next"></a> 16.4. HRRN (最高响应比优先)Highest Response Ratio Next</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/48.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>平均等待时间$=\frac{(3 - 3 - 0) + (15 - 6 - 2) + (8 - 4 - 4) + (20 - 5 - 6) + (10 - 2 - 8)}{5} = 3.2$</li>
+<li>平均周转时间$=\frac{(3 - 0) + (15 - 2) + (8 - 4) + (20 - 6) + (10 - 8)}{5} = 7.2$</li>
+</ol>
+<h2 id="16-4-HRRN-最高响应比优先-Highest-Response-Ratio-Next"><a href="#16-4-HRRN-最高响应比优先-Highest-Response-Ratio-Next" class="headerlink" title="16.4. HRRN (最高响应比优先)Highest Response Ratio Next"></a>16.4. HRRN (最高响应比优先)Highest Response Ratio Next</h2><ol>
 <li>非抢占式算法，性能略差与SPN(SJF)</li>
 <li>选择响应比最高的进程：出发点是兼顾公平，对于短进程有利</li>
 <li>每当需要调度时，计算出所有的响应比，选择最高的。</li>
 </ol>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi mathvariant="normal">响</mi><mi mathvariant="normal">应</mi><mi mathvariant="normal">比</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mo>+</mo><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mspace width="2em"/><mspace width="2em"/><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><mrow><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow><mrow><mi mathvariant="normal">期</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-   &amp;响应比 = \frac{等待时间 + 期待服务时间}{期待服务时间}\\
-   &amp;\qquad\qquad = 1 + \frac{等待时间}{期待服务时间} \\ 
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.072330000000001em;vertical-align:-1.786165000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.286165em;"><span style="top:-4.286165em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"></span></span><span style="top:-2.4601649999999995em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.786165000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.286165em;"><span style="top:-4.286165em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"><span class="mord"></span><span class="mord cjk_fallback">响</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">比</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603300000000002em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-2.4601649999999995em;"><span class="pstrut" style="height:3.26033em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">期</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">服</span><span class="mord cjk_fallback">务</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.786165000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/49.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+   &响应比 = \frac{等待时间 + 期待服务时间}{期待服务时间}\\
+   &\qquad\qquad = 1 + \frac{等待时间}{期待服务时间} \\ 
+\end{aligned}</script><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/49.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1752,7 +1544,7 @@
 <tbody>
 <tr>
 <td>0时刻</td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></td>
+<td>$1$</td>
 <td>未到</td>
 <td>未到</td>
 <td>未到</td>
@@ -1761,7 +1553,7 @@
 <tr>
 <td>3时刻</td>
 <td>完成</td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo>≈</mo><mn>1.17</mn></mrow><annotation encoding="application/x-tex">1 + \frac{1}{6} \approx 1.17</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">1</span><span class="mord">7</span></span></span></span></td>
+<td>$1 + \frac{1}{6} \approx 1.17$</td>
 <td>未到</td>
 <td>未到</td>
 <td>未到</td>
@@ -1770,54 +1562,50 @@
 <td>9时刻</td>
 <td>完成</td>
 <td>完成</td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>5</mn><mn>4</mn></mfrac><mo>=</mo><mn>2.25</mn></mrow><annotation encoding="application/x-tex">1 + \frac{5}{4} = 2.25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span><span class="mord">5</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>3</mn><mn>5</mn></mfrac><mo>=</mo><mn>1.6</mn></mrow><annotation encoding="application/x-tex">1 + \frac{3}{5} = 1.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">6</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>=</mo><mn>1.5</mn></mrow><annotation encoding="application/x-tex">1 + \frac{1}{2} = 1.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span><span class="mord">5</span></span></span></span></td>
+<td>$1 + \frac{5}{4} = 2.25$</td>
+<td>$1 + \frac{3}{5} = 1.6$</td>
+<td>$1 + \frac{1}{2} = 1.5$</td>
 </tr>
 <tr>
 <td>13时刻</td>
 <td>完成</td>
 <td>完成</td>
 <td>完成</td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>7</mn><mn>5</mn></mfrac><mo>=</mo><mn>2.6</mn></mrow><annotation encoding="application/x-tex">1 + \frac{7}{5} = 2.6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">6</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>5</mn><mn>2</mn></mfrac><mo>=</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">1 + \frac{5}{2} = 3.5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">.</span><span class="mord">5</span></span></span></span></td>
+<td>$1 + \frac{7}{5} = 2.6$</td>
+<td>$1 + \frac{5}{2} = 3.5$</td>
 </tr>
 <tr>
 <td>15时刻</td>
 <td>完成</td>
 <td>完成</td>
 <td>完成</td>
-<td><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mfrac><mn>12</mn><mn>5</mn></mfrac><mo>=</mo><mn>3.4</mn></mrow><annotation encoding="application/x-tex">1 + \frac{12}{5} = 3.4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">.</span><span class="mord">4</span></span></span></span></td>
+<td>$1 + \frac{12}{5} = 3.4$</td>
 <td>万=完成</td>
 </tr>
 </tbody>
 </table>
-<h2 id="165-优先级调度"><a class="markdownIt-Anchor" href="#165-优先级调度"></a> 16.5. 优先级调度</h2>
-<ol>
+</div>
+<h2 id="16-5-优先级调度"><a href="#16-5-优先级调度" class="headerlink" title="16.5. 优先级调度"></a>16.5. 优先级调度</h2><ol>
 <li>调度器总是选择优先级较高的进程，提供多个就绪队列(一组就绪队列)，代表各个级别的优先级。</li>
 <li>低优先级的进程可能很难被执行到？一个进程的优先级应该随着它的时间或执行的历史而变化。</li>
 <li>如果就绪队列中出现优先级高的进程/线程，系统可以预先规定策略为非剥夺式和剥夺式策略。</li>
-<li>优先级的确定
-<ol>
+<li>优先级的确定<ol>
 <li>用户给出优先级</li>
 <li>系统综合考虑各因素，包括打开文件数、资源申请情况等等</li>
 </ol>
 </li>
-<li>优先级确定方式
-<ol>
+<li>优先级确定方式<ol>
 <li>静态：生命周期内不改变，容易造成饥饿问题。</li>
 <li>动态：生命周期内可能会发生改变，正在运行的进程逐渐降低优先级，正在等待的进程逐渐提高优先级。</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="166-rr时间片轮转调度算法"><a class="markdownIt-Anchor" href="#166-rr时间片轮转调度算法"></a> 16.6. RR(时间片轮转调度算法)</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/36.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="16-6-RR-时间片轮转调度算法"><a href="#16-6-RR-时间片轮转调度算法" class="headerlink" title="16.6. RR(时间片轮转调度算法)"></a>16.6. RR(时间片轮转调度算法)</h2><ol>
 <li>本质也是<strong>先来先服务</strong>，但是要按照时间片来进行调度。</li>
 <li>根据各个进程进入就绪队列的时间先后轮流占有CPU一个时间片，基于时钟做抢占式调度。</li>
 <li>时间片中断：以一个周期性间隔产生时钟中断，当中断发生时，当前正在运行的进程被置于就绪队列队尾，然后基于FCFS策略选择下一个就绪进程运行</li>
-<li>时间片的确定：选择长短合适的时间片，一般为10ms到200ms
-<ol>
+<li>时间片的确定：选择长短合适的时间片，一般为10ms到200ms<ol>
 <li>过长则退化为先来先服务算法</li>
 <li>过短则调度开销显著增大</li>
 </ol>
@@ -1827,50 +1615,46 @@
 <li>很多的调度都会结合时间片轮转调度算法来实现</li>
 <li>如果时间片还没有用完就已经完成了进程的事务，那么就立即释放时间片，调度下一个进程进入占用新的时间片运行。</li>
 </ol>
-<h3 id="1661-使用情况"><a class="markdownIt-Anchor" href="#1661-使用情况"></a> 16.6.1. 使用情况</h3>
-<ol>
+<h3 id="16-6-1-使用情况"><a href="#16-6-1-使用情况" class="headerlink" title="16.6.1. 使用情况"></a>16.6.1. 使用情况</h3><ol>
 <li>先进先出/最短时间/剩余时间/响应比优先算法，无法判断进程需要占用多长时间的CPU</li>
 <li>有预估时间的调度，用在作业调度、云计算调度中比较合适，在低级调度中不合适</li>
 </ol>
-<h3 id="1662-进程分类"><a class="markdownIt-Anchor" href="#1662-进程分类"></a> 16.6.2. 进程分类</h3>
-<ol>
+<h3 id="16-6-2-进程分类"><a href="#16-6-2-进程分类" class="headerlink" title="16.6.2. 进程分类"></a>16.6.2. 进程分类</h3><ol>
 <li>以计算为主的进程：不需要内核参与，没有从运行态到阻塞态的情况，如果出现死循环进程也必须要遵循时间片轮换，如果进程比较多，就可以淡化死循环的影响</li>
 <li>I/O(外设)频繁的进程：发生运行态到阻塞态的可能性比较大，根据各个进程进入就绪队列的时间先后轮流占用CPU一个时间片，时间片到即发生时间片中断。</li>
 </ol>
-<h3 id="1663-时间片轮转调度算法示例"><a class="markdownIt-Anchor" href="#1663-时间片轮转调度算法示例"></a> 16.6.3. 时间片轮转调度算法示例</h3>
+<h3 id="16-6-3-时间片轮转调度算法示例"><a href="#16-6-3-时间片轮转调度算法示例" class="headerlink" title="16.6.3. 时间片轮转调度算法示例"></a>16.6.3. 时间片轮转调度算法示例</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/39.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/39.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/39.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/39.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/40.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/41.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/40.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/41.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/42.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/43.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/42.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/43.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/44.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/45.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/44.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/45.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/46.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/46.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>务必关注就绪队列</p>
 </blockquote>
-<h2 id="167-多级反馈调度-multi-level-feedback-queuemlfq又称分级调度"><a class="markdownIt-Anchor" href="#167-多级反馈调度-multi-level-feedback-queuemlfq又称分级调度"></a> 16.7. 多级反馈调度 (Multi-level Feedback Queue，MLFQ)，又称分级调度</h2>
-<ol>
-<li>基本思想
-<ol>
+<h2 id="16-7-多级反馈调度-Multi-level-Feedback-Queue，MLFQ-，又称分级调度"><a href="#16-7-多级反馈调度-Multi-level-Feedback-Queue，MLFQ-，又称分级调度" class="headerlink" title="16.7. 多级反馈调度 (Multi-level Feedback Queue，MLFQ)，又称分级调度"></a>16.7. 多级反馈调度 (Multi-level Feedback Queue，MLFQ)，又称分级调度</h2><ol>
+<li>基本思想<ol>
 <li>建立多个不同优先级的就绪进程队列</li>
 <li>多个就绪进程队列之间按照优先数调度</li>
 <li>高优先级的就绪进程, 分配的时间片短</li>
@@ -1878,8 +1662,7 @@
 </ol>
 </li>
 <li>分级原则：外设访问、交互性、时间紧迫程度、系统效率、用户立场</li>
-<li>现代操作系统的实现模型
-<ol>
+<li>现代操作系统的实现模型<ol>
 <li>多个高优先级的实时进程队列，如：硬实时、网络、软实时</li>
 <li>多个分时任务的进程队列，根据基准优先数和执行行为调整</li>
 <li>队列数可能多达32-128个</li>
@@ -1887,146 +1670,129 @@
 </li>
 <li>如果没做完会惩罚降级，做题目要至少画一下前几个RQ。如果进程掉出去的同时，有新的进程进入，那么新的进程优先进入就绪队列</li>
 <li>对以计算为主的长进程不友好，就绪队列越深获得调度的机会越小</li>
-<li>不同的进程可以设置不同的时间片长度:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mo>=</mo><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">q = 2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span>，i是层数，所以第一层时间片长为1，第二层长为2</li>
+<li>不同的进程可以设置不同的时间片长度:$q = 2^i$，i是层数，所以第一层时间片长为1，第二层长为2</li>
 <li>多级队列更能够发现先到达的，时间片比较短的处理完。</li>
 <li>除了极少数的硬实时操作系统使用抢占式调度算法，绝大多数操作系统有效地组合时间片调度算法和优先数调度算法，采用分级调度算法的策略加以实现</li>
 <li>如果没有竞争不掉下去，时刻1(根据考试具体情况决定)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/50.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1671-q-1-时的多级反馈调度的示例"><a class="markdownIt-Anchor" href="#1671-q-1-时的多级反馈调度的示例"></a> 16.7.1. q = 1 时的多级反馈调度的示例</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/50.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="16-7-1-q-1-时的多级反馈调度的示例"><a href="#16-7-1-q-1-时的多级反馈调度的示例" class="headerlink" title="16.7.1. q = 1 时的多级反馈调度的示例"></a>16.7.1. q = 1 时的多级反馈调度的示例</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/51.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/52.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/51.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/52.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/53.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/54.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/53.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/54.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/55.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/56.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/55.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/56.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/57.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/58.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/57.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/58.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/59.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/60.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/59.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/60.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/61.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/61.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 </tbody>
 </table>
-<h3 id="1672-q-2i时的多级反馈调度的示例"><a class="markdownIt-Anchor" href="#1672-q-2i时的多级反馈调度的示例"></a> 16.7.2. q = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span>时的多级反馈调度的示例</h3>
+</div>
+<h3 id="16-7-2-q-2-i-时的多级反馈调度的示例"><a href="#16-7-2-q-2-i-时的多级反馈调度的示例" class="headerlink" title="16.7.2. q = $2^i$时的多级反馈调度的示例"></a>16.7.2. q = $2^i$时的多级反馈调度的示例</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/62.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/63.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/62.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/63.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/64.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/65.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/64.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/65.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/66.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/67.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/66.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/67.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/68.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/69.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/68.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/69.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/70.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/71.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/70.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/71.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/72.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/72.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 </tbody>
 </table>
-<h3 id="1673-多级反馈调度的示意图"><a class="markdownIt-Anchor" href="#1673-多级反馈调度的示意图"></a> 16.7.3. 多级反馈调度的示意图</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+</div>
+<h3 id="16-7-3-多级反馈调度的示意图"><a href="#16-7-3-多级反馈调度的示意图" class="headerlink" title="16.7.3. 多级反馈调度的示意图"></a>16.7.3. 多级反馈调度的示意图</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/24.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>如果没有进程竞争，那么会不会导致进程掉下去，根据具体情况分析，可能掉下去也可能没有掉下去。</li>
 <li>此时RQ0是A，RQ2是C，当前A在做，那么A掉下来后是运行A还是C，可以考虑运行A进程：因为掉到了RQ1，也可以考虑运行C进程，具体情况要看操作系统时间中的细节</li>
 <li>刚好做完的时刻，B同步进入也需要细规则来完善。</li>
 </ol>
-<h2 id="168-彩票调度算法"><a class="markdownIt-Anchor" href="#168-彩票调度算法"></a> 16.8. 彩票调度算法</h2>
-<ol>
+<h2 id="16-8-彩票调度算法"><a href="#16-8-彩票调度算法" class="headerlink" title="16.8. 彩票调度算法"></a>16.8. 彩票调度算法</h2><ol>
 <li>基本思想：为进程发放针对<strong>系统各种资源</strong>(如CPU时间)的彩票；当调度程序需要做出决策时，随机选择一张彩票，持有该彩票的进程将获得系统资源</li>
 <li>功能比保证调度好的多，服务器和客户：客户需要调用服务器服务，则将彩票交给服务器</li>
 <li>合作进程之间的彩票交换</li>
 <li>一般不会在实时操作系统中使用，但是可以在服务器端进行使用，特别是视频点播服务器</li>
 </ol>
-<h2 id="169-传统unix系统的调度例"><a class="markdownIt-Anchor" href="#169-传统unix系统的调度例"></a> 16.9. 传统Unix系统的调度(例)</h2>
-<ol>
+<h2 id="16-9-传统Unix系统的调度-例"><a href="#16-9-传统Unix系统的调度-例" class="headerlink" title="16.9. 传统Unix系统的调度(例)"></a>16.9. 传统Unix系统的调度(例)</h2><ol>
 <li>多级反馈队列，每个优先级队列使用时间片轮转</li>
 <li>每秒重新计算每个进程的优先级</li>
 <li>给每个进程赋予基本优先级的目的是把所有进程划分成固定的优先级区</li>
 <li>可控调节因子</li>
 </ol>
-<h2 id="1610-unix-svr4调度算法例"><a class="markdownIt-Anchor" href="#1610-unix-svr4调度算法例"></a> 16.10. Unix SVR4调度算法(例)</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/74.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="16-10-Unix-SVR4调度算法-例"><a href="#16-10-Unix-SVR4调度算法-例" class="headerlink" title="16.10. Unix SVR4调度算法(例)"></a>16.10. Unix SVR4调度算法(例)</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/74.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>
-<p>100-159是实时部分任务</p>
+<li>100-159是实时部分任务</li>
+<li>60-99是内核部分任务</li>
+<li><p>0-59是分时部分任务</p>
 </li>
-<li>
-<p>60-99是内核部分任务</p>
-</li>
-<li>
-<p>0-59是分时部分任务</p>
-</li>
-<li>
-<p>多级反馈队列，每一个优先数都对应于一个就绪进程队列</p>
+<li><p>多级反馈队列，每一个优先数都对应于一个就绪进程队列</p>
 <ol>
 <li>实时优先级层次：优先数和时间片都是固定的，在抢占点执行抢占</li>
 <li>分时优先级层次：优先数和时间片是可变的，从0优先数的100ms到59优先数的10ms</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/75.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="1611-bands"><a class="markdownIt-Anchor" href="#1611-bands"></a> 16.11. Bands</h2>
-<blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/75.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="16-11-Bands"><a href="#16-11-Bands" class="headerlink" title="16.11. Bands"></a>16.11. Bands</h2><blockquote>
 <p>优先级递减：对换、块I/O设备控制、文件操作、字符I/O设备控制、用户进程</p>
 </blockquote>
-<h2 id="1612-windows调度算法例"><a class="markdownIt-Anchor" href="#1612-windows调度算法例"></a> 16.12. Windows调度算法(例)</h2>
-<ol>
+<h2 id="16-12-Windows调度算法-例"><a href="#16-12-Windows调度算法-例" class="headerlink" title="16.12. Windows调度算法(例)"></a>16.12. Windows调度算法(例)</h2><ol>
 <li>主要设计目标：基于内核级线程的可抢占式调度，向单个用户提供交互式的计算环境，并支持各种服务器程序</li>
 <li>优先级和优先数</li>
 <li>实时优先级层次(优先数为31-16)：用于通信任务和实时任务，优先数不可变</li>
 <li>可变优先级层次(优先数为15-0)：用于用户提交的交互式任务，优先数可动态调整</li>
 <li>多级反馈队列，每一个优先数都对应于一个就绪进程队列</li>
-<li>优先数可动态调整原则
-<ol>
+<li>优先数可动态调整原则<ol>
 <li>线程所属的进程对象有一个进程基本优先数，取值范围从0到15</li>
 <li>线程对象有一个线程基本优先数，取值范围从-2到2</li>
 <li>线程的初始优先数为进程基本优先数加上线程基本优先数，但必须在0到15的范围内</li>
 <li>线程的动态优先数必须在初始优先数到15的范围</li>
 </ol>
 </li>
-<li>当存在N个处理器时，N-1个处理器上将运行N-1个最高<br />
-先级的线程，其他线程将共享剩下的一个处理器</li>
+<li>当存在N个处理器时，N-1个处理器上将运行N-1个最高<br>先级的线程，其他线程将共享剩下的一个处理器</li>
 </ol>
-<h1 id="17-批处理作业的调度"><a class="markdownIt-Anchor" href="#17-批处理作业的调度"></a> 17. 批处理作业的调度</h1>
-<h2 id="171-批处理作业的管理"><a class="markdownIt-Anchor" href="#171-批处理作业的管理"></a> 17.1. 批处理作业的管理</h2>
-<ol>
+<h1 id="17-批处理作业的调度"><a href="#17-批处理作业的调度" class="headerlink" title="17. 批处理作业的调度"></a>17. 批处理作业的调度</h1><h2 id="17-1-批处理作业的管理"><a href="#17-1-批处理作业的管理" class="headerlink" title="17.1. 批处理作业的管理"></a>17.1. 批处理作业的管理</h2><ol>
 <li>作业说明语言和作业说明书</li>
 <li>脱机控制方式(批处理控制方式)</li>
 <li>作业控制块JCB</li>
-<li>作业状态
-<ol>
+<li>作业状态<ol>
 <li>输入状态：作业正在从输入设备上预输入信息</li>
 <li>后备状态：作业预输入结束但尚未被选中执行</li>
 <li>执行状态：作业已经被选中并构成进程去竞争处理器资源以获得运行</li>
@@ -2035,34 +1801,36 @@
 </li>
 <li>作业默认所有的资源调度都是静态调度(静态分配)完成的，输出井来完成。</li>
 </ol>
-<h2 id="172-批处理作业的状态作业调度与进程调度"><a class="markdownIt-Anchor" href="#172-批处理作业的状态作业调度与进程调度"></a> 17.2. 批处理作业的状态作业调度与进程调度</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/78.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="17-2-批处理作业的状态作业调度与进程调度"><a href="#17-2-批处理作业的状态作业调度与进程调度" class="headerlink" title="17.2. 批处理作业的状态作业调度与进程调度"></a>17.2. 批处理作业的状态作业调度与进程调度</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/78.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>作业调度：按一定的策略选取若干个作业让它们进入内存、构成进程去竞争处理器以获得运行机会</li>
 <li>用户立场：自己作业的周转时间尽可能的小</li>
 <li>系统立场：希望进入系统的作业的平均周转时间尽可能的小</li>
 <li>适当的作业调度算法必须既考虑用户的要求又有利于系统效率的提高</li>
 </ol>
-<h1 id="18-补充"><a class="markdownIt-Anchor" href="#18-补充"></a> 18. 补充</h1>
-<h2 id="181-习题进程管理的fork系统调用"><a class="markdownIt-Anchor" href="#181-习题进程管理的fork系统调用"></a> 18.1. 习题(进程管理的fork系统调用)</h2>
+<h1 id="18-补充"><a href="#18-补充" class="headerlink" title="18. 补充"></a>18. 补充</h1><h2 id="18-1-习题-进程管理的fork系统调用"><a href="#18-1-习题-进程管理的fork系统调用" class="headerlink" title="18.1. 习题(进程管理的fork系统调用)"></a>18.1. 习题(进程管理的fork系统调用)</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/76.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/77.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/76.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/77.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
+</div>
 <ol>
 <li>fork会克隆出一个新的进程，但是是同一个PC，也就是从父进程的当前步骤开始往下做</li>
 <li>第一次fork A -&gt; B</li>
 <li>第二次fork A -&gt; C, B -&gt; D</li>
 <li>到三次fork A -&gt; E, B -&gt; F, C -&gt; G, D -&gt; H</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/78.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="182-阿里云平台"><a class="markdownIt-Anchor" href="#182-阿里云平台"></a> 18.2. 阿里云平台</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec2/78.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="18-2-阿里云平台"><a href="#18-2-阿里云平台" class="headerlink" title="18.2. 阿里云平台"></a>18.2. 阿里云平台</h2><ol>
 <li>章文嵩:Linux集群，LVS，尽量节能</li>
 <li>使用了灵动处理器</li>
 </ol>
@@ -2163,9 +1931,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-OS/2020-OS-Lecture1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" title="2020-OS-Lecture1-操作系统概论">
+                      <a href="/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Lecture2-Data%20Warehouse/" title="2020-Business-Intelligence-Lecture2-Data Warehouse">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-OS-Lecture1-操作系统概论</span>
+                        <span class="hidden-mobile">2020-Business-Intelligence-Lecture2-Data Warehouse</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -2173,8 +1941,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-OS/2020-OS-Lecture4-%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" title="2020-OS-Lecture4-设备管理">
-                        <span class="hidden-mobile">2020-OS-Lecture4-设备管理</span>
+                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-01.%E7%AE%80%E4%BB%8B/" title="2018-Linux-system-basics-linux-01.简介">
+                        <span class="hidden-mobile">2018-Linux-system-basics-linux-01.简介</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

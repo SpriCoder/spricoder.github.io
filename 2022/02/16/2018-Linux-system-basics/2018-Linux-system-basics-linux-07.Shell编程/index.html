@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2018-Linux-system-basics-linux-07.Shell编程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:09:36.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:46:35.368Z">
+<meta property="article:published_time" content="2022-02-16T11:07:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:00:20.672Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="shell">
@@ -201,7 +201,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:07" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          4.4k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          38 分钟
+          37 分钟
         
       </span>
     
@@ -274,77 +274,62 @@
             
             <div class="markdown-body">
               
-              <h2 id="shell编程"><a class="markdownIt-Anchor" href="#shell编程"></a> Shell编程</h2>
-<ul>
+              <h2 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h2><ul>
 <li>通常情况下，从命令行每输入一次命令就能够得到系统响应，如果需要一个接一个地输入命令才得到结果，Shell很好地解决了这个问题。</li>
 </ul>
-<h1 id="1-熟悉shell程序的创建"><a class="markdownIt-Anchor" href="#1-熟悉shell程序的创建"></a> 1. 熟悉Shell程序的创建</h1>
-<ol>
+<h1 id="1-熟悉Shell程序的创建"><a href="#1-熟悉Shell程序的创建" class="headerlink" title="1. 熟悉Shell程序的创建"></a>1. 熟悉Shell程序的创建</h1><ol>
 <li>命令语言互动式地解释和执行用户输入的命令</li>
 <li>程序设计</li>
 </ol>
-<h2 id="11-语法基本介绍"><a class="markdownIt-Anchor" href="#11-语法基本介绍"></a> 1.1. 语法基本介绍</h2>
-<h3 id="111-开头"><a class="markdownIt-Anchor" href="#111-开头"></a> 1.1.1. 开头</h3>
-<ol>
+<h2 id="1-1-语法基本介绍"><a href="#1-1-语法基本介绍" class="headerlink" title="1.1. 语法基本介绍"></a>1.1. 语法基本介绍</h2><h3 id="1-1-1-开头"><a href="#1-1-1-开头" class="headerlink" title="1.1.1. 开头"></a>1.1.1. 开头</h3><ol>
 <li>必须开头为:  <code>#!/bin/bash</code></li>
 <li><code>#!</code>用来告诉系统它后面的参数是用来执行文件的程序</li>
 <li>使得脚本可执行，需要赋予该文件可执行的权限，使用如下的命令文件才能运行</li>
 <li>命令:<code>chmod u+x [文件名]</code></li>
 </ol>
-<h3 id="112-注释"><a class="markdownIt-Anchor" href="#112-注释"></a> 1.1.2. 注释</h3>
-<ol>
+<h3 id="1-1-2-注释"><a href="#1-1-2-注释" class="headerlink" title="1.1.2. 注释"></a>1.1.2. 注释</h3><ol>
 <li>以<code>#</code>开头的具体表示注释，直到这一行结束</li>
 </ol>
-<h2 id="12-创建一个shell程序"><a class="markdownIt-Anchor" href="#12-创建一个shell程序"></a> 1.2. 创建一个Shell程序</h2>
-<ol>
+<h2 id="1-2-创建一个Shell程序"><a href="#1-2-创建一个Shell程序" class="headerlink" title="1.2. 创建一个Shell程序"></a>1.2. 创建一个Shell程序</h2><ol>
 <li>放在一个文件中的一系列linux命令和使用程序，在执行的时候，通过linux系统一个接一个地解释和执行每个命令</li>
 </ol>
-<h3 id="121-创建文件"><a class="markdownIt-Anchor" href="#121-创建文件"></a> 1.2.1. 创建文件</h3>
-<ol>
+<h3 id="1-2-1-创建文件"><a href="#1-2-1-创建文件" class="headerlink" title="1.2.1. 创建文件"></a>1.2.1. 创建文件</h3><ol>
 <li>在/root目录下使用vi编辑器创建文件date</li>
-<li>命令：</li>
+<li>命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta">#</span><span class="language-bash">filename:<span class="hljs-built_in">date</span></span><br>echo &quot;Mr.$USER,Today is:&quot;<br>date<br>ehcho whish you a lucky day!<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta">#</span><span class="language-bash">filename:<span class="hljs-built_in">date</span></span><br>echo &quot;Mr.$USER,Today is:&quot;<br>date<br>ehcho whish you a lucky day!<br></code></pre></td></tr></table></figure>
-<h3 id="122-设置可执行权限"><a class="markdownIt-Anchor" href="#122-设置可执行权限"></a> 1.2.2. 设置可执行权限</h3>
-<ol>
+<h3 id="1-2-2-设置可执行权限"><a href="#1-2-2-设置可执行权限" class="headerlink" title="1.2.2. 设置可执行权限"></a>1.2.2. 设置可执行权限</h3><ol>
 <li>创建完date文件后它还不能执行，需要我们给它设置可执行权限，使用如下命令给文件设置权限</li>
-<li>并且查看当前的date文件的可执行权限</li>
+<li>并且查看当前的date文件的可执行权限<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LIUNX~]# </span><span class="language-bash"><span class="hljs-built_in">chmod</span> u+x/root/date</span><br><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash"><span class="hljs-built_in">ls</span> -l /root/date</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LIUNX~]# </span><span class="language-bash"><span class="hljs-built_in">chmod</span> u+x/root/date</span><br><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash"><span class="hljs-built_in">ls</span> -l /root/date</span><br></code></pre></td></tr></table></figure>
-<h3 id="123-执行shell程序"><a class="markdownIt-Anchor" href="#123-执行shell程序"></a> 1.2.3. 执行Shell程序</h3>
-<ol>
+<h3 id="1-2-3-执行Shell程序"><a href="#1-2-3-执行Shell程序" class="headerlink" title="1.2.3. 执行Shell程序"></a>1.2.3. 执行Shell程序</h3><ol>
 <li>输入整个文件的完整路径执行Shell程序</li>
-<li>需要如下命令:</li>
+<li>需要如下命令:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">/root/date</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">/root/date</span><br></code></pre></td></tr></table></figure>
-<h3 id="124-使用bash命令执行程序"><a class="markdownIt-Anchor" href="#124-使用bash命令执行程序"></a> 1.2.4. 使用bash命令执行程序</h3>
-<ol>
-<li>如果未设置文件的可执行权限，那么我们需要设置bash命令来告诉系统它是一个课执行的脚本，使用如下命令执行Shell程序</li>
+<h3 id="1-2-4-使用bash命令执行程序"><a href="#1-2-4-使用bash命令执行程序" class="headerlink" title="1.2.4. 使用bash命令执行程序"></a>1.2.4. 使用bash命令执行程序</h3><ol>
+<li>如果未设置文件的可执行权限，那么我们需要设置bash命令来告诉系统它是一个课执行的脚本，使用如下命令执行Shell程序<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">bash /root/date</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">bash /root/date</span><br></code></pre></td></tr></table></figure>
-<h2 id="13-显示欢迎界面的shell程序"><a class="markdownIt-Anchor" href="#13-显示欢迎界面的shell程序"></a> 1.3. 显示欢迎界面的Shell程序</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span> <br><span class="hljs-meta">#</span><span class="language-bash">filename:welcome</span> <br>first() &#123;<br>     echo &quot;==============================================&quot;<br>    echo &quot;Hello! Everyone! Welcome to the Linux world。&quot; <br>    echo &quot;==============================================&quot; <br>&#125; <br>second() <br>&#123; <br>    echo &quot;**********************************************&quot; <br>&#125; <br>first <br>second <br>second <br>first <br></code></pre></td></tr></table></figure>
+<h2 id="1-3-显示欢迎界面的Shell程序"><a href="#1-3-显示欢迎界面的Shell程序" class="headerlink" title="1.3. 显示欢迎界面的Shell程序"></a>1.3. 显示欢迎界面的Shell程序</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span> <br><span class="hljs-meta">#</span><span class="language-bash">filename:welcome</span> <br>first() &#123;<br>     echo &quot;==============================================&quot;<br>    echo &quot;Hello! Everyone! Welcome to the Linux world。&quot; <br>    echo &quot;==============================================&quot; <br>&#125; <br>second() <br>&#123; <br>    echo &quot;**********************************************&quot; <br>&#125; <br>first <br>second <br>second <br>first <br></code></pre></td></tr></table></figure>
 <ol>
 <li>注意函数的定义方式和引用方式</li>
 </ol>
-<h1 id="2-shell变量"><a class="markdownIt-Anchor" href="#2-shell变量"></a> 2. Shell变量</h1>
-<ol>
+<h1 id="2-Shell变量"><a href="#2-Shell变量" class="headerlink" title="2. Shell变量"></a>2. Shell变量</h1><ol>
 <li>Shell也提供说明和使用变量的功能</li>
 <li>Shell采用$var的形式来引用名为var的变量的值</li>
 </ol>
-<h2 id="21-shell定义的环境变量"><a class="markdownIt-Anchor" href="#21-shell定义的环境变量"></a> 2.1. Shell定义的环境变量</h2>
-<ol>
+<h2 id="2-1-Shell定义的环境变量"><a href="#2-1-Shell定义的环境变量" class="headerlink" title="2.1. Shell定义的环境变量"></a>2.1. Shell定义的环境变量</h2><ol>
 <li>Shell在开始执行时就已经定义的一些与系统的工作环境有关的环境变量</li>
-<li>环境变量：
-<ol>
+<li>环境变量：<ol>
 <li>HOME：用于保存用户宿主目录的完全路径名。</li>
 <li>PATH：用于保存用冒号分隔的目录路径名。</li>
 <li>TERM：终端的类型。</li>
 <li>UID：当前用户的识别号。由数字构成。</li>
 <li>PWD：当前工作目录的绝对路径名。这个的值随着cd命令变化。</li>
 <li>PS1：用户平时的提示符。在root用户下，默认的主提示符是#，在普通用户情况下是$。</li>
-<li>PS2：第一行没输完，等待第二行输入的提示符&gt;。
-<ol>
+<li>PS2：第一行没输完，等待第二行输入的提示符&gt;。<ol>
 <li>直接按回车，Shell判断出命令不完整。</li>
 <li>输入\之后，按下回车。</li>
 </ol>
@@ -353,10 +338,8 @@
 </li>
 <li>查看当前系统的环境变量：<code>echo $name</code></li>
 </ol>
-<h2 id="22-用户定义的变量"><a class="markdownIt-Anchor" href="#22-用户定义的变量"></a> 2.2. 用户定义的变量</h2>
-<ol>
-<li>用户定义变量：<code>变量名 = 变量值</code>(无$,不然会导致报错)
-<ol>
+<h2 id="2-2-用户定义的变量"><a href="#2-2-用户定义的变量" class="headerlink" title="2.2. 用户定义的变量"></a>2.2. 用户定义的变量</h2><ol>
+<li>用户定义变量：<code>变量名 = 变量值</code>(无$,不然会导致报错)<ol>
 <li>赋值过程小红等号量变不能含空格</li>
 <li>如果值本身含有空格，那么用双引号括起来</li>
 <li>建议所有的变量名都大写</li>
@@ -366,36 +349,28 @@
 <li>说明变量是一个特定的值，之后不再改变它的值，语法：<code>readonly 变量名</code></li>
 <li>任何时候创建的变量都是局部变量，不能被Shell运行的其他命令或Shell程序所利用，如果想要声明为全局的话，语法是：<code>export 变量名||export 变量名=变量值</code></li>
 </ol>
-<h2 id="23-位置参数"><a class="markdownIt-Anchor" href="#23-位置参数"></a> 2.3. 位置参数</h2>
-<ol>
+<h2 id="2-3-位置参数"><a href="#2-3-位置参数" class="headerlink" title="2.3. 位置参数"></a>2.3. 位置参数</h2><ol>
 <li>位置参数是一种在调用Shell程序的命令行中按照各自的位置决定的变量，是在程序名之后输入的参数</li>
 <li>位置参数之间是用空格分隔的，程序取第一个位置参数替换程序中的$1</li>
 <li>$0是一个特殊的变量，内容是当前Shell程序的文件名，所以其并不是一个位置参数，在显示当前的所有位置参数时不包含$0</li>
 </ol>
-<h2 id="24-预定义变量"><a class="markdownIt-Anchor" href="#24-预定义变量"></a> 2.4. 预定义变量</h2>
-<ol>
+<h2 id="2-4-预定义变量"><a href="#2-4-预定义变量" class="headerlink" title="2.4. 预定义变量"></a>2.4. 预定义变量</h2><ol>
 <li>所有的预定义变量都是用$和另一个符号组成的。</li>
-<li>已经完成的预定义变量:
-<ol>
+<li>已经完成的预定义变量:<ol>
 <li>$#：位置参数的数量。</li>
 <li>$*：所有位置参数的内容。</li>
 <li>$?：命令执行后返回的状态。</li>
-<li>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">：</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">前</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">程</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">程</mi><mi mathvariant="normal">号</mi><mi mathvariant="normal">。</mi></mrow><annotation encoding="application/x-tex">：当前进程的进程号。
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">：</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">前</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">。</span></span></span></span></span></p>
-</li>
+<li>$$：当前进程的进程号。</li>
+<li>$!：后台运行的最后一个进程号。</li>
 <li>$0：当前执行的进程名。</li>
 </ol>
 </li>
 </ol>
-<h2 id="25-参数置换的变量"><a class="markdownIt-Anchor" href="#25-参数置换的变量"></a> 2.5. 参数置换的变量</h2>
-<ol>
+<h2 id="2-5-参数置换的变量"><a href="#2-5-参数置换的变量" class="headerlink" title="2.5. 参数置换的变量"></a>2.5. 参数置换的变量</h2><ol>
 <li>Shell提供了参数置换功能以便用户可以根据不同条件来给变量赋不同值</li>
-<li>五种不同形式：
-<ol>
+<li>五种不同形式：<ol>
 <li><code>$&#123;variable:-value&#125;</code>如果变量variable存在，则返回其值，否则返回值value</li>
-<li><code>$&#123;variable:=value&#125;</code>如果变量variable存在，则返回其值，否则将value赋值给variable，然后返回值value。
-<ul>
+<li><code>$&#123;variable:=value&#125;</code>如果变量variable存在，则返回其值，否则将value赋值给variable，然后返回值value。<ul>
 <li>位置参数不可以这样</li>
 </ul>
 </li>
@@ -405,30 +380,25 @@
 </ol>
 </li>
 </ol>
-<h1 id="3-变量表达式"><a class="markdownIt-Anchor" href="#3-变量表达式"></a> 3. 变量表达式</h1>
-<ol>
+<h1 id="3-变量表达式"><a href="#3-变量表达式" class="headerlink" title="3. 变量表达式"></a>3. 变量表达式</h1><ol>
 <li>test是一个Shell程序中的一个表达式，通过Shell提供的if等条件语句相结合可以方便地测试字符串、文件状态和数字。</li>
 <li>语法:<code>test [表达式]</code></li>
 <li>表达式所代表的操作符有字符串操作符、数字操作符、逻辑操作符以及文件操作符。</li>
 </ol>
-<h2 id="31-字符串比较"><a class="markdownIt-Anchor" href="#31-字符串比较"></a> 3.1. 字符串比较</h2>
-<ol>
+<h2 id="3-1-字符串比较"><a href="#3-1-字符串比较" class="headerlink" title="3.1. 字符串比较"></a>3.1. 字符串比较</h2><ol>
 <li>作用：测试字符串是否相等，长度是否为零，字符串是否为NULL</li>
-<li>比较符号：
-<ol>
-<li>=:比较两个字符串是否相同，相同则为&quot;是&quot;(0)</li>
-<li>!=:比较两个字符串是否相同，不同则为&quot;是&quot;</li>
-<li>-n:比较字符串的长度是否大于0，如果大于0则为&quot;是&quot;</li>
-<li>-z:比较字符串的长度是否等于0，如果等于0则为&quot;是&quot;</li>
+<li>比较符号：<ol>
+<li>=:比较两个字符串是否相同，相同则为”是”(0)</li>
+<li>!=:比较两个字符串是否相同，不同则为”是”</li>
+<li>-n:比较字符串的长度是否大于0，如果大于0则为”是”</li>
+<li>-z:比较字符串的长度是否等于0，如果等于0则为”是”</li>
 </ol>
 </li>
 <li>例7.4含有空格的字符串的比较</li>
 <li>使用test处理含有空格的变量时最好用引号把变量括起来，防止出现错误的结果。</li>
 </ol>
-<h2 id="32-数字比较"><a class="markdownIt-Anchor" href="#32-数字比较"></a> 3.2. 数字比较</h2>
-<ol>
-<li>使用整数来表示数字比大小
-<ol>
+<h2 id="3-2-数字比较"><a href="#3-2-数字比较" class="headerlink" title="3.2. 数字比较"></a>3.2. 数字比较</h2><ol>
+<li>使用整数来表示数字比大小<ol>
 <li>-eq:相等</li>
 <li>-ge:大于等于</li>
 <li>-le:小于等于</li>
@@ -440,27 +410,22 @@
 <li>显示命令返回的值：<code>echo $?</code></li>
 <li>返回值为0则为成立</li>
 </ol>
-<h2 id="33-逻辑测试"><a class="markdownIt-Anchor" href="#33-逻辑测试"></a> 3.3. 逻辑测试</h2>
-<ol>
-<li>简单的逻辑测试符号：
-<ol>
+<h2 id="3-3-逻辑测试"><a href="#3-3-逻辑测试" class="headerlink" title="3.3. 逻辑测试"></a>3.3. 逻辑测试</h2><ol>
+<li>简单的逻辑测试符号：<ol>
 <li>!:一个和逻辑值相反的逻辑值</li>
 <li>-a:and</li>
 <li>-o:or</li>
 </ol>
 </li>
-<li>结果对应:
-<ol>
+<li>结果对应:<ol>
 <li>1:否</li>
 <li>0:是</li>
 </ol>
 </li>
 </ol>
-<h2 id="34-文件操作"><a class="markdownIt-Anchor" href="#34-文件操作"></a> 3.4. 文件操作</h2>
-<ol>
+<h2 id="3-4-文件操作"><a href="#3-4-文件操作" class="headerlink" title="3.4. 文件操作"></a>3.4. 文件操作</h2><ol>
 <li>文件测试表达式通常是为了测试文件的文件操作逻辑</li>
-<li>测试的符号:(以下均为返回值为&quot;是&quot;的情况)
-<ol>
+<li>测试的符号:(以下均为返回值为”是”的情况)<ol>
 <li>-d:对象存在且为目录</li>
 <li>-f:对象存在且为文件</li>
 <li>-L:对象存在且为符号连接</li>
@@ -472,47 +437,37 @@
 </ol>
 </li>
 </ol>
-<h1 id="4-shell程序的执行和跟踪"><a class="markdownIt-Anchor" href="#4-shell程序的执行和跟踪"></a> 4. Shell程序的执行和跟踪</h1>
-<ol>
+<h1 id="4-Shell程序的执行和跟踪"><a href="#4-Shell程序的执行和跟踪" class="headerlink" title="4. Shell程序的执行和跟踪"></a>4. Shell程序的执行和跟踪</h1><ol>
 <li>Shell程序是解释执行的，并不需要编译成目的程序。</li>
 </ol>
-<h2 id="41-shell程序的执行和调试"><a class="markdownIt-Anchor" href="#41-shell程序的执行和调试"></a> 4.1. Shell程序的执行和调试</h2>
-<ol>
-<li><code>#! /bin/bash</code>的解释:
-<ol>
-<li>#:表示这一行是指注释</li>
+<h2 id="4-1-Shell程序的执行和调试"><a href="#4-1-Shell程序的执行和调试" class="headerlink" title="4.1. Shell程序的执行和调试"></a>4.1. Shell程序的执行和调试</h2><ol>
+<li><code>#! /bin/bash</code>的解释:<ol>
+<li><h1 id="表示这一行是指注释"><a href="#表示这一行是指注释" class="headerlink" title=":表示这一行是指注释"></a>:表示这一行是指注释</h1></li>
 <li>!:表示Shell运行感叹号之后的命令并用文档的其余部分作为输入，也就是运行/bin/bash并让其执行Shell程序的内容。</li>
 </ol>
 </li>
-<li>Shell程序的执行：
-<ol>
-<li>方式一:bash [Shell程序文件名]
-<ul>
+<li>Shell程序的执行：<ol>
+<li>方式一:bash [Shell程序文件名]<ul>
 <li>实际是调用一个新的bash命令解释程序，而把Shell程序文件名作为参数传递给它。</li>
 </ul>
 </li>
-<li>方式二:bash&lt; [Shell程序文件名]
-<ul>
+<li>方式二:bash&lt; [Shell程序文件名]<ul>
 <li>这种方式是输入重定向，将Shell命令解释程序的输入取自指定的程序文件。</li>
 </ul>
 </li>
-<li>方法三:使用chmod命令使Shell程序成为可执行的然后运行
-<ol>
+<li>方法三:使用chmod命令使Shell程序成为可执行的然后运行<ol>
 <li>一个文件能够运行取决于该文件的内容本身是否可执行且该文件是否具有执行权</li>
 </ol>
 </li>
-<li>针对三种方式的选择:
-<ol>
+<li>针对三种方式的选择:<ol>
 <li>刚创建时，推荐使用方式一进行调试</li>
 <li>调试好后，使用第三种方式将其固定下来，以后只要输入相应的文件名即可</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>Shell程序的调试：
-<ol>
-<li>调用bash的形式是：<code>bash [选项][Shell程序文件名]</code>
-<ol>
+<li>Shell程序的调试：<ol>
+<li>调用bash的形式是：<code>bash [选项][Shell程序文件名]</code><ol>
 <li>-e:如果一个命令失败就立即退出</li>
 <li>-n:读入命令但是不执行他们</li>
 <li>-u:置换时把未设置的变量看做出错</li>
@@ -520,17 +475,12 @@
 <li>-x:执行命令时把命令和他们的参数显示出来。</li>
 </ol>
 </li>
-<li>以上所有选项也可以在Shell程序内部使用&quot;set -选项&quot;的形式引用，而&quot;set +选项&quot;则将禁止该选项起作用。</li>
-<li>在Shell运行时，若遇到不存在或不可执行命令，复位失败或命令非正常结束等情况时，如果未经重新定向，该错误会显示在终端，但是程序不会停止。</li>
+<li>以上所有选项也可以在Shell程序内部使用”set -选项”的形式引用，而”set +选项”则将禁止该选项起作用。</li>
+<li>在Shell运行时，若遇到不存在或不可执行命令，复位失败或命令非正常结束等情况时，如果未经重新定向，该错误会显示在终端，但是程序不会停止。<h2 id="4-2-Shell程序的跟踪："><a href="#4-2-Shell程序的跟踪：" class="headerlink" title="4.2. Shell程序的跟踪："></a>4.2. Shell程序的跟踪：</h2></li>
 </ol>
 </li>
-</ol>
-<h2 id="42-shell程序的跟踪"><a class="markdownIt-Anchor" href="#42-shell程序的跟踪"></a> 4.2. Shell程序的跟踪：</h2>
-<ol>
-<li>主要方法：利用Shell命令解释程序的&quot;-v&quot;或&quot;-x&quot;选项来跟踪程序的执行。
-<ol>
-<li>-v:选项是Shell在执行程序的过程中，把它读入的每一个命令行都显示出来。
-<ul>
+<li>主要方法：利用Shell命令解释程序的”-v”或”-x”选项来跟踪程序的执行。<ol>
+<li>-v:选项是Shell在执行程序的过程中，把它读入的每一个命令行都显示出来。<ul>
 <li>无该选项：显示命令行的原始数据;有该选项:显示替换后的命令行。</li>
 </ul>
 </li>
@@ -538,47 +488,33 @@
 </ol>
 </li>
 </ol>
-<h1 id="5-shell流程控制语句"><a class="markdownIt-Anchor" href="#5-shell流程控制语句"></a> 5. Shell流程控制语句</h1>
-<ol>
+<h1 id="5-Shell流程控制语句"><a href="#5-Shell流程控制语句" class="headerlink" title="5. Shell流程控制语句"></a>5. Shell流程控制语句</h1><ol>
 <li>和其他高级程序设计语言一样，Shell提供了用来控制程序和执行流程的命令。</li>
 </ol>
-<h2 id="51-条件判断"><a class="markdownIt-Anchor" href="#51-条件判断"></a> 5.1. 条件判断</h2>
-<h3 id="511-if语句"><a class="markdownIt-Anchor" href="#511-if语句"></a> 5.1.1. if语句</h3>
-<ol>
+<h2 id="5-1-条件判断"><a href="#5-1-条件判断" class="headerlink" title="5.1. 条件判断"></a>5.1. 条件判断</h2><h3 id="5-1-1-if语句"><a href="#5-1-1-if语句" class="headerlink" title="5.1.1. if语句"></a>5.1.1. if语句</h3><ol>
 <li>Shell程序中的条件分支是通过if条件语句来实现，其一般格式有if-then语句和if-then-else语句</li>
-<li>if-then语句:</li>
+<li>if-then语句:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Shell">if 命令行1<br>then<br>    命令行2<br>fi<br></code></pre></td></tr></table></figure></li>
+<li>if-then-else语句：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Shell">if <br>    命令行1<br>then<br>    命令行2<br>else<br>    命令行3<br>fi<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Shell">if 命令行1<br>then<br>    命令行2<br>fi<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>if-then-else语句：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Shell">if <br>    命令行1<br>then<br>    命令行2<br>else<br>    命令行3<br>fi<br></code></pre></td></tr></table></figure>
-<h3 id="512-case语句"><a class="markdownIt-Anchor" href="#512-case语句"></a> 5.1.2. case语句</h3>
-<ol>
+<h3 id="5-1-2-case语句"><a href="#5-1-2-case语句" class="headerlink" title="5.1.2. case语句"></a>5.1.2. case语句</h3><ol>
 <li>从多个选项中选择一项</li>
-<li>例子</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Shell">case string in<br>1) ...<br>2) ...<br>.<br>.<br>.<br>*) ...#其他情况<br>esac<br></code></pre></td></tr></table></figure>
-<ol start="3">
+<li>例子<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Shell">case string in<br>1) ...<br>2) ...<br>.<br>.<br>.<br>*) ...#其他情况<br>esac<br></code></pre></td></tr></table></figure></li>
 <li>其中可以使用通配符</li>
 </ol>
-<h2 id="52-循环控制"><a class="markdownIt-Anchor" href="#52-循环控制"></a> 5.2. 循环控制</h2>
-<ol>
+<h2 id="5-2-循环控制"><a href="#5-2-循环控制" class="headerlink" title="5.2. 循环控制"></a>5.2. 循环控制</h2><ol>
 <li>for语句、while语句和until语句</li>
 <li>Shell内置的true为0，false为非0</li>
 </ol>
-<h3 id="521-for语句"><a class="markdownIt-Anchor" href="#521-for语句"></a> 5.2.1. for语句</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Shell">for 变量名 [in 数据列表]<br>do<br>    若干命令行<br>done<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-1-for语句"><a href="#5-2-1-for语句" class="headerlink" title="5.2.1. for语句"></a>5.2.1. for语句</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Shell">for 变量名 [in 数据列表]<br>do<br>    若干命令行<br>done<br></code></pre></td></tr></table></figure>
 <ol>
 <li>变量名可以使任意字符串，则会把数据列表中的值按照顺序替换进变量名进行操作。</li>
 </ol>
-<h3 id="522-while语句"><a class="markdownIt-Anchor" href="#522-while语句"></a> 5.2.2. while语句</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell">while <br>    若干个命令行1<br>do<br>    若干个命令行2<br>done<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-2-while语句"><a href="#5-2-2-while语句" class="headerlink" title="5.2.2. while语句"></a>5.2.2. while语句</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell">while <br>    若干个命令行1<br>do<br>    若干个命令行2<br>done<br></code></pre></td></tr></table></figure>
 <ol>
 <li>例子解释:乘号需要转义</li>
 </ol>
-<h3 id="523-util语句"><a class="markdownIt-Anchor" href="#523-util语句"></a> 5.2.3. util语句</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell">until <br>    若干个命令行1<br>do<br>    若干个命令行2<br>done<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-3-util语句"><a href="#5-2-3-util语句" class="headerlink" title="5.2.3. util语句"></a>5.2.3. util语句</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell">until <br>    若干个命令行1<br>do<br>    若干个命令行2<br>done<br></code></pre></td></tr></table></figure>
 <ol>
 <li>另一种循环，和while相似，但是是在条件为假的时候才继续循环</li>
 </ol>
@@ -675,9 +611,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-06.%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="2018-Linux-system-basics-linux-06.常用操作">
+                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book2-%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/" title="2020-Demand-and-business-model-innovation-Book2-需求基础">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2018-Linux-system-basics-linux-06.常用操作</span>
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Book2-需求基础</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -685,8 +621,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-%E5%AE%9E%E9%99%85%E7%8E%AF%E5%A2%83%E4%B8%AD%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="2018-Linux-system-basics-实际环境中遇到问题解决">
-                        <span class="hidden-mobile">2018-Linux-system-basics-实际环境中遇到问题解决</span>
+                      <a href="/2022/02/16/2020-Business-Intelligence/2020-Business-Intelligence-Exam01-%E8%80%83%E8%AF%95%E8%AE%B2%E8%A7%A3/" title="2020-Business-Intelligence-Exam01-考试讲解">
+                        <span class="hidden-mobile">2020-Business-Intelligence-Exam01-考试讲解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

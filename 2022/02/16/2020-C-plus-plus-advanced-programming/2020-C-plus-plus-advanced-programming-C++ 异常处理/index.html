@@ -24,8 +24,8 @@
 <meta property="og:description" content="2020-C-plus-plus-advanced-programming-C++ 异常处理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/exception/2.png">
-<meta property="article:published_time" content="2022-02-16T11:09:57.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:17:32.382Z">
+<meta property="article:published_time" content="2022-02-16T11:13:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:08:19.587Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C++">
@@ -202,7 +202,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:13" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -275,38 +275,28 @@
             
             <div class="markdown-body">
               
-              <h2 id="c-异常处理"><a class="markdownIt-Anchor" href="#c-异常处理"></a> C++ 异常处理</h2>
-<ol>
-<li>错误
-<ol>
+              <h2 id="C-异常处理"><a href="#C-异常处理" class="headerlink" title="C++ 异常处理"></a>C++ 异常处理</h2><ol>
+<li>错误<ol>
 <li>语法错误:编译系统</li>
 <li>逻辑错误:测试</li>
 </ol>
 </li>
-<li>异常 Exception
-<ol>
+<li>异常 Exception<ol>
 <li>运行环境造成:内存不足、文件操作失败等</li>
 <li>异常处理:错误提示信息等</li>
 </ol>
 </li>
 </ol>
-<h1 id="1-异常处理"><a class="markdownIt-Anchor" href="#1-异常处理"></a> 1. 异常处理</h1>
-<ol>
-<li>特征：
-<ol>
+<h1 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1. 异常处理"></a>1. 异常处理</h1><ol>
+<li>特征：<ol>
 <li>可以预见</li>
 <li>无法避免</li>
 </ol>
 </li>
-<li>作用:提高程序鲁棒性(Bobustness)</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">char</span> *str)</span> </span>&#123;<span class="hljs-comment">//str可能是用户的一个输入</span><br>    <span class="hljs-function">ifstream <span class="hljs-title">file</span><span class="hljs-params">(str)</span></span>;<br>    <span class="hljs-keyword">if</span> (file.<span class="hljs-built_in">fail</span>()) &#123;<br>        <span class="hljs-comment">// 异常处理</span><br>    &#125;<br>    <span class="hljs-type">int</span> x;<br>    file &gt;&gt; x;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol>
+<li>作用:提高程序鲁棒性(Bobustness)<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">char</span> *str)</span> </span>&#123;<span class="hljs-comment">//str可能是用户的一个输入</span><br>    <span class="hljs-function">ifstream <span class="hljs-title">file</span><span class="hljs-params">(str)</span></span>;<br>    <span class="hljs-keyword">if</span> (file.<span class="hljs-built_in">fail</span>()) &#123;<br>        <span class="hljs-comment">// 异常处理</span><br>    &#125;<br>    <span class="hljs-type">int</span> x;<br>    file &gt;&gt; x;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li>问题:发现异常之处与处理异常之处不一致，怎么处理?函数中的异常要告知调用者</li>
-<li>常见处理方式:
-<ol>
-<li>函数参数:
-<ul>
+<li>常见处理方式:<ol>
+<li>函数参数:<ul>
 <li>返回值(特殊的，0或者1)</li>
 <li>引用参数(存放一些特定的信息)</li>
 </ul>
@@ -318,78 +308,69 @@
 <li>相同的异常，不同的地方，需要编写相同的处理了逻辑是不合理的</li>
 <li>传统异常处理方式不能处理构造函数出现的异常</li>
 </ol>
-<h2 id="11-处理机制"><a class="markdownIt-Anchor" href="#11-处理机制"></a> 1.1. 处理机制</h2>
-<ol>
+<h2 id="1-1-处理机制"><a href="#1-1-处理机制" class="headerlink" title="1.1. 处理机制"></a>1.1. 处理机制</h2><ol>
 <li>C++异常处理机制是，一种专门、清晰描述异常处理过程的机制</li>
 <li>try：监控</li>
 <li>throw：抛掷异常对象，不处理</li>
-<li>catch：捕获并处理</li>
+<li>catch：捕获并处理<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">try</span>&#123;<br>    <span class="hljs-comment">//&lt;语句序列&gt;</span><br>    <span class="hljs-comment">//监控</span><br>&#125;<span class="hljs-keyword">throw</span><span class="hljs-comment">//&lt;表达式&gt;，可以是基本类型，拷贝构造函数用来拷贝类</span><br><span class="hljs-built_in">catch</span>(&lt;类型&gt;[&lt;变量&gt;])&#123;<span class="hljs-comment">//变量不重要可以省略</span><br>    <span class="hljs-comment">//&lt;语句序列&gt; 捕获并处理</span><br>    <span class="hljs-comment">//依次退出，不要抛出指向局部变量的指针，解决:直接抛出对象，自动进行拷贝</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">try</span>&#123;<br>    <span class="hljs-comment">//&lt;语句序列&gt;</span><br>    <span class="hljs-comment">//监控</span><br>&#125;<span class="hljs-keyword">throw</span><span class="hljs-comment">//&lt;表达式&gt;，可以是基本类型，拷贝构造函数用来拷贝类</span><br><span class="hljs-built_in">catch</span>(&lt;类型&gt;[&lt;变量&gt;])&#123;<span class="hljs-comment">//变量不重要可以省略</span><br>    <span class="hljs-comment">//&lt;语句序列&gt; 捕获并处理</span><br>    <span class="hljs-comment">//依次退出，不要抛出指向局部变量的指针，解决:直接抛出对象，自动进行拷贝</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="12-catch的用法"><a class="markdownIt-Anchor" href="#12-catch的用法"></a> 1.2. catch的用法</h2>
-<ol>
-<li>类型:异常类型，匹配规则同函数重载(精确匹配只有底下三种，int转double都不行)
-<ol>
+<h2 id="1-2-catch的用法"><a href="#1-2-catch的用法" class="headerlink" title="1.2. catch的用法"></a>1.2. catch的用法</h2><ol>
+<li>类型:异常类型，匹配规则同函数重载(精确匹配只有底下三种，int转double都不行)<ol>
 <li>允许从非常量到常量转换</li>
 <li>允许从派生类到基类转换</li>
 <li>允许数组和函数转换成指针</li>
 </ol>
 </li>
 <li>变量:存储异常对象，可省</li>
-<li>一个try语句块的后面可以跟多个catch语句块，用于捕获不同类型的异常进行处理</li>
+<li>一个try语句块的后面可以跟多个catch语句块，用于捕获不同类型的异常进行处理<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-number">1.0</span>;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;abcd&quot;</span>;<br>&#125;<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">f</span>();<br>&#125;<span class="hljs-built_in">catch</span> (<span class="hljs-type">int</span>)<span class="hljs-comment">// 处 理 throw 1;</span><br>&#123;...&#125;<br><span class="hljs-built_in">catch</span>(<span class="hljs-type">double</span>)<span class="hljs-comment">//throw 1.0</span><br>&#123;...&#125;<br><span class="hljs-built_in">catch</span>(<span class="hljs-type">char</span> *)<span class="hljs-comment">//throw &quot;abcd&quot;</span><br><span class="hljs-comment">//字符串优先解释为char *</span><br>&#123;...&#125;     <br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-number">1.0</span>;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;abcd&quot;</span>;<br>&#125;<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-built_in">f</span>();<br>&#125;<span class="hljs-built_in">catch</span> (<span class="hljs-type">int</span>)<span class="hljs-comment">// 处 理 throw 1;</span><br>&#123;...&#125;<br><span class="hljs-built_in">catch</span>(<span class="hljs-type">double</span>)<span class="hljs-comment">//throw 1.0</span><br>&#123;...&#125;<br><span class="hljs-built_in">catch</span>(<span class="hljs-type">char</span> *)<span class="hljs-comment">//throw &quot;abcd&quot;</span><br><span class="hljs-comment">//字符串优先解释为char *</span><br>&#123;...&#125;     <br></code></pre></td></tr></table></figure>
-<h2 id="13-异常处理的嵌套"><a class="markdownIt-Anchor" href="#13-异常处理的嵌套"></a> 1.3. 异常处理的嵌套</h2>
-<ol>
+<h2 id="1-3-异常处理的嵌套"><a href="#1-3-异常处理的嵌套" class="headerlink" title="1.3. 异常处理的嵌套"></a>1.3. 异常处理的嵌套</h2><ol>
 <li>调用关系:f-&gt;g-&gt;h</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//第二节课10min</span><br><span class="hljs-built_in">f</span>()&#123;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-built_in">g</span>();<br>    &#125;<span class="hljs-built_in">catch</span> (<span class="hljs-type">int</span>)<br>     &#123; … &#125;<br>    <span class="hljs-built_in">catch</span> (<span class="hljs-type">char</span> *)<br>    &#123; … &#125;<br>&#125;<br><span class="hljs-built_in">g</span>()&#123;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-built_in">h</span>();<br>    &#125;<span class="hljs-built_in">catch</span> (<span class="hljs-type">int</span>)<br>    &#123; …  &#125;<br>&#125;<br><span class="hljs-built_in">h</span>()&#123;<br>  <span class="hljs-keyword">throw</span> <span class="hljs-number">1</span>;   <span class="hljs-comment">//由g捕获并处理</span><br>  <span class="hljs-keyword">throw</span> <span class="hljs-string">&quot;abcd&quot;</span>; <span class="hljs-comment">//由f捕获并处理</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>如果所抛掷的异常对象如果在调用链上未被捕获，则由系统的abort处理,尽量不要</li>
 </ol>
-<h2 id="14-定义异常类"><a class="markdownIt-Anchor" href="#14-定义异常类"></a> 1.4. 定义异常类</h2>
-<ol>
-<li>注意catch块排列顺序：这样子保证了继承顺序(重要)，顺序向下检查是否符合条件，一旦符合条件就不再向下查找了。</li>
-</ol>
+<h2 id="1-4-定义异常类"><a href="#1-4-定义异常类" class="headerlink" title="1.4. 定义异常类"></a>1.4. 定义异常类</h2><ol>
+<li><p>注意catch块排列顺序：这样子保证了继承顺序(重要)，顺序向下检查是否符合条件，一旦符合条件就不再向下查找了。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileErrors</span> &#123; &#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">NonExist</span>:<span class="hljs-keyword">public</span> FileErrors &#123; &#125; ;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WrongFormat</span>:<span class="hljs-keyword">public</span> FileErrors &#123; &#125; ;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DiskSeekError</span>:<span class="hljs-keyword">public</span> FileErrors &#123; &#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">try</span>&#123;<br>        WrongFormat wf;<br>        <span class="hljs-keyword">throw</span> wf;<br>    &#125;<span class="hljs-built_in">catch</span>(NonExists&amp;)&#123;...&#125;<br>    <span class="hljs-built_in">catch</span>(DiskSeekError&amp;)&#123;...&#125;<br>    <span class="hljs-built_in">catch</span>(FileErrors)&#123;...&#125;<span class="hljs-comment">//最后一个可以接住，派生类像基类转换是允许的</span><br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">try</span>&#123;<br>        WrongFormat wf;<br>        <span class="hljs-keyword">throw</span> wf;<br>    &#125;<span class="hljs-built_in">catch</span>(FileErrors)&#123;...&#125;<span class="hljs-comment">//这样子底下都捕获不到</span><br>    <span class="hljs-built_in">catch</span>(NonExists&amp;)&#123;...&#125;<br>    <span class="hljs-built_in">catch</span>(DiskSeekError&amp;)&#123;...&#125;<br>&#125;<br><span class="hljs-comment">//Catch exceptions by reference</span><br><span class="hljs-comment">//尝试多继承，而不是拷贝，避免冗余</span><br></code></pre></td></tr></table></figure>
-<ol start="2">
-<li>实例:</li>
-</ol>
+</li>
+<li><p>实例:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyExceptionBase</span> &#123;&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyExceptionDerived</span>: <span class="hljs-keyword">public</span> MyExceptionBase &#123; &#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(MyExceptionBase&amp; e)</span> </span>&#123;<br>    <span class="hljs-keyword">throw</span> e;<span class="hljs-comment">//调用拷贝构造函数</span><br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    MyExceptionDerived e;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-built_in">f</span>(e);<br>    &#125;<span class="hljs-built_in">catch</span>(MyExceptionDerived&amp; e) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;MyExceptionDerived&quot;</span> &lt;&lt; endl;<br>    &#125;<span class="hljs-built_in">catch</span>(MyExceptionBase&amp; e) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;MyExceptionBase&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//输出:MyExceptionBase，为什么?调用了拷贝构造函数，拷贝构造的结果是MyExceptionBase类型的对象</span><br></code></pre></td></tr></table></figure>
-<h2 id="15-异常处理的特例"><a class="markdownIt-Anchor" href="#15-异常处理的特例"></a> 1.5. 异常处理的特例</h2>
-<ol>
+</li>
+</ol>
+<h2 id="1-5-异常处理的特例"><a href="#1-5-异常处理的特例" class="headerlink" title="1.5. 异常处理的特例"></a>1.5. 异常处理的特例</h2><ol>
 <li>无参数 throw:将捕获到的异常对象重新抛掷出去<code>catch(int)&#123;throw;&#125;</code></li>
 <li>catch(…):默认异常处理,这三个点是标准语法,捕获所有异常</li>
 <li>实现:不影响对象布局:程序状态&lt;-&gt;析构函数、异常处理器，对程序验证特征的支持</li>
 <li>构造函数的初始化表前，放置try-catch同样捕获异常1</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//对程序验证特征的支持</span><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T, <span class="hljs-keyword">class</span> E&gt;</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">Assert</span><span class="hljs-params">(T exp, E e)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (DEBUG)<br>        <span class="hljs-keyword">if</span> (!exp) <span class="hljs-keyword">throw</span> e;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="5">
+<ol>
 <li>问题:如何应对多出口引发的处理碎片问题，如果多个地方throw，则意味着这里有多个出口。</li>
 <li>Java中在异常处理这一部分提供了Finally操作，无论在哪里没有抛出最后都会执行finally，将内存缓存进行自己的处理</li>
-<li>可是C<ins>中没有finally,那怎么进行处理呢?这个在C</ins>中，执行完异常处理后，必然执行析构函数</li>
+<li>可是C++中没有finally,那怎么进行处理呢?这个在C++中，执行完异常处理后，必然执行析构函数</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//Know what functions C++ silently writes and calls</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Empty</span> &#123; &#125;; <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Empty</span> &#123;<br>    <span class="hljs-comment">//以下是C++默认提供给空类的方法</span><br>    <span class="hljs-built_in">Empty</span>();<br>    <span class="hljs-built_in">Empty</span>(<span class="hljs-type">const</span> Empty&amp;);<br>    ~<span class="hljs-built_in">Empty</span>();<br>    Empty&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Empty&amp;);<br>    Empty *<span class="hljs-keyword">operator</span> &amp;();<br>    <span class="hljs-type">const</span> Empty* <span class="hljs-keyword">operator</span> &amp;() <span class="hljs-type">const</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h1 id="2-使用析构函数来避免造成内存泄漏"><a class="markdownIt-Anchor" href="#2-使用析构函数来避免造成内存泄漏"></a> 2. 使用析构函数来避免造成内存泄漏</h1>
-<h2 id="21-异常处理的例子资源泄露小动物收养保护中心"><a class="markdownIt-Anchor" href="#21-异常处理的例子资源泄露小动物收养保护中心"></a> 2.1. 异常处理的例子:资源泄露【小动物收养保护中心】</h2>
-<ol>
+<h1 id="2-使用析构函数来避免造成内存泄漏"><a href="#2-使用析构函数来避免造成内存泄漏" class="headerlink" title="2. 使用析构函数来避免造成内存泄漏"></a>2. 使用析构函数来避免造成内存泄漏</h1><h2 id="2-1-异常处理的例子-资源泄露【小动物收养保护中心】"><a href="#2-1-异常处理的例子-资源泄露【小动物收养保护中心】" class="headerlink" title="2.1. 异常处理的例子:资源泄露【小动物收养保护中心】"></a>2.1. 异常处理的例子:资源泄露【小动物收养保护中心】</h2><ol>
 <li>收养中心每天产生一个文件，包含当天的收养个案信息</li>
 <li>读取这个文件，为每个个案做适当的处理</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/exception/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/exception/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ALA</span>&#123;<span class="hljs-comment">//Adorable Little Animal</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">processAdoption</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Puppy</span>: <span class="hljs-keyword">public</span> ALA&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">processAdoption</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Kitten</span>: <span class="hljs-keyword">public</span> ALA&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">processAdoption</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">processAdoptions</span><span class="hljs-params">(istream&amp; dataSource)</span></span>&#123; <br>    <span class="hljs-keyword">while</span> (dataSource)&#123;<br>        ALA *pa = <span class="hljs-built_in">readALA</span>(dataSource);<br>        <span class="hljs-keyword">try</span>&#123;<br>            pa-&gt;<span class="hljs-built_in">processAdoption</span>();<span class="hljs-comment">//处理可能会出现问题</span><br>        &#125;<span class="hljs-built_in">catch</span> (…)&#123;<br>            <span class="hljs-keyword">delete</span> pa;<br>            <span class="hljs-keyword">throw</span>;<br>        &#125;<br>        <span class="hljs-keyword">delete</span> pa;<span class="hljs-comment">//正常执行也要进行处理，这就是多出口的问题</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
-<li>结构破碎:被迫重复&quot;清理码&quot;2次delete的pa(不符合集中式处理的想法、同时容易导致维护困难的问题)</li>
+<li>结构破碎:被迫重复”清理码”2次delete的pa(不符合集中式处理的想法、同时容易导致维护困难的问题)</li>
 <li>集中处理？用析构函数(智能指针)</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">auto_ptr</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">auto_ptr</span>(T *p=<span class="hljs-number">0</span>):<span class="hljs-built_in">ptr</span>(p) &#123;&#125;<br>        ~<span class="hljs-built_in">auto_ptr</span>() &#123; <span class="hljs-keyword">delete</span> ptr; &#125;<br>        T* <span class="hljs-keyword">operator</span>-&gt;()  <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> ptr;&#125;<br>	    T&amp; <span class="hljs-keyword">operator</span> *()  <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> *ptr; &#125;<br>    <span class="hljs-keyword">private</span>:<br>        T*  ptr;<br>&#125;;<br><span class="hljs-comment">//结合智慧指针使用</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">processAdoptions</span><span class="hljs-params">(istream&amp; dataSource)</span></span>&#123;<br>    <span class="hljs-keyword">while</span> (dataSource)&#123;<br>        <span class="hljs-function">auto_ptr&lt;ALA&gt; <span class="hljs-title">pa</span><span class="hljs-params">(readALA(dataSource))</span></span>;<br>        pa-&gt;<span class="hljs-built_in">processAdoption</span>();<span class="hljs-comment">//只要对象结束，就会自动delete</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="22-gui应用软件中的某个显示信息的函数"><a class="markdownIt-Anchor" href="#22-gui应用软件中的某个显示信息的函数"></a> 2.2. GUI应用软件中的某个显示信息的函数</h2>
-<ol>
-<li>handle class:句柄类，就是处理智能指针</li>
-</ol>
+<h2 id="2-2-GUI应用软件中的某个显示信息的函数"><a href="#2-2-GUI应用软件中的某个显示信息的函数" class="headerlink" title="2.2. GUI应用软件中的某个显示信息的函数"></a>2.2. GUI应用软件中的某个显示信息的函数</h2><ol>
+<li><p>handle class:句柄类，就是处理智能指针</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayInfo</span><span class="hljs-params">(<span class="hljs-type">const</span> Information&amp; info)</span></span>&#123;  <br>    <span class="hljs-function">WINDOW_HANDLE <span class="hljs-title">w</span><span class="hljs-params">(createWindow())</span></span>;<span class="hljs-comment">//针对windows窗体的一个指针，createWindow:返回一个窗体指针，WINDOW_HANDLE是别名</span><br>    display info in window corresponding to w;<br>    <span class="hljs-built_in">destroyWindows</span>(w);<br>&#125;<br><span class="hljs-comment">//专门的句柄类，处理窗体问题</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WindowHandle</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>	    <span class="hljs-built_in">WindowHandle</span>(WINDOW_HANDLE handler) : <span class="hljs-built_in">w</span>(handler) &#123;&#125;<br>    	~<span class="hljs-built_in">WindowHandle</span>() &#123; <span class="hljs-built_in">destroyWindow</span>(w);&#125;<span class="hljs-comment">//析构就会自动释放资源</span><br>        <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">WINDOW_HANDLE</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> w; &#125;<span class="hljs-comment">//重载类型转换操作符，转换为WINDOW_HANDLE指针，将句柄类对象和包含的句柄一样的进行使用</span><br>    <span class="hljs-keyword">private</span>:<br>        WINDOW_HANDLE w;<br>        <span class="hljs-built_in">WindowHandle</span>(<span class="hljs-type">const</span> WindowHandle&amp;);<br>        WindowHandle &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-type">const</span> WindowHandle&amp;);<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">displayInfo</span><span class="hljs-params">(<span class="hljs-type">const</span> Information&amp; info)</span></span>&#123;<br>    <span class="hljs-function">WindowHandle  <span class="hljs-title">w</span><span class="hljs-params">(createWindow())</span></span><br><span class="hljs-function">    <span class="hljs-comment">//display info in window corresponding to w;</span></span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure>
-<ol>
-<li>第9、10课需要仔细听一下</li>
+</li>
+<li><p>第9、10课需要仔细听一下</p>
+</li>
 </ol>
 
               
@@ -482,9 +463,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20Cpp/" title="2020-C-plus-plus-advanced-programming-C++ Cpp">
+                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-IR2-%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%BB%A7%E6%89%BF/" title="2020-Compilation-Principle-IR2-中间代码继承">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ Cpp</span>
+                        <span class="hidden-mobile">2020-Compilation-Principle-IR2-中间代码继承</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -492,8 +473,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="2020-C-plus-plus-advanced-programming-C++ 输入输出">
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 输入输出</span>
+                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-Tec02-BootStrap/" title="2020-Internet-computing-Tec02-BootStrap">
+                        <span class="hidden-mobile">2020-Internet-computing-Tec02-BootStrap</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

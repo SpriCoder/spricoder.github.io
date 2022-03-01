@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/12.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/14.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/13.png">
-<meta property="article:published_time" content="2022-02-16T11:09:54.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:51:41.119Z">
+<meta property="article:published_time" content="2022-02-16T11:10:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:03:19.309Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据结构">
@@ -215,7 +215,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:10" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7k 字
+          6.9k 字
         
       </span>
     
@@ -288,136 +288,112 @@
             
             <div class="markdown-body">
               
-              <h2 id="priority-queues优先级队列"><a class="markdownIt-Anchor" href="#priority-queues优先级队列"></a> Priority Queues(优先级队列)</h2>
-<h1 id="1-优先级队列"><a class="markdownIt-Anchor" href="#1-优先级队列"></a> 1. 优先级队列</h1>
-<ol>
+              <h2 id="Priority-Queues-优先级队列"><a href="#Priority-Queues-优先级队列" class="headerlink" title="Priority Queues(优先级队列)"></a>Priority Queues(优先级队列)</h2><h1 id="1-优先级队列"><a href="#1-优先级队列" class="headerlink" title="1. 优先级队列"></a>1. 优先级队列</h1><ol>
 <li>A priority queue is a collection of zero or more elements. Each element has a priority or value.一个优先级队列是0个或者更多元素的集合。每一个元素都有一个优先级或者值</li>
-<li>进入队列的时候有优先级，出队列优先出高优先级的.
-<ul>
+<li>进入队列的时候有优先级，出队列优先出高优先级的.<ul>
 <li>以下我们确定元素的优先级是通过数字的大小来确定。</li>
 </ul>
 </li>
 </ol>
-<h2 id="11-优先级队列分类根据大小"><a class="markdownIt-Anchor" href="#11-优先级队列分类根据大小"></a> 1.1. 优先级队列分类(根据大小)</h2>
-<ol>
+<h2 id="1-1-优先级队列分类-根据大小"><a href="#1-1-优先级队列分类-根据大小" class="headerlink" title="1.1. 优先级队列分类(根据大小)"></a>1.1. 优先级队列分类(根据大小)</h2><ol>
 <li>In a min priority queue the find operation finds the element with minimum priority, while the delete operation delete this element.在最小优先级队列中，当需要删除一个元素的时候，我们找到优先级最小的元素来删除</li>
 <li>In a max priority queue, the find operation finds the element with maximum priority, while the delete operation delete this element.在最大优先级队列中，当需要删除一个元素的时候，我们找到优先级最大的元素来删除</li>
 </ol>
-<h1 id="2-最大优先级队列maxpriorityqueue"><a class="markdownIt-Anchor" href="#2-最大优先级队列maxpriorityqueue"></a> 2. 最大优先级队列(MaxPriorityQueue)</h1>
-<h2 id="21-adt逻辑上最大优先级队列"><a class="markdownIt-Anchor" href="#21-adt逻辑上最大优先级队列"></a> 2.1. ADT(逻辑上最大优先级队列)</h2>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">AbstractDataType  MaxPriorityQueue<br>&#123;<br>instances<br>    finite collection <span class="hljs-keyword">of</span> elements,<span class="hljs-keyword">each</span> has a priority 有限的元素的结合，每个元素都有一个优先级<br>operations<br>    <span class="hljs-keyword">Create</span>(): <span class="hljs-keyword">create</span> an empty priority queue 创建一个空的优先级队列<br>    Size():  <span class="hljs-keyword">return</span> number <span class="hljs-keyword">of</span> element <span class="hljs-keyword">in</span> the queue 返回队列中元素的个数<br>    Max(): <span class="hljs-keyword">return</span> element <span class="hljs-keyword">with</span> maximum priority 返回队列中拥有最高优先级的元素<br>    <span class="hljs-keyword">Insert</span>(x): <span class="hljs-keyword">insert</span> x <span class="hljs-keyword">into</span> queue 插入x进入队列<br>    DeleteMax(x):<span class="hljs-keyword">delete</span> the element <span class="hljs-keyword">with</span> largest priority <span class="hljs-keyword">from</span> the queue; <span class="hljs-keyword">return</span> it <span class="hljs-keyword">in</span> x;删除队列中最高优先级的元素，并且通过x返回它<br>&#125;<br>实现<br>Use an unordered linear list 我们使用无序线性表来进行实现<br>Insertions are performed at the right <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> the list, θ(<span class="hljs-number">1</span>) 插入元素到链表的最右边(时间复杂度为常数)<br>A deletion requires a <span class="hljs-keyword">search</span> <span class="hljs-keyword">for</span> the element  <span class="hljs-keyword">with</span> largest priority, θ(n)(需要查找到最高优先级的元素并且删除这个元素)<br></code></pre></td></tr></table></figure>
-<h2 id="22-物理实现heap"><a class="markdownIt-Anchor" href="#22-物理实现heap"></a> 2.2. 物理实现:Heap</h2>
-<ol>
-<li>A max heap(min Heap):(最大堆)
-<ol>
+<h1 id="2-最大优先级队列-MaxPriorityQueue"><a href="#2-最大优先级队列-MaxPriorityQueue" class="headerlink" title="2. 最大优先级队列(MaxPriorityQueue)"></a>2. 最大优先级队列(MaxPriorityQueue)</h1><h2 id="2-1-ADT-逻辑上最大优先级队列"><a href="#2-1-ADT-逻辑上最大优先级队列" class="headerlink" title="2.1. ADT(逻辑上最大优先级队列)"></a>2.1. ADT(逻辑上最大优先级队列)</h2><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">AbstractDataType  MaxPriorityQueue<br>&#123;<br>instances<br>    finite collection <span class="hljs-keyword">of</span> elements,<span class="hljs-keyword">each</span> has a priority 有限的元素的结合，每个元素都有一个优先级<br>operations<br>    <span class="hljs-keyword">Create</span>(): <span class="hljs-keyword">create</span> an empty priority queue 创建一个空的优先级队列<br>    Size():  <span class="hljs-keyword">return</span> number <span class="hljs-keyword">of</span> element <span class="hljs-keyword">in</span> the queue 返回队列中元素的个数<br>    Max(): <span class="hljs-keyword">return</span> element <span class="hljs-keyword">with</span> maximum priority 返回队列中拥有最高优先级的元素<br>    <span class="hljs-keyword">Insert</span>(x): <span class="hljs-keyword">insert</span> x <span class="hljs-keyword">into</span> queue 插入x进入队列<br>    DeleteMax(x):<span class="hljs-keyword">delete</span> the element <span class="hljs-keyword">with</span> largest priority <span class="hljs-keyword">from</span> the queue; <span class="hljs-keyword">return</span> it <span class="hljs-keyword">in</span> x;删除队列中最高优先级的元素，并且通过x返回它<br>&#125;<br>实现<br>Use an unordered linear list 我们使用无序线性表来进行实现<br>Insertions are performed at the right <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> the list, θ(<span class="hljs-number">1</span>) 插入元素到链表的最右边(时间复杂度为常数)<br>A deletion requires a <span class="hljs-keyword">search</span> <span class="hljs-keyword">for</span> the element  <span class="hljs-keyword">with</span> largest priority, θ(n)(需要查找到最高优先级的元素并且删除这个元素)<br></code></pre></td></tr></table></figure>
+<h2 id="2-2-物理实现-Heap"><a href="#2-2-物理实现-Heap" class="headerlink" title="2.2. 物理实现:Heap"></a>2.2. 物理实现:Heap</h2><ol>
+<li>A max heap(min Heap):(最大堆)<ol>
 <li>is A complete binary tree 最大堆是一个完全二叉树</li>
 <li>The value in each node is greater(less) than or equal to those in its children(if any).每一个节点上的值都大于(小于)或者等于他的子节点(如果有的话)</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/1.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>注意:完全二叉树可以用矩阵来进行存储。
-<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/1.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
+<li>注意:完全二叉树可以用矩阵来进行存储。<ul>
 <li>从上向下一层一层进行记录。</li>
 </ul>
 </li>
 </ol>
-<h2 id="23-实现最大优先级队列"><a class="markdownIt-Anchor" href="#23-实现最大优先级队列"></a> 2.3. 实现:最大优先级队列</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">MaxHeap</span><br>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">MaxHeap</span>(<span class="hljs-type">int</span> MaxHeapSize=<span class="hljs-number">10</span>);<br>        ~<span class="hljs-built_in">MaxHeap</span>()&#123;<span class="hljs-keyword">delete</span>[]heap;&#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span><span class="hljs-type">const</span></span>&#123;<span class="hljs-keyword">return</span> CurrentSize;&#125;<br>        <span class="hljs-function">T <span class="hljs-title">Max</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">if</span> (CurrentSize==<span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">OutOfBounds</span>();<br>            <span class="hljs-keyword">return</span> heap[<span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-function">MaxHeap&lt;T&gt;&amp;<span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">const</span> T&amp;x)</span></span>; <br>        <span class="hljs-function">MaxHeap&lt;T&gt;&amp; <span class="hljs-title">DeleteMax</span><span class="hljs-params">(T&amp; x)</span></span>;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">initialize</span><span class="hljs-params">(T a[], <span class="hljs-type">int</span> size,  <span class="hljs-type">int</span> ArraySize)</span></span>;<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-type">int</span> CurrentSize, MaxSize;<br>        T * heap;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="2-3-实现-最大优先级队列"><a href="#2-3-实现-最大优先级队列" class="headerlink" title="2.3. 实现:最大优先级队列"></a>2.3. 实现:最大优先级队列</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">MaxHeap</span><br>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">MaxHeap</span>(<span class="hljs-type">int</span> MaxHeapSize=<span class="hljs-number">10</span>);<br>        ~<span class="hljs-built_in">MaxHeap</span>()&#123;<span class="hljs-keyword">delete</span>[]heap;&#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span><span class="hljs-type">const</span></span>&#123;<span class="hljs-keyword">return</span> CurrentSize;&#125;<br>        <span class="hljs-function">T <span class="hljs-title">Max</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">if</span> (CurrentSize==<span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">OutOfBounds</span>();<br>            <span class="hljs-keyword">return</span> heap[<span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-function">MaxHeap&lt;T&gt;&amp;<span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">const</span> T&amp;x)</span></span>; <br>        <span class="hljs-function">MaxHeap&lt;T&gt;&amp; <span class="hljs-title">DeleteMax</span><span class="hljs-params">(T&amp; x)</span></span>;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">initialize</span><span class="hljs-params">(T a[], <span class="hljs-type">int</span> size,  <span class="hljs-type">int</span> ArraySize)</span></span>;<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-type">int</span> CurrentSize, MaxSize;<br>        T * heap;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>数组0号位置不用，也就是从Heap[1]开始使用</li>
 </ol>
-<h3 id="231-最大堆的构造方法"><a class="markdownIt-Anchor" href="#231-最大堆的构造方法"></a> 2.3.1. 最大堆的构造方法</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt; MaxHeap&lt;T&gt;::<span class="hljs-built_in">MaxHeap</span>(<span class="hljs-type">int</span> MaxHeapSize) &#123;<br>    MaxSize=MaxHeapSize;<br>    Heap = <span class="hljs-keyword">new</span> T[MaxSize+<span class="hljs-number">1</span>];<br>    CurrentSize=<span class="hljs-number">0</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="232-最大堆的插入算法"><a class="markdownIt-Anchor" href="#232-最大堆的插入算法"></a> 2.3.2. 最大堆的插入算法</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-3-1-最大堆的构造方法"><a href="#2-3-1-最大堆的构造方法" class="headerlink" title="2.3.1. 最大堆的构造方法"></a>2.3.1. 最大堆的构造方法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt; MaxHeap&lt;T&gt;::<span class="hljs-built_in">MaxHeap</span>(<span class="hljs-type">int</span> MaxHeapSize) &#123;<br>    MaxSize=MaxHeapSize;<br>    Heap = <span class="hljs-keyword">new</span> T[MaxSize+<span class="hljs-number">1</span>];<br>    CurrentSize=<span class="hljs-number">0</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="2-3-2-最大堆的插入算法"><a href="#2-3-2-最大堆的插入算法" class="headerlink" title="2.3.2. 最大堆的插入算法"></a>2.3.2. 最大堆的插入算法</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>在数组后面插入后，和其父结点进行比较，如果比父结点大，则交换，一直到不再大于其父结点。
-<ul>
+<li>在数组后面插入后，和其父结点进行比较，如果比父结点大，则交换，一直到不再大于其父结点。<ul>
 <li>注意在最大优先级队列中的优先交换大的子树，不然会造成重复滤过。</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>插入算法的时间复杂度:log<sub>2</sub>(n)</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;MaxHeap&lt;T&gt;&amp; MaxHeap&lt;T&gt;:: <span class="hljs-built_in">Insert</span>(<span class="hljs-type">const</span> T&amp; x)&#123;<br>    <span class="hljs-keyword">if</span>(CurrentSize= =MaxSize) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">NoMem</span>(); <br>    <span class="hljs-type">int</span> i=++CurrentSize;<br>    <span class="hljs-keyword">while</span>(i!=<span class="hljs-number">1</span>&amp;&amp;x&gt;heap[i/<span class="hljs-number">2</span>])&#123;<br>        <span class="hljs-comment">//0不使用</span><br>        heap[i]=heap[i/<span class="hljs-number">2</span>];<br>        <span class="hljs-comment">//不必每次都进行完全交换</span><br>        i/=<span class="hljs-number">2</span>;<br>    &#125;<br>    heap[i]=x;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="233-最大堆的删除算法"><a class="markdownIt-Anchor" href="#233-最大堆的删除算法"></a> 2.3.3. 最大堆的删除算法</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="2-3-3-最大堆的删除算法"><a href="#2-3-3-最大堆的删除算法" class="headerlink" title="2.3.3. 最大堆的删除算法"></a>2.3.3. 最大堆的删除算法</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>将根删除，将数组最后一个(最后一层最后一个元素)换为根，然后进行比较。</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt;MaxHeap&lt;T&gt;&amp;  MaxHeap&lt;T&gt;:: <span class="hljs-built_in">DeleteMax</span>(T&amp; x)&#123;<br>    <span class="hljs-keyword">if</span>(CurrentSize==<span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-built_in">OutOfBounds</span>(); <br>    x = heap[<span class="hljs-number">1</span>];<br>    <span class="hljs-comment">//0无存储，这个就是root结点</span><br>    T y=heap[CurrentSize--];<br>    <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;<span class="hljs-comment">//i标向树根</span><br>    ci=<span class="hljs-number">2</span>;<span class="hljs-comment">//ci先标到左子树</span><br>    <span class="hljs-keyword">while</span>(ci&lt;=CurrentSize)&#123;<br>        <span class="hljs-keyword">if</span>(ci&lt;CurrentSize &amp;&amp; heap[ci]&lt;heap[ci+<span class="hljs-number">1</span>])<span class="hljs-comment">//如果ci未越界，并且左子树的值小于右子树的值。</span><br>            ci++;<span class="hljs-comment">//转向右子树</span><br>        <span class="hljs-keyword">if</span>(y&gt;=heap[ci]) <span class="hljs-keyword">break</span>;<br>        heap[i]=heap[ci];<br>        i=ci;<br>        ci*=<span class="hljs-number">2</span>;<br>    &#125;<br>    heap[i]=y;<span class="hljs-comment">//y是最后一个节点</span><br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;    <br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>插入算法的时间复杂度:log<sub>2</sub>(n)</li>
 </ol>
-<h2 id="24-初始化一个非空的最大优先级数列"><a class="markdownIt-Anchor" href="#24-初始化一个非空的最大优先级数列"></a> 2.4. 初始化一个非空的最大优先级数列</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="2-4-初始化一个非空的最大优先级数列"><a href="#2-4-初始化一个非空的最大优先级数列" class="headerlink" title="2.4. 初始化一个非空的最大优先级数列"></a>2.4. 初始化一个非空的最大优先级数列</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>把初始指针指向最后一个节点的父结点(N/2)</li>
 <li>然后进行循环，然后每一个都换一遍就完成。</li>
-<li>总体来讲是从最后一个节点的父结点开始，对所有的非叶节点进行下滤操作。
-<ul>
+<li>总体来讲是从最后一个节点的父结点开始，对所有的非叶节点进行下滤操作。<ul>
 <li>对于某一层节点进行下滤后，对其父结点继续进行下滤。</li>
 </ul>
 </li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//C++</span><br><span class="hljs-comment">//注意是对每个子树进行递归处理</span><br>Template&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt; <span class="hljs-type">void</span> MaxHeap&lt;T&gt;::<span class="hljs-built_in">Initialize</span> (T a[],<span class="hljs-type">int</span> size,<span class="hljs-type">int</span> ArraySize) &#123; <br>    <span class="hljs-keyword">delete</span>[] heap;<br>    heap=a;<br>    CurrentSize=Size;<br>    MaxSize=ArraySize;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i=CurrentSize/<span class="hljs-number">2</span>; i&gt;=<span class="hljs-number">1</span>; i--) &#123;<br>        T y=heap[i];<br>        <span class="hljs-type">int</span> c=<span class="hljs-number">2</span>*i;<br>        <span class="hljs-keyword">while</span>(c &lt;= CurrentSize)&#123;<br>            <span class="hljs-keyword">if</span>(c&lt;CurrentSize &amp;&amp; heap[c]&lt;heap[c+<span class="hljs-number">1</span>])<br>                c++;<br>            <span class="hljs-keyword">if</span>(y&gt;=heap[c])<br>                <span class="hljs-keyword">break</span>;<br>            heap[c/<span class="hljs-number">2</span>] = heap[c];<br>            c*=<span class="hljs-number">2</span>;<br>            <span class="hljs-comment">//找到其子节点位置</span><br>        &#125;<br>        heap[c/<span class="hljs-number">2</span>]=y;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// java 实现最大堆</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildHeap</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> currentSize / <span class="hljs-number">2</span>; i &gt; <span class="hljs-number">0</span> ; i-- )<br>        percolateDown(i);<br>&#125;<br></code></pre></td></tr></table></figure>
-<ol start="4">
-<li>已经在内存中的算法复杂度分析(直接交换调整)
-<ul>
+<ol>
+<li>已经在内存中的算法复杂度分析(直接交换调整)<ul>
 <li>对于不同层的节点，其下滤的计算量时不同的</li>
 <li>如何从感觉上立即这个问题:在数据的开始是不会到lgn的，而只有到后面的时候才能达到lgn(lgn = log<sub>2</sub>n)</li>
 </ul>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="5">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>不在内存(插入)中的算法复杂度分析(需要上滤)(需要进行其他操作调整)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="3-实现最小优先级队列"><a class="markdownIt-Anchor" href="#3-实现最小优先级队列"></a> 3. 实现最小优先级队列</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BinaryHeap</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( <span class="hljs-type">int</span> capacity )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x )</span> <span class="hljs-keyword">throws</span> <span class="hljs-title function_">Overflow</span><span class="hljs-params">()</span><br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">findMin</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">deleteMin</span><span class="hljs-params">( )</span> <br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isFull</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span><br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">DEFAULT_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> currentSize<br>    <span class="hljs-keyword">private</span> Comparable [ ] array;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">percolateDown</span><span class="hljs-params">( <span class="hljs-type">int</span> hole )</span> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildHeap</span><span class="hljs-params">( )</span> <br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">this</span>( DEFAULT_CAPACITY );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( <span class="hljs-type">int</span> capacity )</span> &#123;  <br>    currentSize = <span class="hljs-number">0</span>;<br>    array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparable</span>[ capacity + <span class="hljs-number">1</span> ];<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>    currentSize = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//最小堆的插入算法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x )</span> <span class="hljs-keyword">throws</span> <span class="hljs-title function_">Overflow</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span>(isFull()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Overflow</span>(); <br>    <span class="hljs-type">int</span> <span class="hljs-variable">hole</span> <span class="hljs-operator">=</span> ++currentSize;<br>    <span class="hljs-keyword">for</span>(;hole&gt;<span class="hljs-number">1</span> &amp;&amp; x.comparebleTo(array[hole/<span class="hljs-number">2</span>])&lt;<span class="hljs-number">0</span>;hole/= <span class="hljs-number">2</span>)&#123;<br>        array[hole] = array[hole / <span class="hljs-number">2</span>];<br>    &#125;<br>    array[ hole ] = x; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="3-实现最小优先级队列"><a href="#3-实现最小优先级队列" class="headerlink" title="3. 实现最小优先级队列"></a>3. 实现最小优先级队列</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BinaryHeap</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( <span class="hljs-type">int</span> capacity )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x )</span> <span class="hljs-keyword">throws</span> <span class="hljs-title function_">Overflow</span><span class="hljs-params">()</span><br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">findMin</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">deleteMin</span><span class="hljs-params">( )</span> <br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmpty</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isFull</span><span class="hljs-params">( )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span><br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">DEFAULT_CAPACITY</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> currentSize<br>    <span class="hljs-keyword">private</span> Comparable [ ] array;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">percolateDown</span><span class="hljs-params">( <span class="hljs-type">int</span> hole )</span> <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildHeap</span><span class="hljs-params">( )</span> <br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">this</span>( DEFAULT_CAPACITY );<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">BinaryHeap</span><span class="hljs-params">( <span class="hljs-type">int</span> capacity )</span> &#123;  <br>    currentSize = <span class="hljs-number">0</span>;<br>    array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparable</span>[ capacity + <span class="hljs-number">1</span> ];<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeEmpty</span><span class="hljs-params">( )</span> &#123;<br>    currentSize = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//最小堆的插入算法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">( Comparable x )</span> <span class="hljs-keyword">throws</span> <span class="hljs-title function_">Overflow</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span>(isFull()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Overflow</span>(); <br>    <span class="hljs-type">int</span> <span class="hljs-variable">hole</span> <span class="hljs-operator">=</span> ++currentSize;<br>    <span class="hljs-keyword">for</span>(;hole&gt;<span class="hljs-number">1</span> &amp;&amp; x.comparebleTo(array[hole/<span class="hljs-number">2</span>])&lt;<span class="hljs-number">0</span>;hole/= <span class="hljs-number">2</span>)&#123;<br>        array[hole] = array[hole / <span class="hljs-number">2</span>];<br>    &#125;<br>    array[ hole ] = x; <br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>插入实例</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Comparable <span class="hljs-title function_">deleteMin</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">if</span>( isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">Comparable</span> <span class="hljs-variable">minItem</span> <span class="hljs-operator">=</span> findMin( );<br>    array[<span class="hljs-number">1</span>] = array[currentSize--];<br>    percolateDown(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> minItem;<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//最小堆的，将最高顶部的元素向下传动，下滤算法</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">percolateDown</span><span class="hljs-params">(<span class="hljs-type">int</span> hole)</span> &#123;  <br>    <span class="hljs-type">int</span> child;<br>    <span class="hljs-type">Comparable</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> array[hole];<br>    <span class="hljs-keyword">for</span>(;hole*<span class="hljs-number">2</span>&lt;=currentSize;hole = child) &#123;<br>        child = hole * <span class="hljs-number">2</span>;<span class="hljs-comment">//切入到左子树</span><br>        <span class="hljs-keyword">if</span>(child!=currentSize &amp;&amp; array[child+<span class="hljs-number">1</span> ].compareTo(array[child])&lt;<span class="hljs-number">0</span>)<br>            child++;<span class="hljs-comment">//如果没有到头，并且右子树比左子树小，则转向右边的子树</span><br>        <span class="hljs-keyword">if</span>(array[child].compareTo(tmp)&lt;<span class="hljs-number">0</span>)<br>            array[hole] = array[child];<span class="hljs-comment">//如果小则进行交换 </span><br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>    array[hole] = tmp;<br>&#125; <br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>删除实例</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="31-参考"><a class="markdownIt-Anchor" href="#31-参考"></a> 3.1. 参考</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-1-参考"><a href="#3-1-参考" class="headerlink" title="3.1. 参考"></a>3.1. 参考</h2><ol>
 <li><a href = "https://blog.csdn.net/u011068702/article/details/52712634">最详细的最小堆构建、插入、删除的过程图解</a></li>
 </ol>
-<h1 id="4-优先级队列的应用"><a class="markdownIt-Anchor" href="#4-优先级队列的应用"></a> 4. 优先级队列的应用</h1>
-<h2 id="41-堆排序容易考"><a class="markdownIt-Anchor" href="#41-堆排序容易考"></a> 4.1. 堆排序(容易考)</h2>
-<ol>
+<h1 id="4-优先级队列的应用"><a href="#4-优先级队列的应用" class="headerlink" title="4. 优先级队列的应用"></a>4. 优先级队列的应用</h1><h2 id="4-1-堆排序-容易考"><a href="#4-1-堆排序-容易考" class="headerlink" title="4.1. 堆排序(容易考)"></a>4.1. 堆排序(容易考)</h2><ol>
 <li>initialize a max heap with the n elements to be sorted O(n) 初始化一个n个元素的最大堆，O(n)</li>
 <li>each time we delete one element, then adjust the heap O(log<sub>2</sub>n) 每次我们删除最大的元素，调整堆的时间复杂度为O(log<sub>2</sub>n)</li>
 <li>Time complexity is O(n)+O(n<em>log<sub>2</sub>n)=O(n</em>log<sub>2</sub>n)</li>
 <li>例子:{21,25,49,25*,16,08}</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="5">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>堆排序是不稳定的:因为相同数据的位置不同</li>
 <li>堆排序每次删除最大的，然后把最大的放到最下方节点，把节点交换到顶部后进行下滤算法。</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//c++</span><br>Template&lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">Type</span>&gt;<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapSort</span><span class="hljs-params">(datalist&lt;Type&gt;&amp;list)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=(list.currentsize)/<span class="hljs-number">2</span>;i&gt;=<span class="hljs-number">1</span>;i--) <br>        <span class="hljs-built_in">FilterDown</span>(i,list.currentsize);<br>    <span class="hljs-keyword">for</span>(i=list.currentsize; i&gt;<span class="hljs-number">1</span> ;i--)&#123;<br>        <span class="hljs-built_in">Swap</span>(list.Vector[<span class="hljs-number">1</span>],list.vector[i]); <br>        <span class="hljs-built_in">FilterDown</span>(<span class="hljs-number">1</span>,i<span class="hljs-number">-1</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">heapsort</span><span class="hljs-params">( Comparable [] a )</span> &#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> a.length / <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">1</span>; i-- ) <br>        percDown( a, i, a.length );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> a.length ; i &gt; <span class="hljs-number">1</span>; i-- ) &#123; <br>        swapReferences(a,<span class="hljs-number">1</span>,i);<br>        percDown(a,<span class="hljs-number">1</span>,i-<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">percDown</span><span class="hljs-params">( Comparable [] a, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> n )</span> &#123;<br>    <span class="hljs-type">int</span> child;<br>    Comparable tmp;<br>    <span class="hljs-keyword">for</span>( tmp = a[ i ]; leftChild( i ) &lt; n; i = child ) &#123;<br>        child = leftChild( i );<br>        <span class="hljs-keyword">if</span>( child != n – <span class="hljs-number">1</span> &amp;&amp; a[child ].compareTo( a[ child + <span class="hljs-number">1</span> ]) &lt; <span class="hljs-number">0</span> )<br>            child++;<br>        <span class="hljs-keyword">if</span>( tmp.compareTo( a[ child ] ) &lt; <span class="hljs-number">0</span> )<br>            a[ i ] = a[ child ]; <br>        <span class="hljs-keyword">else</span>  <span class="hljs-keyword">break</span>;<br>    &#125;<br>    a[ i ] = tmp;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">leftChild</span><span class="hljs-params">( <span class="hljs-type">int</span> i )</span> &#123;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;<br>&#125;     <br></code></pre></td></tr></table></figure>
-<h2 id="42-the-selection-problem-查找问题"><a class="markdownIt-Anchor" href="#42-the-selection-problem-查找问题"></a> 4.2. The Selection Problem 查找问题</h2>
-<ol>
+<h2 id="4-2-The-Selection-Problem-查找问题"><a href="#4-2-The-Selection-Problem-查找问题" class="headerlink" title="4.2. The Selection Problem 查找问题"></a>4.2. The Selection Problem 查找问题</h2><ol>
 <li>问题描述：在N个元素中找出第K个最大元素。</li>
 <li>1A算法：读入N个元素放入数组， 并将其选择排序，返回适当的元素。算法时间复杂度：O( N<sup>2</sup>)</li>
-<li>1B算法:
-<ol>
+<li>1B算法: <ol>
 <li>将K个元素读入数组，并对其排序(按递减次序)。最小者在第K个位置上。</li>
 <li>一个一个地处理其余元素：每读入一个元素与数组中第K个元素(在K个元素中为最小)比较，如果大于,则删除第K个元素，再将该元素放在合适的位置上(调整过程)。如果小于, 则舍弃。最后在数组K位置上的就是第K个最大元素。</li>
 <li>运行时间(1B 算法)： O(K<sup>2</sup> + (N - K)<em>K ) = O( N</em>K ) 当 K = N / 2(向上取整),   O( N<sup>2</sup> )</li>
@@ -425,13 +401,10 @@
 </li>
 <li>例如：3, 5, 8, 9, 1, 10，找第3个最大元素。</li>
 </ol>
-<h3 id="421-用堆来解决当前问题"><a class="markdownIt-Anchor" href="#421-用堆来解决当前问题"></a> 4.2.1. 用堆来解决当前问题</h3>
-<ol>
-<li>6A算法：假设求第K个最小元素
-<ol>
+<h3 id="4-2-1-用堆来解决当前问题"><a href="#4-2-1-用堆来解决当前问题" class="headerlink" title="4.2.1. 用堆来解决当前问题"></a>4.2.1. 用堆来解决当前问题</h3><ol>
+<li>6A算法：假设求第K个最小元素<ol>
 <li>将N个元素建堆(最小)O( N )</li>
-<li>执行K次delete，O( K*logN ) O( N + K * log N )
-<ol>
+<li>执行K次delete，O( K<em>logN ) O( N + K </em> log N )<ol>
 <li>如果 K = (N/2)(向上取整)，O( N * log N )</li>
 <li>如果 K = N ，O( N * log N ) 堆排序</li>
 </ol>
@@ -439,28 +412,25 @@
 <li>如果是N取代最后一个是nlgn，可以考虑使用不同的情况来确定建立最大堆还是最小堆。</li>
 </ol>
 </li>
-<li>6B算法：假设求第K个最大元素
-<ol>
+<li>6B算法：假设求第K个最大元素<ol>
 <li>读入前K个元素， 建立最小堆O( K )</li>
-<li>其余元素一一读入：每读入一个元素与堆中第K个最大元素比(实际上是堆中最小元素)O(1)
-<ul>
+<li>其余元素一一读入：每读入一个元素与堆中第K个最大元素比(实际上是堆中最小元素)O(1)<ul>
 <li>大于，则将小元素去掉(堆顶)，该元素进入，进行一次调整。O(log K )</li>
 <li>小于，则舍弃。</li>
 </ul>
 </li>
-<li>O( K + ( N-K) * log K ) = O( N*log K)</li>
+<li>O( K + ( N-K) <em> log K ) = O( N</em>log K)</li>
 <li>当 K = (N/2)(向上取整) ,  θ(N * log N )</li>
 </ol>
 </li>
 <li>对6A, 6B,用同样的数据进行测试， 只需几秒钟左右给出问题解。</li>
 </ol>
-<h1 id="5-例题2009统考题"><a class="markdownIt-Anchor" href="#5-例题2009统考题"></a> 5. 例题:2009统考题</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="5-例题-2009统考题"><a href="#5-例题-2009统考题" class="headerlink" title="5. 例题:2009统考题"></a>5. 例题:2009统考题</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>答案:A</li>
 <li>直接按照顺序一行一行生成。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt8/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -552,9 +522,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845-hashing/" title="2019-Data-Structure-数据结构5-hashing">
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture10/" title="2019-COA19-lecture10">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2019-Data-Structure-数据结构5-hashing</span>
+                        <span class="hidden-mobile">2019-COA19-lecture10</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -562,8 +532,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2019-Data-Structure/2019-Data-Structure-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%848.0-graphs/" title="2019-Data-Structure-数据结构8.0-graphs">
-                        <span class="hidden-mobile">2019-Data-Structure-数据结构8.0-graphs</span>
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Lecture10-Graph%20DB/" title="2020-Big-data-analysis-Lecture10-Graph DB">
+                        <span class="hidden-mobile">2020-Big-data-analysis-Lecture10-Graph DB</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

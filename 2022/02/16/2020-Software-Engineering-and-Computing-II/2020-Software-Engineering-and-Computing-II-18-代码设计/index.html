@@ -90,8 +90,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/66.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/67.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/68.png">
-<meta property="article:published_time" content="2022-02-16T11:10:06.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:47:42.975Z">
+<meta property="article:published_time" content="2022-02-16T11:18:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:29:41.397Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="设计">
@@ -268,7 +268,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:18" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -341,30 +341,23 @@
             
             <div class="markdown-body">
               
-              <h2 id="代码设计"><a class="markdownIt-Anchor" href="#代码设计"></a> 代码设计</h2>
-<h1 id="1-设计易读的代码"><a class="markdownIt-Anchor" href="#1-设计易读的代码"></a> 1. 设计易读的代码</h1>
-<ol>
-<li>维护的需要(维护的工作量已经超过了开发的工作量)
-<ol>
+              <h2 id="代码设计"><a href="#代码设计" class="headerlink" title="代码设计"></a>代码设计</h2><h1 id="1-设计易读的代码"><a href="#1-设计易读的代码" class="headerlink" title="1. 设计易读的代码"></a>1. 设计易读的代码</h1><ol>
+<li>维护的需要(维护的工作量已经超过了开发的工作量)<ol>
 <li>50%-90%的维护时间在于阅读代码</li>
 </ol>
 </li>
 <li>团队协作的需要</li>
 </ol>
-<h2 id="11-代码规范"><a class="markdownIt-Anchor" href="#11-代码规范"></a> 1.1. 代码规范</h2>
-<h3 id="111-布局格式"><a class="markdownIt-Anchor" href="#111-布局格式"></a> 1.1.1. 布局格式</h3>
-<ol>
-<li>用缩进与对齐表达逻辑结构(Python)
-<ol>
+<h2 id="1-1-代码规范"><a href="#1-1-代码规范" class="headerlink" title="1.1. 代码规范"></a>1.1. 代码规范</h2><h3 id="1-1-1-布局格式"><a href="#1-1-1-布局格式" class="headerlink" title="1.1.1. 布局格式"></a>1.1.1. 布局格式</h3><ol>
+<li>用缩进与对齐表达逻辑结构(Python)<ol>
 <li>统一缩进格式一或者缩进格式二，主要符合团队编程的习惯即可</li>
 <li>IDEA统一格式化:Ctrl + Alt + L</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
-<li>将相关逻辑组织在一起
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
+<li>将相关逻辑组织在一起<ol>
 <li>成员变量声明</li>
 <li>构造方法和析构方法</li>
 <li>public方法</li>
@@ -373,92 +366,74 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/3.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/3.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>将空行分隔逻辑(将大规模的逻辑划分的片段进行分隔)</li>
 <li>将语句进行分隔(将过长的语句分隔到几行中进行显示)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="112-命名"><a class="markdownIt-Anchor" href="#112-命名"></a> 1.1.2. 命名</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="113-注释"><a class="markdownIt-Anchor" href="#113-注释"></a> 1.1.3. 注释</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/7.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-2-命名"><a href="#1-1-2-命名" class="headerlink" title="1.1.2. 命名"></a>1.1.2. 命名</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-3-注释"><a href="#1-1-3-注释" class="headerlink" title="1.1.3. 注释"></a>1.1.3. 注释</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/7.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>怎么写:去Github学习</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>JavaDoc可以生成API文档</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>例子:</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>类内部注释</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="4">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>例子</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="2-设计易维护的代码"><a class="markdownIt-Anchor" href="#2-设计易维护的代码"></a> 2. 设计易维护的代码</h1>
-<h2 id="21-小型任务"><a class="markdownIt-Anchor" href="#21-小型任务"></a> 2.1. 小型任务</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-复杂决策"><a class="markdownIt-Anchor" href="#22-复杂决策"></a> 2.2. 复杂决策</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-设计易维护的代码"><a href="#2-设计易维护的代码" class="headerlink" title="2. 设计易维护的代码"></a>2. 设计易维护的代码</h1><h2 id="2-1-小型任务"><a href="#2-1-小型任务" class="headerlink" title="2.1. 小型任务"></a>2.1. 小型任务</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-复杂决策"><a href="#2-2-复杂决策" class="headerlink" title="2.2. 复杂决策"></a>2.2. 复杂决策</h2><ol>
 <li>使用新的布尔变量，代替复杂决策</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="2">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>使用有意义的名称封装复杂决策</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>表驱动</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/17.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="23-数据使用"><a class="markdownIt-Anchor" href="#23-数据使用"></a> 2.3. 数据使用</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="24-明确依赖关系"><a class="markdownIt-Anchor" href="#24-明确依赖关系"></a> 2.4. 明确依赖关系</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/17.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-3-数据使用"><a href="#2-3-数据使用" class="headerlink" title="2.3. 数据使用"></a>2.3. 数据使用</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-4-明确依赖关系"><a href="#2-4-明确依赖关系" class="headerlink" title="2.4. 明确依赖关系"></a>2.4. 明确依赖关系</h2><ol>
 <li>类之间模糊的依赖关系会影响到代码的理解与修改，非常容易导致修改时产生未预期的连锁反应。</li>
 </ol>
-<h1 id="3-设计可靠的代码-重要"><a class="markdownIt-Anchor" href="#3-设计可靠的代码-重要"></a> 3. 设计可靠的代码 重要</h1>
-<h2 id="31-契约式设计"><a class="markdownIt-Anchor" href="#31-契约式设计"></a> 3.1. 契约式设计</h2>
-<h3 id="311-异常方式"><a class="markdownIt-Anchor" href="#311-异常方式"></a> 3.1.1. 异常方式</h3>
-<ol>
+<h1 id="3-设计可靠的代码-重要"><a href="#3-设计可靠的代码-重要" class="headerlink" title="3. 设计可靠的代码 重要"></a>3. 设计可靠的代码 重要</h1><h2 id="3-1-契约式设计"><a href="#3-1-契约式设计" class="headerlink" title="3.1. 契约式设计"></a>3.1. 契约式设计</h2><h3 id="3-1-1-异常方式"><a href="#3-1-1-异常方式" class="headerlink" title="3.1.1. 异常方式"></a>3.1.1. 异常方式</h3><ol>
 <li>代码会很臃肿</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="312-断言方式"><a class="markdownIt-Anchor" href="#312-断言方式"></a> 3.1.2. 断言方式</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="3-1-2-断言方式"><a href="#3-1-2-断言方式" class="headerlink" title="3.1.2. 断言方式"></a>3.1.2. 断言方式</h3><ol>
 <li>Java提供的断言语句:<code>assert Expression1(: Expression2);</code></li>
 <li>Expression1是一个布尔表达式，在契约式设计中可以将其设置为前置条件或后置条件</li>
 <li>Expression2是一个值，如果存在，则会在排除异常的时候作为参数沟改造AssertionError</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/21.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="32-防御式编程"><a class="markdownIt-Anchor" href="#32-防御式编程"></a> 3.2. 防御式编程</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/21.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-2-防御式编程"><a href="#3-2-防御式编程" class="headerlink" title="3.2. 防御式编程"></a>3.2. 防御式编程</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>防御式编程往往会带来比较冗余和复杂的代码，但是会有效地提高程序的抗干扰能力和回复能力，有利于人机交互。</li>
 </ol>
-<h2 id="33-表驱动编程"><a class="markdownIt-Anchor" href="#33-表驱动编程"></a> 3.3. 表驱动编程</h2>
-<ol>
+<h2 id="3-3-表驱动编程"><a href="#3-3-表驱动编程" class="headerlink" title="3.3. 表驱动编程"></a>3.3. 表驱动编程</h2><ol>
 <li>复杂逻辑到决策表再到表驱动</li>
 </ol>
-<h1 id="4-使用模型辅助设计复杂的代码"><a class="markdownIt-Anchor" href="#4-使用模型辅助设计复杂的代码"></a> 4. 使用模型辅助设计复杂的代码</h1>
-<ol>
+<h1 id="4-使用模型辅助设计复杂的代码"><a href="#4-使用模型辅助设计复杂的代码" class="headerlink" title="4. 使用模型辅助设计复杂的代码"></a>4. 使用模型辅助设计复杂的代码</h1><ol>
 <li>决策表:多个if/else</li>
 <li>伪代码:在纸或者白板上</li>
 <li>程序流程图</li>
 </ol>
-<h2 id="41-决策表"><a class="markdownIt-Anchor" href="#41-决策表"></a> 4.1. 决策表</h2>
+<h2 id="4-1-决策表"><a href="#4-1-决策表" class="headerlink" title="4.1. 决策表"></a>4.1. 决策表</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -477,12 +452,12 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+</div>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/24.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>决策表有效地保证了决策分析的完备性，可以和表驱动编程结合使用。</li>
 </ol>
-<h2 id="42-伪代码"><a class="markdownIt-Anchor" href="#42-伪代码"></a> 4.2. 伪代码</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-2-伪代码"><a href="#4-2-伪代码" class="headerlink" title="4.2. 伪代码"></a>4.2. 伪代码</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>结合课本详细的描述</li>
 <li>使用了IF、THEN、ELSE、DO、DO WHILE、DO UNTIL等关键字来表示程序的逻辑组织。</li>
@@ -490,130 +465,85 @@
 <li>使用尽可能短的语句，只是用名词和动词，避免使用容易产生歧义的形容词的使用</li>
 <li>实例详见课本P312页</li>
 </ol>
-<h2 id="43-程序流程图"><a class="markdownIt-Anchor" href="#43-程序流程图"></a> 4.3. 程序流程图</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="4-3-程序流程图"><a href="#4-3-程序流程图" class="headerlink" title="4.3. 程序流程图"></a>4.3. 程序流程图</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>圆角:开始或者结束</li>
 <li>平行四边形:输入或输出</li>
 <li>直角:处理步骤</li>
 <li>菱形:控制结构</li>
 </ol>
-<h1 id="5-为代码开发单元测试用例"><a class="markdownIt-Anchor" href="#5-为代码开发单元测试用例"></a> 5. 为代码开发单元测试用例</h1>
-<h2 id="51-为方法开发测试用例"><a class="markdownIt-Anchor" href="#51-为方法开发测试用例"></a> 5.1. 为方法开发测试用例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="5-为代码开发单元测试用例"><a href="#5-为代码开发单元测试用例" class="headerlink" title="5. 为代码开发单元测试用例"></a>5. 为代码开发单元测试用例</h1><h2 id="5-1-为方法开发测试用例"><a href="#5-1-为方法开发测试用例" class="headerlink" title="5.1. 为方法开发测试用例"></a>5.1. 为方法开发测试用例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/27.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>测试驱动的编程</li>
 <li>方便集成和开发</li>
 <li>等价类进行划分和区别</li>
-<li>覆盖方式:
-<ol>
+<li>覆盖方式:<ol>
 <li>路径覆盖</li>
 <li>分支覆盖</li>
 <li>语句覆盖</li>
 </ol>
 </li>
 </ol>
-<h3 id="511-sales方法"><a class="markdownIt-Anchor" href="#511-sales方法"></a> 5.1.1. Sales方法</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="5-1-1-Sales方法"><a href="#5-1-1-Sales方法" class="headerlink" title="5.1.1. Sales方法"></a>5.1.1. Sales方法</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/28.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>使用桩程序代替没有写的方法</li>
 </ol>
-<h2 id="52-使用mock-object测试类的方法"><a class="markdownIt-Anchor" href="#52-使用mock-object测试类的方法"></a> 5.2. 使用Mock Object测试类的方法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="53-为类开发测试用例"><a class="markdownIt-Anchor" href="#53-为类开发测试用例"></a> 5.3. 为类开发测试用例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="5-2-使用Mock-Object测试类的方法"><a href="#5-2-使用Mock-Object测试类的方法" class="headerlink" title="5.2. 使用Mock Object测试类的方法"></a>5.2. 使用Mock Object测试类的方法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-3-为类开发测试用例"><a href="#5-3-为类开发测试用例" class="headerlink" title="5.3. 为类开发测试用例"></a>5.3. 为类开发测试用例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>我们使用状态图来辅助我们分析，通过状态图生成测试用例线索表，最后生成一个测试用例</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/58.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/31.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/59.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="6-代码复杂度度量"><a class="markdownIt-Anchor" href="#6-代码复杂度度量"></a> 6. 代码复杂度度量</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/58.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/31.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/59.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="6-代码复杂度度量"><a href="#6-代码复杂度度量" class="headerlink" title="6. 代码复杂度度量"></a>6. 代码复杂度度量</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/33.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>重要:这里涉及到两种计算方法</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/34.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/35.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="61-度量的意义"><a class="markdownIt-Anchor" href="#61-度量的意义"></a> 6.1. 度量的意义</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">类</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">类的加权方法 = \sum_{i-1}^{n}C_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">权</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.162333em;vertical-align:-0.35804100000000005em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.35804100000000005em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
-<h1 id="7-代码大全书"><a class="markdownIt-Anchor" href="#7-代码大全书"></a> 7. 代码大全(书)</h1>
-<h2 id="71-变量"><a class="markdownIt-Anchor" href="#71-变量"></a> 7.1. 变量</h2>
-<h3 id="711-变量定义"><a class="markdownIt-Anchor" href="#711-变量定义"></a> 7.1.1. 变量定义</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/37.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="712-变量初始化"><a class="markdownIt-Anchor" href="#712-变量初始化"></a> 7.1.2. 变量初始化</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/38.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/34.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/35.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="6-1-度量的意义"><a href="#6-1-度量的意义" class="headerlink" title="6.1. 度量的意义"></a>6.1. 度量的意义</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/36.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>$类的加权方法 = \sum_{i-1}^{n}C_{i}$</p>
+<h1 id="7-代码大全-书"><a href="#7-代码大全-书" class="headerlink" title="7. 代码大全(书)"></a>7. 代码大全(书)</h1><h2 id="7-1-变量"><a href="#7-1-变量" class="headerlink" title="7.1. 变量"></a>7.1. 变量</h2><h3 id="7-1-1-变量定义"><a href="#7-1-1-变量定义" class="headerlink" title="7.1.1. 变量定义"></a>7.1.1. 变量定义</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/37.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-1-2-变量初始化"><a href="#7-1-2-变量初始化" class="headerlink" title="7.1.2. 变量初始化"></a>7.1.2. 变量初始化</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/38.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>使用内存访问工具来检查所有的指针的有效性。</li>
 </ol>
-<h3 id="713-作用域"><a class="markdownIt-Anchor" href="#713-作用域"></a> 7.1.3. 作用域</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/39.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="7-1-3-作用域"><a href="#7-1-3-作用域" class="headerlink" title="7.1.3. 作用域"></a>7.1.3. 作用域</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/39.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>生命周期越长越容易出现问题</li>
 </ol>
-<h3 id="714-减少作用域的一般原则"><a class="markdownIt-Anchor" href="#714-减少作用域的一般原则"></a> 7.1.4. 减少作用域的一般原则</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/41.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="715-持续性"><a class="markdownIt-Anchor" href="#715-持续性"></a> 7.1.5. 持续性</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/42.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/43.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="716-为变量制定单一用途"><a class="markdownIt-Anchor" href="#716-为变量制定单一用途"></a> 7.1.6. 为变量制定单一用途</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/44.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="7-1-4-减少作用域的一般原则"><a href="#7-1-4-减少作用域的一般原则" class="headerlink" title="7.1.4. 减少作用域的一般原则"></a>7.1.4. 减少作用域的一般原则</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/41.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-1-5-持续性"><a href="#7-1-5-持续性" class="headerlink" title="7.1.5. 持续性"></a>7.1.5. 持续性</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/42.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/43.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-1-6-为变量制定单一用途"><a href="#7-1-6-为变量制定单一用途" class="headerlink" title="7.1.6. 为变量制定单一用途"></a>7.1.6. 为变量制定单一用途</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/44.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>哪怕是临时变量也尽量避免重复使用。</li>
 </ol>
-<h3 id="717-两个变量用于两种用途"><a class="markdownIt-Anchor" href="#717-两个变量用于两种用途"></a> 7.1.7. 两个变量用于两种用途</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/45.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="718-避免让代码具有隐含意义"><a class="markdownIt-Anchor" href="#718-避免让代码具有隐含意义"></a> 7.1.8. 避免让代码具有隐含意义</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/46.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="719-变量的命名"><a class="markdownIt-Anchor" href="#719-变量的命名"></a> 7.1.9. 变量的命名</h3>
-<ol>
+<h3 id="7-1-7-两个变量用于两种用途"><a href="#7-1-7-两个变量用于两种用途" class="headerlink" title="7.1.7. 两个变量用于两种用途"></a>7.1.7. 两个变量用于两种用途</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/45.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-1-8-避免让代码具有隐含意义"><a href="#7-1-8-避免让代码具有隐含意义" class="headerlink" title="7.1.8. 避免让代码具有隐含意义"></a>7.1.8. 避免让代码具有隐含意义</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/46.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="7-1-9-变量的命名"><a href="#7-1-9-变量的命名" class="headerlink" title="7.1.9. 变量的命名"></a>7.1.9. 变量的命名</h3><ol>
 <li>一定要用规范的方式命名变量</li>
 </ol>
-<h2 id="72-数值理论"><a class="markdownIt-Anchor" href="#72-数值理论"></a> 7.2. 数值理论</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/47.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="7-2-数值理论"><a href="#7-2-数值理论" class="headerlink" title="7.2. 数值理论"></a>7.2. 数值理论</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/47.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
-<li>整数:
-<ol>
+<li>整数:<ol>
 <li>检查整数除法</li>
 <li>检查整数溢出</li>
 <li>检查中间结果溢出(浮点运算)</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/48.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="73-创建子程序的正当理由"><a class="markdownIt-Anchor" href="#73-创建子程序的正当理由"></a> 7.3. 创建子程序的正当理由</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/49.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="74-子程序的命名"><a class="markdownIt-Anchor" href="#74-子程序的命名"></a> 7.4. 子程序的命名</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/50.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="75-算法的设计"><a class="markdownIt-Anchor" href="#75-算法的设计"></a> 7.5. 算法的设计</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/51.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/48.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-3-创建子程序的正当理由"><a href="#7-3-创建子程序的正当理由" class="headerlink" title="7.3. 创建子程序的正当理由"></a>7.3. 创建子程序的正当理由</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/49.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-4-子程序的命名"><a href="#7-4-子程序的命名" class="headerlink" title="7.4. 子程序的命名"></a>7.4. 子程序的命名</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/50.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-5-算法的设计"><a href="#7-5-算法的设计" class="headerlink" title="7.5. 算法的设计"></a>7.5. 算法的设计</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/51.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>了解编译器的优化</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/40.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="76-一般控制问题"><a class="markdownIt-Anchor" href="#76-一般控制问题"></a> 7.6. 一般控制问题</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/53.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/60.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/54.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="77-空语句"><a class="markdownIt-Anchor" href="#77-空语句"></a> 7.7. 空语句</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/55.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="78-更加清晰的非空循环体"><a class="markdownIt-Anchor" href="#78-更加清晰的非空循环体"></a> 7.8. 更加清晰的非空循环体</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/56.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="79-处理危险的深层嵌套"><a class="markdownIt-Anchor" href="#79-处理危险的深层嵌套"></a> 7.9. 处理危险的深层嵌套</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/55.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="8-问题代码与建议"><a class="markdownIt-Anchor" href="#8-问题代码与建议"></a> 8. 问题代码与建议</h1>
-<h2 id="81-green-1997-how-to-write-unmaintable-code"><a class="markdownIt-Anchor" href="#81-green-1997-how-to-write-unmaintable-code"></a> 8.1. [Green 1997] How to Write Unmaintable Code</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/61.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/62.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/63.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/64.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/65.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/65.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/66.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/67.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/68.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/40.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-6-一般控制问题"><a href="#7-6-一般控制问题" class="headerlink" title="7.6. 一般控制问题"></a>7.6. 一般控制问题</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/53.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/60.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/54.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-7-空语句"><a href="#7-7-空语句" class="headerlink" title="7.7. 空语句"></a>7.7. 空语句</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/55.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-8-更加清晰的非空循环体"><a href="#7-8-更加清晰的非空循环体" class="headerlink" title="7.8. 更加清晰的非空循环体"></a>7.8. 更加清晰的非空循环体</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/56.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-9-处理危险的深层嵌套"><a href="#7-9-处理危险的深层嵌套" class="headerlink" title="7.9. 处理危险的深层嵌套"></a>7.9. 处理危险的深层嵌套</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/55.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="8-问题代码与建议"><a href="#8-问题代码与建议" class="headerlink" title="8. 问题代码与建议"></a>8. 问题代码与建议</h1><h2 id="8-1-Green-1997-How-to-Write-Unmaintable-Code"><a href="#8-1-Green-1997-How-to-Write-Unmaintable-Code" class="headerlink" title="8.1. [Green 1997] How to Write Unmaintable Code"></a>8.1. [Green 1997] How to Write Unmaintable Code</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/61.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/62.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/63.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/64.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/65.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/65.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/66.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/67.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt18/68.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -705,9 +635,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-01-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/" title="2020-Software-Engineering-and-Computing-II-01-软件工程基础">
+                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book13-%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" title="2020-Demand-and-business-model-innovation-Book13-数据建模">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-01-软件工程基础</span>
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Book13-数据建模</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -715,8 +645,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-web-02-HTTP%E5%8D%8F%E8%AE%AE/" title="2020-Software-Engineering-and-Computing-II-web-02-HTTP协议">
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-web-02-HTTP协议</span>
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" title="2020-C-plus-plus-advanced-programming-C++ 类成员变量">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 类成员变量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

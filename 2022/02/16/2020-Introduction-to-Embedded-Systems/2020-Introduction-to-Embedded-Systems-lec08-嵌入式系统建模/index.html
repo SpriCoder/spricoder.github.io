@@ -71,8 +71,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/49.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/50.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/51.png">
-<meta property="article:published_time" content="2022-02-16T11:09:39.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:28:04.147Z">
+<meta property="article:published_time" content="2022-02-16T11:08:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:24:18.129Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="嵌入式系统导论">
@@ -249,7 +249,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:08" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7k 字
+          6.7k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          59 分钟
+          57 分钟
         
       </span>
     
@@ -322,25 +322,20 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec08-嵌入式系统建模"><a class="markdownIt-Anchor" href="#lec08-嵌入式系统建模"></a> Lec08-嵌入式系统建模</h2>
-<h1 id="1-建模-设计-分析"><a class="markdownIt-Anchor" href="#1-建模-设计-分析"></a> 1. 建模、设计、分析</h1>
-<ol>
+              <h2 id="Lec08-嵌入式系统建模"><a href="#Lec08-嵌入式系统建模" class="headerlink" title="Lec08-嵌入式系统建模"></a>Lec08-嵌入式系统建模</h2><h1 id="1-建模、设计、分析"><a href="#1-建模、设计、分析" class="headerlink" title="1. 建模、设计、分析"></a>1. 建模、设计、分析</h1><ol>
 <li>建模是通过模仿来加深对系统的理解的过程。 模型指定系统的功能。</li>
 <li>设计是构件的结构化创建。它指定系统如何执行操作。</li>
 <li>分析是通过解剖来加深对系统的了解的过程。它指定了系统为什么要执行其工作(或未能执行模型说明的应做的工作)。</li>
 </ol>
-<h2 id="11-什么是建模"><a class="markdownIt-Anchor" href="#11-什么是建模"></a> 1.1. 什么是建模？</h2>
-<ol>
+<h2 id="1-1-什么是建模？"><a href="#1-1-什么是建模？" class="headerlink" title="1.1. 什么是建模？"></a>1.1. 什么是建模？</h2><ol>
 <li>通过模仿获得对系统，流程或工件的见解。</li>
 <li>模型是模仿目标系统，流程或目标的工件。</li>
 <li>从最抽象的意义上讲，建模是一种方法，其中创建一些表示来描述和/或传达通过系统实现不容易，自然或充分捕获的系统方面</li>
 <li>数学模型是一组定义和数学公式形式的模型。</li>
 </ol>
-<h2 id="12-一个好的模型"><a class="markdownIt-Anchor" href="#12-一个好的模型"></a> 1.2. 一个好的模型</h2>
-<ol>
+<h2 id="1-2-一个好的模型"><a href="#1-2-一个好的模型" class="headerlink" title="1.2. 一个好的模型"></a>1.2. 一个好的模型</h2><ol>
 <li>简单</li>
-<li>适合理论发展
-<ol>
+<li>适合理论发展<ol>
 <li>定理允许概括和捷径</li>
 <li>不应太笼统(定理变得太弱)</li>
 </ol>
@@ -352,23 +347,19 @@
 <li>不受任何具体实施的偏见:极难实现，但值得。</li>
 <li>适合手头的任务:如果模型不合适，则需要太多工作来使用它</li>
 </ol>
-<h2 id="13-通用系统模型"><a class="markdownIt-Anchor" href="#13-通用系统模型"></a> 1.3. 通用系统模型</h2>
-<ol>
+<h2 id="1-3-通用系统模型"><a href="#1-3-通用系统模型" class="headerlink" title="1.3. 通用系统模型"></a>1.3. 通用系统模型</h2><ol>
 <li>状态导向模式：有限状态机</li>
 <li>面向活动的模型：把系统描绘成一组与数据或者执行的相关性有关的活动的集合；</li>
 <li>面向结构的模型：框图、着重强调系统的物理构成</li>
 <li>面向数据的模型：实体-关系图</li>
-<li>异构模型
-<ol>
+<li>异构模型<ol>
 <li>综合前四种模型特征</li>
 <li>表达复杂系统的不同视图What is Model-Based Design?</li>
 </ol>
 </li>
 </ol>
-<h2 id="14-什么是基于模型的设计"><a class="markdownIt-Anchor" href="#14-什么是基于模型的设计"></a> 1.4. 什么是基于模型的设计？</h2>
-<ol>
-<li>创建嵌入式系统所有部分的数学模型
-<ol>
+<h2 id="1-4-什么是基于模型的设计？"><a href="#1-4-什么是基于模型的设计？" class="headerlink" title="1.4. 什么是基于模型的设计？"></a>1.4. 什么是基于模型的设计？</h2><ol>
+<li>创建嵌入式系统所有部分的数学模型<ol>
 <li>物理世界</li>
 <li>控制系统</li>
 <li>软件环境</li>
@@ -377,18 +368,15 @@
 <li>传感器和执行器</li>
 </ol>
 </li>
-<li>根据模型构建实施
-<ol>
+<li>根据模型构建实施<ol>
 <li>目标：像编译器一样自动执行此构造</li>
 <li>实际上，只有部分是自动构建的</li>
 </ol>
 </li>
 </ol>
-<h2 id="15-建模技术"><a class="markdownIt-Anchor" href="#15-建模技术"></a> 1.5. 建模技术</h2>
-<ol>
+<h2 id="1-5-建模技术"><a href="#1-5-建模技术" class="headerlink" title="1.5. 建模技术"></a>1.5. 建模技术</h2><ol>
 <li>模型是系统动力学的抽象(事物随时间变化的方式)</li>
-<li>例子：
-<ol>
+<li>例子：<ol>
 <li>建模物理现象：ODE</li>
 <li>反馈控制系统：时域建模</li>
 <li>模态行为建模：FSM，混合自动机</li>
@@ -398,16 +386,13 @@
 </ol>
 </li>
 </ol>
-<h2 id="16-计算分类法"><a class="markdownIt-Anchor" href="#16-计算分类法"></a> 1.6. 计算分类法</h2>
-<ol>
-<li>“常规&quot;与&quot;事件驱动”
-<ol>
+<h2 id="1-6-计算分类法"><a href="#1-6-计算分类法" class="headerlink" title="1.6. 计算分类法"></a>1.6. 计算分类法</h2><ol>
+<li>“常规”与”事件驱动”<ol>
 <li>常规示例：流应用程序，处理器，…</li>
-<li>事件驱动：“反应性”(因环境变化而触发)</li>
+<li>事件驱动：”反应性”(因环境变化而触发)</li>
 </ol>
 </li>
-<li>即时的
-<ol>
+<li>即时的<ol>
 <li>硬期限与软期限</li>
 <li>定期与非定期</li>
 </ol>
@@ -416,30 +401,26 @@
 <li>平行度，地理距离：高度并发与顺序； 分布式系统</li>
 <li>确定性与非确定性：可预测程度</li>
 </ol>
-<h2 id="17-建模语言和工具"><a class="markdownIt-Anchor" href="#17-建模语言和工具"></a> 1.7. 建模，语言和工具</h2>
-<ol>
-<li>计算模型是用于捕获系统行为的概念性概念，例如：
-<ol>
+<h2 id="1-7-建模，语言和工具"><a href="#1-7-建模，语言和工具" class="headerlink" title="1.7. 建模，语言和工具"></a>1.7. 建模，语言和工具</h2><ol>
+<li>计算模型是用于捕获系统行为的概念性概念，例如：<ol>
 <li>一组对象</li>
 <li>组成规则</li>
 <li>执行语义</li>
 </ol>
 </li>
 <li>语言定义语法以捕获计算模型</li>
-<li>工具是&quot;编译器&quot;，可以将一种语言捕获的模型转换为另一种语言捕获的模型</li>
+<li>工具是”编译器”，可以将一种语言捕获的模型转换为另一种语言捕获的模型</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="18-建模和语言"><a class="markdownIt-Anchor" href="#18-建模和语言"></a> 1.8. 建模和语言</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-8-建模和语言"><a href="#1-8-建模和语言" class="headerlink" title="1.8. 建模和语言"></a>1.8. 建模和语言</h2><ol>
 <li>运算模型描述系统行为，概念，例如配方，顺序程序</li>
 <li>语言捕获模型，具体形式，例如英语，C</li>
 <li>多种语言可以捕获一种模型，例如，顺序程序模型C，C ++，Java</li>
 <li>一种语言可以捕获多种模型，例如，C ++→顺序程序模型，面向对象的模型，状态机模型</li>
 <li>某些语言更擅长捕获某些计算模型</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="19-什么时候以及为什么要对嵌入式系统建模"><a class="markdownIt-Anchor" href="#19-什么时候以及为什么要对嵌入式系统建模"></a> 1.9. 什么时候以及为什么要对嵌入式系统建模？</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-9-什么时候以及为什么要对嵌入式系统建模？"><a href="#1-9-什么时候以及为什么要对嵌入式系统建模？" class="headerlink" title="1.9. 什么时候以及为什么要对嵌入式系统建模？"></a>1.9. 什么时候以及为什么要对嵌入式系统建模？</h2><ol>
 <li>通过使用现代建模软件工具，您可以在离线仿真中设计并执行初始验证。</li>
 <li>然后，您可以使用模型来构成所有后续开发阶段的基础。</li>
 <li>通过在整个开发过程中执行验证和确认测试，将建模与硬件原型相结合将减少出错的风险并缩短开发周期。</li>
@@ -448,8 +429,7 @@
 <li>由于设计团队，设计阶段和各种项目之间模型的可重用性以及对物理原型的依赖性降低，资源成本得以降低。</li>
 <li>通过使用自动代码生成技术，可以减少开发错误和开销。</li>
 </ol>
-<h2 id="110-软件建模"><a class="markdownIt-Anchor" href="#110-软件建模"></a> 1.10. 软件建模</h2>
-<blockquote>
+<h2 id="1-10-软件建模"><a href="#1-10-软件建模" class="headerlink" title="1.10. 软件建模"></a>1.10. 软件建模</h2><blockquote>
 <p>对于工程和设计任务，尤其是与嵌入式系统有关的任务，通常使用某种形式的软件建模作为粗化或构建整个应用程序设计的初始方法。</p>
 </blockquote>
 <ol>
@@ -458,49 +438,41 @@
 <li>其他被更多地用作框架，以确保相似应用程序之间的一致性或促进工程师团队之间的通信。</li>
 <li>嵌入式系统设计人员面临的挑战是知道哪种类型和级别的建模最适合他们独特的情况和眼前的问题。</li>
 </ol>
-<h3 id="1101-建模语言的核心方面"><a class="markdownIt-Anchor" href="#1101-建模语言的核心方面"></a> 1.10.1. 建模语言的核心方面</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1102-一种标准的嵌入式控制系统模式"><a class="markdownIt-Anchor" href="#1102-一种标准的嵌入式控制系统模式"></a> 1.10.2. 一种标准的嵌入式控制系统模式</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1103-建模语言的例子"><a class="markdownIt-Anchor" href="#1103-建模语言的例子"></a> 1.10.3. 建模语言的例子</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="1104-c代码文本执行实现语言"><a class="markdownIt-Anchor" href="#1104-c代码文本执行实现语言"></a> 1.10.4. C代码：文本，执行，实现语言</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">previous_error = setpoint - process_feedback integral = <span class="hljs-number">0</span><br>start:<br>  wait(dt)<br>  error = setpoint - process_feedback integral = integral + (error*dt) derivative = (error - previous_error)/dt<br>  output = (Kp*error) + (Ki*integral) + (Kd*derivative) previous_error = error<br><span class="hljs-keyword">goto</span> start<br></code></pre></td></tr></table></figure>
-<h3 id="1105-各种图片"><a class="markdownIt-Anchor" href="#1105-各种图片"></a> 1.10.5. 各种图片</h3>
+<h3 id="1-10-1-建模语言的核心方面"><a href="#1-10-1-建模语言的核心方面" class="headerlink" title="1.10.1. 建模语言的核心方面"></a>1.10.1. 建模语言的核心方面</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-10-2-一种标准的嵌入式控制系统模式"><a href="#1-10-2-一种标准的嵌入式控制系统模式" class="headerlink" title="1.10.2. 一种标准的嵌入式控制系统模式"></a>1.10.2. 一种标准的嵌入式控制系统模式</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-10-3-建模语言的例子"><a href="#1-10-3-建模语言的例子" class="headerlink" title="1.10.3. 建模语言的例子"></a>1.10.3. 建模语言的例子</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-10-4-C代码：文本，执行，实现语言"><a href="#1-10-4-C代码：文本，执行，实现语言" class="headerlink" title="1.10.4. C代码：文本，执行，实现语言"></a>1.10.4. C代码：文本，执行，实现语言</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">previous_error = setpoint - process_feedback integral = <span class="hljs-number">0</span><br>start:<br>  wait(dt)<br>  error = setpoint - process_feedback integral = integral + (error*dt) derivative = (error - previous_error)/dt<br>  output = (Kp*error) + (Ki*integral) + (Kd*derivative) previous_error = error<br><span class="hljs-keyword">goto</span> start<br></code></pre></td></tr></table></figure>
+<h3 id="1-10-5-各种图片"><a href="#1-10-5-各种图片" class="headerlink" title="1.10.5. 各种图片"></a>1.10.5. 各种图片</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/6.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/7.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/6.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/7.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/8.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/9.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/8.png" srcset="/img/loading.gif" lazyload alt=""></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/9.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 <tr>
-<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/10.png" srcset="/img/loading.gif" lazyload alt="" /></td>
-<td></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/10.png" srcset="/img/loading.gif" lazyload alt=""></td>
 </tr>
 </tbody>
 </table>
-<h2 id="111-为什么要对嵌入式系统建模"><a class="markdownIt-Anchor" href="#111-为什么要对嵌入式系统建模"></a> 1.11. 为什么要对嵌入式系统建模？</h2>
-<ol>
+</div>
+<h2 id="1-11-为什么要对嵌入式系统建模？"><a href="#1-11-为什么要对嵌入式系统建模？" class="headerlink" title="1.11. 为什么要对嵌入式系统建模？"></a>1.11. 为什么要对嵌入式系统建模？</h2><ol>
 <li>集成良好的建模方法可以大大减少系统文档，设计，测试，和实际实施。</li>
 <li>除了上面列出的主要优点外，对于某些嵌入式系统问题，建模方法还直接带来了额外的效率和准确性。</li>
 </ol>
-<h2 id="112-什么时候应该对嵌入式系统建模"><a class="markdownIt-Anchor" href="#112-什么时候应该对嵌入式系统建模"></a> 1.12. 什么时候应该对嵌入式系统建模？</h2>
-<ol>
+<h2 id="1-12-什么时候应该对嵌入式系统建模？"><a href="#1-12-什么时候应该对嵌入式系统建模？" class="headerlink" title="1.12. 什么时候应该对嵌入式系统建模？"></a>1.12. 什么时候应该对嵌入式系统建模？</h2><ol>
 <li>关键任务和安全关键型应用</li>
 <li>高度复杂的应用程序和系统</li>
 <li>大型开发团队</li>
 <li>如果无法选择原型，则别无选择。</li>
 </ol>
-<h2 id="113-有限状态机"><a class="markdownIt-Anchor" href="#113-有限状态机"></a> 1.13. 有限状态机</h2>
-<ol>
-<li>根据维基百科，有限状态机是：
-<ul>
+<h2 id="1-13-有限状态机"><a href="#1-13-有限状态机" class="headerlink" title="1.13. 有限状态机"></a>1.13. 有限状态机</h2><ol>
+<li>根据维基百科，有限状态机是：<ul>
 <li>用于设计计算机程序的行为模型。 它由与转换相关联的有限数量的状态组成。转换是一组从一个状态开始并在另一(或相同)状态结束的动作。转换是由触发器启动的，并且触发器可以是 事件或条件。</li>
 <li>FSM ={ {输入符号}，{输出符号}，{状态}，{初始状态}，过渡关系(输入符号，当前状态到下一个状态的映射)、输出功能(输入符号，当前状态到当前输出符号的映射)}</li>
 </ul>
@@ -509,19 +481,16 @@
 <li>强大的验证算法</li>
 <li>易于综合，但效率低下</li>
 </ol>
-<h2 id="114-什么是模型"><a class="markdownIt-Anchor" href="#114-什么是模型"></a> 1.14. 什么是模型？</h2>
-<ol>
-<li>系统输入/输出序列建模
-<ol>
-<li>在给定时间出现的&quot;状态&quot;属性集，&quot;输入&quot;和&quot;输出&quot;是系统的可观察特征</li>
-<li>允许或观察到的&quot;过渡&quot;状态成对排序，从输入/输出序列中推断出状态和转换</li>
+<h2 id="1-14-什么是模型？"><a href="#1-14-什么是模型？" class="headerlink" title="1.14. 什么是模型？"></a>1.14. 什么是模型？</h2><ol>
+<li>系统输入/输出序列建模<ol>
+<li>在给定时间出现的”状态”属性集，”输入”和”输出”是系统的可观察特征</li>
+<li>允许或观察到的”过渡”状态成对排序，从输入/输出序列中推断出状态和转换</li>
 <li>如果输出仅取决于状态Moore，则为Mealy FSM</li>
 </ol>
 </li>
 <li>关键假设：可用于状态以及输入和输出符号字母的总内存是有限的。</li>
 </ol>
-<h2 id="115-application"><a class="markdownIt-Anchor" href="#115-application"></a> 1.15. Application</h2>
-<ol>
+<h2 id="1-15-Application"><a href="#1-15-Application" class="headerlink" title="1.15. Application"></a>1.15. Application</h2><ol>
 <li>自动售货机</li>
 <li>交通信号灯</li>
 <li>电子游戏</li>
@@ -532,11 +501,9 @@
 <li>自然语言处理</li>
 <li>语音识别，执行，实现语言</li>
 </ol>
-<h1 id="2-fsm示例模型"><a class="markdownIt-Anchor" href="#2-fsm示例模型"></a> 2. FSM示例模型</h1>
-<ol>
+<h1 id="2-FSM示例模型"><a href="#2-FSM示例模型" class="headerlink" title="2. FSM示例模型"></a>2. FSM示例模型</h1><ol>
 <li>非正式规格：如果驾驶员打开钥匙并在5秒钟内没有系紧安全带，则发出警报5秒钟或直到驾驶员系紧安全带或关闭钥匙</li>
-<li>正式例子
-<ol>
+<li>正式例子<ol>
 <li>输入= {KEY_ON，KEY_OFF，BELT_ON，BELT_OFF，5_SECONDS_UP，10_SECONDS_UP}</li>
 <li>输出= {START_TIMER，ALARM_ON，ALARM_OFF}</li>
 <li>状态= {关闭，等待，报警}</li>
@@ -547,22 +514,19 @@
 </li>
 <li>输出：CurrentState，输入-&gt;输出，例如 Outs(OFF，{KEY_ON})= START_TIMER</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>作业:类似安全带的例子，包含状态机和数学模型</p>
-<h2 id="21-fsm在游戏中"><a class="markdownIt-Anchor" href="#21-fsm在游戏中"></a> 2.1. FSM在游戏中</h2>
-<ol>
+<h2 id="2-1-FSM在游戏中"><a href="#2-1-FSM在游戏中" class="headerlink" title="2.1. FSM在游戏中"></a>2.1. FSM在游戏中</h2><ol>
 <li>可以将角色建模为一系列心理状态。</li>
 <li>世界事件可能会迫使状态发生变化。</li>
 <li>即使对于非程序员，这种心理模型也易于掌握。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-吃豆人"><a class="markdownIt-Anchor" href="#22-吃豆人"></a> 2.2. 吃豆人</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-吃豆人"><a href="#2-2-吃豆人" class="headerlink" title="2.2. 吃豆人"></a>2.2. 吃豆人</h2><ol>
 <li>吃豆人(Pac-Man)要求玩家在迷宫中导航，吃药并避免幽灵追赶他穿过迷宫</li>
 <li>有时，吃豆人可以通过吃强力药丸来在追赶者的桌子上转一转，这临时赋予了他吃鬼的能力</li>
 <li>发生这种情况时，鬼魂的行为发生了变化，他们没有追赶吃豆人，而是试图避开他</li>
-<li>吃豆人中的鬼有四种行为：
-<ol>
+<li>吃豆人中的鬼有四种行为：<ol>
 <li>随意迷宫</li>
 <li>追赶吃豆人，只要他在视线内</li>
 <li>吃豆人消耗掉能量颗粒后，逃离吃豆人</li>
@@ -570,110 +534,97 @@
 </ol>
 </li>
 </ol>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/13.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/14.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/13.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/14.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
-<h2 id="23-标准fsm命名法"><a class="markdownIt-Anchor" href="#23-标准fsm命名法"></a> 2.3. 标准FSM命名法</h2>
-<ol>
+</div>
+<h2 id="2-3-标准FSM命名法"><a href="#2-3-标准FSM命名法" class="headerlink" title="2.3. 标准FSM命名法"></a>2.3. 标准FSM命名法</h2><ol>
 <li>按状态集的属性分类的有限自动机行为，以及转换关系(next_states，输出)=Φ(状态，事件)，它描述了事件后可能的下一个状态和输出</li>
-<li>有限自动机分类
-<ol>
-<li>&quot;确定性&quot;表示Φ(S，E)为单值</li>
-<li>&quot;完全指定&quot;是指Φ(S，E)对于每个可能的输入都有一个值</li>
-<li>&quot;摩尔&quot;表示输出完全由当前状态决定-因此独立于当前事件</li>
-<li>&quot; Mealy&quot;表示输出取决于当前状态和当前事件</li>
-<li>&quot;同步&quot;表示状态仅按时钟间隔更改(对事件进行轮询)</li>
-<li>&quot;异步&quot;表示事件可以随时发生，而FSM事件更新</li>
+<li>有限自动机分类<ol>
+<li>“确定性”表示Φ(S，E)为单值</li>
+<li>“完全指定”是指Φ(S，E)对于每个可能的输入都有一个值</li>
+<li>“摩尔”表示输出完全由当前状态决定-因此独立于当前事件</li>
+<li>“ Mealy”表示输出取决于当前状态和当前事件</li>
+<li>“同步”表示状态仅按时钟间隔更改(对事件进行轮询)</li>
+<li>“异步”表示事件可以随时发生，而FSM事件更新</li>
 </ol>
 </li>
 </ol>
-<h2 id="24-等价"><a class="markdownIt-Anchor" href="#24-等价"></a> 2.4. 等价</h2>
-<ol>
+<h2 id="2-4-等价"><a href="#2-4-等价" class="headerlink" title="2.4. 等价"></a>2.4. 等价</h2><ol>
 <li>两个在所有输入字符串上具有相同输出的FSM被认为是等效的</li>
 <li>等效不需要同构(相同形状)：即两个等效的机器不必具有相同的图形甚至是相同数量的状态！</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="25-等效允许优化"><a class="markdownIt-Anchor" href="#25-等效允许优化"></a> 2.5. 等效允许优化</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-5-等效允许优化"><a href="#2-5-等效允许优化" class="headerlink" title="2.5. 等效允许优化"></a>2.5. 等效允许优化</h2><ol>
 <li>在软件中，FSM的简单程序实现的复杂度与FSM中的转换数量成正比</li>
 <li>通常有助于最小化状态数，因此有助于最小化FSM的转换数</li>
 <li>如果机器是确定性的并且完全指定，则可以在时间O(s2t)中完成此过程，其中s是状态数，t是FSM的状态转换数</li>
 <li>如果不确定性或指定不完全，问题将是NP-hard题。</li>
 </ol>
-<h2 id="26-非确定性fsm"><a class="markdownIt-Anchor" href="#26-非确定性fsm"></a> 2.6. 非确定性FSM</h2>
-<ol>
-<li>当下一状态或输出函数具有多个值时，FSM称为不确定性
-<ol>
+<h2 id="2-6-非确定性FSM"><a href="#2-6-非确定性FSM" class="headerlink" title="2.6. 非确定性FSM"></a>2.6. 非确定性FSM</h2><ol>
+<li>当下一状态或输出函数具有多个值时，FSM称为不确定性<ol>
 <li>下一个状态是一种关系，但是输出满足：紧凑型(逻辑电路)</li>
 <li>输出不满足：形式上的不确定性(人类语义模型通常需要)</li>
 </ol>
 </li>
-<li>非确定性允许建模：
-<ol>
+<li>非确定性允许建模：<ol>
 <li>未指明的行为：规格不完整</li>
 <li>未知行为：例如环境模型</li>
-<li>紧凑型：可以完全&quot;确定性&quot;，只是较小的模型</li>
+<li>紧凑型：可以完全”确定性”，只是较小的模型</li>
 </ol>
 </li>
 </ol>
-<h2 id="27-nfa和fsm"><a class="markdownIt-Anchor" href="#27-nfa和fsm"></a> 2.7. NFA和FSM</h2>
-<ol>
-<li>通常的FSM和NDA是等效的(Rabin-Scott构造，Rabin '59)</li>
+<h2 id="2-7-NFA和FSM"><a href="#2-7-NFA和FSM" class="headerlink" title="2.7. NFA和FSM"></a>2.7. NFA和FSM</h2><ol>
+<li>通常的FSM和NDA是等效的(Rabin-Scott构造，Rabin ‘59)</li>
 <li>在实践中，NFA通常更为紧凑(用于确定的指数爆炸)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>就是将非确定性的转换为确定性的，两者是等价的</li>
 </ul>
-<h1 id="3-mealy-moore-fsm"><a class="markdownIt-Anchor" href="#3-mealy-moore-fsm"></a> 3. Mealy-Moore FSM</h1>
-<ol>
+<h1 id="3-Mealy-Moore-FSM"><a href="#3-Mealy-Moore-FSM" class="headerlink" title="3. Mealy-Moore FSM"></a>3. Mealy-Moore FSM</h1><ol>
 <li>状态模型是单线程的：任何时候都只有一个状态有效</li>
-<li>摩尔状态模型：所有动作均在进入状态时进行
-<ol>
+<li>摩尔状态模型：所有动作均在进入状态时进行<ol>
 <li>无反应(响应延迟一个周期)</li>
 <li>易于撰写(始终清晰定义)</li>
 <li>适用于实施(即良好的电路模拟)</li>
 </ol>
 </li>
-<li>状态模型：所有动作都处于过渡状态
-<ol>
+<li>状态模型：所有动作都处于过渡状态<ol>
 <li>在软件中，导致更紧凑的代码</li>
 <li>硬件时序和可组合性困难</li>
 </ol>
 </li>
 </ol>
-<h2 id="31-常规fsm作为模型"><a class="markdownIt-Anchor" href="#31-常规fsm作为模型"></a> 3.1. 常规FSM作为模型</h2>
-<ol>
+<h2 id="3-1-常规FSM作为模型"><a href="#3-1-常规FSM作为模型" class="headerlink" title="3.1. 常规FSM作为模型"></a>3.1. 常规FSM作为模型</h2><ol>
 <li>经常过度指定实施：完全指定了排序(即使不在乎)</li>
 <li>由于缺乏组成比喻的可扩展性差：状态数量可能难以控制</li>
 <li>不支持并发：通常希望推理一个本地子属性复合机，但是如何关联子状态的行为？</li>
 <li>简单的解决方案：介绍要建模的层次结构：听起来并不简单</li>
 </ol>
-<h2 id="32-并发"><a class="markdownIt-Anchor" href="#32-并发"></a> 3.2. 并发</h2>
-<ol>
-<li>示例：
-<ol>
+<h2 id="3-2-并发"><a href="#3-2-并发" class="headerlink" title="3.2. 并发"></a>3.2. 并发</h2><ol>
+<li>示例：<ol>
 <li>设备可以处于{关闭，启动，运行，错误}状态</li>
 <li>从{待机，电池}运行时</li>
 </ol>
 </li>
 <li>如何安排这些状态？桩体爆炸</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="33-正交组件"><a class="markdownIt-Anchor" href="#33-正交组件"></a> 3.3. 正交组件</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/20.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/22.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="4-harel的statechartsfsm的层次结构"><a class="markdownIt-Anchor" href="#4-harel的statechartsfsm的层次结构"></a> 4. Harel的StateCharts：FSM的层次结构</h1>
-<ol>
-<li>StateCharts支持：
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-3-正交组件"><a href="#3-3-正交组件" class="headerlink" title="3.3. 正交组件"></a>3.3. 正交组件</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/20.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/22.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="4-Harel的StateCharts：FSM的层次结构"><a href="#4-Harel的StateCharts：FSM的层次结构" class="headerlink" title="4. Harel的StateCharts：FSM的层次结构"></a>4. Harel的StateCharts：FSM的层次结构</h1><ol>
+<li>StateCharts支持：<ol>
 <li>将状态重复分解为AND / OR子状态</li>
 <li>嵌套状态，并发，正交组件</li>
 <li>动作(可能有参数)</li>
@@ -684,150 +635,122 @@
 </ol>
 </li>
 </ol>
-<h2 id="41-分层fsm模型"><a class="markdownIt-Anchor" href="#41-分层fsm模型"></a> 4.1. 分层FSM模型</h2>
-<ol>
+<h2 id="4-1-分层FSM模型"><a href="#4-1-分层FSM模型" class="headerlink" title="4.1. 分层FSM模型"></a>4.1. 分层FSM模型</h2><ol>
 <li>问题：如何缩小表示的大小？</li>
 <li>Harel关于StateCharts(语言)和有限并发性(模型)的经典论文：3个正交指数约简</li>
-<li>层次结构：
-<ol>
-<li>声明&quot;包围&quot; FSM</li>
+<li>层次结构：<ol>
+<li>声明”包围” FSM</li>
 <li>处于活动状态意味着活动中的FSM</li>
 <li>a的状态称为OR状态</li>
 <li>用于建模抢占和异常</li>
 </ol>
 </li>
-<li>并发：
-<ol>
+<li>并发：<ol>
 <li>两个或多个FSM同时处于活动状态</li>
 <li>状态称为AND状态</li>
 </ol>
 </li>
 <li>非确定性：用于抽象行为</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="42-层次状态划分"><a class="markdownIt-Anchor" href="#42-层次状态划分"></a> 4.2. 层次状态划分</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/24.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-2-层次状态划分"><a href="#4-2-层次状态划分" class="headerlink" title="4.2. 层次状态划分"></a>4.2. 层次状态划分</h2><ol>
 <li>FSM将完全处于S的子状态之一</li>
 <li>从子状态到子状态的转换</li>
 <li>初始(默认)</li>
 <li>历史</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="43-定义"><a class="markdownIt-Anchor" href="#43-定义"></a> 4.3. 定义</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/25.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-3-定义"><a href="#4-3-定义" class="headerlink" title="4.3. 定义"></a>4.3. 定义</h2><ol>
 <li>FSM的当前状态也称为<strong>活动状态</strong>。</li>
 <li>不由其他状态组成的状态称为<strong>基本状态</strong>。</li>
 <li>包含其他状态的状态称为<strong>超级状态</strong>。</li>
 <li>对于每个基本状态s，包含s的超状态称为<strong>祖先状态</strong>。</li>
 <li>如果每当S处于活动状态时，恰好S的子状态之一处于活动状态，则超级状态S称为OR超级状态。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="44-默认状态机制"><a class="markdownIt-Anchor" href="#44-默认状态机制"></a> 4.4. 默认状态机制</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/26.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-4-默认状态机制"><a href="#4-4-默认状态机制" class="headerlink" title="4.4. 默认状态机制"></a>4.4. 默认状态机制</h2><ol>
 <li>默认状态是为S定义默认开始状态的伪状态</li>
 <li>不是状态本身</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="45-历史机制"><a class="markdownIt-Anchor" href="#45-历史机制"></a> 4.5. 历史机制</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/27.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-5-历史机制"><a href="#4-5-历史机制" class="headerlink" title="4.5. 历史机制"></a>4.5. 历史机制</h2><ol>
 <li>给定输入m，S返回到离开S之前的状态(可以是A，B，C，D或E)。</li>
 <li>首次输入S时，将应用默认机制。</li>
 <li>历史记录和默认机制可以分层使用。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="46-结合历史和默认状态机制"><a class="markdownIt-Anchor" href="#46-结合历史和默认状态机制"></a> 4.6. 结合历史和默认状态机制</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="5-并发"><a class="markdownIt-Anchor" href="#5-并发"></a> 5. 并发</h1>
-<ol>
-<li>AND超级状态
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="4-6-结合历史和默认状态机制"><a href="#4-6-结合历史和默认状态机制" class="headerlink" title="4.6. 结合历史和默认状态机制"></a>4.6. 结合历史和默认状态机制</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="5-并发"><a href="#5-并发" class="headerlink" title="5. 并发"></a>5. 并发</h1><ol>
+<li>AND超级状态<ol>
 <li>FSM处于超级状态的所有(立即)子状态</li>
 <li>与Or-Supers不同，它正式需要多个控制点</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="51-进入或离开and-超级状态"><a class="markdownIt-Anchor" href="#51-进入或离开and-超级状态"></a> 5.1. 进入或离开AND-超级状态</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="52-计时器"><a class="markdownIt-Anchor" href="#52-计时器"></a> 5.2. 计时器</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-1-进入或离开AND-超级状态"><a href="#5-1-进入或离开AND-超级状态" class="headerlink" title="5.1. 进入或离开AND-超级状态"></a>5.1. 进入或离开AND-超级状态</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/31.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-2-计时器"><a href="#5-2-计时器" class="headerlink" title="5.2. 计时器"></a>5.2. 计时器</h2><ol>
 <li>由于需要在嵌入式系统中对时间进行建模，因此需要对计时器进行建模。</li>
 <li>在StateCharts中，特殊边缘可用于超时。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/32.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="53-应答机器计时器"><a class="markdownIt-Anchor" href="#53-应答机器计时器"></a> 5.3. 应答机器计时器</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="54-statecharts中的常规边标签"><a class="markdownIt-Anchor" href="#54-statecharts中的常规边标签"></a> 5.4. StateCharts中的常规边标签</h2>
-<ol>
-<li>在StateChart中标记过渡的表达式的一般语法为n [c] / a，其中
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-3-应答机器计时器"><a href="#5-3-应答机器计时器" class="headerlink" title="5.3. 应答机器计时器"></a>5.3. 应答机器计时器</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/33.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-4-StateCharts中的常规边标签"><a href="#5-4-StateCharts中的常规边标签" class="headerlink" title="5.4. StateCharts中的常规边标签"></a>5.4. StateCharts中的常规边标签</h2><ol>
+<li>在StateChart中标记过渡的表达式的一般语法为n [c] / a，其中<ol>
 <li>n是触发过渡的事件</li>
 <li>c是过渡发生的条件</li>
 <li>a是在以及何时过渡被采用时执行的操作</li>
 </ol>
 </li>
-<li>对于每个过渡标签，事件，条件和操作是可选的
-<ol>
+<li>对于每个过渡标签，事件，条件和操作是可选的<ol>
 <li>事件可以是值的改变</li>
 <li>允许将标准比较作为条件，将赋值语句作为动作</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/34.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="55-条件转换"><a class="markdownIt-Anchor" href="#55-条件转换"></a> 5.5. 条件转换</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/35.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="56-评估状态图"><a class="markdownIt-Anchor" href="#56-评估状态图"></a> 5.6. 评估状态图</h2>
-<h3 id="561-优点"><a class="markdownIt-Anchor" href="#561-优点"></a> 5.6.1. 优点：</h3>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/34.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-5-条件转换"><a href="#5-5-条件转换" class="headerlink" title="5.5. 条件转换"></a>5.5. 条件转换</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/35.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="5-6-评估状态图"><a href="#5-6-评估状态图" class="headerlink" title="5.6. 评估状态图"></a>5.6. 评估状态图</h2><h3 id="5-6-1-优点："><a href="#5-6-1-优点：" class="headerlink" title="5.6.1. 优点："></a>5.6.1. 优点：</h3><ol>
 <li>层次结构允许任意嵌套AND-和ORsuper状态。</li>
 <li>(StateMate)另一个优点是，StateMate的语义在足够详细的级别上定义</li>
 <li>可用的大量商业仿真工具(StateMate，StateFlow，BetterState等)</li>
-<li>可用的&quot;后端&quot;将StateCharts转换为C或VHDL，从而实现软件或硬件实现。</li>
+<li>可用的”后端”将StateCharts转换为C或VHDL，从而实现软件或硬件实现。</li>
 </ol>
-<h3 id="562-缺点"><a class="markdownIt-Anchor" href="#562-缺点"></a> 5.6.2. 缺点</h3>
-<ol>
+<h3 id="5-6-2-缺点"><a href="#5-6-2-缺点" class="headerlink" title="5.6.2. 缺点"></a>5.6.2. 缺点</h3><ol>
 <li>生成的C程序效率低下</li>
 <li>生成的硬件可能更糟</li>
 <li>难以应用于分布式应用程序</li>
 <li>没有结构层次的描述</li>
 </ol>
-<h1 id="6-示例可乐机"><a class="markdownIt-Anchor" href="#6-示例可乐机"></a> 6. 示例：可乐机</h1>
-<h2 id="61-v-10"><a class="markdownIt-Anchor" href="#61-v-10"></a> 6.1. v 1.0</h2>
-<ol>
-<li>假设您有一台可乐机：
-<ol>
+<h1 id="6-示例：可乐机"><a href="#6-示例：可乐机" class="headerlink" title="6. 示例：可乐机"></a>6. 示例：可乐机</h1><h2 id="6-1-v-1-0"><a href="#6-1-v-1-0" class="headerlink" title="6.1. v 1.0"></a>6.1. v 1.0</h2><ol>
+<li>假设您有一台可乐机：<ol>
 <li>开机后，机器等待付款</li>
 <li>存入四分之一时，机器等待1/4</li>
 <li>存入第二个季度时，机器等待选择</li>
-<li>用户按下&quot;可乐&quot;时，将分配可乐</li>
+<li>用户按下”可乐”时，将分配可乐</li>
 <li>使用者拿瓶时，机器会再次等待</li>
-<li>当用户按下&quot; SPRITE&quot;或&quot; DIET&quot;时可乐，&quot;是雪碧或减肥可乐</li>
+<li>当用户按下” SPRITE”或” DIET”时可乐，”是雪碧或减肥可乐</li>
 <li>使用者拿瓶时，机器会再次等待</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="62-v11"><a class="markdownIt-Anchor" href="#62-v11"></a> 6.2. v1.1</h2>
-<ol>
-<li>瓶子可能卡在机器中
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/36.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="6-2-v1-1"><a href="#6-2-v1-1" class="headerlink" title="6.2. v1.1"></a>6.2. v1.1</h2><ol>
+<li>瓶子可能卡在机器中<ol>
 <li>当瓶子卡住时，自动指示器会通知系统</li>
 <li>发生这种情况时，在清除瓶子之前，机器将不接受任何金钱或发出任何瓶子</li>
 <li>清除瓶子后，机器将再次等待付款</li>
 </ol>
 </li>
-<li>状态机更改
-<ol>
+<li>状态机更改<ol>
 <li>需要多少个新状态？</li>
 <li>多少个新过渡？</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/37.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h1 id="7-分层fsm"><a class="markdownIt-Anchor" href="#7-分层fsm"></a> 7. 分层FSM</h1>
-<ol>
-<li>层次结构允许
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/37.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="7-分层FSM"><a href="#7-分层FSM" class="headerlink" title="7. 分层FSM"></a>7. 分层FSM</h1><ol>
+<li>层次结构允许<ol>
 <li>明智的默认活动</li>
 <li>多个地方增强行为：考虑卡住的恢复行为–吞噬您的钱…</li>
 <li>大大减少所需的状态数</li>
@@ -837,24 +760,16 @@
 </li>
 <li>我们如何在软件中进行有效的演绎？HFSM比FSM更复杂且成本更高，但是要权衡表达与复杂性和维护性之间的关系</li>
 </ol>
-<h2 id="71-定时炸弹的例子"><a class="markdownIt-Anchor" href="#71-定时炸弹的例子"></a> 7.1. 定时炸弹的例子</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/38.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="72-uml-state-diagram-representing-the-time-bomb-state-machine"><a class="markdownIt-Anchor" href="#72-uml-state-diagram-representing-the-time-bomb-state-machine"></a> 7.2. UML State Diagram Representing the Time-Bomb State Machine</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/39.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="73-嵌套交换机fsm"><a class="markdownIt-Anchor" href="#73-嵌套交换机fsm"></a> 7.3. 嵌套交换机FSM</h2>
-<ol>
-<li>&quot;状态&quot;是静态类型的枚举</li>
-<li>&quot;事件&quot;是一种类型化的信号(也是一个枚举)</li>
-<li>&quot; init&quot;设置计时器并初始化变量</li>
-<li>在每个事件上调用&quot;调度&quot;以将控制权传递给FSM</li>
+<h2 id="7-1-定时炸弹的例子"><a href="#7-1-定时炸弹的例子" class="headerlink" title="7.1. 定时炸弹的例子"></a>7.1. 定时炸弹的例子</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/38.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-2-UML-State-Diagram-Representing-the-Time-Bomb-State-Machine"><a href="#7-2-UML-State-Diagram-Representing-the-Time-Bomb-State-Machine" class="headerlink" title="7.2. UML State Diagram Representing the Time-Bomb State Machine"></a>7.2. UML State Diagram Representing the Time-Bomb State Machine</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/39.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-3-嵌套交换机FSM"><a href="#7-3-嵌套交换机FSM" class="headerlink" title="7.3. 嵌套交换机FSM"></a>7.3. 嵌套交换机FSM</h2><ol>
+<li>“状态”是静态类型的枚举</li>
+<li>“事件”是一种类型化的信号(也是一个枚举)</li>
+<li>“ init”设置计时器并初始化变量</li>
+<li>在每个事件上调用”调度”以将控制权传递给FSM</li>
 </ol>
-<h2 id="74-炸弹示例声明"><a class="markdownIt-Anchor" href="#74-炸弹示例声明"></a> 7.4. 炸弹示例：声明</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/40.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/41.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/42.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/43.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="75-后果"><a class="markdownIt-Anchor" href="#75-后果"></a> 7.5. 后果</h2>
-<ol>
+<h2 id="7-4-炸弹示例：声明"><a href="#7-4-炸弹示例：声明" class="headerlink" title="7.4. 炸弹示例：声明"></a>7.4. 炸弹示例：声明</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/40.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/41.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/42.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/43.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="7-5-后果"><a href="#7-5-后果" class="headerlink" title="7.5. 后果"></a>7.5. 后果</h2><ol>
 <li>很简单。</li>
 <li>它需要枚举信号和状态。</li>
 <li>它具有较小的内存占用量，因为只需要一个小的标量状态变量即可表示状态机的当前状态。</li>
@@ -863,31 +778,22 @@
 <li>事件调度时间不是恒定的，而是取决于两个级别的switch语句的性能，它们随着案例数的增加而降低(通常为O(log n)，其中n为情况数)。</li>
 <li>实现不是分层的。您可以在每个转换中直接直接手动编写进入/退出操作的代码，但是鉴于状态机拓扑的变化，这很容易出错并且难以维护。这主要是因为与一种状态(例如，进入动作)有关的代码将在许多地方(在导致该状态的每个转变上)分布和重复。对于代码合成工具来说，后者属性不是问题，这些代码合成工具通常使用嵌套的switch语句类型的实现。</li>
 </ol>
-<h1 id="8-状态表fsm"><a class="markdownIt-Anchor" href="#8-状态表fsm"></a> 8. 状态表FSM</h1>
-<ol>
+<h1 id="8-状态表FSM"><a href="#8-状态表FSM" class="headerlink" title="8. 状态表FSM"></a>8. 状态表FSM</h1><ol>
 <li>通用表驱动事件处理器</li>
 <li>应用程序提供：动作功能，表，事件</li>
 <li>状态表是二维的：对于每个事件，说明表具有的状态(动作，下一状态)</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/44.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="81-基于通用状态表的事件处理器的结构"><a class="markdownIt-Anchor" href="#81-基于通用状态表的事件处理器的结构"></a> 8.1. 基于通用状态表的事件处理器的结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/45.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="82-表事件处理器数据结构"><a class="markdownIt-Anchor" href="#82-表事件处理器数据结构"></a> 8.2. 表事件处理器：数据结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/46.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="83-表事件处理器代码"><a class="markdownIt-Anchor" href="#83-表事件处理器代码"></a> 8.3. 表事件处理器：代码</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/47.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="84-表事件处理器用户代码i"><a class="markdownIt-Anchor" href="#84-表事件处理器用户代码i"></a> 8.4. 表事件处理器：用户代码I</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/48.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="85-表事件处理器用户代码ii"><a class="markdownIt-Anchor" href="#85-表事件处理器用户代码ii"></a> 8.5. 表事件处理器：用户代码II</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/49.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="86-表事件处理器用户行为"><a class="markdownIt-Anchor" href="#86-表事件处理器用户行为"></a> 8.6. 表事件处理器：用户行为</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/50.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="87-表事件处理器问题"><a class="markdownIt-Anchor" href="#87-表事件处理器问题"></a> 8.7. 表事件处理器：问题</h2>
-<ol>
-<li>FSM的常规结构
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/44.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-1-基于通用状态表的事件处理器的结构"><a href="#8-1-基于通用状态表的事件处理器的结构" class="headerlink" title="8.1. 基于通用状态表的事件处理器的结构"></a>8.1. 基于通用状态表的事件处理器的结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/45.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-2-表事件处理器：数据结构"><a href="#8-2-表事件处理器：数据结构" class="headerlink" title="8.2. 表事件处理器：数据结构"></a>8.2. 表事件处理器：数据结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/46.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-3-表事件处理器：代码"><a href="#8-3-表事件处理器：代码" class="headerlink" title="8.3. 表事件处理器：代码"></a>8.3. 表事件处理器：代码</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/47.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-4-表事件处理器：用户代码I"><a href="#8-4-表事件处理器：用户代码I" class="headerlink" title="8.4. 表事件处理器：用户代码I"></a>8.4. 表事件处理器：用户代码I</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/48.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-5-表事件处理器：用户代码II"><a href="#8-5-表事件处理器：用户代码II" class="headerlink" title="8.5. 表事件处理器：用户代码II"></a>8.5. 表事件处理器：用户代码II</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/49.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-6-表事件处理器：用户行为"><a href="#8-6-表事件处理器：用户行为" class="headerlink" title="8.6. 表事件处理器：用户行为"></a>8.6. 表事件处理器：用户行为</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/50.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="8-7-表事件处理器：问题"><a href="#8-7-表事件处理器：问题" class="headerlink" title="8.7. 表事件处理器：问题"></a>8.7. 表事件处理器：问题</h2><ol>
+<li>FSM的常规结构<ol>
 <li>枚举用作索引</li>
-<li>需要&quot;填充物&quot;状态和功能：一些状态，事件对为空</li>
+<li>需要”填充物”状态和功能：一些状态，事件对为空</li>
 </ol>
 </li>
 <li>分派是固定时间</li>
@@ -896,10 +802,8 @@
 <li>每个动作都需要自己的功能</li>
 <li>不支持状态层次结构</li>
 </ol>
-<h1 id="9-面向对象设计模式"><a class="markdownIt-Anchor" href="#9-面向对象设计模式"></a> 9. 面向对象设计模式</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/51.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="91-后果"><a class="markdownIt-Anchor" href="#91-后果"></a> 9.1. 后果</h2>
-<ol>
+<h1 id="9-面向对象设计模式"><a href="#9-面向对象设计模式" class="headerlink" title="9. 面向对象设计模式"></a>9. 面向对象设计模式</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec8/51.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="9-1-后果"><a href="#9-1-后果" class="headerlink" title="9.1. 后果"></a>9.1. 后果</h2><ol>
 <li>它在很大程度上依赖于多态性，并且需要像C ++这样的面向对象的语言。</li>
 <li>使状态转换高效(重新分配一个指针)。</li>
 <li>通过后期绑定为事件调度提供了非常好的性能机制(O(const)，不考虑动作执行)。</li>
@@ -912,16 +816,13 @@
 <li>与状态表方法一样，事件处理程序通常具有良好的粒度。</li>
 <li>模式不是分层的。</li>
 </ol>
-<h2 id="92-更好的表事件处理器qep萨米克"><a class="markdownIt-Anchor" href="#92-更好的表事件处理器qep萨米克"></a> 9.2. 更好的表事件处理器：QEP(萨米克)</h2>
-<ol>
-<li>想法：保留表的可扩展概念，但消除2-d查找
-<ol>
+<h2 id="9-2-更好的表事件处理器：QEP-萨米克"><a href="#9-2-更好的表事件处理器：QEP-萨米克" class="headerlink" title="9.2. 更好的表事件处理器：QEP(萨米克)"></a>9.2. 更好的表事件处理器：QEP(萨米克)</h2><ol>
+<li>想法：保留表的可扩展概念，但消除2-d查找<ol>
 <li>使用Switch语句区分每个状态的事件</li>
 <li>使用指向状态处理程序功能的指针表来区分状态</li>
 </ol>
 </li>
-<li>好处：
-<ol>
+<li>好处：<ol>
 <li>表分派比嵌套开关快，但是开关只需要分派已处理的事件</li>
 <li>可以轻松添加新状态，也可以轻松添加新事件</li>
 <li>只需要更改直接影响到实施的部分…</li>
@@ -1019,9 +920,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2021-human-computer-interaction/2021-human-computer-interaction-Reading-Effects%20of%20Display%20Size%20and%20Navigation%20Type%20on%20Classificaiton%20Task/" title="2021-human-computer-interaction-Reading-Effects of Display Size and Navigation Type on Classificaiton Task">
+                      <a href="/2022/02/16/2020-Internet-computing/2020-Internet-computing-lecture08-Routing%20Protocols/" title="2020-Internet-computing-lecture08-Routing Protocols">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021-human-computer-interaction-Reading-Effects of Display Size and Navigation Type on Classificaiton Task</span>
+                        <span class="hidden-mobile">2020-Internet-computing-lecture08-Routing Protocols</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1029,8 +930,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec07-The%20Real-Time%20Kernel/" title="2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel">
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec07-The Real-Time Kernel</span>
+                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-08-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" title="2020-Software-Engineering-and-Computing-II-08-软件设计基础">
+                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-08-软件设计基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

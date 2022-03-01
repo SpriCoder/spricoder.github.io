@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2020-C-plus-plus-advanced-programming-C++ 输入重定向到文件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:09:55.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:15:06.449Z">
+<meta property="article:published_time" content="2022-02-16T11:10:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:08:04.888Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C++">
@@ -200,7 +200,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:10" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -274,8 +274,7 @@
             <div class="markdown-body">
               
               <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;sstream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;fstream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str1;<br>    string str2;<br>    <span class="hljs-built_in">getline</span>(cin, str1);<br>    <span class="hljs-built_in">getline</span>(cin, str2);<br>    string str = str1 + <span class="hljs-string">&quot;\n&quot;</span> + str2;<br>    <span class="hljs-function">std::ofstream <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-string">&quot;D:\\answer\\answer.txt&quot;</span>, std::ios::app)</span></span>;<br>    f &lt;&lt; str &lt;&lt; std::endl;<br>    f.<span class="hljs-built_in">close</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="1-考试注意事项"><a class="markdownIt-Anchor" href="#1-考试注意事项"></a> 1. 考试注意事项</h1>
-<ol>
+<h1 id="1-考试注意事项"><a href="#1-考试注意事项" class="headerlink" title="1. 考试注意事项"></a>1. 考试注意事项</h1><ol>
 <li>多次扩容，嵌套操作</li>
 <li>int输入可能导致内部 long long</li>
 </ol>
@@ -370,9 +369,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="2020-C-plus-plus-advanced-programming-C++ 表达式">
+                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Semantics3-%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" title="2020-Compilation-Principle-Semantics3-实验代码示例">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 表达式</span>
+                        <span class="hidden-mobile">2020-Compilation-Principle-Semantics3-实验代码示例</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -380,8 +379,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20OOP%E5%9F%BA%E7%A1%80/" title="2020-C-plus-plus-advanced-programming-C++ OOP基础">
-                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ OOP基础</span>
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec10-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E4%B8%8E%E9%83%A8%E7%BD%B2/" title="2020-Devops-introduction-Lec10-微服务开发与部署">
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec10-微服务开发与部署</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

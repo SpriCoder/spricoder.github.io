@@ -29,8 +29,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/20.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/21.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/22.png">
-<meta property="article:published_time" content="2022-02-16T11:10:08.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:52:37.579Z">
+<meta property="article:published_time" content="2022-02-16T11:27:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:30:44.355Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
@@ -209,7 +209,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:27" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -282,46 +282,33 @@
             
             <div class="markdown-body">
               
-              <h2 id="04-数据库基础"><a class="markdownIt-Anchor" href="#04-数据库基础"></a> 04-数据库基础</h2>
-<h1 id="1-数据设计"><a class="markdownIt-Anchor" href="#1-数据设计"></a> 1. 数据设计</h1>
-<h2 id="11-数据持久化"><a class="markdownIt-Anchor" href="#11-数据持久化"></a> 1.1. 数据持久化</h2>
-<ol>
-<li>为什么持久化:
-<ol>
+              <h2 id="04-数据库基础"><a href="#04-数据库基础" class="headerlink" title="04-数据库基础"></a>04-数据库基础</h2><h1 id="1-数据设计"><a href="#1-数据设计" class="headerlink" title="1. 数据设计"></a>1. 数据设计</h1><h2 id="1-1-数据持久化"><a href="#1-1-数据持久化" class="headerlink" title="1.1. 数据持久化"></a>1.1. 数据持久化</h2><ol>
+<li>为什么持久化:<ol>
 <li>知识：数据被记录(record)、存储(storage)、回忆(recall)。</li>
 </ol>
 </li>
-<li>持久化历史
-<ol>
+<li>持久化历史<ol>
 <li>实物记录(绳结、泥板、⽵⽚、绢布、纸张)</li>
 <li>电子文件</li>
 <li>数据库系统</li>
 </ol>
 </li>
 </ol>
-<h2 id="12-关系型数据库"><a class="markdownIt-Anchor" href="#12-关系型数据库"></a> 1.2. 关系型数据库</h2>
-<h3 id="121-relation-in-concept-model-概念模型上的关系"><a class="markdownIt-Anchor" href="#121-relation-in-concept-model-概念模型上的关系"></a> 1.2.1. Relation in Concept Model 概念模型上的关系</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="122-relation-in-database-数据库中的关系"><a class="markdownIt-Anchor" href="#122-relation-in-database-数据库中的关系"></a> 1.2.2. Relation in database 数据库中的关系</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-2-关系型数据库"><a href="#1-2-关系型数据库" class="headerlink" title="1.2. 关系型数据库"></a>1.2. 关系型数据库</h2><h3 id="1-2-1-Relation-in-Concept-Model-概念模型上的关系"><a href="#1-2-1-Relation-in-Concept-Model-概念模型上的关系" class="headerlink" title="1.2.1. Relation in Concept Model 概念模型上的关系"></a>1.2.1. Relation in Concept Model 概念模型上的关系</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-2-2-Relation-in-database-数据库中的关系"><a href="#1-2-2-Relation-in-database-数据库中的关系" class="headerlink" title="1.2.2. Relation in database 数据库中的关系"></a>1.2.2. Relation in database 数据库中的关系</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>列:属性</li>
 <li>行:元组</li>
 </ol>
-<h3 id="123-concept-model-logic-model-physical-model-概念模型-逻辑模型-物理模型"><a class="markdownIt-Anchor" href="#123-concept-model-logic-model-physical-model-概念模型-逻辑模型-物理模型"></a> 1.2.3. Concept model-&gt;Logic model -&gt;Physical model 概念模型 -&gt; 逻辑模型 -&gt; 物理模型</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="13-索引"><a class="markdownIt-Anchor" href="#13-索引"></a> 1.3. 索引</h2>
-<h3 id="131-为什么使用索引"><a class="markdownIt-Anchor" href="#131-为什么使用索引"></a> 1.3.1. 为什么使用索引</h3>
-<ol>
+<h3 id="1-2-3-Concept-model-gt-Logic-model-gt-Physical-model-概念模型-gt-逻辑模型-gt-物理模型"><a href="#1-2-3-Concept-model-gt-Logic-model-gt-Physical-model-概念模型-gt-逻辑模型-gt-物理模型" class="headerlink" title="1.2.3. Concept model-&gt;Logic model -&gt;Physical model 概念模型 -&gt; 逻辑模型 -&gt; 物理模型"></a>1.2.3. Concept model-&gt;Logic model -&gt;Physical model 概念模型 -&gt; 逻辑模型 -&gt; 物理模型</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/19.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-3-索引"><a href="#1-3-索引" class="headerlink" title="1.3. 索引"></a>1.3. 索引</h2><h3 id="1-3-1-为什么使用索引"><a href="#1-3-1-为什么使用索引" class="headerlink" title="1.3.1. 为什么使用索引"></a>1.3.1. 为什么使用索引</h3><ol>
 <li>在数据库系统的使用过程当中，数据的<strong>查询</strong>是使用最频繁的⼀种数据操作。</li>
-<li>最基本的查询算法当然是<strong>顺序查找</strong>(linear search)，遍历表然后逐⾏匹配⾏值是否等于待查找的关键字，其时间复杂度为O(n)。
-<ol>
+<li>最基本的查询算法当然是<strong>顺序查找</strong>(linear search)，遍历表然后逐⾏匹配⾏值是否等于待查找的关键字，其时间复杂度为O(n)。<ol>
 <li>对于算法规模较小的表，负载轻的数据库，也能有好的性能。</li>
 <li>对于数据量比较大的表，这时候的算法显然是糟糕的，性能就很快下降了。</li>
 </ol>
 </li>
-<li>好在计算机科学的发展提供了很多更优秀的查找算法，例如**二分查找(binary search)、⼆叉树查找(binary tree search)**等。如果稍微分析⼀下会发现，每种查找算法都只能应⽤于特定的数据结构之上，
-<ol>
+<li>好在计算机科学的发展提供了很多更优秀的查找算法，例如<strong>二分查找(binary search)、⼆叉树查找(binary tree search)</strong>等。如果稍微分析⼀下会发现，每种查找算法都只能应⽤于特定的数据结构之上，<ol>
 <li>二分查找要求被检索数据有序</li>
 <li>二叉树查找只能应⽤于二叉查找树上</li>
 </ol>
@@ -329,51 +316,41 @@
 <li>数据本身的组织结构不可能完全满⾜各种数据结构(例如，理论上不可能同时将两列都按顺序进⾏组织)，所以，在数据之外，数据库系统还维护着满⾜特定查找算法的数据结构，这些数据结构以某种⽅式引⽤(指向)数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是<strong>索引</strong>。</li>
 <li>索引是对数据库表中⼀个或多个列的值进⾏排序的结构。与在表中搜索所有的⾏相⽐，索引⽤<strong>指针</strong>指向存储在表中指定列的数据值，然后根据指定的次序排列这些指针，有助于更快地获取信息。通常情况下，只有当经常查询索引列中的数据时，才需要在表上创建索引。索引将占⽤磁盘空间，并且影响数据更新的速度。但是在多数情况下，索引所带来的数据检索速度优势⼤⼤超过它的不⾜之处。</li>
 </ol>
-<h3 id="132-为什么是b树"><a class="markdownIt-Anchor" href="#132-为什么是b树"></a> 1.3.2. 为什么是B+树</h3>
-<ol>
+<h3 id="1-3-2-为什么是B-树"><a href="#1-3-2-为什么是B-树" class="headerlink" title="1.3.2. 为什么是B+树"></a>1.3.2. 为什么是B+树</h3><ol>
 <li>⽂件很⼤，不可能全部存储在内存中，故要存储到磁盘上</li>
 <li>索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数(为什么使⽤B-/+Tree，还跟磁盘存取原理有关。)</li>
 <li><strong>局部性原理与磁盘预读</strong>，预读的⻓度⼀般为⻚(page)的整倍数，(在许多操作系统中，页的大小通常为4k)</li>
 <li>数据库系统巧妙利⽤了磁盘预读原理，将⼀个节点的⼤⼩设为等于⼀个⻚，这样每个节点只需要⼀次I/O就可以完全载⼊，(由于节点中有两个数组，所以地址连续)。⽽红⿊树这种结构，h明显要深的多。由于逻辑上很近的节点(⽗⼦)物理上可能很远，⽆法利⽤局部性</li>
 </ol>
-<h2 id="14-索引实现"><a class="markdownIt-Anchor" href="#14-索引实现"></a> 1.4. 索引实现</h2>
-<ol>
-<li>InnoDB索引和MyISAM索引的区别：
-<ol>
+<h2 id="1-4-索引实现"><a href="#1-4-索引实现" class="headerlink" title="1.4. 索引实现"></a>1.4. 索引实现</h2><ol>
+<li>InnoDB索引和MyISAM索引的区别：<ol>
 <li>⼀是主索引的区别：InnoDB的数据⽂件本身就是索引⽂件。⽽MyISAM的索引和数据是分开的。</li>
 <li>⼆是辅助索引的区别：InnoDB的辅助索引data域存储相应记录主键的值⽽不是地址。⽽MyISAM的辅助索引和主索引没有多⼤区别。</li>
 </ol>
 </li>
 </ol>
-<h3 id="141-myisam早期默认"><a class="markdownIt-Anchor" href="#141-myisam早期默认"></a> 1.4.1. MyISAM(早期默认)</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-4-1-MyISAM-早期默认"><a href="#1-4-1-MyISAM-早期默认" class="headerlink" title="1.4.1. MyISAM(早期默认)"></a>1.4.1. MyISAM(早期默认)</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>不支持复杂的事务操作</li>
 <li>每一个横行都是非叶节点</li>
 <li>存储的是地址，索引和数据是分开的</li>
 </ol>
-<h3 id="142-innodb"><a class="markdownIt-Anchor" href="#142-innodb"></a> 1.4.2. innoDB</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-4-2-innoDB"><a href="#1-4-2-innoDB" class="headerlink" title="1.4.2. innoDB"></a>1.4.2. innoDB</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>索引结构和值是在一起的</li>
 </ol>
-<h2 id="15-将类图映射为关系表"><a class="markdownIt-Anchor" href="#15-将类图映射为关系表"></a> 1.5. 将类图映射为关系表</h2>
-<h3 id="151-ormobject-relation-mapping"><a class="markdownIt-Anchor" href="#151-ormobject-relation-mapping"></a> 1.5.1. ORM(Object-Relation Mapping)</h3>
-<ol>
+<h2 id="1-5-将类图映射为关系表"><a href="#1-5-将类图映射为关系表" class="headerlink" title="1.5. 将类图映射为关系表"></a>1.5. 将类图映射为关系表</h2><h3 id="1-5-1-ORM-Object-Relation-Mapping"><a href="#1-5-1-ORM-Object-Relation-Mapping" class="headerlink" title="1.5.1. ORM(Object-Relation Mapping)"></a>1.5.1. ORM(Object-Relation Mapping)</h3><ol>
 <li>通常⼀个类/对象映射为⼀张表</li>
 <li>类的属性映射为表的列名</li>
 <li>类的实例对象就是表的⾏</li>
-<li>要为每个转换后的表建⽴主键
-<ol>
+<li>要为每个转换后的表建⽴主键<ol>
 <li>类/对象通过引⽤来唯⼀标识⾃⼰</li>
 <li>关系/表通过主键类唯⼀标识⾃⼰</li>
 </ol>
 </li>
-<li>处理关联
-<ol>
+<li>处理关联<ol>
 <li>类/对象通过链接实现关联</li>
-<li>关系/表通过主键/外键对实现关联
-<ol>
+<li>关系/表通过主键/外键对实现关联<ol>
 <li>1:1关联：其中⼀个表的主键，作为另⼀个表的外键；两端等价</li>
 <li>1:N关联：将1端表的主键，作为N端表的外键</li>
 <li>M:N关联：建⽴中间表，将M的主键和N的主键都作为<strong>中间表</strong>的外键</li>
@@ -384,7 +361,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
               
             </div>
@@ -480,9 +457,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-00-%E9%A2%98%E7%9B%AE/" title="2020-Software-Engineering-and-Computing-II-00-题目">
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2020-C-plus-plus-advanced-programming-C++%20String/" title="2020-C-plus-plus-advanced-programming-C++ String">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-00-题目</span>
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ String</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -490,8 +467,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-web-05-GUI%E5%85%A5%E9%97%A8/" title="2020-Software-Engineering-and-Computing-II-web-05-GUI入门">
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-web-05-GUI入门</span>
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/C++-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2020-C-plus-plus-advanced-programming-C++%20stack/" title="2020-C-plus-plus-advanced-programming-C++ stack">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ stack</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

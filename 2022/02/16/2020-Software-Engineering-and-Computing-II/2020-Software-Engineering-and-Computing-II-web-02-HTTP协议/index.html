@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/10.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/12.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/13.png">
-<meta property="article:published_time" content="2022-02-16T11:10:06.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:51:48.342Z">
+<meta property="article:published_time" content="2022-02-16T11:25:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:30:34.122Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="软件工程与计算II">
@@ -206,7 +206,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:10" pubdate>
+        <time datetime="2022-02-16 19:25" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -279,98 +279,74 @@
             
             <div class="markdown-body">
               
-              <h2 id="02-http协议"><a class="markdownIt-Anchor" href="#02-http协议"></a> 02-HTTP协议</h2>
-<h1 id="1-http协议原理"><a class="markdownIt-Anchor" href="#1-http协议原理"></a> 1. HTTP协议原理</h1>
-<h2 id="11-网络通讯"><a class="markdownIt-Anchor" href="#11-网络通讯"></a> 1.1. 网络通讯</h2>
-<h3 id="111-协议栈"><a class="markdownIt-Anchor" href="#111-协议栈"></a> 1.1.1. 协议栈</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="112-数据包"><a class="markdownIt-Anchor" href="#112-数据包"></a> 1.1.2. 数据包</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="12-http协议"><a class="markdownIt-Anchor" href="#12-http协议"></a> 1.2. HTTP协议</h2>
-<h3 id="121-客户端服务器模式"><a class="markdownIt-Anchor" href="#121-客户端服务器模式"></a> 1.2.1. 客户端服务器模式</h3>
-<ol>
-<li>HTTP是⼀个客户端服务器模型(B/S)。客户端发起请求(Request)，服务器回送响应<br />
-(Response)。HTTP是⼀个⽆状态的协议。⽆状态是指客户机(Web浏览器)和服务器之间不需要建<br />
-⽴持久的连接，这意味着当⼀个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就<br />
-被关闭了，在服务器端不保留连接的有关信息。</li>
+              <h2 id="02-HTTP协议"><a href="#02-HTTP协议" class="headerlink" title="02-HTTP协议"></a>02-HTTP协议</h2><h1 id="1-HTTP协议原理"><a href="#1-HTTP协议原理" class="headerlink" title="1. HTTP协议原理"></a>1. HTTP协议原理</h1><h2 id="1-1-网络通讯"><a href="#1-1-网络通讯" class="headerlink" title="1.1. 网络通讯"></a>1.1. 网络通讯</h2><h3 id="1-1-1-协议栈"><a href="#1-1-1-协议栈" class="headerlink" title="1.1.1. 协议栈"></a>1.1.1. 协议栈</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-1-2-数据包"><a href="#1-1-2-数据包" class="headerlink" title="1.1.2. 数据包"></a>1.1.2. 数据包</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-2-HTTP协议"><a href="#1-2-HTTP协议" class="headerlink" title="1.2. HTTP协议"></a>1.2. HTTP协议</h2><h3 id="1-2-1-客户端服务器模式"><a href="#1-2-1-客户端服务器模式" class="headerlink" title="1.2.1. 客户端服务器模式"></a>1.2.1. 客户端服务器模式</h3><ol>
+<li>HTTP是⼀个客户端服务器模型(B/S)。客户端发起请求(Request)，服务器回送响应<br>(Response)。HTTP是⼀个⽆状态的协议。⽆状态是指客户机(Web浏览器)和服务器之间不需要建<br>⽴持久的连接，这意味着当⼀个客户端向服务器端发出请求，然后服务器返回响应(response)，连接就<br>被关闭了，在服务器端不保留连接的有关信息。</li>
 </ol>
-<h3 id="122-http工作过程"><a class="markdownIt-Anchor" href="#122-http工作过程"></a> 1.2.2. HTTP⼯作过程</h3>
-<blockquote>
+<h3 id="1-2-2-HTTP⼯作过程"><a href="#1-2-2-HTTP⼯作过程" class="headerlink" title="1.2.2. HTTP⼯作过程"></a>1.2.2. HTTP⼯作过程</h3><blockquote>
 <p>⼀次HTTP操作称为⼀个事务，其⼯作整个过程如下：</p>
-</blockquote>
 <ol>
-<li>地址解析
-<ol>
+<li>地址解析<ol>
 <li>如⽤客户端浏览器请求这个⻚⾯：<code>http://localhost.com:8080/index.html</code></li>
-<li>从中分解出协议名、主机名、端⼝、对象路径等部分，对于我们的这个地址，解析得到的结果如下：
-<ol>
+<li>从中分解出协议名、主机名、端⼝、对象路径等部分，对于我们的这个地址，解析得到的结果如下：<ol>
 <li>协议名：http</li>
-<li>主机名：<a target="_blank" rel="noopener" href="http://localhost.com">localhost.com</a></li>
+<li>主机名：localhost.com</li>
 <li>端⼝：8080</li>
 <li>对象路径：/index.html</li>
 </ol>
 </li>
-<li>在这⼀步，<a target="_blank" rel="noopener" href="http://xn--DNSlocalhost-r80uda977lea2049dzt9d0rhlp9c9xb4y3l.com">需要域名系统DNS解析域名localhost.com</a>,得主机的IP地址。</li>
+<li>在这⼀步，需要域名系统DNS解析域名localhost.com,得主机的IP地址。</li>
 </ol>
 </li>
-<li>封装HTTP请求数据包
-<ol>
+<li>封装HTTP请求数据包<ol>
 <li>把以上部分结合本机⾃⼰的信息，封装成⼀个HTTP请求数据包</li>
 </ol>
 </li>
-<li>封装成TCP包，建⽴TCP连接(TCP的三次握⼿)
-<ol>
+<li>封装成TCP包，建⽴TCP连接(TCP的三次握⼿)<ol>
 <li>在HTTP⼯作开始之前，客户机(Web浏览器)⾸先要通过⽹络与服务器建⽴连接，该连接是通过 TCP来完成的，该协议与IP协议共同构建Internet，即著名的TCP/IP协议族，因此Internet⼜被称作是 TCP/IP⽹络。HTTP是⽐TCP更⾼层次的应⽤层协议，根据规则，只有低层协议建⽴之后才能，才能进⾏更层协议的连接，因此，⾸先要建⽴TCP连接，⼀般TCP连接的端⼝号是80。这⾥是8080端⼝</li>
 </ol>
 </li>
-<li>客户机发送请求命令
-<ol>
+<li>客户机发送请求命令<ol>
 <li>建⽴连接后，客户机发送⼀个请求给服务器，请求⽅式的格式为：统⼀资源标识符(URL)、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可内容。</li>
 </ol>
 </li>
-<li>服务器响应
-<ol>
+<li>服务器响应<ol>
 <li>服务器接到请求后，给予相应的响应信息，其格式为⼀个状态⾏，包括信息的协议版本号、⼀个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
 <li>实体消息是服务器向浏览器发送头信息后，它会发送⼀个空⽩⾏来表示头信息的发送到此为结束，接着，它就以Content-Type应答头信息所描述的格式发送⽤户所请求的实际数据</li>
 </ol>
 </li>
-<li>服务器关闭TCP连接
-<ol>
+<li>服务器关闭TCP连接<ol>
 <li>⼀般情况下，⼀旦Web服务器向浏览器发送了请求数据，它就要关闭TCP连接，然后如果浏览器或者服务器在其头信息加⼊了这⾏代码Connection:keep-alive</li>
 <li>TCP连接在发送后将仍然保持打开状态，于是，浏览器可以继续通过相同的连接发送请求。保持连接节省了为每个请求建⽴新连接所需的时间，还节约了⽹络带宽。</li>
 </ol>
 </li>
 </ol>
-<h2 id="13-url-格式"><a class="markdownIt-Anchor" href="#13-url-格式"></a> 1.3. URL 格式</h2>
-<ol>
+</blockquote>
+<h2 id="1-3-URL-格式"><a href="#1-3-URL-格式" class="headerlink" title="1.3. URL 格式"></a>1.3. URL 格式</h2><ol>
 <li>三部分：协议类型、服务器地址(和端⼝号)、路径(Path)</li>
 <li>协议类型://服务器地址[:端⼝号]路径</li>
 </ol>
-<h3 id="131-request"><a class="markdownIt-Anchor" href="#131-request"></a> 1.3.1. Request</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-3-1-Request"><a href="#1-3-1-Request" class="headerlink" title="1.3.1. Request"></a>1.3.1. Request</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>问号后面表示参数</li>
 </ol>
-<h3 id="132-get"><a class="markdownIt-Anchor" href="#132-get"></a> 1.3.2. GET</h3>
-<ol>
+<h3 id="1-3-2-GET"><a href="#1-3-2-GET" class="headerlink" title="1.3.2. GET"></a>1.3.2. GET</h3><ol>
 <li>⽤于获取资源</li>
 <li>对服务器数据不进⾏修改</li>
-<li>不发送 Body</li>
+<li>不发送 Body<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/users/1</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>api.github.com<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/users/1</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>api.github.com<br></code></pre></td></tr></table></figure>
-<h3 id="133-post"><a class="markdownIt-Anchor" href="#133-post"></a> 1.3.3. POST</h3>
-<ol>
+<h3 id="1-3-3-POST"><a href="#1-3-3-POST" class="headerlink" title="1.3.3. POST"></a>1.3.3. POST</h3><ol>
 <li>⽤于增加或修改资源</li>
-<li>发送给服务器的内容写在Body⾥⾯</li>
+<li>发送给服务器的内容写在Body⾥⾯<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">POST /users HTTP/1.1<br><span class="hljs-section">Host: api.github.com</span><br><span class="hljs-section">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-section">Content-Length: 13</span><br>name=rengwuxian&amp;gender=male<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs makefile">POST /users HTTP/1.1<br><span class="hljs-section">Host: api.github.com</span><br><span class="hljs-section">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-section">Content-Length: 13</span><br>name=rengwuxian&amp;gender=male<br></code></pre></td></tr></table></figure>
-<h3 id="134-response"><a class="markdownIt-Anchor" href="#134-response"></a> 1.3.4. Response</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h3 id="135-status-code-状态码"><a class="markdownIt-Anchor" href="#135-status-code-状态码"></a> 1.3.5. Status Code 状态码</h3>
-<ol>
-<li>三位数字，⽤于对响应结果做出类型化描述(如「获取成功」「内容未找到」)</li>
+<h3 id="1-3-4-Response"><a href="#1-3-4-Response" class="headerlink" title="1.3.4. Response"></a>1.3.4. Response</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/web/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-5-Status-Code-状态码"><a href="#1-3-5-Status-Code-状态码" class="headerlink" title="1.3.5. Status Code 状态码"></a>1.3.5. Status Code 状态码</h3><ol>
+<li>三位数字，⽤于对响应结果做出类型化描述(如「获取成功」「内容未找到」)<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-number">1</span>xx：临时性消息。如：<span class="hljs-number">100</span><span class="hljs-comment">(继续发送)</span>、<span class="hljs-number">101</span><span class="hljs-comment">(正在切换协议)</span><br><span class="hljs-number">2</span>xx：成功。最典型的的是<span class="hljs-number">200</span><span class="hljs-comment">(OK)</span>、<span class="hljs-number">201</span><span class="hljs-comment">(创建成功)</span><br><span class="hljs-number">3</span>xx：重定向。如：<span class="hljs-number">301</span><span class="hljs-comment">(永久移动)</span><span class="hljs-number">302</span><span class="hljs-comment">(暂时移动)</span>、<span class="hljs-number">304</span><span class="hljs-comment">(内容未改变)</span><br><span class="hljs-number">4</span>xx：客户端错误。如：<span class="hljs-number">400</span><span class="hljs-comment">(客户端请求错误)</span>、<span class="hljs-number">401</span><span class="hljs-comment">(认证失败)</span>、<span class="hljs-number">403</span><span class="hljs-comment">(被禁⽌)</span>、<span class="hljs-number">404</span><span class="hljs-comment">(找不到</span><br><span class="hljs-comment">内容)</span><br><span class="hljs-number">5</span>xx：服务器错误。如：<span class="hljs-number">500</span><span class="hljs-comment">(服务器内部错误)</span><br></code></pre></td></tr></table></figure></li>
 </ol>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-number">1</span>xx：临时性消息。如：<span class="hljs-number">100</span><span class="hljs-comment">(继续发送)</span>、<span class="hljs-number">101</span><span class="hljs-comment">(正在切换协议)</span><br><span class="hljs-number">2</span>xx：成功。最典型的的是<span class="hljs-number">200</span><span class="hljs-comment">(OK)</span>、<span class="hljs-number">201</span><span class="hljs-comment">(创建成功)</span><br><span class="hljs-number">3</span>xx：重定向。如：<span class="hljs-number">301</span><span class="hljs-comment">(永久移动)</span><span class="hljs-number">302</span><span class="hljs-comment">(暂时移动)</span>、<span class="hljs-number">304</span><span class="hljs-comment">(内容未改变)</span><br><span class="hljs-number">4</span>xx：客户端错误。如：<span class="hljs-number">400</span><span class="hljs-comment">(客户端请求错误)</span>、<span class="hljs-number">401</span><span class="hljs-comment">(认证失败)</span>、<span class="hljs-number">403</span><span class="hljs-comment">(被禁⽌)</span>、<span class="hljs-number">404</span><span class="hljs-comment">(找不到</span><br><span class="hljs-comment">内容)</span><br><span class="hljs-number">5</span>xx：服务器错误。如：<span class="hljs-number">500</span><span class="hljs-comment">(服务器内部错误)</span><br></code></pre></td></tr></table></figure>
+
               
             </div>
             <hr/>
@@ -463,9 +439,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-18-%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/" title="2020-Software-Engineering-and-Computing-II-18-代码设计">
+                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/2020-Demand-and-business-model-innovation-Exam-%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F/" title="2020-Demand-and-business-model-innovation-Exam-商业模式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-18-代码设计</span>
+                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Exam-商业模式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -473,8 +449,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-web-03-REST%E5%92%8CJSON/" title="2020-Software-Engineering-and-Computing-II-web-03-REST和JSON">
-                        <span class="hidden-mobile">2020-Software-Engineering-and-Computing-II-web-03-REST和JSON</span>
+                      <a href="/2022/02/16/2021-Software-System-Design/2021-Software-System-Design-Exam2-%E6%A8%A1%E5%BC%8F%E9%80%89%E6%8B%A9/" title="2021-Software-System-Design-Exam2-模式选择">
+                        <span class="hidden-mobile">2021-Software-System-Design-Exam2-模式选择</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

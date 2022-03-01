@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2018-Linux-system-basics-linux-09-磁盘和文件系统管理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-16T11:09:36.000Z">
-<meta property="article:modified_time" content="2022-02-16T11:46:41.161Z">
+<meta property="article:published_time" content="2022-02-16T11:09:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:00:33.006Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="课程笔记">
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k 字
+          6.8k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          58 分钟
+          57 分钟
         
       </span>
     
@@ -274,45 +274,34 @@
             
             <div class="markdown-body">
               
-              <h2 id="磁盘和文件系统管理"><a class="markdownIt-Anchor" href="#磁盘和文件系统管理"></a> 磁盘和文件系统管理</h2>
-<h1 id="1-linux磁盘分区"><a class="markdownIt-Anchor" href="#1-linux磁盘分区"></a> 1. linux磁盘分区</h1>
-<h2 id="11-磁盘分区知识"><a class="markdownIt-Anchor" href="#11-磁盘分区知识"></a> 1.1. 磁盘分区知识</h2>
-<h3 id="111-什么是硬盘分区"><a class="markdownIt-Anchor" href="#111-什么是硬盘分区"></a> 1.1.1. 什么是硬盘分区</h3>
-<ol>
-<li>分区就是硬盘的&quot;段落&quot;，如果需要在计算机上安装多个操作系统，将需要更多的分区。</li>
+              <h2 id="磁盘和文件系统管理"><a href="#磁盘和文件系统管理" class="headerlink" title="磁盘和文件系统管理"></a>磁盘和文件系统管理</h2><h1 id="1-linux磁盘分区"><a href="#1-linux磁盘分区" class="headerlink" title="1. linux磁盘分区"></a>1. linux磁盘分区</h1><h2 id="1-1-磁盘分区知识"><a href="#1-1-磁盘分区知识" class="headerlink" title="1.1. 磁盘分区知识"></a>1.1. 磁盘分区知识</h2><h3 id="1-1-1-什么是硬盘分区"><a href="#1-1-1-什么是硬盘分区" class="headerlink" title="1.1.1. 什么是硬盘分区"></a>1.1.1. 什么是硬盘分区</h3><ol>
+<li>分区就是硬盘的”段落”，如果需要在计算机上安装多个操作系统，将需要更多的分区。</li>
 <li>为了避免在一个分区下有相同的系统目录，也将他们安装在不同的分区。</li>
-<li>在linux系统下，它本身就有更多的分支，比如跟分区&quot;/“和交换分区&quot;SWAP”。</li>
+<li>在linux系统下，它本身就有更多的分支，比如跟分区”/“和交换分区”SWAP”。</li>
 </ol>
-<h3 id="112-分区类型"><a class="markdownIt-Anchor" href="#112-分区类型"></a> 1.1.2. 分区类型</h3>
-<ol>
-<li>磁盘分区类型:
-<ol>
+<h3 id="1-1-2-分区类型"><a href="#1-1-2-分区类型" class="headerlink" title="1.1.2. 分区类型"></a>1.1.2. 分区类型</h3><ol>
+<li>磁盘分区类型:<ol>
 <li>主分区</li>
-<li>扩展分区:这个只是逻辑分区的&quot;容器&quot;</li>
+<li>扩展分区:这个只是逻辑分区的”容器”</li>
 <li>逻辑分区</li>
 </ol>
 </li>
 <li>一块硬盘最多只能有4个主分区，可以另外建立一个扩展分区来替代4个主分区的其中一个，然后在扩展分区下可以建立更多的逻辑分区。</li>
 </ol>
-<h3 id="113-分区和格式化"><a class="markdownIt-Anchor" href="#113-分区和格式化"></a> 1.1.3. 分区和格式化</h3>
-<ol>
+<h3 id="1-1-3-分区和格式化"><a href="#1-1-3-分区和格式化" class="headerlink" title="1.1.3. 分区和格式化"></a>1.1.3. 分区和格式化</h3><ol>
 <li>linux系统分区的工具是fdisk。</li>
 <li>每个主分区和逻辑分区都会被存储为一个识别文件系统的附加信息。</li>
 <li>通过分区不能产生任何文件系统，分区只是对硬盘上的磁盘空间进行了保留，还不能直接使用，在此分区后必须进行格式化。linux系统下大多使用mkfs命令来进行格式化。</li>
 </ol>
-<h2 id="12-使用fdisk进行磁盘分区"><a class="markdownIt-Anchor" href="#12-使用fdisk进行磁盘分区"></a> 1.2. 使用fdisk进行磁盘分区</h2>
-<h3 id="121-fdisk命令的介绍"><a class="markdownIt-Anchor" href="#121-fdisk命令的介绍"></a> 1.2.1. fdisk命令的介绍</h3>
-<ol>
+<h2 id="1-2-使用fdisk进行磁盘分区"><a href="#1-2-使用fdisk进行磁盘分区" class="headerlink" title="1.2. 使用fdisk进行磁盘分区"></a>1.2. 使用fdisk进行磁盘分区</h2><h3 id="1-2-1-fdisk命令的介绍"><a href="#1-2-1-fdisk命令的介绍" class="headerlink" title="1.2.1. fdisk命令的介绍"></a>1.2.1. fdisk命令的介绍</h3><ol>
 <li>命令介绍:使用fdisk命令可以对磁盘进行分区。</li>
-<li>命令语法:
-<ul>
+<li>命令语法:<ul>
 <li><code>fdisk [-b 磁盘分区][-uv][磁盘设备名]</code></li>
 <li><code>fdisk [-l][-b &lt;分区大小&gt;][-uv][磁盘设备名]</code></li>
 <li><code>fdisk [-s &lt;分区编号&gt;]</code></li>
 </ul>
 </li>
-<li>各参数含义:
-<ol>
+<li>各参数含义:<ol>
 <li>-b:指定每个分区的大小。</li>
 <li>-l:列出指定磁盘的分区表信息。</li>
 <li>-s:将指定的区块大小输出到标准输出上，单位为区块。</li>
@@ -320,11 +309,9 @@
 <li>-v:显示版本信息。</li>
 </ol>
 </li>
-<li>子命令:
-<ol>
+<li>子命令:<ol>
 <li>m:显示所有在fdisk使用的命令</li>
-<li>p:显示磁盘分区信息
-<ol>
+<li>p:显示磁盘分区信息<ol>
 <li>Device Boot(引导):表示引导分区</li>
 <li>Start(开始):表示一个分区从哪个柱面开始</li>
 <li>End(结束):表示一个分区到哪个柱面结束</li>
@@ -343,83 +330,68 @@
 </ol>
 </li>
 </ol>
-<h3 id="122-linux系统下硬盘分区举例"><a class="markdownIt-Anchor" href="#122-linux系统下硬盘分区举例"></a> 1.2.2. linux系统下硬盘分区举例</h3>
-<ol>
+<h3 id="1-2-2-linux系统下硬盘分区举例"><a href="#1-2-2-linux系统下硬盘分区举例" class="headerlink" title="1.2.2. linux系统下硬盘分区举例"></a>1.2.2. linux系统下硬盘分区举例</h3><ol>
 <li>进入fdisk界面:<code>fdisk /dev/sda</code></li>
 <li>然后输入子命令即可</li>
 </ol>
-<h1 id="2-linux文件系统简介"><a class="markdownIt-Anchor" href="#2-linux文件系统简介"></a> 2. linux文件系统简介</h1>
-<ol>
+<h1 id="2-linux文件系统简介"><a href="#2-linux文件系统简介" class="headerlink" title="2. linux文件系统简介"></a>2. linux文件系统简介</h1><ol>
 <li>文件系统通过为每个文件分配文件块的方式把数据存储在存储设备上，这就要维护每一个文件夹的文件块的分配信息。</li>
 </ol>
-<h2 id="21-linux文件系统的工作原理"><a class="markdownIt-Anchor" href="#21-linux文件系统的工作原理"></a> 2.1. linux文件系统的工作原理</h2>
-<ol>
-<li>文件系统的分配策略:
-<ol>
+<h2 id="2-1-linux文件系统的工作原理"><a href="#2-1-linux文件系统的工作原理" class="headerlink" title="2.1. linux文件系统的工作原理"></a>2.1. linux文件系统的工作原理</h2><ol>
+<li>文件系统的分配策略:<ol>
 <li>块分配:当文件变大的时候每一次都为这个文件分配磁盘空间。</li>
 <li>扩展分配:某个文件的磁盘空间不够的时候，一次性为它分配一连串字符串。</li>
 </ol>
 </li>
-<li>传统UNIX文件系统使用的块分配的机制提供了文件块的分配策略。
-<ul>
+<li>传统UNIX文件系统使用的块分配的机制提供了文件块的分配策略。<ul>
 <li>当一个文件慢慢变大的时候，就会造成文件中文件块的不连续，从而导致过多的磁盘寻道时间。</li>
 <li>通过优化文件块的分配策略来避免文件夹的随机分配。同样问题是:如果整个文件系统的文件块的分配形成碎片的时候，就无法进行连续分配了。</li>
 </ul>
 </li>
 <li>每一次当文件扩展的时候，块分配算法就要写入关于新分配的块所在位置的信息。</li>
 </ol>
-<h2 id="22-linux主流文件系统"><a class="markdownIt-Anchor" href="#22-linux主流文件系统"></a> 2.2. linux主流文件系统</h2>
-<ol>
-<li>文件系统是指文件在硬盘上的存储方式和排列顺序。
-<ol>
+<h2 id="2-2-linux主流文件系统"><a href="#2-2-linux主流文件系统" class="headerlink" title="2.2. linux主流文件系统"></a>2.2. linux主流文件系统</h2><ol>
+<li>文件系统是指文件在硬盘上的存储方式和排列顺序。<ol>
 <li>linux系统最重要的特征就是支持多种文件系统。</li>
 <li>linux操作系统因此可以和很多的操作系统兼容。</li>
 </ol>
 </li>
-<li>虚拟文件系统:
-<ol>
+<li>虚拟文件系统:<ol>
 <li>系统将linux文件系统的所有细节进行了转换，所以linux内核的其他部分及系统中运行的程序将能看到统一的文件系统。</li>
 <li>这个文件系统是为linux用户提供快速且高效的文件访问服务设计的。</li>
 </ol>
 </li>
-<li>linux系统常用的文件系统:
-<ol>
+<li>linux系统常用的文件系统:<ol>
 <li>ext(扩展文件系统):第一个专门为linux系统设计的文件系统类型。</li>
-<li>ext2(二级扩展文件系统):是linux文件系统中使用最多格式，在速度和CPU利用率上较为突出。
-<ul>
+<li>ext2(二级扩展文件系统):是linux文件系统中使用最多格式，在速度和CPU利用率上较为突出。<ul>
 <li>得益于快取层的优良设计。</li>
 <li>支持256字节的长文件名。</li>
 <li>文件写入的时候没有写入文件的meta-data:先写内容，再写meta-data</li>
 </ul>
 </li>
-<li>ext3(日志式文件系统):
-<ol>
+<li>ext3(日志式文件系统):<ol>
 <li>日志式文件系统:由于数据库操作的出现，通过日志数据结构来记录完整的操作条目(文件系统驱动程序写入)</li>
 <li>优越性:文件系统都有快取层参与动作</li>
 <li>最大的缺点:没有现代文件系统所具有的、能提高文件数据处理速度和解压的高效性。</li>
 </ol>
 </li>
-<li>JFS(提供日志的字节级文件系统):
-<ol>
+<li>JFS(提供日志的字节级文件系统):<ol>
 <li>目的:为了满足服务器的高吞吐量和可靠性需求而设计开发的。</li>
 <li>突出优点:快速重启能力。</li>
 <li>缺点:系统性能上会有一定损失，系统资源占用率高。</li>
 </ol>
 </li>
-<li>ReiserFS:
-<ol>
+<li>ReiserFS:<ol>
 <li>使用了特殊的、优化的平衡树来组织所有的文件系统数据，为自身提供了非常好的性能改进，减轻文件系统设计上的认为约束。</li>
 <li>其在设计上着眼实现未来的插件程序。</li>
-<li>缺点:
-<ol>
+<li>缺点:<ol>
 <li>每升级一个版本需要将磁盘重新格式化一次。</li>
 <li>不支持长字节的文件目录，易导致系统挂起。</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>XFS(日志文件系统):
-<ol>
+<li>XFS(日志文件系统):<ol>
 <li>全64位、快速、稳固的日志文件系统。</li>
 </ol>
 </li>
@@ -432,99 +404,77 @@
 </ol>
 </li>
 </ol>
-<h2 id="23-查看文件类型"><a class="markdownIt-Anchor" href="#23-查看文件类型"></a> 2.3. 查看文件类型</h2>
-<ol>
+<h2 id="2-3-查看文件类型"><a href="#2-3-查看文件类型" class="headerlink" title="2.3. 查看文件类型"></a>2.3. 查看文件类型</h2><ol>
 <li>使用root账号登录后，使用命令<code>ls -l /lib/modules/2.6.21-2950.fc8xen/kernel/fs/</code>进行查看。</li>
 </ol>
-<h1 id="3-创建文件系统"><a class="markdownIt-Anchor" href="#3-创建文件系统"></a> 3. 创建文件系统</h1>
-<h2 id="31-创建文件系统简介"><a class="markdownIt-Anchor" href="#31-创建文件系统简介"></a> 3.1. 创建文件系统简介</h2>
-<p>如果需要使用某个文件系统存放数据，一般要经过以下操作步骤:</p>
+<h1 id="3-创建文件系统"><a href="#3-创建文件系统" class="headerlink" title="3. 创建文件系统"></a>3. 创建文件系统</h1><h2 id="3-1-创建文件系统简介"><a href="#3-1-创建文件系统简介" class="headerlink" title="3.1. 创建文件系统简介"></a>3.1. 创建文件系统简介</h2><p>如果需要使用某个文件系统存放数据，一般要经过以下操作步骤:</p>
 <ol>
 <li>使用fdisk命令在磁盘上创建分区。</li>
 <li>使用mkfs命令下分区上创建文件系统。</li>
 <li>使用mount命令挂载文件系统，或修改/etc/fstab文件使得开机自动挂载文件系统。</li>
 <li>使用umount命令写在文件系统。</li>
 </ol>
-<h2 id="32-创建文件系统"><a class="markdownIt-Anchor" href="#32-创建文件系统"></a> 3.2. 创建文件系统</h2>
-<h3 id="321-使用mkfs命令创建文件系统"><a class="markdownIt-Anchor" href="#321-使用mkfs命令创建文件系统"></a> 3.2.1. 使用mkfs命令创建文件系统</h3>
-<ol>
+<h2 id="3-2-创建文件系统"><a href="#3-2-创建文件系统" class="headerlink" title="3.2. 创建文件系统"></a>3.2. 创建文件系统</h2><h3 id="3-2-1-使用mkfs命令创建文件系统"><a href="#3-2-1-使用mkfs命令创建文件系统" class="headerlink" title="3.2.1. 使用mkfs命令创建文件系统"></a>3.2.1. 使用mkfs命令创建文件系统</h3><ol>
 <li>命令语法:<code>mkfs -t [文件系统类型][磁盘设备名]</code></li>
-<li>选项的含义:
-<ol>
+<li>选项的含义:<ol>
 <li>-l:指定要建立哪一种文件系统</li>
 </ol>
 </li>
-<li>例子:
-<ol>
-<li>查看当前磁盘上的分区情况，该磁盘设备是sda。
-<ul>
+<li>例子:<ol>
+<li>查看当前磁盘上的分区情况，该磁盘设备是sda。<ul>
 <li><code>fdisk -l /dev/sda</code></li>
 </ul>
 </li>
-<li>格式化/dev/sda5分区
-<ul>
+<li>格式化/dev/sda5分区<ul>
 <li><code>mkfs -t ext3(不同文件系统) /dev/sda5</code></li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
-<h3 id="322-使用其他命令创建文件系统"><a class="markdownIt-Anchor" href="#322-使用其他命令创建文件系统"></a> 3.2.2. 使用其他命令创建文件系统</h3>
-<ol>
+<h3 id="3-2-2-使用其他命令创建文件系统"><a href="#3-2-2-使用其他命令创建文件系统" class="headerlink" title="3.2.2. 使用其他命令创建文件系统"></a>3.2.2. 使用其他命令创建文件系统</h3><ol>
 <li>使用mkfs.ext3,mkfs.ext2,mke2fs,mkdosfs,mkfs.msdos和mkfs.vfat命令,用于格式化成相应的文件系统。</li>
 <li>例子:<code>mkfs.ext3 /dev/sda5</code></li>
 </ol>
-<h1 id="4-挂载和写在文件系统"><a class="markdownIt-Anchor" href="#4-挂载和写在文件系统"></a> 4. 挂载和写在文件系统</h1>
-<ol>
+<h1 id="4-挂载和写在文件系统"><a href="#4-挂载和写在文件系统" class="headerlink" title="4. 挂载和写在文件系统"></a>4. 挂载和写在文件系统</h1><ol>
 <li>使用mount和umount命令可以实现挂载和卸载功能。</li>
 </ol>
-<h2 id="41-挂载文件系统"><a class="markdownIt-Anchor" href="#41-挂载文件系统"></a> 4.1. 挂载文件系统</h2>
-<ol>
+<h2 id="4-1-挂载文件系统"><a href="#4-1-挂载文件系统" class="headerlink" title="4.1. 挂载文件系统"></a>4.1. 挂载文件系统</h2><ol>
 <li>使用mount命令将某个分区、光盘、软盘或U盘挂载到linux系统的目录下。</li>
 <li>命令语法:<code>mount [-参数][设备名][挂载点]</code></li>
-<li>参数含义:
-<ol>
+<li>参数含义:<ol>
 <li>-t:指定设备的文件系统类型。</li>
 <li>auto:自动检测文件系统。</li>
-<li>-o:指定挂载文件系统时的选项
-<ol>
+<li>-o:指定挂载文件系统时的选项<ol>
 <li>codepage:代码页</li>
 <li>iocharset:字符集</li>
 <li>ro:以只读方式挂载</li>
 <li>rw:以读写方式挂载</li>
 <li>nouser:使一般用户无法挂载</li>
-<li>user:可以让一般用户挂载设备</li>
+<li>user:可以让一般用户挂载设备<h3 id="4-1-1-挂载硬盘"><a href="#4-1-1-挂载硬盘" class="headerlink" title="4.1.1. 挂载硬盘"></a>4.1.1. 挂载硬盘</h3></li>
 </ol>
 </li>
 </ol>
 </li>
-</ol>
-<h3 id="411-挂载硬盘"><a class="markdownIt-Anchor" href="#411-挂载硬盘"></a> 4.1.1. 挂载硬盘</h3>
-<ol>
-<li>挂载分区/dev/sda5到/mut/kk目录中。
-<ol>
+<li>挂载分区/dev/sda5到/mut/kk目录中。<ol>
 <li><code>mkdir /mnt/kk</code></li>
 <li><code>mount /dev/sda5 mnt/kk</code></li>
 </ol>
 </li>
 </ol>
-<h3 id="412-挂载光盘-软盘-u盘"><a class="markdownIt-Anchor" href="#412-挂载光盘-软盘-u盘"></a> 4.1.2. 挂载光盘、软盘、U盘</h3>
-<ol>
+<h3 id="4-1-2-挂载光盘、软盘、U盘"><a href="#4-1-2-挂载光盘、软盘、U盘" class="headerlink" title="4.1.2. 挂载光盘、软盘、U盘"></a>4.1.2. 挂载光盘、软盘、U盘</h3><ol>
 <li>linux系统使用光盘、软盘、U盘以及移动硬盘时，必须下执行挂载命令。</li>
-<li>挂载光盘到/media/cdrom目录下:
-<ol>
+<li>挂载光盘到/media/cdrom目录下:<ol>
 <li><code>mkdir /media/cdrom</code></li>
 <li><code>mount -t iso9660 /dev/cdrom /media/cdrom</code></li>
 <li><code>ls /media/cdrom|more</code>查看挂载的光盘中的内容</li>
 </ol>
 </li>
 </ol>
-<h2 id="42-卸载文件系统"><a class="markdownIt-Anchor" href="#42-卸载文件系统"></a> 4.2. 卸载文件系统</h2>
-<ol>
+<h2 id="4-2-卸载文件系统"><a href="#4-2-卸载文件系统" class="headerlink" title="4.2. 卸载文件系统"></a>4.2. 卸载文件系统</h2><ol>
 <li>使用umount命令可以将某一个分区、光盘、软盘或是U盘进行卸载</li>
 <li>语法命令:<code>umount [选项][-t &lt;文件系统类型&gt;][文件系统]</code></li>
-<li>参数含义:
-<ol>
+<li>参数含义:<ol>
 <li>-a:卸载/etc/mtab中记录的所有文件系统</li>
 <li>-n:卸载时不要将信息存入/etc/mtab文件中</li>
 <li>-r:若无法成功卸载，则尝试以只读的方式重新挂入文件系统</li>
@@ -532,42 +482,32 @@
 </ol>
 </li>
 </ol>
-<h3 id="421-卸载硬盘"><a class="markdownIt-Anchor" href="#421-卸载硬盘"></a> 4.2.1. 卸载硬盘</h3>
-<ol>
+<h3 id="4-2-1-卸载硬盘"><a href="#4-2-1-卸载硬盘" class="headerlink" title="4.2.1. 卸载硬盘"></a>4.2.1. 卸载硬盘</h3><ol>
 <li>卸载分区/dev/sda5文件系统</li>
-<li>例子:
-<ol>
+<li>例子:<ol>
 <li><code>umount /dev/sda5</code>(方式一)</li>
 <li><code>df</code></li>
 <li><code>umount /mut/kk</code>(方式二)</li>
 </ol>
 </li>
 </ol>
-<h3 id="422-卸载光盘-软盘-u盘"><a class="markdownIt-Anchor" href="#422-卸载光盘-软盘-u盘"></a> 4.2.2. 卸载光盘、软盘、U盘</h3>
-<ol>
+<h3 id="4-2-2-卸载光盘、软盘、U盘"><a href="#4-2-2-卸载光盘、软盘、U盘" class="headerlink" title="4.2.2. 卸载光盘、软盘、U盘"></a>4.2.2. 卸载光盘、软盘、U盘</h3><ol>
 <li>方式一:<code>umount /dev/cdrom</code></li>
 <li>方式二:<code>umount /media/cdrom</code></li>
 </ol>
-<h2 id="43-查看分区挂载情况"><a class="markdownIt-Anchor" href="#43-查看分区挂载情况"></a> 4.3. 查看分区挂载情况</h2>
-<h3 id="431-使用mount-s命令"><a class="markdownIt-Anchor" href="#431-使用mount-s命令"></a> 4.3.1. 使用mount -s命令</h3>
-<ol>
+<h2 id="4-3-查看分区挂载情况"><a href="#4-3-查看分区挂载情况" class="headerlink" title="4.3. 查看分区挂载情况"></a>4.3. 查看分区挂载情况</h2><h3 id="4-3-1-使用mount-s命令"><a href="#4-3-1-使用mount-s命令" class="headerlink" title="4.3.1. 使用mount -s命令"></a>4.3.1. 使用mount -s命令</h3><ol>
 <li>使用mount命令查看挂载情况。</li>
 <li>命令语法:<code>mount -s</code></li>
 </ol>
-<h3 id="432-查看etcmtab文件"><a class="markdownIt-Anchor" href="#432-查看etcmtab文件"></a> 4.3.2. 查看/etc/mtab文件</h3>
-<ol>
+<h3 id="4-3-2-查看-etc-mtab文件"><a href="#4-3-2-查看-etc-mtab文件" class="headerlink" title="4.3.2. 查看/etc/mtab文件"></a>4.3.2. 查看/etc/mtab文件</h3><ol>
 <li>语法:<code>cat /etc/mtab</code></li>
 </ol>
-<h1 id="5-设置开机自动挂载文件系统"><a class="markdownIt-Anchor" href="#5-设置开机自动挂载文件系统"></a> 5. 设置开机自动挂载文件系统</h1>
-<h2 id="51-etcfstab文件介绍"><a class="markdownIt-Anchor" href="#51-etcfstab文件介绍"></a> 5.1. /etc/fstab文件介绍</h2>
-<ol>
+<h1 id="5-设置开机自动挂载文件系统"><a href="#5-设置开机自动挂载文件系统" class="headerlink" title="5. 设置开机自动挂载文件系统"></a>5. 设置开机自动挂载文件系统</h1><h2 id="5-1-etc-fstab文件介绍"><a href="#5-1-etc-fstab文件介绍" class="headerlink" title="5.1. /etc/fstab文件介绍"></a>5.1. /etc/fstab文件介绍</h2><ol>
 <li>/etc/mtab文件是一个配置文件，它包含了所有分区以及存储设备的信息。其中包含了磁盘分区和存储设备如何挂载，以及挂载在什么地方的信息。</li>
 <li>想要编辑这个文件需要root用户权限。</li>
 </ol>
-<h2 id="52-etcfstab文件详解"><a class="markdownIt-Anchor" href="#52-etcfstab文件详解"></a> 5.2. /etc/fstab文件详解</h2>
-<ol>
-<li>文件基本内容格式:
-<ol>
+<h2 id="5-2-etc-fstab文件详解"><a href="#5-2-etc-fstab文件详解" class="headerlink" title="5.2. /etc/fstab文件详解"></a>5.2. /etc/fstab文件详解</h2><ol>
+<li>文件基本内容格式:<ol>
 <li>一个行包括一个设备或分区的信息，每一行又有多个列的信息。</li>
 <li>第一列:设备名</li>
 <li>第二列:挂载点</li>
@@ -577,192 +517,150 @@
 <li>第六列:文件系统检查选项</li>
 </ol>
 </li>
-<li>/etc/fstab文件的具体内容</li>
-</ol>
-<h3 id="521-设备和默认挂载目录"><a class="markdownIt-Anchor" href="#521-设备和默认挂载目录"></a> 5.2.1. 设备和默认挂载目录</h3>
-<ol>
+<li>/etc/fstab文件的具体内容<h3 id="5-2-1-设备和默认挂载目录"><a href="#5-2-1-设备和默认挂载目录" class="headerlink" title="5.2.1. 设备和默认挂载目录"></a>5.2.1. 设备和默认挂载目录</h3></li>
 <li>一般选择/mnt目录下创建挂载点</li>
 </ol>
-<h3 id="522-文件系统格式"><a class="markdownIt-Anchor" href="#522-文件系统格式"></a> 5.2.2. 文件系统格式</h3>
-<ol>
+<h3 id="5-2-2-文件系统格式"><a href="#5-2-2-文件系统格式" class="headerlink" title="5.2.2. 文件系统格式"></a>5.2.2. 文件系统格式</h3><ol>
 <li>第三行</li>
 </ol>
-<h3 id="523-挂载选项"><a class="markdownIt-Anchor" href="#523-挂载选项"></a> 5.2.3. 挂载选项</h3>
-<ol>
-<li>auto和noauto:
-<ol>
+<h3 id="5-2-3-挂载选项"><a href="#5-2-3-挂载选项" class="headerlink" title="5.2.3. 挂载选项"></a>5.2.3. 挂载选项</h3><ol>
+<li>auto和noauto:<ol>
 <li>auto:系统启动时自动挂载</li>
 <li>noauto:相反</li>
 </ol>
 </li>
-<li>user和nouser:
-<ol>
+<li>user和nouser:<ol>
 <li>user选项允许一般用户挂载设备</li>
 <li>noauto选项只允许root用户挂载设备，并且为默认选项，主要放置新用户的越权行为。</li>
 </ol>
 </li>
-<li>exec和noexec:
-<ol>
+<li>exec和noexec:<ol>
 <li>exec选项允许执行被设为exec分区上的二进制文件，默认选项。</li>
 <li>noexec选项不允许如此做。</li>
 </ol>
 </li>
-<li>ro:
-<ol>
+<li>ro:<ol>
 <li>只读方式挂载文件系统</li>
 </ol>
 </li>
-<li>rw:
-<ol>
+<li>rw:<ol>
 <li>只写方式挂载文件系统</li>
 </ol>
 </li>
-<li>sync和async:
-<ol>
+<li>sync和async:<ol>
 <li>sync:指I/O会同时进行</li>
 <li>async:指I/O操作会异步进行</li>
 </ol>
 </li>
-<li>default:
-<ol>
+<li>default:<ol>
 <li>使用此选项与使用rw、suid、exec、dev、auto、nouser、async选项是一样的功能。</li>
 </ol>
 </li>
 </ol>
-<h3 id="524-转储和文件系统检查选项"><a class="markdownIt-Anchor" href="#524-转储和文件系统检查选项"></a> 5.2.4. 转储和文件系统检查选项</h3>
-<ol>
-<li>第五列:dump选项，用一个数字来决定该文件系统是否需要备份。
-<ul>
+<h3 id="5-2-4-转储和文件系统检查选项"><a href="#5-2-4-转储和文件系统检查选项" class="headerlink" title="5.2.4. 转储和文件系统检查选项"></a>5.2.4. 转储和文件系统检查选项</h3><ol>
+<li>第五列:dump选项，用一个数字来决定该文件系统是否需要备份。<ul>
 <li>如果是0，则dump系统会忽略该文件系统的备份</li>
 </ul>
 </li>
-<li>第六列:fsck选项，通过检查第6列的数字来决定什么顺序来检查文件系统
-<ul>
+<li>第六列:fsck选项，通过检查第6列的数字来决定什么顺序来检查文件系统<ul>
 <li>如果是0，则不检查文件系统</li>
 </ul>
 </li>
 </ol>
-<h1 id="6-使用交换空间"><a class="markdownIt-Anchor" href="#6-使用交换空间"></a> 6. 使用交换空间</h1>
-<ol>
+<h1 id="6-使用交换空间"><a href="#6-使用交换空间" class="headerlink" title="6. 使用交换空间"></a>6. 使用交换空间</h1><ol>
 <li>linux系统的交换空间在物理内存被用完时使用</li>
 <li>如果在内存已满的时候，系统需要内存，则内存中不活跃的页被转移到交换空间中。</li>
 <li>交换空间总的大小至少为计算机内存的1-2倍左右，但是最好内存不要超过2GB容量。</li>
 </ol>
-<h2 id="61-添加交换空间"><a class="markdownIt-Anchor" href="#61-添加交换空间"></a> 6.1. 添加交换空间</h2>
-<h3 id="611-添加交换分区"><a class="markdownIt-Anchor" href="#611-添加交换分区"></a> 6.1.1. 添加交换分区</h3>
-<ol>
-<li>添加一个交换分区的具体步骤有:
-<ol>
-<li>创建交换分区:<code>mkswap /dev/sda5</code>
-<ul>
+<h2 id="6-1-添加交换空间"><a href="#6-1-添加交换空间" class="headerlink" title="6.1. 添加交换空间"></a>6.1. 添加交换空间</h2><h3 id="6-1-1-添加交换分区"><a href="#6-1-1-添加交换分区" class="headerlink" title="6.1.1. 添加交换分区"></a>6.1.1. 添加交换分区</h3><ol>
+<li>添加一个交换分区的具体步骤有:<ol>
+<li>创建交换分区:<code>mkswap /dev/sda5</code><ul>
 <li>不可以用free进行查看</li>
 </ul>
 </li>
-<li>启动交换分区:<code>swapon /dev/sda5</code>
-<ul>
+<li>启动交换分区:<code>swapon /dev/sda5</code><ul>
 <li>可以用free进行查看</li>
 </ul>
 </li>
 <li>确认已经启动交换分区:<code>cat /proc/swaps</code></li>
-<li>如果要在系统引导时启动交换分区，编辑/etc/fstab添加内容。然后在系统下次引导时，就会启动新建的交换分区。
-<ul>
+<li>如果要在系统引导时启动交换分区，编辑/etc/fstab添加内容。然后在系统下次引导时，就会启动新建的交换分区。<ul>
 <li><code>/dev/sda5 swap swao defaults 0 0</code></li>
 </ul>
 </li>
 </ol>
 </li>
-<li>添加交换文件
-<ol>
-<li>创建文件/swapfile:
-<ul>
+<li>添加交换文件<ol>
+<li>创建文件/swapfile:<ul>
 <li>将大小乘以1024来判断块的大小</li>
 <li>在Shell提示下以root用户身份输入一下命令:<code>dd if=/dev/zero of=/swapfile bs = 1024 count =65536</code></li>
 </ul>
 </li>
-<li>创建交换文件:
-<ul>
+<li>创建交换文件:<ul>
 <li><code>mkswap /swapfile</code></li>
 </ul>
 </li>
-<li>启用交换文件:
-<ul>
+<li>启用交换文件:<ul>
 <li><code>swapon /swapfile</code></li>
 </ul>
 </li>
-<li>新添加交换分区并启动文件之后，使用如下命令确保交换文件已被启用了
-<ul>
+<li>新添加交换分区并启动文件之后，使用如下命令确保交换文件已被启用了<ul>
 <li><code>free</code></li>
 <li><code>cat /proc/swaps</code></li>
 </ul>
 </li>
-<li>如果在系统引导时启用交换文件，编辑/etc/fstab文件添加如下内容。然后在系统下次引导时，就会启用新建的交换文件。
-<ul>
+<li>如果在系统引导时启用交换文件，编辑/etc/fstab文件添加如下内容。然后在系统下次引导时，就会启用新建的交换文件。<ul>
 <li><code>/dev/sda5 swap swao defaults 0 0</code></li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
-<h3 id="612-删除交换空间"><a class="markdownIt-Anchor" href="#612-删除交换空间"></a> 6.1.2. 删除交换空间</h3>
-<ol>
-<li>删除交换分区:
-<ol>
-<li>在Shell提示下以root用户身份输入一下命令禁用交换分区
-<ul>
+<h3 id="6-1-2-删除交换空间"><a href="#6-1-2-删除交换空间" class="headerlink" title="6.1.2. 删除交换空间"></a>6.1.2. 删除交换空间</h3><ol>
+<li>删除交换分区:<ol>
+<li>在Shell提示下以root用户身份输入一下命令禁用交换分区<ul>
 <li><code>swapoff /dev/sda5</code></li>
 <li><code>free</code></li>
 </ul>
 </li>
-<li>如果在系统引导时不启用交换分区，编辑/etc/fstab文件删除以下内容
-<ul>
+<li>如果在系统引导时不启用交换分区，编辑/etc/fstab文件删除以下内容<ul>
 <li><code>/dev/sda5 swap swao defaults 0 0</code></li>
 </ul>
 </li>
 </ol>
 </li>
-<li>删除交换文件:
-<ol>
-<li>在Shell提示下，以root用户身份执行一下命令来禁用交换文件
-<ul>
+<li>删除交换文件:<ol>
+<li>在Shell提示下，以root用户身份执行一下命令来禁用交换文件<ul>
 <li><code>swapoff /swapfile</code></li>
 <li><code>free</code></li>
 </ul>
 </li>
-<li>删除/swapfile文件
-<ul>
+<li>删除/swapfile文件<ul>
 <li><code>rm -rf /swapfile</code></li>
 </ul>
 </li>
-<li>如果在系统引导时不启用交换分区，编辑/etc/fstab文件删除以下内容
-<ul>
+<li>如果在系统引导时不启用交换分区，编辑/etc/fstab文件删除以下内容<ul>
 <li><code>/dev/sda5 swap swao defaults 0 0</code></li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
-<h1 id="7-权限设置"><a class="markdownIt-Anchor" href="#7-权限设置"></a> 7. 权限设置</h1>
-<h2 id="71-文件和目录的权限"><a class="markdownIt-Anchor" href="#71-文件和目录的权限"></a> 7.1. 文件和目录的权限</h2>
-<ol>
-<li>文件权限简介:
-<ol>
-<li>设定权限限制允许一下三种用户访问:
-<ol>
+<h1 id="7-权限设置"><a href="#7-权限设置" class="headerlink" title="7. 权限设置"></a>7. 权限设置</h1><h2 id="7-1-文件和目录的权限"><a href="#7-1-文件和目录的权限" class="headerlink" title="7.1. 文件和目录的权限"></a>7.1. 文件和目录的权限</h2><ol>
+<li>文件权限简介:<ol>
+<li>设定权限限制允许一下三种用户访问:<ol>
 <li>文件的所有者(文件属主)</li>
 <li>文件所有者所在的同组用户</li>
 <li>系统中的其他用户</li>
 </ol>
 </li>
-<li>linux系统中，对每一个用户对文件或目录的读取、写入和执行权限。
-<ol>
+<li>linux系统中，对每一个用户对文件或目录的读取、写入和执行权限。<ol>
 <li>第一套:(所有者权限):控制访问自己的文件权限。</li>
 <li>第二套:控制用户组访问其他一个用户的文件的权限。</li>
 <li>第三套:赋予用户不同类型的读取、写入及执行权限</li>
 </ol>
 </li>
 <li>所以有9种类型的权限组</li>
-<li>用户可以控制一个给定文件和目录的访问程度:
-<ol>
+<li>用户可以控制一个给定文件和目录的访问程度:<ol>
 <li>创建一个文件，系统会自动地赋予文件所有者读和写的权限</li>
 <li>文件所有者可以吧权限改为任意权限</li>
 <li>一个文件可以有只读权限，禁止任何修改。也可以有只写权限，允许他像一个程序一样执行</li>
@@ -770,16 +668,13 @@
 </li>
 </ol>
 </li>
-<li>一般权限:
-<ol>
-<li>使用&quot;ls -l&quot;命令可以显示文件的详细信息。</li>
-<li>使用&quot;ls -l&quot;和&quot;ls -al&quot;命令后显示的结果。</li>
+<li>一般权限:<ol>
+<li>使用”ls -l”命令可以显示文件的详细信息。</li>
+<li>使用”ls -l”和”ls -al”命令后显示的结果。</li>
 <li>第一个字符用来区分文件的类型，具体参见第五章字母。</li>
-<li>最开始的第2-10个字符用来表示权限的:
-<ol>
+<li>最开始的第2-10个字符用来表示权限的:<ol>
 <li>这9个，每3个为一组，左边3个是所有者权限，中间3个字符表示与所有者同一组的用户的权限，右边3个字符是其他用户的权限</li>
-<li>字符代表的意义:
-<ol>
+<li>字符代表的意义:<ol>
 <li>r:读取,文件:读取内容,目录:浏览目录</li>
 <li>w:写入,文件:新增修改文件,目录:删除移动目录内文件</li>
 <li>x:执行,文件:执行文件,目录:进入目录</li>
@@ -788,14 +683,12 @@
 </li>
 </ol>
 </li>
-<li>每个文件都拥有自己的目录，通常集中放置在/home目录下，这些主目录的默认权限为&quot;rwx------&quot;。</li>
+<li>每个文件都拥有自己的目录，通常集中放置在/home目录下，这些主目录的默认权限为”rwx———“。</li>
 </ol>
 </li>
-<li>特殊权限:
-<ol>
+<li>特殊权限:<ol>
 <li>除了一般权限以外，还有特殊权限。用户如果没有特殊要求，不要启用这些权限，避免出现安全漏洞。</li>
-<li>特殊权限类型:
-<ol>
+<li>特殊权限类型:<ol>
 <li>SUID:可执行文件搭配这个权限可以得到特权，任意存取文件的所有者可以使用全部的系统资源。</li>
 <li>SGID:设置在文件上，可以访问用户组所使用的资源。</li>
 <li>Sticky:/tmp和/var/tmp目录供所有用户暂时存取文件，即每位用户皆拥有完整的权限进入目录，去浏览、删除和移动文件。</li>
@@ -805,41 +698,33 @@
 </ol>
 </li>
 </ol>
-<h2 id="72-权限设置"><a class="markdownIt-Anchor" href="#72-权限设置"></a> 7.2. 权限设置</h2>
-<ol>
+<h2 id="7-2-权限设置"><a href="#7-2-权限设置" class="headerlink" title="7.2. 权限设置"></a>7.2. 权限设置</h2><ol>
 <li>只有系统管理员和文件所有者才能更改文件或目录的权限。</li>
 </ol>
-<h3 id="721-文件管理器更改权限"><a class="markdownIt-Anchor" href="#721-文件管理器更改权限"></a> 7.2.1. 文件管理器更改权限</h3>
-<ol>
+<h3 id="7-2-1-文件管理器更改权限"><a href="#7-2-1-文件管理器更改权限" class="headerlink" title="7.2.1. 文件管理器更改权限"></a>7.2.1. 文件管理器更改权限</h3><ol>
 <li>属性-&gt;权限-&gt;进行修改</li>
 </ol>
-<h3 id="722-文字设定法"><a class="markdownIt-Anchor" href="#722-文字设定法"></a> 7.2.2. 文字设定法</h3>
-<ol>
-<li>使用chmod命令:
-<ol>
+<h3 id="7-2-2-文字设定法"><a href="#7-2-2-文字设定法" class="headerlink" title="7.2.2. 文字设定法"></a>7.2.2. 文字设定法</h3><ol>
+<li>使用chmod命令:<ol>
 <li>命令格式:<code>chmod [who] [+|-|=][mode][文件或目录名]</code></li>
-<li>who参数以及含义:
-<ol>
+<li>who参数以及含义:<ol>
 <li>u:所有者</li>
 <li>g:用户组</li>
 <li>o:其他用户</li>
 <li>a:所有用户，系统默认值</li>
 </ol>
 </li>
-<li>操作符号:
-<ol>
+<li>操作符号:<ol>
 <li>+:添加某个权限</li>
 <li>-:删除某个权限</li>
 <li>=:赋予给定权限并取消原先权限</li>
 </ol>
 </li>
-<li>mode权限组合:
-<ol>
+<li>mode权限组合:<ol>
 <li>r:可读</li>
 <li>w:可写</li>
 <li>x:可执行</li>
-<li>s:执行时把进程的属主或组ID置为该文件的文件属主
-<ul>
+<li>s:执行时把进程的属主或组ID置为该文件的文件属主<ul>
 <li>“g+s”:设置文件的SUID权限</li>
 <li>“u+s”:设置文件的GUID权限</li>
 </ul>
@@ -850,32 +735,27 @@
 </ol>
 </li>
 </ol>
-<h3 id="723-数字设定法"><a class="markdownIt-Anchor" href="#723-数字设定法"></a> 7.2.3. 数字设定法</h3>
-<ol>
-<li>需要三个数字来表示权限。
-<ol>
+<h3 id="7-2-3-数字设定法"><a href="#7-2-3-数字设定法" class="headerlink" title="7.2.3. 数字设定法"></a>7.2.3. 数字设定法</h3><ol>
+<li>需要三个数字来表示权限。<ol>
 <li>0:没有权限，对应-</li>
 <li>1:可执行权限，对应x</li>
 <li>2:写入权限，对应w</li>
 <li>4:读取权限，对应r</li>
 </ol>
 </li>
-<li>第四个数字是特殊权限:
-<ol>
+<li>第四个数字是特殊权限:<ol>
 <li>SUID:对应4</li>
 <li>SGID:对应2</li>
 <li>Sticky:对应1</li>
 </ol>
 </li>
 <li>所有数字属性的格式为3个0-7的八进制数，其顺序是(u)(g)(o)</li>
-<li>例子:
-<ol>
+<li>例子:<ol>
 <li><code>-rwx------</code>:700</li>
 <li><code>-rwxr--r--</code>:744</li>
 </ol>
 </li>
-<li>这种形式的chmod命令:<code>chmod [n1n2n3] [文件或目录名]</code>
-<ol>
+<li>这种形式的chmod命令:<code>chmod [n1n2n3] [文件或目录名]</code><ol>
 <li>n1:所有者的权限</li>
 <li>n2:同族用户的权限</li>
 <li>n3:其他用户的权限</li>
@@ -883,18 +763,15 @@
 </ol>
 </li>
 </ol>
-<h2 id="73-更改文件和目录的所有权"><a class="markdownIt-Anchor" href="#73-更改文件和目录的所有权"></a> 7.3. 更改文件和目录的所有权</h2>
-<ol>
+<h2 id="7-3-更改文件和目录的所有权"><a href="#7-3-更改文件和目录的所有权" class="headerlink" title="7.3. 更改文件和目录的所有权"></a>7.3. 更改文件和目录的所有权</h2><ol>
 <li>文件和目录的创建者默认具有所有权，他们对文件和目录具有任何权限，可以进行任何操作，也可以将所有权交给其他用户。</li>
 </ol>
-<h3 id="731-chown命令"><a class="markdownIt-Anchor" href="#731-chown命令"></a> 7.3.1. chown命令</h3>
-<ol>
+<h3 id="7-3-1-chown命令"><a href="#7-3-1-chown命令" class="headerlink" title="7.3.1. chown命令"></a>7.3.1. chown命令</h3><ol>
 <li>使用chown命令可以更改文件和目录的所有者和用户组</li>
 <li>命令语法:<code>chown [-R][用户.组][文件|目录]</code></li>
 <li>命令中参数:-R：将子级目录下的所有文件和目录的所有权一起改变。</li>
 </ol>
-<h3 id="732-chgrp命令"><a class="markdownIt-Anchor" href="#732-chgrp命令"></a> 7.3.2. chgrp命令</h3>
-<ol>
+<h3 id="7-3-2-chgrp命令"><a href="#7-3-2-chgrp命令" class="headerlink" title="7.3.2. chgrp命令"></a>7.3.2. chgrp命令</h3><ol>
 <li>使用chgrp命令可以更改文件或目录所属的组。</li>
 <li>命令语法:<code>chgrp [选项][用户组][文件|目录]</code></li>
 <li>参数说明:-R:递归式地改变指定目录及其下的所有子目录和文件所属的组。</li>
@@ -992,9 +869,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Demand-and-business-model-innovation/%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F/2020-Demand-and-business-model-innovation-Book5-%E6%B5%81%E7%A8%8B/" title="2020-Demand-and-business-model-innovation-Book5-流程">
+                      <a href="/2022/02/16/2021-software-quality-management/2021-software-quality-management-Exam%202021/" title="2021-software-quality-management-Exam 2021">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Demand-and-business-model-innovation-Book5-流程</span>
+                        <span class="hidden-mobile">2021-software-quality-management-Exam 2021</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1002,8 +879,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-12-Linux%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" title="2018-Linux-system-basics-linux-12-Linux网络服务器配置">
-                        <span class="hidden-mobile">2018-Linux-system-basics-linux-12-Linux网络服务器配置</span>
+                      <a href="/2022/02/16/2019-COA19/2019-COA19-lecture09/" title="2019-COA19-lecture09">
+                        <span class="hidden-mobile">2019-COA19-lecture09</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

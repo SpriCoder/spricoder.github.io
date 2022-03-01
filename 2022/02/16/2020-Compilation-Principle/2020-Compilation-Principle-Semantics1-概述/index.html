@@ -46,8 +46,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/23.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/24.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/25.png">
-<meta property="article:published_time" content="2022-02-16T11:09:08.000Z">
-<meta property="article:modified_time" content="2022-02-16T12:22:07.497Z">
+<meta property="article:published_time" content="2022-02-16T11:08:00.000Z">
+<meta property="article:modified_time" content="2022-02-28T09:12:28.461Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="编译原理">
@@ -225,7 +225,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-02-16 19:09" pubdate>
+        <time datetime="2022-02-16 19:08" pubdate>
           2022年2月16日 晚上
         </time>
       </span>
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          2.6k 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          26 分钟
+          22 分钟
         
       </span>
     
@@ -298,9 +298,7 @@
             
             <div class="markdown-body">
               
-              <h2 id="semantics1-概述"><a class="markdownIt-Anchor" href="#semantics1-概述"></a> Semantics1-概述</h2>
-<h1 id="1-属性文法attribute-grammar"><a class="markdownIt-Anchor" href="#1-属性文法attribute-grammar"></a> 1. 属性文法(Attribute Grammar)</h1>
-<blockquote>
+              <h2 id="Semantics1-概述"><a href="#Semantics1-概述" class="headerlink" title="Semantics1-概述"></a>Semantics1-概述</h2><h1 id="1-属性文法-Attribute-Grammar"><a href="#1-属性文法-Attribute-Grammar" class="headerlink" title="1. 属性文法(Attribute Grammar)"></a>1. 属性文法(Attribute Grammar)</h1><blockquote>
 <p><strong>属性文法(Attribute Grammar)</strong>:为上下文无关文法赋予<strong>语义</strong></p>
 </blockquote>
 <ol>
@@ -309,46 +307,39 @@
 <li>三种实现方式</li>
 <li>四大应用</li>
 </ol>
-<h2 id="11-关键问题-如何基于上下文无关文法做上下文相关分析"><a class="markdownIt-Anchor" href="#11-关键问题-如何基于上下文无关文法做上下文相关分析"></a> 1.1. 关键问题: 如何基于上下文无关文法做上下文相关分析?</h2>
-<blockquote>
+<h2 id="1-1-关键问题-如何基于上下文无关文法做上下文相关分析"><a href="#1-1-关键问题-如何基于上下文无关文法做上下文相关分析" class="headerlink" title="1.1. 关键问题: 如何基于上下文无关文法做上下文相关分析?"></a>1.1. 关键问题: 如何基于上下文无关文法做上下文相关分析?</h2><blockquote>
 <p><strong>语法分析树</strong>上的<strong>有序</strong>信息流动</p>
 </blockquote>
-<h2 id="12-表达式求值"><a class="markdownIt-Anchor" href="#12-表达式求值"></a> 1.2. 表达式求值</h2>
-<ol>
+<h2 id="1-2-表达式求值"><a href="#1-2-表达式求值" class="headerlink" title="1.2. 表达式求值"></a>1.2. 表达式求值</h2><ol>
 <li>类型系统(语义分析)</li>
 <li>抽象语法树</li>
 <li>后缀表达式(中间代码生成)</li>
 </ol>
-<h2 id="13-语法制导定义syntax-directed-definition-sdd"><a class="markdownIt-Anchor" href="#13-语法制导定义syntax-directed-definition-sdd"></a> 1.3. 语法制导定义(Syntax-Directed Definition; SDD)</h2>
-<ol>
+<h2 id="1-3-语法制导定义-Syntax-Directed-Definition-SDD"><a href="#1-3-语法制导定义-Syntax-Directed-Definition-SDD" class="headerlink" title="1.3. 语法制导定义(Syntax-Directed Definition; SDD)"></a>1.3. 语法制导定义(Syntax-Directed Definition; SDD)</h2><ol>
 <li>SDD是一个上下文无关文法和<strong>属性</strong>及<strong>规则</strong>的结合。</li>
 <li>每个文法符号都可以关联多个属性</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li>每个产生式都可以关联<strong>一组</strong>规则</li>
 <li>SDD<strong>唯一确定</strong>了语法分析树上每个非终结符节点的属性值</li>
 <li>SDD<strong>没有</strong>规定以什么方式、什么顺序计算这些属性值</li>
 <li>计算使用<strong>SDT(Syntax-Directed Translation)</strong></li>
 </ol>
-<h2 id="14-注释annotated语法分析树"><a class="markdownIt-Anchor" href="#14-注释annotated语法分析树"></a> 1.4. 注释(annotated)语法分析树</h2>
-<ol>
+<h2 id="1-4-注释-annotated-语法分析树"><a href="#1-4-注释-annotated-语法分析树" class="headerlink" title="1.4. 注释(annotated)语法分析树"></a>1.4. 注释(annotated)语法分析树</h2><ol>
 <li>显示了各个属性值的语法分析树：3 ∗ 5 + 4</li>
 <li>添加属性/值得到的就是<strong>注释语法分析树</strong></li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="15-definition综合属性synthesized-attribute"><a class="markdownIt-Anchor" href="#15-definition综合属性synthesized-attribute"></a> 1.5. Definition(综合属性(Synthesized Attribute))</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-5-Definition-综合属性-Synthesized-Attribute"><a href="#1-5-Definition-综合属性-Synthesized-Attribute" class="headerlink" title="1.5. Definition(综合属性(Synthesized Attribute))"></a>1.5. Definition(综合属性(Synthesized Attribute))</h2><ol>
 <li>节点N上的综合属性只能通过<strong>N的子节点或N本身</strong>的属性来定义。</li>
 <li>直观上就是要么能被<strong>子节点计算得到</strong>，要么是<strong>自身持有</strong>。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="16-definitions属性定义s-attributed-definition"><a class="markdownIt-Anchor" href="#16-definitions属性定义s-attributed-definition"></a> 1.6. Definition(S属性定义(S-Attributed Definition))</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-6-Definition-S属性定义-S-Attributed-Definition"><a href="#1-6-Definition-S属性定义-S-Attributed-Definition" class="headerlink" title="1.6. Definition(S属性定义(S-Attributed Definition))"></a>1.6. Definition(S属性定义(S-Attributed Definition))</h2><ol>
 <li>如果一个SDD的每个属性都是综合属性,则它是S属性定义。</li>
 </ol>
-<h3 id="161-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"><a class="markdownIt-Anchor" href="#161-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"></a> 1.6.1. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-6-1-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"><a href="#1-6-1-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系" class="headerlink" title="1.6.1. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"></a>1.6.1. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li><strong>S属性定义</strong>的依赖图描述了属性实例之间<strong>自底向上</strong>的信息流。</li>
 <li>因此,此类属性值的计算可以自然地在<strong>自底向上</strong>的语法分析<strong>过程中</strong>实现</li>
@@ -357,38 +348,31 @@
 <li>在LL语法分析器中,递归下降函数A<strong>返回</strong>时,计算相应节点A的综合属性值，逐渐计算即可。</li>
 <li>全部是<strong>综合属性</strong>的话，计算是冗余的</li>
 </ol>
-<h3 id="162-t有一个综合属性syn与一个继承属性inh"><a class="markdownIt-Anchor" href="#162-t有一个综合属性syn与一个继承属性inh"></a> 1.6.2. T’有一个综合属性syn与一个继承属性inh</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-6-2-T’有一个综合属性syn与一个继承属性inh"><a href="#1-6-2-T’有一个综合属性syn与一个继承属性inh" class="headerlink" title="1.6.2. T’有一个综合属性syn与一个继承属性inh"></a>1.6.2. T’有一个综合属性syn与一个继承属性inh</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>红色边框的部分是集成属性，比如<code>A?B:C</code></p>
 </blockquote>
-<h3 id="163-definition-继承属性inherited-attribute"><a class="markdownIt-Anchor" href="#163-definition-继承属性inherited-attribute"></a> 1.6.3. Definition (继承属性(Inherited Attribute))</h3>
-<ol>
+<h3 id="1-6-3-Definition-继承属性-Inherited-Attribute"><a href="#1-6-3-Definition-继承属性-Inherited-Attribute" class="headerlink" title="1.6.3. Definition (继承属性(Inherited Attribute))"></a>1.6.3. Definition (继承属性(Inherited Attribute))</h3><ol>
 <li>节点N上的<strong>继承属性</strong>只能通过<strong>N的父节点、N本身和N的兄弟节点</strong>上的属性来定义。</li>
 </ol>
-<h3 id="164-继承属性tinh用于从左向右传递中间计算结果"><a class="markdownIt-Anchor" href="#164-继承属性tinh用于从左向右传递中间计算结果"></a> 1.6.4. 继承属性T’.inh用于从左向右传递中间计算结果</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-6-4-继承属性T’-inh用于从左向右传递中间计算结果"><a href="#1-6-4-继承属性T’-inh用于从左向右传递中间计算结果" class="headerlink" title="1.6.4. 继承属性T’.inh用于从左向右传递中间计算结果"></a>1.6.4. 继承属性T’.inh用于从左向右传递中间计算结果</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>在右递归文法下实现了左结合</p>
 </blockquote>
-<h3 id="165-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"><a class="markdownIt-Anchor" href="#165-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"></a> 1.6.5. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-6-5-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"><a href="#1-6-5-依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系" class="headerlink" title="1.6.5. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系"></a>1.6.5. 依赖图用于确定一棵给定的语法分析树中各个属性实例之间的依赖关系</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li><strong>信息流向</strong>:先从左向右、从上到下传递信息,再从下到上传递信息</li>
 <li>注意箭头的相关性</li>
 <li>为什么要传递：消除了<strong>左递归后的生成式</strong>所决定的</li>
 <li>右结合则不需要先计算：<code>-</code>、<code>=</code>、<code>[]</code>在c语言中是右结合运算符。</li>
 </ol>
-<h2 id="17-definition-l属性定义l-attributed-definition"><a class="markdownIt-Anchor" href="#17-definition-l属性定义l-attributed-definition"></a> 1.7. Definition (L属性定义(L-Attributed Definition))</h2>
-<ol>
-<li>如果一个SDD的每个属性
-<ol>
+<h2 id="1-7-Definition-L属性定义-L-Attributed-Definition"><a href="#1-7-Definition-L属性定义-L-Attributed-Definition" class="headerlink" title="1.7. Definition (L属性定义(L-Attributed Definition))"></a>1.7. Definition (L属性定义(L-Attributed Definition))</h2><ol>
+<li>如果一个SDD的每个属性<ol>
 <li>要么是<strong>综合属性</strong></li>
-<li>要么是<strong>继承属性</strong>,但是它的规则满足如下限制:对于产生式<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>→</mo><msub><mi>X</mi><mn>1</mn></msub><msub><mi>X</mi><mn>2</mn></msub><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>X</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">A \rightarrow X_1X_2...X_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>及其对应规则定义的继承属性<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub><mi mathvariant="normal">.</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">X_i.a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord mathdefault">a</span></span></span></span>,则这个规则只能使用
-<ol>
+<li>要么是<strong>继承属性</strong>,但是它的规则满足如下限制:对于产生式$A \rightarrow X_1X_2…X_n$及其对应规则定义的继承属性$X_i.a$,则这个规则只能使用<ol>
 <li>和<strong>产生式头A</strong>关联的<strong>继承</strong>属性;</li>
-<li>位于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>左边的文法符号实例<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mn>1</mn></msub><mi mathvariant="normal">、</mi><msub><mi>X</mi><mn>2</mn></msub><mi mathvariant="normal">、</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">、</mi><msub><mi>X</mi><mrow><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">X_1、X_2、...、X_{i−1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>相关的<strong>继承</strong>属性或<strong>综合</strong>属性;</li>
-<li>和<strong>这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的实例本身</strong>相关的继承属性或综合属性,但是在由这个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的全部属性组成的依赖图中<strong>不存在环</strong>。</li>
+<li>位于$X_i$左边的文法符号实例$X_1、X_2、…、X_{i−1}$相关的<strong>继承</strong>属性或<strong>综合</strong>属性;</li>
+<li>和<strong>这个$X_i$的实例本身</strong>相关的继承属性或综合属性,但是在由这个$X_i$的全部属性组成的依赖图中<strong>不存在环</strong>。</li>
 </ol>
 </li>
 </ol>
@@ -396,80 +380,76 @@
 <li>则它是<strong>L属性</strong>定义。</li>
 <li>只允许其依赖左侧的兄弟节点，避免出现环状结构。</li>
 </ol>
-<h2 id="18-非l属性定义"><a class="markdownIt-Anchor" href="#18-非l属性定义"></a> 1.8. 非L属性定义</h2>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">生</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">式</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>⇒</mo><mi>B</mi><mi>C</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">语</mi><mi mathvariant="normal">义</mi><mi mathvariant="normal">规</mi><mi mathvariant="normal">则</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi mathvariant="normal">.</mi><mi>s</mi><mo>=</mo><mi>B</mi><mi mathvariant="normal">.</mi><mi>b</mi><mo separator="true">;</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>B</mi><mi mathvariant="normal">.</mi><mi>i</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>C</mi><mi mathvariant="normal">.</mi><mi>c</mi><mo separator="true">,</mo><mi>A</mi><mi mathvariant="normal">.</mi><mi>s</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
+<h2 id="1-8-非L属性定义"><a href="#1-8-非L属性定义" class="headerlink" title="1.8. 非L属性定义"></a>1.8. 非L属性定义</h2><script type="math/tex; mode=display">
+\begin{cases}
   生成式 \\
   A \Rightarrow B C \\
   语义规则 \\
   A.s = B.b; \\
   B.i = f(C.c, A.s) \\
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:7.2000399999999996em;vertical-align:-3.3500199999999998em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.8500199999999998em;"><span style="top:-0.6999900000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-0.6999900000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-0.9999899999999999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.29999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.59999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.89999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.90001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.200010000000001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.50001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-5.80001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-6.100019999999999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.3500199999999998em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.8500000000000005em;"><span style="top:-5.850000000000001em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord cjk_fallback">生</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">式</span></span></span><span style="top:-4.410000000000001em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span><span style="top:-2.9700000000000006em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord cjk_fallback">语</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">规</span><span class="mord cjk_fallback">则</span></span></span><span style="top:-1.5300000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord">.</span><span class="mord mathdefault">b</span><span class="mpunct">;</span></span></span><span style="top:-0.08999999999999997em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord">.</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">.</span><span class="mord mathdefault">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">A</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.35em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<blockquote>
-<p>作为继承属性,B.i依赖了右边的C.c属性与头部A.s综合属性<br />
-L属性文法:依赖图是无环的</p>
+\end{cases}</script><blockquote>
+<p>作为继承属性,B.i依赖了右边的C.c属性与头部A.s综合属性<br>L属性文法:依赖图是无环的</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/9.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/10.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/9.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/10.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
+</div>
 <ul>
-<li>(左递归)S属性文法<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span></span></span></span>(右递归)L属性文法</li>
+<li>(左递归)S属性文法$\Rightarrow$(右递归)L属性文法</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>仍保持了操作的左结合性</li>
 <li>(左递归)S属性文法</li>
 </ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>→</mo><msub><mi>A</mi><mn>1</mn></msub><mi>Y</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><msub><mi>A</mi><mn>1</mn></msub><mi mathvariant="normal">.</mi><mi>a</mi><mo separator="true">,</mo><mi>Y</mi><mi mathvariant="normal">.</mi><mi>y</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>→</mo><mi>X</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi>x</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
-  A \rightarrow A_1Y &amp; A.a = g(A_1.a, Y.y) \\
-  A \rightarrow X &amp; A.a = f(X.x) \\
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<ul>
+<script type="math/tex; mode=display">
+\begin{cases}
+  A \rightarrow A_1Y & A.a = g(A_1.a, Y.y) \\
+  A \rightarrow X & A.a = f(X.x) \\
+\end{cases}</script><ul>
 <li>(右递归)L属性文法</li>
 </ul>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mo>→</mo><mi>X</mi><mi>R</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>R</mi><mi mathvariant="normal">.</mi><mi>i</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">;</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>A</mi><mi mathvariant="normal">.</mi><mi>a</mi><mo>=</mo><mi>R</mi><mi mathvariant="normal">.</mi><mi>s</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>R</mi><mo>→</mo><mi>Y</mi><msub><mi>R</mi><mn>1</mn></msub></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><msub><mi>R</mi><mn>1</mn></msub><mi mathvariant="normal">.</mi><mi>i</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>R</mi><mi mathvariant="normal">.</mi><mi>i</mi><mo separator="true">,</mo><mi>Y</mi><mi mathvariant="normal">.</mi><mi>y</mi><mo stretchy="false">)</mo><mo separator="true">;</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>R</mi><mi mathvariant="normal">.</mi><mi>s</mi><mo>=</mo><msub><mi>R</mi><mn>1</mn></msub><mi mathvariant="normal">.</mi><mi>s</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>R</mi><mo>→</mo><mi>ϵ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>R</mi><mi mathvariant="normal">.</mi><mi>s</mi><mo>=</mo><mi>R</mi><mi mathvariant="normal">.</mi><mi>i</mi></mrow></mstyle></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases}
-  A \rightarrow XR &amp; R.i = f(X.x); &amp; A.a = R.s \\
-  R \rightarrow YR_1 &amp; R_1.i = g(R.i, Y.y); &amp; R.s = R_1.s \\
-  R \rightarrow \epsilon &amp; R.s = R.i \\
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.32em;vertical-align:-1.9099999999999997em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.35002em;"><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-2.19999em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-3.1500100000000004em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.30001em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-4.60002em;"><span class="pstrut" style="height:3.15em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.8500199999999998em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.41em;"><span style="top:-4.41em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.5300000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault">ϵ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9099999999999997em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.41em;"><span style="top:-4.41em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mpunct">;</span></span></span><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mpunct">;</span></span></span><span style="top:-1.5300000000000002em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.9099999999999997em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.41em;"><span style="top:-4.41em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="mord">.</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">s</span></span></span><span style="top:-2.97em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">.</span><span class="mord mathdefault">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.46999999999999975em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<h2 id="19-类型声明文法举例"><a class="markdownIt-Anchor" href="#19-类型声明文法举例"></a> 1.9. 类型声明文法举例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<script type="math/tex; mode=display">
+\begin{cases}
+  A \rightarrow XR & R.i = f(X.x); & A.a = R.s \\
+  R \rightarrow YR_1 & R_1.i = g(R.i, Y.y); & R.s = R_1.s \\
+  R \rightarrow \epsilon & R.s = R.i \\
+\end{cases}</script><h2 id="1-9-类型声明文法举例"><a href="#1-9-类型声明文法举例" class="headerlink" title="1.9. 类型声明文法举例"></a>1.9. 类型声明文法举例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>想要得到每一个变量的声明</li>
 <li>L.inh将声明的类型沿着标识符列表向下传递,并被加入到相应的符号表条目</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<ol start="3">
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ol>
 <li><code>addType()</code>是一种受控的副作用，可以理解为一种规则/动作，使用<strong>全局</strong>符号表，更易实现</li>
 </ol>
-<h2 id="110-数组类型文法举例"><a class="markdownIt-Anchor" href="#110-数组类型文法举例"></a> 1.10. 数组类型文法举例</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-10-数组类型文法举例"><a href="#1-10-数组类型文法举例" class="headerlink" title="1.10. 数组类型文法举例"></a>1.10. 数组类型文法举例</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>语义规则用以生成类型表达式array(2, array(3, integer))</li>
 <li>先检查继承属性，也就是基础信息</li>
 <li>[]是右结合的</li>
 </ol>
-<h3 id="1101-继承属性cb将一个基本类型沿着树向下传播"><a class="markdownIt-Anchor" href="#1101-继承属性cb将一个基本类型沿着树向下传播"></a> 1.10.1. 继承属性C.b将一个基本类型沿着树向下传播</h3>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1-10-1-继承属性C-b将一个基本类型沿着树向下传播"><a href="#1-10-1-继承属性C-b将一个基本类型沿着树向下传播" class="headerlink" title="1.10.1. 继承属性C.b将一个基本类型沿着树向下传播"></a>1.10.1. 继承属性C.b将一个基本类型沿着树向下传播</h3><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>综合属性C.t收集最终得到的类型表达式</li>
 </ol>
-<h2 id="111-表达式的抽象语法树s属性定义"><a class="markdownIt-Anchor" href="#111-表达式的抽象语法树s属性定义"></a> 1.11. 表达式的抽象语法树S属性定义</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-11-表达式的抽象语法树S属性定义"><a href="#1-11-表达式的抽象语法树S属性定义" class="headerlink" title="1.11. 表达式的抽象语法树S属性定义"></a>1.11. 表达式的抽象语法树S属性定义</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>没有消除左递归的表达式文法</li>
 <li>没有必要为<code>()</code>单独创造出节点</li>
 </ol>
-<h2 id="112-抽象语法树丢弃非本质的东西仅保留重要结构信息"><a class="markdownIt-Anchor" href="#112-抽象语法树丢弃非本质的东西仅保留重要结构信息"></a> 1.12. 抽象语法树:丢弃非本质的东西,仅保留重要结构信息</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="1-12-抽象语法树-丢弃非本质的东西-仅保留重要结构信息"><a href="#1-12-抽象语法树-丢弃非本质的东西-仅保留重要结构信息" class="headerlink" title="1.12. 抽象语法树:丢弃非本质的东西,仅保留重要结构信息"></a>1.12. 抽象语法树:丢弃非本质的东西,仅保留重要结构信息</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ol>
 <li>点的部分显示出来的就是抽象语法树</li>
 <li>其实T.node和E.node都是使用一个节点来存储的</li>
@@ -477,40 +457,39 @@ L属性文法:依赖图是无环的</p>
 <li>抽象语法树比之前的语法树要简洁</li>
 <li>继承属性和综合属性之间如果没有其他节点，那么指向同一个节点</li>
 </ol>
-<h2 id="113-表达式的抽象语法树l属性定义"><a class="markdownIt-Anchor" href="#113-表达式的抽象语法树l属性定义"></a> 1.13. 表达式的抽象语法树L属性定义</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/19.png" srcset="/img/loading.gif" lazyload alt="" /><br />
-<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="114-definition-后缀表示postfix-notation"><a class="markdownIt-Anchor" href="#114-definition-后缀表示postfix-notation"></a> 1.14. Definition (后缀表示(Postfix Notation))</h2>
-<ol>
+<h2 id="1-13-表达式的抽象语法树L属性定义"><a href="#1-13-表达式的抽象语法树L属性定义" class="headerlink" title="1.13. 表达式的抽象语法树L属性定义"></a>1.13. 表达式的抽象语法树L属性定义</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/19.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/20.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-14-Definition-后缀表示-Postfix-Notation"><a href="#1-14-Definition-后缀表示-Postfix-Notation" class="headerlink" title="1.14. Definition (后缀表示(Postfix Notation))"></a>1.14. Definition (后缀表示(Postfix Notation))</h2><ol>
 <li>如果E是一个变量或常量,则E的后缀表示是E本身;</li>
 <li>如果E是形如E1opE2的表达式,则E的后缀表示是E′1E′2op,这里E′1和E′2分别是E1与E2的后缀表达式;</li>
 <li>如果E是形如(E1)的表达式,则E的后缀表示是E1的后缀表示。</li>
 </ol>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>9</mn><mi mathvariant="normal">−</mi><mn>5</mn><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mo>⇒</mo><mn>95</mn><mi mathvariant="normal">−</mi><mn>2</mn><mo>+</mo><mspace linebreak="newline"></mspace><mn>9</mn><mi mathvariant="normal">−</mi><mo stretchy="false">(</mo><mn>5</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>⇒</mo><mn>952</mn><mo>+</mo><mi mathvariant="normal">−</mi><mspace linebreak="newline"></mspace><mn>952</mn><mo>+</mo><mi mathvariant="normal">−</mi><mn>3</mn><mi mathvariant="normal">∗</mi><mo>⇒</mo><mo stretchy="false">(</mo><mn>9</mn><mi mathvariant="normal">−</mi><mo stretchy="false">(</mo><mn>5</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mi mathvariant="normal">∗</mi><mn>3</mn><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">(9−5)+2 \Rightarrow 95−2+ \\
+<script type="math/tex; mode=display">
+(9−5)+2 \Rightarrow 95−2+ \\
 9−(5+2) \Rightarrow 952+− \\
-952+−3∗ \Rightarrow (9−(5+2))∗3 \\ 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">9</span><span class="mord">−</span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">5</span><span class="mord">−</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">9</span><span class="mord">−</span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">5</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">5</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">3</span><span class="mord">∗</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">9</span><span class="mord">−</span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord">∗</span><span class="mord">3</span></span><span class="mspace newline"></span></span></span></span></p>
-<h2 id="115-后缀表达式s属性文法"><a class="markdownIt-Anchor" href="#115-后缀表达式s属性文法"></a> 1.15. 后缀表达式S属性文法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+952+−3∗ \Rightarrow (9−(5+2))∗3 \\</script><h2 id="1-15-后缀表达式S属性文法"><a href="#1-15-后缀表达式S属性文法" class="headerlink" title="1.15. 后缀表达式S属性文法"></a>1.15. 后缀表达式S属性文法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/21.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
-<p>&quot;||&quot;表示字符串的连接</p>
+<p>“||”表示字符串的连接</p>
 </blockquote>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="116-有符号二进制数文法"><a class="markdownIt-Anchor" href="#116-有符号二进制数文法"></a> 1.16. 有符号二进制数文法</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/22.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-16-有符号二进制数文法"><a href="#1-16-有符号二进制数文法" class="headerlink" title="1.16. 有符号二进制数文法"></a>1.16. 有符号二进制数文法</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/23.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>10</mn><msub><mn>1</mn><mn>2</mn></msub><mo>=</mo><mo>−</mo><msub><mn>5</mn><mn>10</mn></msub></mrow><annotation encoding="application/x-tex">-101_2 = -5_{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.79444em;vertical-align:-0.15em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord">0</span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.79444em;vertical-align:-0.15em;"></span><span class="mord">−</span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>$-101_2 = -5_{10}$</p>
 </blockquote>
-<h2 id="117-有符号二进制数l属性定义"><a class="markdownIt-Anchor" href="#117-有符号二进制数l属性定义"></a> 1.17. 有符号二进制数L属性定义</h2>
+<h2 id="1-17-有符号二进制数L属性定义"><a href="#1-17-有符号二进制数L属性定义" class="headerlink" title="1.17. 有符号二进制数L属性定义"></a>1.17. 有符号二进制数L属性定义</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/24.png" srcset="/img/loading.gif" lazyload alt="" /></th>
-<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/25.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/24.png" srcset="/img/loading.gif" lazyload alt=""></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec4/25.png" srcset="/img/loading.gif" lazyload alt=""></th>
 </tr>
 </thead>
-<tbody></tbody>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
 </table>
+</div>
 <ol>
 <li>是否可以去掉Bit.pos继承属性</li>
 <li>可以直接使用父节点list的pos值</li>
@@ -608,9 +587,9 @@ L属性文法:依赖图是无环的</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Parser5-%E9%94%99%E8%AF%AF%E6%81%A2%E5%A4%8D/" title="2020-Compilation-Principle-Parser5-错误恢复">
+                      <a href="/2022/02/16/2020-Big-data-analysis/2020-Big-data-analysis-Tec8-%E9%B8%A2%E5%B0%BE%E8%8A%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E7%B1%BB/" title="2020-Big-data-analysis-Tec8-鸢尾花数据集分类">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Compilation-Principle-Parser5-错误恢复</span>
+                        <span class="hidden-mobile">2020-Big-data-analysis-Tec8-鸢尾花数据集分类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -618,8 +597,8 @@ L属性文法:依赖图是无环的</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Compilation-Principle/2020-Compilation-Principle-Semantics4-%E8%A1%A5%E5%85%85/" title="2020-Compilation-Principle-Semantics4-补充">
-                        <span class="hidden-mobile">2020-Compilation-Principle-Semantics4-补充</span>
+                      <a href="/2022/02/16/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" title="2020-C-plus-plus-advanced-programming-C++ 命名空间">
+                        <span class="hidden-mobile">2020-C-plus-plus-advanced-programming-C++ 命名空间</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

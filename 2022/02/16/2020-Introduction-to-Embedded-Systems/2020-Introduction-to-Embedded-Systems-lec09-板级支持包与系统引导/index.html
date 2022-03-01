@@ -29,8 +29,8 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/4.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/5.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/6.png">
-<meta property="article:published_time" content="2022-02-16T11:09:38.000Z">
-<meta property="article:modified_time" content="2022-02-16T13:29:54.487Z">
+<meta property="article:published_time" content="2022-02-16T11:09:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:24:24.452Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="嵌入式系统导论">
@@ -279,62 +279,47 @@
             
             <div class="markdown-body">
               
-              <h2 id="lec09-板级支持包与系统引导"><a class="markdownIt-Anchor" href="#lec09-板级支持包与系统引导"></a> lec09-板级支持包与系统引导</h2>
-<h1 id="1-嵌入式软件运行流程"><a class="markdownIt-Anchor" href="#1-嵌入式软件运行流程"></a> 1. 嵌入式软件运行流程</h1>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="11-上电复位-板级初始化阶段"><a class="markdownIt-Anchor" href="#11-上电复位-板级初始化阶段"></a> 1.1. 上电复位、板级初始化阶段</h2>
-<ol>
+              <h2 id="lec09-板级支持包与系统引导"><a href="#lec09-板级支持包与系统引导" class="headerlink" title="lec09-板级支持包与系统引导"></a>lec09-板级支持包与系统引导</h2><h1 id="1-嵌入式软件运行流程"><a href="#1-嵌入式软件运行流程" class="headerlink" title="1. 嵌入式软件运行流程"></a>1. 嵌入式软件运行流程</h1><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="1-1-上电复位、板级初始化阶段"><a href="#1-1-上电复位、板级初始化阶段" class="headerlink" title="1.1. 上电复位、板级初始化阶段"></a>1.1. 上电复位、板级初始化阶段</h2><ol>
 <li>嵌⼊式系统上电复位后完成板级初始化⼯作。</li>
-<li>板级初始化程序具有完全的硬件特性，⼀般采⽤汇编语⾔实现。不同的嵌⼊式系统，板级初始化时要完成的⼯作具有⼀定的特殊性，但以下⼯作⼀般是必须完成的：
-<ol>
+<li>板级初始化程序具有完全的硬件特性，⼀般采⽤汇编语⾔实现。不同的嵌⼊式系统，板级初始化时要完成的⼯作具有⼀定的特殊性，但以下⼯作⼀般是必须完成的：<ol>
 <li>CPU中堆栈指针寄存器的初始化。</li>
 <li>BSS段(Block Storage Space表示未被初始化的数据)的初始化。</li>
 <li>CPU芯⽚级的初始化：中断控制器、内存等的初始化。</li>
 </ol>
 </li>
 </ol>
-<h2 id="12-系统引导升级阶段"><a class="markdownIt-Anchor" href="#12-系统引导升级阶段"></a> 1.2. 系统引导/升级阶段</h2>
-<ol>
+<h2 id="1-2-系统引导-升级阶段"><a href="#1-2-系统引导-升级阶段" class="headerlink" title="1.2. 系统引导/升级阶段"></a>1.2. 系统引导/升级阶段</h2><ol>
 <li>根据需要分别进⼊系统软件引导阶段或系统升级阶段。</li>
-<li>软件可通过测试通信端⼝数据或判断特定开关的⽅<br />
-式分别进⼊不同阶段。</li>
+<li>软件可通过测试通信端⼝数据或判断特定开关的⽅<br>式分别进⼊不同阶段。</li>
 </ol>
-<h2 id="13-系统引导阶段系统引导有几种情况"><a class="markdownIt-Anchor" href="#13-系统引导阶段系统引导有几种情况"></a> 1.3. 系统引导阶段，系统引导有⼏种情况：</h2>
-<ol>
+<h2 id="1-3-系统引导阶段，系统引导有⼏种情况："><a href="#1-3-系统引导阶段，系统引导有⼏种情况：" class="headerlink" title="1.3. 系统引导阶段，系统引导有⼏种情况："></a>1.3. 系统引导阶段，系统引导有⼏种情况：</h2><ol>
 <li>将系统软件从NOR Flash中读取出来加载到RAM中运⾏：这种⽅式可以解决成本及Flash速度⽐RAM慢的问题。软件可压缩存储在Flash中。</li>
 <li>不需将软件引导到RAM中⽽是让其直接在NorFlash上运⾏，进⼊系统初始化阶段。</li>
 <li>将软件从外存(如NandFlash、CF卡、MMC等)中读取出来加载到RAM中运⾏：这种⽅式的成本更低。</li>
 </ol>
-<h2 id="14-系统升级阶段"><a class="markdownIt-Anchor" href="#14-系统升级阶段"></a> 1.4. 系统升级阶段</h2>
-<ol>
+<h2 id="1-4-系统升级阶段"><a href="#1-4-系统升级阶段" class="headerlink" title="1.4. 系统升级阶段"></a>1.4. 系统升级阶段</h2><ol>
 <li>进⼊系统升级阶段后系统可通过⽹络进⾏远程升级或通过串⼝进⾏本地升级。</li>
 <li>远程升级⼀般⽀持TFTP、FTP、HTTP等⽅式。</li>
 <li>本地升级可通过Console⼝使⽤超级终端或特定的升级软件进⾏。</li>
 </ol>
-<h2 id="15-系统初始化阶段"><a class="markdownIt-Anchor" href="#15-系统初始化阶段"></a> 1.5. 系统初始化阶段</h2>
-<ol>
+<h2 id="1-5-系统初始化阶段"><a href="#1-5-系统初始化阶段" class="headerlink" title="1.5. 系统初始化阶段"></a>1.5. 系统初始化阶段</h2><ol>
 <li>在该阶段进⾏操作系统等系统软件各功能部分必需的初始化⼯作，如根据系统配置初始化数据空间、初始化系统所需的接⼝和外设等。</li>
 <li>系统初始化阶段需要按特定顺序进⾏，如⾸先完成内核的初始化，然后完成⽹络、⽂件系统等的初始化，最后完成中间件等的初始化⼯作。</li>
 </ol>
-<h2 id="16-应用初始化阶段"><a class="markdownIt-Anchor" href="#16-应用初始化阶段"></a> 1.6. 应⽤初始化阶段</h2>
-<ol>
+<h2 id="1-6-应⽤初始化阶段"><a href="#1-6-应⽤初始化阶段" class="headerlink" title="1.6. 应⽤初始化阶段"></a>1.6. 应⽤初始化阶段</h2><ol>
 <li>在该阶段进⾏应⽤任务的创建，信号量、消息队列的创建和与应⽤相关的其它初始化⼯作。</li>
 </ol>
-<h2 id="17-多任务应用运行阶段"><a class="markdownIt-Anchor" href="#17-多任务应用运行阶段"></a> 1.7. 多任务应⽤运⾏阶段</h2>
-<ol>
+<h2 id="1-7-多任务应⽤运⾏阶段"><a href="#1-7-多任务应⽤运⾏阶段" class="headerlink" title="1.7. 多任务应⽤运⾏阶段"></a>1.7. 多任务应⽤运⾏阶段</h2><ol>
 <li>各种初始化⼯作完成后，系统进⼊多任务状态，操作系统按照已确定的算法进⾏任务的调度，各应⽤任务分别完成特定的功能。</li>
 </ol>
-<h1 id="2-板级支持包bsp"><a class="markdownIt-Anchor" href="#2-板级支持包bsp"></a> 2. 板级支持包BSP</h1>
-<ol>
-<li>BSP全称&quot;板级⽀持包&quot;(Board Support Packages)，说的简单⼀点，就是⼀段启动代码，和计算机主板的BIOS差不多，但提供的功能区别就相差很⼤。</li>
+<h1 id="2-板级支持包BSP"><a href="#2-板级支持包BSP" class="headerlink" title="2. 板级支持包BSP"></a>2. 板级支持包BSP</h1><ol>
+<li>BSP全称”板级⽀持包”(Board Support Packages)，说的简单⼀点，就是⼀段启动代码，和计算机主板的BIOS差不多，但提供的功能区别就相差很⼤。</li>
 </ol>
-<h2 id="21-bsp在嵌入式系统中所处的位置"><a class="markdownIt-Anchor" href="#21-bsp在嵌入式系统中所处的位置"></a> 2.1. BSP在嵌入式系统中所处的位置</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="22-bsp中的驱动程序"><a class="markdownIt-Anchor" href="#22-bsp中的驱动程序"></a> 2.2. BSP中的驱动程序</h2>
-<ol>
+<h2 id="2-1-BSP在嵌入式系统中所处的位置"><a href="#2-1-BSP在嵌入式系统中所处的位置" class="headerlink" title="2.1. BSP在嵌入式系统中所处的位置"></a>2.1. BSP在嵌入式系统中所处的位置</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="2-2-BSP中的驱动程序"><a href="#2-2-BSP中的驱动程序" class="headerlink" title="2.2. BSP中的驱动程序"></a>2.2. BSP中的驱动程序</h2><ol>
 <li>抽象物理设备或虚拟设备的功能软件，⽤于管理这些设备的操作。</li>
-<li>驱动程序的基本功能
-<ol>
+<li>驱动程序的基本功能<ol>
 <li>对设备初始化和释放</li>
 <li>对设备进⾏管理</li>
 <li>读取应⽤程序传送给设备⽂件的数据，并回送应⽤程序的请求数据</li>
@@ -342,38 +327,30 @@
 </ol>
 </li>
 </ol>
-<h2 id="23-bsp和biosuefi的区别"><a class="markdownIt-Anchor" href="#23-bsp和biosuefi的区别"></a> 2.3. BSP和BIOS/UEFI的区别</h2>
-<ol>
-<li>BIOS主要是负责在电脑开启时检测、初始化系统设备(设置栈指针，中断分配，内存初始化…)、装⼊操作系统并调度操作系统向硬件发出的指令。 UEFI,“统⼀的可扩展固件接⼝”,旨在代替BIOS, 提⾼软件互操作性和解决BIOS的局限性。</li>
+<h2 id="2-3-BSP和BIOS-UEFI的区别"><a href="#2-3-BSP和BIOS-UEFI的区别" class="headerlink" title="2.3. BSP和BIOS/UEFI的区别"></a>2.3. BSP和BIOS/UEFI的区别</h2><ol>
+<li>BIOS主要是负责在电脑开启时检测、初始化系统设备(设置栈指针，中断分配，内存初始化..)、装⼊操作系统并调度操作系统向硬件发出的指令。 UEFI,”统⼀的可扩展固件接⼝”,旨在代替BIOS, 提⾼软件互操作性和解决BIOS的局限性。</li>
 <li>BSP是和操作系统绑在⼀起运⾏，尽管BSP的开始部分和BIOS所做的⼯作类似，但是 BSP还包含和系统有关的基本驱动 。</li>
 <li>BIOS程序是⽤户不能更改，编译编程的，只能对参数进⾏修改设置，但是程序员还可以编程修改BSP，在BSP中任意添加⼀些和系统⽆关的驱动或程序，甚⾄可以把上层开发的统统放到BSP中</li>
 </ol>
-<h2 id="24-不同系统中的bsp"><a class="markdownIt-Anchor" href="#24-不同系统中的bsp"></a> 2.4. 不同系统中的BSP</h2>
-<ol>
+<h2 id="2-4-不同系统中的BSP"><a href="#2-4-不同系统中的BSP" class="headerlink" title="2.4. 不同系统中的BSP"></a>2.4. 不同系统中的BSP</h2><ol>
 <li>⼀个嵌⼊式操作系统针对不同的CPU，会有不同的BSP。</li>
 <li>即使同⼀种CPU，由于外设的⼀点差别BSP相应的部分也不⼀样</li>
 </ol>
-<h2 id="25-bsp的特点与功能"><a class="markdownIt-Anchor" href="#25-bsp的特点与功能"></a> 2.5. BSP的特点与功能</h2>
-<ol>
+<h2 id="2-5-BSP的特点与功能"><a href="#2-5-BSP的特点与功能" class="headerlink" title="2.5. BSP的特点与功能"></a>2.5. BSP的特点与功能</h2><ol>
 <li>硬件相关性：因为嵌⼊式实时系统的硬件环境具有应⽤相关性，所以，作为⾼层软件与硬件之间的接⼝，BSP必须为操作系统提供操作和控制具体硬件的⽅法。</li>
 <li>操作系统相关性：不同的操作系统具有各⾃的软件层次结构，因此，不同的操作系统具有特定的硬件接⼝形式。</li>
 </ol>
-<h2 id="26-嵌入式系统初始化以及bsp的功能"><a class="markdownIt-Anchor" href="#26-嵌入式系统初始化以及bsp的功能"></a> 2.6. 嵌入式系统初始化以及BSP的功能</h2>
-<ol>
+<h2 id="2-6-嵌入式系统初始化以及BSP的功能"><a href="#2-6-嵌入式系统初始化以及BSP的功能" class="headerlink" title="2.6. 嵌入式系统初始化以及BSP的功能"></a>2.6. 嵌入式系统初始化以及BSP的功能</h2><ol>
 <li>嵌⼊式系统的初始化过程是⼀个同时包括硬件初始化和软件初始化的过程；⽽操作系统启动以前的初始化操作是BSP的主要功能之⼀</li>
-<li>初始化过程总可以抽象为三个主要环境，按照⾃底向上、从硬件到软件的次序依次为：
-<ol>
+<li>初始化过程总可以抽象为三个主要环境，按照⾃底向上、从硬件到软件的次序依次为：<ol>
 <li>⽚级初始化</li>
 <li>板级初始化</li>
 <li>系统级初始化</li>
 </ol>
 </li>
 </ol>
-<h2 id="27-初始化过程"><a class="markdownIt-Anchor" href="#27-初始化过程"></a> 2.7. 初始化过程</h2>
-<h3 id="271-片级初始化"><a class="markdownIt-Anchor" href="#271-片级初始化"></a> 2.7.1. 片级初始化</h3>
-<ol>
-<li>主要完成CPU的初始化
-<ol>
+<h2 id="2-7-初始化过程"><a href="#2-7-初始化过程" class="headerlink" title="2.7. 初始化过程"></a>2.7. 初始化过程</h2><h3 id="2-7-1-片级初始化"><a href="#2-7-1-片级初始化" class="headerlink" title="2.7.1. 片级初始化"></a>2.7.1. 片级初始化</h3><ol>
+<li>主要完成CPU的初始化<ol>
 <li>设置CPU的核⼼寄存器和控制寄存器</li>
 <li>CPU核⼼⼯作模式</li>
 <li>CPU的局部总线模式等</li>
@@ -382,17 +359,14 @@
 <li>⽚级初始化把CPU从上电时的缺省状态逐步设置成为系统所要求的⼯作状态</li>
 <li>这是⼀个纯硬件的初始化过程初始化过程</li>
 </ol>
-<h3 id="272-板级初始化"><a class="markdownIt-Anchor" href="#272-板级初始化"></a> 2.7.2. 板级初始化</h3>
-<ol>
+<h3 id="2-7-2-板级初始化"><a href="#2-7-2-板级初始化" class="headerlink" title="2.7.2. 板级初始化"></a>2.7.2. 板级初始化</h3><ol>
 <li>完成CPU以外的其他硬件设备的初始化</li>
 <li>同时还要设置某些软件的数据结构和参数，为随后的系统级初始化和应⽤程序的运⾏建⽴硬件和软件环境</li>
 <li>这是⼀个同时包含软硬件两部分在内的初始化过程</li>
 </ol>
-<h3 id="273-系统级初始化"><a class="markdownIt-Anchor" href="#273-系统级初始化"></a> 2.7.3. 系统级初始化</h3>
-<ol>
+<h3 id="2-7-3-系统级初始化"><a href="#2-7-3-系统级初始化" class="headerlink" title="2.7.3. 系统级初始化"></a>2.7.3. 系统级初始化</h3><ol>
 <li>这是⼀个以软件初始化为主的过程，主要进⾏操作系统初始化</li>
-<li>BSP将控制转交给操作系统，由操作系统进⾏余下的初始化操作：
-<ol>
+<li>BSP将控制转交给操作系统，由操作系统进⾏余下的初始化操作：<ol>
 <li>包括加载和初始化与硬件⽆关的设备驱动程序</li>
 <li>建⽴系统内存区</li>
 <li>加载并初始化其他系统软件模块(如⽹络系统、⽂件系统等)</li>
@@ -400,89 +374,71 @@
 </li>
 <li>最后，操作系统创建应⽤程序环境并将控制转交给应⽤程序的⼊⼝</li>
 </ol>
-<h1 id="3-bootloader"><a class="markdownIt-Anchor" href="#3-bootloader"></a> 3. Bootloader</h1>
-<h2 id="31-rtos的引导模式"><a class="markdownIt-Anchor" href="#31-rtos的引导模式"></a> 3.1. RTOS的引导模式</h2>
-<ol>
+<h1 id="3-Bootloader"><a href="#3-Bootloader" class="headerlink" title="3. Bootloader"></a>3. Bootloader</h1><h2 id="3-1-RTOS的引导模式"><a href="#3-1-RTOS的引导模式" class="headerlink" title="3.1. RTOS的引导模式"></a>3.1. RTOS的引导模式</h2><ol>
 <li>操作系统引导概念：将操作系统装⼊内存并开始执⾏的过程。</li>
-<li>按时间效率和空间效率不同的要求，分为两种模式：
-<ol>
+<li>按时间效率和空间效率不同的要求，分为两种模式：<ol>
 <li>不需要BootLoader的引导模式：时间效率⾼，系统快速启动，直接在NOR flash或ROM系列⾮易失性存储介质中运⾏，但不满⾜运⾏速度的要求。</li>
 <li>需要BootLoader的引导模式：节省空间，牺牲时间，适⽤于硬件成本低，运⾏速度快，但启动速度相对慢</li>
 </ol>
 </li>
 </ol>
-<h2 id="32-bootloader"><a class="markdownIt-Anchor" href="#32-bootloader"></a> 3.2. BootLoader</h2>
-<ol>
+<h2 id="3-2-BootLoader"><a href="#3-2-BootLoader" class="headerlink" title="3.2. BootLoader"></a>3.2. BootLoader</h2><ol>
 <li>嵌⼊式系统中的 OS 启动加载程序</li>
-<li>引导加载程序
-<ol>
+<li>引导加载程序<ol>
 <li>包括固化在固件(firmware)中的 boot 代码(可选)，和Boot Loader两⼤部分</li>
 <li>是系统加电后运⾏的第⼀段软件代码</li>
 </ol>
 </li>
 <li>相对于操作系统内核来说，它是⼀个硬件抽象层</li>
 </ol>
-<h2 id="33-pc机中的引导加载程序"><a class="markdownIt-Anchor" href="#33-pc机中的引导加载程序"></a> 3.3. PC机中的引导加载程序</h2>
-<ol>
-<li>两部分组成
-<ol>
+<h2 id="3-3-PC机中的引导加载程序"><a href="#3-3-PC机中的引导加载程序" class="headerlink" title="3.3. PC机中的引导加载程序"></a>3.3. PC机中的引导加载程序</h2><ol>
+<li>两部分组成<ol>
 <li>BIOS(其本质就是⼀段固件程序)</li>
 <li>位于硬盘 MBR 中的 OS Boot Loader(如LILO 和 GRUB 等)</li>
 </ol>
 </li>
-<li>流程
-<ol>
+<li>流程<ol>
 <li>BIOS 在完成硬件检测和资源分配后，将硬盘 MBR 中的 Boot Loader 读到系统的 RAM 中，然后将控制权交给 OS Boot Loader</li>
 <li>Boot Loader 的主要运⾏任务就是将内核映象从硬盘上读到 RAM 中，然后跳转到内核的⼊⼝点去运⾏，即开始启动操作系统。</li>
 </ol>
 </li>
 </ol>
-<h2 id="34-嵌入式系统中引导加载程序"><a class="markdownIt-Anchor" href="#34-嵌入式系统中引导加载程序"></a> 3.4. 嵌入式系统中引导加载程序</h2>
-<ol>
+<h2 id="3-4-嵌入式系统中引导加载程序"><a href="#3-4-嵌入式系统中引导加载程序" class="headerlink" title="3.4. 嵌入式系统中引导加载程序"></a>3.4. 嵌入式系统中引导加载程序</h2><ol>
 <li>没 BIOS 那样的固件程序：有的嵌⼊式 CPU 也会内嵌⼀段短⼩的启动程序</li>
-<li>系统的加载启动任务就完全由 Boot Loader 来完成
-<ol>
+<li>系统的加载启动任务就完全由 Boot Loader 来完成<ol>
 <li>ARM7TDMI中，系统在上电或复位时从地址 0x00000000 处开始执⾏</li>
 <li>这个地址是Boot Loader 程序</li>
 </ol>
 </li>
-<li>存储位置
-<ol>
+<li>存储位置<ol>
 <li>按地址随机存取的永久性记忆存储器</li>
 <li>⽀持NANDFlash启动的SOC</li>
 </ol>
 </li>
-<li>复制过程
-<ol>
+<li>复制过程<ol>
 <li>硬件⽅式</li>
 <li>软件⽅式</li>
 <li>内存映射</li>
 </ol>
 </li>
 </ol>
-<h2 id="35-固态存储设备的典型空间分配结构"><a class="markdownIt-Anchor" href="#35-固态存储设备的典型空间分配结构"></a> 3.5. 固态存储设备的典型空间分配结构</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="36-用来控制boot-loader的设备或机制"><a class="markdownIt-Anchor" href="#36-用来控制boot-loader的设备或机制"></a> 3.6. 用来控制Boot Loader的设备或机制</h2>
-<ol>
+<h2 id="3-5-固态存储设备的典型空间分配结构"><a href="#3-5-固态存储设备的典型空间分配结构" class="headerlink" title="3.5. 固态存储设备的典型空间分配结构"></a>3.5. 固态存储设备的典型空间分配结构</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-6-用来控制Boot-Loader的设备或机制"><a href="#3-6-用来控制Boot-Loader的设备或机制" class="headerlink" title="3.6. 用来控制Boot Loader的设备或机制"></a>3.6. 用来控制Boot Loader的设备或机制</h2><ol>
 <li>主机和⽬标机之间⼀般通过串⼝建⽴连接</li>
 <li>Boot Loader执⾏时通常会通过串⼝进⾏ I/O：如输出打印信息到串⼝，从串⼝读取⽤户控制字符等</li>
 </ol>
-<h2 id="37-boot-loader的启动过程是单阶段还是多阶段的"><a class="markdownIt-Anchor" href="#37-boot-loader的启动过程是单阶段还是多阶段的"></a> 3.7. Boot Loader的启动过程是单阶段还是多阶段的</h2>
-<ol>
-<li>多阶段的 Boot Loader
-<ol>
+<h2 id="3-7-Boot-Loader的启动过程是单阶段还是多阶段的"><a href="#3-7-Boot-Loader的启动过程是单阶段还是多阶段的" class="headerlink" title="3.7. Boot Loader的启动过程是单阶段还是多阶段的"></a>3.7. Boot Loader的启动过程是单阶段还是多阶段的</h2><ol>
+<li>多阶段的 Boot Loader<ol>
 <li>提供更为复杂的功能，以及更好的可移植性</li>
 <li>从固态存储设备上启动的 Boot Loader ⼤多都是 2 阶段的启动过程</li>
 </ol>
 </li>
-<li>BOOTLOADER⼀般分为2部分
-<ol>
+<li>BOOTLOADER⼀般分为2部分<ol>
 <li>汇编部分执⾏简单的硬件初始化</li>
 <li>C语⾔部分负责复制数据,设置启动参数,串⼝通信等功能</li>
 </ol>
 </li>
-<li>BOOTLOADER的⽣命周期
-<ol>
+<li>BOOTLOADER的⽣命周期<ol>
 <li>初始化硬件,如设置UART(⾄少设置⼀个),检测存储器等</li>
 <li>设置启动参数,告诉内核硬件的信息,如⽤哪个启动界⾯,波特率.</li>
 <li>跳转到操作系统的⾸地址.</li>
@@ -490,19 +446,15 @@
 </ol>
 </li>
 </ol>
-<h2 id="38-boot-loader的操作模式operation-mode"><a class="markdownIt-Anchor" href="#38-boot-loader的操作模式operation-mode"></a> 3.8. Boot Loader的操作模式(Operation Mode)</h2>
-<ol>
-<li>两种不同的操作模式
-<ol>
-<li>启动加载模式
-<ol>
+<h2 id="3-8-Boot-Loader的操作模式-Operation-Mode"><a href="#3-8-Boot-Loader的操作模式-Operation-Mode" class="headerlink" title="3.8. Boot Loader的操作模式(Operation Mode)"></a>3.8. Boot Loader的操作模式(Operation Mode)</h2><ol>
+<li>两种不同的操作模式<ol>
+<li>启动加载模式<ol>
 <li>⾃主(Autonomous)模式</li>
 <li>从⽬标机上的某个固态存储设备上将操作系统加载到 RAM 中运⾏</li>
 <li>Boot Loader 的正常⼯作模式</li>
 </ol>
 </li>
-<li>下载模式
-<ol>
+<li>下载模式<ol>
 <li>通过串⼝连接或⽹络连接等通信⼿段从主机(Host)下载文件，如：下载内核映像和根⽂件系统映像等。</li>
 <li>从主机下载的⽂件通常⾸先被 Boot Loader 保存到⽬标机的 RAM 中，然后再被 BootLoader 写到⽬标机上的FLASH 类固态存储设备中</li>
 <li>通常在第⼀次安装内核与根⽂件系统时被使⽤</li>
@@ -512,27 +464,22 @@
 </li>
 </ol>
 </li>
-<li>Blob 或 U-Boot 等功能强⼤的 Boot Loader 通常同时⽀持这两种⼯作模式
-<ol>
+<li>Blob 或 U-Boot 等功能强⼤的 Boot Loader 通常同时⽀持这两种⼯作模式<ol>
 <li>允许⽤户在这两种⼯作模式之间进⾏切换，如Blob 在启动时处于正常的启动加载模式，但是它会延时 10 秒等待终端⽤户按下任意键⽽将blob 切换到下载模式。如10秒内没有⽤户按键，则 blob 继续启动 Linux 内核</li>
 </ol>
 </li>
 </ol>
-<h2 id="39-bootloader与主机之间进行文件传输所用的通信设备及协议"><a class="markdownIt-Anchor" href="#39-bootloader与主机之间进行文件传输所用的通信设备及协议"></a> 3.9. BootLoader与主机之间进行文件传输所用的通信设备及协议</h2>
-<ol>
+<h2 id="3-9-BootLoader与主机之间进行文件传输所用的通信设备及协议"><a href="#3-9-BootLoader与主机之间进行文件传输所用的通信设备及协议" class="headerlink" title="3.9. BootLoader与主机之间进行文件传输所用的通信设备及协议"></a>3.9. BootLoader与主机之间进行文件传输所用的通信设备及协议</h2><ol>
 <li>通常⽬标机上的 Boot Loader 通过串⼝与主机之间进⾏⽂件传输</li>
 <li>传输协议：通常是 xmodem／ymodem／zmodem 协议中的⼀种</li>
-<li>可通过以太⽹连接并借助 TFTP 协议来下载⽂件
-<ol>
+<li>可通过以太⽹连接并借助 TFTP 协议来下载⽂件<ol>
 <li>串⼝传输的速度是有限的</li>
 <li>主机提供 TFTP 服务</li>
 </ol>
 </li>
 </ol>
-<h2 id="310-boot-loader的主要任务"><a class="markdownIt-Anchor" href="#310-boot-loader的主要任务"></a> 3.10. Boot Loader的主要任务</h2>
-<ol>
-<li>stage1 通常包括以下步骤
-<ol>
+<h2 id="3-10-Boot-Loader的主要任务"><a href="#3-10-Boot-Loader的主要任务" class="headerlink" title="3.10. Boot Loader的主要任务"></a>3.10. Boot Loader的主要任务</h2><ol>
+<li>stage1 通常包括以下步骤<ol>
 <li>硬件设备初始化</li>
 <li>为加载 Boot Loader 的 stage2 准备 RAM 空间</li>
 <li>拷⻉ Boot Loader 的 stage2 到 RAM 空间中</li>
@@ -540,8 +487,7 @@
 <li>跳转到 stage2 的 C ⼊⼝点</li>
 </ol>
 </li>
-<li>Boot Loader 的 stage2 通常包括以下步骤
-<ol>
+<li>Boot Loader 的 stage2 通常包括以下步骤<ol>
 <li>初始化本阶段要使⽤到的硬件设备</li>
 <li>检测系统内存映射(memory map)</li>
 <li>将 kernel 映像和根⽂件系统映像从 flash 上读到 RAM 空间中</li>
@@ -550,17 +496,12 @@
 </ol>
 </li>
 </ol>
-<h2 id="311-boot-loader-的stage2可执行映像被拷到内存后内存布局情况"><a class="markdownIt-Anchor" href="#311-boot-loader-的stage2可执行映像被拷到内存后内存布局情况"></a> 3.11. Boot Loader 的Stage2可执⾏映像被拷⻉到内存后内存布局情况</h2>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="312-bootloader的调试"><a class="markdownIt-Anchor" href="#312-bootloader的调试"></a> 3.12. BootLoader的调试</h2>
-<ol>
-<li>从交叉调试的技术实现途径及应⽤场合看，分为：
-<ol>
+<h2 id="3-11-Boot-Loader-的Stage2可执⾏映像被拷⻉到内存后内存布局情况"><a href="#3-11-Boot-Loader-的Stage2可执⾏映像被拷⻉到内存后内存布局情况" class="headerlink" title="3.11. Boot Loader 的Stage2可执⾏映像被拷⻉到内存后内存布局情况"></a>3.11. Boot Loader 的Stage2可执⾏映像被拷⻉到内存后内存布局情况</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-12-BootLoader的调试"><a href="#3-12-BootLoader的调试" class="headerlink" title="3.12. BootLoader的调试"></a>3.12. BootLoader的调试</h2><ol>
+<li>从交叉调试的技术实现途径及应⽤场合看，分为：<ol>
 <li>硬件调试：调试⽅便，价格昂贵</li>
-<li>源码软件调试：点灯或串⼝输出
-<ol>
-<li>串⼝终端显示乱码或根本没有显示
-<ol>
+<li>源码软件调试：点灯或串⼝输出<ol>
+<li>串⼝终端显示乱码或根本没有显示<ol>
 <li>boot loader 对串⼝的初始化设置不正确。</li>
 <li>运⾏在 host 端的终端仿真程序对串⼝的设置不正确，这包括：波特率、奇偶校验、数据位和停⽌位等⽅⾯的设置</li>
 </ol>
@@ -570,12 +511,10 @@
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="313-u-boot"><a class="markdownIt-Anchor" href="#313-u-boot"></a> 3.13. U-boot</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-13-U-boot"><a href="#3-13-U-boot" class="headerlink" title="3.13. U-boot"></a>3.13. U-boot</h2><ol>
 <li>德国DENX软件⼯程中⼼的Wolfgang Denk</li>
-<li>全称Universal Boot Loader
-<ol>
+<li>全称Universal Boot Loader<ol>
 <li>遵循GPL条款的开放源码项⽬</li>
 <li><a target="_blank" rel="noopener" href="http://sourceforge.net/projects/U-Boot">http://sourceforge.net/projects/U-Boot</a></li>
 <li>从FADSROM、8xxROM 、PPCBOOT逐步发展演化⽽来</li>
@@ -583,17 +522,15 @@
 <li>源码就是相应Linux内核源程序的简化，尤其是设备驱动程序</li>
 </ol>
 </li>
-<li>⽀持
-<ol>
+<li>⽀持<ol>
 <li>嵌⼊式Linux/NetBSD/VxWorks/QNX/RTEMS/ARTOS/LynxOS</li>
 <li>PowerPC、MIPS、x86、ARM 、Nios、XScale等处理器</li>
 <li>对PowerPC系列处理器/对Linux的⽀持最完善</li>
 </ol>
 </li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h2 id="314-redroot"><a class="markdownIt-Anchor" href="#314-redroot"></a> 3.14. RedRoot</h2>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec9/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="3-14-RedRoot"><a href="#3-14-RedRoot" class="headerlink" title="3.14. RedRoot"></a>3.14. RedRoot</h2><ol>
 <li>Redhat公司随eCos发布的⼀个BOOT⽅案</li>
 <li>开源项⽬</li>
 <li>⽀持：ARM，MIPS，PowerPC，x86。。。</li>
@@ -601,11 +538,10 @@
 <li>Redboot可以通过串⼝和以太⽹⼝与GDB进⾏通信，调试应⽤程序，甚⾄能中断被GDB运⾏的应⽤程序</li>
 <li>Redboot为管理FLASH映像，映像下载，Redboot配置以及其他如串⼝、以太⽹⼝提供了⼀个交互式命令⾏接⼝，⾃动启动后，REDBOOT⽤来从TFTP服务器或者从Flash下载映像⽂件加载系统的引导脚本⽂件保存在Flash上</li>
 </ol>
-<h2 id="315-vivi"><a class="markdownIt-Anchor" href="#315-vivi"></a> 3.15. vivi</h2>
-<ol>
+<h2 id="3-15-vivi"><a href="#3-15-vivi" class="headerlink" title="3.15. vivi"></a>3.15. vivi</h2><ol>
 <li>vivi是由韩国Mizi公司开发的⼀种Bootloader</li>
 <li>适合于ARM9处理器</li>
-<li>源代码可以在http://www.mizi.com⽹站下载</li>
+<li>源代码可以在<a target="_blank" rel="noopener" href="http://www.mizi.com⽹站下载">http://www.mizi.com⽹站下载</a></li>
 </ol>
 
               
@@ -696,9 +632,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec04-Memory%20Architectures/" title="2020-Introduction-to-Embedded-Systems-lec04-Memory Architectures">
+                      <a href="/2022/02/16/2020-Devops-introduction/2020-Devops-introduction-Lec9-%E6%8E%A2%E7%B4%A2%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" title="2020-Devops-introduction-Lec9-探索可观测性的技术原理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec04-Memory Architectures</span>
+                        <span class="hidden-mobile">2020-Devops-introduction-Lec9-探索可观测性的技术原理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -706,8 +642,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec06-Embedded%20Software%20System/" title="2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System">
-                        <span class="hidden-mobile">2020-Introduction-to-Embedded-Systems-lec06-Embedded Software System</span>
+                      <a href="/2022/02/16/2021-Database-Development/2021-Database-Development-Lec9-%E4%B8%BA%E6%80%A7%E8%83%BD%E8%80%8C%E8%AE%BE%E8%AE%A1/" title="2021-Database-Development-Lec9-为性能而设计">
+                        <span class="hidden-mobile">2021-Database-Development-Lec9-为性能而设计</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
