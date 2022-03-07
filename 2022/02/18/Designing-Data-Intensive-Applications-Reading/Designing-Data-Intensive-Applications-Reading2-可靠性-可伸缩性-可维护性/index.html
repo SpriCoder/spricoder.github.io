@@ -18,13 +18,13 @@
   
     <meta name="description" content="DDIA读书笔记2-可靠性,可伸缩性,可维护性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Designing-Data-Intensive-Applications-Reading2-可靠性,可伸缩性,可维护性">
+<meta property="og:title" content="DDIA-Reading2-可靠性,可伸缩性,可维护性">
 <meta property="og:url" content="https://stormbroken.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading2-%E5%8F%AF%E9%9D%A0%E6%80%A7-%E5%8F%AF%E4%BC%B8%E7%BC%A9%E6%80%A7-%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="DDIA读书笔记2-可靠性,可伸缩性,可维护性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-18T09:14:41.000Z">
-<meta property="article:modified_time" content="2022-02-18T09:16:24.102Z">
+<meta property="article:modified_time" content="2022-03-07T12:51:32.239Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="DDIA">
 <meta property="article:tag" content="可靠性">
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Designing-Data-Intensive-Applications-Reading2-可靠性,可伸缩性,可维护性 - SpriCoder的博客</title>
+  <title>DDIA-Reading2-可靠性,可伸缩性,可维护性 - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -270,15 +270,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Designing-Data-Intensive-Applications-Reading2-可靠性,可伸缩性,可维护性</h1>
+            <h1 style="display: none">DDIA-Reading2-可靠性,可伸缩性,可维护性</h1>
             
             <div class="markdown-body">
               
-              <h2 id="第一章可靠性-可伸缩性-可维护性"><a class="markdownIt-Anchor" href="#第一章可靠性-可伸缩性-可维护性"></a> 第一章：可靠性、可伸缩性、可维护性</h2>
-<h1 id="1-数据密集型应用"><a class="markdownIt-Anchor" href="#1-数据密集型应用"></a> 1. 数据密集型应用</h1>
-<ol>
-<li>数据密集型应用通常由标准组件构建而成，标准组件提供了很多通用的功能：例如
-<ol>
+              <h2 id="第一章：可靠性、可伸缩性、可维护性"><a href="#第一章：可靠性、可伸缩性、可维护性" class="headerlink" title="第一章：可靠性、可伸缩性、可维护性"></a>第一章：可靠性、可伸缩性、可维护性</h2><h1 id="1-数据密集型应用"><a href="#1-数据密集型应用" class="headerlink" title="1. 数据密集型应用"></a>1. 数据密集型应用</h1><ol>
+<li>数据密集型应用通常由标准组件构建而成，标准组件提供了很多通用的功能：例如<ol>
 <li>存储数据：数据库，databases</li>
 <li>缓存高开销操作，加快读取速度：缓存，caches</li>
 <li>允许用户按关键字搜索数据，或以各种方式对数据进行过滤：搜索索引，search indexes</li>
@@ -287,17 +284,14 @@
 </ol>
 </li>
 </ol>
-<h1 id="2-数据系统-data-system"><a class="markdownIt-Anchor" href="#2-数据系统-data-system"></a> 2. 数据系统 Data System</h1>
-<ol>
+<h1 id="2-数据系统-Data-System"><a href="#2-数据系统-Data-System" class="headerlink" title="2. 数据系统 Data System"></a>2. 数据系统 Data System</h1><ol>
 <li><strong>数据系统</strong>包括数据库、消息队列、缓存等工具</li>
 <li>近年出现了许多新的数据存储工具与数据处理工具，它们针对不同应用场景进行优化，不再适合生硬地归入传统类别，比如数据存储可以当做消息队列使用(Redis)，消息队列包含类似数据库的持久化保证(Apache Kafka)</li>
 <li>应用程序编程接口(API, Application Programming Interface)：将细节向客户端进行隐藏。</li>
 </ol>
-<h1 id="3-可靠性-maintainablity"><a class="markdownIt-Anchor" href="#3-可靠性-maintainablity"></a> 3. 可靠性 Maintainablity</h1>
-<ol>
+<h1 id="3-可靠性-Maintainablity"><a href="#3-可靠性-Maintainablity" class="headerlink" title="3. 可靠性 Maintainablity"></a>3. 可靠性 Maintainablity</h1><ol>
 <li>系统在<strong>困境</strong>(adversity，比如硬件故障、软件故障、人为错误)中仍可正常工作(正确完成功能，并能达到期望的性能水准)。</li>
-<li>故障(Fault)与失效(Failure)
-<ol>
+<li>故障(Fault)与失效(Failure)<ol>
 <li><strong>故障</strong>(Fault)：造成错误的原因，系统的一部分状态偏离其标准。</li>
 <li><strong>容错</strong>(Fault-Tolerant)或韧性(resilient)：能够预料并针对故障的系统特性，注意讨论容错时，只有讨论<strong>特定类型</strong>的错误才有意义。</li>
 <li><strong>失效</strong>(Failure)：系统作为一个整体停止向用户提供服务。</li>
@@ -306,10 +300,8 @@
 <li>反直觉的是，这类容错系统，通过故意触发来提高故障率是有意义的，从而提高故障自然发生时系统能正确处理的信息。</li>
 <li>可靠性十足重要：生产力、收入、名誉、用户感受</li>
 </ol>
-<h2 id="31-硬件故障-hardware-faults"><a class="markdownIt-Anchor" href="#31-硬件故障-hardware-faults"></a> 3.1. 硬件故障 Hardware Faults</h2>
-<ol>
-<li>常见的硬件故障：磁盘崩溃、内存出错、机房断电、有人拔错网线，一般是<strong>随机独立</strong>的，除非有弱相关性(服务器机架温度)
-<ol>
+<h2 id="3-1-硬件故障-Hardware-Faults"><a href="#3-1-硬件故障-Hardware-Faults" class="headerlink" title="3.1. 硬件故障 Hardware Faults"></a>3.1. 硬件故障 Hardware Faults</h2><ol>
+<li>常见的硬件故障：磁盘崩溃、内存出错、机房断电、有人拔错网线，一般是<strong>随机独立</strong>的，除非有弱相关性(服务器机架温度)<ol>
 <li>磁盘崩溃：磁盘建立RAID</li>
 <li>机房断电：双路电源、热插拔CPU、后备电源等等</li>
 </ol>
@@ -317,18 +309,15 @@
 <li>随着数据量和应用计算需求的增加，在亚马逊AWS的云服务平台上，虚拟机实例不可用却没有警告也是常见的，因为云平台首要考虑的是<strong>灵活性</strong>(Flexibility)和<strong>弹性</strong>(Elasticity)，而不是单机可靠性。</li>
 <li>引入软件容错机制：允许机器失效的系统可以一次修复一个节点，而无需整个停机。</li>
 </ol>
-<h2 id="32-软件错误"><a class="markdownIt-Anchor" href="#32-软件错误"></a> 3.2. 软件错误</h2>
-<ol>
-<li>内部的系统性错误(Systematic Error)：这类错误难以预料，是<strong>跨节点相关</strong>的，容易导致更多的<strong>系统失效</strong>。
-<ol>
+<h2 id="3-2-软件错误"><a href="#3-2-软件错误" class="headerlink" title="3.2. 软件错误"></a>3.2. 软件错误</h2><ol>
+<li>内部的系统性错误(Systematic Error)：这类错误难以预料，是<strong>跨节点相关</strong>的，容易导致更多的<strong>系统失效</strong>。<ol>
 <li>接受特定的错误输入，导致所有应用服务器示例崩溃的Bug：闰秒与Linux内核错误导致许多应用同时挂掉。</li>
 <li>失控进程会用尽一些共享资源，包括CPU时间、内存、磁盘空间或网络带宽</li>
 <li>系统依赖的服务变慢，没有相应，或者开始返回错误的提示</li>
 <li>级联故障，一个组件的小故障导致另一个组件中的故障，进而触发更多的故障。</li>
 </ol>
 </li>
-<li>解决方法
-<ol>
+<li>解决方法<ol>
 <li>仔细考虑系统中的假设和交互</li>
 <li>彻底的测试</li>
 <li>进程隔离</li>
@@ -338,11 +327,9 @@
 </ol>
 </li>
 </ol>
-<h2 id="33-人为错误"><a class="markdownIt-Anchor" href="#33-人为错误"></a> 3.3. 人为错误</h2>
-<ol>
+<h2 id="3-3-人为错误"><a href="#3-3-人为错误" class="headerlink" title="3.3. 人为错误"></a>3.3. 人为错误</h2><ol>
 <li>运维配置错误是导致服务中断的首要原因</li>
-<li>如何尽量避免人为错误？
-<ol>
+<li>如何尽量避免人为错误？<ol>
 <li>以最小化犯错机会的方式设计系统：平衡接口限制 与 使用简易程度</li>
 <li>将人们最容易犯错的地方与可能导致失效的地方解耦(decouple)：提供沙盒来使用真实数据安全地探索和实验。</li>
 <li>在各个层次进行彻底的测试，尽可能覆盖边缘场景。</li>
@@ -352,38 +339,30 @@
 </ol>
 </li>
 </ol>
-<h1 id="4-可伸缩性-scalability"><a class="markdownIt-Anchor" href="#4-可伸缩性-scalability"></a> 4. 可伸缩性 Scalability</h1>
-<ol>
+<h1 id="4-可伸缩性-Scalability"><a href="#4-可伸缩性-Scalability" class="headerlink" title="4. 可伸缩性 Scalability"></a>4. 可伸缩性 Scalability</h1><ol>
 <li>有合理的办法应对系统的增长(数据量、流量、复杂性)</li>
 <li>服务降级(degradation)的常见原因：负载增加</li>
 </ol>
-<h2 id="41-描述负载"><a class="markdownIt-Anchor" href="#41-描述负载"></a> 4.1. 描述负载</h2>
-<ol>
+<h2 id="4-1-描述负载"><a href="#4-1-描述负载" class="headerlink" title="4.1. 描述负载"></a>4.1. 描述负载</h2><ol>
 <li>负载可以用负载参数(load parameters)的数字来描述，参数的最佳选择取决于系统架构，比如读写率、缓存命中率等等。</li>
-<li>实例：推特的扇出(每个用户关注了很多人，也被很多人关注)，用户发送推特后，如何维护主页时间线
-<ol>
+<li>实例：推特的扇出(每个用户关注了很多人，也被很多人关注)，用户发送推特后，如何维护主页时间线<ol>
 <li>方案一：将新推文加入全局推文集合，之后其他用户查看时进行联表查询。</li>
 <li>方案二：每个用户的主页时间线维护缓存，关注用户发送推文后，将推文加入到主页时间线中，问题：部分用户拥有千万级粉丝，这会非常消耗性能。</li>
 <li>最终方案：方案一 + 方案二，大部分用户的推文会被扇出到分析主页时间线缓存，但是少数拥有海量粉丝的用户则采用方案一，最后用户的主页时间线将是把主页时间线缓存和查询混合。</li>
 </ol>
 </li>
 </ol>
-<h2 id="42-描述性能"><a class="markdownIt-Anchor" href="#42-描述性能"></a> 4.2. 描述性能</h2>
-<ol>
-<li>关注点
-<ol>
+<h2 id="4-2-描述性能"><a href="#4-2-描述性能" class="headerlink" title="4.2. 描述性能"></a>4.2. 描述性能</h2><ol>
+<li>关注点<ol>
 <li>增加负载参数并保持系统资源(CPU、内存、网络带宽等)不变时，系统性能将受到什么影响？</li>
 <li>增加负载参数并希望保持性能不变时，需要增加多少系统资源？</li>
 </ol>
 </li>
-<li>常见的性能指标
-<ol>
+<li>常见的性能指标<ol>
 <li><strong>吞吐量 Throughput</strong>：常见于Hadoop这样的批处理系统，即每秒可以处理的记录数量，或者特定规模数据集上作业的总时间。</li>
-<li><strong>响应时间 Response Time</strong>
-<ol>
+<li><strong>响应时间 Response Time</strong><ol>
 <li>客户端发送请求到接收响应之间的时间。</li>
-<li>包括实际处理请求的时间(服务时间(service time))之外，还包括网络延迟和排队延迟。
-<ol>
+<li>包括实际处理请求的时间(服务时间(service time))之外，还包括网络延迟和排队延迟。<ol>
 <li><strong>排队延迟</strong>(Queueing delay)通常占了高百分位点处响应时间的很大部分，往往出现头部阻塞效应。</li>
 <li><strong>头部阻塞</strong>(head-of-line blocking)：少量缓慢的请求就能阻碍后续请求的处理。</li>
 </ol>
@@ -394,36 +373,30 @@
 <li><strong>延迟</strong>：是某些请求等待处理的持续时长，在此期间处于<strong>休眠</strong>(latent)状态，并等待服务。</li>
 </ol>
 </li>
-<li>不同标准进行衡量
-<ol>
+<li>不同标准进行衡量<ol>
 <li>算术平均值：服务的平均响应时间</li>
-<li>百分位点(常用)
-<ol>
+<li>百分位点(常用)<ol>
 <li>中位数(p50)是一个好的度量标准</li>
 <li>响应时间的高百分位点(也称为<strong>尾部延迟</strong>，即tail latencies)非常重要。对于亚马逊而言，优化P999相对收益较大，而优化P9999被认为比较昂贵。</li>
-<li>常用于<strong>服务级别目标(SLO, service level objectives)<strong>和</strong>服务级别协议(SLA, service level agreements)</strong>，即定义服务预期性能和可用性的合同。比如响应时间的中位数小于200ms，且99.9百分位点低于1s，则认为服务工作正常。</li>
+<li>常用于<strong>服务级别目标(SLO, service level objectives)</strong>和<strong>服务级别协议(SLA, service level agreements)</strong>，即定义服务预期性能和可用性的合同。比如响应时间的中位数小于200ms，且99.9百分位点低于1s，则认为服务工作正常。</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>实践中的百分位点
-<ol>
+<li>实践中的百分位点<ol>
 <li>在多重调用的后端服务中，高百分位数变得特别重要。</li>
 <li>如果你想将响应时间百分点添加到服务的监控仪表板，则需要持续有效的计算他们(计算最近的10分钟)：降低CPU和内存成本(前向衰减、T-Digest或hdrHistogram)来计算百分位数的近似值。</li>
 </ol>
 </li>
 </ol>
-<h2 id="43-应对负载的方法"><a class="markdownIt-Anchor" href="#43-应对负载的方法"></a> 4.3. 应对负载的方法</h2>
-<ol>
-<li>常见的方法
-<ol>
+<h2 id="4-3-应对负载的方法"><a href="#4-3-应对负载的方法" class="headerlink" title="4.3. 应对负载的方法"></a>4.3. 应对负载的方法</h2><ol>
+<li>常见的方法<ol>
 <li>纵向负载(scaling up，也称为垂直伸缩，即vertical scaling)：转向更强大的机器</li>
 <li>横向伸缩(scaling out，也称为水平伸缩，即horizontal scaling)：将负载分布到多台小机器上</li>
 </ol>
 </li>
 <li>无共享(Shard-nothing)架构：跨多台机器分配负载</li>
-<li>弹性(Elastic)系统：意味着可以在检测到负载增加时自动增加计算资源。
-<ol>
+<li>弹性(Elastic)系统：意味着可以在检测到负载增加时自动增加计算资源。<ol>
 <li>跨多台机器部署无状态服务(stateless service)非常简单。</li>
 <li>将带状态的数据系统从单节点变为分布式配置则可能引入许多额外复杂度。</li>
 <li>直到伸缩成本或可用性需求迫使其改为分布式</li>
@@ -431,28 +404,23 @@
 </li>
 <li>一个良好适配应用的可伸缩架构，是围绕着<strong>假设</strong>(assumption)建立的：哪些操作是常见的？哪些操作是罕见的？</li>
 </ol>
-<h1 id="5-可维护性-maintainablity"><a class="markdownIt-Anchor" href="#5-可维护性-maintainablity"></a> 5. 可维护性 Maintainablity</h1>
-<ol>
+<h1 id="5-可维护性-Maintainablity"><a href="#5-可维护性-Maintainablity" class="headerlink" title="5. 可维护性 Maintainablity"></a>5. 可维护性 Maintainablity</h1><ol>
 <li>许多不同的人(工程师、运维)在不同的生命周期，都能高效地在系统上工作(是的系统保持吸纳有行为，并适应新的应用场景)</li>
-<li>关注软件系统的三个设计原则
-<ol>
+<li>关注软件系统的三个设计原则<ol>
 <li>可操作性(Operability)：便于运维团队保持系统平稳运行</li>
 <li>简单性(Simplicity)：从系统中消除尽可能多的复杂度(Complexity)，使得新工程师也能轻松理解系统(和用户接口的简单性不一样)</li>
 <li>可演化性(Evolvability)：使工程师在未来能轻松地应对系统进行更改，当需求变化时为新应用场景做适配，也称为可伸缩性(extensibility)、可修改性(modifiability)或可塑性(Plasticity)</li>
 </ol>
 </li>
 </ol>
-<h2 id="51-可操作性"><a class="markdownIt-Anchor" href="#51-可操作性"></a> 5.1. 可操作性</h2>
-<ol>
+<h2 id="5-1-可操作性"><a href="#5-1-可操作性" class="headerlink" title="5.1. 可操作性"></a>5.1. 可操作性</h2><ol>
 <li>良好的可操作性意味着更轻松的日常工作，进而运维团队能专注于高价值的事情。</li>
 </ol>
-<h2 id="52-简单性管理复杂度"><a class="markdownIt-Anchor" href="#52-简单性管理复杂度"></a> 5.2. 简单性：管理复杂度</h2>
-<ol>
+<h2 id="5-2-简单性：管理复杂度"><a href="#5-2-简单性：管理复杂度" class="headerlink" title="5.2. 简单性：管理复杂度"></a>5.2. 简单性：管理复杂度</h2><ol>
 <li>额外的复杂度：由具体实现中涌现，而非(从用户角度看，系统所解决的)问题本身固有的复杂度。</li>
 <li>消除复杂度的最好工具之一：抽象(Abstraction)</li>
 </ol>
-<h2 id="53-可演化性拥抱变化"><a class="markdownIt-Anchor" href="#53-可演化性拥抱变化"></a> 5.3. 可演化性：拥抱变化</h2>
-<ol>
+<h2 id="5-3-可演化性：拥抱变化"><a href="#5-3-可演化性：拥抱变化" class="headerlink" title="5.3. 可演化性：拥抱变化"></a>5.3. 可演化性：拥抱变化</h2><ol>
 <li>在组织流程方面，敏捷(agile)工作模式为适应变化提供一个框架。</li>
 <li>在频繁变化的环境中开发软件很有帮助的技术工具和模式，如测试驱动开发(TDD，test-driven development)和重构(refactoring)</li>
 <li>可演化性指代了数据系统层面的敏捷性</li>
@@ -507,7 +475,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Designing-Data-Intensive-Applications-Reading2-可靠性,可伸缩性,可维护性</div>
+      <div>DDIA-Reading2-可靠性,可伸缩性,可维护性</div>
       <div>https://stormbroken.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading2-%E5%8F%AF%E9%9D%A0%E6%80%A7-%E5%8F%AF%E4%BC%B8%E7%BC%A9%E6%80%A7-%E5%8F%AF%E7%BB%B4%E6%8A%A4%E6%80%A7/</div>
     </div>
     <div class="license-meta">
@@ -560,8 +528,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/" title="Designing-Data-Intensive-Applications-Reading1-序言">
-                        <span class="hidden-mobile">Designing-Data-Intensive-Applications-Reading1-序言</span>
+                      <a href="/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/" title="DDIA-Reading1-序言">
+                        <span class="hidden-mobile">DDIA-Reading1-序言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
