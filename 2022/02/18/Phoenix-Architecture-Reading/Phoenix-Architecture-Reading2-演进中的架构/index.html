@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Phoenix-Architecture/reading2/1.png">
 <meta property="article:published_time" content="2022-02-18T02:31:57.000Z">
-<meta property="article:modified_time" content="2022-03-07T12:51:58.223Z">
+<meta property="article:modified_time" content="2022-03-07T12:54:58.642Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="凤凰架构">
 <meta property="article:tag" content="计算机历史">
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          4.3k 字
         
       </span>
     
@@ -224,7 +224,7 @@
         
         
         
-          35 分钟
+          36 分钟
         
       </span>
     
@@ -274,15 +274,19 @@
             
             <div class="markdown-body">
               
-              <h2 id="演进中的架构"><a href="#演进中的架构" class="headerlink" title="演进中的架构"></a>演进中的架构</h2><h1 id="1-原始分布式时代"><a href="#1-原始分布式时代" class="headerlink" title="1. 原始分布式时代"></a>1. 原始分布式时代</h1><ol>
+              <h2 id="演进中的架构"><a class="markdownIt-Anchor" href="#演进中的架构"></a> 演进中的架构</h2>
+<h1 id="1-原始分布式时代"><a class="markdownIt-Anchor" href="#1-原始分布式时代"></a> 1. 原始分布式时代</h1>
+<ol>
 <li>UNIX的分布式设计哲学：<strong>保持接口与实现的简单性，比系统的任何其他属性，包括准确性、一致性和完整性，都来得更加重要</strong>。</li>
-<li>该阶段的许多成果都对计算机科学的诸多领域产生了深远的影响<ol>
+<li>该阶段的许多成果都对计算机科学的诸多领域产生了深远的影响
+<ol>
 <li>网络运算架构(Network Computing Architecture, NCA)是未来远程服务调用的雏形。</li>
 <li>AFS文件系统(Andrew File System)是日后分布式文件系统的最早实现。</li>
 <li>Kerberos协议是服务认证和访问控制的基础性协议，是分布式服务安全性的重要支撑。</li>
 </ol>
 </li>
-<li>开发软件基金会(Open Software Foundation, OSF)参与制定了分布式运算环境(Distributed Computing Environment, DCE)的分布式技术体系。<ol>
+<li>开发软件基金会(Open Software Foundation, OSF)参与制定了分布式运算环境(Distributed Computing Environment, DCE)的分布式技术体系。
+<ol>
 <li>包括源自NCA的远程服务调用规范，当时被称为DCE/RPC，和后来的基于TCP/IP协议的远程服务标准ONC RPC被认为是现代RPC的鼻祖。</li>
 <li>源自AFS的分布式文件系统(DFS)规范，当时被称为DCE/DFS</li>
 <li>源自Kerberos的服务认证规范</li>
@@ -290,7 +294,8 @@
 </ol>
 </li>
 <li>这些技术都带有着浓厚的UNIX设计风格，有一个预设的重要原则是使分布式环境中的服务调用、资源访问、数据存储等操作尽可能透明化、简单化，从而屏蔽本地和远程的区别。</li>
-<li>调用远程方法 与 调用本地方法的区别<ol>
+<li>调用远程方法 与 调用本地方法的区别
+<ol>
 <li>服务发现</li>
 <li>负载均衡</li>
 <li>熔断、隔离、降级</li>
@@ -303,17 +308,21 @@
 </li>
 <li>原始分布式时代的教训：某个功能能够进行分布式，并不意味着它就应该进行分布式，强行追求透明的分布式操作，只会自寻苦果。</li>
 </ol>
-<h1 id="2-单体系统时代"><a href="#2-单体系统时代" class="headerlink" title="2. 单体系统时代"></a>2. 单体系统时代</h1><blockquote>
-<p>单体架构(Monolithic)：”单体”知识表明系统中主要的过程调用都是进程内调用，不会发生进程间通信，仅此而已。</p>
+<h1 id="2-单体系统时代"><a class="markdownIt-Anchor" href="#2-单体系统时代"></a> 2. 单体系统时代</h1>
+<blockquote>
+<p>单体架构(Monolithic)：&quot;单体&quot;知识表明系统中主要的过程调用都是进程内调用，不会发生进程间通信，仅此而已。</p>
 </blockquote>
 <ol>
-<li>单体架构在整个软件架构演进的历史进程里，是出现时间最早、应用范围最广、使用人数最多、统治历史最长的一种架构风格。<ol>
+<li>单体架构在整个软件架构演进的历史进程里，是出现时间最早、应用范围最广、使用人数最多、统治历史最长的一种架构风格。
+<ol>
 <li>从纵向来讲，大型的现代信息系统中通常是分层的。</li>
 <li>从横向来讲，单体架构也可以支持按照技术、功能、职责等维度，将软件拆分为各种模块，以便重用和管理代码。</li>
 </ol>
 </li>
-<li>针对”拆分”<ol>
-<li>单体系统的真正缺陷不在如何拆分，而在拆分之后的隔离与自治能力上的欠缺<ol>
+<li>针对&quot;拆分&quot;
+<ol>
+<li>单体系统的真正缺陷不在如何拆分，而在拆分之后的隔离与自治能力上的欠缺
+<ol>
 <li>任何影响都会是全局性的、难以隔离的：进程空间无法隔离、难以阻断错误传播，不便于动态更新程序。</li>
 <li>没有办法做到某一个部分的单独停止、更新和升级。</li>
 </ol>
@@ -322,13 +331,16 @@
 </ol>
 </li>
 </ol>
-<h1 id="3-SOA-Service-Oriented-Architecture-时代"><a href="#3-SOA-Service-Oriented-Architecture-时代" class="headerlink" title="3. SOA(Service-Oriented Architecture)时代"></a>3. SOA(Service-Oriented Architecture)时代</h1><blockquote>
+<h1 id="3-soaservice-oriented-architecture时代"><a class="markdownIt-Anchor" href="#3-soaservice-oriented-architecture时代"></a> 3. SOA(Service-Oriented Architecture)时代</h1>
+<blockquote>
 <p>面向服务的架构是一次具体地、系统性地成功解决分布式服务主要问题的架构模式。</p>
 </blockquote>
 <ul>
-<li>为了对大型的单体系统进行拆分，让每一个子系统都能独立地部署、运行、更新，开发者们曾经尝试过多种方案，包括：<ul>
+<li>为了对大型的单体系统进行拆分，让每一个子系统都能独立地部署、运行、更新，开发者们曾经尝试过多种方案，包括：
+<ul>
 <li><strong>烟囱式架构</strong>(Information Silo Architecture)：信息烟囱又称为信息孤岛，指的是一种完全不与其他相关信息系统进行互操作或者协调工作的设计模式。</li>
-<li><strong>微内核架构</strong>(Microkernel Architecture)：微内核架构又称插件式架构(Plug-in Architecture)<ul>
+<li><strong>微内核架构</strong>(Microkernel Architecture)：微内核架构又称插件式架构(Plug-in Architecture)
+<ul>
 <li>将公共的主数据和其他可能被其他子系统使用到的公共服务、数据、资源集中到一起，成为一个呗所有业务系统共同依赖的核心(Kernel，也称为Core System)，其他业务系统以插件模块(Plug-in Modules)的形式存在。</li>
 <li>很适合桌面应用程序，也经常在Web应用程序中使用。</li>
 <li>局限性：假设系统中各个插件系统之间是互不认识的，但这在许多场景中不成立。</li>
@@ -337,8 +349,10 @@
 <li><strong>事件驱动架构</strong>(Event-Driven Architecture)：在子系统之间建立事件队列管道(Event Queues)，来自系统外部的消息将以事件的形式发送至管道内，在管道内完成交互。</li>
 </ul>
 </li>
-<li>SOA时代中，提出了服务之间的松耦合、注册、发现、治理、隔离、编排等等，针对这些问题等，SOA进行更加系统性、更加具体的探索。<ul>
-<li>“<strong>更具体</strong>“在于尽管SOA本身还是属于抽象概念，而不是特质某一种技术。<ul>
+<li>SOA时代中，提出了服务之间的松耦合、注册、发现、治理、隔离、编排等等，针对这些问题等，SOA进行更加系统性、更加具体的探索。
+<ul>
+<li>&quot;<strong>更具体</strong>&quot;在于尽管SOA本身还是属于抽象概念，而不是特质某一种技术。
+<ul>
 <li>使用SOAP作为远程调用的协议</li>
 <li>使用SOAP协议簇完成服务的发布、发现和治理</li>
 <li>使用ESB(企业服务总线, Enterprise Service Bus)的消息管道完成通信交互</li>
@@ -347,34 +361,39 @@
 <li>使用SCA(服务组件架构, Service Component Architecture)来定义服务封装的形式和服务运行的容器。</li>
 </ul>
 </li>
-<li>“<strong>更系统</strong>“值得是SOA的宏大立项：希望能总结出一套自上而下的软件研发方法论。</li>
+<li>&quot;<strong>更系统</strong>&quot;值得是SOA的宏大立项：希望能总结出一套自上而下的软件研发方法论。</li>
 </ul>
 </li>
-<li>问题：过于严格的规范定义带来了<strong>过度的复杂度</strong>。距离”透明地调用服务或者访问资源”更远了。</li>
+<li>问题：过于严格的规范定义带来了<strong>过度的复杂度</strong>。距离&quot;透明地调用服务或者访问资源&quot;更远了。</li>
 </ul>
 <blockquote>
 <p>康威定律：设计系统的架构受制于产生这些设计的组织的沟通结构。</p>
 </blockquote>
-<h1 id="4-微服务时代"><a href="#4-微服务时代" class="headerlink" title="4. 微服务时代"></a>4. 微服务时代</h1><blockquote>
+<h1 id="4-微服务时代"><a class="markdownIt-Anchor" href="#4-微服务时代"></a> 4. 微服务时代</h1>
+<blockquote>
 <p>微服务架构(MicroServices)：微服务是一种通过多个小型服务组合来构建单个应用的架构风格，这些服务围绕业务能力而非特定的技术标准来构建。各种服务可以采用不同的编程语言、不同的数据存储技术，运行在不同的进程之中。服务采用轻量级的通信机制和自动化的部署机制实现通信与运维。</p>
 </blockquote>
 <ul>
-<li>微服务核心的业务与技术特征<ul>
+<li>微服务核心的业务与技术特征
+<ul>
 <li><strong>围绕业务能力构建</strong>(Organized around Business Capability)：强调康威定律的重要性。</li>
-<li><strong>分散治理</strong>(Decentralized Goverance)：微服务不提倡也不反对主流语言、技术栈和专业技术平台的”统一”，更加强调的是确实有必要技术异构时，应该能够有选择”不统一”的权利。</li>
-<li><strong>通过服务来实现独立自治的组件</strong>(Componentization via Services)<ul>
+<li><strong>分散治理</strong>(Decentralized Goverance)：微服务不提倡也不反对主流语言、技术栈和专业技术平台的&quot;统一&quot;，更加强调的是确实有必要技术异构时，应该能够有选择&quot;不统一&quot;的权利。</li>
+<li><strong>通过服务来实现独立自治的组件</strong>(Componentization via Services)
+<ul>
 <li>类库是通过编译期静态链接到程序中，通过本地调用来提供功能</li>
 <li>服务是进程外组件，通过远程调用来提供功能。</li>
 </ul>
 </li>
 <li><strong>产品化思维</strong>(Product not Projects)：将软件研发视为一种持续改进、提升的过程；在微服务下，要求开发团队中每个人都有产品化思维，关心整个产品的全部方面是具有可行性的。</li>
 <li><strong>数据去中心化</strong>(Decentralized Data Management)：微服务明确地提倡数据应该按领域分散管理、更新、维护、存储。</li>
-<li><strong>强终端弱管道</strong>(Smart Endpoint and Dumb Pipe)：<ul>
+<li><strong>强终端弱管道</strong>(Smart Endpoint and Dumb Pipe)：
+<ul>
 <li>微服务提倡类似于经典UNIX过滤器那样简单直接的通信方式，RESTful风格的通信在微服务中会是更加合适的选择。</li>
 <li>弱管道针对的就是SOAP和ESB的那一套复杂的通信机制。</li>
 </ul>
 </li>
-<li><strong>容错性设计</strong>(Design for Failure)：<ul>
+<li><strong>容错性设计</strong>(Design for Failure)：
+<ul>
 <li>接受了服务总会出错的现实，要求在微服务的设计中，有自动的机制对其依赖的服务能够进行快速故障检测，在持续出错的时候进行隔离，在服务恢复的时候重新联通的功能。</li>
 <li>比如：断路器</li>
 </ul>
@@ -386,45 +405,53 @@
 <li>微服务架构设计，就像SOA架构一样，同样需要关注于服务的<strong>注册发现、跟踪治理、负载均衡、故障隔离、认证授权、伸缩扩展、传输通信、事务处理</strong>等等。</li>
 <li>在微服务时代，各个方面的技术能够提供的解决方案非常至多，技术架构者的第一职责就是做<strong>决策权衡</strong>。</li>
 </ul>
-<h1 id="5-后微服务时代"><a href="#5-后微服务时代" class="headerlink" title="5. 后微服务时代"></a>5. 后微服务时代</h1><blockquote>
+<h1 id="5-后微服务时代"><a class="markdownIt-Anchor" href="#5-后微服务时代"></a> 5. 后微服务时代</h1>
+<blockquote>
 <p>微服务时代所取得的成就，本身就离不开以Docker为代表的早期容器化技术的代表。那么我们不得不提到<strong>虚拟化</strong>技术和<strong>容器化</strong>技术。</p>
 </blockquote>
 <ul>
-<li>普遍采用的通过<strong>虚拟化基础设施</strong>来解决分布式架构问题的开端，应当是从2017年K8S(Kubernetes)赢得容器战争的胜利，同样这也是”<strong>后微服务时代(云原生时代)</strong>“的开端</li>
-<li>当虚拟化的硬件能够跟上软件的灵活性，那些与业务无关的技术性问题便有可能从软件层面剥离，悄无声息地解决于硬件基础设施之内，让软件得以只关注业务，真正”围绕业务能力构建”团队与产品。<ul>
+<li>普遍采用的通过<strong>虚拟化基础设施</strong>来解决分布式架构问题的开端，应当是从2017年K8S(Kubernetes)赢得容器战争的胜利，同样这也是&quot;<strong>后微服务时代(云原生时代)</strong>&quot;的开端</li>
+<li>当虚拟化的硬件能够跟上软件的灵活性，那些与业务无关的技术性问题便有可能从软件层面剥离，悄无声息地解决于硬件基础设施之内，让软件得以只关注业务，真正&quot;围绕业务能力构建&quot;团队与产品。
+<ul>
 <li>Kubernetes仍然没有能够完美解决全部的分布式问题</li>
-<li>使得之前的”凤凰服务器”、”不可变基础设施”成为可能</li>
+<li>使得之前的&quot;凤凰服务器&quot;、&quot;不可变基础设施&quot;成为可能</li>
 </ul>
 </li>
-<li>为了解决服务的监控、认证、授权、安全和负载均衡等多个方面的细化管理需求，虚拟化的基础设施很快地完成第二次进化，引入了被称为<strong>服务网格</strong>(Service Mesh)的<strong>边车代理模式</strong>(Sidecar Proxy)<ul>
+<li>为了解决服务的监控、认证、授权、安全和负载均衡等多个方面的细化管理需求，虚拟化的基础设施很快地完成第二次进化，引入了被称为<strong>服务网格</strong>(Service Mesh)的<strong>边车代理模式</strong>(Sidecar Proxy)
+<ul>
 <li>指<strong>由系统自动在服务容器中注入一个通信代理服务器，在应用毫无感知的情况下，接管应用所有对外通信</strong>。</li>
 <li>该代理除了实现正常的服务间通信(称为<strong>数据平面通信</strong>)，还接收来自控制器的指令(称为<strong>控制平面通信</strong>)</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Phoenix-Architecture/reading2/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="6-无服务时代"><a href="#6-无服务时代" class="headerlink" title="6. 无服务时代"></a>6. 无服务时代</h1><blockquote>
-<p>无服务架构(Serveless)：如果说微服务架构是分布式系统这条路的机制，那么无服务架构，也许就是”不分布式”的云端系统这条路的起点。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Phoenix-Architecture/reading2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="6-无服务时代"><a class="markdownIt-Anchor" href="#6-无服务时代"></a> 6. 无服务时代</h1>
+<blockquote>
+<p>无服务架构(Serveless)：如果说微服务架构是分布式系统这条路的机制，那么无服务架构，也许就是&quot;不分布式&quot;的云端系统这条路的起点。</p>
 </blockquote>
 <ul>
-<li>一些背景<ul>
+<li>一些背景
+<ul>
 <li>在2009年，云计算概念刚提出的早期，UC Berkeley曾发表的<a target="_blank" rel="noopener" href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.pdf">论文</a>中，预言的云计算的价值、演进和普及在过去的十年中一一得到验证。</li>
-<li>在2019年，UC Berkeley发表了另一篇<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1902.03383">论文</a>，再次预言未来”无服务将会发展为云计算的主要形式”。</li>
+<li>在2019年，UC Berkeley发表了另一篇<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1902.03383">论文</a>，再次预言未来&quot;无服务将会发展为云计算的主要形式&quot;。</li>
 </ul>
 </li>
-<li>无服务目前只涉及两块内容：后端设施(Backend)和函数(Function)<ul>
-<li><strong>后端设施</strong>是指数据库、消息队列、日志、存储等用于支撑业务逻辑运行，但本身无业务含义的技术组件。这些组件都运行在云中，无服务中称之为”<strong>后端即服务</strong>(Backend as a Service, BaaS)”</li>
-<li><strong>函数</strong>是指业务逻辑代码，无服务中的函数运行在云端，不需要考虑算力问题等(但是需要考虑成本)，无服务中称之为”<strong>函数即服务</strong>(Function as a Service, FaaS)”</li>
+<li>无服务目前只涉及两块内容：后端设施(Backend)和函数(Function)
+<ul>
+<li><strong>后端设施</strong>是指数据库、消息队列、日志、存储等用于支撑业务逻辑运行，但本身无业务含义的技术组件。这些组件都运行在云中，无服务中称之为&quot;<strong>后端即服务</strong>(Backend as a Service, BaaS)&quot;</li>
+<li><strong>函数</strong>是指业务逻辑代码，无服务中的函数运行在云端，不需要考虑算力问题等(但是需要考虑成本)，无服务中称之为&quot;<strong>函数即服务</strong>(Function as a Service, FaaS)&quot;</li>
 </ul>
 </li>
-<li>无服务的愿景是希望让开发者只需要纯粹的关注业务：<ul>
+<li>无服务的愿景是希望让开发者只需要纯粹的关注业务：
+<ul>
 <li>不需要考虑技术组件：技术组件是现成的。</li>
 <li>不需要考虑如何部署：云端完成</li>
 <li>不需要考虑算力：有整个数据中心支撑。</li>
 <li>不需要操心运维：维护系统持续平稳运行是云计算服务商的责任而不再是开发者的责任。</li>
 </ul>
 </li>
-<li>无服务的远景，但是中短期发展并没有那么乐观：<ul>
+<li>无服务的远景，但是中短期发展并没有那么乐观：
+<ul>
 <li>无服务目前不适用于具有复杂业务逻辑、依赖服务端状态、相应速度要求较高、需要长连接的应用。</li>
 <li>函数的冷启动：无服务按照使用量计费，因此函数不会一致以活动状态常驻服务器。</li>
 </ul>
@@ -447,7 +474,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Phoenix-Architecture/" class="category-chain-item">Phoenix-Architecture</a>
+  <a href="/categories/%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84/" class="category-chain-item">凤凰架构</a>
   
   
 
