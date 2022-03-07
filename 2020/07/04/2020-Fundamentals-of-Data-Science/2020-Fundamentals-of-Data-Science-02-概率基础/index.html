@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-数据科学基础-02-概率基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-数据科学基础-02-概率基础">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/04/2020-Fundamentals-of-Data-Science/2020-Fundamentals-of-Data-Science-02-%E6%A6%82%E7%8E%87%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-数据科学基础-02-概率基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/30.png">
+<meta property="article:published_time" content="2020-07-04T11:01:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:40:53.482Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据科学">
+<meta property="article:tag" content="概率论">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/1.png">
+  
+  
+  <title>2020-数据科学基础-02-概率基础 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-04 19:01" pubdate>
+          2020年7月4日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-数据科学基础-02-概率基础</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="02-概率基础"><a class="markdownIt-Anchor" href="#02-概率基础"></a> 02-概率基础</h2>
+<h1 id="1-第一节-概率的定义"><a class="markdownIt-Anchor" href="#1-第一节-概率的定义"></a> 1. 第一节 概率的定义</h1>
+<h2 id="11-元素与数据之间的映射"><a class="markdownIt-Anchor" href="#11-元素与数据之间的映射"></a> 1.1. 元素与数据之间的映射</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>样本点:集合元素</li>
+<li>样本空间:集合</li>
+<li>为何映射集合？
+<ul>
+<li>可以应用大量的已有数学模型来进行研究</li>
+</ul>
+</li>
+</ol>
+<h2 id="12-事件的集合表示"><a class="markdownIt-Anchor" href="#12-事件的集合表示"></a> 1.2. 事件的集合表示</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>样本空间Ω的任意子集 A 称为(随机)事件</li>
+<li>观察到样本点e ，若e ∊ A则称这一事件发生</li>
+</ol>
+<h3 id="121-事件的分类"><a class="markdownIt-Anchor" href="#121-事件的分类"></a> 1.2.1. 事件的分类</h3>
+<ol>
+<li>基本事件：由一个样本点组成的单点集</li>
+<li>复合事件：由两个或两个以上样本点组成的集合</li>
+<li>必然事件：全集Ω</li>
+<li>不可能事件：空集∅
+<ul>
+<li>任何实验产生的样本点都不能属于空集</li>
+</ul>
+</li>
+<li>空集和全集都是样本空间的子集，所以都是事件。</li>
+</ol>
+<h2 id="13-事件的结合运算"><a class="markdownIt-Anchor" href="#13-事件的结合运算"></a> 1.3. 事件的结合运算</h2>
+<ol>
+<li>包含：𝐴⊆𝐵，即事件𝐴发生必然导致事件𝐵发生</li>
+<li>相等：𝐴=𝐵，即𝐴⊆𝐵且𝐵⊆𝐴</li>
+<li>和：𝐴∪𝐵，即𝐴和𝐵至少一个发生</li>
+<li><strong>差</strong>：𝐴−𝐵，即事件𝐴发生且事件𝐵不发生。</li>
+<li>积：𝐴∩𝐵，也<strong>记作𝐴𝐵</strong>，即事件𝐴和𝐵都发生</li>
+<li><strong>互不相容</strong>：𝐴𝐵=∅，即𝐴和𝐵不能同时发生</li>
+<li>互逆：𝐴∪𝐵=Ω且𝐴𝐵=∅，𝐴和𝐵互逆，通常𝐵记为 𝐴(上划线)</li>
+</ol>
+<h3 id="131-复杂事件的集合运算表示"><a class="markdownIt-Anchor" href="#131-复杂事件的集合运算表示"></a> 1.3.1. 复杂事件的集合运算表示</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="132-事件发生的频率"><a class="markdownIt-Anchor" href="#132-事件发生的频率"></a> 1.3.2. 事件发生的频率</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="133-频率的收敛性"><a class="markdownIt-Anchor" href="#133-频率的收敛性"></a> 1.3.3. 频率的收敛性</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>这个常数为概率</li>
+</ol>
+<h2 id="14-经典概率定义"><a class="markdownIt-Anchor" href="#14-经典概率定义"></a> 1.4. 经典概率定义</h2>
+<h3 id="141-古典概率"><a class="markdownIt-Anchor" href="#141-古典概率"></a> 1.4.1. 古典概率</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>两个重要特性:
+<ol>
+<li>有限样本空间</li>
+<li>等可能</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="142-几何概率"><a class="markdownIt-Anchor" href="#142-几何概率"></a> 1.4.2. 几何概率</h3>
+<ol>
+<li>数据表示如何从有限集合到无限集合推广？</li>
+<li>例一：某人午觉醒来，发觉表停了，他打开收音机，想听电台报时，求他等待的时间短于10分钟的概率。</li>
+<li>例二：在400毫升自来水中有一个大肠杆菌，今从中随机抽出2毫 升水样放到显微镜下观察，求发现大肠杆菌的概率。</li>
+<li>一种相当自然的答案是认为例1所求的概率等于&lt;1/6，例2所求的概率等于1/200。在求这些概率时，我们采纳了某种几何特性的等可能假设。</li>
+<li>实例:在半径为1的圆内随机地取一条弦，问弦长超过根号3的概率等于多少?
+<ul>
+<li><strong>等可能假设</strong>不同，结果不同</li>
+<li>选择圆心角:1/3，等可能假设:假设在弧上</li>
+<li>选择弦心距:1/2，等可能假设:到圆心的距离</li>
+<li>选择弦中点:1/4，等可能假设:面积</li>
+</ul>
+</li>
+</ol>
+<h3 id="143-小结"><a class="markdownIt-Anchor" href="#143-小结"></a> 1.4.3. 小结</h3>
+<ol>
+<li>在数据映射中，我们需要遵循物理世界到数据集合的某种结构保持。</li>
+</ol>
+<h2 id="15-概率的公理化表示"><a class="markdownIt-Anchor" href="#15-概率的公理化表示"></a> 1.5. 概率的公理化表示</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>概率的性质</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-概率的计算"><a class="markdownIt-Anchor" href="#2-概率的计算"></a> 2. 概率的计算</h1>
+<h2 id="21-条件概率"><a class="markdownIt-Anchor" href="#21-条件概率"></a> 2.1. 条件概率</h2>
+<h3 id="211-引入"><a class="markdownIt-Anchor" href="#211-引入"></a> 2.1.1. 引入</h3>
+<ol>
+<li>已知某一事件已发生，求另一事件发生的概率。</li>
+<li>例如考虑有两个孩子的家庭，假定男女出生率一样，则两个孩子(依大小排列)的性别为(男男)，(男女)，(女男)，(女女)的可能性是一样的。</li>
+<li>记A为随机选取两娃家庭有一男一女的事件，则𝑃(𝐴)=1/2</li>
+<li>如果我们预先知道某个家庭至少有一个女孩(设为事件𝐵)，那么，上述事件A的概率便应是2/3</li>
+</ol>
+<h3 id="212-条件概率"><a class="markdownIt-Anchor" href="#212-条件概率"></a> 2.1.2. 条件概率</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>使用韦恩图来进行说明</li>
+</ol>
+<h2 id="22-乘法公式"><a class="markdownIt-Anchor" href="#22-乘法公式"></a> 2.2. 乘法公式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>例子:设某光学仪器厂制造的透镜，第一次落下时打破的概率为1/2，若第一次落下未打破，第二次落下打破的概率为7/10，若前两次落下未打破，第三次落下打破的概率为9/10。试求透镜落下三次后未打破的概率。
+<ul>
+<li>(1 - 0.5)(1 - 0.7)(1 - 0.9) = 0.015</li>
+</ul>
+</li>
+</ol>
+<h2 id="23-完备事件组"><a class="markdownIt-Anchor" href="#23-完备事件组"></a> 2.3. 完备事件组</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="24-全概率公式"><a class="markdownIt-Anchor" href="#24-全概率公式"></a> 2.4. 全概率公式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>练习</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>
+<p>2/5 * 1/2 * 3/7 * 1/2 = 3/70</p>
+</li>
+<li>
+<p>2/3 * 1/2 + 1/3 * 3/4 = 7/12</p>
+</li>
+<li>
+<p>写法设法参考</p>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="25-贝叶斯公式"><a class="markdownIt-Anchor" href="#25-贝叶斯公式"></a> 2.5. 贝叶斯公式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>意义:贝叶斯定理往往与全概率公式同时使用。全概率公式一用于&quot;由因求果&quot;问题，而贝叶斯定理一般用于&quot;执果寻因&quot;问题。</li>
+<li>例如，在医疗诊断中，为了诊断到底是哪种疾病，对病人进行观察与检查，确定了某项身体指标(如是体温、验血)，然后采用这类指标来帮助诊断。这时就可以用贝叶斯公式来计算有关概率。</li>
+<li>是概率理念的一个巨大进步。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>练习:
+<ul>
+<li>11/164</li>
+</ul>
+</li>
+</ol>
+<h2 id="26-独立性"><a class="markdownIt-Anchor" href="#26-独立性"></a> 2.6. 独立性</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>和互不相容是完全不一样的，A与B互不相容是指A交B为空</li>
+<li>独立在实际中往往是假设。
+<ul>
+<li>而不是去求证的目标</li>
+</ul>
+</li>
+<li>独立是一个非常强的假设。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-随机测试示例"><a class="markdownIt-Anchor" href="#3-随机测试示例"></a> 3. 随机测试示例</h1>
+<h2 id="31-引入"><a class="markdownIt-Anchor" href="#31-引入"></a> 3.1. 引入</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="32-问题背景"><a class="markdownIt-Anchor" href="#32-问题背景"></a> 3.2. 问题背景</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-随机测试初步"><a class="markdownIt-Anchor" href="#33-随机测试初步"></a> 3.3. 随机测试初步</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>进一步明确化问题
+<ul>
+<li>通过选择部分数字来进行校验</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/24.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>什么时候会出现误判？
+<ul>
+<li>求解的时候我们要计算第二种情况下的误判概率</li>
+<li>注意单边错误，误判概率:单边错误概率</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>我们化简到求两个方程的差等于0的根的个数
+<ul>
+<li>根据代数基本定理我们可以知道的是我们的根的个数不会大于100个。</li>
+<li>概率的模糊估计</li>
+</ul>
+</li>
+</ol>
+<h2 id="34-随机测试改进"><a class="markdownIt-Anchor" href="#34-随机测试改进"></a> 3.4. 随机测试改进</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>我们只需要简单的增加测试用例的数量就可以降低出错的概率</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>为了进一步降低出错概率，我们多次使用常用的系统分析的手段
+<ul>
+<li>使用随机检测</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>有放回抽样
+<ul>
+<li>每次随机取，所以检测错误的概率为1/100</li>
+<li>也就是错误概率会成指数型降低</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Science/img/cpt2/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>有放回的抽样:
+<ul>
+<li>一共有d个根，在第j次的时候，已经提出了j-1个根。</li>
+<li>为什么是100d - (j - 1)因为是从100d个数据中选择数字</li>
+<li>j增大到d的时候，就能将概率降低到0</li>
+</ul>
+</li>
+</ol>
+<h1 id="4-总结"><a class="markdownIt-Anchor" href="#4-总结"></a> 4. 总结</h1>
+<ol>
+<li>𝐹(𝑥)无放回抽样的准确率比有放回抽样高。</li>
+<li>有放回抽样的算法实现通常比无放回抽样简单。</li>
+<li>当𝑑+1次无放回抽样后，能够确保算法的准确性。</li>
+<li>但算法复杂度提升到𝑂(𝑑<sup>2</sup>)。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="category-chain-item">2020-数据科学基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/">#数据科学</a>
+      
+        <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">#概率论</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-数据科学基础-02-概率基础</div>
+      <div>https://stormbroken.github.io/2020/07/04/2020-Fundamentals-of-Data-Science/2020-Fundamentals-of-Data-Science-02-%E6%A6%82%E7%8E%87%E5%9F%BA%E7%A1%80/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月4日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/04/2020-Fundamentals-of-Data-Science/2020-Fundamentals-of-Data-Science-03-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/" title="2020-数据科学基础-03-概率分布">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-数据科学基础-03-概率分布</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/04/2020-Fundamentals-of-Data-Science/2020-Fundamentals-of-Data-Science-01-%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" title="2020-数据科学基础-01-数据科学">
+                        <span class="hidden-mobile">2020-数据科学基础-01-数据科学</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

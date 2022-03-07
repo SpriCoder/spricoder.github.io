@@ -1,0 +1,1083 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2018-Linux系统基础-linux-05.文件和目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-Linux系统基础-linux-05.文件和目录">
+<meta property="og:url" content="https://stormbroken.github.io/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-05.%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2018-Linux系统基础-linux-05.文件和目录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-07-16T11:05:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:32:13.513Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="文件">
+<meta property="article:tag" content="目录">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2018-Linux系统基础-linux-05.文件和目录 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2018-07-16 19:05" pubdate>
+          2018年7月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2018-Linux系统基础-linux-05.文件和目录</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="第五章-文件和目录"><a class="markdownIt-Anchor" href="#第五章-文件和目录"></a> 第五章 文件和目录</h2>
+<ol>
+<li>linux系统和Windows系统不同，它按照目录的形式挂载文件系统，其目录结构是一个分层的树形结构。</li>
+<li>链接是一种在共享文件和访问它的用户的若干目录项之间建立联系的方法，linux系统中包含硬链接和软链接。</li>
+</ol>
+<h1 id="1-linux文件"><a class="markdownIt-Anchor" href="#1-linux文件"></a> 1. linux文件</h1>
+<ol>
+<li>文件分类：
+<ol>
+<li>一般文件</li>
+<li>目录</li>
+<li>设备(光驱、硬盘等)</li>
+</ol>
+</li>
+</ol>
+<h2 id="11-linux文件扩展名"><a class="markdownIt-Anchor" href="#11-linux文件扩展名"></a> 1.1. linux文件扩展名</h2>
+<h3 id="111-压缩和归档的文件"><a class="markdownIt-Anchor" href="#111-压缩和归档的文件"></a> 1.1.1. 压缩和归档的文件</h3>
+<ol>
+<li>.bz2：使用bzip2压缩的文件。</li>
+<li>.gz：使用gzip压缩的文件。</li>
+<li>.tar：使用tar压缩的文件，又称tar文件。</li>
+<li>.tbz：使用tar和bzip压缩的文件。</li>
+<li>.tgz：使用tar和gzip压缩的文件。</li>
+<li>.zip：使用zip压缩的文件，Linux下使用gzip命令压缩的文件。</li>
+</ol>
+<h3 id="112-文件格式"><a class="markdownIt-Anchor" href="#112-文件格式"></a> 1.1.2. 文件格式</h3>
+<ol>
+<li>.au：音频文件。</li>
+<li>.gif：GIF图像文件。</li>
+<li>.html/.htm：HTML文件。</li>
+<li>.jpg：JPEG图像文件</li>
+<li>.pdf：PDF文档。</li>
+<li>.png：PNG图像文件。</li>
+<li>.ps：PostScript文件，为打印而格式化过的文件。</li>
+<li>.txt：纯ASCII文本文件。</li>
+<li>.wav：音频文件。</li>
+<li>.bmp：图像文件。</li>
+</ol>
+<h3 id="113-系统文件"><a class="markdownIt-Anchor" href="#113-系统文件"></a> 1.1.3. 系统文件</h3>
+<ol>
+<li>.conf：一种配置文件，配置文件有时也使用.cfg。</li>
+<li>.lock：锁文件，用来判定程序或设备是否 正在被使用。</li>
+<li>.rpm：Linux系统中用来安装软件的软件包 管理器文件。</li>
+</ol>
+<h3 id="114-编程和脚本语言"><a class="markdownIt-Anchor" href="#114-编程和脚本语言"></a> 1.1.4. 编程和脚本语言</h3>
+<ol>
+<li>.c：C语言的源码文件。</li>
+<li>.cpp：C++语言的源码文件。</li>
+<li>.h：C或C++语言的头文件。</li>
+<li>.o：程序的对象文件。</li>
+<li>.pl：Perl脚本。</li>
+<li>.py：Python脚本。</li>
+<li>.so：库文件。</li>
+<li>.sh：Shell脚本。</li>
+<li>.tcl：TCL脚本。</li>
+</ol>
+<h3 id="115-查看文件类型"><a class="markdownIt-Anchor" href="#115-查看文件类型"></a> 1.1.5. 查看文件类型</h3>
+<ul>
+<li>语法：file name</li>
+</ul>
+<h2 id="12-linux文件类型"><a class="markdownIt-Anchor" href="#12-linux文件类型"></a> 1.2. linux文件类型</h2>
+<ol>
+<li>普通文件
+<ol>
+<li>查看文件属性：<code>ls -lh</code></li>
+<li>属性第一个符号是&quot;-&quot;</li>
+</ol>
+</li>
+<li>目录文件
+<ol>
+<li>查看文件属性：<code>ls -lh</code></li>
+<li>属性第一个符号是&quot;d&quot;</li>
+</ol>
+</li>
+<li>设备文件
+<ol>
+<li>字符设备文件
+<ol>
+<li>查看文件属性：<code>ls -l</code></li>
+<li>属性第一个符号是&quot;b&quot;</li>
+<li>可以通过<code>service kudzu start</code>来自动增加、删除或修改字符</li>
+<li>常见设备：打印机和终端</li>
+<li>注：<code>/dev/null</code>这是一个非常有用的字符设备文件
+<ol>
+<li>送入这个设备的所有内容都会被忽略</li>
+<li>将一个用户的shell指向这里就能禁止这个用户登录</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>块设备文件
+<ol>
+<li>查看文件属性：<code>ls -l</code></li>
+<li>属性第一个符号是&quot;c&quot;</li>
+<li>主要特点：随机读写</li>
+<li>常见设备：磁盘</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>符号链接文件</li>
+<li>管道文件(FIFO文件)
+<ol>
+<li>查看文件属性：<code>ls -l</code></li>
+<li>属性第一个符号是&quot;p&quot;</li>
+<li>管道文件是从一头流入，从另一头流出。</li>
+</ol>
+</li>
+<li>链接文件
+<ol>
+<li>软链接
+<ol>
+<li>文件用户数据块中存放的内容是另一文件的路径名的指向，可以使任意文件或目录，可以连接不同文件系统的文件。</li>
+<li>查看文件属性:<code>ls -h</code></li>
+<li>属性第一个符号是&quot;l&quot;</li>
+<li>你在对符号文件进行读或写操作的时候，系统会自动把该操作转换为对源文件的操作，但是删除链接操作时，系统仅仅删除链接文件，而不删除源文件本身</li>
+</ol>
+</li>
+<li>硬链接
+<ol>
+<li>硬链接是已存在文件的另一个文件，对硬链接文件进行读写和删除操作时，结果和软链接相同。但是如果删除硬链接文件的源文件，硬链接文件仍然存在，而且保留了原有的内容，之后就会把硬链接文件将其变成一个普通的文本文件。</li>
+<li>查看文件属性：<code>ls -h</code></li>
+<li>属性的第一个符号是&quot;l&quot;</li>
+<li>如果第二列文件硬链接数大于1，那么这个文件是硬链接。</li>
+<li>限制：
+<ol>
+<li>不允许给目录创建硬链接</li>
+<li>只有在同一文件系统中的文件之间才能建立链接。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-linux目录结构"><a class="markdownIt-Anchor" href="#2-linux目录结构"></a> 2. linux目录结构</h1>
+<ol>
+<li>linux系统有根文件系统，它包含系统引导和使其他文件系统得以挂载所必要的文件，根文件系统需要有单用户状态所必须的足够的内容，还应该包括修复损坏系统、恢复备份等工具。</li>
+<li>linux系统的目录结构是分层的属性结构，都是挂载在根文件系统&quot;/&quot;下
+<ol>
+<li>/home:包含linux系统上个用户的主目录子目录以该用户名命名。</li>
+<li>/root:是root用户的主目录</li>
+<li>/bin:常用命令文件，不能包含子目录</li>
+<li>/sbin:包含系统管理员和root用户所使用的命令文件</li>
+<li>/dev:包含大部分的设备文件</li>
+<li>/lib:包含linux系统的共享文件和内核模块文件
+<ul>
+<li>/lib/modules中存放核心可加载模块，特别是那些恢复损坏系统时引导的模块。</li>
+</ul>
+</li>
+<li>/tmp:包含一些临时文件</li>
+<li>/mnt:为某些设备(硬盘)挂载提供默认挂载目录</li>
+<li>/boot:包含linux系统的内核文件和引导装载程序文件</li>
+<li>/proc:不存在在某个硬盘上，而是由内核在内存中产生</li>
+<li>/opt:包含某些第三方应用程序的安装软件</li>
+<li>/media:为光盘、软盘、U盘等设备提供默认挂载目录</li>
+<li>/selinux:selinux(安全增强linux)是linux系统中的一个强制访问控制机制，可以增强系统安全性。</li>
+<li>/var:存放不经常变化的数据，如系统日志、打印队列、DNS数据库文件等</li>
+<li>/etc:包含linux系统上大部分的配置文件</li>
+<li>/usr:存放不经常变化的数据</li>
+<li>/lost+found:基本都是空的，是在紧急情况下存放数据</li>
+<li>/srv:存放一些服务启动之后所需要去用的资源目录</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-文件和目录操作"><a class="markdownIt-Anchor" href="#3-文件和目录操作"></a> 3. 文件和目录操作</h1>
+<h2 id="31-pwd"><a class="markdownIt-Anchor" href="#31-pwd"></a> 3.1. pwd</h2>
+<ol>
+<li>显示工作目录路径(当前用户所处的工作目录的绝对路径)</li>
+<li>语法：<code>pwd</code></li>
+</ol>
+<h2 id="32-cd"><a class="markdownIt-Anchor" href="#32-cd"></a> 3.2. cd</h2>
+<ol>
+<li>更改工作目录路径</li>
+<li>语法：<code>cd [目录名]</code>
+<ul>
+<li><code>~</code>:切换至用户主目录</li>
+</ul>
+</li>
+<li>例子：<code>cd /etc</code></li>
+</ol>
+<h2 id="33-ls"><a class="markdownIt-Anchor" href="#33-ls"></a> 3.3. ls</h2>
+<ol>
+<li>列出子目录和文件信息</li>
+<li>语法:<code>ls [选项][目录或是文件]</code>
+<ul>
+<li>文件名前加一个<code>.</code>表示是隐藏文件</li>
+</ul>
+</li>
+<li>具体见PPT</li>
+</ol>
+<h2 id="34-touch"><a class="markdownIt-Anchor" href="#34-touch"></a> 3.4. touch</h2>
+<ol>
+<li>创建空文件以及更改文件或目录的时间</li>
+<li>语法：<code>touch [-acfm][-d &lt;日期时间&gt;][-r &lt;参考文件或目录&gt;][-t &lt;日期时间&gt;][文件]</code></li>
+<li>选项见PPT</li>
+</ol>
+<h2 id="35-mkdir"><a class="markdownIt-Anchor" href="#35-mkdir"></a> 3.5. mkdir</h2>
+<ol>
+<li>创建目录</li>
+<li>语法：<code>mkdir [选项][目录名]</code>
+<ol>
+<li>-m:对新建目录设置存取权限，没有时默认755</li>
+<li>-p:可以是一个路径名称，一次可以创建多个目录</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-rmdir"><a class="markdownIt-Anchor" href="#36-rmdir"></a> 3.6. rmdir</h2>
+<ol>
+<li>删除空目录</li>
+<li>语法：<code>rmdir [选项][目录名]</code></li>
+<li>如果文件目录非空的话，将会报错。</li>
+</ol>
+<h2 id="37-cp"><a class="markdownIt-Anchor" href="#37-cp"></a> 3.7. cp</h2>
+<ol>
+<li>复制文件和目录到其他目录中</li>
+<li>语法:<code>cp [选项][源文件或目录][目标文件或目录]</code></li>
+</ol>
+<h2 id="38-mv"><a class="markdownIt-Anchor" href="#38-mv"></a> 3.8. mv</h2>
+<ol>
+<li>移动或更名现有文件或目录</li>
+<li>语法:<code>mv [选项][源文件或目录][目标文件或目录]</code>
+<ol>
+<li>-i:交互式操作</li>
+<li>-f:禁止交互式操作</li>
+</ol>
+</li>
+<li><code>mv -f /root/picture/*.png /usr/picture</code></li>
+</ol>
+<h2 id="39-rm"><a class="markdownIt-Anchor" href="#39-rm"></a> 3.9. rm</h2>
+<ol>
+<li>删除文件或目录</li>
+<li>语法：<code>rm [选项][文件或目录]</code>
+<ol>
+<li>-f:忽略不存在的文件</li>
+<li>-r:将参数中列出的全部目录和子目录均递归删除</li>
+<li>-i:进行交互式删除，需要确认删除</li>
+</ol>
+</li>
+</ol>
+<h2 id="310-wc"><a class="markdownIt-Anchor" href="#310-wc"></a> 3.10. wc</h2>
+<ol>
+<li>统计指定文件中的行数、单词书或字节数，并将统计结果显示输出到屏幕</li>
+<li>语法：<code>wc [选项][文件]</code>
+<ol>
+<li>-l:统计行数</li>
+<li>-w：统计单词数</li>
+<li>-c:统计字符数</li>
+<li>链接使用<code>-lwc</code>:按顺序成表格输出</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-链接文件"><a class="markdownIt-Anchor" href="#4-链接文件"></a> 4. 链接文件</h1>
+<ol>
+<li>在linux系统中，内核为每一个新创建的文件分配一个inode(索引节点)好，文件属性保存在索引节点里，在访问文件时，索引节点被赋值到内存里，从而快速访问文件</li>
+</ol>
+<h2 id="41-链接文件简介"><a class="markdownIt-Anchor" href="#41-链接文件简介"></a> 4.1. 链接文件简介</h2>
+<ol>
+<li>linux系统分为两种链接：硬链接和软链接(符号链接)</li>
+</ol>
+<h3 id="411-硬链接"><a class="markdownIt-Anchor" href="#411-硬链接"></a> 4.1.1. 硬链接</h3>
+<ol>
+<li>硬链接是一个指针，指向文件索引节点，系统不为它重新分配inode，也可以用ln命令来建立硬链接</li>
+<li>两个限制：
+<ol>
+<li>不允许给目录创建硬链接</li>
+<li>只有在同一文件系统中的文件之间才能创建链接</li>
+</ol>
+</li>
+</ol>
+<h3 id="412-软链接"><a class="markdownIt-Anchor" href="#412-软链接"></a> 4.1.2. 软链接</h3>
+<ol>
+<li>又称符号链接，这个文件包含了另一个文件的路径名</li>
+</ol>
+<h3 id="413-两种链接之间的区别"><a class="markdownIt-Anchor" href="#413-两种链接之间的区别"></a> 4.1.3. 两种链接之间的区别</h3>
+<ol>
+<li>硬链接记录的是目标的inode(索引节点)，更像备份，只能在本分区中操作</li>
+<li>软链接记录的是目标的路径,类似快捷方式，可以进行跨分区链接</li>
+</ol>
+<h3 id="414-链接文件的使用"><a class="markdownIt-Anchor" href="#414-链接文件的使用"></a> 4.1.4. 链接文件的使用</h3>
+<ol>
+<li>常见链接文件语法:<code>ln [选项][源文件名][链接文件名]</code>
+<ul>
+<li>-i:交互式操作</li>
+<li>-s:如下</li>
+</ul>
+</li>
+<li>软(符号)链接:<code>ln -s name1 nameb</code></li>
+<li>硬链接:<code>ln name1 name2</code></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2018-Linux%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="category-chain-item">2018-Linux系统基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/">#linux</a>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%96%87%E4%BB%B6/">#文件</a>
+      
+        <a href="/tags/%E7%9B%AE%E5%BD%95/">#目录</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2018-Linux系统基础-linux-05.文件和目录</div>
+      <div>https://stormbroken.github.io/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-05.%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2018年7月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-06.%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="2018-Linux系统基础-linux-06.常用操作">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2018-Linux系统基础-linux-06.常用操作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-04.%E5%AD%97%E7%AC%A6%E7%95%8C%E9%9D%A2/" title="2018-Linux系统基础-linux-04.字符界面">
+                        <span class="hidden-mobile">2018-Linux系统基础-linux-04.字符界面</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

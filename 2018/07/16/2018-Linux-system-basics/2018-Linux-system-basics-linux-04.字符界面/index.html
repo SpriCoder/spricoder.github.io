@@ -1,0 +1,1275 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2018-Linux系统基础-linux-04.字符界面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-Linux系统基础-linux-04.字符界面">
+<meta property="og:url" content="https://stormbroken.github.io/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-04.%E5%AD%97%E7%AC%A6%E7%95%8C%E9%9D%A2/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2018-Linux系统基础-linux-04.字符界面">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-07-16T11:04:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:32:13.512Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="命令">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2018-Linux系统基础-linux-04.字符界面 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2018-07-16 19:04" pubdate>
+          2018年7月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2018-Linux系统基础-linux-04.字符界面</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="第四章linux字符界面操作"><a class="markdownIt-Anchor" href="#第四章linux字符界面操作"></a> 第四章：Linux字符界面操作</h2>
+<h1 id="1-字符界面简介"><a class="markdownIt-Anchor" href="#1-字符界面简介"></a> 1. 字符界面简介</h1>
+<ol>
+<li>对linux服务器的维护基本上是在命令行界面下进行的</li>
+</ol>
+<h2 id="11-进入linux命令行界面"><a class="markdownIt-Anchor" href="#11-进入linux命令行界面"></a> 1.1. 进入linux命令行界面</h2>
+<ol>
+<li>linux字符界面
+<ol>
+<li>在启动时，修改命令进入字符界面:使用gedit打开文件/etc/inittab
+<ul>
+<li>在其中找到initdefault一行：将其修改为id:3:initdefault</li>
+<li>重启计算机即可</li>
+</ul>
+</li>
+<li>命令：<code>[root@PC-LINUX ~]# ln -sf /lib/systemd/system/runlevel3.target /etc/systemd/system/default.target</code></li>
+<li>改变后重新引导即可
+<ol>
+<li>超级用户登录后提示符：#</li>
+<li>其他用户登录后提示符：$</li>
+</ol>
+</li>
+<li>如果在字符界面想要重启图形界面，可以输入命令<code>startx</code>启动linux的图形界面。</li>
+</ol>
+</li>
+<li>使用终端：应用程序-&gt;收藏-&gt;终端
+<ol>
+<li>进入终端</li>
+<li>修改首选项:编辑当前配置文件即可</li>
+<li>退出终端界面：
+<ol>
+<li>图形界面点击<code>X</code>号</li>
+<li>在控制台输入exit即可</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>使用虚拟控制台：允许进行多次登录</li>
+</ol>
+<h2 id="12-关闭和重启系统"><a class="markdownIt-Anchor" href="#12-关闭和重启系统"></a> 1.2. 关闭和重启系统</h2>
+<ol>
+<li>shutdown命令
+<ul>
+<li>可以安全地关闭系统。</li>
+<li>linux系统和Windows系统不同，后台有很多的进程正在运行中，如强制关机会导致进程的数据丢失。</li>
+<li>在下达shutdown指令后，系统会通知所有登录的用户系统将要关闭，并且login指令被冻结。</li>
+<li>语法<code>shutdown [选项][时间][警告信息]</code>，也就是该指令允许精确时间关机(多少分钟后，现在写做now)。
+<ol>
+<li>需要说明：这个命令只能被超级用户root使用</li>
+<li>-h:关机但不重启</li>
+<li>-r:重启</li>
+<li>-k:并不真正关闭系统，只是发出警告信息给全部用户</li>
+<li>-f:快速关闭系统，再次启动时不进行磁盘检测</li>
+<li>-n:快速关闭系统，不经过init程序直接关机</li>
+<li>-c:中断关闭系统</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>halt
+<ul>
+<li>就是调用<code>shutdown -h</code>命令来执行关闭系统</li>
+<li>语法<code>halt [选项]</code>
+<ol>
+<li>-w:不是真正重启关闭系统，只是写&quot;wtmp&quot;记录</li>
+<li>-d:不写wtmp记录</li>
+<li>-f:不调用shutdown，直接强制关机</li>
+<li>-i:在关闭或重启系统前，先关闭所有的网络接口</li>
+<li>-p:这个选项是缺省项，即关闭系统时调用&quot;power off&quot;</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>reboot
+<ul>
+<li>是引发主机的重启，区别于halt指令的关机</li>
+<li>参数和halt大致相同</li>
+</ul>
+</li>
+<li>init
+<ul>
+<li>这个命令式所有进程的祖先，进程号始终为1</li>
+<li>定义了7个运行级别，其中<code>init 0</code>为关闭系统，<code>init 6</code>是重启。</li>
+</ul>
+</li>
+</ol>
+<h2 id="13-系统运行级别"><a class="markdownIt-Anchor" href="#13-系统运行级别"></a> 1.3. 系统运行级别</h2>
+<ol>
+<li>一种状态，由列在<code>/etc/rc.d/rc&lt;x&gt;.d</code>目录中的服务来定义，其中<code>&lt;x&gt;</code>代表运行级别的符号</li>
+<li>由列在<code>/etc/rc.d/rc&lt;x&gt;.d</code>中的<code>&lt;x&gt;</code>来代表级别
+<ol>
+<li>运行级别分为7种</li>
+<li>0：停止运行，所有进程中止，关闭系统</li>
+<li>1：单用户模式，用于维护系统，只有少数进程运行</li>
+<li>2：多用户模式，除了NFS服务没有启动外，其他和运行级别3一样。</li>
+<li>3：完整的多用户模式，进入linux系统的字符界面</li>
+<li>4：没有使用(由用户自己定义)</li>
+<li>5：完整的多用户模式(带有基于X Window的图形界面)</li>
+<li>6：重新引导计算机</li>
+</ol>
+<ul>
+<li>简单的事宜：字符界面的运行级别是3，图形化界面的运行级别是5.</li>
+</ul>
+</li>
+<li>查看当前系统运行级别：
+<ol>
+<li><code>[root@PC-LINUX ~]# runlevel</code></li>
+<li>结果第一个为上一次运行级别(无为N)，后面为当前运行等级</li>
+<li>可以用这个来切换显示模式，命令行还是GUI界面，命令:<code>init (level)</code>
+<ul>
+<li>命令<code>init 0</code>同样是关闭计算机</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-如何在linux下获取帮助"><a class="markdownIt-Anchor" href="#2-如何在linux下获取帮助"></a> 2. 如何在linux下获取帮助</h1>
+<h2 id="21-使用man手册页"><a class="markdownIt-Anchor" href="#21-使用man手册页"></a> 2.1. 使用man手册页</h2>
+<ol>
+<li>作用：查看命令、函数或文件的帮助手册，另外它还可以显示一些gzip压缩格式的文件。
+<ul>
+<li>一般来说这个手册资源被放置在了/usr/share/man目录下</li>
+</ul>
+</li>
+<li>命令语法：<code>man [选项][命令名称]</code>
+<ol>
+<li>-M:指定搜索man手册页的路径，通常这个路径由环境变量MANPATH预设，如果在命令行上指定另外的路径，则覆盖MANPATH的设定</li>
+<li>-P:指定所使用的分页程序，默认使用/usr/bin/less-is,在环境变量MANPAGER中预设。</li>
+<li>-a:显示所有的手册页，而不是只显示第一个。</li>
+<li>-d:主要用于检查，如果用户添加进图了一个新的文件，就可以用这个选项检查是否出错，这个选项不会列出文件内容。</li>
+<li>-f:只显示出命令的功能而不显示其中详细的说明文件。</li>
+<li>-p:string设定预先处理程序的顺序</li>
+<li>-w:不显示手册页，只显示将被格式化和显示的文件所在位置。</li>
+</ol>
+</li>
+<li>简单介绍man手册页内容：
+<ol>
+<li>NAME：简单说明</li>
+<li>SYNOPSIS:大致说明(语法、定义等)</li>
+<li>OPTIONS:对内容的简明介绍</li>
+<li>SEE ALSO:一些参考提示</li>
+<li>BUGS:指明命令或函数存在什么错误。</li>
+<li>其他的详见查找。</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-使用help命令"><a class="markdownIt-Anchor" href="#22-使用help命令"></a> 2.2. 使用help命令</h2>
+<ol>
+<li>可以查找Shell命令的用法</li>
+<li>语法：<code>[命令] --help</code></li>
+</ol>
+<h2 id="23-whereis命令"><a class="markdownIt-Anchor" href="#23-whereis命令"></a> 2.3. whereis命令</h2>
+<ol>
+<li>查找命令所在的位置</li>
+<li>语法：<code>whereis [选项][命令名]</code>
+<ol>
+<li>b:只查找二进制文件</li>
+<li>m:查找主要文件</li>
+<li>s:查找来源</li>
+<li>u:查找不常用的记录文件</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-shell基础"><a class="markdownIt-Anchor" href="#3-shell基础"></a> 3. Shell基础</h1>
+<ol>
+<li>Shell是最常用的程序，主要作用是侦听用户指令、启动指令所指定的进程并将结果返回给用户。</li>
+<li>Shell就是位于核心和操作者之间的一层使用者界面。</li>
+</ol>
+<h2 id="31-shell起步"><a class="markdownIt-Anchor" href="#31-shell起步"></a> 3.1. Shell起步</h2>
+<ol>
+<li>类似于命令行，但是要比命令行更加强大。</li>
+<li>登入系统或者打开终端窗口时，首先看到的是Shell提示符，$/#</li>
+<li>一般的格式：<code>[Shell命令][可选项][参数]</code></li>
+<li>例子：
+<ol>
+<li><code>whoami</code>:查找当前里linux系统的用户</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-shell类型和功能"><a class="markdownIt-Anchor" href="#32-shell类型和功能"></a> 3.2. Shell类型和功能</h2>
+<ol>
+<li>命令解释器</li>
+<li>编程原因</li>
+<li>系统管理维护时的重要工具</li>
+<li>bash的功能：
+<ol>
+<li>兼容sh(Bourne Shell)</li>
+<li>包含C Shell以及Korn Shell中最好的功能</li>
+<li>具有命令行编写修改的能力</li>
+<li>具有工作控制能力，可控制前台和后台程序</li>
+<li>具有Shell编程能力</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-开始使用bash"><a class="markdownIt-Anchor" href="#33-开始使用bash"></a> 3.3. 开始使用bash</h2>
+<ol>
+<li>命令分类
+<ol>
+<li>bash内置的命令:由把bash负责回应</li>
+<li>应用程序:Shell会找到相应的应用程序，然后把控制权交给内核，由内核执行应用程序。</li>
+</ol>
+<ul>
+<li>如果想要具体确定那种命令:<code>which [命令]</code></li>
+</ul>
+</li>
+<li>通配符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?</td>
+<td>表示任何单一字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>表示任何字符</td>
+</tr>
+<tr>
+<td>[字符组合]</td>
+<td>在中括号中的字符皆符合</td>
+</tr>
+<tr>
+<td>[!字符组合]</td>
+<td>不在中括号中的字符皆符合</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>特殊字符及引号
+<ol>
+<li>主要参见PPT</li>
+<li>~:用户主目录</li>
+<li>*:通配符</li>
+<li>?:通配符</li>
+<li>&lt;:输出重定向</li>
+</ol>
+</li>
+<li>常用控制组合键
+<ol>
+<li>详见PPT</li>
+<li>Ctrl+U:将命令行整列删除。</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-shell实用功能"><a class="markdownIt-Anchor" href="#4-shell实用功能"></a> 4. Shell实用功能</h1>
+<h2 id="41-命令行自动补全"><a class="markdownIt-Anchor" href="#41-命令行自动补全"></a> 4.1. 命令行自动补全</h2>
+<ol>
+<li>Tab自动补全,按下Tab键</li>
+<li>比如:<code>cd /u/u&lt;Tab&gt;/sr&lt;Tab&gt;/redhat/</code></li>
+</ol>
+<h2 id="42-命令历史记录"><a class="markdownIt-Anchor" href="#42-命令历史记录"></a> 4.2. 命令历史记录</h2>
+<ol>
+<li>使用方向键</li>
+<li>使用shift+方向键</li>
+<li>编辑命令行
+<ul>
+<li>详见PPT</li>
+<li>[!$]重复前一个命令最后的参数</li>
+<li>pwd查看当前目录</li>
+</ul>
+</li>
+<li>可用的Shell快捷方式
+<ul>
+<li>~是用户的主目录的简写形式</li>
+</ul>
+</li>
+</ol>
+<h2 id="43-命令的排列-替换和别名"><a class="markdownIt-Anchor" href="#43-命令的排列-替换和别名"></a> 4.3. 命令的排列、替换和别名</h2>
+<ol>
+<li>命令的排列
+<ul>
+<li>如果希望一次执行多个命令，Shell允许在不同的命令之间，放上特殊的排列字符。</li>
+</ul>
+<ol>
+<li>使用<code>命令1;命令2</code>：
+<ol>
+<li>先执行命令1</li>
+<li>无论成功与否，执行命令2</li>
+</ol>
+</li>
+<li>使用<code>命令1&amp;&amp;命令2</code>：
+<ol>
+<li>只有命令1正确运行完毕后才能执行命令</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>命令的替换
+<ol>
+<li>语法：<code>命令1 $(命令2)</code>||命令1 `命令2`</li>
+<li>命令替换将一个命令的输出当另一个命令的输入</li>
+<li>实例：<code>kill -9 $(pidof less)</code></li>
+</ol>
+</li>
+<li>命名别名
+<ol>
+<li>将比较长的命令重命名为另一个指定命令</li>
+<li>语法:<code>alias [别名]=[需要定义别名的命令]</code>
+<ul>
+<li>取消别名:<code>unalias</code></li>
+</ul>
+</li>
+<li>之后输入重命名的部分就行。但是重启或者关系会使得别名失效。</li>
+<li>别名的优先级高于原命令。</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-文件名匹配和输出重定向"><a class="markdownIt-Anchor" href="#44-文件名匹配和输出重定向"></a> 4.4. 文件名匹配和输出重定向</h2>
+<ol>
+<li>文件名匹配：
+<ol>
+<li>用户不必一一写出文件名称就可以指定多个文件</li>
+<li>*可以匹配一个或多个字符</li>
+<li>？只能匹配代表一个字符</li>
+</ol>
+</li>
+<li>管道：
+<ol>
+<li>复杂任务使用Shell机制，组合很多小程序进行完成，管道就是把某个命令的输出信息当做某个命令的输入</li>
+<li>语法:<code>[命令1]|[命令2]|[命令3]</code></li>
+<li>例子：<code>ls /etc|more</code>,显示这个文件夹的内容，命令more是分页显示内容</li>
+</ol>
+</li>
+<li>重定向文件
+<ol>
+<li>希望将命令的输出结果保存到文件中</li>
+<li>希望将文件的内容作为命令参数</li>
+<li>五种重定向方式：
+<ol>
+<li>输出重定向
+<ol>
+<li>将command(具体命令)命令输出保存到文件file中，如何有相同文件，则进行覆盖</li>
+<li>语法：<code>command &gt; file</code></li>
+</ol>
+</li>
+<li>输入重定向
+<ol>
+<li>将文件file的内容作为command命令的输入</li>
+<li>语法：<code>command &lt; file</code></li>
+</ol>
+</li>
+<li>错误重定向
+<ol>
+<li>将命令执行出错信息输出到文件file中</li>
+<li>语法：<code>command 2&gt; file</code></li>
+</ol>
+</li>
+<li>追加重定向
+<ol>
+<li>将输出添加到已经存在的file中去</li>
+<li>语法：<code>command &gt;&gt; file</code></li>
+</ol>
+</li>
+<li>同时实现输出和错误的重定向
+<ol>
+<li>同时实现输出重定向和错误重定向</li>
+<li>语法:<code>command &amp;&gt; file</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>将一个目录下的内容重定向到文件夹：
+<ul>
+<li><code>ls /root &gt; /root/abc</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-vi编辑器基本使用"><a class="markdownIt-Anchor" href="#5-vi编辑器基本使用"></a> 5. vi编辑器基本使用</h1>
+<h2 id="51-vi的基本概念"><a class="markdownIt-Anchor" href="#51-vi的基本概念"></a> 5.1. vi的基本概念</h2>
+<ol>
+<li>vi编辑器是linux系统的标准编辑器，用于编辑任何ASCII文本。使用vi编辑器，可以对文本进行创建、查找、替换、删除、复制、粘贴等操作。</li>
+<li>三种基本工作模式
+<ol>
+<li>命令行模式</li>
+<li>插入模式
+<ol>
+<li>插入模式才能文字输入</li>
+<li>Esc回到命令行</li>
+</ol>
+</li>
+<li>末行模式
+<ol>
+<li>保存文件或退出vi编辑器</li>
+<li>设置编辑环境。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-vi的基本操作"><a class="markdownIt-Anchor" href="#52-vi的基本操作"></a> 5.2. vi的基本操作</h2>
+<ol>
+<li>进入vi编辑器
+<ul>
+<li>在Shell提示符输入vi以及文件名称就进入了vi编辑</li>
+</ul>
+</li>
+<li>切换至插入模式编辑文件
+<ul>
+<li>按下i进入编辑模式</li>
+</ul>
+</li>
+<li>退出vi以及保存文件
+<ol>
+<li>按:进入末行模式</li>
+<li>输入wq,存盘并退出vi</li>
+<li>输入q!,不存盘强制退出vi</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-命令行模式操作"><a class="markdownIt-Anchor" href="#53-命令行模式操作"></a> 5.3. 命令行模式操作</h2>
+<ol>
+<li>进入插入模式
+<ol>
+<li>按&quot;i&quot;：从光标当前位置开始输入文件</li>
+<li>按&quot;a&quot;：从目前光标所在位置的下一个位置开始输入文字</li>
+<li>按&quot;o&quot;：在光标所在的行的下面插入一行，从行首开始输入文字</li>
+<li>按&quot;I&quot;：在光标所在行的行首插入。</li>
+<li>按&quot;A&quot;：在光标所在行的行末插入。</li>
+<li>按&quot;O&quot;：在光标所在的行的上面插入一行。</li>
+<li>按&quot;s&quot;：删除光标位置的一个字符，然后进入插入模式。</li>
+<li>按&quot;S&quot;：删除光标所在的行，然后进入 插入模式。</li>
+</ol>
+</li>
+<li>从插入模式切换为命令行模式
+<ul>
+<li>按下Esc返回</li>
+</ul>
+</li>
+<li>移动光标：参见ppt
+<ol>
+<li>ctrl+b:向前移动一页</li>
+<li>ctrl+f:向后移动一页</li>
+<li>ctrl+u:向前移动半页</li>
+<li>ctrl+d:向后移动半页</li>
+</ol>
+</li>
+<li>删除文字：参见ppt
+<ol>
+<li>(n)x:按一次，删除光标处的一(n)个字符</li>
+<li>(n)X:按一次，删除光标处前的1(n)个字符。</li>
+</ol>
+</li>
+<li>复制</li>
+<li>替换</li>
+<li>撤销上一次操作</li>
+<li>跳至指定的行</li>
+<li>存盘退出</li>
+<li>不存盘退出</li>
+</ol>
+<h2 id="54-末行模式操作"><a class="markdownIt-Anchor" href="#54-末行模式操作"></a> 5.4. 末行模式操作</h2>
+<ol>
+<li>先按下Esc，然后按下：进入末行模式</li>
+<li>列出行号：<code>set nu</code></li>
+<li>取消列出行号：<code>set nonu</code></li>
+<li>跳转到文件中的某一行：<code>n</code></li>
+<li>查找字符：
+<ol>
+<li><code>/关键字</code>：先按&quot;/&quot;键，再输入想查找的字符，如果第一次查找的关键字不是想要的，可以一直按&quot;n&quot;会往后查找下一个关键字。</li>
+<li><code>?关键字</code>：先按&quot;?&quot;键，再输入想查 找的字符，如果第一次查找的关键字不是想要 的，可以一直按&quot;n&quot;往前查找下一个关键字。</li>
+</ol>
+</li>
+<li>运行Shell命令:<code>!命令</code></li>
+<li>替换字符：
+<ol>
+<li><code>:s/a/b</code>：将光标所在行第一个a替换 为b。</li>
+<li><code>:s/a/b/g</code>：将光标所在行所有的a替 换为b。</li>
+</ol>
+</li>
+<li>保存文件：
+<ul>
+<li>:w</li>
+</ul>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2018-Linux%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="category-chain-item">2018-Linux系统基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/">#linux</a>
+      
+        <a href="/tags/shell/">#shell</a>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E5%91%BD%E4%BB%A4/">#命令</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2018-Linux系统基础-linux-04.字符界面</div>
+      <div>https://stormbroken.github.io/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-04.%E5%AD%97%E7%AC%A6%E7%95%8C%E9%9D%A2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2018年7月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-05.%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95/" title="2018-Linux系统基础-linux-05.文件和目录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2018-Linux系统基础-linux-05.文件和目录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/07/16/2018-Linux-system-basics/2018-Linux-system-basics-linux-03.%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/" title="2018-Linux系统基础-linux-03.图形界面">
+                        <span class="hidden-mobile">2018-Linux系统基础-linux-03.图形界面</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-C++高级程序设计-C++ 类成员变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-C++高级程序设计-C++ 类成员变量">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/01/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-C++高级程序设计-C++ 类成员变量">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-01T11:18:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:37:00.962Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="OOP">
+<meta property="article:tag" content="成员变量">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2020-C++高级程序设计-C++ 类成员变量 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-01 19:18" pubdate>
+          2020年7月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-C++高级程序设计-C++ 类成员变量</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="类的成员变量"><a class="markdownIt-Anchor" href="#类的成员变量"></a> 类的成员变量</h2>
+<h1 id="1-const成员"><a class="markdownIt-Anchor" href="#1-const成员"></a> 1. Const成员</h1>
+<h2 id="11-const成员变量"><a class="markdownIt-Anchor" href="#11-const成员变量"></a> 1.1. const成员变量</h2>
+<ol>
+<li>初始化放在构造函数的成员初始化表中进行：
+<ol>
+<li>常量在初始化的时候必须被给值，而不是赋值，所以不能写在构造函数内</li>
+<li>所以我们通过初始化表的方式完成。</li>
+</ol>
+</li>
+<li>每一个Const变量是指对于这个对象的生命周期内是不变的</li>
+<li>static const:编译器内的常量，所有的对象都是一样的，最好在定义的地方进行初始化。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> x;<span class="hljs-comment">//常成员变量</span><br>    <span class="hljs-keyword">public</span>:<br>	    <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> c):<span class="hljs-built_in">x</span>(c)&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="12-const成员函数"><a class="markdownIt-Anchor" href="#12-const成员函数"></a> 1.2. Const成员函数</h2>
+<ol>
+<li>可以是函数也可以是参数</li>
+<li>我们将不修改对象内变量的值的时候，将对应方法声明为const</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> x,y;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> x1, <span class="hljs-type">int</span> y1);<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<span class="hljs-comment">//前后要保证一致，const在后面</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">A::f</span><span class="hljs-params">()</span></span>&#123;x = <span class="hljs-number">1</span>; y = <span class="hljs-number">1</span>;&#125;<span class="hljs-comment">//编译器怎么能发现不是const的？转化为防止变量被赋值，见下面，所以const指针不能修改</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(A * <span class="hljs-type">const</span> <span class="hljs-keyword">this</span>)</span></span>;<span class="hljs-comment">//上面的函数相当于这个</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">A::show</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function"></span>&#123;cout &lt;&lt;x &lt;&lt; y;&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">(<span class="hljs-type">const</span> A* <span class="hljs-type">const</span> <span class="hljs-keyword">this</span>)</span></span>;<span class="hljs-comment">//上面的函数相当于这个，第一个const表示指向对象常量，后一个const表示指针本身是常量</span><br><br><span class="hljs-function"><span class="hljs-type">const</span> A <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//常对象:这个对象是不可以修改的</span><br>a.<span class="hljs-built_in">f</span>(); <span class="hljs-comment">//错误，常对象无法调用非常方法</span><br>a.<span class="hljs-built_in">show</span>();<span class="hljs-comment">//正确</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>声明为const的对象只能调用常成员对象函数</li>
+<li>如果是非const的对象，则都可以进行调用</li>
+<li>是否const方法真的就不能修改对象里面的值了呢？不是,const只是语法上避免了，但是不是完全不可修改</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">int</span> &amp; indirect_int;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">A</span>():<span class="hljs-built_in">indirect_int</span>(*<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>)&#123; ... &#125;<br>        ~<span class="hljs-built_in">A</span>() &#123;<br>            <span class="hljs-keyword">delete</span> &amp;indirect_int;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>            <span class="hljs-comment">//只要不是直接修改变量的值就OK</span><br>            <span class="hljs-comment">//引用本身是不能修改的，所以编译器认为没问题</span><br>            indirect_int++;<span class="hljs-comment">//只是指向的内容发生了变化</span><br>        &#125;<br>&#125;;<br><span class="hljs-comment">//用a来做初始化</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>关键词mutable:表示成员可以再const中进行修改，而不是用间接的方式来做。</li>
+<li>去掉const转换:<code>(const_cast)&lt;A*&gt;(this)-&gt;x</code>转换后可以修改原来的成员</li>
+</ol>
+<h1 id="2-静态成员"><a class="markdownIt-Anchor" href="#2-静态成员"></a> 2. 静态成员</h1>
+<ol>
+<li>放在类的外部，只能初始化一次。</li>
+<li>一个类共享变量</li>
+</ol>
+<h2 id="21-静态成员简介"><a class="markdownIt-Anchor" href="#21-静态成员简介"></a> 2.1. 静态成员简介</h2>
+<ol>
+<li>类刻画了一组具有相同属性的对象</li>
+<li>对象是类的实例</li>
+<li>问题:为什么不声明成全局变量，而是声明成类的成员。
+<ol>
+<li>如果把这些共享变量定义为全局变量，却缺乏数据保护</li>
+<li>名污染</li>
+</ol>
+</li>
+<li>struct和class在封装上大致类似
+<ol>
+<li>struct默认访问public</li>
+<li>class默认访问private</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-静态成员变量"><a class="markdownIt-Anchor" href="#22-静态成员变量"></a> 2.2. 静态成员变量</h2>
+<ol>
+<li>静态成员变量是类对象所共享</li>
+<li>唯一拷贝</li>
+<li>遵循类访问控制</li>
+<li>必须放置在类外</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> x,y;<br>	<span class="hljs-type">static</span> <span class="hljs-type">int</span> shared;<br>&#125;;<br><span class="hljs-type">int</span> A::shared=<span class="hljs-number">0</span>;<span class="hljs-comment">//j静态成员的初始化放在类的外部，只能被赋值一次，所以不再头文件中定义，而是在实现中定义，避免重复。并且定义的时候不用再写static</span><br>A a,b;<br></code></pre></td></tr></table></figure>
+<h2 id="23-静态成员函数"><a class="markdownIt-Anchor" href="#23-静态成员函数"></a> 2.3. 静态成员函数</h2>
+<ol>
+<li><strong>只能存取静态成员变量，调用静态成员函数</strong></li>
+<li>遵循类访问控制：在类上直接访问只能是静态成员变量</li>
+<li>类也是一种对象，可以通过类直接调用静态方法</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> shared;<br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-keyword">public</span>:<br>	    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>&#123;shared&#125;<br>	    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">q</span><span class="hljs-params">()</span> </span>&#123; x,shared&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="24-调用静态成员"><a class="markdownIt-Anchor" href="#24-调用静态成员"></a> 2.4. 调用静态成员</h2>
+<ol>
+<li>通过对象使用:<code>A a;a.f();</code></li>
+<li>通过类使用:<code>A::f();</code></li>
+<li>C++支持观点&quot;类也是对象&quot;
+<ol>
+<li>smalltalk</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> obj_count;<br>	<span class="hljs-keyword">public</span>:<br>	    <span class="hljs-built_in">A</span>()&#123;obj_count++;&#125;<span class="hljs-comment">//追踪创建了多少个对象</span><br>	    ~<span class="hljs-built_in">A</span>()&#123;obj_count--;&#125;<br>	    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">get_num_of_obj</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//查看已经创建了多少个对象</span><br>&#125;;<br><span class="hljs-type">int</span> A::obj_count=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">A::get_num_of_obj</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> obj_count; &#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>原则:谁创建，谁归还。解决方法:自动归还</li>
+<li>singleton:单件模式:通过静态成员函数来创建对象</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span>  <span class="hljs-title class_">singleton</span>&#123;<br>    <span class="hljs-keyword">protected</span>:<span class="hljs-comment">//构造函数外部不可以使用</span><br>		<span class="hljs-built_in">singleton</span>()&#123;&#125;<br>		<span class="hljs-built_in">singleton</span>(<span class="hljs-type">const</span> singleton &amp;);<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-function"><span class="hljs-type">static</span> singleton *<span class="hljs-title">instance</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span>  m_instance == <span class="hljs-literal">NULL</span>? <br>			m_instance = <span class="hljs-keyword">new</span> singleton: m_instance;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span>  </span>&#123; <span class="hljs-keyword">delete</span> m_instance; m_instance = <span class="hljs-literal">NULL</span>; &#125;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-type">static</span> singleton *m_instance;<span class="hljs-comment">//保存对象的指针也是static的</span><br>&#125;;<br>singleton *singleton::m_instance= <span class="hljs-literal">NULL</span>;<span class="hljs-comment">//初始化</span><br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-C-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="category-chain-item">2020-C++高级程序设计</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/C/">#C++</a>
+      
+        <a href="/tags/OOP/">#OOP</a>
+      
+        <a href="/tags/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/">#成员变量</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-C++高级程序设计-C++ 类成员变量</div>
+      <div>https://stormbroken.github.io/2020/07/01/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/01/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/" title="2020-C++高级程序设计-C++ 类的封装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-C++高级程序设计-C++ 类的封装</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/01/2020-C-plus-plus-advanced-programming/C++-OOP/2020-C-plus-plus-advanced-programming-C++%20%E7%BB%A7%E6%89%BF/" title="2020-C++高级程序设计-C++ 继承">
+                        <span class="hidden-mobile">2020-C++高级程序设计-C++ 继承</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

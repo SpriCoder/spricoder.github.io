@@ -1,0 +1,1247 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-数据集成-消息中间件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-数据集成-消息中间件">
+<meta property="og:url" content="https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-数据集成-消息中间件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/16.png">
+<meta property="article:published_time" content="2021-05-01T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:15.328Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="消息队列">
+<meta property="article:tag" content="消息传递">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/1.png">
+  
+  
+  <title>2021-数据集成-消息中间件 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-01 19:00" pubdate>
+          2021年5月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-数据集成-消息中间件</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="消息中间件"><a class="markdownIt-Anchor" href="#消息中间件"></a> 消息中间件</h2>
+<h1 id="1-概述"><a class="markdownIt-Anchor" href="#1-概述"></a> 1. 概述</h1>
+<h2 id="11-集成的问题"><a class="markdownIt-Anchor" href="#11-集成的问题"></a> 1.1. 集成的问题</h2>
+<ol>
+<li>遗留应用系统之间的数据共享和通讯
+<ol>
+<li>文件传输</li>
+<li>共享数据库</li>
+<li>远程过程调用</li>
+<li>消息传递</li>
+</ol>
+</li>
+<li>不同硬件平台、网络协议、操作系统甚至编程语言</li>
+</ol>
+<h2 id="12-中间件技术"><a class="markdownIt-Anchor" href="#12-中间件技术"></a> 1.2. 中间件技术</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>基础软件的一大类，属于可复用的软件范畴，是位于平台和应用之间的通用服务
+<ol>
+<li>数据访问中间件</li>
+<li>远程过程调用中间件</li>
+<li>分布式对象中间件</li>
+<li>消息中间件</li>
+<li>事务处理中间件</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-中间件的技术思想"><a class="markdownIt-Anchor" href="#13-中间件的技术思想"></a> 1.3. 中间件的技术思想</h2>
+<ol>
+<li>复用：软件不断完善，可靠性、通用性和有用性不断提升</li>
+<li>分层：简化问题域</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="14-分布式对象技术的局限性"><a class="markdownIt-Anchor" href="#14-分布式对象技术的局限性"></a> 1.4. 分布式对象技术的局限性</h2>
+<ol>
+<li>同步通信：客户发出调用后，必须等待服务对象完成处理并返回结果后才能继续执行</li>
+<li>客户和服务对象的生命周期紧密耦合：客户进程和服务对象进程都必须正常运行，如果由于服务对象崩溃或网络故障导致客户的请求不可达，客户会接收到异常</li>
+<li>暴露行为：IDL 增加复杂性</li>
+</ol>
+<h2 id="15-advantages-scalable-architecture"><a class="markdownIt-Anchor" href="#15-advantages-scalable-architecture"></a> 1.5. Advantages: Scalable Architecture</h2>
+<ol>
+<li>Simplistic RPC or CORBA frameworks: M*N sockets</li>
+<li>MOM frameworks: M+N sockets</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="16-消息中间件"><a class="markdownIt-Anchor" href="#16-消息中间件"></a> 1.6. 消息中间件</h2>
+<ol>
+<li>消息传递：应用连接到一个公共的消息传递系统上，并通过消息来交换数据和调用行为</li>
+<li>消息中间件
+<ol>
+<li>一种由消息传递机制或消息队列模式组成的中间件技术</li>
+<li>分布的平台之间发送和接收信息的基础架构</li>
+<li>可以提高应用之间的互操作性、灵活性和可移植性</li>
+</ol>
+</li>
+</ol>
+<h2 id="17-advantages"><a class="markdownIt-Anchor" href="#17-advantages"></a> 1.7. Advantages</h2>
+<ol>
+<li>通讯程序可在不同的时间运行
+<ol>
+<li>消息放入适当的队列时，目标程序甚至根本不需要正在运行</li>
+<li>即使目标程序在运行，也不意味要立即处理该消息</li>
+</ol>
+</li>
+<li>对应用程序的结构没有约束
+<ol>
+<li>在复杂的应用场合中，通讯程序之间不仅可以是一对一的关系，还可以进行一对多和多对一方式，甚至是多种方式的组合</li>
+<li>多种通讯方式的构造并没有增加应用程序的复杂性</li>
+</ol>
+</li>
+</ol>
+<h2 id="18-为什么要使用消息传递"><a class="markdownIt-Anchor" href="#18-为什么要使用消息传递"></a> 1.8. 为什么要使用消息传递</h2>
+<ol>
+<li>灵活性</li>
+<li>可缩放性</li>
+<li>高负载的平缓释放</li>
+<li>集成性</li>
+</ol>
+<h3 id="181-灵活性"><a class="markdownIt-Anchor" href="#181-灵活性"></a> 1.8.1. 灵活性</h3>
+<ol>
+<li>更多的数据流选择：Fire-and-forget, multicast, balancing, flow control, priority routing 等.</li>
+<li>多粒度的处理逻辑多粒度的处理逻辑
+<ol>
+<li>Routing Slip</li>
+<li>Content-Based Router</li>
+</ol>
+</li>
+<li>更容易维护和变化
+<ol>
+<li>消息格式的变化不需要重新编译不相关的客户端</li>
+<li>消息流的传递不需要修改中间结点</li>
+</ol>
+</li>
+<li>避免并发死锁(和RPC响应阻塞相比)</li>
+</ol>
+<h3 id="182-可缩放性"><a class="markdownIt-Anchor" href="#182-可缩放性"></a> 1.8.2. 可缩放性</h3>
+<ol>
+<li>竞争消费–多个处理端可以读取同一队列</li>
+<li>发送端不需要进行任何改变</li>
+<li>粗粒度消息可以使处理端成为&quot;无状态&quot;</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="183-高负载的平缓释放"><a class="markdownIt-Anchor" href="#183-高负载的平缓释放"></a> 1.8.3. 高负载的平缓释放</h3>
+<ol>
+<li>队列中存储的消息将会等待被处理</li>
+<li>消息处理端或消费者会尽可能快地取走消息</li>
+<li>如果处理端阶段无法继续:
+<ol>
+<li>增加更多的处理端</li>
+<li>等待峰值负载被释放</li>
+</ol>
+</li>
+</ol>
+<h3 id="184-集成性"><a class="markdownIt-Anchor" href="#184-集成性"></a> 1.8.4. 集成性</h3>
+<ol>
+<li>消息传递不需要一致的类型系统
+<ol>
+<li>消息就是类型</li>
+</ol>
+</li>
+<li>消息传递可以连接多个系统(.NET,J2EE,etc.)
+<ol>
+<li>XML消息非常适合此类场景</li>
+<li>其它数据表现形式也可用(CSV, 文本)</li>
+</ol>
+</li>
+<li>消息传递的灵活性使得集成更容易</li>
+</ol>
+<h2 id="19-消息传递面临的挑战"><a class="markdownIt-Anchor" href="#19-消息传递面临的挑战"></a> 1.9. 消息传递面临的挑战</h2>
+<ol>
+<li>使用队列来通信，而不是对象：双向通信需要至少2个队列：一个用于请求消息，另一个用于响应个队列</li>
+<li>不存在会话状态
+<ol>
+<li>时序–消息的到达可能是无序的</li>
+<li>同步通信需要进行更多的设计</li>
+</ol>
+</li>
+<li>不存在对象标识
+<ol>
+<li>消息进入队列，而不是对象</li>
+<li>不符合通常的客户/服务器模式</li>
+<li>类似&quot;生产者消费者&quot;，甚至于&quot;点对点&quot;通信</li>
+</ol>
+</li>
+</ol>
+<h2 id="110-消息的中间服务层"><a class="markdownIt-Anchor" href="#110-消息的中间服务层"></a> 1.10. 消息的中间服务层</h2>
+<ol>
+<li>通信模型之上增加了抽象层，从而组合了分布式消息发送者和接收者之间的连接</li>
+<li>在消息发送者和接收者之间存在一个中间服务，它负责直接将消息从发送者传送给接收者，并且通过特定的机制保证发送者并不在它们传送的消息之上阻塞</li>
+<li>异步地从消息发送者接收消息，并且将消息路由到消息接收者。要传递消息的客户程序使用消息中间件接口，以一种透明的方式调用消息传递服务</li>
+</ol>
+<h2 id="111-消息中间件的特点"><a class="markdownIt-Anchor" href="#111-消息中间件的特点"></a> 1.11. 消息中间件的特点</h2>
+<ol>
+<li>通信程序可在不同的时间运行：程序不在网络上直接相互通话, 而是间接地将消息放入消息队列, 因为程序间没有直接的联系, 所以它们不必同时运行。</li>
+<li>对应用程序的结构没有约束：多种通信方式不会增加应用程序的复杂性：程序与网络复杂性相隔离</li>
+<li>程序将消息放入消息队列或从消息队列中取出消息来进行通信，与此关联的全部活动是MOM的任务，程序不直接与其他程序通信，也不涉及网络通信的复杂性</li>
+</ol>
+<h2 id="112-消息中间件的优点"><a class="markdownIt-Anchor" href="#112-消息中间件的优点"></a> 1.12. 消息中间件的优点</h2>
+<ol>
+<li>异步通信：发送消息者可以在发送消息后进行其它的工作，不用等待接收者的回应，而接收者也不必在接到消息后立即对发送者的请求进行处理</li>
+<li>客户和服务对象生命周期的松耦合关系：客户进程和服务对象进程不要求都正常运行，如果由于服务对象崩溃或者网络故障导致客户的请求不可达，客户不会接收到异常，消息中间件能保证消息不会丢失</li>
+<li>应用相互解耦和</li>
+</ol>
+<h1 id="2-消息传递系统"><a class="markdownIt-Anchor" href="#2-消息传递系统"></a> 2. 消息传递系统</h1>
+<h2 id="21-消息"><a class="markdownIt-Anchor" href="#21-消息"></a> 2.1. 消息</h2>
+<ol>
+<li>数据的载体，任何想要通过消息传递系统传送的数据都必须换成一个或多个消息，从而通过消息通道发送</li>
+<li>数据一般作为字节流传送，发送者把数据编组（Marshal）为字节形式</li>
+<li>消息首部：由消息传递系统使用的信息，用于描述所传送的信息、信源和信宿等等</li>
+<li>消息体: 被传送的数据，一般被消息传送系统忽略，只是原封不动地传送</li>
+</ol>
+<h2 id="22-消息通道"><a class="markdownIt-Anchor" href="#22-消息通道"></a> 2.2. 消息通道</h2>
+<ol>
+<li>消息传递系统中特定类型消息的容器</li>
+<li>应用不是把信息注入到消息传递系统中，而是把信息添加到一个特定的消息通道中</li>
+<li>接收信息的应用也是从一个特定的信息通道中获取信息</li>
+<li>消息通道是消息传输系统中的逻辑地址，其如何具体实现依赖于消息传递系统产品及产品本身的实现</li>
+<li>一般采用字母数字组成的名字命名，如MyChannel</li>
+</ol>
+<h2 id="23-管道和过滤器"><a class="markdownIt-Anchor" href="#23-管道和过滤器"></a> 2.3. 管道和过滤器</h2>
+<ol>
+<li>一个事件会触发一系列的处理步骤，每个步骤都要完成特定的功能</li>
+<li>需要用管道和过滤器的体系结构来灵活可靠地实现消息处理的任务，把较大的处理任务划分成一系列较小的独立处理步骤（过滤器），这些步骤由管道连接起来</li>
+<li>管道和过滤器模式使用抽象管道使组件相互之间实现了解耦合</li>
+</ol>
+<h2 id="24-消息路由"><a class="markdownIt-Anchor" href="#24-消息路由"></a> 2.4. 消息路由</h2>
+<ol>
+<li>多个应用可把消息发布到同一个消息通道中，消息通道中包含来自不同数据源的消息，这些消息根据一些标准来区别对待</li>
+<li>需要利用管道和过滤器的可组合性来实现消息通道的路由功能。通过在两个过滤器之间插入另一个过滤器，由它来决定下一步要执行的步骤</li>
+<li>消息路由器与管道和过滤器的基本概念不同，因为它要连接多个输出通道</li>
+<li>新的消息类型，增加了新的消息组件，或者修改了路由规则</li>
+</ol>
+<h2 id="25-消息转换器"><a class="markdownIt-Anchor" href="#25-消息转换器"></a> 2.5. 消息转换器</h2>
+<ol>
+<li>应用集成很多情况下要在已有的系统之间实现消息的路由：遗留系统、封装好的应用、自定制的应用、由外部合作伙伴操控的应用</li>
+<li>在其他过滤器或应用之间使用一种特殊的过滤器，即消息转换器，把一种数据格式转换为另一种数据格式</li>
+<li>适配器模式：把组件的接口转换为另一种接口，使之能在不同的上下文中使用</li>
+</ol>
+<h2 id="26-消息端点"><a class="markdownIt-Anchor" href="#26-消息端点"></a> 2.6. 消息端点</h2>
+<ol>
+<li>需要一组特定的代码把消息传递的工作与应用连接和组合起来，从而实现消息传递。这组代码就是消息端点</li>
+<li>消息端点是一个特殊化的通道适配器组件，要为应用定制开发，并集成到应用中</li>
+<li>消息端点可以用于发送或接收消息，但是同一个实例不能同时做这两项操作。</li>
+<li>端点是通道相关的，因此一个应用会使用多个端点与多个通道连接。应用也可以使用多个端点实例与一个通道建立连接，以支持多个并发的进程</li>
+<li>消息接收者既可以采用轮询方式，也可以采用事件驱动的方式</li>
+</ol>
+<h1 id="3-消息通讯的主要模型"><a class="markdownIt-Anchor" href="#3-消息通讯的主要模型"></a> 3. 消息通讯的主要模型</h1>
+<h2 id="31-点对点模型"><a class="markdownIt-Anchor" href="#31-点对点模型"></a> 3.1. 点对点模型</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>用于消息生产者和消息消费者之间点到点的通信</li>
+<li>消息生产者将消息发送到由某个名字标识的特定消费者，对应于消息服务中的一个队列</li>
+<li>队列可以是持久的，以保证在消息服务出现故障时仍然能够传递消息</li>
+<li>如果多个接收者都想要消费某一个消息，通道将保证只有其中一个接收者能成功</li>
+</ol>
+<h3 id="311-简单点对点消息传送"><a class="markdownIt-Anchor" href="#311-简单点对点消息传送"></a> 3.1.1. 简单点对点消息传送</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>MyQueueSender向队列目标MyQueue1 发送Msg1，MyQueueReceiver从MyQueue1 获得该消息</li>
+<li>点对点通道能确保，对于任何给定的消息只有一个接收者能消费</li>
+</ol>
+<h3 id="312-复杂点对点消息传送"><a class="markdownIt-Anchor" href="#312-复杂点对点消息传送"></a> 3.1.2. 复杂点对点消息传送</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>两个发送者MyQSender1 和MyQSender2 使用同一连接向MyQueue1 发送消息。MyQSender3 使用另一连接向MyQueue1 发送消息。在接收端，MyQReceiver1 使用MyQueue1，MyQReceiver2 和MyQReceiver3 共享一个连接以使用MyQueue1 中的消息</li>
+</ol>
+<h3 id="313-点对点消息传送的特点"><a class="markdownIt-Anchor" href="#313-点对点消息传送的特点"></a> 3.1.3. 点对点消息传送的特点</h3>
+<ol>
+<li>多个生成方可向一个队列发送消息</li>
+<li>接收者可共享连接或使用不同连接，但它们均可访问同一队列</li>
+<li>发送者和接收者之间不存在时间上的相关性：客户端发送一条消息后，无论接收者是否正在运行，都能取出该消息</li>
+<li>可在运行时动态添加和删除发送者和接收者，这样，即可根据需要扩展或收缩消息传送系统</li>
+<li>消息在队列中的放置顺序与发送顺序相同，但它们的使用顺序则取决于消息失效期、消息优先级以及使用消息时是否使用选择器等因素</li>
+</ol>
+<h2 id="32-点对点模型的优势"><a class="markdownIt-Anchor" href="#32-点对点模型的优势"></a> 3.2. 点对点模型的优势</h2>
+<ol>
+<li>由于多个接收者可使用同一队列中的消息，因此如果接收消息的顺序无关紧要，可以平衡消息使用负载</li>
+<li>要发送到队列的消息始终保留，即使没有接收者也是如此</li>
+<li>客户端可使用队列浏览器对象检查队列内容，然后根据通过该检查所获得的信息来使用消息</li>
+<li>在股票交易系统中，每一个完成交易的请求只能由一个接收者接收并处理。因此把这个请求封装为一个消息的时候，它必须放在一个点对点的通道中，以保证安全性</li>
+</ol>
+<h2 id="33-发布订阅publish-subscribe"><a class="markdownIt-Anchor" href="#33-发布订阅publish-subscribe"></a> 3.3. 发布/订阅（Publish-Subscribe）</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>发布者生成主题中的消息；订户则订阅主题并使用主题中的消息</li>
+<li>发布-订阅模型用称为主题（topic）的内容分层结构代替了点对点模型中的惟一目的地</li>
+<li>发送应用程序发布自己的消息，指出消息描述的是有关分层结构中的一个主题的信息</li>
+</ol>
+<h3 id="331-简单发布订阅消息传送"><a class="markdownIt-Anchor" href="#331-简单发布订阅消息传送"></a> 3.3.1. 简单发布/订阅消息传送</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>MyTopicPublisher向目标MyTopic中发布Msg1。然后，MyTopicSubscriber1 和MyTopicSubscriber2 均从MyTopic接收Msg1 的副本</li>
+<li>订户可以是非长期的，也可以是长期的。代理会为所有活动订户保留消息，但对于非活动订户，则只为那些长期订户保留消息</li>
+</ol>
+<h3 id="332-复杂发布订阅消息传送"><a class="markdownIt-Anchor" href="#332-复杂发布订阅消息传送"></a> 3.3.2. 复杂发布/订阅消息传送</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>多个生成方向Topic1 目标发布消息</li>
+<li>多个订户使用来自Topic1 目标的消息。除非订户使用选择器来过滤消息，否则每个订户均可获得发布到所选主题的所有消息</li>
+<li>MyTSubscriber2 已过滤掉Msg2</li>
+</ol>
+<h3 id="333-发布订阅消息传送的特点"><a class="markdownIt-Anchor" href="#333-发布订阅消息传送的特点"></a> 3.3.3. 发布/订阅消息传送的特点</h3>
+<ol>
+<li>多个生成方可向一个主题发布消息</li>
+<li>多个订户可使用一个主题中的消息。订户可检索发布到一个主题中的所有消息</li>
+<li>长期订户可能处于活动状态，也可能处于非活动状态，代理会为它们保留消息</li>
+<li>可在运行时动态添加和删除发布者和订户，可根据需要扩展或收缩消息传送系统</li>
+<li>消息发布到主题的顺序与发送顺序相同，但它们的使用顺序则取决于消息失效期、消息优先级以及使用消息时是否使用选择器等因素</li>
+<li>发布者与订户之间存在时间上的相关性：主题订户只能使用在它创建订阅后发布的消息</li>
+<li>发布/订阅模型允许向订户广播消息</li>
+</ol>
+<h1 id="4-ibm-mqseries"><a class="markdownIt-Anchor" href="#4-ibm-mqseries"></a> 4. IBM MQSeries</h1>
+<h2 id="41-mq简介"><a class="markdownIt-Anchor" href="#41-mq简介"></a> 4.1. MQ简介</h2>
+<ol>
+<li>IBM 消息中间件</li>
+<li>强大的跨平台性，支持的平台数多达35种</li>
+<li>业界市场占有率最高的消息中间件产品
+<ol>
+<li>安全机制、简便快速的编程风格、稳定性、可扩展性和跨平台性</li>
+<li>强大的事务处理能力和消息通讯能力</li>
+</ol>
+</li>
+</ol>
+<h2 id="42-mq的基本概念"><a class="markdownIt-Anchor" href="#42-mq的基本概念"></a> 4.2. MQ的基本概念</h2>
+<ol>
+<li>队列管理器
+<ol>
+<li>MQ系统中最上层的一个概念，提供基于队列的消息服务</li>
+<li>为应用程序和一些管理工具提供对队列管理器对象的访问</li>
+<li>拥有并维护每个队列，并将接收的消息存储到相应队列</li>
+</ol>
+</li>
+<li>消息：应用程序交由MQ传输的数据
+<ol>
+<li>消息描述符(Message Description或Message Header)，描述消息的特征，消息的优先级、生命周期、消息Id等；</li>
+<li>消息体(Message Body)，即用户数据部分</li>
+</ol>
+</li>
+</ol>
+<h2 id="43-消息分类"><a class="markdownIt-Anchor" href="#43-消息分类"></a> 4.3. 消息分类</h2>
+<ol>
+<li>非永久性(non-persistent)消息
+<ol>
+<li>非永久性消息是存储在内存中的，它是为了提高性能而设计的，当系统掉电或MQ队列管理器重新启动时，将不可恢复。</li>
+<li>当用户对消息的可靠性要求不高，而侧重系统的性能表现时，可以采用该种类型的消息，如：当发布股票信息时，由于股票信息是不断更新的，我们可能每若干秒就会发布一次，新的消息会不断覆盖旧的消息。</li>
+</ol>
+</li>
+<li>永久性(persistent)消息
+<ol>
+<li>永久性消息是存储在硬盘上，并且纪录数据日志的，它具有高可靠性，在网络和系统发生故障等情况下都能确保消息不丢、不重</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-队列"><a class="markdownIt-Anchor" href="#44-队列"></a> 4.4. 队列</h2>
+<ol>
+<li>消息的安全存放地，队列存储消息直到它被应用程序处理</li>
+<li>消息队列的方式工作
+<ol>
+<li>程序A形成对消息队列系统的调用，此调用告知消息队列系统，消息准备好了投向程序B；</li>
+<li>消息队列系统发送此消息到程序B所驻留的系统，并将它放到程序B的队列中；</li>
+<li>适当时间后，程序B从它的队列中读此消息，并处理此信息</li>
+</ol>
+</li>
+</ol>
+<h2 id="45-队列类型"><a class="markdownIt-Anchor" href="#45-队列类型"></a> 4.5. 队列类型</h2>
+<ol>
+<li>MQ中队列分为本地队列、远程队列、模板队列、动态队列、别名队列等</li>
+<li>本地队列分为普通本地队列和传输队列
+<ol>
+<li>普通本地队列是应用程序通过API对其进行读写操作的队列</li>
+<li>传输队列可以理解为存储-转发队列，如用于网络故障时暂存</li>
+</ol>
+</li>
+<li>远程队列是目的队列在本地的定义，类似一个地址指针</li>
+<li>模板队列和动态队列是MQ的一个特色，典型用途是用作系统的可扩展性考虑</li>
+</ol>
+<h2 id="46-通道"><a class="markdownIt-Anchor" href="#46-通道"></a> 4.6. 通道</h2>
+<ol>
+<li>MQ系统中队列管理器之间传递消息的管道，是建立在物理的网络连接之上的逻辑概念</li>
+<li>消息通道，MQI通道和Cluster通道
+<ol>
+<li>消息通道用于在MQ的服务器和服务器之间传输消息，单向，有发送、接收、请求、服务者等不同类型</li>
+<li>MQI通道用于MQ Client和MQ Server之间通讯和传输消息，双向</li>
+<li>群集(Cluster)通道用于同一个MQ 群集内部的队列管理器之间通讯</li>
+</ol>
+</li>
+</ol>
+<h2 id="47-mq工作原理"><a class="markdownIt-Anchor" href="#47-mq工作原理"></a> 4.7. MQ工作原理</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="48-基于websphere-mq的例子"><a class="markdownIt-Anchor" href="#48-基于websphere-mq的例子"></a> 4.8. 基于WebSphere MQ的例子</h2>
+<ol>
+<li>程序A和B进行通信，有两个队列，各队列里面存放着要接收或者发送的消息。</li>
+<li>程序和队列之间的方形图表示MQI（消息队列接口API）。程序就是使用MQI来和MQ的实时程序–队列管理器进行通信的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> transfer;<br><span class="hljs-keyword">import</span> com.ibm.mq.*;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SendMSG1</span> &#123;<br>  <span class="hljs-keyword">private</span> MQQueueManager qMgr; <span class="hljs-comment">//定义一个队列管理器变量</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String args[])</span>&#123;<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">SendMSG1</span>();<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">SendMSG1</span><span class="hljs-params">()</span>&#123;<br>    MQEnvironment.hostname=<span class="hljs-string">&quot;192.168.72.18&quot;</span>;<span class="hljs-comment">//本地IP</span><br>    MQEnvironment.channel=<span class="hljs-string">&quot;CHANNEL1&quot;</span>;<span class="hljs-comment">//用来通信的通道</span><br>    MQEnvironment.CCSID=<span class="hljs-number">1381</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>      qMgr=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MQQueueManager</span>(<span class="hljs-string">&quot;QM_SERVER&quot;</span>);<span class="hljs-comment">//队列管理器名称</span><br>      <span class="hljs-type">int</span> openOptions=MQC.MQOO_INPUT_AS_Q_DEF|MQC.MQOO_OUTPUT|MQC.MQOO_INQUIRE;MQQueue queue=qMgr.accessQueue(<span class="hljs-string">&quot;INITQ&quot;</span>,openOptions,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>,<span class="hljs-literal">null</span>);<span class="hljs-comment">//建立连接</span><br>      MQMessage hello=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MQMessage</span>();<span class="hljs-comment">//要写入队列的消息</span><br>      <span class="hljs-keyword">try</span>&#123;<br>        hello.format=MQC.MQFMT_STRING;<br>        hello.characterSet=<span class="hljs-number">1381</span>;<br>        hello.writeString(<span class="hljs-string">&quot;这是测试！&quot;</span>);<br>      &#125;<span class="hljs-keyword">catch</span>(java.io.IOExceptionex)&#123;&#125;<br>      <span class="hljs-keyword">finally</span>&#123;&#125;;<br>      MQPutMessageOptions pmo=<span class="hljs-keyword">new</span> <span class="hljs-title class_">MQPutMessageOptions</span>();<br>      <span class="hljs-keyword">for</span> (inti=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">5</span>;i++)&#123;<span class="hljs-comment">//将消息依次写入队列</span><br>        hello.expiry=-<span class="hljs-number">1</span>; <span class="hljs-comment">//设置消息用不过期</span><br>        queue.put(hello);<span class="hljs-comment">//将消息放入队列</span><br>      &#125;<br>      queue.close();<span class="hljs-comment">//关闭队列</span><br>      qMgr.disconnect();<span class="hljs-comment">//断开连接</span><br>    &#125;<span class="hljs-keyword">catch</span>(Exception ex)&#123;&#125;<br>    <span class="hljs-keyword">finally</span>&#123;&#125;;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="49-程序的运行结果"><a class="markdownIt-Anchor" href="#49-程序的运行结果"></a> 4.9. 程序的运行结果</h2>
+<ol>
+<li>向队列INITQ写入了5条相同的消息</li>
+<li>和队列管理器建立连接-从队列读取消息—关闭队列—断开连接</li>
+</ol>
+<h1 id="5-jms"><a class="markdownIt-Anchor" href="#5-jms"></a> 5. JMS</h1>
+<ol>
+<li>一组标准的Java应用程序接口（Java API），提供创建、发送、接收和读取消息的服务</li>
+<li>是SUN提出的旨在统一各种MOM系统接口的规范</li>
+<li>Java 消息传送服务规范最初是为了允许Java 应用程序访问现有的MOM 系统而开发的。</li>
+<li>被许多现有的MOM 供应商采用并且已经凭借自身的功能实现为异步消息传送系统</li>
+</ol>
+<h2 id="51-jms-api功能"><a class="markdownIt-Anchor" href="#51-jms-api功能"></a> 5.1. JMS API功能</h2>
+<ol>
+<li>JMS可以用同样的API访问IBM的MQSeries消息服务和JBossMQ消息服务。准许开发者避免使用各供应商特定的API</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="52-jms消息模型"><a class="markdownIt-Anchor" href="#52-jms消息模型"></a> 5.2. JMS消息模型</h2>
+<ol>
+<li>消息头
+<ol>
+<li>包含消息的识别信息和路由信息，如每个消息都有个ID，一个优先级，一个时间戳，一个目标，这些信息大部分都在消息发送到目标之前自动设定</li>
+<li>消息头可以通过set和get方法存取，形式如：setJMSHeaderName，getJMSHeaderName</li>
+</ol>
+</li>
+<li>消息属性</li>
+<li>消息体</li>
+</ol>
+<h3 id="521-消息属性"><a class="markdownIt-Anchor" href="#521-消息属性"></a> 5.2.1. 消息属性</h3>
+<ol>
+<li>特定于提供者或特定于应用程序的可选消息信息，主要作用是帮助消息过滤</li>
+<li>应用程序指定属性：提供一种为消息添加应用程序指定属性的机制</li>
+<li>标准属性：JMS在有效的、可选的头域中定义了一些标准属性</li>
+<li>提供者指定属性：把提供者本地客户端所需要的提供者指定属性结合到JMS客户端中</li>
+</ol>
+<h3 id="522-消息体"><a class="markdownIt-Anchor" href="#522-消息体"></a> 5.2.2. 消息体</h3>
+<ol>
+<li>实际的消息内容。JMS定义了一些消息类型的主体，可以支持当前主要消息风格
+<ol>
+<li>textMessage：消息正文包含一个java.lang.String对象。最简单的消息格式，可用来传递XML</li>
+<li>ObjectMessage：消息正文中包含了一个串行化之后的Java对象</li>
+<li>MapMessage：消息正文包含一系列&quot;名字-值&quot;形式的数据元素</li>
+<li>BytesMessage：消息正文包含一个字节数组。如果需要发送应用生成的原始数据，通常采用这一消息类型</li>
+<li>StreamMessage：消息正文包含一个Java基本数据类型（int，char，double，等等）的流</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-jms应用的组成"><a class="markdownIt-Anchor" href="#53-jms应用的组成"></a> 5.3. JMS应用的组成</h2>
+<ol>
+<li>JMS 客户端：用来发送和接收消息的Java 程序</li>
+<li>非JMS 客户端：这些客户端是用消息系统的本地客户端API编写的，而不是JMS。如果应用先于JMS出来之前，那么它可能会既包括JMS客户端，也包括非JMS客户端</li>
+<li>消息：为实现客户端之间交换数据，应用所定义的消息集合</li>
+<li>JMS 提供者：实现了JMS规范的消息系统，该系统还提供必须的用于管理和控制全方位的功能</li>
+<li>被管理的对象：是预先配置的JMS对象，由系统管理员为使用JMS的客户端创建</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="54-jms接口"><a class="markdownIt-Anchor" href="#54-jms接口"></a> 5.4. JMS接口</h2>
+<ol>
+<li>ConnectionFactory：连接工厂，客户端用来创建连接的被管理对象</li>
+<li>Connection ：JMS 客户端到JMS 提供者的连接</li>
+<li>Destination ：用来封装消息的目的地标识符的被管理对象</li>
+<li>Session：一个发送或接收消息的单线程上下文</li>
+<li>MessageProducer：由会话对象创建的用来发送消息的对象</li>
+<li>MessageConsumer：由会话对象创建的用来接收消息的对象</li>
+</ol>
+<h2 id="55-jms对象关系图"><a class="markdownIt-Anchor" href="#55-jms对象关系图"></a> 5.5. JMS对象关系图</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/middle/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="56-开发jms应用"><a class="markdownIt-Anchor" href="#56-开发jms应用"></a> 5.6. 开发JMS应用</h2>
+<ol>
+<li>JMS应用程序就是一个或多个进行消息交换的JMS客户端，开发JMS客户端步骤如下：
+<ol>
+<li>通过JINI查找连接工厂对象</li>
+<li>通过JINI查找一个或多个目标对象</li>
+<li>连接工厂根据需要传递的消息来创建一个JMS连接对象</li>
+<li>使用JMS连接对象创建一个或多个JMS会话对象</li>
+<li>使用JMS连接对象和目标对象来创建所需的MessageProducer对象和MessageConsumer对象</li>
+</ol>
+</li>
+<li>告诉JMS连接对象可以开始传递消息</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/" class="category-chain-item">2021-数据集成</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">#数据集成</a>
+      
+        <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">#消息队列</a>
+      
+        <a href="/tags/%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92/">#消息传递</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-数据集成-消息中间件</div>
+      <div>https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/01/2021-Data-Integration/2021-Data-Integration-web%20service/" title="2021-数据集成-web service">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-数据集成-web service</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/19/2020-Web-Front-End-development/2020-Web-Front-End-development-Exam02-%E8%80%83%E8%AF%95%E9%A2%98/" title="2020-Web前端开发-Exam02-考试题">
+                        <span class="hidden-mobile">2020-Web前端开发-Exam02-考试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

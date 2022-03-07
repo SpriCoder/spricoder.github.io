@@ -1,0 +1,1828 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-软件工程与计算II-13-模块化与信息隐藏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-软件工程与计算II-13-模块化与信息隐藏">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-13-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-软件工程与计算II-13-模块化与信息隐藏">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/38.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/41.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/45.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/44.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/43.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/46.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/42.png">
+<meta property="article:published_time" content="2020-07-06T11:13:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:43:13.690Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="OOP">
+<meta property="article:tag" content="软件工程与计算II">
+<meta property="article:tag" content="模块">
+<meta property="article:tag" content="耦合">
+<meta property="article:tag" content="内聚">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/1.png">
+  
+  
+  <title>2020-软件工程与计算II-13-模块化与信息隐藏 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-06 19:13" pubdate>
+          2020年7月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          78 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-软件工程与计算II-13-模块化与信息隐藏</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="13-详细设计中的模块化与信息隐藏"><a class="markdownIt-Anchor" href="#13-详细设计中的模块化与信息隐藏"></a> 13-详细设计中的模块化与信息隐藏</h2>
+<h1 id="1-内聚和耦合-概念重要"><a class="markdownIt-Anchor" href="#1-内聚和耦合-概念重要"></a> 1. 内聚和耦合 概念重要</h1>
+<ol>
+<li>内聚：内聚表达的是一个模块内部的联系的紧密型：包括信息内聚、功能内聚、通信内聚、过程内聚、时间内聚、逻辑内聚和偶然内聚。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Rous</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findPattern</span><span class="hljs-params">(String text,String pattern)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">average</span><span class="hljs-params">(Vector numbers)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> OutputStream <span class="hljs-title function_">openFile</span><span class="hljs-params">(String fileName)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>耦合:耦合描述的是两个模块之间关系的复杂程度：包括内容耦合，公共耦合，重复耦合，控制耦合，印记耦合，数据耦合</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span>&#123;<br>    <span class="hljs-keyword">public</span> String name,emailID;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Emailer</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendEmail</span><span class="hljs-params">(Employee e,String text)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="2-模块化与信息隐藏思想"><a class="markdownIt-Anchor" href="#2-模块化与信息隐藏思想"></a> 2. 模块化与信息隐藏思想</h1>
+<h2 id="21-设计好的软件"><a class="markdownIt-Anchor" href="#21-设计好的软件"></a> 2.1. 设计好的软件</h2>
+<ol>
+<li>什么是好的软件代表的？</li>
+</ol>
+<h3 id="211-parnas-1972"><a class="markdownIt-Anchor" href="#211-parnas-1972"></a> 2.1.1. Parnas 1972</h3>
+<ol>
+<li>管理人员(可管理性)</li>
+<li>产品灵活性(灵活性)</li>
+<li>可理解性(可理解性)</li>
+<li>特征
+<ol>
+<li>允许编写一个模块，而几乎不了解另一个模块中的代码</li>
+<li>允许在不重新组装整个系统的情况下重新组装和更换模块。</li>
+</ol>
+</li>
+</ol>
+<h3 id="212-stevens-1974"><a class="markdownIt-Anchor" href="#212-stevens-1974"></a> 2.1.2. Stevens 1974</h3>
+<ol>
+<li><strong>简洁性</strong>(Simplicity)
+<ol>
+<li>易于调试</li>
+<li>易于分解</li>
+</ol>
+</li>
+<li><strong>可观察性</strong>(Observability)
+<ol>
+<li>易于修改</li>
+</ol>
+</li>
+</ol>
+<h3 id="213-beohm-1976"><a class="markdownIt-Anchor" href="#213-beohm-1976"></a> 2.1.3. Beohm 1976</h3>
+<ol>
+<li>可维护性</li>
+<li>可扩展性</li>
+<li>可理解性</li>
+<li>可重用性</li>
+</ol>
+<h2 id="22-动机"><a class="markdownIt-Anchor" href="#22-动机"></a> 2.2. 动机</h2>
+<ol>
+<li>模块化是关于如何将软件程序划分(分解)为不同模块的思想</li>
+<li>信息隐藏是更多地从模块的外部(抽象)来进行思考</li>
+</ol>
+<h2 id="23-模块化与信息隐藏思想的发展"><a class="markdownIt-Anchor" href="#23-模块化与信息隐藏思想的发展"></a> 2.3. 模块化与信息隐藏思想的发展</h2>
+<h3 id="231-背景"><a class="markdownIt-Anchor" href="#231-背景"></a> 2.3.1. 背景</h3>
+<ol>
+<li>1960s
+<ol>
+<li>软件和硬件不同</li>
+<li>软件制作</li>
+</ol>
+</li>
+<li>1970s
+<ol>
+<li>软件是数据 + 算法</li>
+<li>瀑布模型</li>
+<li>形式化方法</li>
+</ol>
+</li>
+<li>1980s
+<ol>
+<li>重用</li>
+<li>对象</li>
+<li>人件</li>
+</ol>
+</li>
+</ol>
+<h3 id="232-历史发展"><a class="markdownIt-Anchor" href="#232-历史发展"></a> 2.3.2. 历史发展</h3>
+<ol>
+<li>萌芽：Wirth1971; Parnas1972;</li>
+<li>形成：Stevens1974; Parnas1978; Parnas1985;</li>
+<li>发展：Eder1992; Hitz1995;</li>
+<li>反思：McConnell1996; Demarco2002</li>
+</ol>
+<h3 id="233-wirth1971-萌芽"><a class="markdownIt-Anchor" href="#233-wirth1971-萌芽"></a> 2.3.3. Wirth1971 - 萌芽</h3>
+<ol>
+<li>软件通过逐步求精发展</li>
+<li>核心思想:逐步求精</li>
+<li>该程序是在一系列优化步骤中逐步开发的
+<ol>
+<li>尽可能分解决策</li>
+<li>解开看似相互依赖的方面</li>
+<li>尽可能推迟有关代表细节的决定</li>
+</ol>
+</li>
+<li>对程序和数据结构的描述的修饰应并行进行。</li>
+<li>以这种方式获得的模块化程度将决定程序可以适应目的变化或扩展或环境变化的难易程度。</li>
+<li>每个优化都基于一组设计标准隐含了许多设计决策。</li>
+<li>仔细编程并不是一件容易的事。</li>
+</ol>
+<h3 id="234-parnas-1972-萌芽"><a class="markdownIt-Anchor" href="#234-parnas-1972-萌芽"></a> 2.3.4. Parnas 1972 - 萌芽</h3>
+<ol>
+<li>关于将系统分解为模块的标准</li>
+<li>什么是模块化？
+<ol>
+<li>模块：成为职责分配而不是子程序</li>
+<li>模块化：包括在独立模块上的工作开始之前必须做出的设计决策(&quot;系统级&quot;决策)</li>
+</ol>
+</li>
+<li>分解标准
+<ol>
+<li>信息隐藏</li>
+<li>分解中的每个模块都以其对设计决策的了解为特征，而对其他所有决策则都不了解。</li>
+</ol>
+</li>
+<li>层次结构
+<ol>
+<li>如果可以在模块或程序之间定义某种关系</li>
+<li>该关系是偏序的</li>
+<li>我们关注的关系是&quot;使用&quot;或&quot;依赖&quot;</li>
+</ol>
+</li>
+<li>数据结构，其内部链接，访问过程和修改过程是单个模块的一部分(封装的思想)</li>
+<li>操作系统和类似程序的队列中使用的控制块格式必须在&quot;控制块模块&quot;中隐藏</li>
+<li>在此之前都是想法，而不是方法</li>
+</ol>
+<h3 id="235-stevens-1974-形成"><a class="markdownIt-Anchor" href="#235-stevens-1974-形成"></a> 2.3.5. Stevens 1974 - 形成</h3>
+<ol>
+<li>“Structured design” 结构化设计</li>
+<li>模块：一组一个或多个连续的程序语句，其名称具有系统其他部分可以调用的名称，并且最好具有其自己独特的变量名称集</li>
+<li>耦合：通过一个模块到另一个模块的连接建立的关联强度的度量</li>
+<li>凝聚力：巧合;逻辑;沟通;顺序;功能性</li>
+<li>模块的控制范围</li>
+<li>决策的效力范围</li>
+<li>当决策的影响范围在包含决策的模块的控制范围内时，系统会更简单</li>
+</ol>
+<h3 id="236-stevens-1974-designing-the-structure-设计结构"><a class="markdownIt-Anchor" href="#236-stevens-1974-designing-the-structure-设计结构"></a> 2.3.6. Stevens 1974: Designing the structure 设计结构</h3>
+<ul>
+<li>步骤1：勾画出问题的功能图</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>步骤2：确定外部概念性数据流。</li>
+<li>步骤3：确定问题中的主要外部概念数据流</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>步骤4：使用源模块针对每个概念输入流设计源结构，该模块存在于大多数抽象输入数据的位置；简单的下沉模块</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>步骤5：对于每个模块，确定产生该模块返回的表单所需的最后一次转换</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>担心的是一个地方的变更会导致其他部分的变更</li>
+</ul>
+<h3 id="237-parnas-1978-形成"><a class="markdownIt-Anchor" href="#237-parnas-1978-形成"></a> 2.3.7. Parnas 1978 - 形成</h3>
+<ol>
+<li>“设计易于伸缩的软件”</li>
+<li>迈向更好结构的步骤
+<ol>
+<li>需求定义：首先确定子集</li>
+<li>信息隐藏：接口和模块定义</li>
+<li>虚拟机概念</li>
+<li>设计&quot;用途&quot;结构</li>
+</ol>
+</li>
+<li>&quot;依赖&quot;关系
+<ol>
+<li>如果A可能需要正确执行B才能完成A规范中描述的任务，则A使用B</li>
+<li>满足以下所有条件时，允许A&quot;使用&quot;B：
+<ol>
+<li>A本质上更简单，因为它使用B</li>
+<li>B实际上不复杂，因为它不允许使用A</li>
+<li>A 有一个有用的子集，包含B，不需要A</li>
+<li>没有可以想象的有用的子集包含A但不包含B</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="238-parnas-1985-形成"><a class="markdownIt-Anchor" href="#238-parnas-1985-形成"></a> 2.3.8. Parnas 1985 - 形成</h3>
+<ol>
+<li>“复杂系统的模块化结构”</li>
+<li>模块说明
+<ol>
+<li>主要隐藏</li>
+<li>角色</li>
+<li>分配模块特定职责的标准</li>
+</ol>
+</li>
+<li>模块层次结构
+<ol>
+<li>顶层分解</li>
+<li>二级分解</li>
+<li>第三级</li>
+</ol>
+</li>
+<li>隐藏
+<ol>
+<li>主要隐藏：模块中包含的隐藏信息。</li>
+<li>次要隐藏: 用于实施模块的实施决策。</li>
+</ol>
+</li>
+<li>顶层分解
+<ol>
+<li>硬件隐藏模块</li>
+<li>行为隐藏模块</li>
+<li>软件决策模块</li>
+</ol>
+</li>
+</ol>
+<h3 id="239-eder-1992-发展"><a class="markdownIt-Anchor" href="#239-eder-1992-发展"></a> 2.3.9. Eder 1992 - 发展</h3>
+<ol>
+<li>“面向对象系统中的耦合和内聚”</li>
+<li>&quot;良好&quot;设计准则</li>
+<li>面向对象的耦合：相互作用耦合；组件耦合；继承耦合</li>
+<li>面向对象的凝聚力：方法凝聚力；班级凝聚力；继承凝聚力</li>
+</ol>
+<h3 id="2310-hitz-1995-发展"><a class="markdownIt-Anchor" href="#2310-hitz-1995-发展"></a> 2.3.10. Hitz 1995 - 发展</h3>
+<ol>
+<li>“在面向对象的系统中测量耦合和内聚”</li>
+<li>类级耦合</li>
+<li>对象级耦合</li>
+<li>耦合和内聚综合指标的框架</li>
+<li>定量分析面向对象系统</li>
+</ol>
+<h3 id="2311-mcconnell-1996-反思"><a class="markdownIt-Anchor" href="#2311-mcconnell-1996-反思"></a> 2.3.11. McConnell 1996 - 反思</h3>
+<ol>
+<li>“缺少行动：信息隐藏”</li>
+<li>信息隐藏
+<ol>
+<li>是软件工程研讨会的设计思路之一</li>
+<li>不需要或不依赖任何特定的设计方法</li>
+<li>其特点是&quot;隐藏&quot;</li>
+<li>最常见的隐藏是您认为可能会更改的设计决策</li>
+<li>询问需要隐藏哪些内容，可以支持所有级别的良好设计决策</li>
+</ol>
+</li>
+</ol>
+<h3 id="2312-demarco2002-反思"><a class="markdownIt-Anchor" href="#2312-demarco2002-反思"></a> 2.3.12. Demarco2002 - 反思</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>内容:描述了75年自己写的文章的内容，什么到现在仍然是对的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>第五条:接口隔离原则</li>
+</ol>
+<h1 id="3-模块化"><a class="markdownIt-Anchor" href="#3-模块化"></a> 3. 模块化</h1>
+<ol>
+<li>计算机系统不是整体的：它们通常由多个交互模块组成。</li>
+<li>长期以来，模块化一直被视为廉价，高质量软件的关键。</li>
+<li>系统设计的目标是决定：
+<ol>
+<li>什么是模块；</li>
+<li>模块应该是什么？</li>
+<li>模块之间如何交互。</li>
+</ol>
+</li>
+</ol>
+<h2 id="31-什么是模块"><a class="markdownIt-Anchor" href="#31-什么是模块"></a> 3.1. 什么是模块？</h2>
+<ol>
+<li>通用视图：一段代码。有局限性。</li>
+<li>编译单元，包括相关的声明和接口</li>
+<li>大卫·帕纳斯：一个工作单元。</li>
+<li>编程单元(程序，类等)的集合
+<ol>
+<li>在整个系统中具有明确定义的界面和目的，</li>
+<li>可以独立分配给开发人员</li>
+</ol>
+</li>
+<li>课本总结:模块是一个词汇上邻接的程序语句序列，由边界元素限制范围，有一个聚合标识符。</li>
+</ol>
+<h2 id="32-为什么要将系统进行模块化"><a class="markdownIt-Anchor" href="#32-为什么要将系统进行模块化"></a> 3.2. 为什么要将系统进行模块化？</h2>
+<ol>
+<li>管理：分而治之</li>
+<li>演进：分离系统的各个部分，以便将一个部分的更改与其他部分的更改隔离开
+<ol>
+<li>直接性原则(将需求明确分配到模块，理想情况下一个需求(或多个)映射到一个模块)</li>
+<li>连续性/局部性原则(需求的微小变化仅触发对一个模块的更改)</li>
+</ol>
+</li>
+<li>理解：促使我们的系统更加容易被理解
+<ol>
+<li>作为思维大小的块的组成，例如7±2规则</li>
+<li>一部分只有一个问题，例如本地性原则，封装，关注点分离</li>
+</ol>
+</li>
+<li>关键问题：模块化使用什么标准？-&gt;信息隐藏</li>
+</ol>
+<h2 id="33-结构化设计中的耦合"><a class="markdownIt-Anchor" href="#33-结构化设计中的耦合"></a> 3.3. 结构化设计中的耦合</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="331-模块化"><a class="markdownIt-Anchor" href="#331-模块化"></a> 3.3.1. 模块化</h3>
+<ol>
+<li>两种思路</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>可以根据数据总线进行切割</li>
+<li>可以根据门电路进行划分</li>
+</ol>
+<h3 id="332-模块之间"><a class="markdownIt-Anchor" href="#332-模块之间"></a> 3.3.2. 模块之间</h3>
+<ol>
+<li>连接：连接是对其他地方定义的某些标签或地址的引用</li>
+<li>联系(两个模块之间)的复杂度
+<ol>
+<li>数量</li>
+<li>程度</li>
+</ol>
+</li>
+</ol>
+<h3 id="333-结构化的耦合"><a class="markdownIt-Anchor" href="#333-结构化的耦合"></a> 3.3.3. 结构化的耦合</h3>
+<ol>
+<li>耦合是对从一个模块到另一个模块的连接所建立的关联强度的度量。
+<ol>
+<li>连接有多复杂</li>
+<li>连接是指模块本身还是模块内部的东西</li>
+<li>正在发送或接收的内容</li>
+</ol>
+</li>
+</ol>
+<h3 id="334-耦合的强度-1-连接有多复杂"><a class="markdownIt-Anchor" href="#334-耦合的强度-1-连接有多复杂"></a> 3.3.4. 耦合的强度 1 - 连接有多复杂</h3>
+<ol>
+<li>连接模块：对常见的环境：全局变量，范围</li>
+<li>对于其他模块</li>
+</ol>
+<h3 id="335-原则一全局变量是被认为是有害的"><a class="markdownIt-Anchor" href="#335-原则一全局变量是被认为是有害的"></a> 3.3.5. 原则一:全局变量是被认为是有害的</h3>
+<h3 id="336-连接到全局环境"><a class="markdownIt-Anchor" href="#336-连接到全局环境"></a> 3.3.6. 连接到全局环境</h3>
+<ol>
+<li>假设N1 + N2 = N，M1 + M2 = M
+<ol>
+<li>如果M个模块共享N个元素
+<ol>
+<li>有潜在的N * M个连接</li>
+<li>(N1 + N2) * (M1 + M2)= N1 * M1 + N2 * M2 + N1 * M2 + N2 * M1</li>
+</ol>
+</li>
+<li>如果M1模块有N1个共享元素，而M2模块有N2个共享元素(也就是N1 对应 M1，而N2 对应M2)：存在潜在的(N1 * M1 + N2 * M2)连接</li>
+</ol>
+</li>
+<li>封装减少耦合：抽象和分解
+<ol>
+<li>将潜在的共享元素细分成组</li>
+<li>将每个组的访问权限限制为最小的模块子集</li>
+</ol>
+</li>
+</ol>
+<h3 id="337-常见环境的缺陷"><a class="markdownIt-Anchor" href="#337-常见环境的缺陷"></a> 3.3.7. 常见环境的缺陷</h3>
+<ol>
+<li>连接将每个模块共享给每个其他这样的模块
+<ol>
+<li>一个模块中的错误和更改可以传播到其他模块</li>
+<li>理解一个模块需要其他人的帮助</li>
+<li>更难于重用</li>
+</ol>
+</li>
+<li>通用环境中的每个元素都会增加整个系统的复杂性</li>
+</ol>
+<h3 id="338-原则二如果没有特殊要求让代码清晰一点"><a class="markdownIt-Anchor" href="#338-原则二如果没有特殊要求让代码清晰一点"></a> 3.3.8. 原则二：如果没有特殊要求，让代码清晰一点</h3>
+<ol>
+<li>明确的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>可修改的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="339-明确的和可修改的"><a class="markdownIt-Anchor" href="#339-明确的和可修改的"></a> 3.3.9. 明确的和可修改的</h3>
+<ol>
+<li>属性和字典</li>
+<li>明确的电话和事件</li>
+<li>显式子类和数据驱动的代码</li>
+</ol>
+<h3 id="3310-原则三不要重复"><a class="markdownIt-Anchor" href="#3310-原则三不要重复"></a> 3.3.10. 原则三：不要重复</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>如何消除重复呢？先写接口</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>也就是我们只需要new一个printer就行</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="3311-耦合的强度-2-连接是指模块本身还是模块内部的东西"><a class="markdownIt-Anchor" href="#3311-耦合的强度-2-连接是指模块本身还是模块内部的东西"></a> 3.3.11. 耦合的强度 2 - 连接是指模块本身还是模块内部的东西</h3>
+<ol>
+<li>Connections that address or refer to a module as a whole by its name yield lower coupling than connections referring to the internal elements of another module 以其名称寻址或整体引用一个模块的连接产生的耦合比引用另一个模块内部元素的连接产生的耦合低(整体连接的耦合程度高于模块内部元素连接的耦合)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>关联到内部是不合适的，应该是关联到接口</li>
+<li>接口耦合度低，而如果是具体关联耦合度高</li>
+</ol>
+<h3 id="3312-原则四面向接口编程"><a class="markdownIt-Anchor" href="#3312-原则四面向接口编程"></a> 3.3.12. 原则四：面向接口编程</h3>
+<h3 id="3313-结构良好的系统"><a class="markdownIt-Anchor" href="#3313-结构良好的系统"></a> 3.3.13. 结构良好的系统</h3>
+<ol>
+<li>通过已定义的接口通过传递的参数进行通讯</li>
+</ol>
+<h3 id="3314-耦合的强度-3-应该对外提供什么和接收什么"><a class="markdownIt-Anchor" href="#3314-耦合的强度-3-应该对外提供什么和接收什么"></a> 3.3.14. 耦合的强度 3 - 应该对外提供什么和接收什么</h3>
+<ol>
+<li>数据耦合:发送数据正好的耦合
+<ol>
+<li>传递必要数据的连接</li>
+</ol>
+</li>
+<li>印记耦合:发送数据比刚好需要的多
+<ol>
+<li>连接传递的数据超出了必要</li>
+</ol>
+</li>
+<li>控制耦合:除了数据还有控制信号
+<ol>
+<li>传递数据和控制元素的连接</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>内容耦合：数据和控制元素的耦合
+<ol>
+<li>另一个模块修改一个模块的代码</li>
+<li>目标模块非常依赖于修改模块。</li>
+</ol>
+</li>
+<li>显然，印记耦合可以实现更多的数据耦合</li>
+<li>控制耦合比数据耦合还耦合更多：信息隐藏</li>
+</ol>
+<h3 id="3315-更简单一点"><a class="markdownIt-Anchor" href="#3315-更简单一点"></a> 3.3.15. 更简单一点</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在上层已经处理好需要处理啥</li>
+<li>不需要传递控制信号</li>
+</ol>
+<h3 id="3316-结构化方法中的耦合度"><a class="markdownIt-Anchor" href="#3316-结构化方法中的耦合度"></a> 3.3.16. 结构化方法中的耦合度</h3>
+<ol>
+<li>内容耦合</li>
+<li>公共耦合</li>
+<li>重复耦合</li>
+<li>控制耦合:传递的人和接收的人都需要管理控制信号</li>
+<li>印记耦合</li>
+<li>数据耦合</li>
+<li>没有耦合是最好的：但是是做不到的</li>
+<li>从上向下耦合度降低</li>
+<li>几乎没有没有耦合的系统，知识要降低耦合</li>
+<li>重复耦合及以上不允许存在</li>
+<li>控制耦合和印记耦合都要尽量消除</li>
+</ol>
+<blockquote>
+<p>注:内容耦合、重复耦合和公共耦合是不能接受的。数据耦合是最好的，而控制耦合和印记耦合是可以接受的</p>
+</blockquote>
+<h2 id="34-结构化设计中的内聚"><a class="markdownIt-Anchor" href="#34-结构化设计中的内聚"></a> 3.4. 结构化设计中的内聚</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>偶然内聚:没什么关系(避免)</li>
+<li>逻辑内聚:将一系列操作放在一起，由其他模块进行调用</li>
+<li>时间内聚:操作和时间有关系</li>
+<li>过程内聚:<strong>更强调</strong>按照一定步骤进行调用</li>
+<li>通信内聚:需要操作相同的数据</li>
+<li>功能内聚:只执行一个单一操作和功能</li>
+<li>信息内聚:数据和行为是在一起的</li>
+<li>事件、过程、通信尽量做</li>
+<li>最好能做到功能、信息内聚</li>
+</ol>
+<h3 id="341-内聚"><a class="markdownIt-Anchor" href="#341-内聚"></a> 3.4.1. 内聚</h3>
+<ol>
+<li>实现独立模块的方式
+<ol>
+<li>减少不在同一模块中的元素之间的关系</li>
+<li>增加同一模块中元素之间的关系</li>
+</ol>
+</li>
+<li>绑定-凝聚力的度量</li>
+</ol>
+<h3 id="342-内聚度绑定类型"><a class="markdownIt-Anchor" href="#342-内聚度绑定类型"></a> 3.4.2. 内聚度(绑定类型)</h3>
+<ol>
+<li>从低内聚到高内聚</li>
+<li>巧合的
+<ol>
+<li>逻辑上</li>
+<li>暂时的</li>
+<li>沟通的</li>
+</ol>
+</li>
+<li>功能性</li>
+<li>信息内聚</li>
+</ol>
+<h1 id="4-kwic案例"><a class="markdownIt-Anchor" href="#4-kwic案例"></a> 4. KWIC案例</h1>
+<ol>
+<li>一共有4种Java的实现方式，注意复习</li>
+</ol>
+<h2 id="41-kwic"><a class="markdownIt-Anchor" href="#41-kwic"></a> 4.1. KWIC</h2>
+<ol>
+<li>简称KWIC，⼜称上下⽂关键词索引，由IBM的卢恩首创，是最早出现的机编索引， 1960年首次用于美国化学文摘社出版的《化学题录》(Chemical Titles)。</li>
+<li>KWlC索引的的编制特点是：
+<ol>
+<li>使用禁用词表选择标题中具有检索意义的词为关键词，并将其作为确定索引条目的依据；</li>
+<li>关键词的排检点设于标题的中部，所有索引条目按关键词的字顺竖向排列；</li>
+<li>保留文献篇名中关键词前后的上下文，如⽂献名称过长，可以以轮排的形式移至条目的前部或后部；款目后跟随该信息资源的位置。</li>
+</ol>
+</li>
+<li>上述条目均按关键词的字顺排列在相应位置，检索时先在检索入口处查找与检索课题有关的关键词，再通过阅读上下⽂寻找符合检索要求的文献。可以按排检点为中心对同⼀关键词有关的资源集中检索查找，是这⼀索引的优点；不足是将索引的排检点设置在中部不符合⽤户使⽤习惯。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>对很多的关键词进行关键词排序</li>
+</ol>
+<h2 id="42-kwic来实现系统的模块化"><a class="markdownIt-Anchor" href="#42-kwic来实现系统的模块化"></a> 4.2. KWIC来实现系统的模块化</h2>
+<ol>
+<li>KWIC索引系统接受：
+<ol>
+<li>一组有序的线</li>
+<li>每行是一组有序的单词</li>
+<li>每个单词都是一组有序的字符</li>
+</ol>
+</li>
+<li>每行都&quot;循环移位&quot;并通过以下方式复制：
+<ol>
+<li>反复删除第一个单词</li>
+<li>将其附加在行的末尾</li>
+</ol>
+</li>
+<li>输出按字母顺序排列的所有行的所有循环移位的列表</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>通过下标就可以排序数组，下标是title的中间</li>
+</ol>
+<h2 id="43-根据功能进行设计"><a class="markdownIt-Anchor" href="#43-根据功能进行设计"></a> 4.3. 根据功能进行设计</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="44-循环位移算法的实现"><a class="markdownIt-Anchor" href="#44-循环位移算法的实现"></a> 4.4. 循环位移算法的实现</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="45-信息隐藏"><a class="markdownIt-Anchor" href="#45-信息隐藏"></a> 4.5. 信息隐藏</h2>
+<ol>
+<li>基本思想：每个模块都隐藏了重要设计决策的实现，因此只有该模块的组成部分才知道详细信息：特别是如果存在所有可能的设计更改的列表-隐藏假设列表</li>
+<li>所有设计决策彼此独立</li>
+<li>两种常见的信息隐藏：
+<ol>
+<li>一是根据需求分配的职责，因为实践表明，需求是经常变化的，频率和幅度都很大；</li>
+<li>二是内部实现机制，常见的变化主题包括硬件依赖，输入输出形式，非标准语言特征和库，负责的设计和实现，复杂的数据结构，复杂的逻辑，全局变量。数据大小限制等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="46-根据设计决策进行设计"><a class="markdownIt-Anchor" href="#46-根据设计决策进行设计"></a> 4.6. 根据设计决策进行设计</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>模块之间的交互是通过接口实现的</li>
+</ol>
+<h2 id="47-circularshifter的定义"><a class="markdownIt-Anchor" href="#47-circularshifter的定义"></a> 4.7. CircularShifter的定义</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>有无更改调用的方法:不用</li>
+<li>有无更改调用的方法之中的实现:可能更改</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="48-分解标准"><a class="markdownIt-Anchor" href="#48-分解标准"></a> 4.8. 分解标准</h2>
+<ol>
+<li>第一种模块化：处理过程中的每个主要步骤都是一个模块</li>
+<li>第二种模块化：
+<ol>
+<li>信息隐藏：每个模块都有一个或多个&quot;隐藏&quot;
+<ol>
+<li>行：字符/行的存储方式</li>
+<li>循环位移：旋转算法，旋转存储</li>
+<li>字符表化：alpha的算法，alpha的惰性</li>
+<li>每个模块都以其对设计决策的了解为特征，而对其他所有决策则都不了解。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>预期不到的变更是无法进行规避的</li>
+</ol>
+<h2 id="49-可修改性比较"><a class="markdownIt-Anchor" href="#49-可修改性比较"></a> 4.9. 可修改性比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>按照算法分解比按照决策分解的修改范围大的多</li>
+</ol>
+<h2 id="410-独立的发展"><a class="markdownIt-Anchor" href="#410-独立的发展"></a> 4.10. 独立的发展</h2>
+<ol>
+<li>模块化 1
+<ol>
+<li>必须先设计所有数据结构，然后才能进行并行工作</li>
+<li>需要复杂的描述</li>
+</ol>
+</li>
+<li>模块化 2
+<ol>
+<li>必须先设计接口，然后才能开始并行工作</li>
+<li>仅简单描述</li>
+</ol>
+</li>
+</ol>
+<h2 id="411-可理解性"><a class="markdownIt-Anchor" href="#411-可理解性"></a> 4.11. 可理解性</h2>
+<ol>
+<li>第二种模块化是更好的
+<ol>
+<li>主观性判断</li>
+<li>更低的模块之间的耦合：面向接口编程</li>
+</ol>
+</li>
+</ol>
+<h2 id="412-模块化"><a class="markdownIt-Anchor" href="#412-模块化"></a> 4.12. 模块化</h2>
+<ol>
+<li>一个职责设计而不是一个子程序</li>
+<li>由特定于自己的设计决策表示，而其他模块则未知</li>
+<li>在实现上支持灵活性</li>
+<li>不要代表过程中的步骤</li>
+<li>低耦合，高内聚</li>
+</ol>
+<h2 id="413-结论"><a class="markdownIt-Anchor" href="#413-结论"></a> 4.13. 结论</h2>
+<ol>
+<li>模块
+<ul>
+<li>可以被放置到一起的去形成一个完成系统的模块</li>
+<li>职责分配，子过程，内存加载，功能部分</li>
+</ul>
+</li>
+<li>模块化：设计独立的模块</li>
+<li>封装
+<ul>
+<li>语言便利性</li>
+<li>面向对象三大基本思想:数据和行为在一起，体现共同职责</li>
+</ul>
+</li>
+<li>信息隐藏
+<ul>
+<li>设计原则</li>
+<li>信息隐藏是更高的设计原则</li>
+</ul>
+</li>
+</ol>
+<h1 id="5-结构化的模块化"><a class="markdownIt-Anchor" href="#5-结构化的模块化"></a> 5. 结构化的模块化</h1>
+<ol>
+<li>1-2道大题是关于设计模式的</li>
+</ol>
+<h1 id="6-mscs中的模块思想的应用"><a class="markdownIt-Anchor" href="#6-mscs中的模块思想的应用"></a> 6. MSCS中的模块思想的应用</h1>
+<h2 id="61-低耦合处理"><a class="markdownIt-Anchor" href="#61-低耦合处理"></a> 6.1. 低耦合处理</h2>
+<ol>
+<li>软件体系结构的分层设计中:
+<ul>
+<li>不同层的模块之间仅能通过程序调⽤与数据传递实现交互,不能共享数据(例如 Model 层建⽴⼀个数据对象并将引⽤传递给 Logic 层使⽤)否则会导致公共耦合。</li>
+</ul>
+</li>
+<li>软件体系结构的逻辑包设计中:
+<ul>
+<li>依据功能的特点将三个层次进⼀步划分为更⼩的包,⽽不是只使⽤ Presentation、Logic和 Model 三个包,可以通过包分割实现接⼝最⼩化,这能去除不必要的耦合。</li>
+</ul>
+</li>
+</ol>
+<h2 id="62-软件体系结构的物理包设计中"><a class="markdownIt-Anchor" href="#62-软件体系结构的物理包设计中"></a> 6.2. 软件体系结构的物理包设计中</h2>
+<ol>
+<li>将不同包的重复内容独⽴为单独的包以消除重复,避免产生隐式的重复耦合;</li>
+</ol>
+<h2 id="63-详细设计中对象创建者的选择"><a class="markdownIt-Anchor" href="#63-详细设计中对象创建者的选择"></a> 6.3. 详细设计中对象创建者的选择:</h2>
+<ol>
+<li>如果两个对象 A、B 间已有比较高的耦合度了, 那么使⽤ A 创建 B 或者反之就不会带来额外的耦合度。这就是表 12-4 内容的核⼼思想——不增加新的耦合。</li>
+</ol>
+<h2 id="64-详细设计中选择控制格"><a class="markdownIt-Anchor" href="#64-详细设计中选择控制格"></a> 6.4. 详细设计中选择控制⻛格:</h2>
+<ol>
+<li>解除界⾯与逻辑对象的直接耦合。</li>
+</ol>
+<h2 id="65-高内聚处理"><a class="markdownIt-Anchor" href="#65-高内聚处理"></a> 6.5. 高内聚处理</h2>
+<ol>
+<li>软件体系结构的分层设计中:
+<ul>
+<li>三个层次都是⾼内聚的,⼀个处理交互任务, ⼀个处理业务逻辑,⼀个处理数据持久化。</li>
+</ul>
+</li>
+<li>软件体系结构的逻辑包设计中:
+<ul>
+<li>将三个层次进⼀步划分为更⼩的包,可以实现每个更⼩的包都是⾼内聚的。</li>
+</ul>
+</li>
+<li>详细设计中抽象类的职责:
+<ul>
+<li>要求状态与⽅法紧密联系就是为了达到⾼内聚 (信息内聚)。</li>
+</ul>
+</li>
+<li>详细设计中使⽤控制⻛格:
+<ul>
+<li>控制⻛格分离了控制逻辑,可以实现业务逻辑对 象的⾼内聚(功能内聚)。因为封装了控制逻辑,所以控制器对象承载了不可避免的顺序内聚、通信内聚和逻辑内聚,这就要求控制器对象必须是受控的,也是它们为什么倾向于对外委托⽽不是⾃⼰进⾏业务计算的原因。</li>
+</ul>
+</li>
+</ol>
+<h1 id="7-结构化的信息隐藏"><a class="markdownIt-Anchor" href="#7-结构化的信息隐藏"></a> 7. 结构化的信息隐藏</h1>
+<h2 id="71-information-信息"><a class="markdownIt-Anchor" href="#71-information-信息"></a> 7.1. Information 信息</h2>
+<ol>
+<li>信息隐藏</li>
+<li>什么需要隐藏？变更
+<ol>
+<li>数据表示</li>
+<li>设备的属性(必需属性除外)</li>
+<li>实施世界模型</li>
+<li>支持政策的机制</li>
+</ol>
+</li>
+<li>信息隐藏的核心是将每个模块都隐藏一个重要的设计决策</li>
+</ol>
+<h3 id="711-最有可能修改的设计领域"><a class="markdownIt-Anchor" href="#711-最有可能修改的设计领域"></a> 7.1.1. 最有可能修改的设计领域</h3>
+<ol>
+<li>硬件依赖：外部软件系统</li>
+<li>输入输出格式：DB, Internet, UI, …</li>
+<li>非标准语言特性和依赖路径：Platform: os, middleware, framework…</li>
+<li>困难的设计和实现部分
+<ol>
+<li>通常是被设计的很不好的部分或者是需要被重新设计和重新实现的部分</li>
+<li>Complex…, monitor, exception, log, …</li>
+</ol>
+</li>
+<li>复杂的数据结构，被多个类使用的数据结构，或者是不让你满意的数据结构
+<ol>
+<li>Separate model from logic 逻辑分块</li>
+</ol>
+</li>
+<li><strong>复杂逻辑</strong>，他们被认为就像数据结构一样复杂。</li>
+<li><strong>算法，时间表</strong>，时间紧迫，实现紧迫</li>
+<li><strong>全局变量</strong>:常常并没有并真正使用，但是常常受益于权限访问的隐藏：Data Access Routines</li>
+<li>数组声明的数据量打下和循环限制。</li>
+<li>以及商业规则:比如法律、规则、正则和被转换成计算机系统的过程。</li>
+</ol>
+<h2 id="72-隐藏"><a class="markdownIt-Anchor" href="#72-隐藏"></a> 7.2. 隐藏</h2>
+<ol>
+<li>尝试本地化未来的变化
+<ol>
+<li>隐藏可能会独立更改的系统详细信息</li>
+<li>可能具有不同变化率的独立零件</li>
+<li>暴露接口的假设不太可能改变</li>
+</ol>
+</li>
+<li>容易变化的隐藏，不容易变化的展示</li>
+</ol>
+<h2 id="73-信息隐藏"><a class="markdownIt-Anchor" href="#73-信息隐藏"></a> 7.3. 信息隐藏</h2>
+<ol>
+<li>最常见的隐藏是您认为可能会更改的设计决策。</li>
+<li>然后，您可以通过将每个设计秘密分配给自己的类，子例程或其他设计单元来分离它们。</li>
+<li>接下来，您隔离(封装)每个机密，这样，如果它确实发生了更改，则更改不会影响程序的其余部分。</li>
+</ol>
+<h3 id="731-接口与实现"><a class="markdownIt-Anchor" href="#731-接口与实现"></a> 7.3.1. 接口与实现</h3>
+<ol>
+<li>模块的用户和实施者对此有不同的看法。</li>
+<li>界面：用户对模块的看法。</li>
+<li>仅描述用户使用模块需要知道的内容</li>
+<li>使其更易于理解和使用</li>
+<li>描述了该模块提供的服务，但没有描述如何提供这些服务</li>
+</ol>
+<h3 id="732-什么是接口"><a class="markdownIt-Anchor" href="#732-什么是接口"></a> 7.3.2. 什么是接口</h3>
+<ol>
+<li>作为合同的接口:模块发布的任何内容
+<ul>
+<li>提供的接口：模块的客户端可以依赖于所需的接口：该模块可以依赖于其他模块</li>
+</ul>
+</li>
+<li>语法接口
+<ol>
+<li>如何调用操作
+<ol>
+<li>操作签名列表</li>
+<li>有时也是有效的呼叫操作命令</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>语义接口
+<ol>
+<li>这些操作是做什么的，例如
+<ol>
+<li>前置条件和后置条件</li>
+<li>用例</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="733-进一步原则"><a class="markdownIt-Anchor" href="#733-进一步原则"></a> 7.3.3. 进一步原则</h3>
+<ol>
+<li>显式接口：使模块之间的所有依赖关系明确(无隐藏的耦合)</li>
+<li>低耦合-接口少：最小化模块之间的依赖性</li>
+<li>小接口
+<ol>
+<li>保障小接口
+<ol>
+<li>将许多参数组合到结构/对象中</li>
+<li>将大型接口分为几个接口</li>
+</ol>
+</li>
+<li>面向接口编程</li>
+</ol>
+</li>
+<li>高内聚：一个模块应该封装一些定义良好的，连贯的功能(稍后会详细介绍)</li>
+</ol>
+<h3 id="734-耦合与内聚"><a class="markdownIt-Anchor" href="#734-耦合与内聚"></a> 7.3.4. 耦合与内聚</h3>
+<ol>
+<li>内聚力是模块之间的一致性的度量。</li>
+<li>耦合是模块之间的交互程度。</li>
+<li>您需要高凝聚力和低耦合。</li>
+</ol>
+<h2 id="74-module-guide"><a class="markdownIt-Anchor" href="#74-module-guide"></a> 7.4. Module Guide</h2>
+<h3 id="741-模块的主要秘密"><a class="markdownIt-Anchor" href="#741-模块的主要秘密"></a> 7.4.1. 模块的主要秘密</h3>
+<ol>
+<li>主要秘密描述的是这个模块所要实现的<strong>用户需求</strong>。是设计者对⽤户需求的实现的⼀次职责分配。有了这个描述以后，我们可以利⽤它检查我们是否完成所有的⽤户需求，还可以利⽤它和需求优先级来决定开发的次序。</li>
+</ol>
+<h3 id="742-模块的次要秘密"><a class="markdownIt-Anchor" href="#742-模块的次要秘密"></a> 7.4.2. 模块的次要秘密</h3>
+<ol>
+<li>次要秘密描述的是这个模块在实现职责时候所涉及的具体的<strong>实现细节</strong>。包括数据结构，算法，硬件平台等信息。</li>
+</ol>
+<h3 id="743-模块的角色"><a class="markdownIt-Anchor" href="#743-模块的角色"></a> 7.4.3. 模块的角色</h3>
+<ol>
+<li>描述了独⽴的模块在整个系统中所承担的⻆⾊，所起的作⽤。以及与哪些模块有相关联的关系。</li>
+</ol>
+<h3 id="744-模块的对外接口"><a class="markdownIt-Anchor" href="#744-模块的对外接口"></a> 7.4.4. 模块的对外接⼝</h3>
+<ol>
+<li>模块提供给别的模块的接⼝。</li>
+</ol>
+<h3 id="745-循环位移模块的模块说明"><a class="markdownIt-Anchor" href="#745-循环位移模块的模块说明"></a> 7.4.5. 循环位移模块的模块说明</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/28.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="746-复杂系统的快速示例"><a class="markdownIt-Anchor" href="#746-复杂系统的快速示例"></a> 7.4.6. 复杂系统的快速示例</h3>
+<ol>
+<li>A-7E飞机</li>
+<li>极其复杂的机上飞行计划</li>
+<li>内存有限</li>
+<li>实时约束</li>
+</ol>
+<h3 id="747-parnass-experience"><a class="markdownIt-Anchor" href="#747-parnass-experience"></a> 7.4.7. Parnas’s Experience</h3>
+<ol>
+<li>“当我们试图在没有指南的情况下工作时，……责任要么以两个模块要么没有。 有了模块指南，设计的进一步进展显示出相对较少的疏忽。”</li>
+<li>集成测试仅用了一周</li>
+<li>仅发现了9个错误。</li>
+<li>错误隔离到单个模块的位置。</li>
+<li>所有的bug都被很快的修复了</li>
+</ol>
+<h2 id="75-思想的应用信息隐藏处理"><a class="markdownIt-Anchor" href="#75-思想的应用信息隐藏处理"></a> 7.5. 思想的应用(信息隐藏处理)</h2>
+<h3 id="751-在软件体系结构设计的分层设计中"><a class="markdownIt-Anchor" href="#751-在软件体系结构设计的分层设计中"></a> 7.5.1. 在软件体系结构设计的分层设计中:</h3>
+<ol>
+<li>经验表明软件系统的界⾯是最经常变化的, 其次是业务逻辑,最稳定的是业务数 据。这就是分层⻛格建⽴ Prensentation、 Logic 和 Model 三个层次的原因,它 们体现了决策变化的划分类型,它们之间的 依赖关系符合各⾃的稳定性。</li>
+</ol>
+<h3 id="752-在软件体系结构设计的物理包设计中"><a class="markdownIt-Anchor" href="#752-在软件体系结构设计的物理包设计中"></a> 7.5.2. 在软件体系结构设计的物理包设计中:</h3>
+<ol>
+<li>消除重复可以避免重复耦合,同时可以 避免同⼀个设计决策出现在多个地⽅—— 这意味着该决策没有被真正地隐藏 (这也是控制耦合⽐数据耦合差的原因)。</li>
+</ol>
+<h3 id="753-在软件体系结构设计的物理包设计中"><a class="markdownIt-Anchor" href="#753-在软件体系结构设计的物理包设计中"></a> 7.5.3. 在软件体系结构设计的物理包设计中:</h3>
+<ol>
+<li>建⽴独⽴的安全包、通信包和数据库连接包,是为了封装各⾃的设计决策——安全处理、 ⽹络通信与数据库处理。</li>
+</ol>
+<h3 id="754-在软件体系结构设计与详细设计中"><a class="markdownIt-Anchor" href="#754-在软件体系结构设计与详细设计中"></a> 7.5.4. 在软件体系结构设计与详细设计中:</h3>
+<ol>
+<li>严格要求定义模块与类的接⼝,可以便利开发,更是为了实现信息隐藏。</li>
+</ol>
+<h3 id="755-在详细设计中使用控制风格"><a class="markdownIt-Anchor" href="#755-在详细设计中使用控制风格"></a> 7.5.5. 在详细设计中使用控制风格:</h3>
+<ol>
+<li>专⻔⽤控制器对象封装关于业务逻辑的设计决策, ⽽不是将其拆散分布到整个对象⽹络中 去。</li>
+</ol>
+<h1 id="8-内聚的例子"><a class="markdownIt-Anchor" href="#8-内聚的例子"></a> 8. 内聚的例子</h1>
+<ol>
+<li>内聚程度从低到高如下</li>
+</ol>
+<h2 id="81-偶然内聚"><a class="markdownIt-Anchor" href="#81-偶然内聚"></a> 8.1. 偶然内聚</h2>
+<ol>
+<li>模块执行多个完全不相关的操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/35.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="82-逻辑内聚"><a class="markdownIt-Anchor" href="#82-逻辑内聚"></a> 8.2. 逻辑内聚</h2>
+<ol>
+<li>模块执行一系列相关操作，每个操作的调用由其他模块来决定</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="83-时间内聚"><a class="markdownIt-Anchor" href="#83-时间内聚"></a> 8.3. 时间内聚</h2>
+<ol>
+<li>模块执行一系列与时间有关的操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/37.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="84-过程内聚"><a class="markdownIt-Anchor" href="#84-过程内聚"></a> 8.4. 过程内聚</h2>
+<ol>
+<li>模块执行一些与步骤顺序有关的操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/38.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="85-通信内聚"><a class="markdownIt-Anchor" href="#85-通信内聚"></a> 8.5. 通信内聚</h2>
+<ol>
+<li>模块执行一系列与步骤有关的操作，并且这些操作在相同的数据上进行</li>
+<li>和过程内聚的唯一不同:是否在同一块数据结构上操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/29.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/39.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="86-功能内聚"><a class="markdownIt-Anchor" href="#86-功能内聚"></a> 8.6. 功能内聚</h2>
+<ol>
+<li>模块只执行一个操作或达到一个单一目的</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/40.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="87-信息内聚"><a class="markdownIt-Anchor" href="#87-信息内聚"></a> 8.7. 信息内聚</h2>
+<ol>
+<li>模块进行许多操作，各个都有各自的入口点</li>
+<li>每个操作的代码都相互独立</li>
+<li>所有操作都在相同的数据结构上完成</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/41.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="9-耦合的例子"><a class="markdownIt-Anchor" href="#9-耦合的例子"></a> 9. 耦合的例子</h1>
+<ol>
+<li>耦合程度从低到高如下</li>
+</ol>
+<h2 id="91-数据耦合"><a class="markdownIt-Anchor" href="#91-数据耦合"></a> 9.1. 数据耦合</h2>
+<ol>
+<li>两个模块的所有参数是同类型的数据项</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/45.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="92-印记耦合"><a class="markdownIt-Anchor" href="#92-印记耦合"></a> 9.2. 印记耦合</h2>
+<ol>
+<li>共享一个数据结构，但是却只用了其中一部分</li>
+</ol>
+<ul>
+<li>下面传递d.month就行</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/29.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>传递i.date.month就行</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>其实只需要emailID即可</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/44.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="93-控制耦合"><a class="markdownIt-Anchor" href="#93-控制耦合"></a> 9.3. 控制耦合</h2>
+<ol>
+<li>一个模块给另一个模块传递控制信息</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/43.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="94-重复耦合"><a class="markdownIt-Anchor" href="#94-重复耦合"></a> 9.4. 重复耦合</h2>
+<ol>
+<li>模块之间有同样(逻辑上同样)的重复代码</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/34.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="95-公共耦合"><a class="markdownIt-Anchor" href="#95-公共耦合"></a> 9.5. 公共耦合</h2>
+<ol>
+<li>模块之间共享全局的数据(全局变量，全局数据结构)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/32.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/46.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="96-内容耦合"><a class="markdownIt-Anchor" href="#96-内容耦合"></a> 9.6. 内容耦合</h2>
+<ol>
+<li>一个模块直接修改或者依赖于另一个模块的内容</li>
+</ol>
+<ul>
+<li>直接修改了date部分的month的值</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>直接修改了另一个模块对象的成员变量的值</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt13/42.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="10-kwic的四种不同实现"><a class="markdownIt-Anchor" href="#10-kwic的四种不同实现"></a> 10. KWIC的四种不同实现</h1>
+<ol>
+<li>复习本地的四种实现的Java代码</li>
+</ol>
+<h2 id="101-主程序和子程序ms"><a class="markdownIt-Anchor" href="#101-主程序和子程序ms"></a> 10.1. 主程序和子程序(MS)</h2>
+<ul>
+<li>使用全局变量，减少过多的参数传递</li>
+</ul>
+<h2 id="102-面向对象oo"><a class="markdownIt-Anchor" href="#102-面向对象oo"></a> 10.2. 面向对象(OO)</h2>
+<ol>
+<li>中间有一些对象进行存储</li>
+<li>对象写作</li>
+</ol>
+<h2 id="103-pipe-filter"><a class="markdownIt-Anchor" href="#103-pipe-filter"></a> 10.3. Pipe Filter</h2>
+<ol>
+<li>数据进来通过过滤器</li>
+<li>通过管道串联过滤器</li>
+<li>好处:
+<ol>
+<li>如果有一个过滤器无法使用了直接替换就行</li>
+<li>增加是容易的</li>
+</ol>
+</li>
+<li>各自过滤器是独立工作的，不在意其他人怎么样</li>
+<li>管道不一定是方法调用(独立进程)，要不和结构化没有区别</li>
+<li>4个线程各自跑起来，用pipe连接起来</li>
+</ol>
+<h2 id="104-基于事件"><a class="markdownIt-Anchor" href="#104-基于事件"></a> 10.4. 基于事件</h2>
+<ol>
+<li>有一个事件机制，有订阅者和分发者</li>
+<li>GUI：点击Button之后，触发事件</li>
+<li>框架帮你完成事件机制</li>
+<li>明确什么监听什么</li>
+<li>观察者模式</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" class="category-chain-item">2020-软件工程与计算II</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/OOP/">#OOP</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/">#软件工程与计算II</a>
+      
+        <a href="/tags/%E6%A8%A1%E5%9D%97/">#模块</a>
+      
+        <a href="/tags/%E8%80%A6%E5%90%88/">#耦合</a>
+      
+        <a href="/tags/%E5%86%85%E8%81%9A/">#内聚</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-软件工程与计算II-13-模块化与信息隐藏</div>
+      <div>https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-13-%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月6日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-14-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" title="2020-软件工程与计算II-14-面向对象的模块化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-软件工程与计算II-14-面向对象的模块化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-12-%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/" title="2020-软件工程与计算II-12-详细设计">
+                        <span class="hidden-mobile">2020-软件工程与计算II-12-详细设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

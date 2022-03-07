@@ -1,0 +1,1106 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-数据库开发-Lec2-开发数据库的要点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-数据库开发-Lec2-开发数据库的要点">
+<meta property="og:url" content="https://stormbroken.github.io/2021/05/02/2021-Database-Development/2021-Database-Development-Lec2-%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A6%81%E7%82%B9/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-数据库开发-Lec2-开发数据库的要点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/6.png">
+<meta property="article:published_time" content="2021-05-02T11:02:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:42.464Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="性能">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/1.png">
+  
+  
+  <title>2021-数据库开发-Lec2-开发数据库的要点 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-02 19:02" pubdate>
+          2021年5月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-数据库开发-Lec2-开发数据库的要点</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec2-开发数据库的要点"><a class="markdownIt-Anchor" href="#lec2-开发数据库的要点"></a> Lec2-开发数据库的要点</h2>
+<h1 id="1-开发成功数据库应用的特点"><a class="markdownIt-Anchor" href="#1-开发成功数据库应用的特点"></a> 1. 开发成功数据库应用的特点</h1>
+<ol>
+<li>需要理解数据库体系结构</li>
+<li>需要理解锁和并发控制特性：每个数据库都以不同的方式实现</li>
+<li>最重要的是<strong>不要把数据库当&quot;黑盒&quot;</strong>
+<ol>
+<li>要了解每一个数据库的体系结构和特征</li>
+<li>最常见的问题就是因为我们对数据库本身了解不足</li>
+</ol>
+</li>
+<li>性能、安全性都是适当的被设计出来的</li>
+<li>用尽可能简单的方法解决问题：&quot;创造&quot;永远追不上开发的步伐</li>
+<li>DBA和RD之间的关系</li>
+</ol>
+<h1 id="2-数据库体系结构的差异"><a class="markdownIt-Anchor" href="#2-数据库体系结构的差异"></a> 2. 数据库体系结构的差异</h1>
+<ol>
+<li><strong>不能把数据库当成&quot;黑盒&quot;使用，因为每个数据库都是非常不同的</strong></li>
+<li>Oracle和MySQL的差别(连接等多方面)，类似
+<ol>
+<li>Windows和Linux的差别：进程</li>
+<li>iOS和Android的差别</li>
+<li>虽然都是DBMS，但它们也有相当的差异</li>
+<li>Oracle的连接是很重量的(要先预处理很多的东西，所以反复断开和连接会导致性能下降)，MySQL的连接是很轻量的。</li>
+</ol>
+</li>
+<li>了解这种差异，了解你所使用数据库的特性，是开发成功数据库应用的基础</li>
+</ol>
+<h1 id="3-并发控制"><a class="markdownIt-Anchor" href="#3-并发控制"></a> 3. 并发控制</h1>
+<h2 id="31-并发控制的问题"><a class="markdownIt-Anchor" href="#31-并发控制的问题"></a> 3.1. 并发控制的问题</h2>
+<ol>
+<li>现实存在并发，我们需要保持数据的<strong>一致性</strong>，所以要做<strong>并发控制</strong>
+<ol>
+<li>并发数和消耗的资源时间并不是完全线性关系，当并行数到达一定数量后，消耗的资源时间会呈<strong>指数型上涨(管理排队队列时间等)</strong></li>
+<li>可能会导致<strong>上下文切换</strong>问题(整个数据库的问题)</li>
+<li>最后可能导致整个数据库的问题，称为<strong>上下文切换</strong></li>
+<li>开发环境和生成环境的数据库是不一致的，可能会出现问题。</li>
+<li>数据库的问题很难调试</li>
+</ol>
+</li>
+<li>锁机制，使得并发控制成为可能：<strong>二段锁</strong>等</li>
+<li><strong>不同的数据库，实现锁机制是不一样的</strong></li>
+</ol>
+<h2 id="32-比如oracle的锁机制就比较特别"><a class="markdownIt-Anchor" href="#32-比如oracle的锁机制就比较特别"></a> 3.2. 比如：Oracle的锁机制就比较特别</h2>
+<ol>
+<li>锁机制甚至会导致无法读取正确数据</li>
+<li>这个时候T6，Transaction1能提交吗？
+<ol>
+<li>如果接受了这种提交，那么则会得到错误的值(Oracle的实现)</li>
+<li>如果不接受这种提交，那么需要检查时间戳和退回</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-oracle存在有时读不到正确数据的现象"><a class="markdownIt-Anchor" href="#33-oracle存在有时读不到正确数据的现象"></a> 3.3. Oracle存在有时读不到正确数据的现象</h2>
+<ol>
+<li>Oracle的多版本控制，读一致性的并发模型
+<ol>
+<li>读一致查询：对于一个时间点（point time），查询会产生一致的结果：永远能读到开始读的时间点的数据(而不是修改后的数据)</li>
+<li>非阻塞查询：查询不会被写入器阻塞，<strong>但在其它数据库中可能不是这样的</strong></li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>对于左侧，打开游标时，不会读取数据，只有在读取游标时才会读取数据</li>
+<li>对于右侧，如果我们删除了所有的表，但是我们在Oracle中仍然可以使用之前打开的游标来读取那个时刻的数据</li>
+<li>事实上，打开游标的时候确实没有复制，删除数据的时候也确实删除了，但是删除数据的时候Oracle为我们使用Undo日志来保存了下来(我们记作Undo statement)，是删除的回滚段，游标从这类读出数据。</li>
+</ol>
+<h2 id="34-oracle这种锁机制的好处是什么"><a class="markdownIt-Anchor" href="#34-oracle这种锁机制的好处是什么"></a> 3.4. Oracle这种锁机制的好处是什么？</h2>
+<ol>
+<li>读不阻塞写，可以极大程度上提高数据库的吞吐能力，我们将这个特征读作<strong>散回特性</strong></li>
+<li>例子：
+<ol>
+<li><code>ACCOUNTS(account_number, account_balance)</code>一个银行的账户余额</li>
+<li>为了简单，只考虑一个仅有四行的表（同时假设每个数据库块中只存放一行数据。）</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>帐号</th>
+<th>余额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>250</td>
+</tr>
+<tr>
+<td>3</td>
+<td>400</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>我们想运行一个日报表，了解银行里有多少钱。下面是一个非常简单的查询：Select sum(account_balance) from accounts;</li>
+<li>Oracle和其它数据库在并发上的差别(一致性读)：Oracle就没有读共享锁</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="35-从体系结构和特性中了解具体数据库的锁机制"><a class="markdownIt-Anchor" href="#35-从体系结构和特性中了解具体数据库的锁机制"></a> 3.5. 从体系结构和特性中了解具体数据库的锁机制</h2>
+<ol>
+<li>比如Oracle实现的锁机制
+<ol>
+<li>只有修改才加<strong>行级锁</strong></li>
+<li>Read绝对不会对数据加锁</li>
+<li><strong>读写器绝对不会阻塞写入器</strong></li>
+</ol>
+</li>
+</ol>
+<h2 id="36-课后思考"><a class="markdownIt-Anchor" href="#36-课后思考"></a> 3.6. 课后思考</h2>
+<ol>
+<li>对大多数码农而言，数据库锁机制好像都是自动和透明实现的，那么深入了解每个数据库的锁机制实现细节，对码农编码有什么影响嘛？
+<ol>
+<li>不同的数据库所对应的锁机制往往有一些不同
+<ol>
+<li>很容易出现意料之外的错误。比如orcale出现同时读写时的数据不一致</li>
+<li>在选择数据库时会出现很大的困难。</li>
+<li>很多时候在数据库默认的锁机制下，也会出现死锁现象，需要及时对其进行修改，修改的前提是对底层的了解。</li>
+</ol>
+</li>
+<li>锁机制作为底层的实现细节，其变化相比表层的语法而言，可以说变化很小。了解底层细节的码农，面对操作变化相对来说就有了更加大的灵活性。</li>
+</ol>
+</li>
+<li>根据这节课Oracle的锁机制特征的分析，你尝试去了解一下MySQL、SQLServer这些其它数据库锁机制实现的特征
+<ol>
+<li>Mysql:
+<ol>
+<li>不同存储引擎支持不同的锁机制</li>
+<li>读写操作前必须对数据上锁，且最好一次性请求足够级别的锁</li>
+<li>读共享，写独占</li>
+</ol>
+</li>
+<li>SQLServer:
+<ol>
+<li>支持多种锁级别和隔离级别</li>
+<li>默认由系统自动管理锁和锁粒度，并负责锁升级</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="37-程序员的工作"><a class="markdownIt-Anchor" href="#37-程序员的工作"></a> 3.7. 程序员的工作</h2>
+<h3 id="371-开发成功数据库应用的要点-黑盒的问题"><a class="markdownIt-Anchor" href="#371-开发成功数据库应用的要点-黑盒的问题"></a> 3.7.1. 开发成功数据库应用的要点-黑盒的问题</h3>
+<blockquote>
+<p>对大多数码农而言，数据库锁机制好像都是自动和透明实现的那么深入</p>
+</blockquote>
+<h3 id="372-问题是这对我们码农有什么影响吗"><a class="markdownIt-Anchor" href="#372-问题是这对我们码农有什么影响吗"></a> 3.7.2. 问题是：这对我们码农有什么影响吗？</h3>
+<ol>
+<li>Oracle的无阻塞设计有一个副作用，就是如果确实想保证一次只有一个用户访问一行数据，就得开发人员自己做工作。</li>
+<li>例如:一个资源调度程序主要有两张表:
+<ol>
+<li><code>Resources(Resource_name,other_ data)</code></li>
+<li><code>Schedules(resource_ name, start_time, end_time)</code></li>
+</ol>
+</li>
+<li>往Schedules中插入一个房间预订之后，提交之前，应用将查询</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br>   <span class="hljs-keyword">From</span> schedules<br>      <span class="hljs-keyword">Where</span> resource_ name <span class="hljs-operator">=</span>:resource name <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span><br>         <span class="hljs-keyword">and</span> (start_time <span class="hljs-operator">&lt;</span> :new_end_time) <span class="hljs-keyword">and</span> (end_time <span class="hljs-operator">&gt;</span> :new_start_time)<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>不能把数据库当成黑盒使用：必须深入了解你所使用的数据库体系结构和特征</li>
+<li>什么时候，码农需要自己考虑并发的问题？不确定，这需要看具体的情况</li>
+</ol>
+<h1 id="4-黑盒的问题"><a class="markdownIt-Anchor" href="#4-黑盒的问题"></a> 4. 黑盒的问题</h1>
+<ol>
+<li>数据库<strong>黑盒</strong>和<strong>独立性</strong>的问题</li>
+<li>数据库的某些细微差异会对<strong>开发</strong>造成影响</li>
+</ol>
+<h2 id="41-黑盒和数据库独立性的问题"><a class="markdownIt-Anchor" href="#41-黑盒和数据库独立性的问题"></a> 4.1. 黑盒和数据库独立性的问题</h2>
+<ol>
+<li>数据库有脱离<strong>实现级别</strong>的使用方法：Java和C++等需要在实现层面对内存进行管理，而SQL则只需要告诉引擎用哪些表按照什么条件来查询。</li>
+<li>我的观点是
+<ol>
+<li>要构建一个<strong>完全数据库独立</strong>的应用，而且是高度可扩展的应用是<strong>极其困难</strong>的</li>
+<li>实际上，这<strong>几乎是不可能</strong>的</li>
+</ol>
+</li>
+<li>要构建一个完全数据库<strong>独立</strong>的应用
+<ol>
+<li>你必须真正了解每个数据库具体<strong>如何工作</strong></li>
+<li>如果你清楚每个数据库工作的具体细节，你就会知道，<strong>数据库独立性</strong>可能并不是你真正想要的：避免死锁的存在，Oracle中需要用for update来实现串行化。</li>
+</ol>
+</li>
+</ol>
+<h2 id="42-例如null值造成的数据库迁移障碍"><a class="markdownIt-Anchor" href="#42-例如null值造成的数据库迁移障碍"></a> 4.2. 例如：Null值造成的数据库迁移障碍</h2>
+<ol>
+<li>例子:在表T中，如果不满足某个条件，则找出X为NULL的所有行，如果满足就找出X等于某个特定值的所有行
+<ol>
+<li>Oracle并没有返回NULL(不知道)的所有行</li>
+<li>Oracle中NULL == NULL 返回 NULL</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>那么我们使用了is null关键字，但是Oracle不会为空值建立聚簇索引，导致性能会大幅度下降</li>
+<li>于是我们通过创建了一个<strong>基于函数的索引</strong>来解决这个问题。</li>
+</ol>
+<h2 id="43-关于黑盒的问题总结几点"><a class="markdownIt-Anchor" href="#43-关于黑盒的问题总结几点"></a> 4.3. 关于黑盒的问题总结几点</h2>
+<ol>
+<li><strong>数据库是不同的</strong>。在一个数据库上取得的经验也许可以部分应用于另一个数据库，但是必须有心理准备，二者之间可能存在一些基本差别，可能还有一些细微的差别。</li>
+<li><strong>细微的差别</strong>(比如对NULL的处理)与基本差别(如并发控制机制)可能有同样显著的影响。</li>
+<li>应当了解数据库，知道它是如何工作的，他的特性如何实现，这是解决这些问题的唯一途径。</li>
+</ol>
+<h2 id="44-思考题"><a class="markdownIt-Anchor" href="#44-思考题"></a> 4.4. 思考题</h2>
+<ol>
+<li>关于把数据库当成黑盒使用的错误，其实也会在你学习软件开发中遇到类似的问题，比如，对操作系统的黑盒化，比如对某些开发框架的黑盒化等等，请你思考一下，你的学习过程中，还能找到类似的例子嘛?</li>
+</ol>
+<h1 id="5-设计的问题"><a class="markdownIt-Anchor" href="#5-设计的问题"></a> 5. 设计的问题</h1>
+<h2 id="51-我能不能找一个大牛帮我调优"><a class="markdownIt-Anchor" href="#51-我能不能找一个大牛帮我调优"></a> 5.1. 我能不能找一个大牛帮我调优</h2>
+<ol>
+<li>先把程序写出来，之后再让专家在生产环境中帮我<strong>调优</strong>：<strong>这个想法是错误的</strong>。</li>
+<li><strong>性能调优</strong>(目前情况下性能优化至最优)
+<ol>
+<li>根据当前CPU能力、可用内存、I/O子系统等资源情况来设置相应参数：DBA在做，性能提高20-30%</li>
+<li>通过<strong>索引、物理结构、SQL</strong>的优化，具体提高某一个查询的性能</li>
+</ol>
+</li>
+<li>如果有个专家能通过一些参数、技巧提高了你的系统一个数量级的性能：不能说这个专家牛逼，大概只能说明你的程序太烂了。</li>
+</ol>
+<h2 id="52-性能拙劣的罪魁祸首是错误设计"><a class="markdownIt-Anchor" href="#52-性能拙劣的罪魁祸首是错误设计"></a> 5.2. 性能拙劣的罪魁祸首是错误设计</h2>
+<blockquote>
+<p>设计决定了性能的级别，其他任何调优只是在这个级别内进行调整</p>
+</blockquote>
+<ol>
+<li><strong>提高整体性能</strong>
+<ol>
+<li>技巧决定系统性能的下限</li>
+<li>设计决定系统性能的上限</li>
+</ol>
+</li>
+<li>比如，新闻的门户网站
+<ol>
+<li>动态页面 vs 静态页面：百万量级的高并发下的动态网页导致大量的连接创建、I/O资源、CPU资源被消耗，导致负担过重。</li>
+<li>静态页面 + 内容管理系统：这个管理系统远远复杂于动态页面，使用触发器等自动化部署手段来生成静态网页</li>
+</ol>
+</li>
+<li>为什么微信不支持信息的修改？
+<ol>
+<li>因为微信朋友圈后台使用的NoSQL的非关系型数据库，所有的数据都是顺序存储，才能满足大量的读写效率。</li>
+<li>顺序文件的修改是非常麻烦的，因此也就不支持了。</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-性能优化要考虑整体"><a class="markdownIt-Anchor" href="#53-性能优化要考虑整体"></a> 5.3. 性能优化要考虑整体</h2>
+<ol>
+<li>性能指标都是有<strong>成本</strong>的、<strong>安全和优化</strong>中寻找平衡</li>
+<li>性能指标以<strong>吞吐量</strong>为核心(每秒处理多少事务)，而尽量不用一个事务几秒能处理完成</li>
+<li>性能指标要考虑<strong>整体性</strong>
+<ol>
+<li>优化手段本身是有风险的，只不过潜在的风险可能没有被意识到罢了</li>
+<li>任何一个技术可以解决一个问题，但必然存在另一个问题的风险</li>
+<li>对于带来的风险，控制在可接受的范围才是有成果</li>
+<li>性能优化技术，使得性能变好，维持和变差是等概率的事件</li>
+<li>局部最优和全局最优的区别</li>
+</ol>
+</li>
+</ol>
+<h2 id="54-使用优化工具"><a class="markdownIt-Anchor" href="#54-使用优化工具"></a> 5.4. 使用优化工具</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<blockquote>
+<p>建议都尝试一下</p>
+</blockquote>
+<h2 id="55-整体层面的性能优化考虑"><a class="markdownIt-Anchor" href="#55-整体层面的性能优化考虑"></a> 5.5. 整体层面的性能优化考虑</h2>
+<ol>
+<li>问题一: CPU负载高, IO负载低
+<ol>
+<li>内存不够</li>
+<li>磁盘性能差(磁盘问题、raid设计不好、 raid降级)</li>
+<li><strong>SQL的问题</strong></li>
+<li><strong>并发锁机制的问题</strong></li>
+<li><strong>事务设计问题，大量小数据IO</strong></li>
+<li><strong>大量的全表扫描</strong></li>
+</ol>
+</li>
+<li>问题二:IO负载高，CPU负载低
+<ol>
+<li><strong>大量小的IO执行写操作</strong></li>
+<li><strong>Autocommit,产生大量小IO</strong></li>
+<li><strong>大量大的IO执行写操作</strong></li>
+<li><strong>SQL的问题</strong></li>
+<li>IO/PS磁盘限定一个每秒最大IO次数</li>
+</ol>
+</li>
+<li>问题三: IO和CPU负载都高
+<ol>
+<li>硬件不够用了</li>
+<li>SQL存在问题</li>
+<li><strong>性能问题，90%的问题来源都是程序员的问题</strong></li>
+<li>开发环境到生产环境是一场灾难</li>
+</ol>
+</li>
+</ol>
+<h2 id="56-sql优化的方向"><a class="markdownIt-Anchor" href="#56-sql优化的方向"></a> 5.6. SQL优化的方向</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec2/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="57-思考"><a class="markdownIt-Anchor" href="#57-思考"></a> 5.7. 思考</h2>
+<ol>
+<li>你对你常用的关系数据库关系系统中，去寻找一些针对优化的工具，去尝试使用一些性能的分析和监控工具(查看数据库官方Reference，首先使用官方的命令和工具)</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91/" class="category-chain-item">2021-数据库开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%80%A7%E8%83%BD/">#性能</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-数据库开发-Lec2-开发数据库的要点</div>
+      <div>https://stormbroken.github.io/2021/05/02/2021-Database-Development/2021-Database-Development-Lec2-%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A6%81%E7%82%B9/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月2日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/02/2021-Database-Development/2021-Database-Development-Lec3-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="2021-数据库开发-Lec3-索引结构及使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-数据库开发-Lec3-索引结构及使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/02/2021-Database-Development/2021-Database-Development-Lec1-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D/" title="2021-数据库开发-Lec1-课程介绍">
+                        <span class="hidden-mobile">2021-数据库开发-Lec1-课程介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1218 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-需求与商业模式分析-Book9-原型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-需求与商业模式分析-Book9-原型">
+<meta property="og:url" content="https://stormbroken.github.io/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book9-%E5%8E%9F%E5%9E%8B/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-需求与商业模式分析-Book9-原型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/7.png">
+<meta property="article:published_time" content="2021-01-17T11:15:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:38:01.923Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="需求">
+<meta property="article:tag" content="原型">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/2.png">
+  
+  
+  <title>2020-需求与商业模式分析-Book9-原型 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-17 19:15" pubdate>
+          2021年1月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-需求与商业模式分析-Book9-原型</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="book9-原型"><a class="markdownIt-Anchor" href="#book9-原型"></a> Book9-原型</h2>
+<h1 id="1-课程回顾"><a class="markdownIt-Anchor" href="#1-课程回顾"></a> 1. 课程回顾</h1>
+<ol>
+<li>需求获取的后半段：基于场景/用例，结合获取手段，展开需求获取</li>
+<li>获取手段之面谈：从用户处获得明确的要求
+<ol>
+<li>准备：背景资料，主题目标，选择通知对象，确定问题和类型</li>
+<li>问题类型：开放，封闭，程序性提示，探究，诱导，双筒，元问题</li>
+<li>问题准备：问题-目标-特征，角色-任务，开放-封闭</li>
+<li>主持：开始，主体，结束(礼貌，倾听，握手，控制，探究，观察，道具)，能够获得：事实和问题，对象的观点和感受，组织和个人的目标</li>
+<li>整理面谈报告，(半/非)结构化面谈</li>
+<li>优缺点：条件简单，内容丰富，建立友谊，主动参与=&gt;耗时，地理分散难实现，记忆与交流能力要求高，数据有偏差</li>
+<li>相关手段：群体面谈，调查问卷，头脑风暴</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-原型以及原型法概述"><a class="markdownIt-Anchor" href="#2-原型以及原型法概述"></a> 2. 原型以及原型法概述</h1>
+<h2 id="21-不确定性"><a class="markdownIt-Anchor" href="#21-不确定性"></a> 2.1. 不确定性</h2>
+<ol>
+<li>不确定性：因为对未来知识的了解有限，而无法确定某种决策的结果</li>
+<li>不确定性是广泛存在的
+<ol>
+<li>科学的目的是<strong>限定、解释不确定性</strong>，不是将<strong>不确定性转换为确定性</strong></li>
+<li>人们厌恶<strong>不确定性</strong>：不确定性意味着不完全可控</li>
+</ol>
+</li>
+<li>软件工程中存在着大量的不确定性，<strong>原型、迭代和验证</strong>(方法)是人们解决不确定性的主要手段</li>
+<li>软件工程中的不确定性
+<ol>
+<li>需求的不确定性</li>
+<li>需求原型、迭代需求、需求分析技术</li>
+<li>设计的不确定性(设计约束与设计决策)</li>
+<li>设计原型(体系结构原型)、迭代设计、设计技术</li>
+<li>构造的不确定性(编译错误与运行表现)</li>
+<li>算法原型、调试、程序语言</li>
+<li>测试的不确定性(缺陷分布)</li>
+<li>测试环境、测试技术</li>
+<li>管理的不确定性(时间、成本、风险…)</li>
+<li>管理技术</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-原型及原型法"><a class="markdownIt-Anchor" href="#22-原型及原型法"></a> 2.2. 原型及原型法</h2>
+<ol>
+<li>原型是一个系统，它<strong>内化了</strong>(capture)一个<strong>更迟系统(<strong>later system)的</strong>本质特征</strong>。原型系统通常被构造为不完整的系统，以在将来进行改进、补充或者替代。
+<ol>
+<li>如果在最终的物件(final artifact)产生之前，一个中间物件(mediate artifact)被用来在一定广度和深度范围内表现这个最终物件，那么这个中间物件就被认为是最终物件在<strong>该广度和深度上的原型</strong>。</li>
+<li>包括<strong>书面描绘、场景叙述、情节串联图板、幻灯演示、动画模拟、屏幕快照和程序代码</strong>等在内的各种被用来探索和论证软件系统功能的物件都是软件的原型</li>
+</ol>
+</li>
+<li>原型为涉众提供了一些真实的东西，或者至少提供了具有<strong>真实外观</strong>的东西。 原型使产品具有足够的真实性，可以使利益相关者提出否则可能会<strong>遗漏的要求</strong>。</li>
+<li>在系统开发中利用这些原型的行为都属于原型法。</li>
+</ol>
+<h2 id="23-软件工程中的原型"><a class="markdownIt-Anchor" href="#23-软件工程中的原型"></a> 2.3. 软件工程中的原型</h2>
+<ol>
+<li>演示原型(presentation prototype)
+<ol>
+<li>主要被用在启动项目阶段</li>
+<li>目的是让用户相信应用系统的开发是<strong>可行</strong>的</li>
+</ol>
+</li>
+<li>严格意义上的原型(prototype proper)
+<ol>
+<li>主要被用在<strong>分析需求</strong>阶段，探索和解决需求的不确定性。</li>
+<li>用来阐明用户界面或者系统功能的某些特定方面。</li>
+</ol>
+</li>
+<li>试验原型(breadboard prototype)
+<ol>
+<li>主要被用在<strong>构建系统</strong>阶段，探索和解决解决方案的不确定性。</li>
+<li>帮助开发者澄清他们所面对的一些和<strong>系统构建</strong>相关的技术问题。</li>
+</ol>
+</li>
+<li>引示系统原型(pilot system prototype)
+<ol>
+<li>会被开发在系统开发的各个阶段</li>
+<li>用作最终系统的<strong>构建核心</strong></li>
+</ol>
+</li>
+</ol>
+<h2 id="24-软件工程对原型及原型法的应用"><a class="markdownIt-Anchor" href="#24-软件工程对原型及原型法的应用"></a> 2.4. 软件工程对原型及原型法的应用</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="25-为什么要利用原型需求工程"><a class="markdownIt-Anchor" href="#25-为什么要利用原型需求工程"></a> 2.5. 为什么要利用原型：需求工程</h2>
+<ol>
+<li>帮助需求工程师及早解决需求的不确定性：
+<ol>
+<li>产品的用户对相关类别的产品没有经验，产品的细节需求存在着不确定性</li>
+<li>用户在完成工作的方式上仍然存在障碍，产品在整体方案的可行性上存在着不确定性</li>
+<li>用户在清晰说明他们的需求方面存在困难，这些相关的需求是有着不确定性的需求</li>
+<li>需求工程师在理解用户的需求上存在困难，在澄清和理解之前，这些需求存在着不确定性</li>
+<li>需求的可行性值得怀疑，即具体需求的可满足性存在着不确定性</li>
+<li>创新性产品，它们的基本需求是潜在的，有着很大的不确定性</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-使用原型法获取需求"><a class="markdownIt-Anchor" href="#3-使用原型法获取需求"></a> 3. 使用原型法获取需求</h1>
+<h2 id="31-原型方法过程"><a class="markdownIt-Anchor" href="#31-原型方法过程"></a> 3.1. 原型方法过程</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="311-原型方法过程确定原型需求"><a class="markdownIt-Anchor" href="#311-原型方法过程确定原型需求"></a> 3.1.1. 原型方法过程——确定原型需求</h3>
+<ol>
+<li>明确为什么要开发原型，拥有的起点是什么，期望的结束标准是什么？</li>
+<li>界定不确定性
+<ol>
+<li>可能发生的需求变更</li>
+<li>存在冲突的地方</li>
+<li>信息不充分的地方
+<ol>
+<li>部分需求之前不存在，难可视化</li>
+<li>细节需求方面存在不确定性</li>
+<li>产品的相应功能的可行性不确定</li>
+<li>不确定的需求，比如默认需求或潜在需求</li>
+<li>需求工程师理解需求上存在困难</li>
+<li>具体需求的可满足性存在不确定性</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>明确不确定的维度：外观(Look and Feel)、角色(Role)和实现(Implementation)
+<ol>
+<li>外观是指用户对原型物件的<strong>具体感觉体验</strong>，即用户在使用原型物件时会看到什么、听到什么和感觉到什么</li>
+<li>角色是指原型物件在<strong>用户工作中的价值</strong>，也就是说它为什么是对用户有用的。</li>
+<li>原型物件到底能够帮助用户完成什么样的工作</li>
+<li>实现是指原型物件完成功能的细节技术和方法</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-原型方法过程原型开发"><a class="markdownIt-Anchor" href="#32-原型方法过程原型开发"></a> 3.2. 原型方法过程——原型开发</h2>
+<ol>
+<li>依据原型的需求特点和开发目的，以最低的成本建立初始模型。
+<ol>
+<li>将探索<strong>不确定</strong>功能需求的原型构建得<strong>易于修改</strong>，分析差异性场景，区分用户熟练度。</li>
+<li>让探索可行性的原型收集充分的数据：原型在可以的情况下收集需要的信息。</li>
+<li>控制开发成本</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-原型方法过程原型评估"><a class="markdownIt-Anchor" href="#33-原型方法过程原型评估"></a> 3.3. 原型方法过程——原型评估</h2>
+<ol>
+<li>对上一阶段产生的原型进行评估，根据评估者的反馈判断原型是否满足结束标准，评估者一般是用户和开发者。</li>
+<li>使用脚本知道评估过程
+<ol>
+<li>原型实现功能的方式和你的想法一致吗</li>
+<li>有没有遗漏功能、异常处理</li>
+<li>有没有多余功能</li>
+<li>导航的逻辑性和完整性有问题吗</li>
+</ol>
+</li>
+<li>创造无偏见的环境，让评估人员畅所欲言，让评估人员认识到原型是基于缺陷需求开发的，期望他们能够对原型的不足、肯定和否定进行反馈。</li>
+<li>务必要让合适的人从恰当的角度来评估原型：注意当前在评估的目标，比如人机交互的易用性就不必在意菜单的完备性。</li>
+<li>观察评估人员使用原型的过程：观察自然的寻找倾向和寻找目标、迷惑的地方、容易出现错误的地方。</li>
+<li>需要获取的评估者反馈
+<ol>
+<li>评估者反应：观察、面谈和调查问卷</li>
+<li>评估者建议：对人机交互和功能等</li>
+<li>创新思想：潜在需求</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-原型方法过程原型修正"><a class="markdownIt-Anchor" href="#34-原型方法过程原型修正"></a> 3.4. 原型方法过程——原型修正</h2>
+<ol>
+<li>如果原型已经达到目的，则结束原型方法，否则根据评估者反馈的不足进行原型调整，调整结束后进行原型评估。
+<ol>
+<li>要依据评估人员的反馈</li>
+<li>要考虑事先的原型调整计划</li>
+</ol>
+</li>
+<li><strong>原型一定要开发的容易修改！</strong></li>
+</ol>
+<h1 id="4-原型法的使用要点"><a class="markdownIt-Anchor" href="#4-原型法的使用要点"></a> 4. 原型法的使用要点</h1>
+<ol>
+<li>坚决抛弃抛弃式原型</li>
+<li>控制原型成本</li>
+<li>善用故事板原型</li>
+<li>控制原型法风险</li>
+</ol>
+<h2 id="41-抛弃式原型与演化式原型"><a class="markdownIt-Anchor" href="#41-抛弃式原型与演化式原型"></a> 4.1. 抛弃式原型与演化式原型</h2>
+<ol>
+<li>探索式(exploratory)
+<ol>
+<li>以缺陷需求开始继而不断<strong>调整和修正</strong>需求的原型开发方式称为探索式</li>
+<li>要尽可能的调整各种<strong>设计选项</strong></li>
+</ol>
+</li>
+<li>实验式(experimental)
+<ol>
+<li>以清晰的用户需求和<strong>模糊的实现方法、实现效果、可行性</strong>开始，明确需求的可行性和技术实现方案</li>
+<li><strong>定义</strong>一个对原型的<strong>评估方法</strong>，确定评估的属性</li>
+</ol>
+</li>
+<li>演化式(evolutionary)
+<ol>
+<li>以清晰的原型化需求和项目积累下来的<strong>原型资产</strong>为开始</li>
+<li>原型化的需求，也有项目积累下来的原型资产</li>
+</ol>
+</li>
+<li>探索式和实验式方法产生的原型产品又被称为<strong>抛弃式原型</strong>
+<ol>
+<li>花费最小的代价，争取最快的速度</li>
+<li>可能会使用简易的开发工具和不成熟的构造技术</li>
+<li>可能会忽略或简化处理原型目的不相关的功能特征</li>
+<li>要坚决的抛弃</li>
+</ol>
+</li>
+<li>演化式原型方法产生的原型产品被称为<strong>演化式原型</strong>(evolutionary prototype)
+<ol>
+<li>质量要从一开始就能达到最终系统的要求</li>
+<li>要易于进行扩展和频繁改进，因此开发者必须重视演化式原型的设计</li>
+<li>仅应该被用于处理清晰的需求、规格说明和技术方案</li>
+</ol>
+</li>
+<li>因为基于不确定的需求基础，所以抛弃式原型难免反复修改，导致代码质量较低，应该坚决<strong>抛弃</strong>。</li>
+<li>抛弃式原型的贡献不在于它的代码，而是<strong>它所包含的内容</strong>，它说明了正确的需求和正确的技术方案，如果认识不到这一点，他们就只能得到低质量的代码，而丢失真正宝贵的内容</li>
+</ol>
+<h2 id="42-控制原型开发成本"><a class="markdownIt-Anchor" href="#42-控制原型开发成本"></a> 4.2. 控制原型开发成本</h2>
+<ol>
+<li>控制抛弃式原型的成本：不要过于<strong>详细</strong>地构建抛弃式原型，只要它能够满足原型制作的目标就足够了。要抵制住诱惑，也要顶住用户的压力，不要向抛弃式原型添加更多的功能。[Wiegers2003]</li>
+</ol>
+<h3 id="421-控制水平原型开发成本"><a class="markdownIt-Anchor" href="#421-控制水平原型开发成本"></a> 4.2.1. 控制水平原型开发成本</h3>
+<ol>
+<li>水平原型方法(horizontal prototyping)
+<ol>
+<li>它仅仅实现选定功能所有层次中的某些<strong>特定层次</strong></li>
+<li>建立的原型产品称为<strong>水平原型</strong>(horizontal prototype)</li>
+<li>要把注意力集中<strong>在概括性需求和工作流</strong>问题上</li>
+</ol>
+</li>
+<li>垂直原型方法(vertical prototyping)
+<ol>
+<li>它会触及到选定功能实现的<strong>所有层次</strong></li>
+<li>建立的原型产品称为垂直原型(vertical prototype)</li>
+<li>要保证真实实现它的各种功能</li>
+</ol>
+</li>
+<li>用<strong>尽可能低</strong>的成本开发水平原型
+<ol>
+<li>需求获取水平原型的常见层次
+<ol>
+<li>人机交互：关注用户的感觉体验，涉及看什么、听什么、感觉到什么</li>
+<li>功能与任务：关注用户的工作任务，即原型的使用能够为用户的工作带来哪些帮助，可以硬编码</li>
+<li>实现：考虑各种可能的功能实现方式，验证方法的技术可行性和用户反映。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="422-抛弃式原型鲲鹏起兮大型运输机运20研制纪实"><a class="markdownIt-Anchor" href="#422-抛弃式原型鲲鹏起兮大型运输机运20研制纪实"></a> 4.2.2. 抛弃式原型：“鲲鹏起兮―大型运输机运20研制纪实”</h3>
+<ol>
+<li>一天，唐长红去结构所，进门前看到设计员小李站在那里望着大楼发呆，嘴里还念念有词，关切地问：&quot;小李，哪儿不舒服？&quot;小李笑了笑：&quot;<strong>我负责的那条长桁，尽管设定了尺寸，但在电脑上怎么也体会不出它有多大，我出来找找感觉。</strong>&quot;唐长红心里&quot;咯噔&quot;了一下：<strong>缺乏感性认识，设计师开始怀疑自己了</strong>，缺乏自信绝对不是什么好现象。</li>
+<li>所谓<strong>物理样机</strong>，是<strong>根据设计方案</strong>制作出一个<strong>与真实飞机完全相同的大模型</strong>，<strong>让人直观了解未来飞机的样子</strong>。在数字化技术没有广泛应用之前，物理样机是飞机研制中的一个重要环节，在设计方案通过评审后，先搞一个物理样机，然后再转入工程研制阶段。</li>
+<li>使用数字化手段在<strong>计算机上建立一个与物理样机功能相当的数字化模型</strong>，<strong>这个模型具有和真飞机一样的真实度</strong>。我国首架虚拟样机就是由一飞院建立的耿汝光通过深入调查，<strong>觉得搞物理样机实有必要，貌似耽误了一些时间，但可以大大降低风险</strong></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="423-尽量使用简单的介质降低原型的成本"><a class="markdownIt-Anchor" href="#423-尽量使用简单的介质降低原型的成本"></a> 4.2.3. 尽量使用简单的介质降低原型的成本</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>低保真原型
+<ol>
+<li>纸面原型：无法和原型评估者形成互动效应，一般用来表达静态的物件。</li>
+<li>幻灯动画介质：多个直面原型集成，交互性不足以表达完全动态性。</li>
+</ol>
+</li>
+<li>基于快速语言工具和程序语言建立的原型具备相当的真实感，被称为高保真原型。</li>
+</ol>
+<h2 id="43-善用故事板原型"><a class="markdownIt-Anchor" href="#43-善用故事板原型"></a> 4.3. 善用故事板原型</h2>
+<h3 id="431-原型的表现"><a class="markdownIt-Anchor" href="#431-原型的表现"></a> 4.3.1. 原型的表现</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="432-故事板原型"><a class="markdownIt-Anchor" href="#432-故事板原型"></a> 4.3.2. 故事板原型</h3>
+<ol>
+<li>故事板最早是好莱坞在设计电影场景和卡通故事时使用的，卡通制作者通过勾画出一系列相连的图片来展示一个卡通故事，具有更直观、可视化的故事叙述能力</li>
+<li>将原来分散的功能与步骤组织成故事，让普通人能够更好地体验与评估</li>
+<li>原型和用例/场景通常结合使用[Mannio2001]：为需要探索和澄清的用例/场景建立故事板原型，或者依据故事板原型的评估结果建立清晰、明确的用例/场景描述</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>原型特别擅长的是组织能力
+<ol>
+<li>为需要探索和澄清的用例/场景建立故事板原型</li>
+<li>依据故事板原型评估结果建立清晰、明确的用例/场景描述</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/6.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/10.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h3 id="433-故事版原型构建"><a class="markdownIt-Anchor" href="#433-故事版原型构建"></a> 4.3.3. 故事版原型构建</h3>
+<ol>
+<li>明确故事板原型要素
+<ol>
+<li>角色(Who)：谁使用系统，包括用户、设备和其他系统等。</li>
+<li>内容(What)：用户与系统交互时执行的行为，系统与用户交互时发生的行为。</li>
+<li>方法(How)：描述交互的发生过程</li>
+</ol>
+</li>
+<li>建立不同类型的故事板原型
+<ol>
+<li>被动(Passive)故事板原型
+<ol>
+<li>&quot;讲&quot;故事，主线索+分镜头，功能展示，获取评估</li>
+<li>连环画</li>
+</ol>
+</li>
+<li>主动(Active)故事板原型
+<ol>
+<li>&quot;看&quot;故事，自动执行，创意展示，典型使用场景，评估细节</li>
+<li>漫画</li>
+</ol>
+</li>
+<li>交互(Interactive)故事板原型
+<ol>
+<li>&quot;体验&quot;故事</li>
+<li>网页</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-控制原型法风险"><a class="markdownIt-Anchor" href="#44-控制原型法风险"></a> 4.4. 控制原型法风险</h2>
+<ol>
+<li>原型方法最大优点是及早解决开发中不确定性</li>
+<li>原型方法复杂性导致减少风险的同时也引入了新的风险</li>
+<li>风险：
+<ol>
+<li>最大风险 <strong>成本失控</strong>：原型开发工作投入太多的工作，使得开发团队消耗了过多的时间和过大的成本</li>
+<li><strong>给用户造成错误印象</strong>：涉众看到了一个正在运行的原型，得出产品几乎已经完成的结论，从而提出快速交付产品的不当要求，不要将原型的功能开发的太好，以免用户提出&quot;交付&quot;的要求，不要交付抛弃式原型，除非产品要立即上市并且管理层愿意接为此带来的高额维护。</li>
+<li><strong>用户可能会被原型所表现出来的非功能特性遮蔽了眼睛</strong>：忽略了他们更应该重视的功能特性，过分关注协调性，而忽略了完备性和指导性。</li>
+<li><strong>在澄清需求不确定性的同时也可能会掩盖一些用户的假设</strong>，这些假设将会无从发现，建立原型时评估者会默认认为美观度、响应的速度、效率和性能得到满足，但是这在实际过程中可能被遗忘。</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-总结"><a class="markdownIt-Anchor" href="#5-总结"></a> 5. 总结</h1>
+<ol>
+<li>原型是软件开发当中消除<strong>不确定性风险</strong>的有效工具，是一种有效的需求获取方法</li>
+<li>原型的体系是复杂的，不同类型的原型具有不同的作用和创建要求，实践当中应该综合考虑各种应用因素选择合适的类别</li>
+<li>一个完整的原型方法过程可以帮助更有效的应用原型方法</li>
+<li>原型方法的应用可能会给项目带来相应的风险，需要妥善的加以解决</li>
+</ol>
+<h1 id="6-实例分析"><a class="markdownIt-Anchor" href="#6-实例分析"></a> 6. 实例分析</h1>
+<ol>
+<li>在开发过程中，因都是平时工作中接触的业务范围，因此开发时以为满足了功能需要，实现了软件预定的管理和统计功能，那么开发就是成功的</li>
+<li>其结果是，在软件测试阶段，各等级的用户都反映出相对一致的意见。其中，反映最多的就是系统维护和操作太复杂，甚至经常报告说服务器和软件不稳定，不匹配。经认真调研，发现问题虽然有一点，但绝非基层报告的那么严重，软件应该是可以满足日常工作的。</li>
+<li>结果：2003年，我处信息化还没有普及，尤其是基层领导，个别甚至是电脑盲。而我们的软件，为提高使用效率，设置了大量的快捷键操作方式，这让个别领导感觉难以接受。后来，我们对软件的操作界面和菜单进行了优化和简化，而用单选框选择代替了审批。通过一系列的修改和完善，反对该软件的人渐渐少了。</li>
+<li>在系统上线后，首先表达不满的是申请接水及变更业务的用户。我们发现，由于柜面人员需要向系统中录入申请信息并且扫描、上传部分重要文件，这延长了柜面办理业务的时间，造成用户业务申请的等待时间增长。</li>
+<li>我们在涉众识别的时候，遗漏那些不使用系统(非参与者)但是被影响的人，——在本项目中就是直接到柜面申请接水及变更业务的人。然而接水及变更业务的申请人是自来水公司的客户，非常重要。</li>
+<li>系统上线后，一线用户普遍向我们反映系统操作的风格不符合他们的习惯，使用起来不方便，造成他们操作效率很低。</li>
+<li>经过了解分析，我们发现：在对外服务平台项目之前，自来水公司内部开发人员开发了一套简单的对外服务管理系统。虽然该系统非常简单，功能有限，但是该系统已经使用了相当长的一段时间，用户已经习惯了该系统的操作风格。然而我们直接判断该系统是落后的，功能不健全的，我们要作一个全新的系统，所以没有过多的关注该系统</li>
+<li>当业务流程进入到与施工方相关的任务时，流程多半停滞下来，但现实中的因为仍在继续办理。经过了解，我们得知：由于系统中要求施工方填写的部分信息属于机密信息，但系统中并未对这些内容作保密处理。</li>
+<li>在系统上线前，我们需要将用户收集积累的水表信息导入到系统中。在导入时，我们发现用户提供的水表号信息有大量的重复现象。而在系统设计时，水表号是主键。这是一个非常严重的问题。</li>
+</ol>
+<h1 id="7-场景用例模型使用的注意事项top-ten-ways-project-teams-misuse-use-cases"><a class="markdownIt-Anchor" href="#7-场景用例模型使用的注意事项top-ten-ways-project-teams-misuse-use-cases"></a> 7. 场景/用例模型使用的注意事项<Top Ten Ways Project Teams Misuse Use Cases></h1>
+<ol>
+<li>不要打扰任何其他需求表示。
+<ol>
+<li>简而言之，使用多个视图将为您提供更丰富的上下文来满足用户需求</li>
+<li>用例不包括其他模型中发现的详细信息，例如数据属性和业务规则</li>
+</ol>
+</li>
+<li>让读者了解您的用例目标。
+<ol>
+<li>用例旨在模拟Actor与您的软件的交互。</li>
+<li>人类行为者不与系统交互以对数据库中的行进行CRUD。他们不考虑行和数据库。</li>
+<li>相反，Actor是根据更高级别的目标来考虑的，例如找出给予特定客户的折扣；这些目标反过来又为业务目标服务。</li>
+</ol>
+</li>
+<li>对用例的范围不明确。
+<ol>
+<li>用例范围的错误通常有两种：
+<ol>
+<li>用例未解决单个Actor目标，</li>
+<li>或用例不在您项目的范围之内，并且永远不应该首先进行详细说明。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>在用例文本中包括非功能性要求和用户界面详细信息。
+<ol>
+<li>团队在用例中常犯的一个错误是合并非功能性需求，例如响应时间和吞吐量信息，以及用户界面或原型详细信息，例如小部件操纵以及对窗口，按钮和图标的引用。</li>
+<li>您应该将该信息与相关用例相关联。</li>
+</ol>
+</li>
+<li>使用大量扩展，并将其包含在初始用例图中。
+<ol>
+<li>尽管具有包含和扩展语义的用例图可能对某些复杂的用例有用，但花时间指定用例文本，可视化用例内部和用例之间的关系以及使用多个需求模型会更有效率。</li>
+</ol>
+</li>
+<li>不必担心定义业务规则。
+<ol>
+<li>严重的误解：业务规则应该是用例的核心，并提供用例描述的过程背后的控制，推理，指导和决策。</li>
+<li>如果您未明确定义和分隔业务规则，则几乎肯定会导致它们错误，遗漏或难以更改。</li>
+</ol>
+</li>
+<li>不要让主题专家参与创建，审查或验证用例。
+<ol>
+<li>直接最终用户，业务主题专家，客户</li>
+<li>最终用户至少应通过用例演练来验证需求</li>
+</ol>
+</li>
+<li>如果让用户完全涉及用例定义，则只需&quot;执行&quot;即可。
+<ol>
+<li>用户要求不是凭空产生的。
+<ol>
+<li>业务目标，逆向工程，客户投诉和变更请求清单……</li>
+</ol>
+</li>
+<li>在将用户聚集在一起之前，您需要起草一些需求模型，即使它们是错误的或不完整的。</li>
+</ol>
+</li>
+<li>撰写详细的第一个也是唯一的用例草稿。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book9/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="10">
+<li>不要验证或验证您的用例。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E9%9C%80%E6%B1%82%E4%B8%8E%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E5%88%9B%E6%96%B0/" class="category-chain-item">2020-需求与商业模式创新</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E9%9C%80%E6%B1%82/">#需求</a>
+      
+        <a href="/tags/%E5%8E%9F%E5%9E%8B/">#原型</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-需求与商业模式分析-Book9-原型</div>
+      <div>https://stormbroken.github.io/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book9-%E5%8E%9F%E5%9E%8B/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book10-%E8%A7%82%E5%AF%9F%E5%92%8C%E6%96%87%E6%A1%A3%E5%AE%A1%E6%9F%A5/" title="2020-需求与商业模式分析-Book10-观察和文档审查">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-需求与商业模式分析-Book10-观察和文档审查</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book8-%E9%9D%A2%E8%B0%88/" title="2020-需求与商业模式分析-Book8-面谈">
+                        <span class="hidden-mobile">2020-需求与商业模式分析-Book8-面谈</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

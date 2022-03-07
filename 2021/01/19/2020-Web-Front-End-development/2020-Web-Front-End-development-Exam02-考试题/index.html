@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-Web前端开发-Exam02-考试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-Web前端开发-Exam02-考试题">
+<meta property="og:url" content="https://stormbroken.github.io/2021/01/19/2020-Web-Front-End-development/2020-Web-Front-End-development-Exam02-%E8%80%83%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-Web前端开发-Exam02-考试题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-19T11:01:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:44:29.260Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="考试">
+<meta property="article:tag" content="Web前端开发">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>2020-Web前端开发-Exam02-考试题 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-19 19:01" pubdate>
+          2021年1月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-Web前端开发-Exam02-考试题</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="exam02-考试题分型"><a class="markdownIt-Anchor" href="#exam02-考试题分型"></a> Exam02-考试题分型</h2>
+<h1 id="1-考试题2010"><a class="markdownIt-Anchor" href="#1-考试题2010"></a> 1. 考试题：2010</h1>
+<h2 id="11-问答题"><a class="markdownIt-Anchor" href="#11-问答题"></a> 1.1. 问答题</h2>
+<ol>
+<li>填代码与javascript布局和innerHtml有关</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>My First Web Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;demo&quot;</span>&gt;</span>A Paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;myFunction()&quot;</span>&gt;</span>点击这里<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">      <span class="hljs-keyword">function</span> <span class="hljs-title function_">myFunction</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;demo&quot;</span>).<span class="hljs-property">innerHTML</span>=<span class="hljs-string">&quot;My First JavaScript Function&quot;</span>;<span class="hljs-comment">//改变element内部文字</span></span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>正则表达式
+<ol>
+<li>不小于$10000.00：<code>[^[\$][1-9]0&#123;4,&#125;\.? 0*]</code></li>
+<li>数字和26个字母组成的字符：<code>[0-9a-zA-Z]+</code></li>
+<li>QQ号(从10000开始)：<code>[1-9\d&#123;4,&#125;]</code></li>
+</ol>
+</li>
+<li>session与cookie的区别：<a href = "http://www.cnblogs.com/shiyangxt/archive/2008/10/07/1305506.html">cookie 和session 的区别详解</a></li>
+<li>服务器与客户端通信的方式</li>
+<li>js的类型转换赋值题</li>
+</ol>
+<h2 id="12-简答题"><a class="markdownIt-Anchor" href="#12-简答题"></a> 1.2. 简答题</h2>
+<h3 id="121-什么是持久连接在http10和11中是如何描述的"><a class="markdownIt-Anchor" href="#121-什么是持久连接在http10和11中是如何描述的"></a> 1.2.1. 什么是持久连接？在http1.0+和1.1中是如何描述的？</h3>
+<h3 id="122-说明session和cookie的区别"><a class="markdownIt-Anchor" href="#122-说明session和cookie的区别"></a> 1.2.2. 说明session和cookie的区别</h3>
+<p>cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。</p>
+<h3 id="123-在浏览器和web服务器之间传送数据的方式有几种"><a class="markdownIt-Anchor" href="#123-在浏览器和web服务器之间传送数据的方式有几种"></a> 1.2.3. 在浏览器和web服务器之间传送数据的方式有几种</h3>
+<ol>
+<li>AJAX</li>
+<li>cookie</li>
+</ol>
+<h3 id="124-如何理解html结构的语义化"><a class="markdownIt-Anchor" href="#124-如何理解html结构的语义化"></a> 1.2.4. 如何理解html结构的语义化</h3>
+<ol>
+<li>语义化的HTML结构首先要强调HTML结构</li>
+<li>语义化的HTML结构其实很简单，首先掌握html中各个标签的语义</li>
+<li>好处：去掉或样式丢失的时候能让页面呈现清晰的结构：</li>
+<li>屏幕阅读器(如果访客有视障)会完全根据你的标记来“读”你的网页</li>
+<li>PDA、手机等设备可能无法像普通电脑的浏览器一样来渲染网页(通常是因为这些设备对CSS的支持较弱)</li>
+</ol>
+<h3 id="125-css规则的优先级算法是如何计算的"><a class="markdownIt-Anchor" href="#125-css规则的优先级算法是如何计算的"></a> 1.2.5. CSS规则的优先级算法是如何计算的</h3>
+<h3 id="126-为何在处理xhtml表单中数据验证如此重要有几种验证方式比较之"><a class="markdownIt-Anchor" href="#126-为何在处理xhtml表单中数据验证如此重要有几种验证方式比较之"></a> 1.2.6. 为何在处理XHTML表单中数据验证如此重要？有几种验证方式，比较之。</h3>
+<h3 id="127-试述bigpipe技术的基本原理"><a class="markdownIt-Anchor" href="#127-试述bigpipe技术的基本原理"></a> 1.2.7. 试述bigpipe技术的基本原理</h3>
+<h2 id="13-程序题"><a class="markdownIt-Anchor" href="#13-程序题"></a> 1.3. 程序题</h2>
+<ol>
+<li>判断比较结果</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&quot;1&quot;</span>==<span class="hljs-number">1</span><br><span class="hljs-string">&quot;1&quot;</span>==<span class="hljs-number">0</span><br><span class="hljs-string">&quot;1&quot;</span>===<span class="hljs-number">0</span><br><span class="hljs-string">&quot;a&quot;</span>==a<br><span class="hljs-number">123</span>==<span class="hljs-string">&quot;123&quot;</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>写运行结果</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">X=<span class="hljs-number">11</span><br>Y=<span class="hljs-string">&quot;number&quot;</span><br>M=x+y<br><span class="hljs-comment">// M=?</span><br></code></pre></td></tr></table></figure>
+<p>3.写运行结果</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$test</span>=<span class="hljs-string">&quot;aaaaa&quot;</span><br><span class="hljs-variable">$abc</span>=&amp;<span class="hljs-variable">$test</span><br><span class="hljs-title function_ invoke__">Unset</span>(<span class="hljs-variable">$test</span>)<br>Echo <span class="hljs-variable">$abc</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="14-问答题"><a class="markdownIt-Anchor" href="#14-问答题"></a> 1.4. 问答题</h2>
+<ol>
+<li>CSS sprite 是什么？ 谈谈这个技术的优缺点 CSS精灵、将网页的背景图片整合到一个图片中去，减少请求次数来减少延时。</li>
+<li>什么是网站重构？为何要重构？列举网站性能优化的手段</li>
+</ol>
+<h1 id="2-考试题2014"><a class="markdownIt-Anchor" href="#2-考试题2014"></a> 2. 考试题：2014</h1>
+<h2 id="21-缩写法"><a class="markdownIt-Anchor" href="#21-缩写法"></a> 2.1. 缩写法</h2>
+<ol>
+<li>html</li>
+<li>xml</li>
+<li>rest</li>
+<li>ajax</li>
+<li>ria</li>
+<li>svg</li>
+<li>xss</li>
+<li>wsdl</li>
+<li>mashup</li>
+</ol>
+<h2 id="22-简答题"><a class="markdownIt-Anchor" href="#22-简答题"></a> 2.2. 简答题</h2>
+<ol>
+<li>为什么不建议table布局：加载慢、书写复杂、不利于开发思维</li>
+<li>为什么使用css</li>
+<li>插件有什么坏处：支持很多复杂的特性(视频音频图像)插件可能安装失败、被禁用、被屏蔽，或者成为被攻击的对象。</li>
+<li>从SEO的角度来解释http状态301、302、404的理解</li>
+<li>js第三方库有什么增强功能</li>
+<li>js注册eventhandler有哪些方式</li>
+<li>表单验证是什么？有哪几种方式并比较</li>
+</ol>
+<h2 id="23-问答题"><a class="markdownIt-Anchor" href="#23-问答题"></a> 2.3. 问答题</h2>
+<ol>
+<li>html5新功能并列举</li>
+<li>bigpipe的原理和缺点：</li>
+<li>简述优化思路和php优化技巧</li>
+</ol>
+<h1 id="3-考试题2018"><a class="markdownIt-Anchor" href="#3-考试题2018"></a> 3. 考试题：2018</h1>
+<h2 id="31-名词解释"><a class="markdownIt-Anchor" href="#31-名词解释"></a> 3.1. 名词解释</h2>
+<ol>
+<li>HTML5</li>
+<li>URL</li>
+<li>DNS</li>
+<li>CDS：cds是指在计算机上，通过此种服务使各地的Internet客户在访问这些网站时，可以访问最接近本地缓存服务器中缓存的内容，从而缩短请求响应时间和网络延迟，减轻网站服务器的负载。</li>
+<li>SPA：单页Web应用（single page web application，SPA），就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序。</li>
+</ol>
+<h2 id="32-简答题"><a class="markdownIt-Anchor" href="#32-简答题"></a> 3.2. 简答题</h2>
+<h3 id="321-web30的特性"><a class="markdownIt-Anchor" href="#321-web30的特性"></a> 3.2.1. WEB3.0的特性</h3>
+<h3 id="322-http常用请求头-状态码"><a class="markdownIt-Anchor" href="#322-http常用请求头-状态码"></a> 3.2.2. HTTP常用请求头、状态码</h3>
+<ol>
+<li>是HTTP的报文头，报文头包含若干个属性，格式为“属性名:属性值”，服务端据此获取客户端的信息。</li>
+<li>与缓存相关的规则信息，均包含在header中</li>
+</ol>
+<h3 id="323-表单隐藏域的作用"><a class="markdownIt-Anchor" href="#323-表单隐藏域的作用"></a> 3.2.3. 表单隐藏域的作用</h3>
+<ol>
+<li>隐藏域在页面中对于用户是不可见的，在表单中插入隐藏域的目的在于收集或发送信息，以利于被处理表单的程序所使用。浏览者单击发送按钮发送表单的时候，隐藏域的信息也被一起发送到服务器。</li>
+<li>有些时候我们要给用户一信息，让他在提交表单时提交上来以确定用户身份，如sessionkey，等等．当然这些东西也能用cookie实现，但使用隐藏域就简单的多了．而且不会有浏览器不支持，用户禁用cookie的烦恼。</li>
+<li>有些时候一个form里有多个提交按钮，怎样使程序能够分清楚到底用户是按那一个按钮提交上来的呢？我们就可以写一个隐藏域，然后在每一个按钮处加上οnclick=”document.form.command.value=”xx”“然后我们接到数据后先检查command的值就会知道用户是按的那个按钮提交上来的。</li>
+<li>有时候一个网页中有多个form，我们知道多个form是不能同时提交的，但有时这些form确实相互作用，我们就可以在form中添加隐藏域来使它们联系起来。</li>
+<li>javascript不支持全局变量，但有时我们必须用全局变量，我们就可以把值先存在隐藏域里，它的值就不会丢失了。</li>
+<li>还有个例子，比如按一个按钮弹出四个小窗口，当点击其中的一个小窗口时其他三个自动关闭．可是IE不支持小窗口相互调用，所以只有在父窗口写个隐藏域，当小窗口看到那个隐藏域的值是close时就自己关掉。</li>
+</ol>
+<h3 id="324-闭包是什么适用环境有什么缺点"><a class="markdownIt-Anchor" href="#324-闭包是什么适用环境有什么缺点"></a> 3.2.4. 闭包是什么，适用环境？有什么缺点？</h3>
+<ol>
+<li>缺点：闭包会使函数中的变量保存在内存中,内存消耗很大,所以不能滥用闭包,解决办法是,退出函数之前,将不使用的局部变量删除。</li>
+</ol>
+<h3 id="325-css3的特性"><a class="markdownIt-Anchor" href="#325-css3的特性"></a> 3.2.5. CSS3的特性</h3>
+<h3 id="326-跨域问题是什么有什么解决方案"><a class="markdownIt-Anchor" href="#326-跨域问题是什么有什么解决方案"></a> 3.2.6. 跨域问题是什么？有什么解决方案？</h3>
+<h3 id="327-vanilla-js是什么有什么作用"><a class="markdownIt-Anchor" href="#327-vanilla-js是什么有什么作用"></a> 3.2.7. vanilla js是什么？有什么作用？</h3>
+<h3 id="328-如何进行密码加密"><a class="markdownIt-Anchor" href="#328-如何进行密码加密"></a> 3.2.8. 如何进行密码加密？</h3>
+<h2 id="33-问答"><a class="markdownIt-Anchor" href="#33-问答"></a> 3.3. 问答</h2>
+<h3 id="331-js的严格模式与普通模式有什么不同"><a class="markdownIt-Anchor" href="#331-js的严格模式与普通模式有什么不同"></a> 3.3.1. js的严格模式，与普通模式有什么不同？</h3>
+<h3 id="332-nodejs的优缺点适用场景什么是回调地狱如何避免"><a class="markdownIt-Anchor" href="#332-nodejs的优缺点适用场景什么是回调地狱如何避免"></a> 3.3.2. nodejs的优缺点？适用场景？什么是回调地狱?如何避免？</h3>
+<ol>
+<li>优点：
+<ol>
+<li>高并发（最重要的优点）</li>
+<li>适合I/O密集型应用</li>
+</ol>
+</li>
+<li>缺点：
+<ol>
+<li>不适合CPU密集型应用；CPU密集型应用给Node带来的挑战主要是：由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I/O无法发起；</li>
+</ol>
+</li>
+</ol>
+<h3 id="333-前端的趋势为什么要对web进行优化http11和http2的优化规则和主要方式分别有什么有什么不同"><a class="markdownIt-Anchor" href="#333-前端的趋势为什么要对web进行优化http11和http2的优化规则和主要方式分别有什么有什么不同"></a> 3.3.3. 前端的趋势？为什么要对web进行优化？http1.1和http/2的优化规则和主要方式分别有什么？有什么不同？</h3>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="category-chain-item">2020-Web前端开发</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%80%83%E8%AF%95/">#考试</a>
+      
+        <a href="/tags/Web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">#Web前端开发</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-Web前端开发-Exam02-考试题</div>
+      <div>https://stormbroken.github.io/2021/01/19/2020-Web-Front-End-development/2020-Web-Front-End-development-Exam02-%E8%80%83%E8%AF%95%E9%A2%98/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/01/2021-Data-Integration/2021-Data-Integration-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="2021-数据集成-消息中间件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-数据集成-消息中间件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/19/2020-Web-Front-End-development/2020-Web-Front-End-development-Exam01-Summary/" title="2020-Web前端开发-Exam01-Summary">
+                        <span class="hidden-mobile">2020-Web前端开发-Exam01-Summary</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1408 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-商务智能-Lecture1-Business Intelligence">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-商务智能-Lecture1-Business Intelligence">
+<meta property="og:url" content="https://stormbroken.github.io/2021/01/15/2020-Business-Intelligence/2020-Business-Intelligence-Lecture1-Business%20Intelligence/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-商务智能-Lecture1-Business Intelligence">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/13.png">
+<meta property="article:published_time" content="2021-01-15T11:01:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:36:23.807Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="商务智能">
+<meta property="article:tag" content="数据仓库">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/1.png">
+  
+  
+  <title>2020-商务智能-Lecture1-Business Intelligence - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-15 19:01" pubdate>
+          2021年1月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          70 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-商务智能-Lecture1-Business Intelligence</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lecture1-business-intelligence"><a class="markdownIt-Anchor" href="#lecture1-business-intelligence"></a> Lecture1-Business Intelligence</h2>
+<h1 id="1-商务智能的起源"><a class="markdownIt-Anchor" href="#1-商务智能的起源"></a> 1. 商务智能的起源</h1>
+<h2 id="11-数据库系统的发展"><a class="markdownIt-Anchor" href="#11-数据库系统的发展"></a> 1.1. 数据库系统的发展</h2>
+<ol>
+<li>1968年 IBM公司：层次IMS</li>
+<li>1969年 美CODASYL：网状DBTG标准</li>
+<li>1970年 IBM的E.F.Codd提出关系模型</li>
+<li>20世纪70年代以层次、网状为主流</li>
+<li>20世纪80年代关系系统逐渐代替层次与网状模型</li>
+<li>以关系型数据库为基础，建立大量业务系统和信息系统，累计大量数据</li>
+</ol>
+<h2 id="12-其他部分"><a class="markdownIt-Anchor" href="#12-其他部分"></a> 1.2. 其他部分</h2>
+<ol>
+<li>计算平台的发展
+<ol>
+<li>计算能力</li>
+<li>存储能力</li>
+<li>网络/非网络传输能力</li>
+</ol>
+</li>
+<li>采集手段的发展
+<ol>
+<li>基于光学的采集手段
+<ol>
+<li>二维码</li>
+<li>图像/视频</li>
+</ol>
+</li>
+<li>传感器、移动设备</li>
+<li>RFID等</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-数据爆炸"><a class="markdownIt-Anchor" href="#13-数据爆炸"></a> 1.3. 数据爆炸</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>至2010年，仅以Disk storage存储的数据量就将达到110,000,000 terabytes</li>
+<li>在2007年，人类能够存储<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2.9</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>20</mn></msup></mrow><annotation encoding="application/x-tex">2.9×10^{20}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>(295 EXABYTES)压缩字节，传输将近<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>21</mn></msup></mrow><annotation encoding="application/x-tex">2×10^{21}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>字节，并在通用计算机上每秒执行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6.4</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">6.4×10^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">.</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>条指令</li>
+</ol>
+<h2 id="14-exabytes"><a class="markdownIt-Anchor" href="#14-exabytes"></a> 1.4. EXABYTES</h2>
+<p>代表非常大量的数据</p>
+<h1 id="2-数据信息知识"><a class="markdownIt-Anchor" href="#2-数据信息知识"></a> 2. 数据，信息，知识</h1>
+<p>改善信息访问，以信息片段的形式存在。</p>
+<h2 id="21-知识"><a class="markdownIt-Anchor" href="#21-知识"></a> 2.1. 知识</h2>
+<ol>
+<li><strong>知识</strong>是头脑中的见识和背景，需要反思和综合，知识难以构造，难以在机器上捕获和转移，通常是<strong>默认信息</strong></li>
+<li>知识属于三者中的最高层的部分，是用来解释<strong>为什么信息会是这个样子</strong></li>
+<li>如果当前的<strong>数据分布</strong>仍然服从过去的<strong>数据规律</strong>，那么就证明过去的知识对未来仍然是有意义的，所以我们尝试构建出<strong>知识和预测</strong>，根据知识和信息做出<strong>决策</strong></li>
+</ol>
+<h2 id="22-信息"><a class="markdownIt-Anchor" href="#22-信息"></a> 2.2. 信息</h2>
+<ol>
+<li><strong>信息</strong>是具有相关性和目的的数据，我们需要对信息的意义达成共识，必须是被人为调制处理后的。</li>
+<li>我们使用信息去<strong>查看情况，事务机制，查看数据块</strong>。</li>
+</ol>
+<h2 id="23-数据"><a class="markdownIt-Anchor" href="#23-数据"></a> 2.3. 数据</h2>
+<ol>
+<li>数据是有关世界的客观事实，<strong>易于组织和捕获、转移</strong></li>
+<li>数据流中使用到什么样的数据，我就采集什么数据。</li>
+<li>了解实体的所有数据片段才能做出某些判断</li>
+</ol>
+<h2 id="24-知识值链"><a class="markdownIt-Anchor" href="#24-知识值链"></a> 2.4. 知识值链</h2>
+<h3 id="241-知识值链数据"><a class="markdownIt-Anchor" href="#241-知识值链数据"></a> 2.4.1. 知识值链：数据</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>数据使用01串的形式存储，以及很多的东西都是可以01串化的。</li>
+<li>5000这个数据本身单独拿出来是没有任何意义的，数据本身仅仅只是数据，只有当数据被表示为了结构的一部分时才有了更多的含义。</li>
+<li>大量的信息系统中，我们在使用数据的时候，人为地添加了关于这个数据的解释。</li>
+</ol>
+<h3 id="242-知识值链信息"><a class="markdownIt-Anchor" href="#242-知识值链信息"></a> 2.4.2. 知识值链：信息</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>将数据放在一起，相互认证相互解释相互绑定，有一个作为整体的趋势，让原本没有联系的数据，赋予<strong>上下文</strong>，使得数据的意义更加的明确，就成为了<strong>信息</strong>。</li>
+<li>信息基于数据，没有数据就没有信息。</li>
+</ol>
+<h3 id="243-知识值链知识"><a class="markdownIt-Anchor" href="#243-知识值链知识"></a> 2.4.3. 知识值链：知识</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>信息是<strong>知识的来源</strong>。</li>
+<li>知识(作为业务规则)：“如果我们知道申请人，并且他/她的信用良好，并且申请人的资产至少是贷款额的两倍，那么风险就很小，除非您发现确实很奇怪的事情，否则应该给予贷款”</li>
+</ol>
+<h1 id="3-企业的新问题区别于旧问题"><a class="markdownIt-Anchor" href="#3-企业的新问题区别于旧问题"></a> 3. 企业的新问题(区别于旧问题)</h1>
+<ol>
+<li><strong>企业决策</strong>应当源于企业和行业的<strong>真实状况</strong>，真实状况来源于<strong>真实完整</strong>的数据</li>
+<li>解决的问题：如何有效将企业收集的数据转化为信息，并最终为企业决策所使用？</li>
+<li>在数据爆炸和信息贫乏的前提下，需要解决信息的可访问性、及时性、表达格式和完整性问题。</li>
+</ol>
+<h2 id="31-以零售业为例"><a class="markdownIt-Anchor" href="#31-以零售业为例"></a> 3.1. 以零售业为例</h2>
+<ol>
+<li>杂货店(数十种商品，一两位员工)
+<ol>
+<li>日常操作：记账本、单机版信息管理系统</li>
+<li>决策操作：人工方式</li>
+</ol>
+</li>
+<li>小规模零售连锁(三五家同质零售商店)
+<ol>
+<li>日常操作：网络版信息管理系统</li>
+<li>决策操作：报表、信息工人</li>
+<li>信息的结构和复杂程度和杂货店相比没有变化，只是信息量有变化</li>
+</ol>
+</li>
+<li>复杂零售集团(不同地域，不同性质部门)
+<ol>
+<li>日常操作：各种信息管理系统、专门信息系统</li>
+<li>决策操作：如何做出决策操作</li>
+<li>各种不同领域产品的管理系统，进行横向纵向的复杂切分</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-早期解决方案"><a class="markdownIt-Anchor" href="#32-早期解决方案"></a> 3.2. 早期解决方案</h2>
+<ol>
+<li>第一代：基于主机的查询与报表
+<ol>
+<li>早期的商务信息系统使用<strong>批处理应用程序</strong>为商业用户提供它们所需的信息</li>
+<li>第一代的商务信息系统只能被诸如业务分析人员之类的<strong>熟悉数据且有相当计算机经验</strong>的人员使用</li>
+<li>管理人员很少能够使用这些早期的系统，他们必须依靠<strong>信息提供者</strong>来解答他们的问题，并给他们所需要的信息</li>
+</ol>
+</li>
+<li>第二代：数据仓库
+<ol>
+<li>第二代信息系统应用了<strong>数据仓库</strong>技术。从而使性能有了一个飞跃</li>
+<li>数据仓库被设计用来满足<strong>业务用户</strong>的需求，而不是每天的操作型应用</li>
+<li>数据仓库中的信息是<strong>干净的、一致的</strong>，并且这些信息以<strong>业务用户能理解</strong>的形式储存</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-为什么需要商务智能"><a class="markdownIt-Anchor" href="#33-为什么需要商务智能"></a> 3.3. 为什么需要商务智能</h2>
+<ol>
+<li>许多数据仓库解决方案共同的一个缺点就是系统的开发者<strong>总是专注于软件技术，而不是商业解决方案</strong>。因此，尽管他们所提供的产品能够很好地构建和访问数据仓库，但这些产品实施起来相当复杂
+<ol>
+<li>数据仓库产品通常很少针对<strong>特定</strong>的产业、应用领域提供解决<strong>特定</strong>的业务问题的软件包</li>
+<li>企业所需要的是<strong>应用程序和商务解决方案</strong>，而不仅仅是技术</li>
+</ol>
+</li>
+<li>数据仓库解决方案的另一个问题是：<strong>人们仍然过多地关心如何建立数据仓库，而不是如何对它进行访问</strong>，许多企业似乎觉得他们只需要建立起数据仓库并为用户提供合适的工具，问题就解决了。事实上，这只是个开始而已</li>
+</ol>
+<h2 id="34-商务智能"><a class="markdownIt-Anchor" href="#34-商务智能"></a> 3.4. 商务智能</h2>
+<ol>
+<li>商务：Buying and selling; commerce; trade</li>
+<li>智能：人工智能
+<ol>
+<li>图灵测试：商务智能需要通过图灵测试吗？商务本身就是人类最复杂的行为之一</li>
+<li>专家系统</li>
+</ol>
+</li>
+<li>BI的目标
+<ol>
+<li><strong>决策支持</strong>(Decision-making Supporting)</li>
+<li><strong>改善信息访问</strong>(Information access-improving)</li>
+</ol>
+</li>
+<li>定义一：从数据到信息，BI是将数据转换为有意义的内容的过程
+<ol>
+<li>BI通过把来自于不同系统的数据汇聚成一个单一的可获取的信息源——数据仓库(Data Warehouse, DW)。</li>
+<li>基于用户的要求，使用各种工具来分析数据仓库中的数据，并可视化其结果</li>
+</ol>
+</li>
+<li>定义二：<strong>访问、钻研、分析和挖掘数据获得启发和了解，从而提供更完善和更全面考虑的决策支持</strong>——Gartner Group</li>
+<li>定义三：<strong>商务智能</strong>是企业利用现代信息技术<strong>收集、管理和分析</strong>结构化和非结构化的商务数据和信息，<strong>创造和累计</strong>商务知识和见解，<strong>改善</strong>商务决策水平，<strong>采取</strong>有效的商务行动，<strong>完善</strong>各种商务流程，<strong>提升</strong>各方面商务绩效，<strong>增强</strong>综合竞争力的智慧和能力——《三位一体的商务智能：管理、技术与应用》
+<ol>
+<li><strong>结构化</strong>就是在数据库内的数据</li>
+<li><strong>非结构化</strong>就是不在数据库中的数据</li>
+</ol>
+</li>
+<li>商务智能系统不仅支持最新的<strong>IT技术</strong>，同时也提供了<strong>打包的应用解决方案</strong></li>
+<li>商务智能系统着眼于<strong>终端用户对业务数据</strong>的访问和业务数据的传送，它同时为<strong>信息提供者和信息消费者</strong>提供了支持</li>
+<li>商务智能系统支持对<strong>所有格式</strong>商务信息的访问，而不仅仅是那些存储在数据仓库中的信息。</li>
+<li>然而，在本课程中，我们集中关注IT技术，略过应用解决方案</li>
+<li>推荐阅读：<a href = "http://finance.sina.com.cn/business/20121112/103913645557.shtml">企业数据的秘密：大数据时代商业规则</a></li>
+</ol>
+<h1 id="4-商务智能的构件"><a class="markdownIt-Anchor" href="#4-商务智能的构件"></a> 4. 商务智能的构件</h1>
+<h2 id="41-bi的构件"><a class="markdownIt-Anchor" href="#41-bi的构件"></a> 4.1. BI的构件</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="411-信息与决策"><a class="markdownIt-Anchor" href="#411-信息与决策"></a> 4.1.1. 信息与决策</h3>
+<ol>
+<li><strong>信息持久化</strong>：如果不持久化信息，则会导致相应的信息挥发掉。</li>
+<li><strong>决策的时效性</strong>
+<ol>
+<li>正常决策：正常按照公司运转需要作出决策</li>
+<li>临时决策：突然发生了紧急事件，需要决策</li>
+</ol>
+</li>
+<li><strong>问题</strong>：有很多的信息和处理都是重复的，所以我们可以尝试将中间结果或者最终结果存储下来。</li>
+<li>多维数据可以等价为<strong>信息体</strong>。</li>
+</ol>
+<h3 id="412-访问与处理"><a class="markdownIt-Anchor" href="#412-访问与处理"></a> 4.1.2. 访问与处理</h3>
+<ol>
+<li>大量的数据库会存放在关系数据库中：用结构化查询语言对数据库进行查询，数据库本身<strong>不接触</strong>信息采集的人员。</li>
+<li>关系数据库是可以<strong>双重定制</strong>的，比如查询考勤率，因此应当提供查询工具。</li>
+<li>联机查询：Analytie Application、OLAP(Online Analytical Processing)</li>
+<li>数据挖掘：可以属于商务智能也可以不属于。</li>
+</ol>
+<h3 id="413-etl数据集成的代名词"><a class="markdownIt-Anchor" href="#413-etl数据集成的代名词"></a> 4.1.3. ETL：数据集成的代名词</h3>
+<ol>
+<li>因为我们需要将<strong>非结构化、半结构化和结构化文件解析并存储</strong>，这些文件可能<strong>编码不同</strong>，不仅仅是<strong>字符编码</strong>，还可以是我们的一些<strong>约定</strong>，他们是我们的大项文件的组成部分</li>
+<li>ETL的含义
+<ol>
+<li>E(Extract)：理解、排查错误</li>
+<li>T(Transform)：转换</li>
+<li>L(Load)：装载</li>
+</ol>
+</li>
+<li>ETL过程中可能出现的问题
+<ol>
+<li>错误的检查识别：有部分数据是显然违背了数据预定义或者常识，应该识别出来。</li>
+<li>同名问题：主键是否可能出现重名问题，比如同姓名，身份证号相同等等。</li>
+<li>点名问题：点名记录中，有的是按照时分秒点名、有的不点名、有的不精确到秒、有的是通过小测试点名(多包含一个小测试成绩)</li>
+</ol>
+</li>
+<li>数据仓库会有很多的备份，而不是一个，互为冗余关系，底层数据计算可以得到上层的聚合数据</li>
+<li>N 对 N 的关系</li>
+<li>扩展阅读
+<ol>
+<li><a herf = "https://blog.csdn.net/jianzhang11/article/details/104240047/">(推荐)ETL的基础知识，看完你就全明白了！</a></li>
+<li><a href = "https://www.jianshu.com/p/72e395d8cb33">数据仓库ODS、DW和DM概念区分</a></li>
+<li><a href = "https://www.cnblogs.com/yjd_hycf_space/p/7772722.html">ETL讲解(很详细！！！)</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="42-bi的构件图示"><a class="markdownIt-Anchor" href="#42-bi的构件图示"></a> 4.2. BI的构件图示</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>第一部分：<strong>数据源</strong></li>
+<li>第二部分：<strong>数据获取</strong>
+<ol>
+<li>最重要的ETL</li>
+<li>用数据建模工具和其他工具进行管理</li>
+<li>使用元数据类型来决定数据的形式</li>
+</ol>
+</li>
+<li>第三部分：<strong>数据存储和管理</strong>：所有的数据都应该涵盖在这些数据中，一半的数据存储和管理 + 信息获取。</li>
+<li>第四部分：<strong>信息获取</strong>：这部分已经成为信息
+<ol>
+<li>和主题相关的数据项</li>
+<li>主题：拥有共同上下文的综合体</li>
+</ol>
+</li>
+</ol>
+<h2 id="43-数据源"><a class="markdownIt-Anchor" href="#43-数据源"></a> 4.3. 数据源</h2>
+<ol>
+<li>商务智能体系中的所有数据均来源于<strong>数据源</strong></li>
+<li>数据源包括
+<ol>
+<li><strong>操作型数据库</strong>：大量数据都来源于这个之中，用来存放每一次操作产生的数据的备份的数据库</li>
+<li><strong>历史数据</strong>：当前操作型数据被构建前(系统数据化前)的数据信息化后进入数据仓库，比如大量的数据在失效后转储到低效低成本的存储中去，比如五年前的交易数据。</li>
+<li><strong>外部数据</strong>:企业或者组织的边界
+<ol>
+<li>操作型环境下绝大多数情况下是没有外部数据的</li>
+<li>决策性环境下一般会用到外部数据。</li>
+<li>外部数据被需要的情况：
+<ol>
+<li>计算销售情况、传统菜单的成本盈利</li>
+<li>如果我们打算推出樱花虾套餐，我们需要调研竞品(其他公司有没有做过)用来决定要不要做。</li>
+<li>某些产品或者行为可能会面临政策等问题的影响。</li>
+</ol>
+</li>
+<li>比如合作伙伴的相关信息也应该包含在之中。</li>
+</ol>
+</li>
+<li><strong>数据仓库中的信息</strong>：数据仓库本身是数据的上游
+<ol>
+<li>自身怎么成为自身的数据来源？这个数据仓库可能是外部的某些数据仓库。这个数据仓库还可能是自己的数据仓库(中间结果会被再次使用到)</li>
+<li>这个数据仓库可能分析是用户自身数据的相关数据来分析相应的标签，这个标签可能也被后续很多方面用到。</li>
+</ol>
+</li>
+<li><strong>相关的数据库和数据结构</strong>：任何可以分析的数据</li>
+</ol>
+</li>
+<li>数据源存在于不同的平台，既可以是格式化的也可以是非格式化的</li>
+</ol>
+<h2 id="44-数据仓库概要"><a class="markdownIt-Anchor" href="#44-数据仓库概要"></a> 4.4. 数据仓库：概要</h2>
+<ol>
+<li>数据仓库是BI的重要组成部分和数据基础</li>
+<li>其典型工作是要对<strong>集成、清洗、聚集、预计算和查询</strong>任务所需要的大量数据进行批处理</li>
+<li>其主要技术包括
+<ol>
+<li>数据提取、转换和装载(extract, translation and load，ETL)</li>
+<li>数据管理</li>
+<li>数据访问</li>
+<li>元数据</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="441-数据仓库etl"><a class="markdownIt-Anchor" href="#441-数据仓库etl"></a> 4.4.1. 数据仓库：ETL</h3>
+<ol>
+<li>数据抽取、转换和装载(ETL)的过程
+<ol>
+<li>辨识与<strong>主题</strong>相关的原始数据：
+<ol>
+<li><strong>有用</strong>的数据：数据源的数据是<strong>可靠</strong>的，有一定百分比可以保证有效性，比如QQ的年龄。</li>
+<li><strong>主题</strong>：是相对<strong>主观</strong>的评价，比如我们认为某一个字段是无用的，那么就不应该在这部分使用。</li>
+<li>这个步骤是相对困难的。</li>
+</ol>
+</li>
+<li>开发数据抽取策略：正确和完整的数据(E)</li>
+<li>将原始数据转换为目标规格(T)</li>
+<li>将原始数据加载到预定目标区域(L)</li>
+</ol>
+</li>
+<li>数据目标
+<ol>
+<li><strong>原子层(Atomic Layer)和集成数据</strong>：
+<ol>
+<li>每一条操作的数据，详细程度。</li>
+<li>计算资源不是无限的情况下，我们可以没有<strong>集成数据</strong>，集成数据是提前计算出来的需要用的数据，比如特定大小的图盘</li>
+</ol>
+</li>
+<li><strong>数据集市(Data Market)</strong> ：
+<ol>
+<li>数据仓库是一个<strong>大而全</strong>的数据备份，是所有分析人员的主观的分析集合</li>
+<li>一般会超过个人的需要：不应该让所有的底层人员可以拿到所有的数据，因此大多数情况下不会使用到所有的数据仓库，用到数据集市即可，比如4S店和集团做决策的区别</li>
+<li>所有的人都访问数据仓库会导致效率低。</li>
+</ol>
+</li>
+<li><strong>操作数据存储(Operational Data Storage, ODS)</strong>
+<ol>
+<li>产生出来的大量的操作数据是不会直接进入数据仓库，因为没有预留资源，也没有办法做到<strong>准实时</strong>。</li>
+<li>隔一段时间，完成一次ETL，保证数据仓库的<strong>一致性</strong>。这就意味着当前的数据仓库的数据并不会和最新的操作数据一致。</li>
+<li><strong>操作数据存储</strong>：数据仓库的补充，是一个准实时的仓库，允许使用还未进入数据仓库的数据。</li>
+</ol>
+</li>
+<li><strong>缓冲区(Staging Area)</strong>：处于性能考虑，在BI中放置一定的缓冲区，保证数据更有效不丢失的处理</li>
+</ol>
+</li>
+</ol>
+<h3 id="442-数据仓库数据管理"><a class="markdownIt-Anchor" href="#442-数据仓库数据管理"></a> 4.4.2. 数据仓库：数据管理</h3>
+<ol>
+<li>涉及到数据的存储，索引和备份</li>
+<li>管理的数据的范围
+<ol>
+<li>关系数据库中的数据</li>
+<li>数据立方体(Data Cube)中的<strong>多维数据</strong>(multi-dimensional data)</li>
+</ol>
+</li>
+</ol>
+<h3 id="443-数据仓库数据访问"><a class="markdownIt-Anchor" href="#443-数据仓库数据访问"></a> 4.4.3. 数据仓库：数据访问</h3>
+<ol>
+<li>一种或多种访问数据仓库中的数据的方式。
+<ol>
+<li>需要结合需求进行分析，将客观的数据的处理流程全部信息化，比如收银员的收银流程。</li>
+<li>所有的分析是没有客观的流程的，比如筛选流程可以是不同(筛选法，筛选方式不同)</li>
+</ol>
+</li>
+<li>面向多种商业用户
+<ol>
+<li>行政管理人员</li>
+<li>商务分析人员</li>
+<li>操作经理</li>
+<li>临时终端用户</li>
+<li>其他</li>
+</ol>
+</li>
+<li>需要支持多种<strong>访问方式</strong>以及<strong>分析和展现工具</strong>
+<ol>
+<li>查询和报告工具</li>
+<li>桌面OLAP</li>
+<li>关系OLAP</li>
+<li>多维OLAP</li>
+<li>数据挖掘</li>
+<li>基于仪表盘和基于代理技术等方面的客户决策支持界面</li>
+</ol>
+</li>
+<li>程序员不应该再插手这部分。</li>
+</ol>
+<h3 id="444-数据仓库元数据"><a class="markdownIt-Anchor" href="#444-数据仓库元数据"></a> 4.4.4. 数据仓库：元数据</h3>
+<ol>
+<li><strong>元数据是关于数据的数据，是如何管理数据仓库的重要数据</strong>。
+<ol>
+<li>描述了数据的结构、内容、编码、索引等内容</li>
+<li>表名，系统名，索引，数据结构，编码，ID，…</li>
+</ol>
+</li>
+<li>种类
+<ol>
+<li>关于数据源的元数据</li>
+<li>关于数据模型的元数据</li>
+<li>关于数据仓库映射的元数据
+<ol>
+<li>数据仓库外部的映射关系，比如1映射给女，0映射给男</li>
+<li>数据仓库内部也存在映射关系：比如简单数据和聚集数据之间</li>
+</ol>
+</li>
+<li>关于数据仓库使用的元数据：每一个信息体中的每一个信息的含义</li>
+</ol>
+</li>
+<li>元数据管理是针对元数据的管理，使用DBMS(关系型、对象、对象-关系)进行管理</li>
+</ol>
+<h2 id="45-分析和展现层"><a class="markdownIt-Anchor" href="#45-分析和展现层"></a> 4.5. 分析和展现层</h2>
+<blockquote>
+<p>针对信息的分析和展现</p>
+</blockquote>
+<ol>
+<li>报表和查询</li>
+<li>联机分析处理(OLAP)</li>
+<li>数据统计</li>
+<li>数据挖掘</li>
+</ol>
+<h3 id="451-报表和查询"><a class="markdownIt-Anchor" href="#451-报表和查询"></a> 4.5.1. 报表和查询</h3>
+<ol>
+<li>针对不同商业用户的报表和查询：尤其是非信息处理专业的商业用户</li>
+<li>需要具备定制报表和定制查询的能力</li>
+<li>包含非限定的报表和查询种类</li>
+</ol>
+<h3 id="452-联机分析处理olap"><a class="markdownIt-Anchor" href="#452-联机分析处理olap"></a> 4.5.2. 联机分析处理(OLAP)</h3>
+<ol>
+<li>联机分析处理提供一种快速的、交互式的、相互融合的信息访问方式，不仅可以回答 “who?”，&quot;what?“之类的问题， 而且可以回答&quot;how?”，&quot;why?&quot;之类的问题</li>
+<li>具有以下特点：
+<ol>
+<li>对数据进行<strong>多维审视</strong>的能力：背景越复杂，会导致当前处理和决策就越复杂。</li>
+<li><strong>精密计算能力</strong>：所有的视图需要在有效的时间内将所有图计算出来并显示给分析人员。</li>
+<li><strong>时间智能</strong></li>
+</ol>
+</li>
+<li>OLAP的基本分析操作
+<ol>
+<li>切片</li>
+<li>切块</li>
+<li>旋转</li>
+<li>数据概括(roll up)</li>
+<li>数据细化(drill down)</li>
+</ol>
+</li>
+</ol>
+<h3 id="453-数据统计"><a class="markdownIt-Anchor" href="#453-数据统计"></a> 4.5.3. 数据统计</h3>
+<ol>
+<li>数据统计是将数据中含有的信息概括为<strong>统计值</strong>：例如<strong>最大值、最小值、平均值</strong>等具有特殊含义的值</li>
+<li>典型的数据统计方法
+<ol>
+<li>关系分析</li>
+<li>要素分析</li>
+<li>回归分析</li>
+</ol>
+</li>
+<li>数据存储的是多维信息体，我们拿到的视图是多维的，我们也可以进行相应的对比分析。</li>
+</ol>
+<h3 id="454-数据挖掘"><a class="markdownIt-Anchor" href="#454-数据挖掘"></a> 4.5.4. 数据挖掘</h3>
+<ol>
+<li><strong>数据挖掘</strong>就是对数据库或数据仓库中<strong>蕴涵的、未知的、非平凡的、有潜在应用价值</strong>的模式或规则的提取
+<ol>
+<li>基于数据库和数据仓库是<strong>任意</strong>的，也可以<strong>不面向如上两个</strong>。一般是面向数据库和数据仓库，如果没有数据库和数据仓库，则需要将构建这二者的相应的操作都做一遍</li>
+<li><strong>这些模式(规则)的提取</strong>：不要求是有效的模式，不要求规则是公理</li>
+<li><strong>蕴涵</strong>：一定是有隐含对应的关系
+<ol>
+<li>不能告诉你解释：因为不支持对当前的数据集(未知)的解释</li>
+<li>不能不告诉你解释，因为是根据之前的数据集的解释</li>
+</ol>
+</li>
+<li><strong>未知的</strong>：是没有发现的规律</li>
+<li><strong>非平凡</strong>：有一定的概率是对的，有一定的概率是错的，在当前的数据集上有一定的百分比成立</li>
+<li><strong>潜在应用价值</strong>：当前数据挖掘的结果，如果不能有一个所谓的未知性，那么是不存在潜在的应用价值的。</li>
+</ol>
+</li>
+<li>用于发掘数据中<strong>隐藏的模式</strong>：数据的规律是针对这一部分数据和相似数据是成立的，但是对于其数据不一定是成立的。</li>
+<li>需要借鉴各种相关领域的理论和方法</li>
+<li>用于发现<strong>隐藏模式</strong>的算法既可以是自动进行，也可以在人工指导下完成</li>
+<li>数据挖掘方法
+<ol>
+<li><strong>特征化与区分</strong>：特征工程</li>
+<li><strong>关联规则挖掘</strong>：若干个不同规律出现的频繁程度，A在则B一定在。</li>
+<li><strong>分类挖掘</strong>：根据已有分类标签来提取分类规律，建立一般数据和分类标签的映射。</li>
+<li><strong>聚类挖掘</strong>：将用户分为几个小的类别，但是不确定会将同学们分为什么类别，根据特性拆分为小组。</li>
+<li><strong>时序和挥发性数据挖掘</strong>：有些数据是具有时序性的，有些数据是没有必要进行持久化，挥发性数据可能需要我们进行一定的决策，但是有一些时序性数据需要是在线的。</li>
+<li><strong>异常分析</strong>：上面五点是通过对一般的数据进行分析，部分时候异常信息会包含有较多的信息量，比如有一位同学四处进行大额汇款(出现异常情况，和日常消费习惯不一样)</li>
+</ol>
+</li>
+<li>面向的数据类型(其他的数据挖掘方式)
+<ol>
+<li>关系型数据
+<ol>
+<li>事务型数据库</li>
+<li>数据仓库</li>
+</ol>
+</li>
+<li>文本数据挖掘</li>
+<li>Web挖掘</li>
+<li>空间数据挖掘</li>
+<li>多媒体数据挖掘</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-商务智能解决方案"><a class="markdownIt-Anchor" href="#5-商务智能解决方案"></a> 5. 商务智能解决方案</h1>
+<h2 id="51-ibm"><a class="markdownIt-Anchor" href="#51-ibm"></a> 5.1. IBM</h2>
+<blockquote>
+<p>DB2 Data Warehouse Enterprise Edition</p>
+</blockquote>
+<ol>
+<li>数据仓库引擎：一般架设在成熟的数据库上
+<ol>
+<li>DB2 UDB Enterprise Server Edition – 通用海量并行数据仓库</li>
+<li>DB2 UDB Data Partitioning Feature – 数据分区部件</li>
+</ol>
+</li>
+<li>EII与ETL
+<ol>
+<li>DB2 Information Integrator Standard Edition – 信息集成中间件</li>
+<li>DB2 Warehouse Manager Standard Edition － 数据仓库ETCL工具</li>
+</ol>
+</li>
+<li>查询和多维分析：OLAP
+<ol>
+<li>DB2 Query Patroller – 基于成本的查询负载管理工具</li>
+<li>DB2 Cube Views – OLAP元数据交换工具及物化查询表生成器</li>
+</ol>
+</li>
+<li>数据挖掘
+<ol>
+<li>DB2 Intelligent Miner Scoring – 数据挖掘评分工具</li>
+<li>DB2 Intelligent Miner Modeler – 数据挖掘建模工具</li>
+<li>DB2 Intelligent Miner Visualization – 数据挖掘模型图示化工具</li>
+</ol>
+</li>
+<li>前端分析
+<ol>
+<li>IBM Office Connect Analytical/Enterprise Web Edition – Excel多维分析插件</li>
+<li>DB2 Alphablox 前端应用开发组件</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-oracle"><a class="markdownIt-Anchor" href="#52-oracle"></a> 5.2. Oracle</h2>
+<blockquote>
+<p>Oracle 业务智能企业增强版 (EE)</p>
+</blockquote>
+<ol>
+<li>Oracle BI Server：常见的企业业务模型和抽象层</li>
+<li>Oracle BI Answers：即席查询和报表</li>
+<li>Oracle BI Interactive Dashboards：高交互性信息板，用于访问业务智能和应用程序内容</li>
+<li>Oracle BI Delivers：主动式业务活动监视和警报</li>
+<li>Oracle BI Disconnected Analytics：针对移动专业人员的完整分析功能</li>
+<li>Oracle BI Publisher(以前称为 XML Publisher)：企业报表和&quot;点对点&quot;报表的分发</li>
+<li>Oracle BI Briefing Books：信息板页面快照，用于在离线模式下查看和共享</li>
+<li>Hyperion Interactive Reporting：直观且高度互动的即席报表</li>
+<li>Hyperion SQR Production Reporting：批量生成高质量的格式化报表</li>
+<li>Hyperion Financial Reporting：图书级质量的格式化财务和管理报表</li>
+<li>Hyperion Web Analysis：基于 Web 的联机分析处理 (OLAP) 分析、演示和报告</li>
+</ol>
+<h2 id="53-其他"><a class="markdownIt-Anchor" href="#53-其他"></a> 5.3. 其他</h2>
+<ol>
+<li>Microsoft
+<ol>
+<li>Microsoft SQL Server Business Intelligence (BI) platform
+<ol>
+<li>SQL Server Management studio，数据库管理工具</li>
+<li>SQL Server BI studio，商务智能解决方案工具(可以去看看)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Sybase:Sybase IQ解决方案</li>
+<li>SAP:SAP NetWeaver Business Intelligence</li>
+<li>云平台:HIVE</li>
+</ol>
+<h2 id="54-hdfs"><a class="markdownIt-Anchor" href="#54-hdfs"></a> 5.4. HDFS</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="55-map-reduce"><a class="markdownIt-Anchor" href="#55-map-reduce"></a> 5.5. Map Reduce</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="56-hive"><a class="markdownIt-Anchor" href="#56-hive"></a> 5.6. HIVE</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="6-商务智能的发展"><a class="markdownIt-Anchor" href="#6-商务智能的发展"></a> 6. 商务智能的发展</h1>
+<h2 id="61-商务智能的重要地位"><a class="markdownIt-Anchor" href="#61-商务智能的重要地位"></a> 6.1. 商务智能的重要地位</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/11.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/12.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec1/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>Banking | Communications &amp; Media：大型垄断制企业会垄断这部分，有商务智能的部分。</li>
+<li>Government:政府不以盈利为目的，可以收集到各个方面的数据，人口普查(操作型数据库收集)，进行决策支持</li>
+</ol>
+<h2 id="62-商务智能的发展方向"><a class="markdownIt-Anchor" href="#62-商务智能的发展方向"></a> 6.2. 商务智能的发展方向</h2>
+<ol>
+<li><strong>分布式</strong>的商务智能：逻辑意义上的分布式商务智能，希望有一个大而全的数据仓库。</li>
+<li><strong>插件化</strong>集成的商务智能：尽力减少人工成本，没有办法解决的，以下为两个困难的事情
+<ol>
+<li>即使我们有两个一模一样的企业，由于分析人员的主观性不同，也会导致数据仓库中的主题是不同的；主题内的数据特征也可以是不一样的；两个企业之间的数据库可能也有一定差异。</li>
+<li>每一个企业的数据环境可能是不一样的，但是对于数据仓库可能比较麻烦。</li>
+</ol>
+</li>
+<li><strong>大众化</strong>的商务智能：可能只有很少部分的人可能会用到商务智能，在有限资源下进行决策，大多数决策是不需要在线的，
+<ol>
+<li>战术决策的支持：汽车等</li>
+<li>个人商务智能工具：根据个人情况进行决策</li>
+</ol>
+</li>
+<li>在线商务智能：在线数据挖掘
+<ol>
+<li>考虑计算资源</li>
+<li>数据结构也需要能够保证在线</li>
+</ol>
+</li>
+<li>零滞后的商务智能
+<ol>
+<li>时效性：数据仓库是定时刷新的。</li>
+<li>做一年的决策时，半天的数据是无关紧要的(如果没有发生重大事件)，但是</li>
+<li>个人做下半天的决策时，上半天的数据是很重要的，比如上午已经购买，但是没入库，这时候需要保证零滞后的商务智能(至少尽可能减少滞后性)</li>
+</ol>
+</li>
+<li>非结构化数据基础上的商务智能</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/" class="category-chain-item">2020-商务智能</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E5%95%86%E5%8A%A1%E6%99%BA%E8%83%BD/">#商务智能</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">#数据仓库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-商务智能-Lecture1-Business Intelligence</div>
+      <div>https://stormbroken.github.io/2021/01/15/2020-Business-Intelligence/2020-Business-Intelligence-Lecture1-Business%20Intelligence/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月15日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/15/2020-Business-Intelligence/2020-Business-Intelligence-Lecture2-Data%20Warehouse/" title="2020-商务智能-Lecture2-Data Warehouse">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-商务智能-Lecture2-Data Warehouse</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/02/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-Exam-%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%80%BB%E7%BB%93/" title="2020-嵌入式系统导论-Exam-嵌入式总结">
+                        <span class="hidden-mobile">2020-嵌入式系统导论-Exam-嵌入式总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

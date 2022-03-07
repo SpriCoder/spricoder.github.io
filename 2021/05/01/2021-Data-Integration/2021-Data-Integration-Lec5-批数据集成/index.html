@@ -1,0 +1,1702 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-数据集成-Lec5-批数据集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-数据集成-Lec5-批数据集成">
+<meta property="og:url" content="https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-Lec5-%E6%89%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-数据集成-Lec5-批数据集成">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/21.png">
+<meta property="article:published_time" content="2021-05-01T11:05:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:15.328Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="存储">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="批处理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/1.png">
+  
+  
+  <title>2021-数据集成-Lec5-批数据集成 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-01 19:05" pubdate>
+          2021年5月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          87 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-数据集成-Lec5-批数据集成</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="批数据集成"><a class="markdownIt-Anchor" href="#批数据集成"></a> 批数据集成</h2>
+<h1 id="1-批数据集成简介"><a class="markdownIt-Anchor" href="#1-批数据集成简介"></a> 1. 批数据集成简介</h1>
+<h2 id="11-批数据集成"><a class="markdownIt-Anchor" href="#11-批数据集成"></a> 1.1. 批数据集成</h2>
+<ol>
+<li>批数据集成
+<ol>
+<li>静态数据集</li>
+<li>数据被组织成&quot;批&quot;地（时间窗口）</li>
+<li>周期性的迁移到另一个系统（专门的数据端）</li>
+<li>抽取、转换、集成为通用数据格式</li>
+<li>持久化集成数据</li>
+</ol>
+</li>
+<li>应用
+<ol>
+<li>数据仓库</li>
+<li>数据分析等数据服务应用</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-特征"><a class="markdownIt-Anchor" href="#12-特征"></a> 1.2. 特征</h2>
+<ol>
+<li>特点
+<ol>
+<li>时效性要求不高（时间窗口较大）</li>
+<li>数据精确性要求高</li>
+<li>数据有长久的价值</li>
+</ol>
+</li>
+<li>必要性
+<ol>
+<li>整合分散、过量冗余、不一致的数据，提供完整、准确、易共享的数据系统。</li>
+<li>解决信息孤岛问题，提高数据使用价值</li>
+<li>提供高支持管理决策能力的数据服务</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>底层数据结构透明：对数据访问等消费应用提供了统一接口，无需暴露底层数据结构</li>
+<li>高性能和扩展性：把数据集成和数据访问分成了两个过程，因此访问时数据已经处于准备好的状态。</li>
+<li>数据集成后提供真正单一数据视图</li>
+<li>高可重用性：由于有了实际的物理存储，数据可以为各种应用提供可重用的数据视图，而不用担心底层实际的数据源的可用性。</li>
+<li>数据管控能力加强，降低管理成本</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-基本问题"><a class="markdownIt-Anchor" href="#13-基本问题"></a> 1.3. 基本问题</h2>
+<ol>
+<li>一致性
+<ol>
+<li>数据一致性</li>
+<li>语义一致性</li>
+</ol>
+</li>
+<li>异构性
+<ol>
+<li>数据源的异构性</li>
+<li>数据模式的异构性</li>
+<li>数据类型的异构性（eg:浮点数float/double）</li>
+<li>取值的异构性（eg:性别0/1 F/M）</li>
+<li>语义的异构性（eg:不同数据的id）</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>容错性:各个数据源有很强的自治性,它们可以在不通知集成系统的前提下改变自身的结构和数据，不要<code>select *</code>这样子发生迁移、扩展时不会出现问题。</li>
+<li>可伸缩性</li>
+</ol>
+<h2 id="14-框架"><a class="markdownIt-Anchor" href="#14-框架"></a> 1.4. 框架</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>spark的数据库如何确定</li>
+<li>spark的文件节点的确定
+<ol>
+<li>sqoop</li>
+<li>flume</li>
+</ol>
+</li>
+</ol>
+<h2 id="15-案例"><a class="markdownIt-Anchor" href="#15-案例"></a> 1.5. 案例</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-采集-迁移工具"><a class="markdownIt-Anchor" href="#2-采集-迁移工具"></a> 2. 采集、迁移工具</h1>
+<h2 id="21-sqoop"><a class="markdownIt-Anchor" href="#21-sqoop"></a> 2.1. Sqoop</h2>
+<h3 id="211-sqoop简介"><a class="markdownIt-Anchor" href="#211-sqoop简介"></a> 2.1.1. Sqoop简介</h3>
+<ol>
+<li>什么是Sqoop
+<ol>
+<li>Sqoop：SQL–to–Hadoop</li>
+<li>Sqoop项目始于2009年，早期为Hadoop的第三方模块，后来成为Apache的独立项目</li>
+<li>Sqoop是一个主要在Hadoop和关系数据库之间进行批量数据迁移的工具</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>版本：Sqoop1与Sqoop2完全不兼容</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2111-sqoop1"><a class="markdownIt-Anchor" href="#2111-sqoop1"></a> 2.1.1.1. Sqoop1</h4>
+<ol>
+<li>优点
+<ol>
+<li>架构简单</li>
+<li>部署简单</li>
+<li>功能全面</li>
+<li>稳定性较高</li>
+<li>速度较快</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>访问方式单一</li>
+<li>命令行方式容易出错，格式紧耦合</li>
+<li>安全机制不够完善，存在密码泄露风险</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2112-sqoop2"><a class="markdownIt-Anchor" href="#2112-sqoop2"></a> 2.1.1.2. Sqoop2</h4>
+<ol>
+<li>优点
+<ol>
+<li>访问方式多样</li>
+<li>集中管理连接器</li>
+<li>安全机制较完善</li>
+<li>支持多用户</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>架构较复杂</li>
+<li>部署较繁琐</li>
+<li>稳定性一般</li>
+<li>速度一般</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="212-sqoop原理"><a class="markdownIt-Anchor" href="#212-sqoop原理"></a> 2.1.2. Sqoop原理</h3>
+<ol>
+<li>数据导入：RDBMS-&gt;Hadoop</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>数据导出：Hadoop-&gt;RDBMS</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="213-sqoop使用"><a class="markdownIt-Anchor" href="#213-sqoop使用"></a> 2.1.3. Sqoop使用</h3>
+<ol>
+<li>Sqoop安装
+<ol>
+<li>需要准备Java JDK和Hadoop</li>
+<li>需要准备数据库驱动，比如：下载mysql的数据库驱动，移动到Sqoop的lib目录中</li>
+</ol>
+</li>
+<li>下载安装Sqoop，修改配置</li>
+<li>验证Sqoop，输入命令：<code>sqoop version</code></li>
+</ol>
+<h3 id="214-sqoop基本用法"><a class="markdownIt-Anchor" href="#214-sqoop基本用法"></a> 2.1.4. Sqoop基本用法</h3>
+<h4 id="2141-列出databases"><a class="markdownIt-Anchor" href="#2141-列出databases"></a> 2.1.4.1. 列出databases</h4>
+<ul>
+<li>明文密码：</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqooplist-databases \<br>--connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/ \</span><br><span class="hljs-comment">--username USER \</span><br><span class="hljs-comment">--password PASSWD;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>输入密码：</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqooplist-databases \<br>--connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/ \</span><br><span class="hljs-comment">--username USER \</span><br><span class="hljs-comment">-P</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>密码文件</li>
+</ul>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqooplist-databases \<br><span class="hljs-params">--connect</span> jdbc<span class="hljs-function">:mysql</span>:<span class="hljs-string">//IP</span><span class="hljs-function">:PORT</span>/ \<br><span class="hljs-params">--username</span> USER \<br><span class="hljs-params">--password-file</span> file:<span class="hljs-string">/temp</span><br></code></pre></td></tr></table></figure>
+<h4 id="2142-列出数据库的所有表"><a class="markdownIt-Anchor" href="#2142-列出数据库的所有表"></a> 2.1.4.2. 列出数据库的所有表</h4>
+<ul>
+<li>明文密码：</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqooplist-tables \<br>--connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br><span class="hljs-comment">--username USER \</span><br><span class="hljs-comment">--password PASSWD;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>输入密码：</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqooplist-tables \<br>--connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/ testDB\</span><br><span class="hljs-comment">--username USER \</span><br><span class="hljs-comment">-P</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>密码文件：</li>
+</ul>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqooplist-tables \<br><span class="hljs-params">--connect</span> jdbc<span class="hljs-function">:mysql</span>:<span class="hljs-string">//IP</span><span class="hljs-function">:PORT</span>/testDB\<br><span class="hljs-params">--username</span> USER \<br><span class="hljs-params">--password-file</span> file:<span class="hljs-string">/temp</span><br></code></pre></td></tr></table></figure>
+<h4 id="2143-全量数据导入"><a class="markdownIt-Anchor" href="#2143-全量数据导入"></a> 2.1.4.3. 全量数据导入</h4>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sqoop import \<br>  <span class="hljs-attr">--connect</span> jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br>  <span class="hljs-attr">--username</span> USER \<br>  <span class="hljs-attr">--password</span> PASSWD \<br>  <span class="hljs-attr">--query</span> <span class="hljs-string">&quot;select * from testdbwhere \$CONDITIONS&quot;</span> \<br>  <span class="hljs-attr">--target-dir</span>/<span class="hljs-selector-tag">input</span> \<br>  <span class="hljs-attr">--fields-terminated-by</span> <span class="hljs-string">&quot;\\01&quot;</span> \<br>  <span class="hljs-attr">--hive-drop-import-delims</span>\<br>  <span class="hljs-attr">--null-string</span> <span class="hljs-string">&quot;\\N&quot;</span> \<br>  <span class="hljs-attr">--null-non-string</span> <span class="hljs-string">&quot;\\N&quot;</span> \<br>  <span class="hljs-attr">--split-by</span> id \<br>  -m <span class="hljs-number">6</span> \<br></code></pre></td></tr></table></figure>
+<ul>
+<li>参数说明
+<ul>
+<li><code>--query</code>：sql查询语句</li>
+<li><code>--target-dir</code>：hdfs目标目录</li>
+<li><code>--hive-drop-import-delims</code>：删除数据中包含的Hive默认分隔符（^A, ^B, \n）</li>
+<li><code>--null-string</code>：string类型空值的替换符（Hive中Null用\n表示）</li>
+<li><code>--null-non-string</code>：非string类型空值的替换符</li>
+<li><code>--split-by</code>：数据切片字段（int类型，m&gt;1时必须指定）</li>
+<li><code>-m</code>：Mapper任务数，默认为4</li>
+</ul>
+</li>
+</ul>
+<h4 id="2144-基于递增列的增量数据导入append"><a class="markdownIt-Anchor" href="#2144-基于递增列的增量数据导入append"></a> 2.1.4.4. 基于递增列的增量数据导入(Append)</h4>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqoop <span class="hljs-keyword">import</span> \<br>  --connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br><span class="hljs-comment">  --username USER \</span><br><span class="hljs-comment">  --password PASSWD \</span><br><span class="hljs-comment">  --query &quot;select * from table1 where \$CONDITIONS&quot; \</span><br><span class="hljs-comment">  --target-dir/input \</span><br><span class="hljs-comment">  --split-by id \</span><br><span class="hljs-comment">  -m 6 \</span><br><span class="hljs-comment">  --incremental append \</span><br><span class="hljs-comment">  --check-column id \</span><br><span class="hljs-comment">  --last-value 4</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>参数说明
+<ul>
+<li><code>--incremental append</code>：基于递增列的增量导入（将递增列值大于阈值的所有数据增量导入Hadoop）</li>
+<li><code>--check-column</code>:递增列（int）</li>
+<li><code>--last-value</code>:阈值（int）</li>
+</ul>
+</li>
+</ul>
+<h4 id="2145-基于时间列的增量数据导入lastmodified方式"><a class="markdownIt-Anchor" href="#2145-基于时间列的增量数据导入lastmodified方式"></a> 2.1.4.5. 基于时间列的增量数据导入（LastModified方式）</h4>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sqoop import \<br>  <span class="hljs-attr">--connect</span> jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br>  <span class="hljs-attr">--username</span> USER \<br>  <span class="hljs-attr">--password</span> PASSWD \<br>  <span class="hljs-attr">--query</span> <span class="hljs-string">&quot;select * from table1 where \$CONDITIONS&quot;</span> \<br>  <span class="hljs-attr">--target-dir</span>/<span class="hljs-selector-tag">input</span> \<br>  <span class="hljs-attr">--split-by</span> id \<br>  -m <span class="hljs-number">1</span> \<br>  <span class="hljs-attr">--incremental</span> lastmodified\<br>  <span class="hljs-attr">--merge-key</span> id \<br>  <span class="hljs-attr">--check-column</span> <span class="hljs-selector-tag">time</span> \<br>  <span class="hljs-attr">--last-value</span> <span class="hljs-string">&quot;2020-05-01 00:00:00&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>参数说明
+<ul>
+<li><code>--incremental lastmodified</code>：基于时间列的增量导入（将时间列大于等于阈值的所有数据增量导入Hadoop）</li>
+<li><code>--merge-key</code>:合并列（主键，合并键值相同的记录）</li>
+<li><code>--check-column</code>:时间列（timestamp）</li>
+<li><code>--last-value</code>:阈值（timestamp）</li>
+</ul>
+</li>
+</ul>
+<h2 id="22-flume"><a class="markdownIt-Anchor" href="#22-flume"></a> 2.2. Flume</h2>
+<h3 id="221-flume简介"><a class="markdownIt-Anchor" href="#221-flume简介"></a> 2.2.1. Flume简介</h3>
+<ol>
+<li>什么是Flume
+<ol>
+<li>Flume是一个分布式海量日志采集、聚合和传输系统</li>
+<li>Flume是由cloudera软件公司产出的可分布式日志收集系统，后与2009年被捐赠了apache软件基金会，为hadoop相关组件之一。</li>
+</ol>
+</li>
+<li>特点
+<ol>
+<li>基于事件的海量数据采集</li>
+<li>数据流模型：Source-&gt;Channel-&gt;Sink</li>
+<li>事务机制：支持重读重写，保证消息传递的可靠性</li>
+<li>内置丰富插件：轻松与各种外部系统集成</li>
+<li>高可用：Agent主备切换</li>
+<li>Java实现：开源，优秀的系统框架设计，模块分明，易于开发</li>
+</ol>
+</li>
+<li>应用场景</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="222-flume原理"><a class="markdownIt-Anchor" href="#222-flume原理"></a> 2.2.2. Flume原理</h3>
+<h4 id="2221-基本概念"><a class="markdownIt-Anchor" href="#2221-基本概念"></a> 2.2.2.1. 基本概念</h4>
+<ol>
+<li>Event：事件，最小数据传输单元，由Header和Body组成</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>Agent
+<ol>
+<li>代理，JVM进程，最小运行单元</li>
+<li>由Source、Channel、Sink三个核心组件构成</li>
+<li>负责将外部数据源产生的数据以Event的形式传输到目的地</li>
+</ol>
+</li>
+<li>Source
+<ol>
+<li>对接各种外部数据源，将采集到的数据封装成Event，然后写入Channel</li>
+<li>一个Source可向多个Channel发送Event</li>
+<li>Flume内置类型丰富的Source，包括avro、exec、jms、spooldir、netcat、sequence generator、syslog、kafka、http、legacy、自定义。</li>
+</ol>
+</li>
+<li>Channel
+<ol>
+<li>Event暂存容器，负责保存Source发送的Event，直至被Sink成功读取，可以存放在memory、jdbc、file、kafka channel等</li>
+<li>为了平衡Source采集、Sink读取的速度，可视为Flume内部的消息队列</li>
+<li>线程安全并具有事务性，支持Source写失败重写和Sink读失败重读</li>
+</ol>
+</li>
+<li>Sink
+<ol>
+<li>负责从Channel读取Event，然后将其写入目的地，目的地既可以是外部存储，也可以是下一阶段的Agent。包括hdfs、logger、avro、ipc、file、null、hbase、Kafka Sink自定义。</li>
+<li>一个Sink只能从一个Channel中读取Event</li>
+<li>Sink成功读取Event后，向Channel提交事务，Event被删除，否则Channel会等待Sink重新读取</li>
+</ol>
+</li>
+<li>映射关系：
+<ol>
+<li>1个Source --&gt; 多个Channel</li>
+<li>1个Channel --&gt; 多个Sink</li>
+<li>1个Sink --&gt; 1个Channel</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="2222-数据流"><a class="markdownIt-Anchor" href="#2222-数据流"></a> 2.2.2.2. 数据流</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>越长越容易出错</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>扇入流</th>
+<th>扇出流</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/14.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+<td><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/15.png" srcset="/img/loading.gif" lazyload alt="" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="223-flume使用"><a class="markdownIt-Anchor" href="#223-flume使用"></a> 2.2.3. Flume使用</h3>
+<ol>
+<li>安装
+<ol>
+<li>运行环境：JDK1.7及以上版本</li>
+<li>下载安装Flume，修改配置</li>
+<li>验证Flume
+<ol>
+<li>在Flume安装目录下，运行命令./bin/flume-ng version，查看Flume版本信息</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Agent配置示例</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">/*定义Agent组件名*/</span><br>a1<span class="hljs-selector-class">.sources</span> = r1<br>a1.sinks= k1<br>a1.channels= c1 <br><span class="hljs-comment">/*配置Souce */</span><br>a1<span class="hljs-selector-class">.sources</span><span class="hljs-selector-class">.r1</span><span class="hljs-selector-class">.type</span> = netcat <span class="hljs-comment">// Source类型为netcat, 监听指定的Socket端口</span><br>a1<span class="hljs-selector-class">.sources</span><span class="hljs-selector-class">.r1</span><span class="hljs-selector-class">.bind</span> = localhost<br>a1<span class="hljs-selector-class">.sources</span><span class="hljs-selector-class">.r1</span>.port= <span class="hljs-number">44444</span><br><span class="hljs-comment">/*配置Sink */</span><br>a1<span class="hljs-selector-class">.sinks</span><span class="hljs-selector-class">.k1</span><span class="hljs-selector-class">.type</span> = logger <span class="hljs-comment">// Sink类型为logger, 将Event输出到控制台</span><br><span class="hljs-comment">/*配置Channel */</span><br>a1<span class="hljs-selector-class">.channels</span><span class="hljs-selector-class">.c1</span><span class="hljs-selector-class">.type</span> = memory <span class="hljs-comment">// Channel类型为memory, Event缓存在内存中</span><br>a1<span class="hljs-selector-class">.channels</span><span class="hljs-selector-class">.c1</span><span class="hljs-selector-class">.capacity</span> = <span class="hljs-number">1000</span><br>a1<span class="hljs-selector-class">.channels</span><span class="hljs-selector-class">.c1</span>.transactionCapacity= <span class="hljs-number">100</span><br><span class="hljs-comment">/*设置Source、 Sink和Channel的关系*/</span><br>a1<span class="hljs-selector-class">.sources</span><span class="hljs-selector-class">.r1</span>.channels= c1<br>a1<span class="hljs-selector-class">.sinks</span><span class="hljs-selector-class">.k1</span> channel=c1 <span class="hljs-comment">//一个Sink只能连接一个Channel</span><br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>针对不同source、channel、sink类型的配置自行搜索</li>
+<li>Flume运行步骤
+<ol>
+<li>编写Agent配置文件（*.conf）</li>
+<li>运行Agent，命令如下：
+<ol>
+<li><code># bin/flume-ng agent --confconf--conf-file example.conf--name a1 -D flume.root.logger= INFO, console</code></li>
+<li><code>--conf</code>：Agent配置文件目录</li>
+<li><code>--conf-file</code>：Agent配置文件名（*.conf）</li>
+<li><code>--name</code>：Agent名称</li>
+<li><code>-D</code>：JVM参数</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-etl"><a class="markdownIt-Anchor" href="#3-etl"></a> 3. ETL</h1>
+<h2 id="31-etl-简介"><a class="markdownIt-Anchor" href="#31-etl-简介"></a> 3.1. ETL 简介</h2>
+<ol>
+<li>全称：Extract-Transform-Load</li>
+<li>定义：
+<ol>
+<li>用来描述数据从来源端，经过萃取、转换、加载，至目的端的过程。</li>
+<li>将数据从孤立的数据源中采集出来，汇集到可被计算平台高效访问的目的地。</li>
+</ol>
+</li>
+<li>其他
+<ol>
+<li>常用在<strong>数据仓库</strong>，但不限于数仓。</li>
+<li>整个流程可用<strong>任何语言</strong>开发完成。</li>
+<li>常与<strong>ELT</strong>（Extract-Load-Transform）混用，通常数据量越大、转换逻辑越复杂、目的端数据库运算能力越强，越倾向使用ELT，以便运用目的端数据库的并行处理能力。</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-etl-应用"><a class="markdownIt-Anchor" href="#32-etl-应用"></a> 3.2. ETL 应用</h2>
+<ol>
+<li>业务场景
+<ol>
+<li>汇总业务交易数据</li>
+<li>将应用数据从旧系统迁移到新系统</li>
+<li>整合近期公司收购或合并的数据</li>
+<li>整合来自外部供应商、合作伙伴的数据</li>
+</ol>
+</li>
+<li>技术领域
+<ol>
+<li>数据仓库（Data Warehouse）</li>
+<li>决策支持系统（Decision Support System）</li>
+<li>联机分析处理（Online Analytical Processing）</li>
+<li>数据挖掘（Data Mining）</li>
+<li>商务智能（Business Intelligence）</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-etl-过程"><a class="markdownIt-Anchor" href="#33-etl-过程"></a> 3.3. ETL 过程</h2>
+<ol>
+<li>Extract（不同的数据源 —&gt; OperationalDataStore）
+<ol>
+<li>大量调研
+<ol>
+<li>数据来自几个业务系统？</li>
+<li>系统各自数据库服务器运行什么DBMS？</li>
+<li>存在多少手工数据？</li>
+<li>存在多少非结构化数据？</li>
+</ol>
+</li>
+<li>抽取方案
+<ol>
+<li>与DW的数据库系统相同的数据源：直接连接，select 语句直接访问</li>
+<li>与DW的数据库系统不同的数据源
+<ol>
+<li>直接连接</li>
+<li>将源数据导出.txt/.xls后，再将这些文件导入ODS</li>
+<li>通过程序接口完成</li>
+</ol>
+</li>
+<li>增量更新：对于数据量大的系统，利用时间戳，增量抽取</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Transform（Cleaning、Transform）
+<ol>
+<li>数据清洗（是一个反复的过程，需要不断修正）
+<ol>
+<li>不完整的数据（名称、区域信息等）
+<ol>
+<li>补全</li>
+</ol>
+</li>
+<li>错误的数据（数值输成全角字符、日期越界等）
+<ol>
+<li>用SQL语句找出后，在业务系统修正后抽取</li>
+</ol>
+</li>
+<li>重复的数据：
+<ol>
+<li>将重复字段导出，交由客户确认</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>数据转换
+<ol>
+<li>转换不一致数据
+<ol>
+<li>不同业务系统相同类型的数据要统一</li>
+</ol>
+</li>
+<li>转换数据粒度
+<ol>
+<li>将业务系统数据按照数据仓库粒度进行聚合</li>
+</ol>
+</li>
+<li>商务规则计算
+<ol>
+<li>数据指标</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Load
+<ol>
+<li>Transform 的工作量约占2/3</li>
+<li>数据的加载一般是数据清洗了之后，直接写入数据仓库中去</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-etl工具"><a class="markdownIt-Anchor" href="#34-etl工具"></a> 3.4. ETL工具</h2>
+<ol>
+<li>Datastage
+<ol>
+<li>IBM 公司的商业软件，最专业的ETL工具</li>
+<li>价格不菲，适合大规模的ETL 应用</li>
+<li>使用难度：★★★★</li>
+</ol>
+</li>
+<li>Informatica
+<ol>
+<li>商业软件，相当专业的ETL 工具</li>
+<li>价格比Datastage 便宜一点，也适合大规模的ETL 应用</li>
+<li>使用难度：★★</li>
+</ol>
+</li>
+<li>Kettle
+<ol>
+<li>免费，开源</li>
+<li>纯Java 编写，只需JVM 即可部署，可跨平台、扩展性好</li>
+<li>使用难度：★★</li>
+</ol>
+</li>
+<li>其他
+<ol>
+<li>DatePipeline、Talend、Datax、Oracle Goldengate</li>
+<li>自己探索</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-etl-注意事项"><a class="markdownIt-Anchor" href="#35-etl-注意事项"></a> 3.5. ETL 注意事项</h2>
+<ol>
+<li>数据连接：数据源的数据库技术不一致</li>
+<li>性能
+<ol>
+<li>集中式架构扩展性差</li>
+<li>分布式架构扩展性强</li>
+</ol>
+</li>
+<li>转换灵活
+<ol>
+<li>匹配、合并、更改数据非常重要</li>
+</ol>
+</li>
+<li>数据质量
+<ol>
+<li>数据质量决定产品质量上界</li>
+</ol>
+</li>
+<li>批、流一体的数据融合
+<ol>
+<li>数据是按触发器获取，还是按时间间隔获取</li>
+<li>若企业对数据的实时性要求高，则需考虑流处理能力</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-数据存储"><a class="markdownIt-Anchor" href="#4-数据存储"></a> 4. 数据存储</h1>
+<h2 id="41-文件存储系统hdfs"><a class="markdownIt-Anchor" href="#41-文件存储系统hdfs"></a> 4.1. 文件存储系统HDFS</h2>
+<h3 id="411-hdfs简介"><a class="markdownIt-Anchor" href="#411-hdfs简介"></a> 4.1.1. HDFS简介</h3>
+<ol>
+<li>什么是HDFS
+<ol>
+<li>Hadoop分布式文件系统（Hadoop Distributed File System）</li>
+<li>HDFS是Apache Hadoop的核心子项目</li>
+<li>HDFS是GFS的开源实现</li>
+<li>Master/slave架构</li>
+</ol>
+</li>
+<li>设计目标
+<ol>
+<li>运行在大量廉价商用机器上，提供容错机制：故障检测、快速自动恢复机制</li>
+<li>简单可靠的聚合模型：一次写入多次读取，支持追加，不允许修改，保证数据一致性</li>
+<li>流式数据访问：批量读而非随机读，关注吞吐量而非时间</li>
+<li>可靠存储和处理大量数据的可伸缩性</li>
+<li>通过分布数据和逻辑到数据所在的多个节点上进行平行处理来提高效率</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>高容错、高可用、高扩展
+<ol>
+<li>数据冗余，多Block多副本，副本丢失后自动恢复（一般三副本）</li>
+<li>NameNodeHA、安全模式</li>
+</ol>
+</li>
+<li>海量数据存储
+<ol>
+<li>典型文件大小GB~TB，百万以上文件数量，PB以上数据规模</li>
+</ol>
+</li>
+<li>构建成本低、安全可靠
+<ol>
+<li>构建在廉价的商用服务器上</li>
+<li>提供了容错和恢复机制</li>
+</ol>
+</li>
+<li>适合大规模离线批处理
+<ol>
+<li>流式数据访问</li>
+<li>数据位置暴露给计算框架</li>
+<li>处理逻辑接近数据，而不是数据接近处理逻辑</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>实时性差，不适合低延迟数据访问</li>
+<li>小文件问题，不适合大量小文件存储
+<ol>
+<li>元数据占用NameNode大量内存空间
+<ol>
+<li>每个文件、目录和Block的元数据都要占150Byte</li>
+<li>存储1亿个元素，大约需要20GB内存</li>
+<li>如果一个文件为10KB，1亿个文件大小仅有1TB，却要消耗掉20GB内存</li>
+</ol>
+</li>
+<li>磁盘寻道时间超过读取时间</li>
+</ol>
+</li>
+<li>不支持并发写入
+<ol>
+<li>一个文件同时只能有一个写入者</li>
+</ol>
+</li>
+<li>文件修改问题，不支持文件随机修改
+<ol>
+<li>仅支持追加写入</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>系统架构</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="6">
+<li>写操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="7">
+<li>读操作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="412-hdfs文件管理"><a class="markdownIt-Anchor" href="#412-hdfs文件管理"></a> 4.1.2. HDFS文件管理</h3>
+<ol>
+<li>Shell命令
+<ol>
+<li><code>Hadoop fs &lt;args&gt;</code>（使用面最广，可以操作任何文件系统）</li>
+<li><code>hdfs dfs&lt;args&gt;</code> （只能操作HDFS文件系统）</li>
+</ol>
+</li>
+<li>简单示例
+<ol>
+<li>hadoopfs –help</li>
+<li>hadoopfs –ls/tmp</li>
+<li>hadoopfs –text /tmp/*|less</li>
+<li>hadoopfs –get /tmp/file localfile</li>
+<li>hadoopfs –put localfile/tmp/</li>
+<li>等</li>
+</ol>
+</li>
+</ol>
+<h2 id="42-存储方式"><a class="markdownIt-Anchor" href="#42-存储方式"></a> 4.2. 存储方式</h2>
+<h3 id="421-概述"><a class="markdownIt-Anchor" href="#421-概述"></a> 4.2.1. 概述</h3>
+<ol>
+<li>大数据文件存储格式
+<ol>
+<li>面向行（Row-Based）存储</li>
+<li>面向列列（Column-Based）存储</li>
+<li>混合存储</li>
+</ol>
+</li>
+<li>选择焦点
+<ol>
+<li>更有效处理海量数据，存储量要求</li>
+<li>安全、可靠、完整性</li>
+<li>更适合存储、压缩、读取、查询，节约存储，保证效率等</li>
+</ol>
+</li>
+</ol>
+<h3 id="422-行存储"><a class="markdownIt-Anchor" href="#422-行存储"></a> 4.2.2. 行存储</h3>
+<ol>
+<li>行存储
+<ol>
+<li>同一行的数据存储在一起，即连续存储</li>
+<li>如果只需要访问行的一小部分数据，亦需要将整行读入内存</li>
+<li>面向行的存储适合于整行数据需要同时处理的情况。</li>
+</ol>
+</li>
+<li>举例
+<ol>
+<li><a href = "https://blog.csdn.net/en_joker/article/details/79648861">SequenceFile文件</a></li>
+<li>MapFile文件</li>
+<li><a href = "https://stackoverflow.com/questions/24236803/difference-between-avrodata-file-and-sequence-file-with-respect-to-apache-sqoop">Avro Datafile</a></li>
+</ol>
+</li>
+</ol>
+<h3 id="423-列存储"><a class="markdownIt-Anchor" href="#423-列存储"></a> 4.2.3. 列存储</h3>
+<ol>
+<li>列存储
+<ol>
+<li>整个文件被切割为若干列数据，每一列数据一起存储</li>
+<li>面向列的格式使得读取数据时，可以跳过不需要的列，适合于只处于行的一小部分字段的情况</li>
+<li>读写需要更多的内存空间，因为需要缓存行在内存中（为了获取多行中的某一列）</li>
+<li>不适合流式写入，因为一旦写入失败，当前文件无法恢复，而面向行的数据在写入失败时可以重新同步到最后一个同步点，所以Flume采用的是面向行的存储格式。</li>
+</ol>
+</li>
+<li>举例
+<ol>
+<li><a href = "https://www.cnblogs.com/ITtangtang/p/7677912.html">ORCFile</a></li>
+<li>Parquet
+<ol>
+<li><a href = "https://www.cnblogs.com/ITtangtang/p/7681019.html">参考一</a></li>
+<li><a herf = "https://blog.csdn.net/colorant/article/details/53699822">参考二</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="424-对比"><a class="markdownIt-Anchor" href="#424-对比"></a> 4.2.4. 对比</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>行存储的优点
+<ol>
+<li>一次性完成，消耗的时间比列存储少</li>
+<li>能够保证数据的完整性</li>
+</ol>
+</li>
+<li>列存储的优点
+<ol>
+<li>可以跳过不符合条件的数据，只读取需要的数据，降低IO数据量</li>
+<li>压缩编码可以降低磁盘存储空间。由于同一列的数据类型是一样的，因此可以使用更高效的压缩算法，进一步节约存储空间。</li>
+<li>只读取需要的列，不用全表扫描，不会产生冗余数据</li>
+<li>支持向量运算，能够获取更好的扫描性能</li>
+</ol>
+</li>
+</ol>
+<h2 id="43-数据仓库及hive"><a class="markdownIt-Anchor" href="#43-数据仓库及hive"></a> 4.3. 数据仓库及Hive</h2>
+<h3 id="431-数据仓库简介"><a class="markdownIt-Anchor" href="#431-数据仓库简介"></a> 4.3.1. 数据仓库简介</h3>
+<ol>
+<li>什么是数据仓库：数据仓库是一个面向主题的、集成的、随时间变化的、非易失的数据集合，用于支持管理者的决策过程。</li>
+<li>特点
+<ol>
+<li>面向主题
+<ol>
+<li>系统业务级别主题</li>
+<li>决策时关心的重点方面</li>
+</ol>
+</li>
+<li>集成
+<ol>
+<li>多个异构数据源</li>
+<li>经过ETL处理</li>
+</ol>
+</li>
+<li>随时间变化
+<ol>
+<li>历史操作数据周期性迁移至数仓</li>
+<li>反映了某一历史时间点的数据快照</li>
+</ol>
+</li>
+<li>非易失
+<ol>
+<li>一旦进入数仓，数据就不应再有改变</li>
+<li>保留数据变化的历史轨迹</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="432-数据仓库基本架构"><a class="markdownIt-Anchor" href="#432-数据仓库基本架构"></a> 4.3.2. 数据仓库基本架构</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>缓冲层（数据接入层）
+<ol>
+<li>概念
+<ol>
+<li>业务系统与ODS层之间的临时缓冲区，用于临时接入业务系统的原始细节数据</li>
+<li>是否设立缓冲层，视情况而定</li>
+</ol>
+</li>
+<li>数据
+<ol>
+<li>细粒度：与业务系统保持一致的原始细节数据，不做任何处理</li>
+<li>有效期：临时（1~2天），并定期清除</li>
+</ol>
+</li>
+<li>作用：当ODS层需做简单清洗，且数据导入速度较快时，缓冲层用于临时性地快速接收业务数据</li>
+</ol>
+</li>
+<li>ODS层（贴源层）
+<ol>
+<li>概念
+<ol>
+<li>ODS：Operational Data Store，操作数据存储，一个面向主题的、集成的、可变的、当前的细节数据集合，用于支持即时性、操作型、集成性的信息需求</li>
+<li>业务系统和基础明细层之间的过度区，用于存储业务系统的当前原始细节数据</li>
+</ol>
+</li>
+<li>数据
+<ol>
+<li>来源：业务系统或缓冲层</li>
+<li>细粒度：数据结构、数据间逻辑关系、数据粒度均与业务系统保持一致的原始细节数据</li>
+<li>高集成：按主题进行全面集成，拥有业务数据的完整视图</li>
+<li>低质量：不做处理或仅做简单清洗，并加时间戳（一般不做数据清洗、聚合和汇总）</li>
+<li>有效期：短期（1~2个月），并定期清除</li>
+</ol>
+</li>
+<li>作用
+<ol>
+<li>当作为业务系统与数仓之间的隔离区，避免数仓直接从业务系统抽取数据，最小化对业务系统的干扰</li>
+<li>承接部分业务系统的原始细节数据（低粒度）的查询和报表功能，降低业务系统的查询和分析压力</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>基础明细层（DWD层）
+<ol>
+<li>概念
+<ol>
+<li>DWD：Data Warehouse Detail</li>
+<li>数据仓库的中间层，从ODS层获取数据，按主题进行组织，经过清洗、校验、转换、合并等规范化处理，形成业务数据的完整视图</li>
+</ol>
+</li>
+<li>数据
+<ol>
+<li>来源：ODS层</li>
+<li>细粒度：与ODS基本一致，不做聚合和汇总</li>
+<li>高质量：经过清洗、校验、转换、合并（根据业务进行数据关联形成宽表）等规范化处理</li>
+<li>高集成：按主题进行组织，拥有业务数据的完整视图</li>
+<li>有效期：永久</li>
+</ol>
+</li>
+<li>作用：为数据分析（宏观趋势性分析、在线交互式分析）提供最完整的基础明细数据支撑</li>
+</ol>
+</li>
+<li>轻度汇总层
+<ol>
+<li>面向业务分析需求，对基础明细层的细节数据进行细粒度（轻度）的聚合、汇总和统计</li>
+<li>提前计算出细粒度的基础汇总指标，减轻后期数据分析的压力</li>
+</ol>
+</li>
+<li>主题模型层：针对企业级宏观主题，构建相关的多个主题域模型，从基础明细/轻度汇总层中获取数据，按主题模型进行数据组织，为业务分析应用、数据集市构建提供直接的数据支撑</li>
+<li>数据集市
+<ol>
+<li>数据集市是面向单一主题域（如销售、财务等）、为特定业务部门构建的小规模数据集合</li>
+<li>数据源可以是数据仓库（从属数据集市），也可以是业务系统（独立数据集市）</li>
+<li>数据集市是数据仓库的子集</li>
+<li>用于在线交互式分析（秒级响应）</li>
+</ol>
+</li>
+</ol>
+<h3 id="433-hive"><a class="markdownIt-Anchor" href="#433-hive"></a> 4.3.3. Hive</h3>
+<h4 id="4331-hive简介"><a class="markdownIt-Anchor" href="#4331-hive简介"></a> 4.3.3.1. Hive简介</h4>
+<ol>
+<li>什么是Hive
+<ol>
+<li>基于Hadoop的一个数据仓库工具</li>
+<li>将结构化的数据文件映射为一张数据库表</li>
+<li>提供SQL查询功能，将SQL语句转变成MapReduce任务来执行。</li>
+</ol>
+</li>
+<li>特点
+<ol>
+<li>通过类SQL来分析大数据，而避免了写MapReduce程序来分析数据，这样使得分析数据更容易。</li>
+<li>数据底层存储在HDFS上，Hive本身并不提供数据的存储功能</li>
+<li>Hive是将数据映射成数据库和一张张的表，库和表的元数据信息一般存在关系型数据库上（比如MySQL）。</li>
+<li>数据存储方面：它能够存储很大的数据集，并且对数据完整性、格式要求并不严格。</li>
+<li>数据处理方面：因为Hive语句最终会生成MapReduce任务去计算，所以不适用于实时计算的场景，它适用于离线分析</li>
+</ol>
+</li>
+<li>Hive架构</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="4332-重要概念"><a class="markdownIt-Anchor" href="#4332-重要概念"></a> 4.3.3.2. 重要概念</h4>
+<ol>
+<li>内部表
+<ol>
+<li>默认创建的是内部表（managed table），存储位置在hive.metastore.warehouse.dir设置，默认位置是/user/hive/warehouse。</li>
+<li>导入数据的时候是将文件剪切（移动）到指定位置，即原有路径下文件不再存在</li>
+<li>删除表的时候，数据和元数据都将被删除</li>
+<li>默认创建的就是内部表create table xxx (xx xxx)</li>
+</ol>
+</li>
+<li>外部表
+<ol>
+<li>外部表文件可以在外部系统上，只要有访问权限就可以</li>
+<li>外部表导入文件时不移动文件，仅仅是添加一个metadata</li>
+<li>删除外部表时原数据不会被删除</li>
+<li>分辨外部表内部表可以使用DESCRIBE FORMATTED table_name命令查看</li>
+<li>创建外部表命令添加一个external即可，即create external table xxx (xxx)</li>
+<li>外部表指向的数据发生变化的时候会自动更新，不用特殊处理</li>
+</ol>
+</li>
+<li>分区
+<ol>
+<li>有些时候数据是有组织的，比方按日期/类型等分类，而查询数据的时候也经常只关心部分数据，比方说我只想查2017年8月8号，此时可以创建分区，查询具体某一天的数据时，不需要扫描全部目录，所以会明显优化性能</li>
+<li>一个Hive表在HDFS上是有一个对应的目录来存储数据，普通表的数据直接存储在这个目录下，而分区表数据存储时，是再划分子目录来存储的</li>
+<li>使用partionedby (xxx)来创建表的分区</li>
+</ol>
+</li>
+<li>分桶
+<ol>
+<li>分桶是相对分区进行更细粒度的划分。分桶将整个数据内容安装某列属性值得hash值进行区分，按照取模结果对数据分桶。如取模结果相同的数据记录存放到一个文件。</li>
+<li>桶表也是一种用于优化查询而设计的表类型。创建通表时，指定桶的个数、分桶的依据字段，hive就可以自动将数据分桶存储。查询时只需要遍历一个桶里的数据，或者遍历部分桶，这样就提高了查询效率</li>
+<li>clustered by (user_id) sorted by(leads_id) into 10 buckets</li>
+</ol>
+</li>
+</ol>
+<h4 id="4333-hive操作"><a class="markdownIt-Anchor" href="#4333-hive操作"></a> 4.3.3.3. Hive操作</h4>
+<ol>
+<li>写入数据
+<ol>
+<li>从本地文件系统中导入：<code>load data local inpath'xxx.txt' into table xxx；</code></li>
+<li>从HDFS上导入：
+<ol>
+<li><code>load data inpath'/home/xxx/add.txt' into table xxx</code></li>
+<li><code>alter table db.access_logadd partition (dt=‘2020-06-01') location 'hdfs://ns/hive/warehouse/access_log/dt=2020-06-01 ';</code></li>
+</ol>
+</li>
+<li>查询结果导入：<code>insert overwrite table db.log_v2 partition(dt=‘2020-06-01') select uid,model,key,value,timefrom db.log where dt=‘2020-06-01';</code></li>
+</ol>
+</li>
+<li>HiveSQL
+<ol>
+<li>与关系型数据库的SQL 略有不同，但支持了绝大多数的语句如DDL、DML 以及常见的聚合函数、连接查询、条件查询。</li>
+<li>HIVE不适合用于联机(online)事务处理，也不提供实时查询功能。</li>
+<li>适合应用在基于大量不可变数据的批处理作业。</li>
+</ol>
+</li>
+<li>具体命令可以自行查询资料</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/" class="category-chain-item">2021-数据集成</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E5%AD%98%E5%82%A8/">#存储</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">#数据集成</a>
+      
+        <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86/">#批处理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-数据集成-Lec5-批数据集成</div>
+      <div>https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-Lec5-%E6%89%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/02/2021-Database-Development/2021-Database-Development-Lec1-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D/" title="2021-数据库开发-Lec1-课程介绍">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-数据库开发-Lec1-课程介绍</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/01/2021-Data-Integration/2021-Data-Integration-Lec4-Python%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/" title="2021-数据集成-Lec4-Python数据爬取技术与实战">
+                        <span class="hidden-mobile">2021-数据集成-Lec4-Python数据爬取技术与实战</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,1483 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-数据管理基础-ch10-更新事务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-数据管理基础-ch10-更新事务">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/03/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch10-%E6%9B%B4%E6%96%B0%E4%BA%8B%E5%8A%A1/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-数据管理基础-ch10-更新事务">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/28.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/29.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/30.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/31.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/32.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/33.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/34.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/35.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/36.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/37.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/38.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/39.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/40.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/41.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/42.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/43.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/44.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/24.png">
+<meta property="article:published_time" content="2020-07-03T11:10:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:40:37.649Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="事务">
+<meta property="article:tag" content="日志">
+<meta property="article:tag" content="检查点">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/1.png">
+  
+  
+  <title>2020-数据管理基础-ch10-更新事务 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-03 19:10" pubdate>
+          2020年7月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          78 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-数据管理基础-ch10-更新事务</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="ch10-更新事务"><a class="markdownIt-Anchor" href="#ch10-更新事务"></a> ch10-更新事务</h2>
+<h1 id="1-事务"><a class="markdownIt-Anchor" href="#1-事务"></a> 1. 事务</h1>
+<h2 id="11-什么是事务"><a class="markdownIt-Anchor" href="#11-什么是事务"></a> 1.1. 什么是事务</h2>
+<ol>
+<li>事务是将一个进程执行的许多数据库操作打包在一起的一种方式，因此数据库系统可以提供几种保证，称为ACID属性。</li>
+<li>当现实世界中发生更改企业状态的事件时，将执行程序以相应的方式更改数据库状态。</li>
+<li>这样的程序被我们称为事务。</li>
+<li>每一个事务的运行必须要保证数据库状态和企业状态的一致。</li>
+</ol>
+<h2 id="12-事务编码"><a class="markdownIt-Anchor" href="#12-事务编码"></a> 1.2. 事务编码</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">BEGIN</span> TRANSACTION<br>op1; <br>op2; <br>......<br>opN;<br><span class="hljs-keyword">END</span> TRANSACTION<br></code></pre></td></tr></table></figure>
+<ol>
+<li>开始事务</li>
+<li>结束事务:<code>exec sql commit work;</code> or <code>exec sql rollback work;</code></li>
+</ol>
+<h2 id="13-事务的例子"><a class="markdownIt-Anchor" href="#13-事务的例子"></a> 1.3. 事务的例子</h2>
+<ol>
+<li>RequestBalance交易：在数据库中读取客户的余额并将其输出</li>
+<li>在用户转账的时候，账户的金额会出现短暂的不一致现象
+<ol>
+<li>不一致结果:钱转出但是没有转入(中间状态)</li>
+<li>当前状态检查错误，在上面的中间状态，柜员1将钱从同一客户的帐户A转移到帐户B，而柜员2通过添加A和B的余额来进行信用检查，如果此时状态为A刚转出，B还没有转入，则会出现问题</li>
+<li>不确定何时将变为永久性:至少，我们想知道什么时候可以安全发放资金：如果系统崩溃，不要忘记我们这样做了，那么只有磁盘上的数据才是安全的。</li>
+</ol>
+</li>
+</ol>
+<h2 id="14-事务的特点"><a class="markdownIt-Anchor" href="#14-事务的特点"></a> 1.4. 事务的特点</h2>
+<ol>
+<li>因此，除了执行普通程序外，还对执行事务提出了其他要求：(ACID 属性)
+<ol>
+<li>Atomicity 原子性</li>
+<li>Consistency 一致性</li>
+<li>Isolation 隔离性</li>
+<li>Durability 持久性</li>
+</ol>
+</li>
+</ol>
+<h3 id="141-原子性"><a class="markdownIt-Anchor" href="#141-原子性"></a> 1.4.1. 原子性</h3>
+<ol>
+<li>作为事务一部分的记录更新集是不可分割的(要么全部发生，要么全部不发生)。</li>
+<li>即使发生崩溃也是如此。</li>
+</ol>
+<h3 id="142-一致性"><a class="markdownIt-Anchor" href="#142-一致性"></a> 1.4.2. 一致性</h3>
+<ol>
+<li>对数据元素的完整事务转换将数据库从一种一致的状态转变为另一种一致的状态。</li>
+<li>而不会出现破坏一致性状态的状态</li>
+</ol>
+<h3 id="143-隔离性"><a class="markdownIt-Anchor" href="#143-隔离性"></a> 1.4.3. 隔离性</h3>
+<ol>
+<li>即使事务同时执行，对于每个成功的事务，它似乎也已与其他事务按串行计划执行。</li>
+<li>事务不可以被混行操作</li>
+</ol>
+<h3 id="144-持久性"><a class="markdownIt-Anchor" href="#144-持久性"></a> 1.4.4. 持久性</h3>
+<ol>
+<li>事务提交后，对数据所做的更改将在任何计算机或系统故障中幸免。</li>
+</ol>
+<h2 id="15-数据库上的操作"><a class="markdownIt-Anchor" href="#15-数据库上的操作"></a> 1.5. 数据库上的操作</h2>
+<ol>
+<li>读操作:Ri(A):标识号为i(Ti)的事务读取数据项A。</li>
+<li>写操作:Wj(B):事务Tj写B。</li>
+<li>更新语句将导致很多操作：<code>Rj(B1) Wj(B1) Rj(B2) Wj(B2) . . . Rj(Bn) Wj(Bn)</code></li>
+</ol>
+<h2 id="16-历史和调度"><a class="markdownIt-Anchor" href="#16-历史和调度"></a> 1.6. 历史和调度</h2>
+<ol>
+<li>通过有时会延迟某些操作并偶尔坚持某些事务中止来提供隔离保证。</li>
+</ol>
+<h3 id="161-串行调度"><a class="markdownIt-Anchor" href="#161-串行调度"></a> 1.6.1. 串行调度</h3>
+<ol>
+<li>Tx的所有操作均按顺序执行，而不会与其他事务交织。</li>
+</ol>
+<h3 id="162-调度器"><a class="markdownIt-Anchor" href="#162-调度器"></a> 1.6.2. 调度器</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>输入输出
+<ol>
+<li>达到调度器的操作是确定的</li>
+<li>但是在调度器调度后的操作是不确定的</li>
+</ol>
+</li>
+<li>调度器可确保历史记录中的操作顺序等效于某些串行调度。
+<ol>
+<li>调度器可能会延迟某些操作</li>
+<li>有些事务可能被中止</li>
+</ol>
+</li>
+</ol>
+<h3 id="163-调度例1011"><a class="markdownIt-Anchor" href="#163-调度例1011"></a> 1.6.3. 调度例10.1.1</h3>
+<ol>
+<li>账户A和B中各有50</li>
+<li>从账户A转账30到50</li>
+<li>状态:20 + 50 -&gt; fail check</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>但是这种情况不会在串行调度中出现</li>
+</ol>
+<h3 id="164-如果序列历史始终保持一致那么为什么不执行序列历史呢"><a class="markdownIt-Anchor" href="#164-如果序列历史始终保持一致那么为什么不执行序列历史呢"></a> 1.6.4. 如果序列历史始终保持一致，那么为什么不执行序列历史呢？</h3>
+<ol>
+<li>串行事务调度的情况</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/3.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>双事务的交叉执行:提高效率</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>更多事务的交叉执行:CPU的利用率逐渐提高</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-可序列化性和优先级图"><a class="markdownIt-Anchor" href="#2-可序列化性和优先级图"></a> 2. 可序列化性和优先级图</h1>
+<h2 id="21-可串行化调度"><a class="markdownIt-Anchor" href="#21-可串行化调度"></a> 2.1. 可串行化调度</h2>
+<ol>
+<li>该系列操作与序列计划等效</li>
+<li>调度器的工作:为调度程序找到一组规则，以允许通过交错事务进行操作并保证可串行性。</li>
+</ol>
+<h2 id="22-可串行化理解"><a class="markdownIt-Anchor" href="#22-可串行化理解"></a> 2.2. 可串行化理解</h2>
+<ol>
+<li>如果两个事务不访问同一个数据单元，那么
+<ol>
+<li>我们可以在调度程序允许的请求历史中对操作进行通勤，直到一个Tx的所有操作都在一起(串行历史)为止。</li>
+<li>操作不会互相影响，顺序也无关紧要。</li>
+</ol>
+</li>
+<li>如果两个事务访问同一个数据单元，那么
+<ol>
+<li>如果…R1(A)…R2(A):则可并行化</li>
+<li>如果…R1(A)…W3(A)…R2(A):则不可以并行化</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-冲突操作"><a class="markdownIt-Anchor" href="#23-冲突操作"></a> 2.3. 冲突操作</h2>
+<ol>
+<li>当且仅当以下三个条件成立时，历史中的两个运算Xi(A)和Yj(B)才发生冲突(即顺序重要)：
+<ol>
+<li>A就是B:对不同数据项的操作永远不会发生冲突。</li>
+<li>i不等于j:仅当操作由不同的事务执行时才会发生冲突。但是同一个事务操作中的顺序也是重要的。</li>
+<li>X操作和Y操作中一个为<strong>写入</strong>操作，另一个为是读出或写入操作(至少有一个是写入操作)</li>
+</ol>
+</li>
+</ol>
+<h3 id="231-三种冲突类型"><a class="markdownIt-Anchor" href="#231-三种冲突类型"></a> 2.3.1. 三种冲突类型</h3>
+<ol>
+<li>Ri(A) -&gt; Wj(A)：在一个事务中，写操作在读操作后(不可颠倒)</li>
+<li>Wi(A) -&gt; Rj(A)</li>
+<li>Wi(A) -&gt; Wj(A)</li>
+</ol>
+<h2 id="24-经历h的解释"><a class="markdownIt-Anchor" href="#24-经历h的解释"></a> 2.4. 经历H的解释</h2>
+<ol>
+<li>任意经历H的解释包括3部分
+<ol>
+<li>经历中关于事务的逻辑目的的描述，应该足以证明事务对数据写入的值和事务对统一数据对象读取的值有关系。</li>
+<li>经历中读写操作的值要给出具体的说明。</li>
+<li>一致性规则。具有隔离性的事务执行过程中必须保持的某种逻辑属性，这些事务具有第1点中所陈述的逻辑属性。</li>
+</ol>
+</li>
+<li>经历的例子(下面这个例子是不可并行化的)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="25-不可串行化的例子"><a class="markdownIt-Anchor" href="#25-不可串行化的例子"></a> 2.5. 不可串行化的例子</h2>
+<ol>
+<li>查看课本P467-Pxxx</li>
+<li>证明不可串行化只需要证明一个事务必须先于另一个事务，或另一个事务必须先于当前事务(一般是从R/W顺序下手，主要是W)</li>
+</ol>
+<h3 id="251-简单例子"><a class="markdownIt-Anchor" href="#251-简单例子"></a> 2.5.1. 简单例子</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>S(H):等价经历</li>
+</ul>
+<h3 id="252-脏写"><a class="markdownIt-Anchor" href="#252-脏写"></a> 2.5.2. 脏写</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="253-盲写"><a class="markdownIt-Anchor" href="#253-盲写"></a> 2.5.3. 盲写</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="26-前趋图"><a class="markdownIt-Anchor" href="#26-前趋图"></a> 2.6. 前趋图</h2>
+<ol>
+<li>历史H的前趋图是由PG(H)表示的有向图。
+<ul>
+<li>PG(H)的顶点对应于H中已提交的事务(未提交事务不影响)</li>
+</ul>
+</li>
+<li>每当在H中按顺序发生两个冲突的操作Xi和Yj时，PG(H)中就会存在一条Ti-&gt;Tj边。
+<ul>
+<li>因此，应将Ti -&gt; Tj解释为意味着Ti必须在任何等效的串行历史记录S(H)中位于Tj之前。</li>
+</ul>
+</li>
+<li>不可串行的操作的图就是含有环状结构的图。</li>
+</ol>
+<h2 id="27-可串行性定理"><a class="markdownIt-Anchor" href="#27-可串行性定理"></a> 2.7. 可串行性定理</h2>
+<ol>
+<li>历史记录H具有等效的串行执行S(H)，前提是优先级图PG(H)不包含回路。</li>
+<li>证明
+<ol>
+<li>假定涉及m个事务，并将它们标记为T1，T2，…。 。 。， Tm值。</li>
+<li>因为在没有回路的任何有向图中，总是有一个没有边进入的顶点，因此有一个顶点或事务Tk，没有边进入。 我们选择Tk为Ti(1)。</li>
+<li>请注意，由于Ti(1)没有边沿进入，因此H中没有冲突，这迫使其他事务更早进行。</li>
+<li>现在，从PG(H)中删除此顶点Ti(1)，并保留所有留下的边缘。 调用没有电路的结果图形PG1(H)。</li>
+<li>以这种方式继续，从PG1(H)中删除Ti(2)及其所有边缘，依此类推，从PG2(H)中选择Ti(3)。 。 PGm-1(H)中的Ti(m)。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/25.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/26.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-加锁保证可串行性"><a class="markdownIt-Anchor" href="#3-加锁保证可串行性"></a> 3. 加锁保证可串行性</h1>
+<h2 id="31-封锁lock"><a class="markdownIt-Anchor" href="#31-封锁lock"></a> 3.1. 封锁:Lock</h2>
+<ol>
+<li>使用封锁技术的前提：在一个事务访问数据库中的数据时，必须先获得被访问的数据对象上的封锁，以保证数据访问操作的正确性和一致性。</li>
+<li>封锁的作用:
+<ol>
+<li>在一段时间内禁止其它事务在被封锁的数据对象上执行某些类型的操作(由封锁的类型决定)</li>
+<li>同时也表明：持有该封锁的事务在被封锁的数据对象上将要执行什么类型的操作(由系统所采用的封锁协议来决定)</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-封锁类型"><a class="markdownIt-Anchor" href="#32-封锁类型"></a> 3.2. 封锁类型</h2>
+<ol>
+<li>排它锁(eXclusive lock，简称X锁),又称&quot;写封锁&quot;，WL(Write Lock)</li>
+<li>共享锁(Sharing lock，简称S锁),又称&quot;读封锁&quot;，RL(Read Lock)</li>
+</ol>
+<h3 id="321-排它锁x锁"><a class="markdownIt-Anchor" href="#321-排它锁x锁"></a> 3.2.1. 排它锁(X锁)</h3>
+<ol>
+<li>特性:
+<ol>
+<li>只有当数据对象A没有被其它事务封锁时，事务T才能在数据对象A上施加&quot;X锁&quot;；</li>
+<li>如果事务T对数据对象A施加了&quot;X锁&quot;，则其它任何事务都不能在数据对象A上再施加任何类型的封锁。</li>
+</ol>
+</li>
+<li>作用
+<ol>
+<li>如果一个事务T申请在数据对象A上施加&quot;X锁&quot;并得到满足，则：事务T自身可以对数据对象A作读、写操作，而其它事务则被禁止访问数据对象A</li>
+<li>这样可以让事务T独占该数据对象A，从而保证了事务T对数据对象A的访问操作的正确性和一致性</li>
+</ol>
+</li>
+<li>缺点:降低了整个系统的并行性</li>
+<li>&quot;X锁&quot;必须维持到事务T的执行结束</li>
+</ol>
+<h3 id="322-共享锁s锁"><a class="markdownIt-Anchor" href="#322-共享锁s锁"></a> 3.2.2. 共享锁(S锁)</h3>
+<ol>
+<li>特性:如果数据对象A没有被其它事务封锁，或者其它事务仅仅以&quot;S锁&quot;的方式来封锁数据对象A时，事务T才能在数据对象A上施加&quot;S锁&quot;；</li>
+<li>作用:
+<ol>
+<li>如果一个事务T申请在数据对象A上施加&quot;S锁&quot;并得到满足，则：事务T可以‘读’数据对象A，但不能&quot;写&quot;数据对象A</li>
+<li>不同事务所申请的&quot;S锁&quot;可以共存于同一个数据对象A上，从而保证了多个事务可以同时&quot;读&quot;数据对象A，有利于提高整个系统的并发性</li>
+<li>在持有封锁的事务释放数据对象A上的所有&quot;S锁&quot;之前，任何事务都不能&quot;写&quot;数据对象A</li>
+</ol>
+</li>
+<li>&quot;S锁&quot;不必维持到事务T的执行结束(依封锁协议而定)</li>
+</ol>
+<h3 id="323-锁相容矩阵"><a class="markdownIt-Anchor" href="#323-锁相容矩阵"></a> 3.2.3. 锁相容矩阵</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-合适事务"><a class="markdownIt-Anchor" href="#33-合适事务"></a> 3.3. 合适事务</h2>
+<ol>
+<li>如果一个事务在访问数据库中的数据对象A之前按照要求申请对A的封锁，在操作结束后释放A上的封锁，这种事务被称为合适事务。</li>
+<li>&quot;合适事务&quot;是保证并发事务的正确执行的基本条件。</li>
+</ol>
+<h2 id="34-二段锁协议2pl"><a class="markdownIt-Anchor" href="#34-二段锁协议2pl"></a> 3.4. 二段锁协议(2PL)</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>在Ti可以读取数据项Ri(A)之前，调度程序会尝试代表其RLi(A)读取该项目。在Wi(A)之前，请尝试写锁定WLi(A)。</li>
+<li>如果出现冲突锁，则事务Ti必须等待
+<ol>
+<li>锁冲突和操作冲突时同步的</li>
+<li>如果数据项的两个锁是由不同的Ti尝试的，则它们将冲突，并且其中至少一个是WL。</li>
+</ol>
+</li>
+<li>封锁阶段
+<ol>
+<li>增长阶段</li>
+<li>收缩阶段
+<ol>
+<li>当锁被释放:RUi(A)</li>
+<li>调度程序必须确保不能收缩(删除锁)然后再次增长(获取新锁)。</li>
+</ol>
+</li>
+<li>这部分保证了在Commit前能释放所有的锁</li>
+<li>通常在Commit上一次释放所有锁，我们将在随后的内容中对此进行假设。</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-锁冲突"><a class="markdownIt-Anchor" href="#35-锁冲突"></a> 3.5. 锁冲突</h2>
+<ol>
+<li>一个事务不可能和自己拥有的锁冲突
+<ol>
+<li>如果Ti在A上保持读锁(RL)，只要没有其他Tx在A上锁定(必须是RL)，就可以在A上获得WL。</li>
+<li>一个有写锁(WL)的事务不需要读锁(RL),WL比RL更强</li>
+</ol>
+</li>
+<li>明确定义了锁定，以确保优先级图中的环路永远不会发生。</li>
+<li>第一个锁定的事务Tx会强制到达的所有其他事务Tx在任何SG中&quot;稍后出现&quot;。</li>
+<li>死锁
+<ol>
+<li>如果后到达的事务Tx已经持有了第一个到达需要的锁，这就会导致第一个到达的无法获取到锁，从而导致死锁</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-锁和串行化的例子"><a class="markdownIt-Anchor" href="#36-锁和串行化的例子"></a> 3.6. 锁和串行化的例子</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/13.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="37-加锁定理"><a class="markdownIt-Anchor" href="#37-加锁定理"></a> 3.7. 加锁定理</h2>
+<ol>
+<li>遵循2PL准则的操作的经历就是SR(可串行化)。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/28.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/29.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/30.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-隔离级别"><a class="markdownIt-Anchor" href="#4-隔离级别"></a> 4. 隔离级别</h1>
+<ol>
+<li>每一个事务都可以自主选择，它自己与其它并发事务之间的隔离级别。</li>
+<li>一个事务所选择的隔离级别，决定了它在运行过程中(调度器)所采用的封锁策略。</li>
+</ol>
+<h2 id="41-四种隔离级别"><a class="markdownIt-Anchor" href="#41-四种隔离级别"></a> 4.1. 四种隔离级别</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SET</span> TRANSACTION ISOLATION LEVEL<br>  READUNCOMMITTED  <span class="hljs-operator">|</span><br>  READCOMMITTED  <span class="hljs-operator">|</span><br>  READREPEATABLE  <span class="hljs-operator">|</span><br>  SERIALIZABLE<br></code></pre></td></tr></table></figure>
+<h3 id="411-readuncommitted未提交读"><a class="markdownIt-Anchor" href="#411-readuncommitted未提交读"></a> 4.1.1. READUNCOMMITTED：未提交读</h3>
+<ol>
+<li>在该方式下，当前事务不需要申请任何类型的封锁，因而可能会&quot;读&quot;到未提交的修改结果</li>
+<li>禁止一个事务以该方式去执行对数据的&quot;写&quot;操作，以避免&quot;写&quot;冲突现象。</li>
+</ol>
+<h3 id="412-readcommitted提交读"><a class="markdownIt-Anchor" href="#412-readcommitted提交读"></a> 4.1.2. READCOMMITTED：提交读</h3>
+<ol>
+<li>在&quot;读&quot;数据对象A之前需要先申请对数据对象A的&quot;共享性&quot;封锁，在&quot;读&quot;操作执行结束之后立即释放该封锁。</li>
+<li>以避免读取未提交的修改结果。</li>
+</ol>
+<h3 id="413-readrepeatable可重复读"><a class="markdownIt-Anchor" href="#413-readrepeatable可重复读"></a> 4.1.3. READREPEATABLE：可重复读</h3>
+<ol>
+<li>在&quot;读&quot;数据对象A之前需要先申请对数据对象A的&quot;共享性&quot;封锁，并将该封锁维持到当前事务的结束。</li>
+<li>可以避免其它的并发事务对当前事务正在使用的数据对象的修改。</li>
+</ol>
+<h3 id="414-serializable可序列化可串行化"><a class="markdownIt-Anchor" href="#414-serializable可序列化可串行化"></a> 4.1.4. SERIALIZABLE：可序列化(可串行化)</h3>
+<ol>
+<li>并发事务以一种可串行化的调度策略实现其并发执行，以避免它们相互之间的干扰现象。</li>
+</ol>
+<h3 id="415-通用备注"><a class="markdownIt-Anchor" href="#415-通用备注"></a> 4.1.5. 通用备注</h3>
+<ol>
+<li>不管采用何种隔离级别，在事务&quot;写&quot;数据对象A之前需要先申请对数据对象 A 的&quot;排它性&quot;封锁(write-lock)，并将该封锁维持到当前事务的结束。</li>
+</ol>
+<h3 id="416-不同隔离级别在不同操作申请的锁和封锁时间"><a class="markdownIt-Anchor" href="#416-不同隔离级别在不同操作申请的锁和封锁时间"></a> 4.1.6. 不同隔离级别在不同操作申请的锁和封锁时间</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-封锁时间"><a class="markdownIt-Anchor" href="#42-封锁时间"></a> 4.2. 封锁时间</h2>
+<ol>
+<li>短期封锁:在操作(R或W)之前已取得锁定，并在随后立即释放。</li>
+<li>长期封锁:锁会持续到事务结束(EOT, End Of Trans)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>Predicates:谓词上的读锁和写锁，约束，比如city=xxx</li>
+<li>row：记录上的读锁和写锁</li>
+</ul>
+<h1 id="5-事务恢复机制"><a class="markdownIt-Anchor" href="#5-事务恢复机制"></a> 5. 事务恢复机制</h1>
+<ol>
+<li>日志:日志条目包含事务进行的每个更新的&quot;镜像前&quot;和&quot;镜像后&quot;。</li>
+<li>使用日志的优点：日志可以保证系统能够将数据库恢复到系统在崩溃这一刻应该具有的状态</li>
+</ol>
+<h2 id="51-事务恢复类别"><a class="markdownIt-Anchor" href="#51-事务恢复类别"></a> 5.1. 事务恢复类别</h2>
+<h3 id="511-镜像前"><a class="markdownIt-Anchor" href="#511-镜像前"></a> 5.1.1. 镜像前</h3>
+<ol>
+<li>在恢复中，我们可以通过应用&quot;镜像前&quot;来备份不应该写入磁盘(事务未提交)的更新。</li>
+</ol>
+<h3 id="512-镜像后"><a class="markdownIt-Anchor" href="#512-镜像后"></a> 5.1.2. 镜像后</h3>
+<ol>
+<li>在恢复中，我们可以应用&quot;镜像后&quot;来纠正应该已经进入磁盘(事务确实已提交)但从未成功进入磁盘页面。</li>
+</ol>
+<h2 id="52-不同日志类型"><a class="markdownIt-Anchor" href="#52-不同日志类型"></a> 5.2. 不同日志类型</h2>
+<h3 id="521-undo-日志"><a class="markdownIt-Anchor" href="#521-undo-日志"></a> 5.2.1. UNDO 日志</h3>
+<ol>
+<li>只有镜像前</li>
+<li>恢复没有提交的事务</li>
+<li>UNDO日志记录格式:
+<ol>
+<li>开始事务:<code>&lt;Start T&gt;</code></li>
+<li>提交事务:<code>&lt;Commit T&gt;</code></li>
+<li>放弃事务:<code>&lt;Abort T&gt;</code></li>
+<li>更新记录:<code>&lt;T, X, V&gt;</code>:事务T修改了数据库元素X的值，而X原来的旧值是V</li>
+</ol>
+</li>
+<li>记载规则:
+<ol>
+<li>U1:如果事务T修改数据库元素X，则更新日志<code>&lt;T, X, V&gt;</code>必须在X的新值写到磁盘前写到磁盘</li>
+<li>U2:如果事务T提交，则日志记录<code>&lt;Commit T&gt;</code>必须在事务T改变的所有DB元素已写到磁盘后再写到磁盘。</li>
+</ol>
+</li>
+<li>其他操作:
+<ol>
+<li>Flush log:将内存中的日志记录全部写入磁盘</li>
+<li>Output(A):将数据对象A的值写入到磁盘</li>
+</ol>
+</li>
+<li>其他值符号:
+<ol>
+<li>D-A:数据库元素A在计算机磁盘中的值</li>
+<li>M-A:数据库元素A在内存缓冲中的值</li>
+<li>t:内存变量</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/31.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="8">
+<li>恢复过程:
+<ol>
+<li>划分事务为已提交事务和未提交事务两类</li>
+<li>从undo日志尾部开始向头部扫描日志，对每一个更新记录<code>&lt;T, X, V&gt;</code>进行如下处理
+<ol>
+<li>T为已提交事务(已经扫描到Commit)：继续扫描下一条日志记录(规则U2)</li>
+<li>T为未提交事务：由恢复管理器将数据库中的X的值改为V(规则U1)</li>
+</ol>
+</li>
+<li>日志尾部为每一个未结束事务写入一个日志记录<code>&lt;Abort T&gt;</code>,并刷新日志:<code>Flush Log</code></li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/32.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/33.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/34.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/35.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/36.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="9">
+<li>不足:
+<ol>
+<li>在将事务改变的所有数据写到磁盘前不能提交该事务;</li>
+<li>在事务的提交过程中需要执行许多‘写’磁盘操作，从而增加了事务提交的时间开销。</li>
+</ol>
+</li>
+</ol>
+<h3 id="522-redo日志"><a class="markdownIt-Anchor" href="#522-redo日志"></a> 5.2.2. REDO日志</h3>
+<ol>
+<li>之后镜像后</li>
+<li>恢复已经提交的事务</li>
+<li>REDO日志记录格式:
+<ol>
+<li>开始事务:<code>&lt;Start T&gt;</code></li>
+<li>提交事务:<code>&lt;Commit T&gt;</code></li>
+<li>放弃事务:<code>&lt;Abort T&gt;</code></li>
+<li>更新记录:<code>&lt;T, X, V&gt;</code>:事务T修改了数据库元素X的值，而X的新值是V</li>
+</ol>
+</li>
+<li>记载规则
+<ol>
+<li>R1:在修改磁盘上的任何数据库元素X之前，要保证所有与 X 的这一修改有关的日志记录 (包括更新记录<code>&lt;T,X,V&gt;</code> 和提交记录 <code>&lt;Commit T&gt;</code>) 都必须出现在磁盘上。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/37.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>执行‘Flash Log’操作的目的是为了确保与事务T有关的日志记录(包括后像日志和提交日志)能够及时被写入磁盘，一方面是保证事务T的真正提交，另一方面也为今后的Output操作提供保证(规则R1)</li>
+</ul>
+<ol start="5">
+<li>恢复过程
+<ol>
+<li>确定所有已提交的事务</li>
+<li>从日志文件的首部开始扫描日志，对于遇到的每一条更新记录<code>&lt;T, X, V&gt;</code>
+<ol>
+<li>如果T是未提交的事务，则继续扫描</li>
+<li>如果T是已提交的事务，则为数据库元素X写入新值V</li>
+</ol>
+</li>
+<li>对每个未完成的事务T，在日志的尾部写入结束标志<code>&lt;Abort T&gt;</code>并刷新日志</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/38.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/39.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/40.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="7">
+<li>和UNDO日志主要区别
+<ol>
+<li>恢复目的不一样</li>
+<li>提交记录<code>&lt;Commit T&gt;</code>写入日志的时间不一样
+<ol>
+<li>undo日志：在事务T的所有数据库磁盘修改操作(Output)结束后才能在日志中写入提交记录<code>&lt;Commit T&gt;</code></li>
+<li>redo日志：在提交记录<code>&lt;Commit T&gt;</code>被写入日志文件的磁盘后才能将事务T更新后的值写入数据库的磁盘中</li>
+</ol>
+</li>
+<li>在更新记录<code>&lt;T,X,V&gt;</code>中保存的值V不一样</li>
+</ol>
+</li>
+</ol>
+<h3 id="523-undoredo日志"><a class="markdownIt-Anchor" href="#523-undoredo日志"></a> 5.2.3. UNDO/REDO日志</h3>
+<ol>
+<li>镜像前和镜像后</li>
+<li>恢复全部事务</li>
+<li>UNDO 和 REDO 日志的不足:
+<ol>
+<li>Undo 日志要求数据在事务结束后立即写到磁盘，可能增加需要执行磁盘I/O的次数；</li>
+<li>Redo 日志要求事务提交和日志记录刷新之前将所有修改过的数据保留在内存缓冲区中，可能增加事务需要的平均缓冲区的数量；</li>
+<li>如果被访问的数据对象X不是完整的磁盘块，那么在undo日志与redo日志之间可能产生相互矛盾的请求。</li>
+</ol>
+</li>
+<li>UNDO/REDO日志记录的格式
+<ol>
+<li>开始事务:<code>&lt;Start T&gt;</code></li>
+<li>提交事务:<code>&lt;Commit T&gt;</code></li>
+<li>放弃事务:<code>&lt;Abort T&gt;</code></li>
+<li>更新记录:<code>&lt;T, X, v, w&gt;</code>:事务T修改了数据库元素X的值，而X原来的值是v(before image),更新后的值是w(after image)</li>
+</ol>
+</li>
+<li>记载规则:
+<ol>
+<li>UR1:在由于某个事务T所做的改变而修改磁盘上的数据库元素X之前，更新记录<code>&lt;T,X,v,w&gt;</code>必须出现在磁盘上。</li>
+<li>UR2:在每一条<code>&lt;Commit T&gt;</code>后必须<strong>紧跟</strong>一条Flush Log操作，为了确保已经在日志中写入<code>&lt;Commit T&gt;</code>记录的事务T确实被提交，为 undo/redo日志新增加了一条记载规则</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/41.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="6">
+<li>故障恢复过程
+<ol>
+<li>根据<code>&lt;Commit T&gt;</code>是否已经出现在磁盘中来决定事务T是否已经被提交，然后：
+<ol>
+<li>先按照从后往前的顺序，撤消(undo)所有未提交的事务</li>
+<li>再按照从前往后的顺序，重做(redo)所有已提交的事务</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-例子"><a class="markdownIt-Anchor" href="#53-例子"></a> 5.3. 例子</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/42.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>(S, 1)和(S, 2)都是用来记录日志开始的。</li>
+<li>读操作不写日志</li>
+<li>写操作需要记录日志</li>
+<li>BI(Before Image) 和 AI(After Image)</li>
+<li>(C, 2)和(C, 1)是用来记录日志退出的。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/43.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/44.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="54-检查点"><a class="markdownIt-Anchor" href="#54-检查点"></a> 5.4. 检查点</h2>
+<h3 id="541-提交一致性检查点"><a class="markdownIt-Anchor" href="#541-提交一致性检查点"></a> 5.4.1. 提交一致性检查点</h3>
+<ol>
+<li>在一致性检查点完成前没有新的事务可以开始</li>
+<li>数据库操作将继续直到所有当前事务提交，并且他们的log文件写入磁盘</li>
+<li>当前的日志缓冲区被写出到日志文件中，然后，系统将确保缓冲区中的所有脏页都已写出到磁盘上。</li>
+<li>执行了步骤1-3后，系统会将特殊日志条目(CKPT)写入磁盘，并且检查点已完成。</li>
+</ol>
+<h3 id="542-高速缓存一致性检查点"><a class="markdownIt-Anchor" href="#542-高速缓存一致性检查点"></a> 5.4.2. 高速缓存一致性检查点</h3>
+<ol>
+<li>没有新的事务允许开始</li>
+<li>当前所有事务禁止进行任何操作</li>
+<li>当前的日志缓冲区被写到磁盘上，然后，系统将确保缓存缓冲区中的所有脏页都被写到磁盘上。</li>
+<li>最后，一个特殊的日志条目(CKPT，列表)被写到磁盘上，并且我们说检查点已经完成。 此日志条目中的列表包含采用检查点时的活动事务列表。</li>
+</ol>
+<h3 id="543-模糊检查点"><a class="markdownIt-Anchor" href="#543-模糊检查点"></a> 5.4.3. 模糊检查点</h3>
+<ol>
+<li>在启动检查点之前，将先前检查点之前的所有脏页面强制驱出到磁盘上(但是写入速率应保留I/O容量以支持当前正在进行的事务；这样做没有紧要的时间)。</li>
+<li>在检查点过程开始时，不允许新事务开始。 现有事务无法启动任何新操作。</li>
+<li>当前日志缓冲区将通过附加的日志条目(CKPT<sub>N</sub>，列表)写出到磁盘，如高速缓存一致性检查点过程中所述。</li>
+<li>自上次检查点日志CKPT<sub>N-1</sub>以来，缓冲区中的页面集已弄脏。这可能是通过缓冲区目录上的特殊标志来完成的。不需要将此信息放置在磁盘上，因为它仅用于执行下一个检查点，而在恢复的情况下不会使用。检查点现已完成。</li>
+</ol>
+<h2 id="55-undo日志中插入检查点的处理过程"><a class="markdownIt-Anchor" href="#55-undo日志中插入检查点的处理过程"></a> 5.5. UNDO日志中插入检查点的处理过程</h2>
+<ol>
+<li>系统停止接受&quot;启动新事务的请求&quot;；</li>
+<li>等到所有当前活跃的事务被提交或中止，并且在日志中写入了<code>&lt;Commit T&gt;</code>或<code>&lt;Abort T&gt;</code>记录；</li>
+<li>将日志记录刷新到磁盘；</li>
+<li>写入日志记录<code>&lt;CKPT&gt;</code>，并再次刷新日志；</li>
+<li>重新开始接受新的事务。</li>
+</ol>
+<h2 id="56-undo日志中的检查点"><a class="markdownIt-Anchor" href="#56-undo日志中的检查点"></a> 5.6. UNDO日志中的检查点</h2>
+<ol>
+<li>在进行故障恢复时，只要逆向扫描到第一条<code>&lt;CKPT&gt;</code>记录(最后一个被记入日志的检查点)就可以结束故障恢复工作。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="561-undo日志中插入非静止检查点设置步骤"><a class="markdownIt-Anchor" href="#561-undo日志中插入非静止检查点设置步骤"></a> 5.6.1. UNDO日志中插入非静止检查点设置步骤</h3>
+<ol>
+<li>写入日志记录<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>，并刷新日志；
+<ul>
+<li>T1,…,Tk是当前所有活跃事务的标识符</li>
+</ul>
+</li>
+<li>等待T1,…,Tk中的每一个事务的提交或中止，但允许开始执行其它新的事务；</li>
+<li>当T1,…,Tk都已经完成时，写入日志记录<code>&lt;End CKPT&gt;</code>并刷新日志。</li>
+</ol>
+<h3 id="562-非静止检查点的例子"><a class="markdownIt-Anchor" href="#562-非静止检查点的例子"></a> 5.6.2. 非静止检查点的例子</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="563-非静止检查点日志的恢复"><a class="markdownIt-Anchor" href="#563-非静止检查点日志的恢复"></a> 5.6.3. 非静止检查点日志的恢复</h3>
+<ol>
+<li>从日志尾部向后扫描日志文件进行故障恢复。</li>
+<li>如果先遇到<code>&lt;End CKPT&gt;</code>记录，则继续向后扫描，直到出现对应的<code>&lt;Start CKPT(…)&gt;</code>记录就可以结束故障恢复工作，在这之后的日志记录是没有用处的，可以被抛弃。</li>
+<li>如果先遇到<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>记录，此种情况下的故障恢复工作需要撤消两类事务的操作：
+<ol>
+<li>在<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>记录之后启动的事务
+<ol>
+<li>在扫描到<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>记录时，这类事务的操作已经被撤消。</li>
+</ol>
+</li>
+<li>T1,…,Tk中在系统崩溃前尚未完成的事务
+<ol>
+<li>继续向后扫描日志，直至其中未完成事务的访问操作被全部撤消。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="57-redo日志的检查点"><a class="markdownIt-Anchor" href="#57-redo日志的检查点"></a> 5.7. REDO日志的检查点</h2>
+<ol>
+<li>在redo日志中插入检查点时，由于已提交事务所做的修改被写入数据库磁盘的时间可能比事务提交的时间要晚得多，因此在插入检查点时，不仅仅需要考虑当前有哪些事务是活跃的，还要确保当前已提交事务的所有修改被写入到数据库的磁盘中去。</li>
+<li>为了做到这一点，系统必须知道：
+<ol>
+<li>有哪些内存缓冲区被修改过，但还没有将修改结果写入磁盘？</li>
+<li>每一个内存缓冲区都被哪些事务修改过？每个事务修改后的结果是什么？</li>
+</ol>
+</li>
+</ol>
+<h3 id="571-在redo日志中插入非静止检查点的步骤"><a class="markdownIt-Anchor" href="#571-在redo日志中插入非静止检查点的步骤"></a> 5.7.1. 在REDO日志中插入(非静止)检查点的步骤</h3>
+<ol>
+<li>写入日志记录<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>，并刷新日志；
+<ol>
+<li>其中：T1,…,Tk是当前所有活跃事务的标识符</li>
+<li>同时获得当时所有已提交事务的标识符集合S</li>
+</ol>
+</li>
+<li>将集合S中的事务已经写到内存缓冲区但还没有写到数据库磁盘的数据写入磁盘；
+<ol>
+<li>写入日志记录<code>&lt;End CKPT&gt;</code>并刷新日志。</li>
+<li>不必等待事务T1,…,Tk或新开始事务的结束</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="572-带有检查点的redo日志的恢复"><a class="markdownIt-Anchor" href="#572-带有检查点的redo日志的恢复"></a> 5.7.2. 带有检查点的REDO日志的恢复</h3>
+<ol>
+<li>
+<p>寻找最后一个被记入日志的检查点记录：</p>
+<ol>
+<li>如果是<code>&lt;End CKPT&gt;</code>(记为记录Et)，假设与之相对应的检查点记录是<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>(记为记录St)，并找到最早出现的<code>&lt;Start Ti&gt;</code>(记为记录ti)，则故障恢复方法如下：针对事务T1,…,Tk以及在St之后开始的那些事务，重做其中已经被提交的事务</li>
+<li>如果是<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>(记为记录St1)，我们继续寻找前一个<code>&lt;End CKPT&gt;</code>(记为记录Et2)，以及与Et2相对应的<code></code>(记为记录St2)；</li>
+<li>该情况就如同日志记录Et2是日志文件中的最后一条检查点(<code>&lt;End CKPT&gt;</code>)记录一样进行恢复。</li>
+</ol>
+</li>
+<li>
+<p>例子:</p>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/21.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/23.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="58-在undoredo日志中插入检查点"><a class="markdownIt-Anchor" href="#58-在undoredo日志中插入检查点"></a> 5.8. 在UNDO/REDO日志中插入检查点</h2>
+<ol>
+<li>写入日志记录<code>&lt;Start CKPT(T1,…,Tk)&gt;</code>，并刷新日志。其中：T1,…,Tk是当前所有活跃事务的标识符；</li>
+<li>将所有被修改过的缓冲区写到数据库的磁盘中去；</li>
+<li>写入日志记录<code>&lt;End CKPT&gt;</code>并刷新日志。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch10/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80/" class="category-chain-item">2020-数据管理基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E4%BA%8B%E5%8A%A1/">#事务</a>
+      
+        <a href="/tags/%E6%97%A5%E5%BF%97/">#日志</a>
+      
+        <a href="/tags/%E6%A3%80%E6%9F%A5%E7%82%B9/">#检查点</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-数据管理基础-ch10-更新事务</div>
+      <div>https://stormbroken.github.io/2020/07/03/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch10-%E6%9B%B4%E6%96%B0%E4%BA%8B%E5%8A%A1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月3日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/03/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-exam-%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE%E8%80%83%E7%82%B9%E6%95%B4%E7%90%86/" title="2020-数据管理基础-exam-考试题目考点整理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-数据管理基础-exam-考试题目考点整理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/03/2020-Fundamentals-of-Data-Management/2020-Fundamentals-of-Data-Management-ch08-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" title="2020-数据管理基础-ch08-数据库索引">
+                        <span class="hidden-mobile">2020-数据管理基础-ch08-数据库索引</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

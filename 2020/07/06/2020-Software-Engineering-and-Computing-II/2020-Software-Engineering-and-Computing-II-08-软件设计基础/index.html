@@ -1,0 +1,1251 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-软件工程与计算II-08-软件设计基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-软件工程与计算II-08-软件设计基础">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-08-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-软件工程与计算II-08-软件设计基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/20.png">
+<meta property="article:published_time" content="2020-07-06T11:08:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:43:13.519Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="软件工程与计算II">
+<meta property="article:tag" content="决策">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/1.png">
+  
+  
+  <title>2020-软件工程与计算II-08-软件设计基础 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-06 19:08" pubdate>
+          2020年7月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-软件工程与计算II-08-软件设计基础</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="08-软件设计基础"><a class="markdownIt-Anchor" href="#08-软件设计基础"></a> 08-软件设计基础</h2>
+<h1 id="1-什么是软件设计"><a class="markdownIt-Anchor" href="#1-什么是软件设计"></a> 1. 什么是软件设计</h1>
+<h2 id="11-软件设计-重要"><a class="markdownIt-Anchor" href="#11-软件设计-重要"></a> 1.1. 软件设计 重要</h2>
+<ol>
+<li>软件设计是指关于软件对象的设计，是一种设计活动。软件设计既指软件对象实现的规格说明，又指这个规格说明产生的过程。</li>
+<li>软件设计活动以需求开发的制品(需求规格说明和分析模型)为基础，构建软件设计方案描述和原型，为后期的构造活动提供规划或蓝图。</li>
+<li>软件设计兼具工程性和艺术性，由于软件系统的可变性，软件设计具有演化性，也因为软件设计的过程实际上就是一系列决策发生的过程，软件设计具有决策性。</li>
+</ol>
+<h2 id="12-软件设计的核心思想"><a class="markdownIt-Anchor" href="#12-软件设计的核心思想"></a> 1.2. 软件设计的核心思想</h2>
+<ol>
+<li>软件设计方法的核心问题：控制系统复杂度</li>
+<li>分解与抽象是软件设计的核心思想，两者都是由层次性的，彼此之间可以嵌套使用。
+<ol>
+<li>分解:横向上将系统分割为几个相对简单的子系统与子系统之间的关系</li>
+<li>抽象:在纵向上聚焦个子系统的接口(这里的接口与实现相对)，可以分离接口和实现，使得人们更好的关注软件系统本质，降低复杂度。</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-软件设计思想的发展"><a class="markdownIt-Anchor" href="#13-软件设计思想的发展"></a> 1.3. 软件设计思想的发展</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>从程序设计到软件设计，再到大规模软件设计</li>
+<li>在大规模软件设计的时候，一个产品目标可能要做很多的功能</li>
+</ol>
+<h2 id="14-软件设计的核心思想"><a class="markdownIt-Anchor" href="#14-软件设计的核心思想"></a> 1.4. 软件设计的核心思想</h2>
+<h3 id="141-为什么要设计"><a class="markdownIt-Anchor" href="#141-为什么要设计"></a> 1.4.1. 为什么要设计</h3>
+<ol>
+<li>事物的复杂性 VS 思维的有限性
+<ol>
+<li>7±2规则:在一个屏幕上，同时出现多位数字或字母，瞬间出现和消失，超过7±2的话，可能比原来记住的更好</li>
+<li>关注点分离与层次性</li>
+</ol>
+</li>
+</ol>
+<h3 id="142-为什么软件是复杂的"><a class="markdownIt-Anchor" href="#142-为什么软件是复杂的"></a> 1.4.2. 为什么软件是复杂的?</h3>
+<blockquote>
+<p>软件的复杂性是一个本质的东西，而不是一个偶然出现的</p>
+</blockquote>
+<ol>
+<li>解决的问题域时很复杂的</li>
+<li>管理的开发过程是复杂的</li>
+<li>软件的灵活性导致的复杂性</li>
+<li>离散系统行为的符号化的问题</li>
+</ol>
+<h3 id="143-设计的复杂度"><a class="markdownIt-Anchor" href="#143-设计的复杂度"></a> 1.4.3. 设计的复杂度</h3>
+<ol>
+<li>事物复杂度 VS 载体复杂度：对外表现 与 内部结构</li>
+<li>设计复杂度 = 事物复杂度 + 载体与事物的适配复杂度</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="144-如何去控制复杂度"><a class="markdownIt-Anchor" href="#144-如何去控制复杂度"></a> 1.4.4. 如何去控制复杂度？</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>软件设计的核⼼思想 —— 分解与抽象</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-理解软件设计"><a class="markdownIt-Anchor" href="#15-理解软件设计"></a> 1.5. 理解软件设计</h2>
+<h3 id="151-什么是设计"><a class="markdownIt-Anchor" href="#151-什么是设计"></a> 1.5.1. 什么是设计</h3>
+<ol>
+<li>Wiki：设计是为制作每个对象或系统奠定基础的计划。</li>
+<li>[Brooks 2010]认为上述定义的精髓在于<strong>计划、思维和后续执行</strong>。</li>
+<li>[Ralph 2009]将设计定义为:
+<ol>
+<li>设计(名词):⼀个对象的规格说明。它由⼈创造,有明确的⽬标,适⽤于特殊的环境,由⼀些基础类型构件组成,满⾜⼀个需求集合,受⼀定的限制条件约束。</li>
+<li>设计(动词):在⼀个环境中创建对象的规格说明</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>设计经常需要⼀个设计师考虑⼀个对象或过程的<strong>审美、功能以及其他方面</strong>，这通常需要进⾏相当的研究、思考、建模、交互调整和重新设计。</li>
+</ol>
+<h2 id="16-工程设计还是艺术设计"><a class="markdownIt-Anchor" href="#16-工程设计还是艺术设计"></a> 1.6. 工程设计还是艺术设计</h2>
+<ol>
+<li>软件设计应该偏向工程还是设计？</li>
+<li>[Faste2001]认为软件设计要:时刻保持<strong>以用户为中心</strong>,为其建造有⽤的软件产品;将设计知识科学化、系统化,并能够通过<strong>职业教育</strong>产⽣合格的软件设计师; 能够进⾏设计<strong>决策与折中</strong>,解决设计过程中出现的不确定性、信息不充分、要求冲突等复杂情况。
+<ol>
+<li>为什么要折衷?因为问题是不确定的，是有冲突的</li>
+</ol>
+</li>
+<li>Vitruvius(《De Architectura》,公元前 22 年)认为好的建筑架构要满⾜&quot;<strong>效用(Useful)、 坚固 (Solid)与美感(Beautiful)</strong>&quot;三个⽅⾯的要求。</li>
+<li>[Brooks2010]认为重要的美感因素包括:<strong>简洁、结构清晰和⼀致。</strong></li>
+<li>[Smith1996]认为在软件设计(尤其是⼈机交互设计)中<strong>艺术始终都处于中心地位</strong>,⽐⼯程性更加重要,为此设计师需要学会:发散性思维和创新;<strong>与用户共情</strong>,体会他们的内⼼感受;进⾏相关因素的评价和平衡,例如可靠性与时尚(Fashion)、简洁性与可修改性等;构思与想象,设计软件产品的可视化外观(Visualization)。</li>
+<li>Design = Engineering + Art 设计等于工程加艺术</li>
+<li>苹果手机与安卓手机
+<ol>
+<li>苹果手机是设计师设计出来的</li>
+<li>安卓手机是工程师设计出来的</li>
+<li>现在安卓手机和苹果手机之间的区别也在逐渐减小</li>
+</ol>
+</li>
+</ol>
+<h2 id="17-rational-or-pragmatic-理性主义or经验主义"><a class="markdownIt-Anchor" href="#17-rational-or-pragmatic-理性主义or经验主义"></a> 1.7. Rational or Pragmatic? 理性主义or经验主义？</h2>
+<h3 id="171-理性主义代表"><a class="markdownIt-Anchor" href="#171-理性主义代表"></a> 1.7.1. 理性主义代表</h3>
+<ol>
+<li>理性主义更看重设计的工程性,希望以<strong>科学化知识</strong>为基础,利⽤<strong>模型语言、建模方法、工具支持</strong>,将软件设计过程组织成系统、规律的模型建立过程 [McPhee1996]。</li>
+<li>在考虑到⼈的因素时,理想主义认为⼈是<strong>优秀</strong>的,虽然会犯错,但是可以通过教育不断完善⾃⼰ [Brooks2010]。</li>
+<li>设计⽅法学的目标就是<strong>不断克服人的弱点</strong>,持续完善软件设计过程中的不⾜, 最终达到完美[McPhee1996]。</li>
+<li><strong>形式化软件工程</strong>的支持者是典型的理想主义:通过数学证明来证明软件工程</li>
+</ol>
+<h3 id="172-经验主义代表"><a class="markdownIt-Anchor" href="#172-经验主义代表"></a> 1.7.2. 经验主义代表</h3>
+<ol>
+<li>经验主义者则在重视<strong>工程性</strong>的同时,也强调<strong>艺术性</strong>,要求给软件设计过程框架添加⼀些灵活性以应对设计中<strong>人</strong>的因素。</li>
+<li>[Parnas1986]曾指出<strong>没有过程指导和完全依赖个⼈的软件设计活动是不能接受的</strong>,因为不能保证质量和工程性。但是[Parnas1986]也指出⼀些⼈的因素决定了<strong>完全理性</strong>的设计过程是不存在的:
+<ol>
+<li>⽤户并不知道他们到底想要怎样的需求;</li>
+<li>即使⽤户知道需要什么,仍然有些事情需要反复和迭代才能发现或理解;</li>
+<li>⼈类的认知能⼒有限;</li>
+<li><strong>需求的变更⽆法避免</strong>;</li>
+<li>⼈类总是会犯错的;</li>
+<li>⼈们会固守⼀些旧有的设计理念;比如诺基亚</li>
+<li>不合适复⽤。</li>
+</ol>
+</li>
+<li>所以,[Parnas1986]认为软件设计需要使⽤⼀些⽅法弥补⼈的缺陷,以建⽴⼀个<strong>尽可能好(不坏就行)的</strong>软件设计过程。⽂档化、原型、尽早验证、迭代式开发等都被实践证明能够有效弥补⼈类的缺陷[Parnas1986, Brooks 2010]</li>
+</ol>
+<h2 id="18-软件设计的演化性"><a class="markdownIt-Anchor" href="#18-软件设计的演化性"></a> 1.8. 软件设计的演化性</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>需求是外部表现，需求和内部结构是有鸿沟的。</li>
+<li>非功能需求(质量需求)</li>
+<li>始终进行迭代。</li>
+</ol>
+<h2 id="19-设计的决策"><a class="markdownIt-Anchor" href="#19-设计的决策"></a> 1.9. 设计的决策</h2>
+<ol>
+<li>[Freeman1980]认为:软件设计是⼀种<strong>问题求解和决策</strong>的过程;问题空间是⽤户的需求和项⽬约束,解空间是软件设计⽅案;从问题空间到<strong>解空间</strong>的转换是⼀个跳跃性的过程,需要发挥设计师的创造性,设计师跳跃性地建⽴解决方案的过程被称为决策。</li>
+<li>软件设计的问题求解与决策比普通数学问题的求解与决策要<strong>困难的多</strong>,因为软件设计面对的问题通常都是<strong>不规则的</strong>(Ill-Structured)[Simon1978],包含有很多的不确定性和信息不充分情景,所以进行设计决策时并不能保证决策的正确性,往往需要在很⻓时间之后才能通过验证发现之前决策的正确与否。</li>
+</ol>
+<h3 id="191-决策的约束性"><a class="markdownIt-Anchor" href="#191-决策的约束性"></a> 1.9.1. 决策的约束性</h3>
+<ol>
+<li>约束满足与决策</li>
+<li>约束：
+<ol>
+<li>需求；环境；资源；技术 …</li>
+<li>最初的需求确定了对设计情况的最基本的约束和要求。</li>
+<li>通常，在设计工作本身中最终会发现更多的约束。</li>
+<li>约束既适用于设计的工件，也适用于设计活动中涉及的流程和参与者</li>
+</ol>
+</li>
+<li>约束满足</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="192-决策的多样性"><a class="markdownIt-Anchor" href="#192-决策的多样性"></a> 1.9.2. 决策的多样性</h3>
+<ol>
+<li>决策的选择性</li>
+<li>多个<strong>同样好</strong>的方案，选择一个
+<ol>
+<li>对于方案进行筛选，找到一个合适的</li>
+<li>充分理解<strong>足够好</strong>的概念</li>
+</ol>
+</li>
+<li>设计问题的解决方案空间非常大，其庞大的规模消除了穷举搜索，这是一种可能的问题解决技术</li>
+<li>&quot;设计&quot;的特征在于各种设计备选方案之间的一系列决策</li>
+</ol>
+<h3 id="193-决策的演化性"><a class="markdownIt-Anchor" href="#193-决策的演化性"></a> 1.9.3. 决策的演化性</h3>
+<ol>
+<li>遵循路线：问题决策验证下⼀个问题</li>
+<li>决策的顺序影响:上一个决策会设计到下一步行为。</li>
+<li>前⼀个决策会影响后⼀个，⽽且不可预见</li>
+<li>每个不同的观点都可能以不同且不可预测的方式影响设计的进度。</li>
+<li>决策的<strong>不可逆性</strong>，设计决策一定要慎重！</li>
+<li><strong>无法完全消除⼀个前期错误的决策</strong></li>
+<li>决策要一致！</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="8">
+<li>决策的概念完整性也⼗分重要！
+<ol>
+<li>决策一定要慎重，不能过于随意。</li>
+<li>从服务、包装、售卖都会给你提供一种一致的体验。</li>
+<li>魅族的人机交互</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-软件设计的分层-重要"><a class="markdownIt-Anchor" href="#2-软件设计的分层-重要"></a> 2. 软件设计的分层 重要</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>一种是分为软件体系结构和软件详细设计。</li>
+<li>另一种是分为高层设计、中层设计和低层设计。
+<ol>
+<li>高层设计：基于反映软件高层抽象的构件设计，描述系统的高层结构、关注点和设计决策。</li>
+<li>中层设计：更加关注组成构件的模块的设计、导入/导出、过程之间调用关系或者类之间的写作</li>
+<li>低层设计：深入模块和类的内部，关注具体的数据结构、算法、类型、语句和控制结构等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="21-程序设计的建立"><a class="markdownIt-Anchor" href="#21-程序设计的建立"></a> 2.1. 程序设计的建立</h2>
+<ol>
+<li>1950s
+<ul>
+<li>第一代语言 机器语言，第二代语言 汇编语言</li>
+<li>语句为最小单位</li>
+</ul>
+</li>
+<li>1960s
+<ul>
+<li>第三代语言</li>
+<li>类型与函数：第一次复杂系统分割</li>
+</ul>
+</li>
+<li>1970s
+<ul>
+<li>类型与函数的成熟：形式化⽅法</li>
+<li>数据结构 + 算法 = 程序</li>
+</ul>
+</li>
+</ol>
+<h2 id="22-低层设计"><a class="markdownIt-Anchor" href="#22-低层设计"></a> 2.2. 低层设计</h2>
+<ol>
+<li>将基本的语言单位(类型与语句)，组织起来，建⽴⾼质量的数据结构+算法</li>
+<li>常见设计场景：
+<ul>
+<li>数组的使⽤，链表的使⽤，内存的使⽤，遍历算法，递归算法…</li>
+<li>一次问相对比较大的内存，然后我们自己在进行的内存的分配。</li>
+</ul>
+</li>
+<li>经典场景：
+<ol>
+<li>堆栈，队列，树，排序算法，查找算法…</li>
+</ol>
+</li>
+<li>数据结构与算法审美：
+<ol>
+<li>简洁、结构清晰，坚固(可靠、⾼效、易读)</li>
+<li>数据结构与算法课程</li>
+<li>&lt;计算机程序设计艺术&gt; 第四本</li>
+</ol>
+</li>
+</ol>
+<h3 id="221-低层设计的本质"><a class="markdownIt-Anchor" href="#221-低层设计的本质"></a> 2.2.1. 低层设计的本质</h3>
+<ol>
+<li>屏蔽程序中<strong>复杂数据结构与算法</strong>的实现细节！
+<ul>
+<li>对于复杂数据结构与算法的实现细节隐藏。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="222-低层设计-代码设计"><a class="markdownIt-Anchor" href="#222-低层设计-代码设计"></a> 2.2.2. 低层设计: 代码设计</h3>
+<ol>
+<li>对⼀个方法/函数的内部代码进⾏设计</li>
+<li>又被称为<strong>软件构造</strong>，通常由程序员独立完成</li>
+<li>依赖于语⾔提供的机制(程序设计课程)
+<ol>
+<li>面向对象和结构化</li>
+<li>指针或地址</li>
+</ol>
+</li>
+</ol>
+<h3 id="223-模块划分"><a class="markdownIt-Anchor" href="#223-模块划分"></a> 2.2.3. 模块划分</h3>
+<ol>
+<li>1970s：函数的成熟与模块的出现</li>
+<li>模块划分：将系统分成简单片段：⽚段有名字，可以被反复使用</li>
+<li>名字和使⽤⽅法称为<strong>模块的抽象与接⼝</strong></li>
+<li>模块内部的程序⽚段为精化与实现</li>
+</ol>
+<h2 id="23-中层设计的开始"><a class="markdownIt-Anchor" href="#23-中层设计的开始"></a> 2.3. 中层设计的开始</h2>
+<ol>
+<li>模块划分<strong>隐藏</strong>⼀些程序片段(数据结构+算法)的细节，暴露接口于外界</li>
+<li><strong>以模块作为概念</strong></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="231-模块化的目标完全独立性"><a class="markdownIt-Anchor" href="#231-模块化的目标完全独立性"></a> 2.3.1. 模块化的目标：完全独立性</h3>
+<p>完全独⽴有助于理解、使用与复用、开发、修改</p>
+<h3 id="232-模块化的问题与困难"><a class="markdownIt-Anchor" href="#232-模块化的问题与困难"></a> 2.3.2. 模块化的问题与困难</h3>
+<ol>
+<li>程序⽚段之间不可能是完全独立的</li>
+<li>⽅法：实现尽可能的独立
+<ol>
+<li>模块化</li>
+<li>信息隐藏</li>
+<li>抽象数据类型</li>
+<li>封装</li>
+<li>…</li>
+</ol>
+</li>
+</ol>
+<h3 id="233-中层设计总结设计目标"><a class="markdownIt-Anchor" href="#233-中层设计总结设计目标"></a> 2.3.3. 中层设计总结——设计目标</h3>
+<ol>
+<li>最终审美目标：简洁性、结构清晰、⼀致性、质量(可修改、易开发(易理解、易测试、易调试)、易复用)</li>
+<li>直接评价标准：模块化；信息隐藏；OO原则</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="24-中低层设计的问题"><a class="markdownIt-Anchor" href="#24-中低层设计的问题"></a> 2.4. 中低层设计的问题</h2>
+<ol>
+<li>《Programming-in-the-Small VS Programming-in-the-Large》</li>
+<li>过于依赖细节
+<ol>
+<li>连接与依赖</li>
+<li>接口与实现</li>
+</ol>
+</li>
+<li>忽略的关键因素: 无法有效抽象部件的整体特性
+<ol>
+<li>总体结构</li>
+<li>质量属性</li>
+</ol>
+</li>
+<li>⼤型软件开发的⼀个根本不同是它更关注如何将⼤批独⽴模块组织形成⼀个&quot;系统&quot;，也就是说更重视系统的<strong>总体组织</strong></li>
+<li>12306的宕机问题，我们也不能承受过亿的PV,使用硬件不划算，但是我们可以<strong>快速的恢复</strong>就很好
+<ol>
+<li>服务器之间的负载均衡，部分静态数据，缓存和反向代理</li>
+</ol>
+</li>
+</ol>
+<h2 id="25-高层设计体系结构"><a class="markdownIt-Anchor" href="#25-高层设计体系结构"></a> 2.5. 高层设计：体系结构</h2>
+<ol>
+<li><strong>部件</strong>承载了系统主要的<strong>计算与状态</strong></li>
+<li><strong>连接件</strong>承载部件之间的<strong>交互</strong></li>
+<li>部件与连接件都是抽象的类型定义(就像类定义)，它们的实例(就像类的对象实例)组织构成软件系统的整体结构，配置将它们的实例连接起来</li>
+<li>连接件是⼀个与部件平等的单位
+<ul>
+<li>消息队列、方法调用都可以被我们理解为连接件</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
+<li>和中低层设计完全的不同</li>
+</ol>
+<h2 id="26-敏捷视点"><a class="markdownIt-Anchor" href="#26-敏捷视点"></a> 2.6. 敏捷视点</h2>
+<ol>
+<li>只有高层设计良好，底层设计才可能良好</li>
+<li>只有写完并测试代码之后，才能算是完成了设计！</li>
+<li>源代码可能是主要的设计⽂档，但它通常不是唯⼀⼀个必须的。</li>
+</ol>
+<h1 id="3-软件设计过程-方法和模型-描述"><a class="markdownIt-Anchor" href="#3-软件设计过程-方法和模型-描述"></a> 3. 软件设计过程、方法和模型、描述</h1>
+<h2 id="31-软件设计过程的主要活动"><a class="markdownIt-Anchor" href="#31-软件设计过程的主要活动"></a> 3.1. 软件设计过程的主要活动</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>分析设计出发点</li>
+<li>建立候选方案</li>
+<li>生成最终方案评价</li>
+<li>设计需求:对于设计我们要做的事情</li>
+</ol>
+<h2 id="32-设计的方法"><a class="markdownIt-Anchor" href="#32-设计的方法"></a> 3.2. 设计的方法</h2>
+<ol>
+<li>软件设计的方法可以分为以下几种[SWEBOK 2004]:
+<ol>
+<li>结构化设计方法</li>
+<li>⾯向对象设计</li>
+<li>数据为中⼼设计:有一些项目是做数据仓库等的，数据爬取操作和读取。</li>
+<li>基于构件的设计:调用构件和库</li>
+<li>形式化方法设计</li>
+</ol>
+</li>
+</ol>
+<h3 id="321-结构化设计方法"><a class="markdownIt-Anchor" href="#321-结构化设计方法"></a> 3.2.1. 结构化设计方法</h3>
+<ol>
+<li>是一个经典的软件设计方法，采取自下向上和逐步求精的思想，按照功能对系统进行分解</li>
+</ol>
+<h3 id="322-面向对象设计方法"><a class="markdownIt-Anchor" href="#322-面向对象设计方法"></a> 3.2.2. 面向对象设计方法</h3>
+<ol>
+<li>源自于数据抽象和职责驱动，利用封装、继承、多态等方法，提高软件的可扩展性和可复用性。</li>
+</ol>
+<h3 id="323-以数据为中心设计"><a class="markdownIt-Anchor" href="#323-以数据为中心设计"></a> 3.2.3. 以数据为中心设计</h3>
+<ol>
+<li>开始于系统操纵的数据结构而不是它所表现的功能。</li>
+</ol>
+<h3 id="324-基于构件的设计"><a class="markdownIt-Anchor" href="#324-基于构件的设计"></a> 3.2.4. 基于构件的设计</h3>
+<ol>
+<li>重点在于构件的提供、开发和继承，以提高系统的可复用性。</li>
+</ol>
+<h3 id="325-形式化方法设计"><a class="markdownIt-Anchor" href="#325-形式化方法设计"></a> 3.2.5. 形式化方法设计</h3>
+<ol>
+<li>通过数学方法来对复杂系统进行建模。</li>
+</ol>
+<h2 id="33-静态模型vs动态模型"><a class="markdownIt-Anchor" href="#33-静态模型vs动态模型"></a> 3.3. 静态模型vs动态模型</h2>
+<ol>
+<li>描述软件设计的模型,通常可以分为两类:</li>
+</ol>
+<h3 id="331-静态模型"><a class="markdownIt-Anchor" href="#331-静态模型"></a> 3.3.1. 静态模型</h3>
+<ol>
+<li>静态模型是通过<strong>快照</strong>的⽅式对<strong>系统中时间不变的属性</strong>进⾏描述。通常描述的是状态,⽽不是⾏为。</li>
+<li>⽐如:⼀个数字的列表是按⼤⼩排序好的。</li>
+</ol>
+<h3 id="332-动态模型"><a class="markdownIt-Anchor" href="#332-动态模型"></a> 3.3.2. 动态模型。</h3>
+<ol>
+<li>动态模型通常描述的是<strong>系统行为和状态转移</strong>。</li>
+<li>⽐如:排序的过程中如何进⾏排序。</li>
+</ol>
+<h2 id="34-结构化设计模型和面向对象设计模型"><a class="markdownIt-Anchor" href="#34-结构化设计模型和面向对象设计模型"></a> 3.4. 结构化设计模型和⾯向对象设计模型</h2>
+<ol>
+<li>在结构化设计中
+<ol>
+<li>静态模型：实体关系图</li>
+<li>动态模型：数据流图和结构图(Structure Chart)</li>
+</ol>
+</li>
+<li>在面向对象设计中
+<ol>
+<li>静态模型：类图、对象图、构件图、部署图;</li>
+<li>动态模型：交互图(顺序图和通信图)、状态图、活动图等</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-软件设计描述规范"><a class="markdownIt-Anchor" href="#35-软件设计描述规范"></a> 3.5. 软件设计描述规范</h2>
+<ol>
+<li>早在 1998 年,IEEE 组织就提出了 IEEE 1016-1998 号标准[IEEE1016-1998] 以规范软件设 计的⽂档化描述。</li>
+<li>在 2009 年 3 ⽉,IEEE-SA 标准委员会修订了 1016 号标准[IEEE1016-2009]。 IEEE 的标准并没有限定设计描述⽂档的具体结构,⽽是通过解释⼀ 系列概念说明了软件设计 描述⽂档应该遵循的思路和基本内容。</li>
+</ol>
+<h2 id="36-软件设计描述模型"><a class="markdownIt-Anchor" href="#36-软件设计描述模型"></a> 3.6. 软件设计描述模型</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/15.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/16.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>设计视图是应该包含设计图的</li>
+</ol>
+<h2 id="37-设计视角"><a class="markdownIt-Anchor" href="#37-设计视角"></a> 3.7. 设计视角</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="38-利益相关者"><a class="markdownIt-Anchor" href="#38-利益相关者"></a> 3.8. 利益相关者</h2>
+<ol>
+<li>设计视角必须符合在需求(Requiement)中利益相关者(Stakeholder)的设计关注点 (Design Concern)。</li>
+<li>设计对不同的利益相关者来讲,有着不同的意义[Pﬂeeger 2009]:
+<ol>
+<li><strong>顾客</strong>想要确认现有的软件设计⽅案能够保证其所期望的系统的<strong>功能和行为</strong>可以实现。</li>
+<li><strong>架构师</strong>想要知道软件单元、计算平台和系统环境足够实现需求中要求的<strong>非功能性需求</strong>。</li>
+<li><strong>设计人员</strong>想要了解系统的整体设计,以确保系统的每个<strong>设计决策和系统功能</strong>都能实现。</li>
+<li><strong>开发人员</strong>想要知道所开发的单元的精确描述,以及与其它单元的关系。</li>
+<li><strong>测试人员</strong>想要确认怎样测试设计的<strong>所有方案</strong>。</li>
+<li><strong>维护人员</strong>系统想要在修复问题和添加新特性时,能够保持体系结构的完整性和设计的⼀致性。</li>
+</ol>
+</li>
+<li>因为每个利益相关者⽬的不⼀样,对设计就会产⽣不同的设计关注点。⽽我们的设计得全⾯考量各个利益相关者的设计关注点,给出相应的设计视角下的设计视图。</li>
+</ol>
+<h2 id="39-设计理由"><a class="markdownIt-Anchor" href="#39-设计理由"></a> 3.9. 设计理由</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-设计描述文档模版"><a class="markdownIt-Anchor" href="#4-设计描述文档模版"></a> 4. 设计描述文档模版</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt8/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="41-设计文档书写要点"><a class="markdownIt-Anchor" href="#41-设计文档书写要点"></a> 4.1. 设计文档书写要点</h2>
+<ol>
+<li>充分利⽤标准的⽂档模版,根据项⽬特点进⾏适当的<strong>裁剪</strong>。</li>
+<li>可以利⽤<strong>体系结构⻛格</strong>的图,让读者更容易把握⾼层抽象。</li>
+<li>利⽤完整的接口规格说明定义<strong>模块与模块之间的交互</strong>。</li>
+<li>要从<strong>多视角</strong>出发,让读者感受⼀个⽴体的软件系统。</li>
+<li>在设计⽂档中应体现对于<strong>变更的灵活性</strong>。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" class="category-chain-item">2020-软件工程与计算II</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/">#软件工程与计算II</a>
+      
+        <a href="/tags/%E5%86%B3%E7%AD%96/">#决策</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-软件工程与计算II-08-软件设计基础</div>
+      <div>https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-08-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月6日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-09-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" title="2020-软件工程与计算II-09-软件体系结构基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-软件工程与计算II-09-软件体系结构基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-07-%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%8C%96%E4%B8%8E%E9%AA%8C%E8%AF%81/" title="2020-软件工程与计算II-07-需求文档化与验证">
+                        <span class="hidden-mobile">2020-软件工程与计算II-07-需求文档化与验证</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

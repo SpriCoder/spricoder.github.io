@@ -1,0 +1,1235 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-人机交互-Lec-5 评估之询问用户和专家">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-人机交互-Lec-5 评估之询问用户和专家">
+<meta property="og:url" content="https://stormbroken.github.io/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-5%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E8%AF%A2%E9%97%AE%E7%94%A8%E6%88%B7%E5%92%8C%E4%B8%93%E5%AE%B6/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-人机交互-Lec-5 评估之询问用户和专家">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/9.png">
+<meta property="article:published_time" content="2022-01-08T11:05:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:58.456Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="用户">
+<meta property="article:tag" content="人机交互">
+<meta property="article:tag" content="评估">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/1.png">
+  
+  
+  <title>2021-人机交互-Lec-5 评估之询问用户和专家 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-01-08 19:05" pubdate>
+          2022年1月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-人机交互-Lec-5 评估之询问用户和专家</h1>
+            
+            <div class="markdown-body">
+              
+              <p>Lec5-询问用户和专家</p>
+<h1 id="1-背景"><a class="markdownIt-Anchor" href="#1-背景"></a> 1. 背景</h1>
+<ol>
+<li>了解用户的需要和对产品的意见和建议
+<ol>
+<li>观察用户</li>
+<li>询问用户
+<ol>
+<li>适用于客观上较难度量的、与用户主观满意度和可能的忧虑心情相关的问题</li>
+<li>访谈和问卷调查
+<ol>
+<li>在研究用户如何使用系统，以及哪些系统功能是用户非常喜欢或不喜欢的方面也非常有效</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>不知道该怎么做或者对预期的结果没有把握
+<ol>
+<li>请专家帮忙
+<ol>
+<li>不能帮助大家成为可用性专家</li>
+<li>但有助于更好地去评估自己和他人的工作</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-询问用户之访谈"><a class="markdownIt-Anchor" href="#2-询问用户之访谈"></a> 2. 询问用户之访谈</h1>
+<ol>
+<li>访谈：有目的的对话过程
+<ol>
+<li>开放式（或非结构化）访谈，结构化访谈，半结构化访谈和集体访谈</li>
+</ol>
+</li>
+<li>指导原则
+<ol>
+<li>避免过长的问题</li>
+<li>避免使用复合句
+<ol>
+<li>“这款手机与你先前拥有的手机相比，你觉得如何”</li>
+<li>“你觉得这款手机怎么样？你是否有其他的手机？若是的话，你觉得它怎么样？”</li>
+</ol>
+</li>
+<li>避免使用可能让用户感觉尴尬的术语或他们无法理解的语言</li>
+<li>避免使用有诱导性的问题</li>
+<li>你为什么喜欢这种交互方式？</li>
+<li>尽可能保证问题是中性的</li>
+</ol>
+</li>
+</ol>
+<h2 id="21-访谈步骤"><a class="markdownIt-Anchor" href="#21-访谈步骤"></a> 2.1. 访谈步骤</h2>
+<ol>
+<li>“开始”阶段
+<ol>
+<li>访问人先介绍自己</li>
+<li>解释访谈的原因，消除受访人对道德问题的疑虑，询问受访人是否介意被记录（录音或摄像）</li>
+</ol>
+</li>
+<li>“热身”阶段：先提出简单的问题</li>
+<li>主要访谈阶段：按逻辑次序由易到难提问</li>
+<li>“冷却”阶段：提出若干容易的问题，消除用户的紧张感觉</li>
+<li>结束访谈：感谢受访者，关闭录音机，收好笔记本，表面访谈已经结束</li>
+</ol>
+<h2 id="22-焦点小组"><a class="markdownIt-Anchor" href="#22-焦点小组"></a> 2.2. 焦点小组</h2>
+<ol>
+<li>非正式的评估方法
+<ol>
+<li>在界面设计之前和经过一段使用之后评估用户的需要和感受</li>
+<li>是市场、政治和社会科学研究经常使用的方法</li>
+<li>人数限制：由大约6到9个典型用户组成</li>
+<li>如在评估大学的网站时，可考虑由行政人员、教师和学生们组成3个分别的焦点小组</li>
+</ol>
+</li>
+<li>主持人工作
+<ol>
+<li>事先列出一张讨论问题和数据收集目标的清单</li>
+<li>保持所谈论的内容不离题</li>
+<li>保证小组的每个成员都积极参与谈论</li>
+<li>讨论结果的分析报告</li>
+</ol>
+</li>
+<li>焦点小组存在风险</li>
+</ol>
+<h1 id="3-询问用户之问卷调查"><a class="markdownIt-Anchor" href="#3-询问用户之问卷调查"></a> 3. 询问用户之问卷调查</h1>
+<ol>
+<li>问卷调查是用于搜集统计数据和用户意见的常用方法
+<ol>
+<li>可单独使用</li>
+<li>也可与其他技术结合使用</li>
+</ol>
+</li>
+<li>问卷设计原则
+<ol>
+<li>应确保问题明确，具体</li>
+<li>在可能时，采用封闭式问题并提供充分的答案选项</li>
+<li>对于征求用户意见的问题，应提供一个“无看法”的答案选项</li>
+<li>注意提问次序，先提出一般化问题，再提出具体问题</li>
+<li>避免使用复杂的多重问题</li>
+<li>在使用等级标度时，应设定适当的等级范围，并确保它们不重叠：做到直观、一致</li>
+<li>避免使用术语</li>
+<li>明确说明如何完成问卷：如说明应在选项前的方框内打“√”</li>
+<li>在设计问卷时，既要做到紧凑，也应适当留空</li>
+</ol>
+</li>
+</ol>
+<h2 id="31-问题类型"><a class="markdownIt-Anchor" href="#31-问题类型"></a> 3.1. 问题类型</h2>
+<ol>
+<li>常规问题
+<ol>
+<li>年龄、性别、职业、居住地、应用计算机的经验等</li>
+</ol>
+</li>
+<li>自由回答问题
+<ol>
+<li>如：你能够对这个界面提出改进意见吗？</li>
+<li>能够提出设计人员没有考虑到的建议</li>
+</ol>
+</li>
+<li>量化分级问题
+<ol>
+<li>要求用户以数值尺度判断一个特定陈述</li>
+<li>如：系统容易从错误状态恢复：不同意1 2 3 4 5 同意</li>
+<li>第三章中的“Likert尺度”和“语义差异度尺度”</li>
+<li>奇数刻度较偶数刻度更常用</li>
+</ol>
+</li>
+<li>多选题：对于收集用户以前的经验信息很有用</li>
+</ol>
+<h2 id="32-用户满意度调查表quis"><a class="markdownIt-Anchor" href="#32-用户满意度调查表quis"></a> 3.2. 用户满意度调查表（QUIS）</h2>
+<ol>
+<li>由Ben Shneiderman开发
+<ol>
+<li>QUIS: questionnaire for user interaction satisfaction</li>
+<li>使用9级标度</li>
+<li>已经过了多次实践检验</li>
+</ol>
+</li>
+<li>QUIS调查表涉及
+<ol>
+<li>界面细节（如符号的易读性和屏幕显示的布局设计）</li>
+<li>界面对象（如具有象征意义的图标）</li>
+<li>界面行为（如为用户经常使用的操作设置的快捷方式）</li>
+<li>任务表达（如适当的术语和屏幕显示顺序）</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-问卷设计举例"><a class="markdownIt-Anchor" href="#33-问卷设计举例"></a> 3.3. 问卷设计举例</h2>
+<ol>
+<li>比较两个不同学习系统的用户的执行情况和偏爱
+<ol>
+<li>一个应用超媒体</li>
+<li>另一个应用顺序课程</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="34-问卷组织"><a class="markdownIt-Anchor" href="#34-问卷组织"></a> 3.4. 问卷组织</h2>
+<ol>
+<li>问卷调查中的两个关键问题
+<ol>
+<li>如何寻找有代表性的用户</li>
+<li>如何达到合理的回复率</li>
+</ol>
+</li>
+<li>有助于提高回复率的措施
+<ol>
+<li>精心设计问卷，避免用户因为厌烦而拒绝回复</li>
+<li>参照QUIS，提供简要描述，说明用户若没有时间完成整份问卷，可以只完成简短的部分</li>
+<li>提供一个带有回复地址并粘好了邮票的信封</li>
+<li>解释为什么要进行这些问卷调查，并说明将为参与者保密</li>
+<li>在发出问卷之后，通过后续邮件、电话或电子邮件联系参与者</li>
+<li>采取一些激励措施（如有偿调查等）</li>
+<li>进行小规模测验</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-在线问卷调查"><a class="markdownIt-Anchor" href="#35-在线问卷调查"></a> 3.5. 在线问卷调查</h2>
+<ol>
+<li>能有效而方便地搜集大量人员的意见
+<ol>
+<li>能够快速搜集调查结果</li>
+<li>与纸张式的问卷调查相比，成本更低，甚至为零</li>
+<li>数据可以立即输入数据库进行分析</li>
+<li>可缩短数据分析的时间</li>
+<li>容易更正问卷中存在的问题</li>
+<li>回复率可能低于纸质问卷</li>
+</ol>
+</li>
+<li>两种形式
+<ol>
+<li>基于电子邮件：能够针对特定的用户，但邮件能够容纳的内容有限</li>
+<li>基于网页的调查：形式灵活，并能验证数据的有效性，但调查对象是随机的</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-问卷调查与访谈"><a class="markdownIt-Anchor" href="#36-问卷调查与访谈"></a> 3.6. 问卷调查与访谈</h2>
+<ol>
+<li>问卷调查或访谈都属于间接方法
+<ol>
+<li>因为两者都不对用户界面本身进行研究，而只是研究用户对界面的看法</li>
+<li>都不能完全听信和采纳用户的说法
+<ol>
+<li>询问ZAP命令的说明</li>
+<li>系统新增功能的问卷</li>
+<li>移动电话说明书的问卷</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>访谈
+<ol>
+<li>形式更自由</li>
+<li>难以获得确切数据</li>
+<li>需要花费更多时间</li>
+<li>可在访谈后立即得到结果</li>
+<li>可能回避某些“敏感问题”的真实想法</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-询问专家之认知走查"><a class="markdownIt-Anchor" href="#4-询问专家之认知走查"></a> 4. 询问专家之认知走查</h1>
+<ol>
+<li>评估应该贯穿于整个设计过程中
+<ol>
+<li>理想情况下，系统所有实现工作开始之前就应该评估</li>
+<li>专家分析可应用于项目设计的任何阶段</li>
+</ol>
+</li>
+<li>认知走查
+<ol>
+<li>逐步检查使用系统执行任务的过程，从中找出可用性问题</li>
+<li>无需用户参与</li>
+<li>认知走查的主要目标是确定使一个系统如何易于学习</li>
+<li>试图想象出人们在第一次使用某个产品时的想法以及所采取的动作，它的大作流程是怎样的</li>
+<li>评估的具体过程就是把用户在完成这个功能时所做的所有动作讲述成一个令人可以信服的故事</li>
+</ol>
+</li>
+</ol>
+<h2 id="41-走查的步骤"><a class="markdownIt-Anchor" href="#41-走查的步骤"></a> 4.1. 走查的步骤</h2>
+<ol>
+<li>标识并记录典型用户的特性：有关用户自身心理、心理特点以及他们的知识和经验的描述</li>
+<li>基于评估重点，设计样本任务：应该是大多数用户要做的典型任务</li>
+<li>制作界面原型（或界面描述），明确用户执行任务的具体步骤</li>
+<li>由设计人员和专家级评估人员（一位或多位）共同进行分析</li>
+<li>评估人员结合应用的上下文，逐步检查每项任务的操作步骤：见下页</li>
+<li>在完成逐步检查之后，汇总关键信息</li>
+<li>修改设计，更正发现的问题</li>
+<li>检查每项任务的操作步骤时，了解以下问题
+<ol>
+<li>正确的操作对于用户是否足够明显？（可预见）
+<ol>
+<li>即用户能否知道如何完成任务</li>
+<li>Excel中换行的例子</li>
+</ol>
+</li>
+<li>用户能否注意到正确的操作？（可理解）：功能名称或图标设计是否容易理解</li>
+<li>能否正确解释操作的响应？（可解释）
+<ol>
+<li>执行—评估交互周期的完成</li>
+<li>网页提交按钮的例子</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>认知走查的记录工作非常重要！</li>
+</ol>
+<h2 id="42-分析"><a class="markdownIt-Anchor" href="#42-分析"></a> 4.2. 分析</h2>
+<ol>
+<li>优点
+<ol>
+<li>不需要用户参与</li>
+<li>不需要可运行的原型</li>
+<li>能找出非常具体的用户问题</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>工作量大，非常费时</li>
+<li>关注面有限
+<ol>
+<li>只适合于评估一个产品的易学习性</li>
+<li>不太容易发现使用效率方面的可用性问题1</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="43-认知走查实例"><a class="markdownIt-Anchor" href="#43-认知走查实例"></a> 4.3. 认知走查实例</h2>
+<ol>
+<li>录像机遥控器的定时功能</li>
+<li>规划一段定时录像，录像过程在通道4上，从2005年2月24日的18:00开始，到19:15时结束</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>对每一个行为，回答如下问题</li>
+<li>用户行为1：按“定时录像”键
+<ol>
+<li>行为的结果和用户的目标一样吗？</li>
+<li>用户能看到这个行为是可用的吗？并不清楚哪一个是“定时录像”键</li>
+<li>一旦用户找到了一个正确的行为，他们能知道这个行为是所要的吗？</li>
+<li>用户能够理解所获得的反馈吗？</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-协作走查"><a class="markdownIt-Anchor" href="#44-协作走查"></a> 4.4. 协作走查</h2>
+<ol>
+<li>由用户、开发人员和可用性专家合作，逐步检查任务场景，讨论与对话元素相关的可用性问题：在评估过程中，每一位专家都承担用户的角色</li>
+<li>优点
+<ol>
+<li>专注于用户任务；能够产生定量数据</li>
+<li>符合参与式设计原则</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>需要各方面的专家，速度慢</li>
+<li>由于时间限制，通常只能评估有限的场景</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-询问专家之启发式评估"><a class="markdownIt-Anchor" href="#5-询问专家之启发式评估"></a> 5. 询问专家之启发式评估</h1>
+<ol>
+<li>一种灵活而又相当廉价的评估方式</li>
+<li>复习：Nielsen的十条启发式规则
+<ol>
+<li>系统状态的可视性</li>
+<li>系统应与真实世界相符合</li>
+<li>用户的控制权及自主权</li>
+<li>一致性和标准化</li>
+<li>帮助用户识别、诊断和修复错误</li>
+<li>预防错误</li>
+<li>依赖识别而非记忆</li>
+<li>使用的灵活性及有效性</li>
+<li>最小化设计</li>
+<li>帮助及文档</li>
+</ol>
+</li>
+</ol>
+<h2 id="51-启发式评估"><a class="markdownIt-Anchor" href="#51-启发式评估"></a> 5.1. 启发式评估</h2>
+<ol>
+<li>由可用性专家完成</li>
+<li>步骤
+<ol>
+<li>彻底检查界面</li>
+<li>将界面与启发式规则进行对比</li>
+<li>列举可用性问题</li>
+<li>应用启发式规则对每一个问题进行解释与确认</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-问题的严重性分类"><a class="markdownIt-Anchor" href="#52-问题的严重性分类"></a> 5.2. 问题的严重性分类</h2>
+<ol>
+<li>不同作用因素
+<ol>
+<li>频率：有多经常？</li>
+<li>影响：有多难克服？</li>
+<li>持续时间：要多长时间克服？</li>
+</ol>
+</li>
+<li>严重性等级
+<ol>
+<li>表面问题：不需要被修复</li>
+<li>次要问题：需要修复，但优先级较低</li>
+<li>主要问题：需要修复且优先级很高</li>
+<li>灾难性问题：必须被修复</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-评估步骤"><a class="markdownIt-Anchor" href="#53-评估步骤"></a> 5.3. 评估步骤</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="54-如何正确评估"><a class="markdownIt-Anchor" href="#54-如何正确评估"></a> 5.4. 如何正确评估</h2>
+<ol>
+<li>分析每个问题对应的启发式规则：如“主页上有太多选项”对应“审美与最小化设计”：不能简单地说“我不喜欢它的颜色”</li>
+<li>列出所有问题：即便可能某个界面元素存在多个问题</li>
+<li>至少遍历两次界面
+<ol>
+<li>一次获得系统的初始体验</li>
+<li>另一次关注特定界面元素</li>
+</ol>
+</li>
+<li>不要局限于10条启发式规则：还有各种affordances、constraints、颜色原理等</li>
+</ol>
+<h1 id="6-itunes评估实例"><a class="markdownIt-Anchor" href="#6-itunes评估实例"></a> 6. iTunes评估实例</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="61-发现的问题"><a class="markdownIt-Anchor" href="#61-发现的问题"></a> 6.1. 发现的问题</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="62-问题一"><a class="markdownIt-Anchor" href="#62-问题一"></a> 6.2. 问题一</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="63-问题三"><a class="markdownIt-Anchor" href="#63-问题三"></a> 6.3. 问题三</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec5/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="64-分析"><a class="markdownIt-Anchor" href="#64-分析"></a> 6.4. 分析</h2>
+<ol>
+<li>启发式评估的优点
+<ol>
+<li>不涉及用户，所以面临的实际限制和道德问题较少</li>
+<li>成本相对较低，不需要特殊设备，而且较为快捷</li>
+<li>又被称为“经济评估法”</li>
+</ol>
+</li>
+<li>启发式评估的缺点
+<ol>
+<li>评估人员需要经过长时间的训练才能成为专家：理想的专家应同时具备交互设计和产品应用域的知识</li>
+<li>可能出现“虚假警报”：“专家每找到一个真实的可用性问题，将发出约一个假警报（1.2），忽略大约半个问题（0.6）”</li>
+</ol>
+</li>
+</ol>
+<h2 id="65-友情提醒"><a class="markdownIt-Anchor" href="#65-友情提醒"></a> 6.5. 友情提醒</h2>
+<ol>
+<li>邀请多个评估专家
+<ol>
+<li>评估专家也不是用户</li>
+<li>不同评估专家可能发现不同问题</li>
+<li>越多越好，但回报可能会越来越小</li>
+<li>Niesen推荐3-5名评估专家</li>
+</ol>
+</li>
+<li>使用用户测试替代启发式评估
+<ol>
+<li>不同方法发现的问题不同</li>
+<li>启发式评估更廉价，但用户测试才是可用性的Gold Standard</li>
+</ol>
+</li>
+<li>观察人员可以帮助评估专家
+<ol>
+<li>只要专家已经注意到了某个问题</li>
+<li>但对用户测试而言并不适合那么做</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/" class="category-chain-item">2021-人机交互</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E7%94%A8%E6%88%B7/">#用户</a>
+      
+        <a href="/tags/%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/">#人机交互</a>
+      
+        <a href="/tags/%E8%AF%84%E4%BC%B0/">#评估</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-人机交互-Lec-5 评估之询问用户和专家</div>
+      <div>https://stormbroken.github.io/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-5%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E8%AF%A2%E9%97%AE%E7%94%A8%E6%88%B7%E5%92%8C%E4%B8%93%E5%AE%B6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年1月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-6%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95/" title="2021-人机交互-Lec-6 评估之用户测试">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-人机交互-Lec-6 评估之用户测试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-4%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E8%A7%82%E5%AF%9F%E7%94%A8%E6%88%B7/" title="2021-人机交互-Lec-4 评估之观察用户">
+                        <span class="hidden-mobile">2021-人机交互-Lec-4 评估之观察用户</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

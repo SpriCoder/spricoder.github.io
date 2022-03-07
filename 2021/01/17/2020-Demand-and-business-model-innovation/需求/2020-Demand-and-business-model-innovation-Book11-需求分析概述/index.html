@@ -1,0 +1,1381 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-需求与商业模式分析-Book11-需求分析概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-需求与商业模式分析-Book11-需求分析概述">
+<meta property="og:url" content="https://stormbroken.github.io/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book11-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-需求与商业模式分析-Book11-需求分析概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/23.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/24.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/25.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/26.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/27.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/5.png">
+<meta property="article:published_time" content="2021-01-17T11:17:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:38:01.723Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="需求">
+<meta property="article:tag" content="需求分析">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/6.png">
+  
+  
+  <title>2020-需求与商业模式分析-Book11-需求分析概述 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-17 19:17" pubdate>
+          2021年1月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-需求与商业模式分析-Book11-需求分析概述</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="book11-需求分析概述"><a class="markdownIt-Anchor" href="#book11-需求分析概述"></a> Book11-需求分析概述</h2>
+<h1 id="1-需求分析的根本任务"><a class="markdownIt-Anchor" href="#1-需求分析的根本任务"></a> 1. 需求分析的根本任务</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="11-根本任务内容"><a class="markdownIt-Anchor" href="#11-根本任务内容"></a> 1.1. 根本任务内容</h2>
+<ol>
+<li>建立分析模型，达成开发者和用户对需求信息的共同理解</li>
+<li>依据共同理解，发挥创造性，创建软件系统解决方案</li>
+</ol>
+<h3 id="111-建立分析模型达成开发者和用户对需求信息的共同理解"><a class="markdownIt-Anchor" href="#111-建立分析模型达成开发者和用户对需求信息的共同理解"></a> 1.1.1. 建立分析模型，达成开发者和用户对需求信息的共同理解</h3>
+<ol>
+<li>将复杂的系统分解成为简单的部分以及它们之间的联系，确定<strong>本质特征</strong></li>
+<li>和用户达成对信息内容的共同理解</li>
+<li>分析的活动主要包括<strong>识别、定义和结构化</strong>，它的目的是<strong>获取某个可以转换为知识的事物的信息</strong>，这种分析活动被称为<strong>建模</strong>——建立需求分析模型</li>
+</ol>
+<h3 id="112-依据共同理解发挥创造性创建软件系统解决方案"><a class="markdownIt-Anchor" href="#112-依据共同理解发挥创造性创建软件系统解决方案"></a> 1.1.2. 依据共同理解，发挥创造性，创建软件系统解决方案</h3>
+<ol>
+<li>将一个问题分解成<strong>独立的、更简单和易于管理</strong>的<strong>子</strong>问题来帮助寻找解决方案</li>
+<li>创建解决方案的过程是<strong>创造性</strong>的</li>
+<li>帮助开发者建立问题的定义，并确定被定义的事物之间的逻辑关系，这些逻辑关系可以形成信息的推理，进而可以被用来验证解决方案的<strong>正确性</strong>。</li>
+</ol>
+<h2 id="12-建立分析模型"><a class="markdownIt-Anchor" href="#12-建立分析模型"></a> 1.2. 建立分析模型</h2>
+<h3 id="121-模型"><a class="markdownIt-Anchor" href="#121-模型"></a> 1.2.1. 模型</h3>
+<ol>
+<li>模型是对事物的抽象，帮助人们在创建一个事物之前可以有更好的理解</li>
+<li>集中关注问题的计算特性(数据、功能、规则等等)</li>
+<li>它是对系统进行思考和推理的一种方式。建模的目标是建立系统的一个表示，这个表示以精确一致的方式描述系统，使得系统的使用更加容易</li>
+<li>建立模型的过程即建模。</li>
+<li>建模优点：
+<ol>
+<li>通过建模抽象降低应用的复杂性。</li>
+<li>在建模的过程中更深刻地理解信息。</li>
+<li>可以帮助人们更好地记忆细节。</li>
+<li>可以更好地与其他开发人员进行交流。</li>
+<li>可以更好地与用户以及其他涉众进行交流。</li>
+<li>为以后的维护和升级提供文档。</li>
+</ol>
+</li>
+<li>建模方法
+<ol>
+<li>抽象</li>
+<li>分解</li>
+<li>投影</li>
+</ol>
+</li>
+</ol>
+<h4 id="1211-抽象abstraction"><a class="markdownIt-Anchor" href="#1211-抽象abstraction"></a> 1.2.1.1. 抽象(Abstraction)</h4>
+<ol>
+<li>一方面要求人们只关注重要的信息，忽略次要的内容：通过强调本质的特征，就减少了问题的复杂性</li>
+<li>另一方面也要求人们将认知保留在适当的层次，屏蔽更深层次的细节：在问题的各元素之间推断出更广泛和更普遍的关系，帮助人们寻找解决方案</li>
+</ol>
+<h4 id="1212-分解decomposition-partitioning"><a class="markdownIt-Anchor" href="#1212-分解decomposition-partitioning"></a> 1.2.1.2. 分解(Decomposition / Partitioning)</h4>
+<ol>
+<li>“分而治之”：将单个复杂和难以理解的问题分解成多个相对更容易的子问题，并掌握各子问题之间的联系</li>
+<li>分解的方案往往还能提供问题的解决思路</li>
+</ol>
+<h4 id="1213-投影projection"><a class="markdownIt-Anchor" href="#1213-投影projection"></a> 1.2.1.3. 投影(Projection)</h4>
+<ol>
+<li>多视点方法</li>
+</ol>
+<h2 id="13-两个世界与三种模型"><a class="markdownIt-Anchor" href="#13-两个世界与三种模型"></a> 1.3. 两个世界与三种模型</h2>
+<ol>
+<li>模型是对复杂系统的简化和抽象，关注特定的组元和组元之间的关系，同时忽略与组元无关的次要信息。</li>
+</ol>
+<h3 id="131-计算世界与计算模型"><a class="markdownIt-Anchor" href="#131-计算世界与计算模型"></a> 1.3.1. 计算世界与计算模型</h3>
+<ol>
+<li>使用<strong>软件的构成单位</strong>作为模型的组元</li>
+<li>软件<strong>构建单位之间的关系</strong>作为模型组元之间的关系</li>
+<li>计算模型：使用的组元和组元间关系都是软件的元素，是来自软件(计算世界)的模型。</li>
+<li>计算世界基于计算科学建立的，具有形式化的特征，信息的描述具有明确化、准确化和确定化的特征</li>
+<li>需求分析阶段不适宜<strong>建立形式化的计算模型</strong>
+<ol>
+<li>重点是问题，缺乏和软件实现相关的技术细节</li>
+<li>用户无法理解</li>
+<li>基于计算模型建立的模型是开发者的理解模型，但不是用户和开发者的共同理解模型。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="132-问题世界与业务模型"><a class="markdownIt-Anchor" href="#132-问题世界与业务模型"></a> 1.3.2. 问题世界与业务模型</h3>
+<ol>
+<li>使用<strong>问题域中的重要概念</strong>作为模型的组元</li>
+<li>使用<strong>概念之间的业务联系</strong>作为组元之间的关系</li>
+<li>使用了<strong>业务描述</strong>的方式，具有<strong>非形式化</strong>特征
+<ol>
+<li>业务模型元素(即业务概念和业务联系)的选取和定义上具有不准确、不确定和模糊化</li>
+<li>可以抽取出需求信息中最重要和最本质的内容</li>
+<li>可以达成用户和开发者的共同理解</li>
+</ol>
+</li>
+<li>非形式化特征使得它不适合于进行需求建模，不足以用于描述一个有效的软件解决方案</li>
+<li>问题世界是复杂的，业务模型的元素在选取和定义上具有不准确、不确定和模糊化的非形式化特征。</li>
+</ol>
+<h3 id="133-软件分析模型分析视图"><a class="markdownIt-Anchor" href="#133-软件分析模型分析视图"></a> 1.3.3. 软件分析模型(分析视图)</h3>
+<ol>
+<li>介于<strong>计算模型和业务模型</strong>二者之间的模型形式</li>
+<li>分析模型使用了计算模型的<strong>组元形式</strong>，描述解决方案时具有比业务模型更加严谨和适用的描述方式。</li>
+<li>分析模型在<strong>组元的表现</strong>上使用了业务模型的<strong>表现方式</strong></li>
+<li>分析模型是半形式化的
+<ol>
+<li>不像计算模型那么严谨，没有形式化特征</li>
+<li>比业务模型更严格，有半形式化特征。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="134-三种模型的区别"><a class="markdownIt-Anchor" href="#134-三种模型的区别"></a> 1.3.4. 三种模型的区别</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>实际产经中不存在业务模型</li>
+<li>需求人员直接根据需求获取信息建立分析模型</li>
+<li>计算模型可以看做软件实现前的构建草案，就是软件的设计模型。</li>
+</ol>
+<h2 id="14-模型的描述"><a class="markdownIt-Anchor" href="#14-模型的描述"></a> 1.4. 模型的描述</h2>
+<ol>
+<li>三个要素之间互为依赖，<strong>每个要素</strong>都为<strong>下一个要素</strong>提供了一个必需的环境
+<ol>
+<li>语法：使用规则——怎样使用模型的元素，并且以什么方式<strong>组织、连接或关联</strong>这些元素</li>
+<li>语义：特定模型元素所具有的<strong>含义</strong></li>
+<li>语用：模型元素的<strong>上下文</strong>，以及影响该模型元素意义的<strong>约束和假定</strong></li>
+</ol>
+</li>
+<li>分析模型：对语言和语用要求很高，因为模型描述的内容是复杂的</li>
+<li>分析模型特点：
+<ol>
+<li>语用复杂</li>
+<li>语义丰富</li>
+<li>语法严格同时又不太复杂</li>
+</ol>
+</li>
+<li>曾经有很多的研究者尝试建立一种能够描述软件开发中各种情景的形式化或半形式化模型语言，但最后都失败了</li>
+</ol>
+<h3 id="141-模型的描述多视点方法"><a class="markdownIt-Anchor" href="#141-模型的描述多视点方法"></a> 1.4.1. 模型的描述：多视点方法</h3>
+<ol>
+<li>视点分析方法要求人们在建模一个复杂系统时，从不同观察角度出来，阿静系统中既交织共存又相对独立的不同内容拆解成不同的部分，然后分别为每个拆解后的子部分建模。</li>
+<li>视点(Viewpoints)
+<ol>
+<li>将系统中既交织共存又相对独立的不同内容拆解成不同的部分</li>
+<li>每一个视点都是独立的模型存在，用独立的模型语言和表示法进行描述</li>
+</ol>
+</li>
+<li>多视点
+<ol>
+<li>所有视点的模型描述集成起来，就是对原有复杂系统的模型描述</li>
+<li>依据系统内不同部分之间的关系，建立不同模型内元素之间的联系，从而将多个独立的模型描述在语义上连接起来</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="142-模型-模型语言与表示法"><a class="markdownIt-Anchor" href="#142-模型-模型语言与表示法"></a> 1.4.2. 模型、模型语言与表示法</h3>
+<ol>
+<li>软件分析模型是多个视点模型的集成。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-需求建模"><a class="markdownIt-Anchor" href="#15-需求建模"></a> 1.5. 需求建模</h2>
+<ol>
+<li>需求分析的关键就是为真实世界的问题建模，即问题域模建模。</li>
+<li>常见影响因素
+<ol>
+<li>问题域模型：实时应用(流)/信息系统应用</li>
+<li>需求分析人员的技能</li>
+<li>客户的过程需求</li>
+<li>方法和工具的可用性</li>
+</ol>
+</li>
+<li>通常的做法是：
+<ol>
+<li>先依据获取的问题域信息建立初步的模型。</li>
+<li>然后分析用户需求，对模型进行调整，得到一个中间形式的模型形式。</li>
+<li>最后，对调整后的模型进行逻辑推理和验证，如果符合预期的期望，那么它就是最终的解决方案模型。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="2-建立解决方案"><a class="markdownIt-Anchor" href="#2-建立解决方案"></a> 2. 建立解决方案</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>构建解系统是困难的，创造性过程。</li>
+<li>需求分析人员的灵感也是重要的。</li>
+<li>创造性活动中，科学性因素也有重要的作用。</li>
+<li>科学性因素
+<ol>
+<li>外因
+<ol>
+<li>问题域特征</li>
+<li>需求</li>
+<li>技术、方法</li>
+</ol>
+</li>
+<li>内因
+<ol>
+<li>技术背景</li>
+<li>知识背景</li>
+<li>经验/习惯</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-需求分析技术"><a class="markdownIt-Anchor" href="#3-需求分析技术"></a> 3. 需求分析技术</h1>
+<h2 id="31-模型-表示法-技术-方法和工具"><a class="markdownIt-Anchor" href="#31-模型-表示法-技术-方法和工具"></a> 3.1. 模型、表示法、技术、方法和工具</h2>
+<ol>
+<li>模型根据上下文表示为如下三个之一
+<ol>
+<li>抽象信息体：侧重于知识的最小完备性</li>
+<li>视图</li>
+<li>模型语言</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-常用需求分析技术"><a class="markdownIt-Anchor" href="#32-常用需求分析技术"></a> 3.2. 常用需求分析技术</h2>
+<h3 id="321-结构化技术"><a class="markdownIt-Anchor" href="#321-结构化技术"></a> 3.2.1. 结构化技术</h3>
+<ol>
+<li>数据建模
+<ol>
+<li>实体关系图 Entity Relationship Diagram</li>
+</ol>
+</li>
+<li>过程建模
+<ol>
+<li>数据流图 Data Flow Diagram</li>
+<li>上下文图 Context Diagram</li>
+<li>微规格说明 Mini-Specification</li>
+<li>数据字典 Data Dictionary</li>
+</ol>
+</li>
+<li>行为建模
+<ol>
+<li>状态(转换)图/矩阵 State (Transition) Diagram/Matrix</li>
+</ol>
+</li>
+<li>过程/数据关系建模
+<ol>
+<li>功能实体矩阵 Function/Entity Matrix</li>
+</ol>
+</li>
+<li>信息工程方法
+<ol>
+<li>功能分解图 Function Decomposition Diagram</li>
+<li>过程依赖图 Process Dependency Diagram</li>
+</ol>
+</li>
+</ol>
+<h3 id="322-面向对象技术"><a class="markdownIt-Anchor" href="#322-面向对象技术"></a> 3.2.2. 面向对象技术</h3>
+<ol>
+<li>UML
+<ol>
+<li>用例图 Use-Case Diagram</li>
+<li>类图 Class Diagram</li>
+<li>交互图(顺序图/通信图) Interaction(Sequence / Communication)Diagram</li>
+<li>活动图 Activity Diagram</li>
+<li>对象约束语言 Object Constraint Language</li>
+<li>状态图 State Chart Diagram</li>
+</ol>
+</li>
+</ol>
+<h3 id="323-简单总结"><a class="markdownIt-Anchor" href="#323-简单总结"></a> 3.2.3. 简单总结</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/23.png" srcset="/img/loading.gif" lazyload alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/24.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="33-技术的综合运用"><a class="markdownIt-Anchor" href="#33-技术的综合运用"></a> 3.3. 技术的综合运用</h2>
+<h3 id="331-综合运用的需要"><a class="markdownIt-Anchor" href="#331-综合运用的需要"></a> 3.3.1. 综合运用的需要</h3>
+<ol>
+<li>如何为各个视角选择需求分析技术？
+<ol>
+<li>每一种需求分析技术都有自己的特点，具有在应用上的独特性</li>
+<li>复杂应用需要多视角的建模处理</li>
+</ol>
+</li>
+<li>如何实现它们之间的配合？只有通过多种需求分析技术的有机结合与集成才能充分的描述复杂应用</li>
+</ol>
+<h3 id="332-需求分析技术的发展过程"><a class="markdownIt-Anchor" href="#332-需求分析技术的发展过程"></a> 3.3.2. 需求分析技术的发展过程</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>更多见课本P263</li>
+<li>20世纪50年代：编码、以机器为中心</li>
+<li>20世纪60年代：软硬件不同、个人英雄主义</li>
+<li>20世纪70年代：形式化方法:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>演算和图灵机、DFD、ERD、功能实体矩阵、实体生命历史和事实矩阵。</li>
+<li>20世纪80年代：聚焦软件效率、状态图、功能分解图、过程依赖图</li>
+<li>20世纪90年代：面向对象</li>
+<li>20世纪90年代后：工作流挑战、业务流程再造</li>
+</ol>
+<h2 id="34-技术的应用特征"><a class="markdownIt-Anchor" href="#34-技术的应用特征"></a> 3.4. 技术的应用特征</h2>
+<p>对需求分析技术的综述和分类</p>
+<h3 id="341-wieringa框架"><a class="markdownIt-Anchor" href="#341-wieringa框架"></a> 3.4.1. Wieringa框架</h3>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/15.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/16.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>功能性描述：交互是有目的的，“用户可以用ATM取钱”</li>
+<li>通信式描述：系统和周围环境的实体进行信息交流，“用户输入卡号、密码、金额，ATM取出相应的现金”</li>
+<li>行为式描述：功能拆分，更细致，每一步交互</li>
+<li>功能-通信-行为是逐步精化，对系统功能逐步展开。</li>
+<li>另一条路线是系统分解
+<ol>
+<li>系统对外交互：
+<ol>
+<li>组元功能：分解后系统内部组元交互功能式描述，如&quot;储户能够使用ATM取钱&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>“读卡器能够读取银行卡数据;触摸屏能够显示…并允许储户…键盘允许储户输入密码和数额;远程连接能够连接银行数据库验证…出钞口能够吐出相应数额的现金”。</li>
+<li>组元通信：“分解后系统内部组元交互通信式描述，如“储户输人银行卡卡号、密码和取钱数额,ATM系统给出相应数额的现金”<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>“读卡器读取银行卡数据提供给远程连接;键盘接收到储户输入的密码提供给远程连接，得到储户输入的现金数额提供给出钞口;触摸屏向储户显示…远程连接向银行数据库发送银行卡卡号、密码，得到验证结果数据;出钞口吐出相应数额的现金”。</li>
+<li>组元行为：分解后系统内部组元的交互行为是描述，顺序图</li>
+</ol>
+</li>
+<li>系统对内交互</li>
+</ol>
+</li>
+<li>需求分析技术
+<ol>
+<li>外部功能</li>
+<li>外部通信</li>
+<li>外部行为</li>
+<li>概念组元</li>
+<li>组元功能</li>
+<li>组元通信</li>
+<li>组元行为</li>
+</ol>
+</li>
+<li>系统对外交互精化与系统分解同步进行，顺序衔接：外部行为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>外部通信<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>外部行为。</li>
+<li>在分析、建模简单系统时，系统对外交互精化与系统分解完成后，结束需求分析，进行软件设计。</li>
+<li>如果系统比较复杂，进一步分解内部交互：组元功能<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>组元通信<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span>组元行为</li>
+</ol>
+<h3 id="342-zachman-框架"><a class="markdownIt-Anchor" href="#342-zachman-框架"></a> 3.4.2. Zachman 框架</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>关注软件生产中的所有建模技术</li>
+<li>描述软件系统的分布网络，人们会绘制位置拓扑图</li>
+<li>描述企业组织结构，使用层次模型、矩阵模型和网状模型</li>
+</ol>
+<h4 id="3421-zachman矩阵的行"><a class="markdownIt-Anchor" href="#3421-zachman矩阵的行"></a> 3.4.2.1. Zachman矩阵的行</h4>
+<ol>
+<li>目标/范围(规划者视图)
+<ol>
+<li>关心软件系统的成本和效益</li>
+<li>对最终系统的规模、形式、位置空间以及基本目标的粗略描述</li>
+<li>规划者视图规定了项目的前景和范围。</li>
+</ol>
+</li>
+<li>企业模型(所有者视图)
+<ol>
+<li>关心软件系统会如何参与和帮助实际工作</li>
+<li>对业务实体、业务过程以及它们与系统之间交互的描述</li>
+<li>利用业务概念限定了系统的解决方案——分析模型。</li>
+</ol>
+</li>
+<li>系统模型(设计师视图)
+<ol>
+<li>关注软件系统应该的需要以及设计方法的选择限制</li>
+<li>对软件系统的基本功能和设计空间的描述——体系结构。</li>
+</ol>
+</li>
+<li>技术模型(构建者视图)
+<ol>
+<li>关注程序</li>
+<li>对软件系统当中控制逻辑、算法、I/O控制以及其他各种具体技术细节的描述——描述详细设计的设计模型</li>
+</ol>
+</li>
+<li>组件模型(集成者视图)
+<ol>
+<li>关注组装</li>
+<li>对软件系统的组件、接口以及编码程序等内容的描述</li>
+</ol>
+</li>
+<li>实际运行的系统：
+<ol>
+<li>描述系统投入使用后的实际状况和在运行中的实际表现。</li>
+</ol>
+</li>
+</ol>
+<h4 id="3422-zachman矩阵的列"><a class="markdownIt-Anchor" href="#3422-zachman矩阵的列"></a> 3.4.2.2. Zachman矩阵的列</h4>
+<ol>
+<li>数据：对企业有重要意义的事物以及企业对这些事物的理解</li>
+<li>功能：企业在业务中执行的任务以及企业对任务的理解。</li>
+<li>位置：组织活动和软件系统的地理分布，以及它们与组织的其他方面的关联。</li>
+<li>人：在软件系统被引入后会涉及的人员和组织</li>
+<li>时间：系统内的事件-事件关联之间的时间因素，表现为业务的规划调度、系统的事件响应和控制结构。</li>
+<li>动机：该列针对的是企业建立目标系统的动机，揭示了企业的目标、目的、业务规划、知识架构、思想路线和决策基础。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-需求分析方法"><a class="markdownIt-Anchor" href="#4-需求分析方法"></a> 4. 需求分析方法</h1>
+<ol>
+<li>传统分析:没有方法(1950’s)
+<ol>
+<li>依赖个体才智，依据个人习惯</li>
+<li>缺乏结构、不可重复、不可测量，冗长、混乱、偏颇、无结构等等</li>
+</ol>
+</li>
+<li>结构化分析
+<ol>
+<li>传统结构化分析(late 1960’s)，现代结构化分析(late 1970’s)，以数据流动为中心，以DFD为核心技术，辅助ERD,STD…</li>
+<li>信息工程(late 1980’s)，以数据知识结构为基础，ERD为核心技术，辅助DFD，STD, FDD, PD…</li>
+</ol>
+</li>
+<li>面向对象分析(1990’s)
+<ol>
+<li>以对象为中心，以UML(类图)为核心技术</li>
+<li>以全面思想革新为理想，以承继结构化技术为现实</li>
+</ol>
+</li>
+</ol>
+<h2 id="41-结构化分析"><a class="markdownIt-Anchor" href="#41-结构化分析"></a> 4.1. 结构化分析</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>结构化分析方法把显示世界描述为数据在信息系统中的流动，以及数据流动过程数据向信息的转化。</li>
+<li>数据流图：系统输入、处理、存储和输出</li>
+<li>实体关系图：存储数据信息</li>
+<li>状态转移图：识别系统需要响应的所有的事件。</li>
+<li>分析抑制：过于重视原有系统</li>
+</ol>
+<h2 id="42-信息工程"><a class="markdownIt-Anchor" href="#42-信息工程"></a> 4.2. 信息工程</h2>
+<ol>
+<li>对结构化方法改进</li>
+<li>从信息角度开发系统</li>
+<li>包含功能分解图和过程依赖图技术</li>
+</ol>
+<h2 id="43-面向对象分析"><a class="markdownIt-Anchor" href="#43-面向对象分析"></a> 4.3. 面向对象分析</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="5-前期需求阶段的建模与分析"><a class="markdownIt-Anchor" href="#5-前期需求阶段的建模与分析"></a> 5. 前期需求阶段的建模与分析</h1>
+<h2 id="51-前期需求阶段和后期需求阶段"><a class="markdownIt-Anchor" href="#51-前期需求阶段和后期需求阶段"></a> 5.1. 前期需求阶段和后期需求阶段</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>面向目标的分析(Goal Oriented Analysis)</li>
+<li>面向问题域的分析(Problem Domain Oriented Analysis)：前期需求阶段分析</li>
+<li>面向需求的分析：后期需求阶段的分析。</li>
+<li>领域分析(Domain Analysis)</li>
+<li>企业建模(Enterprise Modeling)</li>
+</ol>
+<h2 id="52-面向问题域的分析"><a class="markdownIt-Anchor" href="#52-面向问题域的分析"></a> 5.2. 面向问题域的分析</h2>
+<ol>
+<li>问题框架
+<ol>
+<li>特性</li>
+<li>解决</li>
+</ol>
+</li>
+<li>框架分解与组合</li>
+<li>基本思路
+<ol>
+<li>研究所有可能的问题域，从中发现一些重复出现的简单问题类型，比如工件系统、连接系统。</li>
+<li>分析每一种问题框架的特性，确定问题的理解和解决方法</li>
+<li>将问题框架的建立和分类系统化，以简单的问题框架为基本单位，进行复杂问题的分解</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-领域分析"><a class="markdownIt-Anchor" href="#53-领域分析"></a> 5.3. 领域分析</h2>
+<ol>
+<li>领域：业务范围、问题的集合、应用的集合、有共同术语的知识范围。</li>
+<li>产品族：有大量共性、有少量差异的产品。</li>
+<li>为了发现、分析并定义可重用的需求。</li>
+</ol>
+<h2 id="54-示例分析"><a class="markdownIt-Anchor" href="#54-示例分析"></a> 5.4. 示例分析</h2>
+<ol>
+<li>没有意识到不同的人群对模型同时理解认识的困难。</li>
+<li>项目中大量使用对象模型，但的确存在不少的问题，主要表现在以下几个方面：
+<ol>
+<li>忽略了对象要同时拥有状态和行为；</li>
+<li>对象的职责太多；</li>
+<li>对象的关系划分不明确；</li>
+</ol>
+</li>
+<li>其他如用例模型、行为模型、状态机模型都普遍使用。用例模型中使用不当的主要是子系统之间的关系，有时感觉各个子系统的边界不是很好确立。行为模型，状态机模型存在的问题主要是需求人员面对一需求时，不知道用顺序图，通信图，活动图还是状态图。</li>
+</ol>
+<h1 id="6-需求分析的活动"><a class="markdownIt-Anchor" href="#6-需求分析的活动"></a> 6. 需求分析的活动</h1>
+<h2 id="61-需求分析阶段的重要活动"><a class="markdownIt-Anchor" href="#61-需求分析阶段的重要活动"></a> 6.1. 需求分析阶段的重要活动</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="62-需求细化"><a class="markdownIt-Anchor" href="#62-需求细化"></a> 6.2. 需求细化</h2>
+<ol>
+<li>明确用户需求的<strong>隐含</strong>因素</li>
+<li>注意点：
+<ol>
+<li>用户需求细化：将从问题域和业务的角度表述的用户需求等价的转化为从软件和技术的角度表述的系统需求</li>
+<li>需要补充隐含因素：将问题域信息补充到系统级需求中，比如价格、数量等细节。</li>
+<li>非功能需求也需要从高层次的表述方式转化为一系列更加详细和具体的需求表述</li>
+<li>需求细化也会发现新的细节需求</li>
+<li>需求已经得了充分的理解，并且开发者已经可以着手为其进行方案设计时停止细化过程</li>
+</ol>
+</li>
+<li>细化后的需求应该被一一的标识和记录下来</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
+<li>需求的记录
+<ol>
+<li>标识符(ID)，每一条需求都应该能够通过ID唯一的标识自己。</li>
+<li>源头(Source)，要能够回溯到需求的源头，例如特定的涉众。</li>
+<li>理由(Rational)，需求被提出的目的。</li>
+<li>优先级(Priority)，详细情况见下一节。</li>
+<li>成本(Cost)，预估的实现成本。</li>
+<li>风险(Risk)，实现该需求的过程中可能带来的风险。</li>
+<li>可变性(Volatility)，将来发生变化的可能性。</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/26.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/27.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h2 id="63-确定需求优先级"><a class="markdownIt-Anchor" href="#63-确定需求优先级"></a> 6.3. 确定需求优先级</h2>
+<h3 id="631-需要确定需求优先级的情况"><a class="markdownIt-Anchor" href="#631-需要确定需求优先级的情况"></a> 6.3.1. 需要确定需求优先级的情况</h3>
+<ol>
+<li>项目资源有限</li>
+<li>项目采取分阶段开发的开发方式</li>
+<li>项目开始阶段，不能明确所有的用户需求。</li>
+</ol>
+<h3 id="632-确定优先级的方法"><a class="markdownIt-Anchor" href="#632-确定优先级的方法"></a> 6.3.2. 确定优先级的方法</h3>
+<h4 id="6321-累计投票"><a class="markdownIt-Anchor" href="#6321-累计投票"></a> 6.3.2.1. 累计投票</h4>
+<p>正常投票，可赋权</p>
+<h4 id="6322-区域划分"><a class="markdownIt-Anchor" href="#6322-区域划分"></a> 6.3.2.2. 区域划分</h4>
+<ol>
+<li>重要性：需求的不可或缺程度。</li>
+<li>紧急性：需求的时间紧迫程度。</li>
+<li>惩罚性：忽略需求会导致的惩罚程度。</li>
+<li>成本：实现需求的代价。</li>
+<li>风险：需求实现中可能产生的风险程度。</li>
+<li>不重要但紧急：微信的存储语音是不是要用。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="6323-top-n"><a class="markdownIt-Anchor" href="#6323-top-n"></a> 6.3.2.3. Top-N</h4>
+<ol>
+<li>N的取值是不受明确限制的，真正受限制的是Top-N个需求的实现代价总和</li>
+<li>选择最优先的N个需求</li>
+</ol>
+<h4 id="6324-数据量化"><a class="markdownIt-Anchor" href="#6324-数据量化"></a> 6.3.2.4. 数据量化</h4>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/3.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/4.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ol>
+<li>基于时间延迟成本的优先级判断
+<ol>
+<li>延迟成本相同，短任务优先</li>
+<li>工作量相同，高延迟成本优先</li>
+<li>加权最短任务优先(重要+紧急程度)</li>
+<li>所有优先级都是本地和临时的</li>
+</ol>
+</li>
+</ol>
+<h2 id="64-需求协商"><a class="markdownIt-Anchor" href="#64-需求协商"></a> 6.4. 需求协商</h2>
+<ol>
+<li>明确冲突的因素，避免情绪上的冲突</li>
+<li>明确冲突的解决空间</li>
+<li>确定最佳解决方案</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/img/book11/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="7-本章小结"><a class="markdownIt-Anchor" href="#7-本章小结"></a> 7. 本章小结</h1>
+<ol>
+<li>需求分析是需求工程中最为重要和核心的活动，它对信息的建模是理解问题的关键，也是创建正确解决方案的关键</li>
+<li>需求分析涉及很多的技术和方法，需求分析活动的有效执行需要分析人员能够掌握并判定这些方法的选择与使用</li>
+<li>需求分析过程当中会执行很多的重要子活动，它们的有效整合确保了整个需求分析工作的成功</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E9%9C%80%E6%B1%82%E4%B8%8E%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E5%88%9B%E6%96%B0/" class="category-chain-item">2020-需求与商业模式创新</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E9%9C%80%E6%B1%82/">#需求</a>
+      
+        <a href="/tags/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/">#需求分析</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-需求与商业模式分析-Book11-需求分析概述</div>
+      <div>https://stormbroken.github.io/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book11-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%A6%82%E8%BF%B0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book12-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%BB%BA%E6%A8%A1/" title="2020-需求与商业模式分析-Book12-面向过程建模">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-需求与商业模式分析-Book12-面向过程建模</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/17/2020-Demand-and-business-model-innovation/%E9%9C%80%E6%B1%82/2020-Demand-and-business-model-innovation-Book10-%E8%A7%82%E5%AF%9F%E5%92%8C%E6%96%87%E6%A1%A3%E5%AE%A1%E6%9F%A5/" title="2020-需求与商业模式分析-Book10-观察和文档审查">
+                        <span class="hidden-mobile">2020-需求与商业模式分析-Book10-观察和文档审查</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

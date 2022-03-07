@@ -1,0 +1,1248 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-数据集成-web service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-数据集成-web service">
+<meta property="og:url" content="https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-web%20service/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-数据集成-web service">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/21.png">
+<meta property="article:published_time" content="2021-05-01T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:15.388Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="服务">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="消息">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/1.png">
+  
+  
+  <title>2021-数据集成-web service - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-01 19:00" pubdate>
+          2021年5月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          119 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-数据集成-web service</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="web-service"><a class="markdownIt-Anchor" href="#web-service"></a> web service</h2>
+<h1 id="1-概述"><a class="markdownIt-Anchor" href="#1-概述"></a> 1. 概述</h1>
+<h2 id="11-a-new-web-model"><a class="markdownIt-Anchor" href="#11-a-new-web-model"></a> 1.1. A New Web Model</h2>
+<ol>
+<li>一般用户使用Web的模式
+<ol>
+<li>浏览互相链接的文档</li>
+<li>通过手工操作处理采购等商业事务</li>
+<li>下载文件</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>Web Service是使用Web的新模式
+<ol>
+<li>通过程序自动启动和处理商务事务，而并非使用浏览器</li>
+<li>能够在一个分布式的计算环境中动态地描述、发布、发现和调用</li>
+<li>基于Web Service的新型应用</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="12-面向服务架构的技术标准"><a class="markdownIt-Anchor" href="#12-面向服务架构的技术标准"></a> 1.2. 面向服务架构的技术标准</h2>
+<ol>
+<li>SOA (Service Oriented Architecture)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="13-web-服务"><a class="markdownIt-Anchor" href="#13-web-服务"></a> 1.3. Web 服务</h2>
+<ol>
+<li>可以在组织内部或者公司之间的异构计算资源中被共享、组合、使用和复用的商业资产</li>
+<li>是一个可编程的部件，提供一种易于通过Internet获取的商业服务</li>
+<li>可以是独立的，也可以连接在一起向外部世界提供更强大的系统功能</li>
+<li>是从分布式面向对象部件的系统向服务网络的逻辑演进，该服务网络提供一个能够跨企业集成的松散耦合的底层基础结构</li>
+</ol>
+<h2 id="14-what-is-a-web-service"><a class="markdownIt-Anchor" href="#14-what-is-a-web-service"></a> 1.4. What is a Web Service?</h2>
+<ol>
+<li>一个能够使用XML消息通过网络来访问的Interface, 这个Interface描述了一组可访问的操作
+<ol>
+<li>由SOAP+WSDL包装的Object</li>
+<li>适应松散耦合的网络环境，可通过Web访问，手段是SOAP Message</li>
+<li>服务的行为、输入/输出都可使用WSDL描述</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-web-services的特征"><a class="markdownIt-Anchor" href="#15-web-services的特征"></a> 1.5. Web services的特征</h2>
+<ol>
+<li>良好的封装性</li>
+<li>松散耦合</li>
+<li>使用标准协议规范</li>
+<li>高度可集成能力</li>
+</ol>
+<h2 id="16-web-servicearchitecture-evolution"><a class="markdownIt-Anchor" href="#16-web-servicearchitecture-evolution"></a> 1.6. Web ServiceArchitecture Evolution</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="17-web-service与其他技术比较"><a class="markdownIt-Anchor" href="#17-web-service与其他技术比较"></a> 1.7. Web Service与其他技术比较</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="18-考虑web-services的理由"><a class="markdownIt-Anchor" href="#18-考虑web-services的理由"></a> 1.8. 考虑Web Services的理由</h2>
+<ol>
+<li>业务上：需要与外部客户通信</li>
+<li>技术上：
+<ol>
+<li>应用需要与其它语言编写的客户程序通信</li>
+<li>客户在防火墙之外</li>
+</ol>
+</li>
+<li>管理上：管理托管web service 应用</li>
+</ol>
+<h2 id="19-不适用web-services"><a class="markdownIt-Anchor" href="#19-不适用web-services"></a> 1.9. 不适用Web Services</h2>
+<ol>
+<li>客户程序与应用使用相同语言编写</li>
+<li>通信开销大
+<ol>
+<li>序列化或者远程访问开销大</li>
+<li>Web Services/XML 处理开销大</li>
+<li>Don’t Use XML to Communicate Unless You Really, Really Have To –Floyd Marinescu, The Middleware Company</li>
+</ol>
+</li>
+<li>Web Services/XML 是用于集成的</li>
+</ol>
+<h2 id="110-web-service应用场合"><a class="markdownIt-Anchor" href="#110-web-service应用场合"></a> 1.10. Web service应用场合</h2>
+<ol>
+<li>适用场合
+<ol>
+<li>跨防火墙的通讯</li>
+<li>应用程序集成</li>
+<li>B2B的集成</li>
+<li>软件和数据重用</li>
+</ol>
+</li>
+<li>不适用场合
+<ol>
+<li>单机程序</li>
+<li>局域网的同构应用程序</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-web-service-原理"><a class="markdownIt-Anchor" href="#2-web-service-原理"></a> 2. web service 原理</h1>
+<ol>
+<li>Web Service 是为其它应用提供数据和服务的应用逻辑单元</li>
+<li>应用程序通过标准的Web 协议和数据格式获得Web Service，如HTTP、XML 和SOAP 等，每个Web Service 的实现完全独立</li>
+<li>Web 服务是一个URL 资源，客户端可以通过编程方式请求得到它的服务，而不需要知道所请求的服务是怎样实现的，这一点与传统的分布式组件对象模型不同</li>
+</ol>
+<h2 id="21-web-service模型"><a class="markdownIt-Anchor" href="#21-web-service模型"></a> 2.1. web service模型</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="22-web服务角色的相互关系"><a class="markdownIt-Anchor" href="#22-web服务角色的相互关系"></a> 2.2. web服务角色的相互关系</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>&quot;发布&quot;是为了让用户或其他服务知道某个Web服务的存在和相关信息</li>
+<li>&quot;查找（发现）&quot;是为了找到合适的Web 服务</li>
+<li>&quot;绑定&quot;则是在提供者与请求者之间建立某种联系</li>
+</ol>
+<h2 id="23-完整的web服务步骤"><a class="markdownIt-Anchor" href="#23-完整的web服务步骤"></a> 2.3. 完整的web服务步骤</h2>
+<ol>
+<li>Web 服务提供者设计实现Web 服务，通过Web 服务中介者发布，在UDDI 注册中心注册；（发布）</li>
+<li>Web 服务请求者向Web 服务中介者请求特定的服务，中介者根据请求查询UDDI 注册中心，为请求者寻找满足请求的服务；（发现）</li>
+<li>Web 服务中介者向Web 服务请求者返回满足条件的Web 服务描述信息，该描述信息用WSDL 写成，各种支持Web 服务的机器都能阅读；（发现）</li>
+<li>Web 服务请求者利用从Web 服务中介者返回的描述信息生成相应的SOAP 消息，发送给Web 服务提供者，以实现Web 服务的调用；（绑定）</li>
+<li>Web 服务提供者按SOAP 消息执行Web 服务，并将服务结果返回给Web 服务请求者。（绑定）</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="3-web-service-关键技术"><a class="markdownIt-Anchor" href="#3-web-service-关键技术"></a> 3. web service 关键技术</h1>
+<h2 id="31-web-service协议栈"><a class="markdownIt-Anchor" href="#31-web-service协议栈"></a> 3.1. web service协议栈</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="32-web-service的关键技术"><a class="markdownIt-Anchor" href="#32-web-service的关键技术"></a> 3.2. Web Service的关键技术</h2>
+<ol>
+<li>HTTP：基于文本的、“请求－响应”（request-response）型的协议</li>
+<li>XML：描述数据的标准方法</li>
+<li>SOAP：表示信息交换的协议</li>
+<li>WSDL：Web服务描述语言</li>
+<li>UDDI：通用描述、发现与集成，它是一种独立于平台的，基于XML语言的用于在互联网上描述商务的协议</li>
+</ol>
+<h3 id="321-http"><a class="markdownIt-Anchor" href="#321-http"></a> 3.2.1. HTTP</h3>
+<ol>
+<li>HTTP/1.1规定一个客户打开到服务器的一个连接，然后以专门的格式发送一个请求，服务器进行响应，同时如果必要则保持连接的打开状态</li>
+<li>HTTP使用的普遍性及其固有的穿防火墙的能力使它成为主导的Web服务网络协议。</li>
+<li>由于HTTP是基于文本的协议而缺乏表示远程过程调用（RPC）消息参数值的机制</li>
+</ol>
+<h3 id="322-xml"><a class="markdownIt-Anchor" href="#322-xml"></a> 3.2.2. XML</h3>
+<ol>
+<li>XML允许数据被串行化为易于被任何平台解码的消息格式，提供了在网络应用之间交换结构化数据的机制</li>
+<li>Web服务需要一种方法定义Web服务消息中使用的数据类型：XML Schema 规范</li>
+<li>Web服务需要一种机制避免名字冲突，并允许一个程序只处理自己关心的元素：XML名称空间</li>
+</ol>
+<h3 id="323-simple-object-access-protocol"><a class="markdownIt-Anchor" href="#323-simple-object-access-protocol"></a> 3.2.3. Simple Object Access Protocol</h3>
+<ol>
+<li>SOAP是在松散的、分布的环境中使用XML交换结构化和类型化信息的一种简单协议</li>
+<li>本身并不定义任何应用语义,只定义了一种简单的以模块化的方式包装数据的机制, 可以使用任何底层传输协议，如HTTP、FTP、SMTP等，其中最常用的是HTTP协议</li>
+<li>SOAP=RPC+HTTP+XML
+<ol>
+<li>采用HTTP作为底层通讯协议；</li>
+<li>RPC作为一致性的调用途径</li>
+<li>XML作为数据传送的格式</li>
+</ol>
+</li>
+<li>SOAP代表了xml-rpc的发展，已经被W3C作为一种Internet标准采纳</li>
+</ol>
+<h4 id="3231-soap特性"><a class="markdownIt-Anchor" href="#3231-soap特性"></a> 3.2.3.1. SOAP特性</h4>
+<ol>
+<li>为信息交换设计的轻量协议，用于在网络应用程序之间交换结构化数据，是一种基于XML的机制</li>
+<li>设计目标是简单性和可扩充性，SOAP中省略了在其它消息系统和分布式对象系统中常见的一些特性</li>
+<li>无用存储单元收集、消息批处理</li>
+<li>SOAP没有定义一种编程模型或实现，而是定义了一个模块化的包装模型，并在模块内定义了编码数据的编码机制</li>
+</ol>
+<h4 id="3232-soap-与iiop-jrmp"><a class="markdownIt-Anchor" href="#3232-soap-与iiop-jrmp"></a> 3.2.3.2. SOAP 与IIOP、JRMP</h4>
+<ol>
+<li>应用范围
+<ol>
+<li>IIOP for CORBA</li>
+<li>JRMP for RMI</li>
+<li>Soap for Web Service</li>
+</ol>
+</li>
+<li>编码格式
+<ol>
+<li>IIOP 和JRMP是二进制编码</li>
+<li>SOAP 使用XML封装信息</li>
+</ol>
+</li>
+<li>效率
+<ol>
+<li>SOAP比较低</li>
+<li>HTTP不是有效率的通信协议</li>
+<li>XML需要额外的文件解析</li>
+</ol>
+</li>
+</ol>
+<h4 id="3233-soap的组成"><a class="markdownIt-Anchor" href="#3233-soap的组成"></a> 3.2.3.3. SOAP的组成</h4>
+<ol>
+<li>SOAP封皮（Envelope），定义描述消息所包含信息的框架结构，即消息中包含什么信息、由谁来处理，是必需的还是可选的</li>
+<li>SOAP编码规则（Encoding rules），定义了一个串行化机制，用于交换应用定义的数据类型的实例</li>
+<li>SOAP RPC表示，定义如何表示远程过程调用和响应</li>
+<li>SOAP绑定（binding），定义如何使用底层传输协议进行SOAP消息的交换</li>
+</ol>
+<h4 id="3234-soap消息"><a class="markdownIt-Anchor" href="#3234-soap消息"></a> 3.2.3.4. SOAP消息</h4>
+<ol>
+<li>SOAP封皮（SOAP Envelope），描述SOAP消息的XML文档的顶点元素</li>
+<li>SOAP消息头（SOAP Header），可选的，用来扩展其它诸如安全、事务等服务的重要机制</li>
+<li>SOAP消息体（SOAP Body），定义了一个简单的机制来交换要发送给最终SOAP接收者的消息中的必要信息</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3235-soap消息交换模型"><a class="markdownIt-Anchor" href="#3235-soap消息交换模型"></a> 3.2.3.5. SOAP消息交换模型</h4>
+<ol>
+<li>SOAP消息是单方向的，从一个发送者到一个接收者</li>
+<li>SOAP消息交换模型要求接收到一个SOAP消息的应用程序执行下列操作
+<ol>
+<li>识别SOAP消息中意图供给本应用的部分，本应用可以作为SOAP中介将消息的其它部分传递给另外的应用</li>
+<li>检验SOAP消息中指定的所有必须处理的部分，并进行相应的处理</li>
+<li>如果SOAP应用不是消息的最终目的地，它应该在删除所有自己消耗的部分后将消息转发给消息要供给的下一个应用</li>
+</ol>
+</li>
+</ol>
+<h4 id="3236-soap-message-structure"><a class="markdownIt-Anchor" href="#3236-soap-message-structure"></a> 3.2.3.6. SOAP Message structure</h4>
+<ol>
+<li>Request/Response Message
+<ol>
+<li>Request 调用远端对象的某个方法</li>
+<li>Response 返回该方法运行后的输出结果</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3237-a-soap-request-message"><a class="markdownIt-Anchor" href="#3237-a-soap-request-message"></a> 3.2.3.7. A SOAP Request Message</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">&quot;http://&#123;soaporg&#125;/envelope/&quot;</span><span class="hljs-attr">SOAP-ENV:encodingStyle</span>=<span class="hljs-string">&quot;http://&#123;soaporg&#125;/encoding/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br>    &lt;m:QuoteStockPricexmlns:m=&quot;Some-URI&quot;&gt;<br>      <span class="hljs-tag">&lt;<span class="hljs-name">Symbol</span>&gt;</span>MSFT<span class="hljs-tag">&lt;/<span class="hljs-name">Symbol</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">m:QuoteStockPrice</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="3238-a-soap-response-message"><a class="markdownIt-Anchor" href="#3238-a-soap-response-message"></a> 3.2.3.8. A SOAP Response Message</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">&quot;http://&#123;soaporg&#125;/envelope/&quot;</span><span class="hljs-attr">SOAP-ENV:encodingStyle</span>=<span class="hljs-string">&quot;http://&#123;soaporg&#125;/encoding/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br>    &lt;m:QuoteStockPriceResponsexmlns:m=&quot;Some-URI&quot;&gt;<br>      <span class="hljs-tag">&lt;<span class="hljs-name">Price</span>&gt;</span>78.2<span class="hljs-tag">&lt;/<span class="hljs-name">Price</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">m:QuoteStockPriceResponse</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h4 id="3239-soap隐藏了实现"><a class="markdownIt-Anchor" href="#3239-soap隐藏了实现"></a> 3.2.3.9. SOAP隐藏了实现</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="32310-为什么soap会成功"><a class="markdownIt-Anchor" href="#32310-为什么soap会成功"></a> 3.2.3.10. 为什么SOAP会成功</h4>
+<ol>
+<li>Internet环境下实现技术的多样性使得早期的分布式技术无法实现普遍的互相连接
+<ol>
+<li>DCOM –需要每个连接点都使用Windows</li>
+<li>CORBA –需要每个连接点都有ORB</li>
+<li>RMI –需要每个连接点都使用Java</li>
+</ol>
+</li>
+<li>SOAP是基于平台独立的选择
+<ol>
+<li>简单的XML格式</li>
+<li>可以在任意平台采用任意技术</li>
+<li>可以使用开放源代码资源</li>
+</ol>
+</li>
+</ol>
+<h3 id="324-消息协议"><a class="markdownIt-Anchor" href="#324-消息协议"></a> 3.2.4. 消息协议</h3>
+<ol>
+<li>SOAP本身没有严格地归入Web服务</li>
+<li>SOAP 可以作为一种对任何类型的远程对象或过程的访问机制使用，也可以只是一个简单的消息传递机制</li>
+<li>W3C创建的XMLP（Extensible Markup Language Protocol）
+<ol>
+<li>类似于SOAP的XML消息协议，包括封皮、对象串行化方式、HTTP传输绑定以及进行远程过程调用的方式几个部分</li>
+</ol>
+</li>
+</ol>
+<h3 id="325-web-services-description-language"><a class="markdownIt-Anchor" href="#325-web-services-description-language"></a> 3.2.5. Web Services Description Language</h3>
+<ol>
+<li>Web服务接口由WSDL定义
+<ol>
+<li>类似IDL, 不过是使用XML格式</li>
+</ol>
+</li>
+<li>描述了服务的操纵信息
+<ol>
+<li>描述服务提供了什么功能</li>
+<li>服务位于何处</li>
+<li>服务如何调用</li>
+</ol>
+</li>
+<li>WSDL是早先技术的综合
+<ol>
+<li>IBM’s NASSL</li>
+<li>Microsoft’s SDL</li>
+</ol>
+</li>
+</ol>
+<h4 id="3251-wsdl"><a class="markdownIt-Anchor" href="#3251-wsdl"></a> 3.2.5.1. WSDL</h4>
+<ol>
+<li>以XML格式描述网络服务，将服务描述为在包含面向过程或面向文档信息的消息上进行操作的一组端点</li>
+<li>操作和消息抽象描述，然后绑定到具体的网络协议和消息格式以定义一个端点。相关的具体端点被组合成为抽象端点（服务）</li>
+<li>WSDL 是可扩展的，允许描述任何端点和消息，而不考虑通信使用的消息格式或网络协议</li>
+</ol>
+<h4 id="3252-wsdl文档结构"><a class="markdownIt-Anchor" href="#3252-wsdl文档结构"></a> 3.2.5.2. WSDL文档结构</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3253-wsdl的元素"><a class="markdownIt-Anchor" href="#3253-wsdl的元素"></a> 3.2.5.3. WSDL的元素</h4>
+<ol>
+<li>类型（Types）：使用某种类型系统的数据类型定义的容器</li>
+<li>消息（Message）：对要传送数据的一个抽象定义</li>
+<li>操作（Operation）：对服务支持动作的抽象描述</li>
+<li>端口类型（Port Type），一个或多个端点所支持的操作抽象集合</li>
+<li>绑定（Binding）：对特定端口类型的一个具体协议和数据格式规格</li>
+<li>端口（Port）：一个单独的端点，由一个绑定和一个网络地址组合在一起定义</li>
+<li>服务（Service）：一组相关的端点的集合</li>
+</ol>
+<h4 id="3254-操作和消息的抽象"><a class="markdownIt-Anchor" href="#3254-操作和消息的抽象"></a> 3.2.5.4. 操作和消息的抽象</h4>
+<ol>
+<li>一个Web服务由一组端口定义</li>
+<li>端口由绑定到一个具体协议和数据格式规范的一组抽象操作和消息定义</li>
+<li>WSDL中端点和消息的抽象定义与其具体网络配置和数据格式绑定相分离</li>
+<li>WSDL定义了一个公共的绑定机制，将特定的协议或数据格式或结构连接到抽象的消息、操作或端点，从而可对抽象定义复用</li>
+</ol>
+<h4 id="3255-wsdl-example"><a class="markdownIt-Anchor" href="#3255-wsdl-example"></a> 3.2.5.5. WSDL Example</h4>
+<ol>
+<li>OMG-IDL为：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">FooSample</span>&#123;<br>  <span class="hljs-type">long</span> <span class="hljs-title function_">foo</span><span class="hljs-params">(<span class="hljs-type">long</span> arg)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">definitions</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;FooSample&quot;</span> &gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">types</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">&quot;http://tempuri.org/xsd&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="hljs-attr">xmlns:SOAP-ENC</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;</span><span class="hljs-attr">xmlns:wsdl</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/wsdl/&quot;</span> <span class="hljs-attr">elementFormDefault</span>=<span class="hljs-string">&quot;qualified&quot;</span> &gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">types</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Simple.foo&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">part</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arg&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;xsd:int&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Simple.fooResponse&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">part</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;result&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;xsd:int&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span><br>  &lt;portTypename=&quot;SimplePortType&quot;&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;foo&quot;</span> <span class="hljs-attr">parameterOrder</span>=<span class="hljs-string">&quot;arg&quot;</span> &gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;wsdlns:Simple.foo&quot;</span>/&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">output</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;wsdlns:Simple.fooResponse&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">operation</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">portType</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">definitions</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">SOAP-ENV:encodingStyle</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">m:foo</span> <span class="hljs-attr">xmlns:m</span>=<span class="hljs-string">&quot;http://tempuri.org/message/&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">arg</span>&gt;</span>5131953<span class="hljs-tag">&lt;/<span class="hljs-name">arg</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">m:foo</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span><br><br><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">SOAP-ENV:encodingStyle</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">SOAPSDK1:fooResponse</span> <span class="hljs-attr">mlns:SOAPSDK1</span>=<span class="hljs-string">&quot;http://tempuri.org/message/&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">result</span>&gt;</span>5131953<span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">SOAPSDK1:fooResponse</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="326-universal-description-discovery-and-integrationuddi"><a class="markdownIt-Anchor" href="#326-universal-description-discovery-and-integrationuddi"></a> 3.2.6. Universal Description, Discovery and Integration(UDDI)</h3>
+<ol>
+<li>在哪里以及如何找到需要的信息？</li>
+<li>一套基于internet为Web服务提供信息注册中心的标准规范</li>
+<li>UDDI规范在底层协议的基础上又定义了一层规范，使不同企业能够以相同的方式描述自己提供的服务和查询对方提供的服务</li>
+<li>IT业界和商业界的领导者的合作</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3261-service-provider"><a class="markdownIt-Anchor" href="#3261-service-provider"></a> 3.2.6.1. Service Provider</h4>
+<ol>
+<li>提供e-Business Service</li>
+<li>通过Service Registry发布(Publish)其提供的可用的Service</li>
+</ol>
+<h4 id="3262-service-registry"><a class="markdownIt-Anchor" href="#3262-service-registry"></a> 3.2.6.2. Service Registry</h4>
+<ol>
+<li>为Service的发布和定位提供支持</li>
+<li>类似电话黄页</li>
+</ol>
+<h4 id="3263-service-requestor"><a class="markdownIt-Anchor" href="#3263-service-requestor"></a> 3.2.6.3. Service Requestor</h4>
+<ol>
+<li>通过Service Registry发现(Find)需要的Service</li>
+<li>绑定(Bind) Service Provider提供的Service, 并实施调用</li>
+</ol>
+<h4 id="3264-where-is-soap-and-wsdl"><a class="markdownIt-Anchor" href="#3264-where-is-soap-and-wsdl"></a> 3.2.6.4. Where is SOAP and WSDL?</h4>
+<ol>
+<li>WSDL:Publish的内容、Find的返回结果和Bind的信息都是WSDL描述的服务信息</li>
+<li>SOAP:Service Registry的访问(Publish/Find)、Service的访问都是通过SOAP Message实现</li>
+</ol>
+<h4 id="3265-how-uddi-works"><a class="markdownIt-Anchor" href="#3265-how-uddi-works"></a> 3.2.6.5. How UDDI works</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="3266-problems-uddi-solves"><a class="markdownIt-Anchor" href="#3266-problems-uddi-solves"></a> 3.2.6.6. Problems UDDI Solves</h4>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/17.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/18.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h4 id="3267-uddi-vision-and-process"><a class="markdownIt-Anchor" href="#3267-uddi-vision-and-process"></a> 3.2.6.7. UDDI Vision and Process</h4>
+<ol>
+<li>从现有的标准(standard)开始
+<ol>
+<li>TCP/IP, HTTP, XML</li>
+<li>Industry-specific schemas</li>
+<li>Shared vision of open protocols</li>
+</ol>
+</li>
+<li>通过Web Service的形式实施和拓展
+<ol>
+<li>Common web services “stack”</li>
+<li>Shared implementation to avoid confusing customer</li>
+<li>Public specs, open service, inclusive process</li>
+</ol>
+</li>
+<li>将转变为一个标准实体组织
+<ol>
+<li>Manage design process for 3 revs</li>
+<li>License control and IP to a 3rd party</li>
+</ol>
+</li>
+</ol>
+<h4 id="3268-信息结构"><a class="markdownIt-Anchor" href="#3268-信息结构"></a> 3.2.6.8. 信息结构</h4>
+<ol>
+<li>商业实体（Business entity）:描述商业信息，如名称、类型等</li>
+<li>商业服务（Business service）:已发布的Web服务的集合</li>
+<li>绑定模板（Binding template）:访问信息，如URL</li>
+<li>技术规范（tModel）:对服务类型的技术规格说明，如接口定义、消息格式、消息协议、安全协议等</li>
+</ol>
+<h4 id="3269-uddi的三类信息"><a class="markdownIt-Anchor" href="#3269-uddi的三类信息"></a> 3.2.6.9. UDDI的三类信息</h4>
+<ol>
+<li>白页，包括企业的名称、地址、联系方式和企业标识，并允许其它公司按照名称查找目录</li>
+<li>黄页，包括基于标准分类法的行业类别</li>
+<li>绿页，包括了关于该企业所提供的Web服务的技术信息，其形式可能是一些指向文件或URL的指针，而这些文件或URL是为服务发现机制服务的</li>
+</ol>
+<h4 id="32610-编程接口"><a class="markdownIt-Anchor" href="#32610-编程接口"></a> 3.2.6.10. 编程接口</h4>
+<ol>
+<li>UDDI规范提供了编程接口，允许商业注册一个Web服务，以及查找指定Web服务的注册。一旦想要的Web服务被确定，将提供一个指向WSDL文档所在位置的指</li>
+<li>查询API
+<ol>
+<li>构造搜索和浏览UDDI注册信息的程序</li>
+<li>Web服务出错处理</li>
+</ol>
+</li>
+<li>发布API:创建各种类型的工具，以直接与UDDI注册中心进行交互，便于企业技术人员管理发布信息</li>
+</ol>
+<h4 id="32611-uddi-and-soap"><a class="markdownIt-Anchor" href="#32611-uddi-and-soap"></a> 3.2.6.11. UDDI and SOAP</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="4-大众点评第三方团购券案例"><a class="markdownIt-Anchor" href="#4-大众点评第三方团购券案例"></a> 4. 大众点评第三方团购券案例</h1>
+<ol>
+<li>大众点评第三方团购券是在用户支付后，由系统实时请求第三方服务器生成券码而成的团购券；</li>
+<li>第三方服务器使用了Web Service技术，大众点评券系统需要根据其接口实现信息交互；</li>
+<li>本案例以阳光绿洲酒店团购举例</li>
+</ol>
+<h2 id="41-系统分析"><a class="markdownIt-Anchor" href="#41-系统分析"></a> 4.1. 系统分析</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/20.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-开发环境与技术"><a class="markdownIt-Anchor" href="#42-开发环境与技术"></a> 4.2. 开发环境与技术</h2>
+<ol>
+<li>JDK1.5+Eclipse-jee</li>
+<li>Maven+Jenkins+GitHub</li>
+<li>技术框架：Spring+Struts2+iBATIS</li>
+<li>Axis2</li>
+</ol>
+<h2 id="43-阳光绿洲系统服务端开发"><a class="markdownIt-Anchor" href="#43-阳光绿洲系统服务端开发"></a> 4.3. 阳光绿洲系统(服务端)开发</h2>
+<p>1、 建立服务端JavaEE项目，实现生成券码方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SunOasisReceipt</span>&#123;<span class="hljs-comment">//其他代码省略</span><br>  <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEleInterface</span><span class="hljs-params">(String reqString)</span> &#123;<br>    reqString= URLDecoder.decode(DESCrypto.decrypt(des, reqString), <span class="hljs-string">&quot;UTF-8&quot;</span>);<span class="hljs-comment">//解密reqString</span><br>    <span class="hljs-keyword">try</span> &#123;<br>      Document document= DocumentHelper.parseText(reqString);<br>      <span class="hljs-type">Node</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> document.selectSingleNode(<span class="hljs-string">&quot;business_trans&quot;</span>);<br>      <span class="hljs-type">Node</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> root.selectSingleNode(<span class="hljs-string">&quot;result&quot;</span>);<br>      <span class="hljs-type">String</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> result.selectSingleNode(<span class="hljs-string">&quot;id&quot;</span>).getText();<br>      Node orderNode= root.selectSingleNode(<span class="hljs-string">&quot;order&quot;</span>);<br>      String thirdPartyOrderId= orderNode.selectSingleNode(<span class="hljs-string">&quot;order_num&quot;</span>).getText();<br>      String req_seq= root.selectSingleNode(<span class="hljs-string">&quot;req_seq&quot;</span>).getText();<br>      String serialNumber= receiptBiz.getReceiptSerial(order.getOrderId());<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>      logger.error(<span class="hljs-string">&quot;Exception:&quot;</span>,e);<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>    &#125;<br>    String xml=buildContentByOrder(thirdPartyOrderId, req_seq, serialNumber);<br>    String encodeXml= DESCrypto.encrypt(des, xml);<span class="hljs-comment">//加密结果</span><br>    <span class="hljs-keyword">return</span> encodeXml;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="44-发布web-service"><a class="markdownIt-Anchor" href="#44-发布web-service"></a> 4.4. 发布Web Service</h2>
+<ol>
+<li>打包Service，设定服务名称、所用类名和输出路径，并选择Apache Axis2的服务进行发布</li>
+<li>浏览器打开服务页面，将会生成对应的wsdl</li>
+</ol>
+<h2 id="45-wsdl文档"><a class="markdownIt-Anchor" href="#45-wsdl文档"></a> 4.5. WSDL文档</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:definitions</span> <span class="hljs-attr">xmlns:wsdl</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/wsdl/&quot;</span><span class="hljs-attr">xmlns:typens</span>=<span class="hljs-string">&quot;http://tempuri.org/xsd&quot;</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="hljs-attr">xmlns:soap</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot;</span> <span class="hljs-attr">xmlns:stk</span>=<span class="hljs-string">&quot;http://schemas.microsoft.com/soap-toolkit/wsdl-extension&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/wsdl/&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;getEleInterface&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">part</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reqString&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;xsd:String&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span><br>  &lt;portTypename=&quot;SimplePortType&quot;&gt;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;getEleInterface&quot;</span> <span class="hljs-attr">parameterOrder</span>=<span class="hljs-string">&quot;reqString&quot;</span> &gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;wsdlns:Simple. getEleInterface&quot;</span>/&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">output</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;wsdlns:Simple. getEleInterfaceResponse&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">operation</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">portType</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">service</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;SunOasisReceiptService&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">port</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;SunOasisReceipt_Port&quot;</span> <span class="hljs-attr">binding</span>=<span class="hljs-string">&quot;mh:SunOasisReceipt_Binding&quot;</span>&gt;</span><br>      &lt;soapbind:addresslocation=&quot;https://www.sunoasis-haefel.org/jwsbook/po&quot; /&gt;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">port</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">service</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">definitions</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="46-大众点评券服务生成券流程"><a class="markdownIt-Anchor" href="#46-大众点评券服务生成券流程"></a> 4.6. 大众点评券服务生成券流程</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/web-serivce/21.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="47-大众点评客户端发券流程"><a class="markdownIt-Anchor" href="#47-大众点评客户端发券流程"></a> 4.7. 大众点评(客户端)发券流程</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">booleanissueThirdReceiptApply</span><span class="hljs-params">(Order order)</span> &#123;<br>  <span class="hljs-keyword">if</span> (!init()) &#123;<br>    logger.error(<span class="hljs-string">&quot;阳光绿洲-初始化配置失败！orderId= &quot;</span> + order.getOrderId());<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <br>  &#125;<br>  <span class="hljs-type">boolean</span> flag;<span class="hljs-comment">//该任务是否正确处理标志</span><br>  <span class="hljs-keyword">try</span> &#123;<br>    List&lt;Receipt&gt; receiptList= receiptBiz.findByOrderID(order.getOrderId());<br>    receiptList= getReceiptListUsefull(receiptList); <span class="hljs-comment">// 排除不需要发券的券</span><br>    <span class="hljs-keyword">if</span> (CollectionUtils.isEmpty(receiptList)) &#123;<br>      logger.error(<span class="hljs-string">&quot;处理第三方验票任务错误，没有找到该订单未处理的团购券，OrderID:&quot;</span>+ order.getOrderId());<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    flag = getThirdReceiptByOrder(order, receiptList);<br>  &#125; <span class="hljs-keyword">catch</span> (Exception ex) &#123;<br>    logger.error(<span class="hljs-string">&quot;处理第三方验票任务错误－－阳光绿洲－－生成券任务错误，OrderID：&quot;</span> + order.getOrderId() + <span class="hljs-string">&quot;ex:&quot;</span> ,ex);<br>    flag = <span class="hljs-literal">false</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> flag;<br>&#125;<br><span class="hljs-keyword">private</span> <span class="hljs-title function_">booleangetThirdReceiptByOrder</span><span class="hljs-params">(Order order, List&lt;Receipt&gt; receiptList)</span> &#123;<br>  DealGroupVerifydealGroupVerify= getDealGroupVerify(order.getProduct().getProductId());<br>  String req_seq= getReqSeq();<br>  <span class="hljs-type">String</span> <span class="hljs-variable">xml</span> <span class="hljs-operator">=</span> buildRequestContentByOrder(order, dealGroupVerify, req_seq);<br>  booleanflag = <span class="hljs-literal">false</span>;<br>  <span class="hljs-type">String</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-keyword">try</span> &#123;<br>    String encodeXml= DESCrypto.encrypt(des, xml);<span class="hljs-comment">//URLEncoder.encode(xml,&quot;UTF-8&quot;)</span><br>    <span class="hljs-keyword">for</span> (Receipt receipt: receiptList) &#123;<br>      ThirdReceiptCodereceiptCode= thirdReceiptCodeDAO.findThirdReceiptCodeByReceiptId(receipt.getReceiptID());<br>      <span class="hljs-keyword">if</span> (receiptCode== <span class="hljs-literal">null</span> || receiptCode.getThirdReceiptId() &lt;= <span class="hljs-number">0</span>) &#123;<br>        thirdReceiptCodeDAO.insertThirdReceiptCode(receipt.getReceiptID(), <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, THIRD_PARTY_ID, <span class="hljs-literal">null</span>, req_seq);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        req_seq= receiptCode.getSeqId(); <span class="hljs-comment">//使用之前的seqid</span><br>      &#125;<br>    &#125;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().getTime();<br>    response = getEleInterface(organization, encodeXml);<span class="hljs-comment">//WebService调用</span><br>    response = URLDecoder.decode(DESCrypto.decrypt(des, response), <span class="hljs-string">&quot;UTF-8&quot;</span>);<br>    flag = parseResponseByOrder(response, order);<span class="hljs-comment">//将结果转化并存储信息</span><br>    thirdVerifyLogDAO.insertThirdVerifyLog(THIRD_PARTY_ID, ThirdVerifyLogTypeEnum.GetThirdReceipt.getValue(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().getTime() -start, <span class="hljs-number">1</span>, xml, response, <span class="hljs-number">1</span>, req_seq, String.valueOf(order.getOrderId()));<br>  &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>    logger.info(<span class="hljs-string">&quot;处理第三方验票任务错误，请求发送电子票失败，OrderID:&quot;</span> + order.getOrderId() + <span class="hljs-string">&quot;req_seq:&quot;</span> + req_seq);<br>    String exMessage= <span class="hljs-string">&quot;req_seq:&quot;</span> + req_seq+ <span class="hljs-string">&quot;\t error message:&quot;</span> + ex.getMessage();<br>    thirdVerifyLogDAO.insertThirdVerifyLog(THIRD_PARTY_ID, ThirdVerifyLogTypeEnum.GetThirdReceipt.getValue(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().getTime() -start, <span class="hljs-number">0</span>, xml, response, <span class="hljs-number">1</span>, exMessage, String.valueOf(order.getOrderId()));<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> flag;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="48-通过axis调用webservice实现"><a class="markdownIt-Anchor" href="#48-通过axis调用webservice实现"></a> 4.8. 通过axis调用webservice实现</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> String <span class="hljs-title function_">getEleInterface</span><span class="hljs-params">(String organization, String xml)</span> &#123;<br>  <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;no result!&quot;</span>;<br>  Service service= <span class="hljs-keyword">new</span> <span class="hljs-title class_">Service</span>();<br>  <span class="hljs-keyword">try</span> &#123;<br>    Call call= (Call) service.createCall();<br>    call.setTargetEndpointAddress(url);<span class="hljs-comment">// 远程调用路径</span><br>    call.setOperationName(<span class="hljs-string">&quot;getEleInterface&quot;</span>);<span class="hljs-comment">// 调用的方法名</span><br>    <span class="hljs-comment">// 设置参数名:</span><br>    call.addParameter(<span class="hljs-string">&quot;organization&quot;</span>, <span class="hljs-comment">// 参数名</span><br>    XMLType.XSD_STRING,<span class="hljs-comment">// 参数类型:String</span><br>    ParameterMode.IN);<span class="hljs-comment">// 参数模式：&#x27;IN&#x27; or &#x27;OUT&#x27;</span><br>    call.addParameter(<span class="hljs-string">&quot;xml&quot;</span>, XMLType.XSD_STRING, ParameterMode.IN);<br>    <span class="hljs-comment">// 设置返回值类型：</span><br>    call.setReturnType(XMLType.XSD_STRING);<span class="hljs-comment">// 返回值类型：String</span><br>    result = (String) call.invoke(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;organization, xml&#125;);<span class="hljs-comment">// 远调</span><br>  &#125; <span class="hljs-keyword">catch</span> (RemoteExceptione) &#123;<br>    logger.error(<span class="hljs-string">&quot;RemoteException:&quot;</span> ,e);<br>  &#125; <span class="hljs-keyword">catch</span> (ServiceExceptione) &#123;<br>    logger.error(<span class="hljs-string">&quot;ServiceException:&quot;</span> ,e); &#125;<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="49-发布大众点评券服务"><a class="markdownIt-Anchor" href="#49-发布大众点评券服务"></a> 4.9. 发布大众点评券服务</h2>
+<ol>
+<li>在Jenkins上构建项目</li>
+<li>打包项目jar包，发布到服务器</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/" class="category-chain-item">2021-数据集成</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%9C%8D%E5%8A%A1/">#服务</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">#数据集成</a>
+      
+        <a href="/tags/%E6%B6%88%E6%81%AF/">#消息</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-数据集成-web service</div>
+      <div>https://stormbroken.github.io/2021/05/01/2021-Data-Integration/2021-Data-Integration-web%20service/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/01/2021-Data-Integration/2021-Data-Integration-%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E4%B8%8E%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="2021-数据集成-数据集成与大数据">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-数据集成-数据集成与大数据</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/01/2021-Data-Integration/2021-Data-Integration-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="2021-数据集成-消息中间件">
+                        <span class="hidden-mobile">2021-数据集成-消息中间件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

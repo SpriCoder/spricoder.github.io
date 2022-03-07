@@ -1,0 +1,1645 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2021-人机交互-Lec-7 交互需求定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021-人机交互-Lec-7 交互需求定义">
+<meta property="og:url" content="https://stormbroken.github.io/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-7%20%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E5%AE%9A%E4%B9%89/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2021-人机交互-Lec-7 交互需求定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/4.png">
+<meta property="article:published_time" content="2022-01-08T11:07:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:45:58.456Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="人机交互">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/1.png">
+  
+  
+  <title>2021-人机交互-Lec-7 交互需求定义 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-01-08 19:07" pubdate>
+          2022年1月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          87 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2021-人机交互-Lec-7 交互需求定义</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="01-lec-7-交互需求定义"><a class="markdownIt-Anchor" href="#01-lec-7-交互需求定义"></a> 0.1. Lec-7 交互需求定义</h2>
+<h1 id="1-背景"><a class="markdownIt-Anchor" href="#1-背景"></a> 1. 背景</h1>
+<ol>
+<li>无论取代或更新已有系统，还是开发新产品，需求的建立都是非常重要的</li>
+<li>需求获取是项目设计的第一个阶段
+<ol>
+<li>确定和记录现有的工作流程：收集</li>
+<li>将信息组织起来，整体上涵盖工作的各个方面：描述</li>
+</ol>
+</li>
+<li>产品是不同的：对需求提出了特殊的要求</li>
+<li>用户是不同的
+<ol>
+<li>人有不同的能力和弱点</li>
+<li>有不同的背景和文化</li>
+<li>不同的兴趣、观点和经历</li>
+<li>人的年龄和身材高矮不同</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-需求是什么"><a class="markdownIt-Anchor" href="#2-需求是什么"></a> 2. 需求是什么</h1>
+<ol>
+<li>需求
+<ol>
+<li>关于目标产品的一种陈述，它指定了产品应做什么，或者应如何工作</li>
+<li>应该是具体、明确和无歧义的
+<ol>
+<li>“完整下载任何网页的时间应少于5秒”</li>
+<li>“女孩们应觉得这个网站吸引人”</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>需求活动
+<ol>
+<li>搜集数据</li>
+<li>解释数据</li>
+<li>提取需求</li>
+</ol>
+</li>
+</ol>
+<h2 id="21-产品特性"><a class="markdownIt-Anchor" href="#21-产品特性"></a> 2.1. 产品特性</h2>
+<ol>
+<li>功能不同
+<ol>
+<li>智能冰箱：应能够提示牛奶已用完</li>
+<li>字处理器：系统应支持多种格式</li>
+</ol>
+</li>
+<li>物理条件不同
+<ol>
+<li>移动设备运行的系统应尽可能小，屏幕显示限制</li>
+</ol>
+</li>
+<li>使用环境不同
+<ol>
+<li>物理环境：如操作环境中的采光、噪音和尘土状况</li>
+<li>社会环境：是否要共享数据，同步还是异步？</li>
+<li>组织环境：用户支持的质量、响应速度如何？是否提供培训资源或设施？</li>
+<li>技术环境：产品应能运行于何种平台上？应与何种技术兼容？</li>
+</ol>
+</li>
+<li>一些例子
+<ol>
+<li>KordGrip键盘：一只手操作的计算机</li>
+<li>智能交通灯：SCOOT(Split Cycle Offset Optimisation Technique)系统，行人分段偏移优化技术</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-用户特性"><a class="markdownIt-Anchor" href="#22-用户特性"></a> 2.2. 用户特性</h2>
+<ol>
+<li>心理学原理部分，假设每个人都有相似的能力和局限性
+<ol>
+<li>合理的，心理学原理可以适用于大多数人</li>
+</ol>
+</li>
+<li>交互产品设计人员应该意识到个性的差异
+<ol>
+<li>用户并不是完全相同的</li>
+<li>在设计中尽可能地体现这些差异</li>
+</ol>
+</li>
+<li>用户差异
+<ol>
+<li>体验水平</li>
+<li>年龄</li>
+<li>文化</li>
+<li>健康</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-体验水平差异"><a class="markdownIt-Anchor" href="#23-体验水平差异"></a> 2.3. 体验水平差异</h2>
+<ol>
+<li>背景
+<ol>
+<li>程序员只创造适合专家的界面</li>
+<li>市场人员要求只适合新手的交互</li>
+<li>数目最多、最稳定和最重要的用户群是中间用户</li>
+<li>中间用户往往被忽略</li>
+</ol>
+</li>
+<li>设计目标
+<ol>
+<li>让新手快速和无痛苦地成为中间用户</li>
+<li>避免为想成为专家的用户设置障碍</li>
+<li>让中间用户感到愉快</li>
+</ol>
+</li>
+<li>因为他们的技能将稳定地处于中间层</li>
+</ol>
+<h2 id="24-不同类型的用户"><a class="markdownIt-Anchor" href="#24-不同类型的用户"></a> 2.4. 不同类型的用户</h2>
+<h3 id="241-新手用户"><a class="markdownIt-Anchor" href="#241-新手用户"></a> 2.4.1. 新手用户</h3>
+<ol>
+<li>特点
+<ol>
+<li>敏感，且很容易在开始有挫折感</li>
+</ol>
+</li>
+<li>设计要求
+<ol>
+<li>不能将新手状态视为目标</li>
+<li>让学习过程快速且富有针对性</li>
+<li>确保程序充分反映了用户关于任务的心智模型</li>
+<li>无论什么样的帮助，都不应该在界面中固定</li>
+<li>具有向导功能的对话框帮助较好：不要使用在线帮助作为学习指导</li>
+<li>菜单项应该是解释性的</li>
+</ol>
+</li>
+</ol>
+<h3 id="242-专家用户"><a class="markdownIt-Anchor" href="#242-专家用户"></a> 2.4.2. 专家用户</h3>
+<ol>
+<li>特点
+<ol>
+<li>对缺少经验的用户有着异乎寻常的影响：“专家说不好就不好”</li>
+<li>欣赏更新的且更强大功能</li>
+<li>不会受到复杂性增加的干扰</li>
+</ol>
+</li>
+<li>设计要求：对经常使用的工具集，要能快速访问</li>
+</ol>
+<h3 id="243-中间用户"><a class="markdownIt-Anchor" href="#243-中间用户"></a> 2.4.3. 中间用户</h3>
+<ol>
+<li>特点
+<ol>
+<li>需要工具</li>
+<li>知道如何使用参考资料</li>
+<li>能够区分经常使用和很少使用的功能</li>
+<li>高级功能的存在让永久的中间用户放心</li>
+</ol>
+</li>
+<li>设计要求
+<ol>
+<li>工具提示（Tooltip）是适合中间用户最好的习惯用法</li>
+<li>在线帮助是永久中间用户的极佳工具</li>
+<li>常用功能中的工具放在用户界面的前端和中心位置</li>
+<li>提供一些额外的高级特性</li>
+</ol>
+</li>
+</ol>
+<h2 id="25-年龄差异"><a class="markdownIt-Anchor" href="#25-年龄差异"></a> 2.5. 年龄差异</h2>
+<ol>
+<li>老年人
+<ol>
+<li>65岁以上的老年人中多数有某种残疾</li>
+<li>技术应能提供对残缺部位的支持，如听觉、言语和灵活性</li>
+<li>设计必须清楚、简单并且容许出错</li>
+<li>利用冗余来支持信息访问</li>
+</ol>
+</li>
+<li>儿童
+<ol>
+<li>在为儿童设计交互式系统时让他们参加很重要</li>
+<li>允许多种输入模式（包括触觉或手写）</li>
+<li>通过文本、图形和声音呈现信息的冗余显示也将增强他们的体验</li>
+</ol>
+</li>
+</ol>
+<h2 id="26-文化差异"><a class="markdownIt-Anchor" href="#26-文化差异"></a> 2.6. 文化差异</h2>
+<ol>
+<li>在不同的文化中符号有不同的意思
+<ol>
+<li>勾（√）和叉（X）分别表示肯定和否定</li>
+<li>不能假设每个人都以同样的方式解释符号</li>
+</ol>
+</li>
+<li>姿势的理解存在差别
+<ol>
+<li>点头vs.摇头</li>
+</ol>
+</li>
+<li>颜色的使用
+<ol>
+<li>红色和绿色在不同的国家意味着不同的事物</li>
+<li>通过冗余阐明特定颜色的指定意义</li>
+</ol>
+</li>
+</ol>
+<h2 id="27-健康差异"><a class="markdownIt-Anchor" href="#27-健康差异"></a> 2.7. 健康差异</h2>
+<ol>
+<li>每个国家至少有10%的人口有残疾</li>
+<li>视觉损伤
+<ol>
+<li>GUI应用的增加降低了视觉损伤用户应用的可能性</li>
+<li>辅以声音的应用和触觉的应用（Hearme，seeing AI）</li>
+</ol>
+</li>
+<li>听觉损伤
+<ol>
+<li>较视觉残疾对与图形界面交互的影响要小：界面中多媒体的增加和声音的应用带来了交互困难</li>
+<li>给听觉内容加文字描述</li>
+<li>姿势识别可作为信息输出方式</li>
+</ol>
+</li>
+<li>身体损伤
+<ol>
+<li>如在控制和应用手的移动方面存在差别</li>
+<li>语音输入和输出对那些没有言语障碍的人是一种选择</li>
+<li>用姿势和眼球移动的跟踪进行控制</li>
+</ol>
+</li>
+<li>语音损伤
+<ol>
+<li>提供合成语音和基于文本的通信：语音合成必须快速地反映自然会话的步调</li>
+</ol>
+</li>
+<li>诵读困难
+<ol>
+<li>提供拼写更正功能</li>
+<li>一致性的导航结构和清晰的标识提示</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-找到你的用户"><a class="markdownIt-Anchor" href="#3-找到你的用户"></a> 3. 找到你的用户</h1>
+<ol>
+<li>明确定位</li>
+</ol>
+<h2 id="31-用户建模"><a class="markdownIt-Anchor" href="#31-用户建模"></a> 3.1. 用户建模</h2>
+<ol>
+<li>每个用户都是不同的，如何使用用户的研究数据设计出满意的产品呢？</li>
+<li>人物角色（Personas）
+<ol>
+<li>不是真实的人</li>
+<li>是基于观察到的那些真实人的行为和动机，并且在整个设计过程中代表真实的人</li>
+<li>是在人口统计学调查收集到的实际用户的行为数据的基础上形成的综合原型</li>
+<li>概念简单，但使用起来相当复杂：拼凑出几个用户档案是不行的</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-人物角色的作用"><a class="markdownIt-Anchor" href="#32-人物角色的作用"></a> 3.2. 人物角色的作用</h2>
+<ol>
+<li>解决产品开发过程中出现的3个设计问题
+<ol>
+<li>弹性用户
+<ol>
+<li>为弹性用户设计赋予了开发者根据自己的意愿编码，而仍然能够为“用户”服务的许可</li>
+<li>如设计医院产品时，考虑设计能够满足所有护士的产品</li>
+</ol>
+</li>
+<li>自参考设计
+<ol>
+<li>设计者或者程序员将其自己的目标、动机、技巧及心智模型投射到产品的设计中</li>
+</ol>
+</li>
+<li>边缘情况设计
+<ol>
+<li>必须考虑边缘情况，但它们又不应该成为设计的关注点</li>
+<li>问：A会经常进行这种操作吗？</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-人物角色的构造"><a class="markdownIt-Anchor" href="#33-人物角色的构造"></a> 3.3. 人物角色的构造</h2>
+<ol>
+<li>错误观点
+<ol>
+<li>A：专业开发人员知道什么可行，什么对用户最合适</li>
+<li>B：用户最了解他们需要什么，应当让他们指导设计工作</li>
+</ol>
+</li>
+<li>人物角色
+<ol>
+<li>与某个系统有关的用户假定的一组公共需要、兴趣、期望、行为模式和责任</li>
+<li>这些属性可能是若干用户共有</li>
+<li>同一个用户也可以扮演系统的任意个不同角色</li>
+<li>举例：频繁使用文字处理软件的用户
+<ol>
+<li>写作者的角色</li>
+<li>编辑者的角色</li>
+<li>排版者的角色</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="34-人物角色的构造"><a class="markdownIt-Anchor" href="#34-人物角色的构造"></a> 3.4. 人物角色的构造</h2>
+<ol>
+<li>基于如下问题
+<ol>
+<li>谁将使用系统？</li>
+<li>这些用户属于哪些类型的人群？</li>
+<li>是什么因素决定他们将怎样使用系统？</li>
+<li>他们与软件的关系有什么特征？</li>
+<li>他们通常需要软件提供什么支持？</li>
+<li>他们对软件会有怎样的行为？他们对软件的行为有什么期望？</li>
+</ol>
+</li>
+</ol>
+<h2 id="35-举例"><a class="markdownIt-Anchor" href="#35-举例"></a> 3.5. 举例</h2>
+<ol>
+<li>设计运行在笔记本电脑上的一个演示程序包
+<ol>
+<li>销售部的一位同事</li>
+<li>公司的销售代表
+<ol>
+<li>能快捷方便地创建标准格式的简单幻灯片</li>
+<li>能使用带有项目的文字内容或简单图表</li>
+<li>图形依靠软件提供的标准图形库</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>人物角色：日常最低要求演示者
+<ol>
+<li>经常使用；快速、方便操作；简单使用；</li>
+<li>简洁、标准格式：带有项目符号的列表、条形图、饼图、图形等；标准图形库</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-注意"><a class="markdownIt-Anchor" href="#36-注意"></a> 3.6. 注意</h2>
+<ol>
+<li>要注意那些与软件用户界面设计有关的角色特征</li>
+<li>要关注使角色之间彼此相区别的特征</li>
+<li>要留心焦点角色：最常见、最典型的角色</li>
+</ol>
+<h2 id="37-建模过程"><a class="markdownIt-Anchor" href="#37-建模过程"></a> 3.7. 建模过程</h2>
+<ol>
+<li>拼凑：采用头脑风暴方法，产生一些零碎概念或模型的片段，先不去考虑他们的细节</li>
+<li>组织：将这些片段按照所构造模型的需要进行分组和分类，归并或删除那些冗余重叠的东西</li>
+<li>细节：建立和完善相应描述，补充遗漏的数据</li>
+<li>求精：对模型进行推敲，以便改进和完善</li>
+<li>以上过程循环反复</li>
+</ol>
+<h2 id="38-人物角色的信息组织"><a class="markdownIt-Anchor" href="#38-人物角色的信息组织"></a> 3.8. 人物角色的信息组织</h2>
+<h1 id="4-需求获取"><a class="markdownIt-Anchor" href="#4-需求获取"></a> 4. 需求获取</h1>
+<h2 id="41-需求获取观察"><a class="markdownIt-Anchor" href="#41-需求获取观察"></a> 4.1. 需求获取——观察</h2>
+<ol>
+<li>设计的最初，可能不知道问什么问题或由谁来回答这些问题</li>
+<li>没有与参与者实际的讨论和观察是不可能得到完整的工作流程画面的</li>
+<li>有用的信息可以通过观察人们在工作环境中完成他们的活动来获得</li>
+<li>直接观察
+<ol>
+<li>陪同他们工作而直接获得信息</li>
+<li>可能影响被观察者的日常活动：可提问：这是你通常完成任务的方式吗</li>
+</ol>
+</li>
+<li>间接观察
+<ol>
+<li>用视频/录音获得信息</li>
+<li>观察者更舒适</li>
+</ol>
+</li>
+</ol>
+<h2 id="42-场景"><a class="markdownIt-Anchor" href="#42-场景"></a> 4.2. 场景</h2>
+<ol>
+<li>场景是表示任务和工作结构的“非正式的叙述性描述”
+<ol>
+<li>以叙述的方式描述人的行为或任务，从中可以发掘出任务的上下文环境、用户的需要、需求</li>
+<li>形式可以类似于一篇故事、一个小品或者在给定环境下按照时间顺序的一段情节</li>
+</ol>
+</li>
+<li>“讲故事”是人们解释自己做什么或者希望执行某个任务的最自然方式
+<ol>
+<li>故事的焦点就是用户希望达到的目标</li>
+<li>若场景说明不断提到某个特定形式、行为或者地点，就表明它是这个活动的核心内容</li>
+</ol>
+</li>
+<li>来源：场景说明通常来自专题讨论或者访谈，目的是解释或讨论有关用户目标的一些问题</li>
+</ol>
+<h2 id="43-场景举例"><a class="markdownIt-Anchor" href="#43-场景举例"></a> 4.3. 场景举例</h2>
+<ol>
+<li>图书馆目录服务系统的潜在用户场景</li>
+</ol>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">“我要查找George <span class="hljs-keyword">Jeffries </span>写的书，但不记得书名，只知道它是在<span class="hljs-number">1995</span> 年前出版的。我在目录系统中输入口令。我不明白为什么要输入口令，但不这么做我就无法进入图书馆系统，使用目录服务。系统确认了口令之后，显示了一些检索选项，如根据作者或日期检索，但不能结合两者进行检索。我选择了基于作者的检索，因为根据日期的检索通常会返回过多的书目。约<span class="hljs-number">30</span> 秒后，系统返回了结果，说没有找到George <span class="hljs-keyword">Jeffries </span>写的书，也列出了一些最接近的匹配书目。在浏览了这个清单后，我发现把作者的名字弄错了，应该是Gregory 而不是George。于是。我选择了想要的书目，系统即显示了它的位置。”<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>以上场景说明的问题
+<ol>
+<li>正确输入作者姓名的重要性</li>
+<li>用户对输入口令感到反感</li>
+<li>应提供更灵活的检索方法</li>
+<li>在匹配不成功时，应给出相近的检索结果</li>
+</ol>
+</li>
+</ol>
+<h2 id="44-人物角色场景剧本需求"><a class="markdownIt-Anchor" href="#44-人物角色场景剧本需求"></a> 4.4. 人物角色+场景剧本→需求</h2>
+<ol>
+<li>需求定义的5个步骤
+<ol>
+<li>创建问题和前景综述</li>
+<li>头脑风暴</li>
+<li>确定人物角色的期望</li>
+<li>构建情境场景剧本</li>
+<li>确立需求</li>
+</ol>
+</li>
+<li>迭代的过程
+<ol>
+<li>直到需求变得稳定</li>
+</ol>
+</li>
+</ol>
+<h3 id="441-第一步创建问题和前景综述"><a class="markdownIt-Anchor" href="#441-第一步创建问题和前景综述"></a> 4.4.1. 第一步：创建问题和前景综述</h3>
+<ol>
+<li>设计问题综述应该简明地反映需要改变的情况，来服务人物角色和提供产品给人物角色的商业组织</li>
+<li>前景综述高层次的设计视图和需求是问题综述的倒置</li>
+<li>设计新的产品P会帮助用户实现目标G，这让用户能更好地（精确度和效率等）完成X、Y和Z任务，并且不会产生其现在遇到的A、B和C等问题。从而会有力地改善H公司的顾客满意度，并且会增加市场占有率。</li>
+</ol>
+<h3 id="442-第二步头脑风暴"><a class="markdownIt-Anchor" href="#442-第二步头脑风暴"></a> 4.4.2. 第二步：头脑风暴</h3>
+<ol>
+<li>目的
+<ol>
+<li>“说反话”</li>
+<li>尽可能地去除成见，允许设计师以开放和灵活的方式想象来构建场景剧本，使用他们的思维从场景剧本中得到需求</li>
+<li>将头脑置于“解决问题模式”中</li>
+</ol>
+</li>
+<li>特点
+<ol>
+<li>不受约束且不加以评判</li>
+<li>不要花费太多时间，当想法重复或变慢时停止</li>
+</ol>
+</li>
+</ol>
+<h3 id="443-第三步确定人物角色的期望"><a class="markdownIt-Anchor" href="#443-第三步确定人物角色的期望"></a> 4.4.3. 第三步：确定人物角色的期望</h3>
+<ol>
+<li>一个人的心理模型通常是根深蒂固的</li>
+<li>界面表现模型与用户心理模型尽量匹配是非常重要的</li>
+<li>对于每一个基本和次要人物角色，需确定
+<ol>
+<li>影响人物角色愿望的态度、经历、渴望，以及其他社会、文化、环境和认知因素</li>
+<li>人物角色在使用产品体验方面可能有的一般期待和愿望</li>
+<li>人物角色认为什么是数据的基本单元或者元素</li>
+</ol>
+</li>
+<li>理清如下问题
+<ol>
+<li>主体首先提到的是什么？</li>
+<li>他们使用哪些动作单词？</li>
+<li>他们没有提及对象中的哪些中间步骤、任务或者对象？</li>
+</ol>
+</li>
+</ol>
+<h3 id="444-第四步构造情境场景剧本"><a class="markdownIt-Anchor" href="#444-第四步构造情境场景剧本"></a> 4.4.4. 第四步：构造情境场景剧本</h3>
+<ol>
+<li>情境场景剧本
+<ol>
+<li>关注人物角色的活动，及其心理模型和动机</li>
+<li>将注意力集中在设计的产品中怎样能够最好地帮助你的人物角色达到目标</li>
+<li>应该专注于高层次的从用户角度描述的行动，广而浅：不应描述产品或交互的细节</li>
+</ol>
+</li>
+<li>解决的问题
+<ol>
+<li>产品是否会被使用很长一段时间？</li>
+<li>人物角色是否经常被打断？</li>
+<li>和其一起使用的其他产品是什么？</li>
+<li>人物角色需要做哪些基本的行动来实现目标？</li>
+<li>使用产品预期的结果是什么？</li>
+</ol>
+</li>
+<li>情境场景剧本举例
+<ol>
+<li>第1次迭代
+<ol>
+<li>人物角色Vivien Strong
+<ol>
+<li>女，32岁，已婚，女儿Alice</li>
+<li>印第安纳波利斯市的一个房地产代理商</li>
+<li>目标是平衡工作和家庭生活</li>
+<li>紧紧抓住每一个交易机会并且让每一个客户都感觉自己是Vivien的唯一客户</li>
+</ol>
+</li>
+<li>情景场景剧本
+<ol>
+<li>在早晨做好准备，Vivien使用电话来收发电子邮件。它的屏幕足够大，并且网络连接很快。因为早上她同时要匆忙地为女儿Alice准备带到学校的三明治，这样手机比计算机更方便</li>
+<li>Vivien收到一封Email，来自最新客户Frank，他想在下午去看房子。Vivien在几天前已经输入了他的联系信息，所以她现在只需要在屏幕上执行一个简单的操作，就可以拨打他的电话</li>
+<li>在与Frank打电话的过程中，Vivien切换到免提状态，这样她能够在谈话的同时看到屏幕。她查看自己的约会记录，看看哪个时段自己还没有安排。当她创建一个新的约会时，电话自动记录下这是与Frank的约会，因为它知道她是在与谁交流。谈话结束后，她快速地输入准备看的那处房地产的地址</li>
+<li>将Alice送到学校之后，Vivien前往房地产办公室收集另一个会面所需的信息。她的电话已经更新了其Outlook约会时间，所以办公室里的其他人知道她下午在哪里</li>
+<li>Vivien拿起了电话——Alice错过了公交，需要接她。Vivien给她的丈夫打电话看他能否代劳，可是访问的却是其语音信箱，他肯定是不在服务区内。她给自己的丈夫留言，告诉他自己和客户在一起，看他能否去接Alice。5分钟后，电话发出了一个简短的铃音。从音调中，Vivien可以判断出这个短信是丈夫发给她的。她看到了丈夫发出的短消息：“我会去接Alice，好运！”</li>
+</ol>
+</li>
+<li>注意
+<ol>
+<li>没有涉及太具体的界面和技术信息</li>
+<li>活动是和Vivien的目标相关的：尽可能去掉多余的任务</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>由场景生成故事板：突出关键交互动作、关键任务</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="445-第五步确定需求"><a class="markdownIt-Anchor" href="#445-第五步确定需求"></a> 4.4.5. 第五步：确定需求</h3>
+<ol>
+<li>同上例：直接从约会记录（情境）中拨打电话（动作）给某个人（对象）</li>
+<li>数据需求
+<ol>
+<li>必须在系统中被描绘的对象和信息</li>
+<li>可以被看作是与对象相关的宾语或形容词</li>
+<li>如账号、人、文档、邮件、歌曲、图片以及它们的属性比如状态、日期等</li>
+</ol>
+</li>
+<li>功能需求
+<ol>
+<li>系统对象必须进行的操作</li>
+<li>最终会转化为界面控件</li>
+</ol>
+</li>
+<li>其他需求：开发进度、大小等</li>
+</ol>
+<h2 id="45-任务分析"><a class="markdownIt-Anchor" href="#45-任务分析"></a> 4.5. 任务分析</h2>
+<ol>
+<li>记录人们如何完成任务的一种方式</li>
+<li>作用
+<ol>
+<li>可以用来了解通过观察和访谈目前参与工作流程的人收集到的数据</li>
+<li>主要用于调查现有情形，而不是展望新系统或设备</li>
+<li>分析基本原理，了解人们想要达到什么目标，如何达到这些目标，并由此建立需求</li>
+</ol>
+</li>
+<li>层次化任务分析（HTA）是应用最广的任务分析技术
+<ol>
+<li>把任务分解为若干子任务，再把子任务进一步分解为更细致的子任务。之后，把他们组织成一个“执行次序”，说明在实际情形下如何执行各项任务</li>
+</ol>
+</li>
+</ol>
+<h3 id="451-举例图书馆目录服务"><a class="markdownIt-Anchor" href="#451-举例图书馆目录服务"></a> 4.5.1. 举例：图书馆目录服务</h3>
+<ol>
+<li>“借书”的子任务
+<ol>
+<li>访问图书馆目录</li>
+<li>根据姓名、书名、主题等检索</li>
+<li>记录图书位置</li>
+<li>找到书架并取书（假定书在书架上）</li>
+<li>到柜台办理借阅手续</li>
+</ol>
+</li>
+<li>以上过程可以有所变化</li>
+</ol>
+<h3 id="452-执行次序"><a class="markdownIt-Anchor" href="#452-执行次序"></a> 4.5.2. 执行次序</h3>
+<ol>
+<li>0.借书
+<ol>
+<li>1.前往图书馆</li>
+<li>2.检索需要的图书
+<ol>
+<li>2.1 访问图书馆目录</li>
+<li>2.2 使用检索屏</li>
+<li>2.3 输入检索准则</li>
+<li>2.4 找出需要的图书</li>
+<li>2.5 记录图书位置</li>
+</ol>
+</li>
+<li>3.找到书架并取书</li>
+<li>4.到柜台办理借阅手续</li>
+</ol>
+</li>
+<li>执行次序0：执行1-3-4；若图书不在期望的书架上，则执行2-3-4。</li>
+<li>执行次序2：执行2.1-2.4-2.5；若未查到此书，则执行2.2-2.3-2.4-2.5编号说明了对应步骤编号。</li>
+</ol>
+<h3 id="453-终止规则"><a class="markdownIt-Anchor" href="#453-终止规则"></a> 4.5.3. 终止规则</h3>
+<ol>
+<li>任务分析是一个迭代过程</li>
+<li>终止点
+<ol>
+<li>任务包含了复杂机械响应的地方
+<ol>
+<li>如鼠标移动</li>
+<li>此时分解没有价值</li>
+</ol>
+</li>
+<li>涉及内部决断的地方
+<ol>
+<li>若决断和查找文档等外部动作相关，则分解</li>
+<li>若为纯粹认知性，则终止</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="454-方框-线条图示"><a class="markdownIt-Anchor" href="#454-方框-线条图示"></a> 4.5.4. 方框-线条图示</h3>
+<ol>
+<li>HTA的图形描述（考试）
+<ol>
+<li>是自顶向下逐步求精的。</li>
+<li>不可细分的叶子节点下画一条横线</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>评估是必考的</li>
+</ol>
+<h3 id="455-用途"><a class="markdownIt-Anchor" href="#455-用途"></a> 4.5.5. 用途</h3>
+<ol>
+<li>手册和教学
+<ol>
+<li>如怎样拆卸、擦净来复枪，怎样安装软件等</li>
+<li>“如何做”手册适于培训</li>
+</ol>
+</li>
+<li>需求获取和系统设计
+<ol>
+<li>任务分析本身不是需求获取</li>
+<li>但有助于需求的完整表达</li>
+</ol>
+</li>
+<li>详细的接口设计：应用于菜单设计</li>
+</ol>
+<h1 id="5-需求验证"><a class="markdownIt-Anchor" href="#5-需求验证"></a> 5. 需求验证</h1>
+<ol>
+<li>原型的重要性
+<ol>
+<li>用户往往不能准确描述自己的需要</li>
+<li>用户在看到或尝试某些事物后，就能立即知道自己不需要什么</li>
+</ol>
+</li>
+<li>原型
+<ol>
+<li>在某一方面和真正产品比较接近、以便人们能对这一方面的各种技术方案进行不断评估和改进的一种接近于实际产品的模型：如房屋、桥梁的缩微模型</li>
+<li>借助于原型，当事人就能与未来的产品交互，从中获得一些实际的使用体验，并发掘新思路</li>
+</ol>
+</li>
+</ol>
+<h2 id="51-原型分类"><a class="markdownIt-Anchor" href="#51-原型分类"></a> 5.1. 原型分类</h2>
+<ol>
+<li>低保真原型
+<ol>
+<li>与最终产品不太相似的原型</li>
+<li>使用与最终产品不同的材料，如纸张、纸板：如PalmPilot掌上电脑的木雕原型</li>
+<li>优点是简单、便宜、易于制作和修改</li>
+</ol>
+</li>
+<li>高保真原型
+<ol>
+<li>与最终产品更为接近，使用相同的材料：如使用Visual Basic开发的软件系统原型</li>
+<li>风险：
+<ol>
+<li>用户会认为原型就是系统</li>
+<li>开发人员可能认为已找到了一个用户满意的设计</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>建议使用低保真原型</li>
+</ol>
+<h2 id="52-原型体现交互逻辑"><a class="markdownIt-Anchor" href="#52-原型体现交互逻辑"></a> 5.2. 原型体现交互逻辑</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="53-tool-support-mockups"><a class="markdownIt-Anchor" href="#53-tool-support-mockups"></a> 5.3. Tool support - Mockups</h2>
+<h1 id="6-小结"><a class="markdownIt-Anchor" href="#6-小结"></a> 6. 小结</h1>
+<ol>
+<li>用户是不同的</li>
+<li>产品是不同的</li>
+<li>人物角色的构建</li>
+<li>需求获取和分析：层次化任务分析</li>
+<li>原型</li>
+</ol>
+<h1 id="7-design-prototyping-and-construction"><a class="markdownIt-Anchor" href="#7-design-prototyping-and-construction"></a> 7. Design, prototyping and construction</h1>
+<h2 id="71-design-and-prototyping"><a class="markdownIt-Anchor" href="#71-design-and-prototyping"></a> 7.1. Design and prototyping</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-human-computer-interaction/img/lec7/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="72-what-is-a-prototype"><a class="markdownIt-Anchor" href="#72-what-is-a-prototype"></a> 7.2. What is a prototype?</h2>
+<ol>
+<li>In other design fields a prototype is a small-scale model
+<ol>
+<li>a miniature building town</li>
+<li>a miniature car</li>
+</ol>
+</li>
+</ol>
+<h2 id="73-what-is-a-prototype-in-interaction-design"><a class="markdownIt-Anchor" href="#73-what-is-a-prototype-in-interaction-design"></a> 7.3. What is a prototype in Interaction Design?</h2>
+<ol>
+<li>from low-fidelity to high fidelity</li>
+<li>a series of screen sketches</li>
+<li>a storyboard, i.e. a cartoon-like series of scenes</li>
+<li>a lump of wood (e.g. PalmPilot)</li>
+<li>a cardboard mock-up</li>
+<li>a Powerpoint slide show</li>
+<li>a video simulating the use of a system</li>
+<li>a piece of software with limited functionality written in the target language or in another language</li>
+</ol>
+<h2 id="74-why-prototype"><a class="markdownIt-Anchor" href="#74-why-prototype"></a> 7.4. Why prototype?</h2>
+<ol>
+<li>Evaluation and feedback are central to interaction design</li>
+<li>Stakeholders can see, hold, interact with a prototype more easily than with a document</li>
+<li>Team members can communicate effectively</li>
+<li>You can test out ideas for yourself</li>
+<li>It encourages reflection</li>
+<li>Prototypes answer questions, and support designers in choosing between alternatives</li>
+</ol>
+<h2 id="75-what-to-prototype"><a class="markdownIt-Anchor" href="#75-what-to-prototype"></a> 7.5. What to prototype?</h2>
+<ol>
+<li>Technical issues</li>
+<li>Work flow, task design</li>
+<li>Screen layouts and information display</li>
+<li>Difficult, controversial, critical areas</li>
+</ol>
+<h2 id="76-but-before-we-start-prototyping"><a class="markdownIt-Anchor" href="#76-but-before-we-start-prototyping"></a> 7.6. But before we start prototyping…</h2>
+<ol>
+<li>The most important thing to design is the user’s conceptual model. Everything else should be subordinated to making that model clear, obvious, and substantial. That is almost exactly the opposite of how most software is designed.(Liddle, 1996, p. 17)</li>
+<li>A conceptual model is a high-level description of how a system is organized and operates. (Johnson and Henderson, 2002, p. 26)</li>
+</ol>
+<h2 id="77-conceptual-models-and-mental-models"><a class="markdownIt-Anchor" href="#77-conceptual-models-and-mental-models"></a> 7.7. Conceptual models and mental models</h2>
+<p>Ideally, users’ mental models should be compatible with the designer’s conceptual models</p>
+<h2 id="78-conceptual-models"><a class="markdownIt-Anchor" href="#78-conceptual-models"></a> 7.8. Conceptual models</h2>
+<ol>
+<li>Types of activities
+<ol>
+<li>Giving instructions</li>
+<li>Manipulating and navigating</li>
+<li>Conversing</li>
+<li>Exploring and browsing</li>
+</ol>
+</li>
+<li>Metaphors and analogies</li>
+</ol>
+<h2 id="79-instructing-vs-manipulating"><a class="markdownIt-Anchor" href="#79-instructing-vs-manipulating"></a> 7.9. Instructing vs. manipulating</h2>
+<ol>
+<li>Still very common</li>
+<li>Have to learn syntax</li>
+<li>Frequent error messages</li>
+<li>Lack of feedback</li>
+<li>Efficient use of space</li>
+<li>Efficient interaction for repetitive actions</li>
+<li>Most common</li>
+<li>No syntax to learn</li>
+<li>Error messages rarely needed</li>
+<li>Immediate feedback</li>
+<li>Space gobblers</li>
+<li>Some actions are awkward to perform</li>
+</ol>
+<h2 id="710-conversing"><a class="markdownIt-Anchor" href="#710-conversing"></a> 7.10. Conversing</h2>
+<ol>
+<li>Underlying model of having a conversation with another human</li>
+<li>Range from simple voice recognition menu-driven systems to more complex ‘natural language’ dialogues</li>
+<li>Examples include timetables, search engines, advice-giving systems, help systems</li>
+</ol>
+<h2 id="711-exploring-and-browsing"><a class="markdownIt-Anchor" href="#711-exploring-and-browsing"></a> 7.11. Exploring and browsing</h2>
+<ol>
+<li>Similar to how people browse information with existing media (e.g. newspapers, magazines, libraries, pamphlets)</li>
+<li>Information is structured to allow flexibility in way user is able to search for information</li>
+</ol>
+<h2 id="712-what-would-be-the-most-suitable-conceptual-model-for"><a class="markdownIt-Anchor" href="#712-what-would-be-the-most-suitable-conceptual-model-for"></a> 7.12. What would be the most suitable conceptual model for</h2>
+<ol>
+<li>A car racing 3D video game?</li>
+<li>An application for downloading music off the web?</li>
+<li>An online system to support troubleshooting of computer hardware problems?</li>
+<li>Programming?</li>
+</ol>
+<h2 id="713-conceptual-models-based-on-objects"><a class="markdownIt-Anchor" href="#713-conceptual-models-based-on-objects"></a> 7.13. Conceptual models based on objects</h2>
+<ol>
+<li>Usually based on an analogy with something in the physical world</li>
+<li>Examples include books, tools, vehicles</li>
+<li>Classic: Star Interface based on office objects</li>
+</ol>
+<h2 id="714-benefits-of-metaphors"><a class="markdownIt-Anchor" href="#714-benefits-of-metaphors"></a> 7.14. Benefits of metaphors</h2>
+<ol>
+<li>Makes learning new systems easier</li>
+<li>Helps users understand the underlying conceptual model</li>
+<li>Can be very innovative and enable the realm of computers and their applications to be made more accessible to a greater diversity of users</li>
+</ol>
+<h2 id="715-types-of-prototypes"><a class="markdownIt-Anchor" href="#715-types-of-prototypes"></a> 7.15. Types of prototypes</h2>
+<ol>
+<li>Different kinds of prototyping
+<ol>
+<li>Low fidelity</li>
+<li>High fidelity
+<ol>
+<li>Evolutionary</li>
+<li>‘Throw-away</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Compromises in prototyping
+<ol>
+<li>Vertical</li>
+<li>Horizontal</li>
+</ol>
+</li>
+</ol>
+<h3 id="7151-low-fidelity-prototyping"><a class="markdownIt-Anchor" href="#7151-low-fidelity-prototyping"></a> 7.15.1. Low-fidelity Prototyping</h3>
+<ol>
+<li>Uses a medium which is unlike the final medium, e.g. paper, cardboard
+<ol>
+<li>Sketches of screens with post-it notes (task sequences)
+<ol>
+<li>Card-based</li>
+</ol>
+</li>
+<li>Storyboards</li>
+<li>‘Wizard-of-Oz’</li>
+</ol>
+</li>
+<li>Quick, cheap, easily changed</li>
+</ol>
+<h2 id="716-sketching"><a class="markdownIt-Anchor" href="#716-sketching"></a> 7.16. Sketching</h2>
+<ol>
+<li>Sketching is important to low-fidelity prototyping</li>
+<li>Don’t be inhibited about drawing ability (even I sketch regularly)</li>
+</ol>
+<h2 id="717-card-based-prototypes"><a class="markdownIt-Anchor" href="#717-card-based-prototypes"></a> 7.17. Card-based prototypes</h2>
+<ol>
+<li>Index cards (3 X 5 inches)</li>
+<li>Each card represents one screen or part of screen</li>
+<li>Often used in website development</li>
+</ol>
+<h2 id="718-storyboards"><a class="markdownIt-Anchor" href="#718-storyboards"></a> 7.18. Storyboards</h2>
+<ol>
+<li>Often used with scenarios, bringing more detail, and chance to role play
+<ol>
+<li>It is a series of sketches showing how a user might progress through a task using the device</li>
+<li>Used early in design</li>
+</ol>
+</li>
+</ol>
+<h2 id="719-wizard-of-oz-prototyping"><a class="markdownIt-Anchor" href="#719-wizard-of-oz-prototyping"></a> 7.19. ‘Wizard-of-Oz’ prototyping</h2>
+<ol>
+<li>Users thinks they are interacting with a computer, but a developer is responding to output rather than the system.</li>
+<li>What could the shortcomings of this approach be?</li>
+</ol>
+<h2 id="720-high-fidelity-prototyping"><a class="markdownIt-Anchor" href="#720-high-fidelity-prototyping"></a> 7.20. High-fidelity prototyping</h2>
+<ol>
+<li>Uses materials that you would expect to be in the final product.</li>
+<li>Prototype looks more like the final system than a lowfidelity version.</li>
+<li>Common prototyping environments include Macromedia Director or Flash.</li>
+<li>Danger that users think they have a full system</li>
+</ol>
+<h2 id="721-summary"><a class="markdownIt-Anchor" href="#721-summary"></a> 7.21. Summary</h2>
+<ol>
+<li>Prototyping enables designers to build designs iteratively and involve users</li>
+<li>The most important thing to design is the users’ conceptual model1</li>
+<li>Different kinds of prototyping are used for different purposes and at different stages
+<ol>
+<li>Low fidelity at early stages for initial design solution attempts</li>
+<li>High fidelity later to refine design solution</li>
+</ol>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2021-%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/" class="category-chain-item">2021-人机交互</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
+      
+        <a href="/tags/%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/">#人机交互</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2021-人机交互-Lec-7 交互需求定义</div>
+      <div>https://stormbroken.github.io/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-7%20%E4%BA%A4%E4%BA%92%E9%9C%80%E6%B1%82%E5%AE%9A%E4%B9%89/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年1月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-8%20%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" title="2021-人机交互-Lec-8 交互式系统的设计">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2021-人机交互-Lec-8 交互式系统的设计</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/08/2021-human-computer-interaction/2021-human-computer-interaction-Lec-6%20%E8%AF%84%E4%BC%B0%E4%B9%8B%E7%94%A8%E6%88%B7%E6%B5%8B%E8%AF%95/" title="2021-人机交互-Lec-6 评估之用户测试">
+                        <span class="hidden-mobile">2021-人机交互-Lec-6 评估之用户测试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-软件工程与计算II-16-设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-软件工程与计算II-16-设计模式">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-软件工程与计算II-16-设计模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/7.png">
+<meta property="article:published_time" content="2020-07-06T11:16:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:43:13.886Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="OOP">
+<meta property="article:tag" content="软件工程与计算II">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/1.png">
+  
+  
+  <title>2020-软件工程与计算II-16-设计模式 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-06 19:16" pubdate>
+          2020年7月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-软件工程与计算II-16-设计模式</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="16-设计模式"><a class="markdownIt-Anchor" href="#16-设计模式"></a> 16-设计模式</h2>
+<h1 id="1-可修改性及其基本实现机制"><a class="markdownIt-Anchor" href="#1-可修改性及其基本实现机制"></a> 1. 可修改性及其基本实现机制</h1>
+<ol>
+<li>实现的<strong>可修改性</strong>:涉及到大的场景的修改
+<ol>
+<li>对已有实现的修改</li>
+<li>例如：修改现有促销策略</li>
+</ol>
+</li>
+<li>实现的<strong>可扩展性</strong>(DIP &amp; OCP)
+<ol>
+<li>对新的实现的扩展</li>
+<li>例如：增加一条新的促销策略(策略模式)</li>
+</ol>
+</li>
+<li>实现的<strong>灵活性</strong>
+<ol>
+<li>对实现的动态配置</li>
+<li>例如：动态修改更改某商品对应促销策略</li>
+</ol>
+</li>
+</ol>
+<h2 id="11-如何实现可修改性-重要"><a class="markdownIt-Anchor" href="#11-如何实现可修改性-重要"></a> 1.1. 如何实现可修改性？ 重要</h2>
+<ol>
+<li>接口与实现的分离</li>
+</ol>
+<h2 id="12-如何将接口与实现的分离-java视角"><a class="markdownIt-Anchor" href="#12-如何将接口与实现的分离-java视角"></a> 1.2. 如何将接口与实现的分离 – Java视角</h2>
+<ol>
+<li>通过接口与实现该接口的类，将接口与实现相分离</li>
+<li>通过子类继承父类，将父类的接口与子类的实现相分离:通过继承的方式，在一定程度上实现了接口与实现的分离，但是也使得子类继承了父类的接口，使得灵活性略有下降。</li>
+<li>Eg.课本263页</li>
+</ol>
+<h2 id="13-实现接口interface"><a class="markdownIt-Anchor" href="#13-实现接口interface"></a> 1.3. 实现接口(interface)</h2>
+<ol>
+<li>interface:定义了规约</li>
+<li>实现class:实现了规约</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="14-类图中的标志物的含义"><a class="markdownIt-Anchor" href="#14-类图中的标志物的含义"></a> 1.4. 类图中的标志物的含义</h2>
+<ol>
+<li>虚线箭头:依赖</li>
+<li>实线箭头:关联(两侧写数量)</li>
+<li>空菱形在一侧的实现箭头:聚合</li>
+<li>实菱形在一侧的实现箭头:合成</li>
+<li>空心实线箭头:泛化(extends)</li>
+<li>空心虚线箭头:实现(implements)</li>
+</ol>
+<h2 id="15-类图与依赖关系"><a class="markdownIt-Anchor" href="#15-类图与依赖关系"></a> 1.5. 类图与依赖关系</h2>
+<ol>
+<li>Client、Interface_A、Class_A1之间是什么关系？</li>
+<li>Client和Class_A1是否存在依赖关系？</li>
+</ol>
+<h2 id="16-继承"><a class="markdownIt-Anchor" href="#16-继承"></a> 1.6. 继承</h2>
+<ol>
+<li>父类定义了规约(contract)</li>
+<li>子类实现了规约(contract)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="17-类图与依赖关系"><a class="markdownIt-Anchor" href="#17-类图与依赖关系"></a> 1.7. 类图与依赖关系</h2>
+<ol>
+<li>Client、Super_A、Sub_A1之间是什么关系？</li>
+<li>Client和Sub_A1是否存在依赖关系？不</li>
+</ol>
+<h2 id="18-实现的可修改性"><a class="markdownIt-Anchor" href="#18-实现的可修改性"></a> 1.8. 实现的可修改性</h2>
+<ol>
+<li>对于实现的可修改性，无论是Class_A1还是Sub_A1的method_A方法的实现的修改都和Client中的调用代码没有任何耦合性。</li>
+</ol>
+<h3 id="181-扩展"><a class="markdownIt-Anchor" href="#181-扩展"></a> 1.8.1. 扩展</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="19-实现的可扩展性"><a class="markdownIt-Anchor" href="#19-实现的可扩展性"></a> 1.9. 实现的可扩展性</h2>
+<ol>
+<li>对于实现的可扩展性，我们可以通过 Class_A2还是Sub_A2的创建来实现。</li>
+</ol>
+<h2 id="110-实现的灵活性"><a class="markdownIt-Anchor" href="#110-实现的灵活性"></a> 1.10. 实现的灵活性</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="111-继承的优点"><a class="markdownIt-Anchor" href="#111-继承的优点"></a> 1.11. 继承的优点</h2>
+<ol>
+<li>虽然继承也能很好的完成接口与实现的分离，但是继承还有他独有的特征。</li>
+<li>子类不但继承了父类的接口还继承了父类的实现，这可以更好的进行代码的重用。</li>
+</ol>
+<h2 id="112-继承的缺点"><a class="markdownIt-Anchor" href="#112-继承的缺点"></a> 1.12. 继承的缺点</h2>
+<ol>
+<li>继承的父类与所有子类存在共有接口的耦合性。当父类接口发生改变的时候，子类的接口就一定会更改，这样就会影响到 Client代码。</li>
+<li>而且当子类创建对象的时候，就决定了其实现的选择，没法再动态的修改。</li>
+</ol>
+<h2 id="113-组合"><a class="markdownIt-Anchor" href="#113-组合"></a> 1.13. 组合</h2>
+<ol>
+<li>而利用接口的组成关系，却能在实现接口和实现的前提下，体现更好的灵活性。前端类和后端类是组合关系。前段类重用了后端类的代码。</li>
+<li>考虑到软件工程中的人的重要性。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="1131-组合的优点"><a class="markdownIt-Anchor" href="#1131-组合的优点"></a> 1.13.1. 组合的优点</h3>
+<ol>
+<li>前端和后端在接口上不存在耦合性。当后端接口发送改变的时候，并不会直接影响到Client代码。</li>
+<li>后端类的实现亦可以动态创建、动态配置、动态销毁，非常灵活。</li>
+</ol>
+<h1 id="2-设计模式"><a class="markdownIt-Anchor" href="#2-设计模式"></a> 2. 设计模式</h1>
+<h2 id="21-why为什么使用设计模式"><a class="markdownIt-Anchor" href="#21-why为什么使用设计模式"></a> 2.1. Why？为什么使用设计模式</h2>
+<ol>
+<li>设计OO软件非常困难</li>
+<li>设计可重用的OO软件-难度更大</li>
+<li>经验丰富的OO设计师可以做出出色的设计</li>
+<li>新设计师倾向于使用以前使用的非OO技术</li>
+<li>经验丰富的设计师知道一些东西-这是什么？</li>
+<li>专家设计师知道不能从第一原则中解决所有问题</li>
+<li>复用的解决方案</li>
+<li>这些模式使面向对象的设计更加灵活，优雅并且最终可重用。</li>
+</ol>
+<h2 id="22-什么是设计模式"><a class="markdownIt-Anchor" href="#22-什么是设计模式"></a> 2.2. 什么是设计模式</h2>
+<ol>
+<li>设计模式:抽象一个重复的设计结构</li>
+<li>包含类和/或对象
+<ol>
+<li>依赖</li>
+<li>结构</li>
+<li>互动，或</li>
+<li>约定</li>
+</ol>
+</li>
+<li>提炼设计经验</li>
+</ol>
+<h2 id="23-模式"><a class="markdownIt-Anchor" href="#23-模式"></a> 2.3. 模式</h2>
+<ol>
+<li>典型问题</li>
+<li>设计分析</li>
+<li>解决方案</li>
+<li>案例</li>
+</ol>
+<h2 id="24-解决方案"><a class="markdownIt-Anchor" href="#24-解决方案"></a> 2.4. 解决方案</h2>
+<ol>
+<li>组成与协作：描述了设计中涉及的各个类的组成成分，他们之间的相互关系及各自的职责和协作方式。</li>
+<li>应用场景：描述了应该何时使用模式。它解释了设计模式所要解决的问题，以及解决这个问题时所面临的特点的环境、限制条件、场景等。这也是我们在应用某种模式之前，需要仔细去体察的。</li>
+<li>使用注意点：因为模式只是一个模板，他可以应用与多种不同场合，所以解决方案并不描述一个具体的实现，而是提供解决方案的一个抽象模型。</li>
+</ol>
+<h1 id="3-设计模式和策略配对"><a class="markdownIt-Anchor" href="#3-设计模式和策略配对"></a> 3. 设计模式和策略配对</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt16/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>策略模式:减少耦合、依赖倒置。</li>
+<li>抽象工厂模式:职责抽象、接口重用。</li>
+<li>单件模式:信息隐藏、职责抽象。</li>
+<li>迭代器模式:减少耦合、依赖倒置。</li>
+</ol>
+<h1 id="4-设计模式重点掌握类图-重要"><a class="markdownIt-Anchor" href="#4-设计模式重点掌握类图-重要"></a> 4. 设计模式重点掌握类图 重要</h1>
+<ol>
+<li>策略模式</li>
+<li>抽象工厂模式</li>
+<li>单件模式</li>
+<li>迭代器模式</li>
+</ol>
+<h1 id="5-题目"><a class="markdownIt-Anchor" href="#5-题目"></a> 5. 题目</h1>
+<ol>
+<li>给定场景，利用设计模式写出代码</li>
+<li>给出代码，利用设计模式重写</li>
+<li>设计模式内容具体查看</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" class="category-chain-item">2020-软件工程与计算II</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/OOP/">#OOP</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/">#软件工程与计算II</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-软件工程与计算II-16-设计模式</div>
+      <div>https://stormbroken.github.io/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-16-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月6日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-17-%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/" title="2020-软件工程与计算II-17-软件构造">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-软件工程与计算II-17-软件构造</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/06/2020-Software-Engineering-and-Computing-II/2020-Software-Engineering-and-Computing-II-15-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F/" title="2020-软件工程与计算II-15-面向对象的信息隐藏">
+                        <span class="hidden-mobile">2020-软件工程与计算II-15-面向对象的信息隐藏</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

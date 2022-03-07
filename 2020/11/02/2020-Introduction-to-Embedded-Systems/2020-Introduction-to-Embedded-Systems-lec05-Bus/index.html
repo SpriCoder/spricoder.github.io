@@ -1,0 +1,1269 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-嵌入式系统导论-lec05-Bus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-嵌入式系统导论-lec05-Bus">
+<meta property="og:url" content="https://stormbroken.github.io/2020/11/02/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec05-Bus/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-嵌入式系统导论-lec05-Bus">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/5.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/7.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/8.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/9.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/10.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/11.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/12.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/13.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/14.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/15.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/16.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/17.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/18.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/19.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/20.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/21.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/22.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/23.png">
+<meta property="article:published_time" content="2020-11-02T11:05:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:41:54.909Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="总线">
+<meta property="article:tag" content="中断">
+<meta property="article:tag" content="嵌入式系统导论">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/1.png">
+  
+  
+  <title>2020-嵌入式系统导论-lec05-Bus - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-11-02 19:05" pubdate>
+          2020年11月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-嵌入式系统导论-lec05-Bus</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="lec05-bus"><a class="markdownIt-Anchor" href="#lec05-bus"></a> lec05-Bus</h2>
+<ol>
+<li>ISR，Interrupt Service Routine，中断服务历程</li>
+</ol>
+<h1 id="1-输入输出"><a class="markdownIt-Anchor" href="#1-输入输出"></a> 1. 输入输出</h1>
+<h2 id="11-io设备"><a class="markdownIt-Anchor" href="#11-io设备"></a> 1.1. I/O设备</h2>
+<ol>
+<li>通常包括一些非数字组件。</li>
+<li>典型的CPU数字接口：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="12-应用8251-uart"><a class="markdownIt-Anchor" href="#12-应用8251-uart"></a> 1.2. 应用：8251 UART</h2>
+<ol>
+<li>通用异步接收器发送器(UART)：提供串行通信。</li>
+<li>允许对许多通信参数进行编程。</li>
+</ol>
+<h2 id="13-串行通讯"><a class="markdownIt-Anchor" href="#13-串行通讯"></a> 1.3. 串行通讯</h2>
+<ol>
+<li>字符分别传输：</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ul>
+<li>串行通讯参数
+<ol>
+<li>波特率</li>
+<li>每个字符的位数</li>
+<li>奇偶校验/无奇偶校验：奇偶校验</li>
+<li>停止位的长度(1、1.5、2位)</li>
+</ol>
+</li>
+</ul>
+<h2 id="14-cpu接口"><a class="markdownIt-Anchor" href="#14-cpu接口"></a> 1.4. CPU接口</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-io设备分类"><a class="markdownIt-Anchor" href="#15-io设备分类"></a> 1.5. I/O设备分类</h2>
+<h3 id="151-从从属角度进行分类"><a class="markdownIt-Anchor" href="#151-从从属角度进行分类"></a> 1.5.1. 从从属角度进行分类</h3>
+<ol>
+<li>系统设备：操作系统启动时已经在系统中注册的标准设备。
+<ol>
+<li>示例包括NOR / NAND闪存，触摸板等。</li>
+<li>操作系统中有用于这些设备的设备驱动程序和管理程序。</li>
+<li>用户应用程序只需调用操作系统提供的标准命令或功能即可使用这些设备。</li>
+</ol>
+</li>
+<li>用户设备：操作系统启动时未在系统中注册的非标准设备。
+<ol>
+<li>通常，设备驱动程序由用户提供。用户必须以某种方式将这些设备的控制权转移到OS进行管理。</li>
+<li>典型的设备包括SD卡，USB磁盘等。</li>
+</ol>
+</li>
+</ol>
+<h3 id="152-使用类别"><a class="markdownIt-Anchor" href="#152-使用类别"></a> 1.5.2. 使用类别</h3>
+<ol>
+<li>专用设备：一次只能由一个进程使用的设备。对于多个并发进程，每个进程互斥地使用设备。一旦操作系统将设备分配给特定进程，它将由该进程专有，直到该进程在使用后释放它为止。</li>
+<li>共享设备：一次可以由多个进程寻址的设备。共享设备必须是可寻址的，并且是随机寻址的。共享设备机制可以提高每个设备的利用率。</li>
+<li>虚拟设备：利用虚拟化技术从物理设备转移到多个逻辑设备的设备。传输的设备称为虚拟设备。</li>
+</ol>
+<h3 id="153-特征类别"><a class="markdownIt-Anchor" href="#153-特征类别"></a> 1.5.3. 特征类别</h3>
+<ol>
+<li>存储设备：
+<ul>
+<li>此类型的设备用于存储信息。</li>
+<li>嵌入式系统中的典型示例包括硬盘，固态磁盘，NOR / NAND闪存。</li>
+</ul>
+</li>
+<li>I/O设备：
+<ol>
+<li>输入设备：输入设备负责将信息从外部源输入到内部系统，例如触摸面板，条形码扫描仪等。</li>
+<li>输出设备：输出设备负责将嵌入式系统处理的信息输出到外部世界，例如LCD显示器，扬声器等。</li>
+</ol>
+</li>
+</ol>
+<h3 id="154-信息传递单位类别"><a class="markdownIt-Anchor" href="#154-信息传递单位类别"></a> 1.5.4. 信息传递单位类别</h3>
+<ol>
+<li>块设备：这种类型的设备以数据块为单位组织和交换数据。
+<ol>
+<li>它是一种结构装置。</li>
+<li>典型的设备是硬盘。</li>
+<li>在I/O操作中，即使只是单字节读/写，也应该读取或写入整个数据块。</li>
+</ol>
+</li>
+<li>字符设备：这种类型的设备以字符为单位组织和交换数据。
+<ol>
+<li>它是一种非结构性的设备。</li>
+<li>字符设备的类型很多，例如串行端口，触摸面板，打印机。</li>
+<li>字符设备的基本特征是传输速率低且无法寻址。当字符设备执行I/O操作时，通常使用中断。</li>
+</ol>
+</li>
+</ol>
+<h2 id="16-io设备组成"><a class="markdownIt-Anchor" href="#16-io设备组成"></a> 1.6. I/O设备组成</h2>
+<ol>
+<li>通常，I/O设备由两部分组成：机械零件和电子零件：电子部分称为设备控制器或适配器。</li>
+</ol>
+<h3 id="161-可编程io"><a class="markdownIt-Anchor" href="#161-可编程io"></a> 1.6.1. 可编程I/O</h3>
+<ol>
+<li>通信期间选择控制寄存器或数据缓冲区的三种方法
+<ol>
+<li>独立的I/O端口：需要专门的指令来完成。</li>
+<li>内存映射的I/O。</li>
+<li>混合解决方案(统一编址)。混合模型包括内存映射的I/O数据缓冲区和用于控制寄存器的单独的I/O端口。</li>
+</ol>
+</li>
+<li>英特尔x86提供了输入输出说明。大多数其他CPU使用内存映射的I/O。</li>
+<li>I/O指令不排除内存映射的I/O。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>独立的I/O和内存空间。</li>
+<li>内存映射的I/O。</li>
+<li>混合解决方案。</li>
+</ol>
+<h3 id="162-内存映射的io"><a class="markdownIt-Anchor" href="#162-内存映射的io"></a> 1.6.2. 内存映射的I/O</h3>
+<ol>
+<li>内存映射I/O的优点可总结为：
+<ol>
+<li>在内存映射的I/O模式下，设备控制寄存器只是内存中的变量，并且可以与其他变量一样用C寻址。因此，可以完全用C语言编写I/O设备驱动程序。</li>
+<li>在这种模式下，不需要特殊的保护机制即可阻止用户进程执行I/O操作。</li>
+</ol>
+</li>
+<li>内存映射I/O模式的缺点可以总结为：
+<ol>
+<li>当前大多数嵌入式处理器都支持内存缓存。缓存设备控制寄存器将导致灾难。为了防止这种情况，必须为硬件提供选择性禁用缓存的功能。这将增加嵌入式系统中硬件和软件的复杂性。</li>
+<li>如果只有一个地址空间，则所有内存模块和所有I/O设备都必须检查所有内存引用，以便确定要响应的内存引用。这会严重影响系统性能。</li>
+</ol>
+</li>
+<li>ARM 内存映射的I/O
+<ol>
+<li>定义设备地址:<code>DEV1 EQU 0x1000</code></li>
+<li>读写代码:</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-keyword">LDR</span> <span class="hljs-built_in">r1</span>,<span class="hljs-symbol">#DEV1</span> <span class="hljs-comment">; set up device adrs</span><br><span class="hljs-keyword">LDR</span> <span class="hljs-built_in">r0</span>,[<span class="hljs-built_in">r1</span>] <span class="hljs-comment">; read DEV1</span><br><span class="hljs-keyword">LDR</span> <span class="hljs-built_in">r0</span>,<span class="hljs-number">#8</span> <span class="hljs-comment">; set up value to write</span><br><span class="hljs-keyword">STR</span> <span class="hljs-built_in">r0</span>,[<span class="hljs-built_in">r1</span>] <span class="hljs-comment">; write value to device</span><br></code></pre></td></tr></table></figure>
+<h4 id="1621-peek-and-poke高级语言指针操作要注意"><a class="markdownIt-Anchor" href="#1621-peek-and-poke高级语言指针操作要注意"></a> 1.6.2.1. peek and poke：(高级语言)，指针操作要注意</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">peek</span><span class="hljs-params">(<span class="hljs-type">char</span> *location)</span> </span>&#123;<br>   <span class="hljs-keyword">return</span> *location;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">poke</span><span class="hljs-params">(<span class="hljs-type">char</span> *location, <span class="hljs-type">char</span> newval)</span> </span>&#123;<br>   (*location) = newval;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="1622-在忙等待输出"><a class="markdownIt-Anchor" href="#1622-在忙等待输出"></a> 1.6.2.2. 在忙/等待输出</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++">current_char = mystring;<br><span class="hljs-keyword">while</span> (*current_char != ‘\<span class="hljs-number">0</span>’) &#123;<br>   <span class="hljs-built_in">poke</span>(OUT_CHAR,*current_char);<br>   <span class="hljs-keyword">while</span> (<span class="hljs-built_in">peek</span>(OUT_STATUS) != <span class="hljs-number">0</span>);<br>   current_char++;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="1623-同步忙等待输入输出"><a class="markdownIt-Anchor" href="#1623-同步忙等待输入输出"></a> 1.6.2.3. 同步忙/等待输入输出:</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">while</span> (TRUE) &#123;<br>   <span class="hljs-comment">/* read */</span><br>   <span class="hljs-keyword">while</span> (<span class="hljs-built_in">peek</span>(IN_STATUS) == <span class="hljs-number">0</span>);<br>   achar = (<span class="hljs-type">char</span>)<span class="hljs-built_in">peek</span>(IN_DATA);<br>   <span class="hljs-comment">/* write */</span><br>   <span class="hljs-built_in">poke</span>(OUT_DATA,achar);<br>   <span class="hljs-built_in">poke</span>(OUT_STATUS,<span class="hljs-number">1</span>);<br>   <span class="hljs-keyword">while</span> (<span class="hljs-built_in">peek</span>(OUT_STATUS) != <span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="163-中断io"><a class="markdownIt-Anchor" href="#163-中断io"></a> 1.6.3. 中断I/O</h3>
+<ol>
+<li>在忙和等待是非常低效的。而中断I/O是相对高效的。
+<ol>
+<li>CPU在检查设备的时候，不能干别的。</li>
+<li>很难去实现同步I/O</li>
+</ol>
+</li>
+<li>中断允许设备更改CPU中的控制流:导致子例程调用以处理设备。</li>
+</ol>
+<h4 id="1631-中断接口"><a class="markdownIt-Anchor" href="#1631-中断接口"></a> 1.6.3.1. 中断接口</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="1632-中断行为"><a class="markdownIt-Anchor" href="#1632-中断行为"></a> 1.6.3.2. 中断行为</h4>
+<ol>
+<li>基于子程序的调用机制</li>
+<li>中断迫使下一条指令成为子程序调用到预定位置。</li>
+<li>返回地址被保存以恢复执行前台程序。</li>
+</ol>
+<h4 id="1633-中断物理接口"><a class="markdownIt-Anchor" href="#1633-中断物理接口"></a> 1.6.3.3. 中断物理接口</h4>
+<ol>
+<li>CPU和设备通过CPU总线连接。</li>
+<li>CPU和设备握手：</li>
+<li>设备声明中断请求；</li>
+<li>CPU可以处理中断时会声明中断确认。</li>
+</ol>
+<h4 id="1634-isr的例子"><a class="markdownIt-Anchor" href="#1634-isr的例子"></a> 1.6.3.4. ISR的例子</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">input_handler</span><span class="hljs-params">()</span> </span>&#123;<br>   achar = <span class="hljs-built_in">peek</span>(IN_DATA);<br>   gotchar = TRUE;<br>   <span class="hljs-built_in">poke</span>(IN_STATUS,<span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">output_handler</span><span class="hljs-params">()</span> </span>&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="1635-主程序"><a class="markdownIt-Anchor" href="#1635-主程序"></a> 1.6.3.5. 主程序</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">main</span>() &#123;<br>   <span class="hljs-keyword">while</span> (TRUE) &#123;<br>      <span class="hljs-keyword">if</span> (gotchar) &#123;<br>         <span class="hljs-built_in">poke</span>(OUT_DATA,achar);<br>         <span class="hljs-built_in">poke</span>(OUT_STATUS,<span class="hljs-number">1</span>);<br>         gotchar = FALSE;<br>      &#125;<br>   &#125;<br>   other processing....<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="1636-例子带缓冲区的中断io"><a class="markdownIt-Anchor" href="#1636-例子带缓冲区的中断io"></a> 1.6.3.6. 例子:带缓冲区的中断I/O</h4>
+<ul>
+<li>字节流如下。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="1637-io时序图"><a class="markdownIt-Anchor" href="#1637-io时序图"></a> 1.6.3.7. I/O时序图</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="1638-优先级和向量"><a class="markdownIt-Anchor" href="#1638-优先级和向量"></a> 1.6.3.8. 优先级和向量</h4>
+<ol>
+<li>两种机制使我们可以使中断更具体：
+<ol>
+<li>优先级确定什么中断首先获取CPU。</li>
+<li>向量确定每种中断类型需要调用什么代码。</li>
+</ol>
+</li>
+<li>机制是正交的：大多数CPU都提供两者。</li>
+</ol>
+<h4 id="1639-优先级例子"><a class="markdownIt-Anchor" href="#1639-优先级例子"></a> 1.6.3.9. 优先级例子</h4>
+<ul>
+<li>中断嵌套收到中断嵌套允许位控制</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="16310-中断优先级"><a class="markdownIt-Anchor" href="#16310-中断优先级"></a> 1.6.3.10. 中断优先级</h4>
+<ol>
+<li><strong>屏蔽</strong>：优先级低于当前优先级的中断直到待处理的中断完成后才被识别。</li>
+<li><strong>不可屏蔽中断(NMI)</strong>：最高优先级，从不屏蔽。经常情况下被用于关闭电源。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="16311-中断向量"><a class="markdownIt-Anchor" href="#16311-中断向量"></a> 1.6.3.11. 中断向量</h4>
+<ol>
+<li>允许使用不同的代码处理不同的设备。</li>
+<li>中断向量表:可以通过ISR寻找到，放置在起始地址。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="16312-中断向量获取"><a class="markdownIt-Anchor" href="#16312-中断向量获取"></a> 1.6.3.12. 中断向量获取</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="16313-通用状态机"><a class="markdownIt-Anchor" href="#16313-通用状态机"></a> 1.6.3.13. 通用状态机</h4>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h4 id="16314-中断序列"><a class="markdownIt-Anchor" href="#16314-中断序列"></a> 1.6.3.14. 中断序列</h4>
+<ol>
+<li>CPU确认请求。</li>
+<li>设备发送引导程序。</li>
+<li>CPU调用处理程序。</li>
+<li>软件流程请求。</li>
+<li>CPU将状态恢复到前台程序。</li>
+</ol>
+<h4 id="16315-中断来源概述"><a class="markdownIt-Anchor" href="#16315-中断来源概述"></a> 1.6.3.15. 中断来源概述</h4>
+<ol>
+<li>处理程序执行时间。</li>
+<li>中断机制开销。</li>
+<li>注册保存/恢复</li>
+<li>管道相关的罚款。</li>
+<li>与缓存有关的惩罚。</li>
+</ol>
+<h1 id="2-中断设计准则"><a class="markdownIt-Anchor" href="#2-中断设计准则"></a> 2. 中断设计准则</h1>
+<ol>
+<li>虽然很难调试恶意代码，但是恶意ISR实际上是不可辩驳的。</li>
+<li>怎么样？
+<ol>
+<li>首先，在绘制中断图之前，甚至不要考虑为新的嵌入式系统编写一行代码。列出每个中断，并给出例程应做的英文描述。</li>
+<li>该地图是预算。它为您提供了一个评估中断时间的地方。</li>
+<li>估算每个ISR的复杂度。</li>
+<li>ISR的基本原则是使处理程序简短。</li>
+<li>当然，短是按时间而不是代码大小来衡量的。避免循环。避免使用冗长的复杂指令(重复动作，令人毛骨悚然的数学运算等)。</li>
+<li>在ISR中尽快重新启用中断。先执行对硬件至关重要且不可重入的操作，然后执行中断<strong>使能指令</strong>。给其他ISR一个机会去做他们的事情。</li>
+</ol>
+</li>
+</ol>
+<h2 id="21-中断图"><a class="markdownIt-Anchor" href="#21-中断图"></a> 2.1. 中断图</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="22-用指向空例程的指针填充所有未使用的中断向量"><a class="markdownIt-Anchor" href="#22-用指向空例程的指针填充所有未使用的中断向量"></a> 2.2. 用指向空例程的指针填充所有未使用的中断向量</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="23-c或汇编"><a class="markdownIt-Anchor" href="#23-c或汇编"></a> 2.3. C或汇编</h2>
+<ol>
+<li>如果例程使用汇编语言，则将时间转换为大约数量的指令。如果一条平均指令需要x微秒(取决于时钟速率，等待状态等)，那么就很容易获得对代码允许的复杂度的关键估计。</li>
+<li>C更成问题。实际上，无法用C科学地编写中断处理程序！您不知道一行C将花费多长时间。您甚至无法估算出每条线的时间变化很大。
+<ol>
+<li>字符串比较可能会导致运行时库调用，结果完全不可预测。</li>
+<li>FOR循环可能需要一些简单的整数比较或大量的处理开销。</li>
+</ol>
+</li>
+<li>您可能会发现一个编译器的中断处理速度很慢。 尝试另一个或切换到组装。</li>
+<li>对性能要求高，则建议使用汇编</li>
+</ol>
+<h2 id="24-调试中断代码"><a class="markdownIt-Anchor" href="#24-调试中断代码"></a> 2.4. 调试中断代码</h2>
+<ol>
+<li>如果您忘记更改寄存器怎么办？
+<ol>
+<li>前台程序可能会显示神秘的错误。</li>
+<li>错误将很难重复-取决于中断的时间。</li>
+</ol>
+</li>
+</ol>
+<h2 id="25-调试int-inta周期"><a class="markdownIt-Anchor" href="#25-调试int-inta周期"></a> 2.5. 调试INT / INTA周期</h2>
+<ol>
+<li>设备硬件产生中断脉冲。</li>
+<li>中断控制器(如果有)对多个同时请求进行优先级排序，并向处理器发出单个中断。</li>
+<li>CPU响应一个中断应答周期。</li>
+<li>控制器在数据总线上放置一个中断向量。</li>
+<li>CPU读取该向量，并计算用户在存储器中存储的向量的地址。 然后，它获取此值。</li>
+<li>CPU推送当前上下文，禁用中断，然后跳转到ISR。</li>
+</ol>
+<h2 id="26-查找丢失的中断"><a class="markdownIt-Anchor" href="#26-查找丢失的中断"></a> 2.6. 查找丢失的中断</h2>
+<ol>
+<li>您可以使用一个递增/递减计数器建立一个小的电路，该计数器对每个中断进行计数，并减少每个中断应答的计数。如果计数器始终显示零或一的值，则一切正常。</li>
+<li>一种设计经验法则将有助于最大程度地减少丢失的中断：在最早的安全位置重新启用ISR中的中断。</li>
+</ol>
+<h2 id="27-避免nmi"><a class="markdownIt-Anchor" href="#27-避免nmi"></a> 2.7. 避免NMI</h2>
+<ol>
+<li>反转NMI(不可屏蔽的中断)保留给像天气这样的灾难。电源故障，系统关闭和迫在眉睫的灾难都是使用NMI进行监视的好方法。定时器或UART中断没有。</li>
+<li>由于大多数ISR在提供硬件服务的代码的前几行中都是不可重入的，因此NMI甚至会打破编码良好的中断处理程序。NMI也会阻碍您的堆栈管理工作。</li>
+<li>NMI与大多数工具的混合效果很差。调试任何ISR(无论是NMI还是其他方法)充其量都是令人生厌的。很少有工具能够在ISR内部单步执行并设置断点。</li>
+</ol>
+<h2 id="28-断点问题"><a class="markdownIt-Anchor" href="#28-断点问题"></a> 2.8. 断点问题</h2>
+<ol>
+<li>尽管断点确实是很棒的调试辅助工具，但它们就像海森堡的不确定性原则：观察系统的行为会改变它。您可以使用实时跟踪(至少在所有调试器和某些智能逻辑分析器中都可用)来欺骗海森堡(至少在调试嵌入式代码中！)。</li>
+</ol>
+<h2 id="29-一个简单isr调试"><a class="markdownIt-Anchor" href="#29-一个简单isr调试"></a> 2.9. 一个简单ISR调试</h2>
+<ol>
+<li>不要用ISR</li>
+<li>如果您的ISR只有10或20行代码，请通过检查进行调试。不要启动各种复杂且不可预测的工具。</li>
+<li>使处理程序简单而简短。</li>
+</ol>
+<h2 id="210-可重用代码"><a class="markdownIt-Anchor" href="#210-可重用代码"></a> 2.10. 可重用代码</h2>
+<ol>
+<li>在嵌入式世界中，例程必须满足以下条件才能重新进入：
+<ol>
+<li>它以原子方式使用所有共享变量，除非每个共享变量都分配给该函数的特定实例。</li>
+<li>它不调用非可重入函数。</li>
+<li>它不会以非原子方式使用硬件。</li>
+</ol>
+</li>
+<li>可重用，就是被中断之后还可以再次进入</li>
+</ol>
+<h3 id="2101-原子变量"><a class="markdownIt-Anchor" href="#2101-原子变量"></a> 2.10.1. 原子变量</h3>
+<ol>
+<li>第一个规则和最后一个规则都使用&quot;原子&quot;一词，该词源于希腊语，意思是&quot;不可分割&quot;。在计算机世界中，&quot;原子&quot;是指不能中断的操作。</li>
+</ol>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">bx</span> 原子式<br>temp = foobar<span class="hljs-comment">; temp += 1; foobar = temp; 非原子</span><br>foobar += <span class="hljs-number">1</span><span class="hljs-comment">; 非原子？先加法，再移动</span><br><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>,[foobar]<br><span class="hljs-keyword">inc</span> <span class="hljs-built_in">ax</span><br><span class="hljs-keyword">mov</span> [foobar],<span class="hljs-built_in">ax</span><span class="hljs-comment">;非原子</span><br><br><span class="hljs-keyword">inc</span> [foobar]<span class="hljs-comment">;非原子，先从寄存器中读，然后加载进来两步骤</span><br><span class="hljs-keyword">lock</span> <span class="hljs-keyword">inc</span> [foobar]<span class="hljs-comment">; 将总线锁死</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>规则2告诉我们调用函数继承了被调用者的重入问题<br />
+规则3是唯一嵌入的警告。硬件看起来很像一个变量。如果处理一个设备需要多个I / O操作，则会产生重入问题。</p>
+</blockquote>
+<h3 id="2102-保持代码可重入"><a class="markdownIt-Anchor" href="#2102-保持代码可重入"></a> 2.10.2. 保持代码可重入</h3>
+<ol>
+<li>消除非重入代码的最佳选择是什么？
+<ol>
+<li>经验法则是避免共享变量。 全局变量是无止境的调试难题和失败的代码。 使用自动变量或动态分配的内存。</li>
+<li>最常见的方法是在非重入代码期间禁用中断。</li>
+<li>信号量</li>
+</ol>
+</li>
+</ol>
+<h3 id="2103-递归"><a class="markdownIt-Anchor" href="#2103-递归"></a> 2.10.3. 递归</h3>
+<ol>
+<li>如果函数调用自身，则该函数是递归的。</li>
+<li>因此，所有递归函数都必须是可重入的……但并非所有可重入函数都是递归的。</li>
+<li>嵌入式不建议使用递归，核心栈空间可能不足、执行时间比较复杂。</li>
+</ol>
+<h2 id="211-异步硬件防火墙"><a class="markdownIt-Anchor" href="#211-异步硬件防火墙"></a> 2.11. 异步硬件/防火墙</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//QAR 公司 RTEMS</span><br><span class="hljs-type">int</span> timer_hi;<br><span class="hljs-function">interrupt <span class="hljs-title">timer</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//中断，让高时间位自增1</span><br>   ++timer_hi;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-title">timer_read</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> low, high;<br>   <span class="hljs-comment">// 这里有问题，读硬件的时候值是ffffff</span><br>   low =<span class="hljs-built_in">inword</span>(hardware_register);<span class="hljs-comment">//存在被ISR抢断的情况，比如产生了溢出</span><br>   high=timer_hi;<br>   <span class="hljs-keyword">return</span> (high&lt;&lt;<span class="hljs-number">16</span>+low);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="2111-比赛条件"><a class="markdownIt-Anchor" href="#2111-比赛条件"></a> 2.11.1. 比赛条件</h3>
+<ol>
+<li>timer_read的错误条件之一可能是：(顺序变化导致的结果变化，重要)
+<ol>
+<li>它读取硬件，并获得0xffff的值。</li>
+<li>在有机会从变量timer_hi检索大部分时间之前，硬件将再次递增至0x0000。</li>
+<li>溢出触发中断。ISR运行。timer_hi现在为0</li>
+<li>0001，而不是0，因为它只是十亿分之一秒。</li>
+<li>ISR返回；我们无所畏惧的timer_read例程，不知道发生了中断，巧妙地将新的0连接起来</li>
+<li>0001，以前读取的计时器值为0Xffff，并返回0X1ffff，这是一个非常不正确的值。</li>
+</ol>
+</li>
+</ol>
+<h3 id="2112-选件"><a class="markdownIt-Anchor" href="#2112-选件"></a> 2.11.2. 选件</h3>
+<ol>
+<li>最简单的方法是在尝试读取计时器之前将其停止:失去时间。在此期间关闭中断将消除不必要的任务，但会增加系统延迟和复杂性。</li>
+<li>另一种解决方案是先读取timer_hi变量，然后读取硬件计时器，然后重新读取timer_hi。 如果两个变量值都不相同，则会发生中断。迭代直到两个变量读取相等。
+<ol>
+<li>好处是：正确的数据，中断持续存在，并且系统不会丢失计数。</li>
+<li>缺点：在负载繁重的多任务环境中，该例程可能会循环很长时间才能获得两次相同的读取。 函数的执行时间不确定。 我们已经从非常简单的计时器读取器转变为可以运行几毫秒而不是微秒的更为复杂的代码。</li>
+</ol>
+</li>
+<li>另一种选择是简单地禁用读取周围的中断。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-title">timer_read</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span>&#123;<br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> low, high;<br>   push_interrupt_state;<br>   disable_interrupts;<br>   low=<span class="hljs-built_in">inword</span>(Timer_register);<br>   high=timer_hi;<br>   <span class="hljs-keyword">if</span>(<span class="hljs-built_in">inword</span>(timer_overflow))&#123;<br>      ++high;<br>      low=<span class="hljs-built_in">inword</span>(timer_register);<br>   &#125;<br>   pop_interrupt_state;<br>   <span class="hljs-keyword">return</span> (((ulong)high)&lt;&lt;<span class="hljs-number">16</span>+(ulong)low);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="3-总线"><a class="markdownIt-Anchor" href="#3-总线"></a> 3. 总线</h1>
+<h2 id="31-cpu总线"><a class="markdownIt-Anchor" href="#31-cpu总线"></a> 3.1. CPU总线</h2>
+<ol>
+<li>总线允许CPU，内存，设备进行通信：共享的通讯媒体。</li>
+<li>总线是：
+<ol>
+<li>一组电线</li>
+<li>通信协议</li>
+</ol>
+</li>
+</ol>
+<h2 id="32-总线协议"><a class="markdownIt-Anchor" href="#32-总线协议"></a> 3.2. 总线协议</h2>
+<ol>
+<li>总线协议决定了设备是如何进行通信的</li>
+<li>总线上的设备会经历状态序列：协议是由状态机指定的，协议中的每个参与者都有一个状态机。</li>
+<li>可能包含异步逻辑行为。</li>
+</ol>
+<h2 id="33-四周期握手"><a class="markdownIt-Anchor" href="#33-四周期握手"></a> 3.3. 四周期握手</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>设备1引发enq。</li>
+<li>设备2以ack响应。</li>
+<li>完成后，设备2降低确认。</li>
+<li>设备1降低enq。</li>
+</ol>
+<h2 id="34-微处理器总线"><a class="markdownIt-Anchor" href="#34-微处理器总线"></a> 3.4. 微处理器总线</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>时钟提供同步。</li>
+<li>读时R / W为true(读时R / W’为false)。</li>
+<li>地址是地址线的位捆绑。</li>
+<li>数据是n位数据线束。</li>
+<li>当n bit数据就绪时，数据就绪信号发出。</li>
+</ol>
+<h2 id="35-总线复用"><a class="markdownIt-Anchor" href="#35-总线复用"></a> 3.5. 总线复用</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="36-系统总线配置"><a class="markdownIt-Anchor" href="#36-系统总线配置"></a> 3.6. 系统总线配置</h2>
+<ol>
+<li>多个总线允许并行处理：
+<ol>
+<li>一条总线上的设备慢。</li>
+<li>快速设备位于单独的总线上。</li>
+</ol>
+</li>
+<li>桥连接两条总线。</li>
+<li>PC端类似，使用南桥和北桥来完成，北桥连接CPU</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="37-桥状态图"><a class="markdownIt-Anchor" href="#37-桥状态图"></a> 3.7. 桥状态图</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="38-arm-amba-bus"><a class="markdownIt-Anchor" href="#38-arm-amba-bus"></a> 3.8. ARM AMBA bus</h2>
+<ol>
+<li>两个类别:
+<ol>
+<li>AHB是高性能的。</li>
+<li>APB是低速，低成本的。</li>
+</ol>
+</li>
+<li>AHB支持流水线，突发传输，拆分事务，多个总线主控。
+<ol>
+<li>H:高速</li>
+</ol>
+</li>
+<li>所有设备都是APB上的从设备。
+<ol>
+<li>APB是外部</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/20.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/21.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mi>S</mi><mi>B</mi><mn>3.0</mn></mrow><annotation encoding="application/x-tex">USB3.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord">3</span><span class="mord">.</span><span class="mord">0</span></span></span></span>是高速设备</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">SPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>C</mi></mrow><annotation encoding="application/x-tex">I^2C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>也是非常多的
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">SPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>:点对点星型设备</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>C</mi></mrow><annotation encoding="application/x-tex">I^2C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>:串行设备</li>
+<li>开源硬件一般同时支持这两个</li>
+</ul>
+</li>
+<li>市面上的开源硬件支持<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mi>S</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">USB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">SPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>C</mi></mrow><annotation encoding="application/x-tex">I^2C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span></li>
+</ul>
+<h2 id="39-arduino-uno-r3"><a class="markdownIt-Anchor" href="#39-arduino-uno-r3"></a> 3.9. Arduino Uno R3</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/22.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/lec5/23.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="category-chain-item">2020-嵌入式系统概论</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/%E6%80%BB%E7%BA%BF/">#总线</a>
+      
+        <a href="/tags/%E4%B8%AD%E6%96%AD/">#中断</a>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA/">#嵌入式系统导论</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-嵌入式系统导论-lec05-Bus</div>
+      <div>https://stormbroken.github.io/2020/11/02/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec05-Bus/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年11月2日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/02/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec06-Embedded%20Software%20System/" title="2020-嵌入式系统导论-lec06-Embedded Software System">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-嵌入式系统导论-lec06-Embedded Software System</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/02/2020-Introduction-to-Embedded-Systems/2020-Introduction-to-Embedded-Systems-lec04-Memory%20Architectures/" title="2020-嵌入式系统导论-lec04-Memory Architectures">
+                        <span class="hidden-mobile">2020-嵌入式系统导论-lec04-Memory Architectures</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

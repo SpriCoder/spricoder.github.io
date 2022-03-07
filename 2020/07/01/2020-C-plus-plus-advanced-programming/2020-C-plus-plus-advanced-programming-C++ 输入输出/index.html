@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020-C++高级程序设计-C++ 输入输出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020-C++高级程序设计-C++ 输入输出">
+<meta property="og:url" content="https://stormbroken.github.io/2020/07/01/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="2020-C++高级程序设计-C++ 输入输出">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/io/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/io/2.png">
+<meta property="article:published_time" content="2020-07-01T11:09:00.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:37:00.501Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="输入输出">
+<meta property="article:tag" content="缓冲区">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/io/1.png">
+  
+  
+  <title>2020-C++高级程序设计-C++ 输入输出 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-07-01 19:09" pubdate>
+          2020年7月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          80 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2020-C++高级程序设计-C++ 输入输出</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="c-输入输出"><a class="markdownIt-Anchor" href="#c-输入输出"></a> C++ 输入输出</h2>
+<h1 id="1-io"><a class="markdownIt-Anchor" href="#1-io"></a> 1. I/O</h1>
+<ol>
+<li>输入输出流:包含在头文件<code>&lt;iostream&gt;</code>中</li>
+<li>开头需要进行<code>#include&lt;iostream&gt;</code></li>
+</ol>
+<h2 id="11-标准库对象"><a class="markdownIt-Anchor" href="#11-标准库对象"></a> 1.1. 标准库对象</h2>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>istream:cin</td>
+<td>处理输入</td>
+</tr>
+<tr>
+<td>ostream:cout</td>
+<td>处理输出</td>
+</tr>
+<tr>
+<td>ostream:cerr</td>
+<td>处理错误</td>
+</tr>
+<tr>
+<td>ostream:clog</td>
+<td>保证log</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-输入"><a class="markdownIt-Anchor" href="#2-输入"></a> 2. 输入</h1>
+<h2 id="21-输入原理"><a class="markdownIt-Anchor" href="#21-输入原理"></a> 2.1. 输入原理</h2>
+<ol>
+<li>程序的输入都键入一个缓冲区，即输入缓冲区。</li>
+<li>键盘输入结束后，会将数据存入缓冲区，之后cin函数直接从输入缓冲区取数据</li>
+<li>问题在于:缓冲区中有残留数据的时候，cin输入流直接从缓冲区拿数据。</li>
+</ol>
+<h2 id="22-cin"><a class="markdownIt-Anchor" href="#22-cin"></a> 2.2. cin</h2>
+<ol>
+<li><code>&gt;&gt;</code>是流提取符，以空格，\t(Tab),\n(回车)为终止</li>
+<li>往往使用来赋值给变量</li>
+<li>cin的变量类型可以为int、float、char、char*、string等诸多类型。</li>
+</ol>
+<h3 id="221-数组输入"><a class="markdownIt-Anchor" href="#221-数组输入"></a> 2.2.1. 数组输入</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//已知长度数组读入</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; n; i++)&#123;<br>    cin &gt;&gt; nums[i]<br>&#125;<br><span class="hljs-comment">//未知长度数组读入</span><br><span class="hljs-keyword">while</span>(cin &gt;&gt; n)&#123;<span class="hljs-comment">//如果没有数字输入则会为NULL</span><br>    nums[i] = n;<br>    i ++;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="222-解决格式化输入问题"><a class="markdownIt-Anchor" href="#222-解决格式化输入问题"></a> 2.2.2. 解决格式化输入问题</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//Ctrl + Z 表示输入结束</span><br><span class="hljs-comment">//读取(0,0),(1,1)</span><br><span class="hljs-type">char</span> c;<span class="hljs-comment">//用来读取无用的</span><br><span class="hljs-type">int</span> x1,x2,y1,y2<br>cin &gt;&gt; c &gt;&gt; x1 &gt;&gt; c &gt;&gt; x2 &gt;&gt; c &gt;&gt; c &gt;&gt; c &gt;&gt; y1 &gt;&gt; c &gt;&gt; y2 &gt;&gt; c &gt;&gt; c;(这个很重要)<br></code></pre></td></tr></table></figure>
+<h3 id="223-get方法"><a class="markdownIt-Anchor" href="#223-get方法"></a> 2.2.3. get方法</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get</span><span class="hljs-params">()</span></span>;<br><span class="hljs-function">istream&amp; <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">char</span>&amp; c)</span></span>;<br><span class="hljs-function">istream&amp; <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">char</span>* s, streamsize n)</span></span>;<br><span class="hljs-function">istream&amp; <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">char</span>* s, streamsize n, <span class="hljs-type">char</span> delim)</span></span>;<br><span class="hljs-function">istream&amp; <span class="hljs-title">get</span><span class="hljs-params">(streambuf&amp; sb)</span></span>;<br><span class="hljs-function">istream&amp; <span class="hljs-title">get</span><span class="hljs-params">(streambuf&amp; sb, <span class="hljs-type">char</span> delim)</span></span>;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>结束符默认为enter，结束字符串的读写</li>
+<li>字符串最后一个为<code>\0</code>，并且对空格不敏感。</li>
+<li>get方法<strong>并不会将结束符从缓冲区丢弃</strong>：务必注意是结束符！未必是回车。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//按照字符读取</span><br>cin.<span class="hljs-built_in">get</span>(x);<br>cin.<span class="hljs-built_in">get</span>(y);<span class="hljs-comment">//\n也可以读取到</span><br><span class="hljs-comment">//cin.get == c语言中的getchar()</span><br><br><span class="hljs-comment">//按照字符串读取</span><br><span class="hljs-type">char</span> ch1,ch2[<span class="hljs-number">10</span>];<br>cout&lt;&lt;<span class="hljs-string">&quot;请输入字符串：&quot;</span>&lt;&lt;endl;<br>cin.<span class="hljs-built_in">get</span>(ch2,<span class="hljs-number">6</span>);<span class="hljs-comment">//在不遇到结束符的情况下，最多可接收6-1=5个字符到ch2中，注意结束符为默认Enter</span><br>cin.<span class="hljs-built_in">get</span>(ch1);<span class="hljs-comment">//或ch1 = cin.get();      </span><br>out&lt;&lt;ch2&lt;&lt;endl;<br>cout&lt;&lt;ch1&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>&lt;&lt;(<span class="hljs-type">int</span>)ch1&lt;&lt;endl;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>直接回车在上面程序中会出现错误输出(越界)，处理方法<code>cin.clear()</code>:但是不会清理终止符。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//调整结束符</span><br>cin.<span class="hljs-built_in">get</span>(ch, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<span class="hljs-comment">// 结束符为&#x27;a&#x27;，直接输入a(enter)</span><br>cin.<span class="hljs-built_in">get</span>(ch2);<br><br><span class="hljs-comment">//注意cin.get()的返回值的问题</span><br>cin.<span class="hljs-built_in">get</span>(ch, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">//此处输入a(enter)</span><br>ch2 = cin.<span class="hljs-built_in">get</span>(); <span class="hljs-comment">//注意与cin.get(ch2)不同</span><br>cout &lt;&lt; ch2 &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; (<span class="hljs-type">int</span>)ch2 &lt;&lt; endl;<br><br><span class="hljs-comment">//cin.get()</span><br>cin.<span class="hljs-built_in">get</span>();<span class="hljs-comment">//用来舍弃输入中不需要的字符(包含回车)，用来弥补不足，用来避免下次读入的时候再次读入</span><br></code></pre></td></tr></table></figure>
+<h3 id="224-cingetline"><a class="markdownIt-Anchor" href="#224-cingetline"></a> 2.2.4. cin.getline()</h3>
+<ol>
+<li><code>cin.getline(字符数组名,接收长度，结束符)</code></li>
+<li>cin.get()超长后不会影响cin的操作，而cin.getline()如果超长会导致之后cin的错误。</li>
+</ol>
+<h3 id="225-getline"><a class="markdownIt-Anchor" href="#225-getline"></a> 2.2.5. getline()</h3>
+<ol>
+<li><code>getline(istream is,string str,结束符)</code></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">getline</span>(cin,str);<br></code></pre></td></tr></table></figure>
+<h2 id="23-cin异常处理机制"><a class="markdownIt-Anchor" href="#23-cin异常处理机制"></a> 2.3. cin异常处理机制</h2>
+<h3 id="231-标志位"><a class="markdownIt-Anchor" href="#231-标志位"></a> 2.3.1. 标志位</h3>
+<ol>
+<li>定义在IOS类中</li>
+<li>他们不是储存异常状态常量，而是对应状态为的掩码。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>二进制显示</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>failbit</td>
+<td>001</td>
+<td>输入(输出)流出现致命错误，不可挽回</td>
+</tr>
+<tr>
+<td>eofbit</td>
+<td>010</td>
+<td>已经到达文件尾</td>
+</tr>
+<tr>
+<td>badbit</td>
+<td>100</td>
+<td>输入(输出)流出现非致命错误，可挽回</td>
+</tr>
+<tr>
+<td>goodbit</td>
+<td>000</td>
+<td>流状态完全正常，各异常标志位都为0</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">cout &lt;&lt; ios::failbit &lt;&lt; endl;<br>cout &lt;&lt; ios::eofbit &lt;&lt; endl;<br>cout &lt;&lt; ios::badbit &lt;&lt; endl; <br>cout &lt;&lt; ios::goodbit &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<h3 id="232-rdstate"><a class="markdownIt-Anchor" href="#232-rdstate"></a> 2.3.2. rdstate()</h3>
+<ol>
+<li>rdstate():获取标志变量的值</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">TestFlags</span><span class="hljs-params">( ios&amp; x )</span> <span class="hljs-comment">// 获得x流的三个标志位状态  </span></span><br><span class="hljs-function"></span>&#123;  <br>    cout &lt;&lt; ( x.<span class="hljs-built_in">rdstate</span>( ) &amp; ios::badbit ) &lt;&lt; endl;  <br>    cout &lt;&lt; ( x.<span class="hljs-built_in">rdstate</span>( ) &amp; ios::failbit ) &lt;&lt; endl;  <br>    cout &lt;&lt; ( x.<span class="hljs-built_in">rdstate</span>( ) &amp; ios::eofbit ) &lt;&lt; endl;  <br>    cout &lt;&lt; endl;  <br>&#125;  <br></code></pre></td></tr></table></figure>
+<h3 id="233-bool-iosfailconst"><a class="markdownIt-Anchor" href="#233-bool-iosfailconst"></a> 2.3.3. bool ios::fail()const</h3>
+<ul>
+<li>1 or true if rdstate &amp; failbit is nonzero, otherwise 0 or false. (引用msdn)</li>
+<li>其中rdstate即通过rdstate()取得的标识变量的值，与failbit相与，即取得failbit标志位的值，如果结果非零则放回true，否则返回false。即该函数返回failbit的状态，将标志位状态通过bool值返回。</li>
+</ul>
+<h3 id="234-bool-iosbad-const"><a class="markdownIt-Anchor" href="#234-bool-iosbad-const"></a> 2.3.4. bool ios::bad() const</h3>
+<ul>
+<li>1 or true if rdstate &amp; badbit is nonzero; otherwise 0. (引用msdn)<br />
+与fail()相似。</li>
+</ul>
+<h3 id="235-bool-iosgoodconst"><a class="markdownIt-Anchor" href="#235-bool-iosgoodconst"></a> 2.3.5. bool ios::good()const</h3>
+<ul>
+<li>1 or true if rdstate == goodbit (no state flags are set), otherwise, 0 orfalse. (引用msdn)<br />
+改函数取goodbit的情况，即三个标志位都0(即没有任何异常情况)时返回true，否则返回false。</li>
+</ul>
+<h3 id="236-voidioscleariostate-_stategoodbit"><a class="markdownIt-Anchor" href="#236-voidioscleariostate-_stategoodbit"></a> 2.3.6. voidios::clear(iostate _State=goodbit)</h3>
+<ul>
+<li>该函数用来重置标识变量，_State是用来重置的值，默认为goodbit，即默认时将所有标志位清零。用户也可以传进参数，如：clear(failbit)，这样就将标识变量置为failbit(即：001)。</li>
+<li>我们一般是用它的默认值，当cin出现异常，我们用该函数将所有标志位重置。如果cin出现异常，没有重置标志的话没法执行下一次的cin操作。如上一节的程序2的测试二为什么第二次输入操作没有执行？程序8中 cin&gt;&gt;ch 为什么没有执行？都是这个原因！！！<br />
+所以经常在程序中使用 cin.clear(), 为了重置错误标志！</li>
+</ul>
+<h3 id="237-void-iossetstateiostate_state"><a class="markdownIt-Anchor" href="#237-void-iossetstateiostate_state"></a> 2.3.7. void ios::setstate(iostate_State)</h3>
+<ol>
+<li>这个函数也是用来设置标识变量的，但与clear()不同。clear()是将所有标志清零，在置以参数新的标志。而该函数不清零其他的标志，而只是将参数对应的标志位置位。这个函数不是经常使用，这里不再赘述。</li>
+</ol>
+<h3 id="238-例子"><a class="markdownIt-Anchor" href="#238-例子"></a> 2.3.8. 例子</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span>  </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;  <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span></span>&#123;  <br>    <span class="hljs-type">char</span> ch, str[<span class="hljs-number">20</span>];  <br>    cin.<span class="hljs-built_in">getline</span>(str, <span class="hljs-number">5</span>);  <br>    cout&lt;&lt;<span class="hljs-string">&quot;flag1:&quot;</span>&lt;&lt;cin.<span class="hljs-built_in">good</span>()&lt;&lt;endl;   <span class="hljs-comment">// 查看goodbit状态，即是否有异常  </span><br>    cin.<span class="hljs-built_in">clear</span>();                        <span class="hljs-comment">// 清除错误标志  </span><br>    cout&lt;&lt;<span class="hljs-string">&quot;flag1:&quot;</span>&lt;&lt;cin.<span class="hljs-built_in">good</span>()&lt;&lt;endl;   <span class="hljs-comment">// 清除标志后再查看异常状态  </span><br>    cin&gt;&gt;ch;   <br>    cout&lt;&lt;<span class="hljs-string">&quot;str:&quot;</span>&lt;&lt;str&lt;&lt;endl;  <br>    cout&lt;&lt;<span class="hljs-string">&quot;ch :&quot;</span>&lt;&lt;ch&lt;&lt;endl;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <br>&#125;<br><span class="hljs-comment">//测试输入：</span><br><span class="hljs-comment">//12345[Enter]</span><br><span class="hljs-comment">//输出：</span><br><span class="hljs-comment">//flag1:0 // good()返回false说明有异常</span><br><span class="hljs-comment">//flag2:1 // good()返回true说明，clear()已经清除了错误标志</span><br><span class="hljs-comment">//str:1234</span><br><span class="hljs-comment">//ch :5</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>【分析】程序执行结束还是只执行了一次读操作，cin&gt;&gt;ch还是没有从键盘读取数据，但是与程序8中不同，这里打印了ch的值为’5’，而且在cin&gt;&gt;ch之前已经清楚了错误标志，也就是cin&gt;&gt;ch的读操作实际上执行了。这就是前面讲的cin读取数据的原理：它是直接从输入缓冲区中取数据的。此例中，第一次输入&quot;12345&quot;,而getline(str, 5)根据参数’5’只取缓冲区中的前4个字符，所以str取的是&quot;1234&quot;，而字符’5’仍在缓冲区中，所以cin&gt;&gt;ch直接从缓冲区中取得数据，没有从键盘读取数据！</li>
+<li>也就是当前一次读取数据出错后，如果缓冲区没有清空的话，重置错误标志还不够！要是能将缓冲区的残留数据清空了就好了哦！下面我们再来看一个很重要的函数！</li>
+</ul>
+<h3 id="239-basic_istreamignorestreamsize-_count-1-int_type-_delim-traits_typeeof"><a class="markdownIt-Anchor" href="#239-basic_istreamignorestreamsize-_count-1-int_type-_delim-traits_typeeof"></a> 2.3.9. basic_istream&amp;ignore(streamsize _Count = 1, int_type _Delim = traits_type::eof());</h3>
+<ol>
+<li>Causes a number of elements to be skipped from the current readposition</li>
+<li>Parameters:
+<ol>
+<li>_Count, The number of elements to skip from the current read position.</li>
+<li>_Delim, The element that, if encountered before count, causes ignore to returnand allowing all elements after _Delim to be read. (引用msdn)\</li>
+</ol>
+</li>
+<li>这个函数用来丢弃输入缓冲区中的字符，第一参数定义一个数，第二个参数定义一个字符变量。下面解释一下函数是怎样执行的：函数不停的从缓冲区中取一个字符，并判断是不是_Delim，如果不是则丢弃并进行计数，当计数达到_Count退出，如果是则丢弃字符退出。例：cin.ignore(5, ‘a’); 函数将不断从缓冲区中取一个字符丢弃，直到丢弃的字符数达到5或者读取的字符为’a’。下面我们看个程序例子：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span>  </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">char</span> ch;<br>	cin.<span class="hljs-built_in">ignore</span>(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<br>	cin.<span class="hljs-built_in">get</span>(ch);<br>	cout &lt;&lt; (<span class="hljs-type">int</span>)ch &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>例子见参考三</li>
+</ol>
+<h3 id="2310-丢弃一个字符"><a class="markdownIt-Anchor" href="#2310-丢弃一个字符"></a> 2.3.10. 丢弃一个字符</h3>
+<ol>
+<li><code>cin.ignore()</code>:删除缓冲区的第一个字符</li>
+</ol>
+<h3 id="2311-清除缓冲区"><a class="markdownIt-Anchor" href="#2311-清除缓冲区"></a> 2.3.11. 清除缓冲区</h3>
+<ol>
+<li><code>cin.ignore(1024,'\n');</code></li>
+<li><code>cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\n');</code></li>
+</ol>
+<h2 id="24-函数输出"><a class="markdownIt-Anchor" href="#24-函数输出"></a> 2.4. 函数输出</h2>
+<h3 id="241-getchar"><a class="markdownIt-Anchor" href="#241-getchar"></a> 2.4.1. getchar()</h3>
+<ol>
+<li>getchar()；获得一个字符</li>
+<li>可以读取到空格\n等等的字符。</li>
+</ol>
+<h3 id="242-putchar"><a class="markdownIt-Anchor" href="#242-putchar"></a> 2.4.2. putchar()</h3>
+<ol>
+<li>putchar()；输出一个字符</li>
+</ol>
+<h1 id="3-输出"><a class="markdownIt-Anchor" href="#3-输出"></a> 3. 输出</h1>
+<h2 id="31-标准输出流-cout"><a class="markdownIt-Anchor" href="#31-标准输出流-cout"></a> 3.1. 标准输出流 cout</h2>
+<ol>
+<li>&lt;&lt;流插入符</li>
+<li><code>std::endl</code>:换行，可以输出一个或者多个，等价于<code>\n</code></li>
+</ol>
+<h3 id="311-格式化输出"><a class="markdownIt-Anchor" href="#311-格式化输出"></a> 3.1.1. 格式化输出</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iomanip&gt;</span></span><br>cout &lt;&lt; hex &lt;&lt; <span class="hljs-number">10</span> &lt;&lt; <span class="hljs-string">&quot;&quot;</span> &lt;&lt; oct &lt;&lt; <span class="hljs-number">8</span>;<span class="hljs-comment">//16进制和8进制</span><br><span class="hljs-comment">//hex 设定后，直接将后面所有的进行转换，知道再次设定</span><br><span class="hljs-comment">//hex 16</span><br><span class="hljs-comment">//dec 10</span><br><span class="hljs-comment">//oct 8</span><br>cout &lt;&lt; <span class="hljs-built_in">setorecison</span>(<span class="hljs-number">4</span>) &lt;&lt; <span class="hljs-number">1.11111</span>;<span class="hljs-comment">//4位小数</span><br>cout &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">6</span>) &lt;&lt; right &lt;&lt; <span class="hljs-number">10</span>;<span class="hljs-comment">//6位右对齐</span><br>cout &lt;&lt; year &lt;&lt; <span class="hljs-string">&#x27;-&#x27;</span> &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">2</span>) &lt;&lt; <span class="hljs-built_in">setfill</span>(<span class="hljs-string">&#x27;0&#x27;</span>) &lt;&lt; month &lt;&lt; ‘-’ &lt;&lt; std::<span class="hljs-built_in">setw</span>(<span class="hljs-number">2</span>) &lt;&lt; std::<span class="hljs-built_in">setfill</span>(<span class="hljs-string">&#x27;0&#x27;</span>) &lt;&lt; day;<br><span class="hljs-comment">//填充</span><br></code></pre></td></tr></table></figure>
+<h2 id="32-使用命名空间std"><a class="markdownIt-Anchor" href="#32-使用命名空间std"></a> 3.2. 使用命名空间std</h2>
+<ol>
+<li>using namespace std;来直接使用</li>
+<li>cin,cout是C++标准库内置函数但不是关键字。</li>
+</ol>
+<h2 id="33-函数输出"><a class="markdownIt-Anchor" href="#33-函数输出"></a> 3.3. 函数输出</h2>
+<ol>
+<li>scanf(&quot;%d&quot;,&amp;a);</li>
+<li>printf(&quot;%d&quot;,a);</li>
+</ol>
+<h1 id="4-控制符"><a class="markdownIt-Anchor" href="#4-控制符"></a> 4. 控制符</h1>
+<table>
+<thead>
+<tr>
+<th>控制符</th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>endl</td>
+<td>换行符</td>
+<td>换行</td>
+</tr>
+</tbody>
+</table>
+<h1 id="5-不同类别的io处理"><a class="markdownIt-Anchor" href="#5-不同类别的io处理"></a> 5. 不同类别的I/O处理</h1>
+<ol>
+<li>基于函数库的I/O</li>
+<li>基于类库的I/O</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/io/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="51-io流库的三类输入输出"><a class="markdownIt-Anchor" href="#51-io流库的三类输入输出"></a> 5.1. I/O流库的三类输入/输出</h2>
+<ol>
+<li>控制台I/O:标准I/O设备(cin、cout、cerr、clog)</li>
+<li>文件I/O</li>
+<li>字符串I/O</li>
+</ol>
+<h2 id="52-重定向"><a class="markdownIt-Anchor" href="#52-重定向"></a> 5.2. 重定向</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ifstream <span class="hljs-title">in</span> <span class="hljs-params">(<span class="hljs-string">&quot;in. txt&quot;</span>)</span></span>;<br>streambuf * cinbuf = cin. <span class="hljs-built_in">rdbuf</span> ();<span class="hljs-comment">//save old buf</span><br>cin. <span class="hljs-built_in">rdbuf</span> ( in. <span class="hljs-built_in">rdbuf</span> ());<span class="hljs-comment">//redirect cin to in. txt !</span><br><span class="hljs-function">ofstream <span class="hljs-title">out</span> <span class="hljs-params">(<span class="hljs-string">&quot; out. txt &quot;</span>)</span></span>;<br>streambuf * coutbuf = cout. <span class="hljs-built_in">rdbuf</span> (); <span class="hljs-comment">//save old buf</span><br>cout. <span class="hljs-built_in">rdbuf</span> ( out. <span class="hljs-built_in">rdbuf</span> ()); <span class="hljs-comment">//redirect cout to out. txt !</span><br>string word;<br>cin &gt;&gt; word; <span class="hljs-comment">//input from the file in. txt </span><br>cout &lt;&lt; word &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<span class="hljs-comment">//output to the file out. txt</span><br>cin. <span class="hljs-built_in">rdbuf</span> ( cinbuf );<span class="hljs-comment">//reset to standard input again</span><br>cout. <span class="hljs-built_in">rdbuf</span> ( coutbuf ); <span class="hljs-comment">//reset to standard output again</span><br>cin &gt;&gt; word; <span class="hljs-comment">//input from the standard input</span><br>cout &lt;&lt; word; <span class="hljs-comment">//output to the standard input</span><br></code></pre></td></tr></table></figure>
+<h2 id="53-对操作符和的重载"><a class="markdownIt-Anchor" href="#53-对操作符和的重载"></a> 5.3. 对操作符&lt;&lt;和&gt;&gt;的重载</h2>
+<ol>
+<li>对自定义类的对象的I/O</li>
+<li>全局(友元)函数重载</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CPoint2D</span>&#123;<br>    <span class="hljs-type">double</span> x, y;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream&amp;, CPoint2D &amp;);<br>&#125;;<br><span class="hljs-comment">//全局函数</span><br>ostream&amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream&amp; out,  CPoint2D&amp; a)&#123;<span class="hljs-comment">//引用类型保证能递归显示</span><br>    out &lt;&lt; a.x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; a.y &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> out;<br>&#125;<br>CPoint2D a;<br>cout &lt;&lt; a;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CPoint3D</span>: <span class="hljs-keyword">public</span> CPoint2D<br>&#123;   <span class="hljs-type">double</span> z;<br>    <br>&#125;<br>CPoint3D b;<br>cout &lt;&lt; b;<span class="hljs-comment">//只显示b.x和b.y，而没显示b.z</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CPoint3D</span>: <span class="hljs-keyword">public</span> CPoint2D<br>&#123;   <span class="hljs-type">double</span> z;<br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream &amp;, CPoint3D &amp;);<br>&#125;<br>ostream&amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream&amp; out,  CPoint3D &amp; b)&#123;<br>    out &lt;&lt; b.x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; b.y &lt;&lt;<span class="hljs-string">&quot;,&quot;</span>  &lt;&lt; b.z &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> out;<br>&#125;<br><span class="hljs-comment">//问题:3D对象被2D指针指向，cout调用了2D的版本，解决:虚化</span><br></code></pre></td></tr></table></figure>
+<h2 id="54-io处理"><a class="markdownIt-Anchor" href="#54-io处理"></a> 5.4. IO处理</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//解决上面的问题</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CPoint2D</span>&#123;<br>    <span class="hljs-type">double</span> x, y;<br>	<span class="hljs-keyword">public</span>:<br>	    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">(ostream&amp; out)</span></span>&#123;<br>            out &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; y &lt;&lt; endl;<br>        &#125;<br>&#125;;<br><span class="hljs-comment">//全局函数的多态，使用虚函数</span><br>ostream&amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream&amp; out,  CPoint2D &amp;a)&#123;<span class="hljs-comment">//虚函数保证必然会调用对象对应的实际类型的版本的对应方法</span><br>    a.<span class="hljs-built_in">display</span>(out);<br>    <span class="hljs-keyword">return</span> out;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CPoint3D</span>: <span class="hljs-keyword">public</span> CPoint2D&#123;<br>    <span class="hljs-type">double</span> z;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">display</span><span class="hljs-params">(ostream&amp; out)</span></span>&#123;   <br>            CPoint2D::<span class="hljs-built_in">display</span>();<br>            out &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>&lt;&lt; z &lt;&lt; endl;  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="55-virtualizing-constructors-虚拟化构造器"><a class="markdownIt-Anchor" href="#55-virtualizing-constructors-虚拟化构造器"></a> 5.5. Virtualizing constructors 虚拟化构造器</h2>
+<ol>
+<li>虚函数</li>
+<li>构造器</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-C-plus-plus-advanced-programming/img/io/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">NLComponent</span> &#123;…&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TextBlock</span> :<span class="hljs-keyword">public</span> NLComponent &#123;…&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Graphic</span> :<span class="hljs-keyword">public</span> NLComponent &#123;…&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">NewsLetter</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">NewsLetter</span>(istream&amp; str)&#123;<br>            <span class="hljs-keyword">while</span> (str)<br>                components.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">readComponent</span>(str));<br>        &#125;<br>	    <span class="hljs-function"><span class="hljs-type">static</span> NLComponent * <span class="hljs-title">readComponent</span><span class="hljs-params">(istream&amp; str)</span></span>;<br>        <span class="hljs-built_in">NewsLetter</span>(<span class="hljs-type">const</span> NewsLetter&amp; rhs)&#123;<span class="hljs-comment">//拷贝构造函数</span><br>            <span class="hljs-keyword">for</span> (list&lt;NLComponent *&gt;::iterator it=rhs.component.<span class="hljs-built_in">begin</span>();it != rhs.component.<span class="hljs-built_in">end</span>(); ++it )<br>                <span class="hljs-comment">//期望有一个虚函数可以拷贝自己</span><br>                component.<span class="hljs-built_in">push_back</span>();<span class="hljs-comment">//new TextBlock? Graphic?</span><br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>	    list&lt;NLComponent *&gt; components;<br>&#125;<br><span class="hljs-comment">//虚化构造器</span><br><span class="hljs-function"><span class="hljs-keyword">virtual</span> NLComponent *<span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>= <span class="hljs-number">0</span>;<br><span class="hljs-comment">//原型模式:添加clone</span><br><span class="hljs-function"><span class="hljs-keyword">virtual</span> TextBlock *<span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TextBlock</span>(*<span class="hljs-keyword">this</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">virtual</span> Graphic  *<span class="hljs-title">clone</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Graphic</span> (*<span class="hljs-keyword">this</span>);<br>&#125;<br>NewsLetter::<span class="hljs-built_in">NewsLetter</span>( <span class="hljs-type">const</span> NewsLetter&amp; rhs)&#123;<br>    <span class="hljs-keyword">for</span> ( list&lt;NLComponent *&gt;::iterator it=rhs.component.<span class="hljs-built_in">begin</span>();<br>		it != rhs.component.<span class="hljs-built_in">end</span>(); ++it )<br>        component.<span class="hljs-built_in">push_back</span>((*it)-&gt;<span class="hljs-built_in">clone</span>());<br>&#125;<br><span class="hljs-comment">//typeid(*it)==typeid(TextBlock)判断对象的类型</span><br><br><span class="hljs-comment">//Question</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BST</span> &#123;&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BalancedBST</span>: <span class="hljs-keyword">public</span> BST &#123;&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printBSTArray</span><span class="hljs-params">(ostream&amp; s, <span class="hljs-type">const</span> BST array[], <span class="hljs-type">int</span> numElements)</span></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i &lt; numElements; i++)<br>        s &lt;&lt; array[i];<br>&#125;<br>BalancedBST bBSTArray[<span class="hljs-number">10</span>];<br><span class="hljs-built_in">printBSTArray</span>(cout, bBSTArray, <span class="hljs-number">10</span>);<br><span class="hljs-comment">//问题是?array[i]是指针算法的缩写，数组每次偏移地址是sizeof(BST)，而不是sizeof(BalancedBST)，会出现问题。</span><br></code></pre></td></tr></table></figure>
+<h1 id="6-读文件"><a class="markdownIt-Anchor" href="#6-读文件"></a> 6. 读文件</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ifstream <span class="hljs-title">infile</span><span class="hljs-params">(<span class="hljs-string">&quot;file_name&quot;</span>)</span></span>;<br><span class="hljs-keyword">if</span> (!infile.<span class="hljs-built_in">is_open</span>())&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;未成功打开文件&quot;</span> &lt;&lt; endl;<br>&#125;<br><span class="hljs-type">int</span> arr[<span class="hljs-number">26</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br><span class="hljs-type">char</span> c;<br>infile &gt;&gt; c;<br><span class="hljs-keyword">while</span> (!infile.<span class="hljs-built_in">eof</span>()) &#123;<br>    <span class="hljs-comment">//do something</span><br>    infile &gt;&gt; c;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="7-泛型用一个方法输出double和int"><a class="markdownIt-Anchor" href="#7-泛型用一个方法输出double和int"></a> 7. 泛型用一个方法输出double和int</h1>
+<ol>
+<li>如果<code>(a - int(a)) &gt; 1E-7</code>:则认为是double</li>
+<li>否则为int</li>
+</ol>
+<h1 id="8-参考"><a class="markdownIt-Anchor" href="#8-参考"></a> 8. 参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/a3192048/article/details/80303547">cin、cin.get()、cin.getline()、getline()的区别</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/2020-C-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="category-chain-item">2020-C++高级程序设计</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
+      
+        <a href="/tags/C/">#C++</a>
+      
+        <a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">#输入输出</a>
+      
+        <a href="/tags/%E7%BC%93%E5%86%B2%E5%8C%BA/">#缓冲区</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020-C++高级程序设计-C++ 输入输出</div>
+      <div>https://stormbroken.github.io/2020/07/01/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年7月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/01/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E6%96%87%E4%BB%B6/" title="2020-C++高级程序设计-C++ 输入重定向到文件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020-C++高级程序设计-C++ 输入重定向到文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/01/2020-C-plus-plus-advanced-programming/2020-C-plus-plus-advanced-programming-C++%20%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" title="2020-C++高级程序设计-C++ 命名空间">
+                        <span class="hidden-mobile">2020-C++高级程序设计-C++ 命名空间</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
