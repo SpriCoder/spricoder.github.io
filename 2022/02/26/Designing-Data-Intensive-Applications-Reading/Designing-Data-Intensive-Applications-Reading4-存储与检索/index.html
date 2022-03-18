@@ -19,7 +19,7 @@
     <meta name="description" content="DDIA读书笔记4-存储与检索">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDIA-Reading4-存储与检索">
-<meta property="og:url" content="https://stormbroken.github.io/2022/02/26/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading4-%E5%AD%98%E5%82%A8%E4%B8%8E%E6%A3%80%E7%B4%A2/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2022/02/26/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading4-%E5%AD%98%E5%82%A8%E4%B8%8E%E6%A3%80%E7%B4%A2/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="DDIA读书笔记4-存储与检索">
 <meta property="og:locale" content="zh_CN">
@@ -76,7 +76,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -280,11 +280,13 @@
             
             <div class="markdown-body">
               
-              <h2 id="第三章：存储与检索"><a href="#第三章：存储与检索" class="headerlink" title="第三章：存储与检索"></a>第三章：存储与检索</h2><blockquote>
+              <h2 id="第三章存储与检索"><a class="markdownIt-Anchor" href="#第三章存储与检索"></a> 第三章：存储与检索</h2>
+<blockquote>
 <p>建立秩序，省却搜索</p>
 </blockquote>
 <ul>
-<li>数据库在最基础的层次上需要完成两件事情：<ul>
+<li>数据库在最基础的层次上需要完成两件事情：
+<ul>
 <li>当你把数据交给数据库时，应当把数据存储起来。</li>
 <li>当你向数据库索要数据时，应该把数据返回给你。</li>
 </ul>
@@ -292,45 +294,53 @@
 <li>针对<strong>事务性</strong>负载优化的和针对<strong>分析性</strong>负载优化的存储引擎之间存在巨大的差异。</li>
 <li>我们将研究两大类存储引擎：日志结构(log-structured)的存储引擎，以及面向页面(page-oriented)的存储引擎。</li>
 </ul>
-<h1 id="1-驱动数据库的数据结构"><a href="#1-驱动数据库的数据结构" class="headerlink" title="1. 驱动数据库的数据结构"></a>1. 驱动数据库的数据结构</h1><ul>
+<h1 id="1-驱动数据库的数据结构"><a class="markdownIt-Anchor" href="#1-驱动数据库的数据结构"></a> 1. 驱动数据库的数据结构</h1>
+<ul>
 <li>最简单的数据库可以用两个Bash函数实现</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-function"><span class="hljs-title">db_set</span></span> () &#123;<br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>,<span class="hljs-variable">$2</span>&quot;</span> &gt;&gt; database<br>&#125;<br><br><span class="hljs-function"><span class="hljs-title">db_get</span></span> () &#123;<br>  grep <span class="hljs-string">&quot;^<span class="hljs-variable">$1</span>,&quot;</span> database | sed -e <span class="hljs-string">&quot;s/^<span class="hljs-variable">$1</span>,//&quot;</span> | <span class="hljs-built_in">tail</span> -n 1<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
-<li>上述两个函数实现了键值存储的功能。<ul>
+<li>上述两个函数实现了键值存储的功能。
+<ul>
 <li>执行<code>db_set</code>将<code>key</code>和<code>value</code>存储在数据库中，与该函数做的事情很相似的是，许多数据库在内部使用了<code>日志</code>(log)，也是一个<code>仅追加</code>(append-only)的数据文件</li>
 <li>底层的存储结构非常简单：一个文本文件，每行包含一条逗号分割的键值对，每次新增会追加写入。</li>
 </ul>
 </li>
-<li>另一方面，如果该数据库找那个有着大量记录，那么<code>db_get</code>函数的性能会非常糟糕。<ul>
+<li>另一方面，如果该数据库找那个有着大量记录，那么<code>db_get</code>函数的性能会非常糟糕。
+<ul>
 <li>为了提高性能，我们需要一个数据结构<strong>索引</strong>，即通过保存一些额外的元数据作为路标来帮助用户找到想要的数据。</li>
 <li>索引是从主数据衍生出的<strong>额外的</strong>结构，许多数据库允许添加与删除索引，会影响到写入(更新索引)和查询的性能。</li>
 </ul>
 </li>
 </ul>
-<h2 id="1-1-散列索引"><a href="#1-1-散列索引" class="headerlink" title="1.1. 散列索引"></a>1.1. 散列索引</h2><ul>
-<li>对于<strong>键值数据</strong>(Key-valued Data)的索引而言<ul>
+<h2 id="11-散列索引"><a class="markdownIt-Anchor" href="#11-散列索引"></a> 1.1. 散列索引</h2>
+<ul>
+<li>对于<strong>键值数据</strong>(Key-valued Data)的索引而言
+<ul>
 <li>键值存储与编程语言中的字典类型非常相似，字典类型都是用散列映射(hash map)或散列表(hash table)实现的。</li>
 <li>最简单的索引策略就是<strong>保留一个内存中的散列映射</strong>，其中每个键都映射到数据文件中的一个字节偏移量，这就是Bitcask的实现方式(Riak中默认的存储引擎)，非常适合每个键的值经常更新的情况，比如统计URL的访问量。</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
-<li>如何避免最终用完硬盘空间？<ul>
+<li>如何避免最终用完硬盘空间？
+<ul>
 <li>将日志划分为特定大小的<strong>段</strong>(segment)，当日志增长到特定尺寸时关闭前段文件，开始写入后段文件。</li>
 <li>之后可以对这些段进行<strong>压缩</strong>，仅仅保留每个键的<strong>最近更新</strong>，还可以将压缩的同时将多个段合并。</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
-<li>现在的查询的步骤？<ul>
+<li>现在的查询的步骤？
+<ul>
 <li>首先检查最近的段的散列索引。</li>
 <li>如果键不存在，那么久检查第二个近的段，直到找到。</li>
 </ul>
 </li>
-<li>实际实现中更多的考虑？<ul>
+<li>实际实现中更多的考虑？
+<ul>
 <li><strong>文件格式</strong>：使用二进制要比CSV更快。</li>
 <li><strong>删除记录</strong>：删除一个键及其关联的键，则必须在数据文件中追加一个特殊的删除记录(逻辑删除)，之后在日志合并的时候就可以将删除键的所有历史值都丢弃掉。</li>
 <li><strong>崩溃恢复</strong>：如果数据库重新启动，那么内存散列映射将丢失，那么可以从头读取段文件来重建每个段的散列索引，比较耗时。Bitcask通过将每个段的散列映射的快照存储在磁盘上来加速恢复。</li>
@@ -338,47 +348,56 @@
 <li><strong>并发控制</strong>：写操作是按照严格顺序追加到日志中的，所以常见的实现是只有一个写入进程。</li>
 </ul>
 </li>
-<li>为什么不直接在文件中更新，用新值覆盖旧值？<ul>
+<li>为什么不直接在文件中更新，用新值覆盖旧值？
+<ul>
 <li>追加和分段合并都是顺序写入操作，尤其是在磁性机械盘上。</li>
 <li>如果段文件是仅追加或不可变的，并发和崩溃恢复就简单多了。例如，当一个数据值被更新的时候发生崩溃，不必担心文件里将会同时包含旧值和新值各自的一部分。</li>
 <li>合并旧段的处理可以避免数据文件随着时间的推移而碎片化的问题。</li>
 </ul>
 </li>
-<li>但是散列索引也有局限性：<ul>
+<li>但是散列索引也有局限性：
+<ul>
 <li>散列表必须能够放进内存</li>
 <li>范围查询效率不高。</li>
 </ul>
 </li>
 </ul>
-<h2 id="1-2-SSTables和LSM树"><a href="#1-2-SSTables和LSM树" class="headerlink" title="1.2. SSTables和LSM树"></a>1.2. SSTables和LSM树</h2><ul>
-<li>每个日志结构存储段都是一系列<strong>键值对</strong>。<ul>
+<h2 id="12-sstables和lsm树"><a class="markdownIt-Anchor" href="#12-sstables和lsm树"></a> 1.2. SSTables和LSM树</h2>
+<ul>
+<li>每个日志结构存储段都是一系列<strong>键值对</strong>。
+<ul>
 <li>键值对按照<strong>写入的顺序</strong>排列。</li>
 <li>日志中稍后的值优先于日志中较早的相同键的值。</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-2-1-SSTables"><a href="#1-2-1-SSTables" class="headerlink" title="1.2.1. SSTables"></a>1.2.1. SSTables</h3><ul>
+<h3 id="121-sstables"><a class="markdownIt-Anchor" href="#121-sstables"></a> 1.2.1. SSTables</h3>
+<ul>
 <li>那么如果要求键值对的序列按键排序，每个键在合并后的段文件中仅出现一次呢？</li>
 <li>解决方案：该格式被称为<strong>排序字符串表(Sorted String Table)</strong>，简称SSTable</li>
 </ul>
-<h3 id="1-2-2-SSTables的优势"><a href="#1-2-2-SSTables的优势" class="headerlink" title="1.2.2. SSTables的优势"></a>1.2.2. SSTables的优势</h3><ol>
+<h3 id="122-sstables的优势"><a class="markdownIt-Anchor" href="#122-sstables的优势"></a> 1.2.2. SSTables的优势</h3>
+<ol>
 <li>即使文件大于可用内存，合并段的操作仍然是简单而高效的：只需要查看每个文件的第一个键即可；如果多个段包含相同的键的时候，可以保留最近段的值，并丢弃旧的键。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
 <li>为了在文件中找到一个特定的键，你不再需要在内存中保存所有键的索引：可以通过这个顺序来缩小查找范围。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
 <li>由于读取请求无论如何都需要扫描所请求范围内的多个键值对，因此可以将这些记录分组为块(Block)，并在其写入磁盘之前对其进行压缩。</li>
 </ol>
-<h3 id="1-2-3-构建和维护SSTables"><a href="#1-2-3-构建和维护SSTables" class="headerlink" title="1.2.3. 构建和维护SSTables"></a>1.2.3. 构建和维护SSTables</h3><ul>
-<li>维护有序结构的方法<ul>
+<h3 id="123-构建和维护sstables"><a class="markdownIt-Anchor" href="#123-构建和维护sstables"></a> 1.2.3. 构建和维护SSTables</h3>
+<ul>
+<li>维护有序结构的方法
+<ul>
 <li>在磁盘中：使用B树，红黑树，AVL树</li>
 <li>在内存中</li>
 </ul>
 </li>
-<li>具体的存储引擎的工作方式<ul>
+<li>具体的存储引擎的工作方式
+<ul>
 <li>有新写入时，将其添加到内存中的平衡树数据结构(例如红黑树)，这个内存树有时候被称为<strong>内存表(Memtable)</strong></li>
 <li>当<strong>内存表</strong>大于某个阈值时，将其作为SSTable文件写入硬盘，之后新的写入可以在一个新的内存表实例上继续进行。</li>
 <li>收到读取请求时，首先尝试在内存表中找到对应的键，如果没有就在最近的硬盘段中寻找，如果还没有就在下一个较旧的段中继续寻找。</li>
@@ -387,44 +406,53 @@
 </li>
 <li>如何处理崩溃恢复？硬盘上会有一个单独的日志，每个写入都会立即被追加到日志上，用于崩溃后恢复内存表，当内存表写出到SSTable后，相应的日志就可以丢弃。</li>
 </ul>
-<h3 id="1-2-4-用SSTables制作LSM树"><a href="#1-2-4-用SSTables制作LSM树" class="headerlink" title="1.2.4. 用SSTables制作LSM树"></a>1.2.4. 用SSTables制作LSM树</h3><ul>
+<h3 id="124-用sstables制作lsm树"><a class="markdownIt-Anchor" href="#124-用sstables制作lsm树"></a> 1.2.4. 用SSTables制作LSM树</h3>
+<ul>
 <li>上述描述的算法是LevelDB和RocksDB这些键值存储引擎库所使用的技术，都受到了Google的Bigtable论文的启发。</li>
-<li>最初这种索引由Patrick O’Neil等人描述的，且被命名为<strong>日志结构合并树(或LSM树)</strong>。<ul>
+<li>最初这种索引由Patrick O’Neil等人描述的，且被命名为<strong>日志结构合并树(或LSM树)</strong>。
+<ul>
 <li>它是基于更早之前的日志结构文件系统来构建的。</li>
 <li>基于这种合并和压缩排序文件原理的存储引擎通常被称为LSM存储引擎。</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-2-5-性能优化"><a href="#1-2-5-性能优化" class="headerlink" title="1.2.5. 性能优化"></a>1.2.5. 性能优化</h3><ul>
-<li>存储引擎需要涉及到大量设计细节<ul>
+<h3 id="125-性能优化"><a class="markdownIt-Anchor" href="#125-性能优化"></a> 1.2.5. 性能优化</h3>
+<ul>
+<li>存储引擎需要涉及到大量设计细节
+<ul>
 <li>比如当查找数据库中不存在的键时，LSM树算法可能会很慢</li>
 <li>可以通过额外的布隆过滤器来解决。</li>
 </ul>
 </li>
-<li>还有一些不同的策略来确定SSTables被压缩和合并的顺序和时间。<ul>
+<li>还有一些不同的策略来确定SSTables被压缩和合并的顺序和时间。
+<ul>
 <li>最常见的选择：size-tiered 和 leveled compaction</li>
 <li>对于size-tiered：较新和较小的SSTables相继被合并到较旧的和较大的SSTable中。</li>
 <li>对于leveled compaction：key范围被拆分到 SSTables，而较旧的数据被移动到单独的层次，这使得能够增量地进行，并且使用较少的硬盘空间。</li>
 </ul>
 </li>
 </ul>
-<h2 id="1-3-B树"><a href="#1-3-B树" class="headerlink" title="1.3. B树"></a>1.3. B树</h2><ul>
-<li>在几乎所有的关系数据库中，B树仍然是标准的索引实现，许多非关系数据库也会使用到B树。<ul>
+<h2 id="13-b树"><a class="markdownIt-Anchor" href="#13-b树"></a> 1.3. B树</h2>
+<ul>
+<li>在几乎所有的关系数据库中，B树仍然是标准的索引实现，许多非关系数据库也会使用到B树。
+<ul>
 <li>B树保持按键排序的键值对，从而允许高效的键值查找和范围查询。</li>
 <li>B树将传统数据库分解为固定大小的块(Block)或页面(Page)，传统上大小为4KB，并且一次只能读取或写入一个页面，每个页面可以使用地址或位置来标识</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
-<li>一个页面会被指定为B树的根<ul>
+<li>一个页面会被指定为B树的根
+<ul>
 <li>该页面包含几个键和对子页面的引用。</li>
 <li>每个子页面负责一段连续的键，引用之间的键，指明了引用子界面的键范围。</li>
 <li><strong>分支因子</strong>：B树中一个页面对子页面的引用的数量</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-3-1-B树的操作"><a href="#1-3-1-B树的操作" class="headerlink" title="1.3.1. B树的操作"></a>1.3.1. B树的操作</h3><blockquote>
+<h3 id="131-b树的操作"><a class="markdownIt-Anchor" href="#131-b树的操作"></a> 1.3.1. B树的操作</h3>
+<blockquote>
 <p>为了保证树保持平衡，具有n个键的B树总有O(logn)的深度。</p>
 </blockquote>
 <ul>
@@ -432,48 +460,58 @@
 <li>添加B树中的键：找到对应范围子页面进行添加，如果没有足够的可用空间，则将分为两个半满页面，并更新父页面。</li>
 <li>删除B树中的键：相对比较复杂。</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="1-3-2-让B树更可靠"><a href="#1-3-2-让B树更可靠" class="headerlink" title="1.3.2. 让B树更可靠"></a>1.3.2. 让B树更可靠</h3><ol>
-<li>B树的基本底层写操作：用新数据覆写硬盘上的页面，并假定覆写不改变页面的位置。<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="132-让b树更可靠"><a class="markdownIt-Anchor" href="#132-让b树更可靠"></a> 1.3.2. 让B树更可靠</h3>
+<ol>
+<li>B树的基本底层写操作：用新数据覆写硬盘上的页面，并假定覆写不改变页面的位置。
+<ol>
 <li>当页面覆写时，对该页面的引用保持完整。</li>
 <li>不同于LSM，LSM不会修改文件中已有的内容。</li>
 </ol>
 </li>
 <li>一些操作需要覆写几个不同的页面：比如添加键导致页面拆分，如果数据库在部分页面写入时崩溃，那么最终将导致一个损坏的索引。</li>
-<li>为了处理异常崩溃，B树实现通常会有一个额外的磁盘结构：<strong>预写式日志</strong>(WAL, Write-Ahead log, 又称重做日志，redo log)<ol>
+<li>为了处理异常崩溃，B树实现通常会有一个额外的磁盘结构：<strong>预写式日志</strong>(WAL, Write-Ahead log, 又称重做日志，redo log)
+<ol>
 <li>该文件是仅追加的</li>
 <li>B树所有操作在写入本身页面前都必须先写入到该文件</li>
 </ol>
 </li>
 <li>为了处理高并发更新：需要通过锁存器(latches, 轻量级锁)保护树的数据结构。</li>
 </ol>
-<h3 id="1-3-3-B树的优化"><a href="#1-3-3-B树的优化" class="headerlink" title="1.3.3. B树的优化"></a>1.3.3. B树的优化</h3><ul>
+<h3 id="133-b树的优化"><a class="markdownIt-Anchor" href="#133-b树的优化"></a> 1.3.3. B树的优化</h3>
+<ul>
 <li>部分数据(如 LMDB)使用了写时复制方案，而不是覆盖页面并维护WAL以支持崩溃恢复：修改的页面被写入不同的位置，并且还在树中创建了父页面的新版本，以指向新的位置，有利于并发控制。</li>
 <li>通过不存储整个键，而是缩短其大小来节省页面空间，来获得更高的分支因子。</li>
 <li>通常，页面可以放置在磁盘上的任何位置，导致随着树的增长，对于数据的顺序的维持比较困难。</li>
 <li>额外的指针已被添加进树：每个叶子节点可以引用其左边和右边的兄弟页面。</li>
 <li>B树的变体如分形树(fractal tree)：借用一些日志结构的思想来减少因硬盘查找。</li>
 </ul>
-<h3 id="1-3-4-比较B树和LSM树"><a href="#1-3-4-比较B树和LSM树" class="headerlink" title="1.3.4. 比较B树和LSM树"></a>1.3.4. 比较B树和LSM树</h3><blockquote>
+<h3 id="134-比较b树和lsm树"><a class="markdownIt-Anchor" href="#134-比较b树和lsm树"></a> 1.3.4. 比较B树和LSM树</h3>
+<blockquote>
 <p>一般而言，LSM树的写入速度更快，B树的查询速度更快</p>
 </blockquote>
 <ul>
-<li><strong>写放大</strong>(write amplification)：在数据库的生命周期中每次写入数据库导致对磁盘的多次写入，会影响固态硬盘的寿命。<ul>
+<li><strong>写放大</strong>(write amplification)：在数据库的生命周期中每次写入数据库导致对磁盘的多次写入，会影响固态硬盘的寿命。
+<ul>
 <li>由于反复压缩和合并SSTables，日志结构索引也会多次重写数据。</li>
 <li>B树索引的每块数据都必须至少写入2次：1次WAL，1次树页面本身，并且仅仅几个字节的变化也会导致整个页面的覆写</li>
 </ul>
 </li>
-<li><strong>LSM树的优点</strong>：<ul>
+<li><strong>LSM树的优点</strong>：
+<ul>
 <li>LSM的写放大较低，部分因为他们顺序的写入紧凑的SSTable文件而不必覆写。</li>
-<li>LSM的树可以被压缩的更好，因此能比B树在磁盘上产生更小的文件。<ul>
+<li>LSM的树可以被压缩的更好，因此能比B树在磁盘上产生更小的文件。
+<ul>
 <li>B树会由于碎片化留下一些未使用的磁盘空间。</li>
 <li>LSM通过定期重写SSTables以去除碎片，所以它们具有较低的存储开销，特别是使用分层压缩时</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>LSM的缺点</strong>：<ul>
-<li>压缩过程有时会干扰正在进行的写入操作<ul>
+<li><strong>LSM的缺点</strong>：
+<ul>
+<li>压缩过程有时会干扰正在进行的写入操作
+<ul>
 <li>B树的行为更具有可预测性。</li>
 <li>数据库越大，压缩所需要的磁盘带宽也就越大：因此如果写入吞吐量恒高，并且压缩没有仔细配置好，有可能导致压缩跟不上写入速度，需要进行明确的监控。</li>
 </ul>
@@ -482,18 +520,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-4-其他索引结构"><a href="#1-4-其他索引结构" class="headerlink" title="1.4. 其他索引结构"></a>1.4. 其他索引结构</h2><ul>
+<h2 id="14-其他索引结构"><a class="markdownIt-Anchor" href="#14-其他索引结构"></a> 1.4. 其他索引结构</h2>
+<ul>
 <li>键值索引：就像是关系模型中的主键索引。</li>
-<li>次级索引：对应有效地执行联接(join)而言至关重要。<ul>
+<li>次级索引：对应有效地执行联接(join)而言至关重要。
+<ul>
 <li>比如关系数据库中<code>CREATE INDEX</code></li>
 <li>键可以是不唯一的：可以通过匹配行标识符列表作为索引值，也可以为每个键添加行标识符来使其唯一。</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-4-1-将值存储在索引中"><a href="#1-4-1-将值存储在索引中" class="headerlink" title="1.4.1. 将值存储在索引中"></a>1.4.1. 将值存储在索引中</h3><ul>
-<li>索引的结构<ul>
+<h3 id="141-将值存储在索引中"><a class="markdownIt-Anchor" href="#141-将值存储在索引中"></a> 1.4.1. 将值存储在索引中</h3>
+<ul>
+<li>索引的结构
+<ul>
 <li>索引的键是要查询的内容</li>
-<li>索引的值可能是<ul>
+<li>索引的值可能是
+<ul>
 <li>实际的行(文档, 顶点)</li>
 <li>对存储在别处的行的引用，此时行被存储的地方被称为<strong>堆文件</strong>(heap file)</li>
 </ul>
@@ -501,84 +544,101 @@
 </ul>
 </li>
 <li>在某些情况下，从索引到堆文件的额外条约对读取来说性能损失较大，因此可能希望将被索引的行直接存储在索引中，这就是聚集索引(Clustered Index)，比如MySQL的InnoDB存储引擎。</li>
-<li>聚集索引、非聚集索引、覆盖索引<ul>
+<li>聚集索引、非聚集索引、覆盖索引
+<ul>
 <li><strong>聚集索引</strong>：索引中存储所有的行数据。</li>
 <li><strong>非聚集索引</strong>：在索引中存储对数据的引用。</li>
 <li><strong>覆盖索引</strong>(又称<strong>包含列的索引</strong>)：在索引内存储表的一部分列</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-4-2-多列索引"><a href="#1-4-2-多列索引" class="headerlink" title="1.4.2. 多列索引"></a>1.4.2. 多列索引</h3><ul>
-<li>最常见的多列索引被称为<strong>连接索引</strong>(Concatenated index)<ul>
+<h3 id="142-多列索引"><a class="markdownIt-Anchor" href="#142-多列索引"></a> 1.4.2. 多列索引</h3>
+<ul>
+<li>最常见的多列索引被称为<strong>连接索引</strong>(Concatenated index)
+<ul>
 <li>通过将一列的值追加到另一类后面，简单的将多个字段组合成一个键</li>
 <li>此种情况下，索引定义汇总指定了字段的连接顺序，最左匹配原则</li>
 </ul>
 </li>
-<li><strong>多维索引</strong>(multi-dimensional index)是一种查询多个列的更一般的方法<ul>
+<li><strong>多维索引</strong>(multi-dimensional index)是一种查询多个列的更一般的方法
+<ul>
 <li>B树和LSM没有办法高效的处理这种多维度的查询</li>
 <li>一种方法是使用空间填充曲线将多维转化为一维，然后使用常规的B树索引，比如R树。</li>
 </ul>
 </li>
 </ul>
-<h3 id="1-4-3-全局索引和模糊索引"><a href="#1-4-3-全局索引和模糊索引" class="headerlink" title="1.4.3. 全局索引和模糊索引"></a>1.4.3. 全局索引和模糊索引</h3><ul>
+<h3 id="143-全局索引和模糊索引"><a class="markdownIt-Anchor" href="#143-全局索引和模糊索引"></a> 1.4.3. 全局索引和模糊索引</h3>
+<ul>
 <li>全局搜索引擎通常允许搜索一个单词以扩展为包括该单词的同义词等等。</li>
 <li>其他模糊索引技术正在朝着文档分类和机器学习的方面发展</li>
 </ul>
-<h3 id="1-4-4-在内存中存储一切"><a href="#1-4-4-在内存中存储一切" class="headerlink" title="1.4.4. 在内存中存储一切"></a>1.4.4. 在内存中存储一切</h3><ul>
+<h3 id="144-在内存中存储一切"><a class="markdownIt-Anchor" href="#144-在内存中存储一切"></a> 1.4.4. 在内存中存储一切</h3>
+<ul>
 <li>硬盘的显著特点：持久的、每GB的成本低于RAM。</li>
 <li>随着RAM变得便宜，很多数据集不是那么大，导致了内存数据库的发展。</li>
-<li>内存数据库<ul>
+<li>内存数据库
+<ul>
 <li>某内存中的键值存储仅用于缓存，所以可以接受丢失数据。</li>
 <li>性能优势是<strong>因为他们省去了将内存数据结构编码为硬盘数据结构的开销</strong>。</li>
 <li>提供了难以基于硬盘的索引实现的数据结构，比如Redis的实现。</li>
 </ul>
 </li>
 <li>最近的研究表明，内存数据库体系结构可以扩展到支持比可用内存更大的数据集，而不必采用以磁盘为中心的体系结构。</li>
-<li><strong>反缓存</strong>：<ul>
+<li><strong>反缓存</strong>：
+<ul>
 <li>在内存不足的情况将最近最少使用的数据从内存转移到磁盘，并在将来再次访问时将其重新加载到内存中。</li>
 <li>这种方法要求索引能够完全放入内存。</li>
 </ul>
 </li>
 </ul>
-<h1 id="2-事务处理还是分析"><a href="#2-事务处理还是分析" class="headerlink" title="2. 事务处理还是分析"></a>2. 事务处理还是分析</h1><ul>
+<h1 id="2-事务处理还是分析"><a class="markdownIt-Anchor" href="#2-事务处理还是分析"></a> 2. 事务处理还是分析</h1>
+<ul>
 <li>事务不一定具有ACID(原子性, 一致性, 隔离性和持久性)属性。事务处理只是意味着允许客户端进行低延迟的读取和写入 —— 而不是只能定期运行(例如每天一次)的批处理作业。</li>
-<li>OLTP 与 OLAP<ul>
+<li>OLTP 与 OLAP
+<ul>
 <li>在线事务处理(OLTP, OnLine Transaction Processing)：交互式地处理商业交易(根据输入插入或更新等)等操作。</li>
 <li>在线分析处理(OLAP, OnLine Analytice Processing)：查询由业务分析师编写，并提供报告以帮助公司做出更好的决策(商务智能)</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-1-数据仓库-Data-Warehouse"><a href="#2-1-数据仓库-Data-Warehouse" class="headerlink" title="2.1. 数据仓库 Data Warehouse"></a>2.1. 数据仓库 Data Warehouse</h2><ul>
-<li>数据仓库是独立的数据库，分析人员可以获得他们想要的内容而不影响OLTP操作。<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="21-数据仓库-data-warehouse"><a class="markdownIt-Anchor" href="#21-数据仓库-data-warehouse"></a> 2.1. 数据仓库 Data Warehouse</h2>
+<ul>
+<li>数据仓库是独立的数据库，分析人员可以获得他们想要的内容而不影响OLTP操作。
+<ul>
 <li>数据仓库包含了公司各种OLTP系统中所有的只读数据副本。</li>
 <li>将数据存储数据仓库的步骤为ETL(抽取-转换-加载)。</li>
 </ul>
 </li>
 <li>数据仓库和数据库针对不同的查询模式进行了优化。</li>
 </ul>
-<h2 id="2-2-星型和雪花型：分析的模型"><a href="#2-2-星型和雪花型：分析的模型" class="headerlink" title="2.2. 星型和雪花型：分析的模型"></a>2.2. 星型和雪花型：分析的模型</h2><ul>
-<li>星型模型：<ul>
+<h2 id="22-星型和雪花型分析的模型"><a class="markdownIt-Anchor" href="#22-星型和雪花型分析的模型"></a> 2.2. 星型和雪花型：分析的模型</h2>
+<ul>
+<li>星型模型：
+<ul>
 <li>当我们对表之间的关系进行可视化的时候，事实表在中间，被维度表所包围</li>
 <li>事实表中的一些列是属性，其他列是对其他表(维度表)的外键引用。</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading4/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>雪花模型：是星型模型的变体，其中维度被进一步分解为子维度。</li>
 </ul>
-<h1 id="3-列式存储"><a href="#3-列式存储" class="headerlink" title="3. 列式存储"></a>3. 列式存储</h1><blockquote>
+<h1 id="3-列式存储"><a class="markdownIt-Anchor" href="#3-列式存储"></a> 3. 列式存储</h1>
+<blockquote>
 <p>本节关注事实表的存储。</p>
 </blockquote>
 <ul>
 <li>列式存储：不要将所有来自一行的值存储在一起，而是将来自每一列的所有值存储在一起。</li>
-<li>列压缩<ul>
+<li>列压缩
+<ul>
 <li>通过压缩数据来进一步降低对磁盘吞吐量的需求。</li>
 <li>一种可能的技术是位图索引。</li>
 </ul>
 </li>
-<li>对于一个需要扫描数百万行的数据仓库查询而言，瓶颈包括<ul>
+<li>对于一个需要扫描数百万行的数据仓库查询而言，瓶颈包括
+<ul>
 <li>从磁盘获取数据到内存的带宽</li>
 <li>充分利用主存储器到CPU缓存的带宽</li>
 <li>避免CPU指令处理流水线中的分支预测错误和气泡</li>
@@ -587,21 +647,26 @@
 </li>
 <li>矢量化处理：充分利用CPU周期。</li>
 </ul>
-<h2 id="3-1-列式存储中的排序顺序"><a href="#3-1-列式存储中的排序顺序" class="headerlink" title="3.1. 列式存储中的排序顺序"></a>3.1. 列式存储中的排序顺序</h2><ul>
+<h2 id="31-列式存储中的排序顺序"><a class="markdownIt-Anchor" href="#31-列式存储中的排序顺序"></a> 3.1. 列式存储中的排序顺序</h2>
+<ul>
 <li>按照列式存储数据，也需要一次对整行进行排序。</li>
-<li>排序的好处：<ul>
+<li>排序的好处：
+<ul>
 <li>帮助对应的查询速度。</li>
 <li>帮助压缩列：不过还是比较低的列的压缩比率较高。</li>
 </ul>
 </li>
 </ul>
-<h2 id="3-2-写入列式存储"><a href="#3-2-写入列式存储" class="headerlink" title="3.2. 写入列式存储"></a>3.2. 写入列式存储</h2><ul>
+<h2 id="32-写入列式存储"><a class="markdownIt-Anchor" href="#32-写入列式存储"></a> 3.2. 写入列式存储</h2>
+<ul>
 <li>使用B树的就地更新方法对于压缩的列是不可能的。</li>
 <li>LSM树可以很好的支持这个要求。</li>
 </ul>
-<h2 id="3-3-聚合：数据立方体和物化视图"><a href="#3-3-聚合：数据立方体和物化视图" class="headerlink" title="3.3. 聚合：数据立方体和物化视图"></a>3.3. 聚合：数据立方体和物化视图</h2><ul>
+<h2 id="33-聚合数据立方体和物化视图"><a class="markdownIt-Anchor" href="#33-聚合数据立方体和物化视图"></a> 3.3. 聚合：数据立方体和物化视图</h2>
+<ul>
 <li>物化汇总(materialized aggregates)：将数据库查询涉及到到的聚合函数进行存储。</li>
-<li>物化视图(materialized View)：物化视图是查询结果的实际副本，会被写入硬盘，而虚拟视图只有编写查询的一个捷径。<ul>
+<li>物化视图(materialized View)：物化视图是查询结果的实际副本，会被写入硬盘，而虚拟视图只有编写查询的一个捷径。
+<ul>
 <li>常见实例：数据立方体或OLAP立方</li>
 <li>优点：让某些查询变得非常快，因为他们已经被有效地预先计算了。</li>
 <li>缺点：不具有查询原始数据的灵活性。</li>
@@ -653,7 +718,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>DDIA-Reading4-存储与检索</div>
-      <div>https://stormbroken.github.io/2022/02/26/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading4-%E5%AD%98%E5%82%A8%E4%B8%8E%E6%A3%80%E7%B4%A2/</div>
+      <div>https://spricoder.github.io/2022/02/26/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading4-%E5%AD%98%E5%82%A8%E4%B8%8E%E6%A3%80%E7%B4%A2/</div>
     </div>
     <div class="license-meta">
       
@@ -733,7 +798,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);

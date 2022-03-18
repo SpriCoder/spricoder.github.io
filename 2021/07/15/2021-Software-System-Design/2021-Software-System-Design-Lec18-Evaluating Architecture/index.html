@@ -19,7 +19,7 @@
     <meta name="description" content="2021-软件系统设计-Lec18-Evaluating Architecture">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021-软件系统设计-Lec18-Evaluating Architecture">
-<meta property="og:url" content="https://stormbroken.github.io/2021/07/15/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2021/07/15/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2021-软件系统设计-Lec18-Evaluating Architecture">
 <meta property="og:locale" content="zh_CN">
@@ -36,10 +36,10 @@
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="架构">
-<meta property="article:tag" content="评估">
-<meta property="article:tag" content="质量">
 <meta property="article:tag" content="软件系统设计">
 <meta property="article:tag" content="体系结构">
+<meta property="article:tag" content="评估">
+<meta property="article:tag" content="质量">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec18/1.png">
   
@@ -81,7 +81,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -640,13 +640,13 @@
       
         <a href="/tags/%E6%9E%B6%E6%9E%84/">#架构</a>
       
-        <a href="/tags/%E8%AF%84%E4%BC%B0/">#评估</a>
-      
-        <a href="/tags/%E8%B4%A8%E9%87%8F/">#质量</a>
-      
         <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">#软件系统设计</a>
       
         <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">#体系结构</a>
+      
+        <a href="/tags/%E8%AF%84%E4%BC%B0/">#评估</a>
+      
+        <a href="/tags/%E8%B4%A8%E9%87%8F/">#质量</a>
       
     </div>
   
@@ -659,7 +659,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2021-软件系统设计-Lec18-Evaluating Architecture</div>
-      <div>https://stormbroken.github.io/2021/07/15/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/</div>
+      <div>https://spricoder.github.io/2021/07/15/2021-Software-System-Design/2021-Software-System-Design-Lec18-Evaluating%20Architecture/</div>
     </div>
     <div class="license-meta">
       
@@ -739,7 +739,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);

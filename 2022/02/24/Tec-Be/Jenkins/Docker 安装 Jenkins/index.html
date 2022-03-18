@@ -19,7 +19,7 @@
     <meta name="description" content="使用Docker的方式安装Jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 安装 Jenkins">
-<meta property="og:url" content="https://stormbroken.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="使用Docker的方式安装Jenkins">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -282,21 +282,25 @@
             
             <div class="markdown-body">
               
-              <h2 id="Docker-安装-Jenkins"><a href="#Docker-安装-Jenkins" class="headerlink" title="Docker 安装 Jenkins"></a>Docker 安装 Jenkins</h2><blockquote>
+              <h2 id="docker-安装-jenkins"><a class="markdownIt-Anchor" href="#docker-安装-jenkins"></a> Docker 安装 Jenkins</h2>
+<blockquote>
 <p>开始前最好，将docker升级到最新版本(至少大于17)</p>
 </blockquote>
-<h1 id="1-安装过程"><a href="#1-安装过程" class="headerlink" title="1. 安装过程"></a>1. 安装过程</h1><ol>
+<h1 id="1-安装过程"><a class="markdownIt-Anchor" href="#1-安装过程"></a> 1. 安装过程</h1>
+<ol>
 <li>首先拉取镜像:<code>docker pull jenkins</code>(我安装的是Jenkins 2.275)</li>
 <li>创建本地数据卷:<code>mkdir -p /data/jenkins_home/</code></li>
 <li>修改用户授权:<code>chown -R 1000:1000 /data/jenkins_home/</code></li>
 <li>启动容器:</li>
-<li><code>docker run -d --name jenkins -p 7900:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins</code><ol>
+<li><code>docker run -d --name jenkins -p 7900:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins</code>
+<ol>
 <li>这里挂载了物理盘映射</li>
 <li>还挂载了docker映射</li>
 </ol>
 </li>
 <li>访问对应网址:<code>xxx:7900</code></li>
-<li>获取初始管理员密码(两种方式，因为映射了本地逻辑卷)<ol>
+<li>获取初始管理员密码(两种方式，因为映射了本地逻辑卷)
+<ol>
 <li><code>docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword</code></li>
 <li>或者在进入容器后(<code>docker exec -it jenkins /bin/bash</code>)：<code>cat /data/jenkins_home/secrets/initialAdminPassword</code></li>
 </ol>
@@ -305,10 +309,12 @@
 <li>按照流程创建管理员账户</li>
 <li>根据之前的情况创建实例，即完成</li>
 </ol>
-<h1 id="2-Jenkins-安装-npm"><a href="#2-Jenkins-安装-npm" class="headerlink" title="2. Jenkins 安装 npm"></a>2. Jenkins 安装 npm</h1><ol>
+<h1 id="2-jenkins-安装-npm"><a class="markdownIt-Anchor" href="#2-jenkins-安装-npm"></a> 2. Jenkins 安装 npm</h1>
+<ol>
 <li>首先以root权限进入容器:<code>docker exec -it -u root jenkins bash</code></li>
 </ol>
-<h2 id="2-1-替换容器的源"><a href="#2-1-替换容器的源" class="headerlink" title="2.1. 替换容器的源"></a>2.1. 替换容器的源</h2><ol>
+<h2 id="21-替换容器的源"><a class="markdownIt-Anchor" href="#21-替换容器的源"></a> 2.1. 替换容器的源</h2>
+<ol>
 <li>备份：<code>cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></li>
 <li>查看系统版号:<code>lsb_release -c</code>，并且将下文中替换文件中的对应位置进行修改</li>
 <li>修改：<code>vim /etc/apt/sources.list</code>，如果无法拉取：<code>sudo apt install apt-transport-https ca-certificates</code>，vim中使用shift+insert插入</li>
@@ -316,36 +322,42 @@
 <li>如果没有vim，先<code>apt update</code>，然后<code>apt install vim</code></li>
 </ol>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-updates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-backports main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian-security buster/u</span>pdates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</span><br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="5">
 <li>添加node源：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -</code></li>
 </ol>
-<h2 id="2-2-安装nodejs和npm"><a href="#2-2-安装nodejs和npm" class="headerlink" title="2.2. 安装nodejs和npm"></a>2.2. 安装nodejs和npm</h2><ol>
+<h2 id="22-安装nodejs和npm"><a class="markdownIt-Anchor" href="#22-安装nodejs和npm"></a> 2.2. 安装nodejs和npm</h2>
+<ol start="2">
 <li>然后安装node.js:<code>apt-get install nodejs</code>，一定要先更新源</li>
 <li>然后安装npm:<code>apt-get install npm</code>，</li>
 <li>之后替换npm源:<code>npm config set registry http://registry.npm.taobao.org/</code></li>
 </ol>
-<h1 id="3-Jenkins流水线-Docker-Maven-Github-webhooks-Spring-boot"><a href="#3-Jenkins流水线-Docker-Maven-Github-webhooks-Spring-boot" class="headerlink" title="3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot"></a>3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot</h1><h2 id="3-1-需要的插件和配置"><a href="#3-1-需要的插件和配置" class="headerlink" title="3.1. 需要的插件和配置"></a>3.1. 需要的插件和配置</h2><h3 id="3-1-1-插件"><a href="#3-1-1-插件" class="headerlink" title="3.1.1. 插件"></a>3.1.1. 插件</h3><ol>
+<h1 id="3-jenkins流水线-docker-maven-github-webhooks-spring-boot"><a class="markdownIt-Anchor" href="#3-jenkins流水线-docker-maven-github-webhooks-spring-boot"></a> 3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot</h1>
+<h2 id="31-需要的插件和配置"><a class="markdownIt-Anchor" href="#31-需要的插件和配置"></a> 3.1. 需要的插件和配置</h2>
+<h3 id="311-插件"><a class="markdownIt-Anchor" href="#311-插件"></a> 3.1.1. 插件</h3>
+<ol>
 <li>Blue Ocean</li>
 <li>Maven Integration</li>
 </ol>
-<h3 id="3-1-2-配置"><a href="#3-1-2-配置" class="headerlink" title="3.1.2. 配置"></a>3.1.2. 配置</h3><ol>
+<h3 id="312-配置"><a class="markdownIt-Anchor" href="#312-配置"></a> 3.1.2. 配置</h3>
+<ol>
 <li>查看容器的全部信息:<code>docker inspect jenkins</code>，其中的Env项中包含了<code>JAVA_HOME</code>等环境信息，如下所示</li>
 </ol>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-string">&quot;Env&quot;</span>: [<br>      <span class="hljs-string">&quot;PATH=/usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>,<br>      <span class="hljs-string">&quot;LANG=C.UTF-8&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_HOME=/usr/local/openjdk-8&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_VERSION=8u242&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_BASE_URL=https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_&quot;</span>,<br>      <span class="hljs-string">&quot;JAVA_URL_VERSION=8u242b08&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_HOME=/var/jenkins_home&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_SLAVE_AGENT_PORT=50000&quot;</span>,<br>      <span class="hljs-string">&quot;REF=/usr/share/jenkins/ref&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_VERSION=2.275&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_UC=https://updates.jenkins.io&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental&quot;</span>,<br>      <span class="hljs-string">&quot;JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals&quot;</span>,<br>      <span class="hljs-string">&quot;COPY_REFERENCE_FILE_LOG=/var/jenkins_home/copy_reference_file.log&quot;</span><br>]<br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>进行全局工具配置：<code>Jenkins -&gt; 系统管理 -&gt; 全局工具管理</code></li>
 <li>jdk配置，如果没有自动安装，如果有则使用上面的JAVA_HOME地址即可</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
 <li>Git配置</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
 <li>Docker配置</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-1-3-安装maven"><a href="#3-1-3-安装maven" class="headerlink" title="3.1.3. 安装maven"></a>3.1.3. 安装maven</h3><ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="313-安装maven"><a class="markdownIt-Anchor" href="#313-安装maven"></a> 3.1.3. 安装maven</h3>
+<ol>
 <li>同样的进入容器:<code>docker exec -it -u root jenkins bash</code></li>
 <li>下载maven压缩包：<code>wget https://mirrors.aliyun.com/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
 <li>解压缩maven安装包：<code>tar -zvxf apache-maven-3.6.3-bin.tar.gz</code></li>
@@ -356,20 +368,22 @@
 <li>编辑maven的<code>settings.xml</code>来替换源(位置<code>conf/</code>下)，在<code>&lt;mirrors&gt;&lt;/mirrors&gt;</code>标签内添加一下任意一个</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>alimaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>aliyun maven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>刷新权限:<code>source /etc/profile</code></li>
 <li>然后在<code>Jenkins -&gt; 系统管理 -&gt; 全局工具管理</code>继续进行Maven配置</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="3-1-4-配置Jenkins使用Docker"><a href="#3-1-4-配置Jenkins使用Docker" class="headerlink" title="3.1.4. 配置Jenkins使用Docker"></a>3.1.4. 配置Jenkins使用Docker</h3><ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="314-配置jenkins使用docker"><a class="markdownIt-Anchor" href="#314-配置jenkins使用docker"></a> 3.1.4. 配置Jenkins使用Docker</h3>
+<ol>
 <li>之前在创建容器的时候已经完成了sock的映射</li>
 <li>登录进入jenkins容器:<code>docker exec -it -u root jenkins bash</code></li>
 <li>安装docker client:</li>
 </ol>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sh">apt-get update &amp;&amp; \<br>apt-get -y install apt-transport-https \<br>     ca-certificates \<br>     curl \<br>     gnupg2 \<br>     software-properties-common &amp;&amp; \<br>curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$ID</span>&quot;</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \<br>add-apt-repository \<br>   <span class="hljs-string">&quot;deb [arch=amd64] https://download.docker.com/linux/<span class="hljs-subst">$(. /etc/os-release; echo <span class="hljs-string">&quot;<span class="hljs-variable">$ID</span>&quot;</span>)</span> \</span><br><span class="hljs-string">   <span class="hljs-subst">$(lsb_release -cs)</span> \</span><br><span class="hljs-string">   stable&quot;</span> &amp;&amp; \<br>apt-get update &amp;&amp; \<br>apt-get -y install docker-ce<br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="4">
 <li>通过输入<code>docker</code>来检查是否成功</li>
-<li>授予jenkins用户docker权限：<ol>
+<li>授予jenkins用户docker权限：
+<ol>
 <li>以root用户身份进入jenkins容器：<code>docker exec -it -u root jenkins /bin/bash</code></li>
 <li>查看当前用户情况:<code>ls -l /var/run/docker.sock</code></li>
 <li>授权<code>jenkins</code>用户:<code>chown jenkins: /var/run/docker.sock</code></li>
@@ -378,35 +392,40 @@
 </ol>
 </li>
 </ol>
-<h3 id="3-1-5-配置Jenkins中的Git-SSH"><a href="#3-1-5-配置Jenkins中的Git-SSH" class="headerlink" title="3.1.5. 配置Jenkins中的Git SSH"></a>3.1.5. 配置Jenkins中的Git SSH</h3><ol>
+<h3 id="315-配置jenkins中的git-ssh"><a class="markdownIt-Anchor" href="#315-配置jenkins中的git-ssh"></a> 3.1.5. 配置Jenkins中的Git SSH</h3>
+<ol>
 <li>进入jenkins容器:<code>docker exec -it jenkins /bin/bash</code></li>
 <li>生成SSH密钥:<code>ssh-keygen</code>，一路回车使用默认值</li>
 <li>查找密钥：<code>cat /var/jenkins_home/.ssh/id_rsa.pub</code></li>
 <li>然后登录Github，在<code>settings-&gt;SSH and GPG keys</code>中添加密钥。</li>
 </ol>
-<h3 id="3-1-6-Github添加Webhook"><a href="#3-1-6-Github添加Webhook" class="headerlink" title="3.1.6. Github添加Webhook"></a>3.1.6. Github添加Webhook</h3><ol>
+<h3 id="316-github添加webhook"><a class="markdownIt-Anchor" href="#316-github添加webhook"></a> 3.1.6. Github添加Webhook</h3>
+<ol>
 <li>进入想要部署的仓库，<code>settings -&gt; webhook</code>，选择<code>Add Webhook</code></li>
 <li>设置payload_url为jenkins对应地址:<code>xxx(jenkins访问网址)/github-webhook/</code></li>
 <li>选择<code>Just the push event.</code>和<code>Active</code>后保存即可</li>
 </ol>
-<h3 id="3-1-7-配置主从节点"><a href="#3-1-7-配置主从节点" class="headerlink" title="3.1.7. 配置主从节点"></a>3.1.7. 配置主从节点</h3><blockquote>
+<h3 id="317-配置主从节点"><a class="markdownIt-Anchor" href="#317-配置主从节点"></a> 3.1.7. 配置主从节点</h3>
+<blockquote>
 <p>避免出现如下报错：pending—Waiting for next available executor</p>
 </blockquote>
 <ol>
 <li>进入对应位置:<code>系统管理 -&gt; 节点管理</code></li>
 <li>点击<code>配置主从节点</code>，设置至少为2个。</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="3-2-使用流水线新建任务"><a href="#3-2-使用流水线新建任务" class="headerlink" title="3.2. 使用流水线新建任务"></a>3.2. 使用流水线新建任务</h2><ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="32-使用流水线新建任务"><a class="markdownIt-Anchor" href="#32-使用流水线新建任务"></a> 3.2. 使用流水线新建任务</h2>
+<ol>
 <li>点击<code>新建任务</code>，新建一个名为<code>Jenkins-Demo</code>的流水线任务</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
 <li><code>构建触发器</code>选择<code>GitHub hook trigger for GITScm polling</code></li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
+<li>流水线中(<code>jenkinsfile</code>文件放置在仓库根目录下)
 <ol>
-<li>流水线中(<code>jenkinsfile</code>文件放置在仓库根目录下)<ol>
 <li><code>定义</code>选择<code>Pipeline script from SCM</code></li>
 <li><code>SCM</code>选择<code>Git</code></li>
 <li><code>Repository URL</code>输入对应仓库的<code>git@xxx.git</code>地址</li>
@@ -415,54 +434,62 @@
 <li>如果出现报错如下，则先进入jenkins容器输入命令<code>git ls-remote -h -- git@github.com:xxx.git HEAD</code>：并输入<code>yes</code>确认</li>
 </ol>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">无法连接仓库：Command <span class="hljs-string">&quot;git ls-remote -h -- git@github.com:xxx.git HEAD&quot;</span> returned status code <span class="hljs-number">128</span>:<br><span class="hljs-keyword">stdout</span>:<br><span class="hljs-keyword">stderr</span>: Host key verification failed.<br>fatal: Could <span class="hljs-keyword">not</span> <span class="hljs-built_in">read</span> <span class="hljs-built_in">from</span> remote repository.<br><br>Please make sure you have <span class="hljs-keyword">the</span> correct access rights<br><span class="hljs-keyword">and</span> <span class="hljs-keyword">the</span> repository exists<br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="5">
 <li>最后指定分支为<code>main</code>，整体如下图所示</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="6">
 <li>之后选择保存即可</li>
 <li>之后点击<code>立即构建</code>来查看效果</li>
 </ol>
-<h1 id="4-GitLab-Jenkins-Spring-Boot"><a href="#4-GitLab-Jenkins-Spring-Boot" class="headerlink" title="4. GitLab + Jenkins + Spring Boot"></a>4. GitLab + Jenkins + Spring Boot</h1><h2 id="4-1-配置GitLab插件和连接"><a href="#4-1-配置GitLab插件和连接" class="headerlink" title="4.1. 配置GitLab插件和连接"></a>4.1. 配置GitLab插件和连接</h2><ol>
+<h1 id="4-gitlab-jenkins-spring-boot"><a class="markdownIt-Anchor" href="#4-gitlab-jenkins-spring-boot"></a> 4. GitLab + Jenkins + Spring Boot</h1>
+<h2 id="41-配置gitlab插件和连接"><a class="markdownIt-Anchor" href="#41-配置gitlab插件和连接"></a> 4.1. 配置GitLab插件和连接</h2>
+<ol>
 <li>Jenkins需要安装插件GitLab Plugin和GitLab Hook Plugin</li>
 <li>进入系统配置，找到GitLab的配置位置，进行配置</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
 <li>注意上面需要的API token需要到GitLab的用户设置中，生成Personal Access Tokens</li>
 <li>填写完成后点击Test Connection，如果显示Success表示配置成功</li>
 <li>完成GitLab的Ssh配置，过程完全类似第二大步中的对应步骤。</li>
 </ol>
-<h2 id="4-2-创建项目"><a href="#4-2-创建项目" class="headerlink" title="4.2. 创建项目"></a>4.2. 创建项目</h2><ol>
+<h2 id="42-创建项目"><a class="markdownIt-Anchor" href="#42-创建项目"></a> 4.2. 创建项目</h2>
+<ol>
 <li>勾选Build when a change is pushed to GitLab. GitLab webhook URL:</li>
 <li>下拉找到点击高级，找到Allowed branches，选择Filter branch by name(一般是master)</li>
 <li>在下拉，来到流水线中，选择Pipeline script from SCM，URL填写GitLab获取的URL，进行测试(注意如果出现<code>git ls-remote -h -- ssh://git@xxx.git HEAD</code>，第一次是需要进入容器执行该命令，并输入yes)</li>
 <li>进入GitLab的对应项目仓库，找到settings-&gt;integration配置刚刚得到的webhook URL(注意看提示)，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八</li>
 <li>之后配置好jenkinsfile，然后跟踪构建结果即可。</li>
 </ol>
-<h1 id="5-Jenkins-使用Pipeline集成Cobertura-不支持Java-1-8"><a href="#5-Jenkins-使用Pipeline集成Cobertura-不支持Java-1-8" class="headerlink" title="5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)"></a>5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)</h1><ol>
+<h1 id="5-jenkins-使用pipeline集成cobertura不支持java-18"><a class="markdownIt-Anchor" href="#5-jenkins-使用pipeline集成cobertura不支持java-18"></a> 5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)</h1>
+<ol>
 <li>jenkins首先安装插件<code>Cobertura Plugin</code></li>
 <li>在pom文件的build-&gt;plugins下添加如下的plugin以生成xml格式的覆盖率检查报告</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.codehaus.mojo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">formats</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>xml<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">formats</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">check</span>/&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="2">
 <li>使用:<code>mvn cobertura:cobertura</code>生成相应的测试报告，默认路径为<code>**/target/site/cobertura/</code></li>
 <li>在流水线中添加如下post以添加覆盖报告到Jenkins UI。</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pipeline">post &#123;<br>   always &#123;<br>      step([$class: &#x27;CoberturaPublisher&#x27;, autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: &#x27;**/target/site/cobertura/coverage.xml&#x27;, failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: &#x27;ASCII&#x27;, zoomCoverageChart: false, enableNewApi: true])<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="6-Jenkins-使用pipeline集成jacoco"><a href="#6-Jenkins-使用pipeline集成jacoco" class="headerlink" title="6. Jenkins 使用pipeline集成jacoco"></a>6. Jenkins 使用pipeline集成jacoco</h1><ol>
+<h1 id="6-jenkins-使用pipeline集成jacoco"><a class="markdownIt-Anchor" href="#6-jenkins-使用pipeline集成jacoco"></a> 6. Jenkins 使用pipeline集成jacoco</h1>
+<ol>
 <li>在jenkins中安装<code>jacoco</code>插件</li>
 <li>在html发布后发现了403问题，在script界面运行<code>System.clearProperty(&quot;hudson.model.DirectoryBrowserSupport.CSP&quot;)</code></li>
 <li>之后<strong>重新构建</strong>并发布HTML报告即可</li>
 </ol>
-<h1 id="7-实用插件"><a href="#7-实用插件" class="headerlink" title="7. 实用插件"></a>7. 实用插件</h1><ol>
+<h1 id="7-实用插件"><a class="markdownIt-Anchor" href="#7-实用插件"></a> 7. 实用插件</h1>
+<ol>
 <li><a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a></li>
 <li><a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a></li>
 </ol>
-<h1 id="8-配置Jenkins的分布式构建和部署"><a href="#8-配置Jenkins的分布式构建和部署" class="headerlink" title="8. 配置Jenkins的分布式构建和部署"></a>8. 配置Jenkins的分布式构建和部署</h1><ol>
+<h1 id="8-配置jenkins的分布式构建和部署"><a class="markdownIt-Anchor" href="#8-配置jenkins的分布式构建和部署"></a> 8. 配置Jenkins的分布式构建和部署</h1>
+<ol>
 <li><a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a></li>
 </ol>
-<h1 id="9-参考"><a href="#9-参考" class="headerlink" title="9. 参考"></a>9. 参考</h1><ol>
+<h1 id="9-参考"><a class="markdownIt-Anchor" href="#9-参考"></a> 9. 参考</h1>
+<ol>
 <li><a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a></li>
 <li><a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a></li>
 <li><a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a></li>
@@ -520,7 +547,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Docker 安装 Jenkins</div>
-      <div>https://stormbroken.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/</div>
+      <div>https://spricoder.github.io/2022/02/24/Tec-Be/Jenkins/Docker%20%E5%AE%89%E8%A3%85%20Jenkins/</div>
     </div>
     <div class="license-meta">
       
@@ -600,7 +627,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);

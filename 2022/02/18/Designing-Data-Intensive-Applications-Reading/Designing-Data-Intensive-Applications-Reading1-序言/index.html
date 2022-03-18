@@ -19,7 +19,7 @@
     <meta name="description" content="DDIA读书笔记1-序言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDIA-Reading1-序言">
-<meta property="og:url" content="https://stormbroken.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="DDIA读书笔记1-序言">
 <meta property="og:locale" content="zh_CN">
@@ -67,7 +67,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -271,15 +271,20 @@
             
             <div class="markdown-body">
               
-              <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><h1 id="1-数据密集型应用-Data-Intensive-Application"><a href="#1-数据密集型应用-Data-Intensive-Application" class="headerlink" title="1. 数据密集型应用 Data Intensive Application"></a>1. 数据密集型应用 Data Intensive Application</h1><ol>
-<li>如果数据是其主要挑战(数据量、数据复杂度或数据变化速度)，则该应用被称为是<strong>数据密集型</strong>的。<ol>
+              <h2 id="序言"><a class="markdownIt-Anchor" href="#序言"></a> 序言</h2>
+<h1 id="1-数据密集型应用-data-intensive-application"><a class="markdownIt-Anchor" href="#1-数据密集型应用-data-intensive-application"></a> 1. 数据密集型应用 Data Intensive Application</h1>
+<ol>
+<li>如果数据是其主要挑战(数据量、数据复杂度或数据变化速度)，则该应用被称为是<strong>数据密集型</strong>的。
+<ol>
 <li>相关的技术：NoSQL、消息队列、缓存、搜索索引、批处理和流处理框架。</li>
 <li>相对的是<strong>计算密集型</strong>，即处理器速度是其瓶颈。</li>
 </ol>
 </li>
-<li>本书关注成功的数据系统的内部，理清它们的关键算法，讨论背后的原则和它们必须做出的权衡。<ol>
+<li>本书关注成功的数据系统的内部，理清它们的关键算法，讨论背后的原则和它们必须做出的权衡。
+<ol>
 <li>核心：思考数据系统的有效方式，不仅关于它们如何工作，嗐包括它们为什么以这种方式工作，以及哪些问题是我们需要问的。</li>
-<li>本书讨论的内容：<ol>
+<li>本书讨论的内容：
+<ol>
 <li>如何使数据系统可伸缩，例如支持百万用户的web或移动应用。</li>
 <li>需要提高应用程序的可用性(最大程度减少停机时间)，保持稳定运行。</li>
 <li>寻找使系统在长期运行过程易于维护的方法，即使系统规模增长，需求与技术也发生变化</li>
@@ -335,7 +340,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>DDIA-Reading1-序言</div>
-      <div>https://stormbroken.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/</div>
+      <div>https://spricoder.github.io/2022/02/18/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading1-%E5%BA%8F%E8%A8%80/</div>
     </div>
     <div class="license-meta">
       
@@ -415,7 +420,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);

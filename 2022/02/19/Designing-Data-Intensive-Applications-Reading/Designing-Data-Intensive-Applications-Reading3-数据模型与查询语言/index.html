@@ -19,7 +19,7 @@
     <meta name="description" content="DDIA读书笔记3-数据模型与查询语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDIA-Reading3-数据模型与查询语言">
-<meta property="og:url" content="https://stormbroken.github.io/2022/02/19/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading3-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2022/02/19/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading3-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="DDIA读书笔记3-数据模型与查询语言">
 <meta property="og:locale" content="zh_CN">
@@ -28,8 +28,8 @@
 <meta property="article:published_time" content="2022-02-19T09:14:41.000Z">
 <meta property="article:modified_time" content="2022-03-07T12:51:36.391Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="数据模型">
 <meta property="article:tag" content="DDIA">
+<meta property="article:tag" content="数据模型">
 <meta property="article:tag" content="数据查询语言">
 <meta property="article:tag" content="图数据库">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,7 +73,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -277,31 +277,37 @@
             
             <div class="markdown-body">
               
-              <h2 id="第二章：数据模型与查询语言"><a href="#第二章：数据模型与查询语言" class="headerlink" title="第二章：数据模型与查询语言"></a>第二章：数据模型与查询语言</h2><blockquote>
+              <h2 id="第二章数据模型与查询语言"><a class="markdownIt-Anchor" href="#第二章数据模型与查询语言"></a> 第二章：数据模型与查询语言</h2>
+<blockquote>
 <p>语言的边界就是思想的边界</p>
 </blockquote>
-<h1 id="1-数据模型"><a href="#1-数据模型" class="headerlink" title="1. 数据模型"></a>1. 数据模型</h1><ol>
+<h1 id="1-数据模型"><a class="markdownIt-Anchor" href="#1-数据模型"></a> 1. 数据模型</h1>
+<ol>
 <li>对于每层数据模型的关键问题是：它是如何用低一层数据模型来表示的。</li>
 <li>复杂的应用程序可能会有更多的中间层次，每层都会通过提供一个明确的数据模型来隐藏更低层次中的复杂性，这些抽象允许不同的人群有效地协作。</li>
 <li>本章将比较关系模型、文档模型和少量基于图形的数据模型。</li>
 </ol>
-<h2 id="1-1-关系模型与文档模型"><a href="#1-1-关系模型与文档模型" class="headerlink" title="1.1. 关系模型与文档模型"></a>1.1. 关系模型与文档模型</h2><blockquote>
+<h2 id="11-关系模型与文档模型"><a class="markdownIt-Anchor" href="#11-关系模型与文档模型"></a> 1.1. 关系模型与文档模型</h2>
+<blockquote>
 <p>关系模型(Edger Codd于1970年提出)：数据被组织称<strong>关系</strong>(SQL中称为<strong>表</strong>)，其中每个关系是<strong>元组</strong>(SQL中成为<strong>行</strong>)的无序集合。</p>
 </blockquote>
 <ul>
 <li>目前最著名的数据模型可能就是SQL。</li>
-<li>关系数据库主要是处理以下用例：<ul>
+<li>关系数据库主要是处理以下用例：
+<ul>
 <li>典型的<strong>事务处理</strong>：银行交易等</li>
 <li><strong>批处理</strong>：客户发票等</li>
 </ul>
 </li>
 <li>20世纪70年代和80年代初，网状模型和层次模型是主要选择，但是关系模型随后占据了主导地位。</li>
 </ul>
-<h2 id="1-2-NoSQL的诞生"><a href="#1-2-NoSQL的诞生" class="headerlink" title="1.2. NoSQL的诞生"></a>1.2. NoSQL的诞生</h2><blockquote>
+<h2 id="12-nosql的诞生"><a class="markdownIt-Anchor" href="#12-nosql的诞生"></a> 1.2. NoSQL的诞生</h2>
+<blockquote>
 <p>NoSQL: Not only SQL</p>
 </blockquote>
 <ul>
-<li>采用NoSQL数据库的背后的驱动因素：<ul>
+<li>采用NoSQL数据库的背后的驱动因素：
+<ul>
 <li>需要比关系数据库更好的<strong>伸缩性</strong>：超大数据集和超高写入吞吐量。</li>
 <li>相比商业数据库软件，<strong>免费和开源</strong>软件更受偏爱。</li>
 <li>关系模型不能很好地支持一些<strong>特殊的查询</strong>操作。</li>
@@ -310,10 +316,13 @@
 </li>
 <li>关系数据库未来可能与各种非关系型数据库一起使用，被称为<strong>混合持久化</strong>(polyglot persistence)</li>
 </ul>
-<h2 id="1-3-对象关系不匹配"><a href="#1-3-对象关系不匹配" class="headerlink" title="1.3. 对象关系不匹配"></a>1.3. 对象关系不匹配</h2><ul>
-<li>目前大多数应用程序开发都使用面向对象的编程语言来开发，导致对SQL数据模型的普遍批评。<ul>
+<h2 id="13-对象关系不匹配"><a class="markdownIt-Anchor" href="#13-对象关系不匹配"></a> 1.3. 对象关系不匹配</h2>
+<ul>
+<li>目前大多数应用程序开发都使用面向对象的编程语言来开发，导致对SQL数据模型的普遍批评。
+<ul>
 <li><strong>阻抗不匹配</strong>(Impedance mismatch)：模型之间的不连贯。</li>
-<li>以领英为例，如何使用关系模式表示简历<ul>
+<li>以领英为例，如何使用关系模式表示简历
+<ul>
 <li>传统SQL模型：将user_id作为外键。</li>
 <li>将多值存储在单列：后续的SQL标准增加了对结构化数据类型和XML数据的支持。</li>
 <li>将对应信息编码为固定格式的文档，存储在数据库的文本列：比如使用json格式表示，很多面向文档的数据库支持这种类型的数据模型。</li>
@@ -322,9 +331,11 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading3/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-4-多对一和多对多关系"><a href="#1-4-多对一和多对多关系" class="headerlink" title="1.4. 多对一和多对多关系"></a>1.4. 多对一和多对多关系</h2><ul>
-<li>为什么<code>region_id</code>是用ID的方式，而不是字符串的形式给出：<ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading3/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="14-多对一和多对多关系"><a class="markdownIt-Anchor" href="#14-多对一和多对多关系"></a> 1.4. 多对一和多对多关系</h2>
+<ul>
+<li>为什么<code>region_id</code>是用ID的方式，而不是字符串的形式给出：
+<ul>
 <li>保证样式和拼写统一</li>
 <li>避免歧义：避免出现地名歧义问题</li>
 <li>易于更新：避免出现不一致问题，数据的<strong>规范化</strong></li>
@@ -335,25 +346,30 @@
 <li>在关系性数据库中，对连接的支持较强，但是在文档数据库中则相对比较弱。</li>
 <li>更进一步：可以使用引用的方式，将对应的ID替换为一个指向，使用多对多关系扩展简历。</li>
 </ul>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading3/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="1-5-文档数据库是否在重蹈覆辙？"><a href="#1-5-文档数据库是否在重蹈覆辙？" class="headerlink" title="1.5. 文档数据库是否在重蹈覆辙？"></a>1.5. 文档数据库是否在重蹈覆辙？</h2><blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Designing-Data-Intensive-Applications/reading3/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="15-文档数据库是否在重蹈覆辙"><a class="markdownIt-Anchor" href="#15-文档数据库是否在重蹈覆辙"></a> 1.5. 文档数据库是否在重蹈覆辙？</h2>
+<blockquote>
 <p>如何以最佳的方式在数据库中表示多对多关系？</p>
 </blockquote>
 <ul>
-<li>网状模型：最初很受关注，但最终变得冷门。<ul>
+<li>网状模型：最初很受关注，但最终变得冷门。
+<ul>
 <li>在层次模型的树结构中，每条记录只有一个父节点；在网状模型中，每个记录可能有多个父节点。</li>
 <li>网状模型中记录之间的链接不是外键，而更像是编程语言中的指针。访问记录的唯一方法是跟随跟记录起沿这些链路所形成的路径(<strong>访问路径</strong>)。</li>
 <li>网状模型会使得查询和更新数据库的代码变得非常复杂且不灵活。</li>
 </ul>
 </li>
-<li>关系模型：变成了SQL，并统治了世界。<ul>
+<li>关系模型：变成了SQL，并统治了世界。
+<ul>
 <li>一个关系(表)只是一个元组(行)的集合。</li>
-<li>在关系数据库中，查询优化器来决定哪些部分以哪个顺序执行，以及使用哪些索引。这些选择实际上是”访问路径”，但是是通过查询优化器自动生成的。</li>
+<li>在关系数据库中，查询优化器来决定哪些部分以哪个顺序执行，以及使用哪些索引。这些选择实际上是&quot;访问路径&quot;，但是是通过查询优化器自动生成的。</li>
 </ul>
 </li>
-<li>与文档数据库相比<ul>
+<li>与文档数据库相比
+<ul>
 <li>在一个方面，文档数据库还原为<strong>层次模型</strong>。其父记录中存储嵌套记录，而不是在单独的表中。</li>
-<li>另一个方面。在表示多对一和多对多关系时，关系数据库和文档数据库没有根本不同：相关项目都是通过一个唯一的标识符引用。<ul>
+<li>另一个方面。在表示多对一和多对多关系时，关系数据库和文档数据库没有根本不同：相关项目都是通过一个唯一的标识符引用。
+<ul>
 <li>在关系数据库中，称为<strong>外键</strong>。</li>
 <li>在文档数据库中，称为<strong>文档引用</strong>。</li>
 </ul>
@@ -362,20 +378,25 @@
 </li>
 <li>文档数据库<strong>没有</strong>在重蹈覆辙。</li>
 </ul>
-<h2 id="1-6-关系型数据库与文档数据库在今日的对比"><a href="#1-6-关系型数据库与文档数据库在今日的对比" class="headerlink" title="1.6. 关系型数据库与文档数据库在今日的对比"></a>1.6. 关系型数据库与文档数据库在今日的对比</h2><blockquote>
+<h2 id="16-关系型数据库与文档数据库在今日的对比"><a class="markdownIt-Anchor" href="#16-关系型数据库与文档数据库在今日的对比"></a> 1.6. 关系型数据库与文档数据库在今日的对比</h2>
+<blockquote>
 <p>本章聚焦于数据模型中的差异。</p>
 </blockquote>
 <ul>
-<li>哪种数据模型更有助于简化应用代码<ul>
+<li>哪种数据模型更有助于简化应用代码
+<ul>
 <li>如果应用程序有类似文档的结构，那么使用文档模型是合适的。</li>
 <li>文档模型有一定的局限性：不能直接引用文档中嵌套的项目。</li>
 <li>文档数据库对连接的糟糕支持未必是问题：需要结合业务代码。</li>
 </ul>
 </li>
-<li>文档模型中的模式灵活性：<ul>
-<li>是<strong>读时模式</strong>(Schema-on-read)<ul>
+<li>文档模型中的模式灵活性：
+<ul>
+<li>是<strong>读时模式</strong>(Schema-on-read)
+<ul>
 <li>数据的结构是隐含的，只有在数据被读取时才被解释，类似于动态(运行时)类型检查。</li>
-<li>适用于以下情况<ul>
+<li>适用于以下情况
+<ul>
 <li>存在许多不同类型的对象。</li>
 <li>数据的结构由外部系统决定。</li>
 </ul>
@@ -385,17 +406,21 @@
 <li>相应的是<strong>写时模式</strong>(Schema-on-write)：传统的关系数据库方法中，模式明确），类似于静态(编译时)类型检查。</li>
 </ul>
 </li>
-<li>比如目前存储了用户的全名，现在想要分别存储名字和姓氏<ul>
+<li>比如目前存储了用户的全名，现在想要分别存储名字和姓氏
+<ul>
 <li>文档数据库：只需要开始写入具有新字段的新文档，并用代码来处理读取旧文档即可。</li>
-<li>“静态类型”数据库：需要使用<code>ALTER TABLE</code>和<code>UPDATE</code>完成迁移<ul>
+<li>&quot;静态类型&quot;数据库：需要使用<code>ALTER TABLE</code>和<code>UPDATE</code>完成迁移
+<ul>
 <li>模式变更更慢，而且要求停运。大多数关系数据库可以在几毫秒内完成<code>ALTER TABLE</code>子句的执行，而MySQL是个例外(他会执行表复制)</li>
 <li>如果每一行的重写不可接受，那么可以设置默认值为<code>NULL</code>，等到读取到的时候再更新。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>查询的数据局部性<ul>
-<li>文档通常以单个连续字符串形式进行存储。<ul>
+<li>查询的数据局部性
+<ul>
+<li>文档通常以单个连续字符串形式进行存储。
+<ul>
 <li>如果应用程序经常需要访问整个文档，那么存储的局部性会带来性能优势；如果只访问文档的一部分，那么加载就比较浪费</li>
 <li>更新文档时，需整个重写，因此建议保持相对较小的文档。</li>
 </ul>
@@ -403,42 +428,51 @@
 <li>为了局部性而分组集合相关数据的想法并不局限于文档模型。</li>
 </ul>
 </li>
-<li>文档模型和关系数据库的融合。<ul>
+<li>文档模型和关系数据库的融合。
+<ul>
 <li>许多数据库也开始对JSON文档提供了一定级别的支持。</li>
 <li>关系模型和文档模型的融合是未来数据库一条很好的路线。</li>
 </ul>
 </li>
 </ul>
-<h1 id="2-数据查询语言"><a href="#2-数据查询语言" class="headerlink" title="2. 数据查询语言"></a>2. 数据查询语言</h1><ul>
-<li>关系模型包含了一种查询数据的新方法<ul>
+<h1 id="2-数据查询语言"><a class="markdownIt-Anchor" href="#2-数据查询语言"></a> 2. 数据查询语言</h1>
+<ul>
+<li>关系模型包含了一种查询数据的新方法
+<ul>
 <li>SQL是一种声明式查询语言：只需要执行所需数据的模式，结果必须符合哪些条件，以及如何完成数据转换即可；并且更适合并行执行。</li>
 <li>IMS和CODASYL使用命令式代码来查询数据库：告诉计算机以特定顺序执行某些操作。</li>
 </ul>
 </li>
 <li>Web上的声明式查询：使用<code>i.selected &gt; p</code>等方式来选择声明选择对象，从而避免复杂的代码和未来变更的影响。</li>
-<li>MapReduce查询：<ul>
+<li>MapReduce查询：
+<ul>
 <li>介于声明式的查询语言，和完全命令式的查询API之间。</li>
 <li>一些NoSQL数据库存储(包括mongodb)支持有限形式的MapReduce</li>
 <li><a href = "http://ddia.vonng.com/#/ch2?id=mapreduce%e6%9f%a5%e8%af%a2">具体例子</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="3-图数据模型"><a href="#3-图数据模型" class="headerlink" title="3. 图数据模型"></a>3. 图数据模型</h1><ul>
-<li>一个图由两种对象组成<ul>
+<h1 id="3-图数据模型"><a class="markdownIt-Anchor" href="#3-图数据模型"></a> 3. 图数据模型</h1>
+<ul>
+<li>一个图由两种对象组成
+<ul>
 <li>顶点(vertices)，也称为节点(nodes)，或实体(entities)</li>
 <li>边(edges)，也称为关系(relation)，或弧(arcs)</li>
 <li>典型例子：社交图谱、网络图谱等等</li>
 </ul>
 </li>
-<li>有几种不同的方法来构建和查询图中的数据<ul>
+<li>有几种不同的方法来构建和查询图中的数据
+<ul>
 <li>属性图模型(由Neo4j等实现)</li>
 <li>三元组存储模型(由Datomic等实现)</li>
 </ul>
 </li>
 <li>三种查看图的声明式查询语言：Cypher、SPARQL、Datalog</li>
 </ul>
-<h2 id="3-1-属性图模型"><a href="#3-1-属性图模型" class="headerlink" title="3.1. 属性图模型"></a>3.1. 属性图模型</h2><ol>
-<li>属性图模型<ol>
+<h2 id="31-属性图模型"><a class="markdownIt-Anchor" href="#31-属性图模型"></a> 3.1. 属性图模型</h2>
+<ol>
+<li>属性图模型
+<ol>
 <li>每个定点包括：唯一标识符、一组出边、一组入边、一组属性</li>
 <li>每条边包括：唯一标识符、变得起点、变得重点、描述关系类型的标签、一组属性</li>
 <li>也可以使用关系模型来表示属性图</li>
@@ -447,21 +481,25 @@
 <li>Cypher查询语言：为Neo4j图形数据库而发明</li>
 <li>SQL中的图查询：在使用关系模型表示的属性图中，也可以完成图查询，但是会比较复杂。</li>
 </ol>
-<h2 id="3-2-三元组模型"><a href="#3-2-三元组模型" class="headerlink" title="3.2. 三元组模型"></a>3.2. 三元组模型</h2><ol>
-<li>三元组模型<ol>
+<h2 id="32-三元组模型"><a class="markdownIt-Anchor" href="#32-三元组模型"></a> 3.2. 三元组模型</h2>
+<ol>
+<li>三元组模型
+<ol>
 <li>所有数据都以简单的三部分表示形式存储(<strong>主语,谓语,宾语</strong>)</li>
 <li>主语是图中的一个定点</li>
 <li>宾语是原始数据类型的值或图中的另一个顶点。</li>
 </ol>
 </li>
-<li>语义网<ol>
+<li>语义网
+<ol>
 <li>三元组存储模型完全独立于语义网。</li>
-<li>资源描述框架(RDF)目的是作为不同网站以统一的格式发布数据的一种机制，允许来自不同网站的数据自动合并成一个数据网络，一种互联网范围内的”通用语义数据库”</li>
+<li>资源描述框架(RDF)目的是作为不同网站以统一的格式发布数据的一种机制，允许来自不同网站的数据自动合并成一个数据网络，一种互联网范围内的&quot;通用语义数据库&quot;</li>
 </ol>
 </li>
 <li>SPARQL查询语言：一种用于三元组存储的面向RDF数据模型的查询语言。</li>
 </ol>
-<h1 id="4-几个注意点"><a href="#4-几个注意点" class="headerlink" title="4. 几个注意点"></a>4. 几个注意点</h1><ol>
+<h1 id="4-几个注意点"><a class="markdownIt-Anchor" href="#4-几个注意点"></a> 4. 几个注意点</h1>
+<ol>
 <li><strong>文档数据库</strong>的应用场景：数据通常是自我包含的，而且文档之间的关系非常稀少。</li>
 <li><strong>图数据库</strong>的应用场景：任何事物都可能与任何事物相关联</li>
 </ol>
@@ -497,9 +535,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/">#数据模型</a>
-      
         <a href="/tags/DDIA/">#DDIA</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/">#数据模型</a>
       
         <a href="/tags/%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/">#数据查询语言</a>
       
@@ -516,7 +554,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>DDIA-Reading3-数据模型与查询语言</div>
-      <div>https://stormbroken.github.io/2022/02/19/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading3-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/</div>
+      <div>https://spricoder.github.io/2022/02/19/Designing-Data-Intensive-Applications-Reading/Designing-Data-Intensive-Applications-Reading3-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/</div>
     </div>
     <div class="license-meta">
       
@@ -596,7 +634,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);

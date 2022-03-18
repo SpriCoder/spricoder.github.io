@@ -19,7 +19,7 @@
     <meta name="description" content="2020-编译原理-IR4-函数与补充">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2020-编译原理-IR4-函数与补充">
-<meta property="og:url" content="https://stormbroken.github.io/2021/01/16/2020-Compilation-Principle/2020-Compilation-Principle-IR4-%E5%87%BD%E6%95%B0%E4%B8%8E%E8%A1%A5%E5%85%85/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2021/01/16/2020-Compilation-Principle/2020-Compilation-Principle-IR4-%E5%87%BD%E6%95%B0%E4%B8%8E%E8%A1%A5%E5%85%85/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="2020-编译原理-IR4-函数与补充">
 <meta property="og:locale" content="zh_CN">
@@ -33,8 +33,8 @@
 <meta property="article:modified_time" content="2022-03-07T10:37:27.479Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
-<meta property="article:tag" content="编译原理">
 <meta property="article:tag" content="函数">
+<meta property="article:tag" content="编译原理">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec5/62.png">
   
@@ -76,7 +76,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"stormbroken.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -369,9 +369,9 @@
       
         <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">#课程笔记</a>
       
-        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
-      
         <a href="/tags/%E5%87%BD%E6%95%B0/">#函数</a>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
       
     </div>
   
@@ -384,7 +384,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>2020-编译原理-IR4-函数与补充</div>
-      <div>https://stormbroken.github.io/2021/01/16/2020-Compilation-Principle/2020-Compilation-Principle-IR4-%E5%87%BD%E6%95%B0%E4%B8%8E%E8%A1%A5%E5%85%85/</div>
+      <div>https://spricoder.github.io/2021/01/16/2020-Compilation-Principle/2020-Compilation-Principle-IR4-%E5%87%BD%E6%95%B0%E4%B8%8E%E8%A1%A5%E5%85%85/</div>
     </div>
     <div class="license-meta">
       
@@ -464,7 +464,7 @@
       window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'stormbroken/spricoder-blog-comment');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
       s.setAttribute('theme', schema);
