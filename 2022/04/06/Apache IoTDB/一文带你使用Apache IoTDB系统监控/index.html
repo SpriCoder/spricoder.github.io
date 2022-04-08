@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/8.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/9.png">
 <meta property="article:published_time" content="2022-04-06T06:26:29.000Z">
-<meta property="article:modified_time" content="2022-04-06T06:26:44.480Z">
+<meta property="article:modified_time" content="2022-04-08T13:28:53.638Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="Apache IoTDB系统监控">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          13 分钟
         
       </span>
     
@@ -281,61 +281,85 @@
             
             <div class="markdown-body">
               
-              <h2 id="一文带你使用Apache-IoTDB系统监控模块"><a href="#一文带你使用Apache-IoTDB系统监控模块" class="headerlink" title="一文带你使用Apache IoTDB系统监控模块"></a>一文带你使用Apache IoTDB系统监控模块</h2><p>在Apache IoTDB 0.13.0版本开始，我们引入了系统监控模块，本文主要介绍了如何在单机版开启系统监控模块，并且使用Prometheus + Grafana完成系统监控的可视化。</p>
-<h1 id="相关配置信息"><a href="#相关配置信息" class="headerlink" title="相关配置信息"></a>相关配置信息</h1><ol>
+              <h2 id="一文带你使用apache-iotdb系统监控模块"><a class="markdownIt-Anchor" href="#一文带你使用apache-iotdb系统监控模块"></a> 一文带你使用Apache IoTDB系统监控模块</h2>
+<p>在Apache IoTDB 0.13.0版本开始，我们引入了系统监控模块，本文主要介绍了如何在单机版开启系统监控模块，并且使用Prometheus + Grafana完成系统监控的可视化。</p>
+<h1 id="相关配置信息"><a class="markdownIt-Anchor" href="#相关配置信息"></a> 相关配置信息</h1>
+<ol>
 <li>Apache IoTDB：0.13.0，可以前往官网下载：<a target="_blank" rel="noopener" href="https://iotdb.apache.org/Download/">https://iotdb.apache.org/Download/</a></li>
 <li>Prometheus：2.30.3，可以前往官网下载：<a target="_blank" rel="noopener" href="https://prometheus.io/download/">https://prometheus.io/download/</a></li>
 <li>Grafana：8.4.2，可以前往官网下载：<a target="_blank" rel="noopener" href="https://grafana.com/grafana/download">https://grafana.com/grafana/download</a></li>
 </ol>
-<h1 id="修改配置文件，启动IoTDB"><a href="#修改配置文件，启动IoTDB" class="headerlink" title="修改配置文件，启动IoTDB"></a>修改配置文件，启动IoTDB</h1><ol>
+<h1 id="修改配置文件启动iotdb"><a class="markdownIt-Anchor" href="#修改配置文件启动iotdb"></a> 修改配置文件，启动IoTDB</h1>
+<ol>
 <li>首先，进入到<code>apache-iotdb-0.13.0-all-bin</code></li>
 <li>找到监控相关配置文件<code>conf/iotdb-metric.yml</code>，修改如下配置，其他配置保持不变：</li>
 </ol>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># whether enable the module</span><br><span class="hljs-attr">enableMetric:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<ol>
+<ol start="3">
 <li>运行脚本启动IoTDB：<code>./sbin/start-server.sh</code>，出现如下提示则为启动成功</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="4">
 <li>在浏览器进入<code>http://localhost:9091/metrics</code>网址，可以查看到如下的监控项信息：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="配置Prometheus进行数据采集"><a href="#配置Prometheus进行数据采集" class="headerlink" title="配置Prometheus进行数据采集"></a>配置Prometheus进行数据采集</h1><ol>
-<li>下载Prometheus到本地</li>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="配置prometheus进行数据采集"><a class="markdownIt-Anchor" href="#配置prometheus进行数据采集"></a> 配置Prometheus进行数据采集</h1>
+<ol>
+<li>下载Prometheus的二进制包到本地，解压后进入对应文件夹：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">tar xvfz prometheus-*.tar.gz<br><span class="hljs-built_in">cd</span> prometheus-*<br></code></pre></td></tr></table></figure>
+<ol start="2">
 <li>首先，我们修改Prometheus的配置文件<code>prometheus.yml</code>如下：新增<code>iotdb</code>任务收集IoTDB的监控数据</li>
 </ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">global:</span><br>  <span class="hljs-attr">scrape_interval:</span> <span class="hljs-string">15s</span><br><br><span class="hljs-attr">scrape_configs:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">&quot;prometheus&quot;</span><br>    <span class="hljs-attr">static_configs:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> [<span class="hljs-string">&quot;localhost:9090&quot;</span>]<br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">&quot;iotdb&quot;</span><br>    <span class="hljs-attr">static_configs:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> [<span class="hljs-string">&quot;localhost:9091&quot;</span>]<br></code></pre></td></tr></table></figure>
-<ol>
-<li>启动Promethues，查看配置是否成功：我们点击进入Status下的Target界面</li>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">global:</span><br>  <span class="hljs-attr">scrape_interval:</span> <span class="hljs-string">15s</span><br><br><span class="hljs-attr">scrape_configs:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">job_name:</span> <span class="hljs-string">&quot;iotdb&quot;</span><br>    <span class="hljs-attr">static_configs:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-attr">targets:</span> [<span class="hljs-string">&quot;localhost:9091&quot;</span>]<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>启动Promethues：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">./prometheus --config.file=prometheus.yml<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>在浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost:9090">http://localhost:9090</a>，进入Prometheus</li>
+<li>查看配置是否成功：我们点击进入Status下的Target界面</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="6">
 <li>当我们看到如下图State为Up时表示配置成功并已经联通</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h1 id="使用Grafana进行数据可视化"><a href="#使用Grafana进行数据可视化" class="headerlink" title="使用Grafana进行数据可视化"></a>使用Grafana进行数据可视化</h1><h2 id="Grafana启动与配置"><a href="#Grafana启动与配置" class="headerlink" title="Grafana启动与配置"></a>Grafana启动与配置</h2><ol>
-<li>下载Grafana到本地</li>
-<li>启动Grafana并进入，首先我们在Configuration中配置Data Source为Prometheus</li>
-</ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h1 id="使用grafana进行数据可视化"><a class="markdownIt-Anchor" href="#使用grafana进行数据可视化"></a> 使用Grafana进行数据可视化</h1>
+<h2 id="grafana启动与配置"><a class="markdownIt-Anchor" href="#grafana启动与配置"></a> Grafana启动与配置</h2>
 <ol>
+<li>下载Grafana的二进制包到本地，解压后进入对应文件夹：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">tar -zxvf grafana-*.tar.gz<br><span class="hljs-built_in">cd</span> grafana-*<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>启动Grafana：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">./bin/grafana-server web <br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>在浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost:3000">http://localhost:3000</a>，进入Prometheus</li>
+<li>首先我们在Configuration中配置Data Source为Prometheus</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="5">
 <li>在配置Data Source时注意Prometheus所在的URL，配置好后点击Save &amp; Test 出现Data source is working提示则为配置成功</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="在Grafana中创建Dashboard进行数据可视化"><a href="#在Grafana中创建Dashboard进行数据可视化" class="headerlink" title="在Grafana中创建Dashboard进行数据可视化"></a>在Grafana中创建Dashboard进行数据可视化</h2><ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="在grafana中创建dashboard进行数据可视化"><a class="markdownIt-Anchor" href="#在grafana中创建dashboard进行数据可视化"></a> 在Grafana中创建Dashboard进行数据可视化</h2>
+<ol>
 <li>首先创建Dashboard，然后创建Panel</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
-<li>之后就可以在面板根据自己的需求对监控相关的数据进行可视化</li>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>之后就可以在面板根据自己的需求对监控相关的数据进行可视化（所有相关的监控指标可以先在job中选择iotdb筛选）</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="3">
 <li>选择关注的监控指标可视化完成后，我们就得到了这样的面板：</li>
 </ol>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/introduce/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>后续我们还会继续分享Apache IoTDB监控模块，敬请期待！</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://iotdb.apache.org/UserGuide/Master/Maintenance-Tools/Metric-Tool.html">https://iotdb.apache.org/UserGuide/Master/Maintenance-Tools/Metric-Tool.html</a></p>
+<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
+<p><a target="_blank" rel="noopener" href="https://iotdb.apache.org/UserGuide/Master/Maintenance-Tools/Metric-Tool.html">https://iotdb.apache.org/UserGuide/Master/Maintenance-Tools/Metric-Tool.html</a></p>
 
               
             </div>
