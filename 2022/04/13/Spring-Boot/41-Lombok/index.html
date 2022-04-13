@@ -18,13 +18,13 @@
   
     <meta name="description" content="Spring-Boot-Lombok">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-Boot-Lombok">
+<meta property="og:title" content="41-Lombok">
 <meta property="og:url" content="https://spricoder.github.io/2022/04/13/Spring-Boot/41-Lombok/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="Spring-Boot-Lombok">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-13T01:49:42.000Z">
-<meta property="article:modified_time" content="2022-04-13T01:42:48.860Z">
+<meta property="article:modified_time" content="2022-04-13T02:06:28.376Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="spring boot">
 <meta property="article:tag" content="注解">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Spring-Boot-Lombok - SpriCoder的博客</title>
+  <title>41-Lombok - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -269,18 +269,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring-Boot-Lombok</h1>
+            <h1 style="display: none">41-Lombok</h1>
             
             <div class="markdown-body">
               
-              <h2 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h2><h1 id="1-遇见lombok"><a href="#1-遇见lombok" class="headerlink" title="1. 遇见lombok"></a>1. 遇见lombok</h1><h2 id="1-1-lombok简介"><a href="#1-1-lombok简介" class="headerlink" title="1.1. lombok简介"></a>1.1. lombok简介</h2><ol>
+              <h2 id="lombok"><a class="markdownIt-Anchor" href="#lombok"></a> Lombok</h2>
+<h1 id="1-遇见lombok"><a class="markdownIt-Anchor" href="#1-遇见lombok"></a> 1. 遇见lombok</h1>
+<h2 id="11-lombok简介"><a class="markdownIt-Anchor" href="#11-lombok简介"></a> 1.1. lombok简介</h2>
+<ol>
 <li>使用简单的注释的形式来帮助我们简化消除一些必须有但显得很臃肿的java代码工具</li>
 <li>如何安装使用：在dependency中添加<code>&lt;artifactId&gt;lombok&lt;/artifactedId&gt;</code></li>
 </ol>
-<h2 id="1-2-使用详情"><a href="#1-2-使用详情" class="headerlink" title="1.2. 使用详情"></a>1.2. 使用详情</h2><ol>
+<h2 id="12-使用详情"><a class="markdownIt-Anchor" href="#12-使用详情"></a> 1.2. 使用详情</h2>
+<ol>
 <li>我们需要引入相应的lombok包</li>
 </ol>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -328,20 +331,24 @@
 <tr>
 <td><code>@Log4j</code></td>
 <td>注解在类上，为类提供一个属性名为log的log4j日志对象</td>
+<td></td>
 </tr>
 <tr>
 <td><code>@ToString</code></td>
 <td>使用lombok帮助你生成一个tostring的方法，默认打印类名和每个字段，并且保证用逗号进行分隔</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="1-3-官方文档"><a href="#1-3-官方文档" class="headerlink" title="1.3. 官方文档"></a>1.3. 官方文档</h2><p><a href = "https://projectlombok.org/features/all?spm=a2c4e.11153940.blogcont59972.9.2aeb6896aOg7si">查询更多标签</a></p>
-<h1 id="2-注意"><a href="#2-注意" class="headerlink" title="2. 注意"></a>2. 注意</h1><ol>
+<h2 id="13-官方文档"><a class="markdownIt-Anchor" href="#13-官方文档"></a> 1.3. 官方文档</h2>
+<p><a href = "https://projectlombok.org/features/all?spm=a2c4e.11153940.blogcont59972.9.2aeb6896aOg7si">查询更多标签</a></p>
+<h1 id="2-注意"><a class="markdownIt-Anchor" href="#2-注意"></a> 2. 注意</h1>
+<ol>
 <li>请务必注意引起注意的是Lombok虽然好用，但是lombok已经体现出了不可以被我们忽视的入侵性。</li>
 <li>为什么这么说呢？因为如果团队中有一个人使用lombok进行编程，则会导致所有团队成员必须使用并且配置lombok的插件，这就是为什么我们应该慎重使用lombok</li>
 </ol>
-<h1 id="3-lombok的坑"><a href="#3-lombok的坑" class="headerlink" title="3. lombok的坑"></a>3. lombok的坑</h1><ol>
+<h1 id="3-lombok的坑"><a class="markdownIt-Anchor" href="#3-lombok的坑"></a> 3. lombok的坑</h1>
+<ol>
 <li>如果我们仅仅使用了@Data属性，而不使用@EqualsAndHashCode(callSuper = true)</li>
 <li>默认情况下为@EqualsAndHashCode(callSuper = false,这时候生成的equals()方法只会比较子类的属性，而不会考虑父类继承的属性，无论父类属性访问权限是否开放。</li>
 </ol>
@@ -393,7 +400,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spring-Boot-Lombok</div>
+      <div>41-Lombok</div>
       <div>https://spricoder.github.io/2022/04/13/Spring-Boot/41-Lombok/</div>
     </div>
     <div class="license-meta">
@@ -436,9 +443,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/13/Spring-Boot/42-Spring%20Banner/" title="Spring-Boot-Spring Banner">
+                      <a href="/2022/04/13/Spring-Boot/42-Spring-Banner/" title="42-Spring Banner">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring-Boot-Spring Banner</span>
+                        <span class="hidden-mobile">42-Spring Banner</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -446,8 +453,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/13/Spring-Boot/40-Spring%20Bean/" title="Spring-Boot-Spring Bean">
-                        <span class="hidden-mobile">Spring-Boot-Spring Bean</span>
+                      <a href="/2022/04/13/Spring-Boot/40-Spring-Bean/" title="40-Spring Bean">
+                        <span class="hidden-mobile">40-Spring Bean</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

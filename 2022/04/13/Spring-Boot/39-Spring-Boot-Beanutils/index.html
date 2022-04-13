@@ -18,20 +18,20 @@
   
     <meta name="description" content="Spring-Boot-Beanutils">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-Boot-Beanutils">
+<meta property="og:title" content="39-Beanutils">
 <meta property="og:url" content="https://spricoder.github.io/2022/04/13/Spring-Boot/39-Spring-Boot-Beanutils/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="Spring-Boot-Beanutils">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-13T01:47:41.000Z">
-<meta property="article:modified_time" content="2022-04-13T01:42:38.321Z">
+<meta property="article:modified_time" content="2022-04-13T02:06:20.473Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="spring boot">
 <meta property="article:tag" content="BeanUtils">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Spring-Boot-Beanutils - SpriCoder的博客</title>
+  <title>39-Beanutils - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -268,19 +268,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring-Boot-Beanutils</h1>
+            <h1 style="display: none">39-Beanutils</h1>
             
             <div class="markdown-body">
               
-              <h2 id="Beanutils"><a href="#Beanutils" class="headerlink" title="Beanutils"></a>Beanutils</h2><h1 id="1-BeanUtils的介绍"><a href="#1-BeanUtils的介绍" class="headerlink" title="1. BeanUtils的介绍"></a>1. BeanUtils的介绍</h1><ol>
+              <h2 id="beanutils"><a class="markdownIt-Anchor" href="#beanutils"></a> Beanutils</h2>
+<h1 id="1-beanutils的介绍"><a class="markdownIt-Anchor" href="#1-beanutils的介绍"></a> 1. BeanUtils的介绍</h1>
+<ol>
 <li>Beanuils提供了对Java的反射和自省API的包装。其主要目的是利用反射机制对JavaBean的属性进行处理</li>
 </ol>
-<h1 id="2-BeanUtils的用法"><a href="#2-BeanUtils的用法" class="headerlink" title="2. BeanUtils的用法"></a>2. BeanUtils的用法</h1><h2 id="2-1-拷贝属性"><a href="#2-1-拷贝属性" class="headerlink" title="2.1. 拷贝属性"></a>2.1. 拷贝属性</h2><ol>
-<li><p>对于有较多相同属性的JavaBean，我们可以通过拷贝方法来完成。</p>
+<h1 id="2-beanutils的用法"><a class="markdownIt-Anchor" href="#2-beanutils的用法"></a> 2. BeanUtils的用法</h1>
+<h2 id="21-拷贝属性"><a class="markdownIt-Anchor" href="#21-拷贝属性"></a> 2.1. 拷贝属性</h2>
+<ol>
+<li>对于有较多相同属性的JavaBean，我们可以通过拷贝方法来完成。</li>
+</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">UserActionForm</span> <span class="hljs-variable">uForm</span> <span class="hljs-operator">=</span> (UserActionForm) form;<br><span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>BeanUtils.copyProperties(uForm,user);<span class="hljs-comment">//将值拷贝给后面的</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>对于不同属性的类则不会进行处理</p>
-</li>
+<ol start="2">
+<li>对于不同属性的类则不会进行处理</li>
 </ol>
 
               
@@ -328,7 +332,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spring-Boot-Beanutils</div>
+      <div>39-Beanutils</div>
       <div>https://spricoder.github.io/2022/04/13/Spring-Boot/39-Spring-Boot-Beanutils/</div>
     </div>
     <div class="license-meta">
@@ -371,9 +375,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/13/Spring-Boot/40-Spring%20Bean/" title="Spring-Boot-Spring Bean">
+                      <a href="/2022/04/13/Spring-Boot/40-Spring-Bean/" title="40-Spring Bean">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring-Boot-Spring Bean</span>
+                        <span class="hidden-mobile">40-Spring Bean</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -381,8 +385,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/13/Spring-Boot/38-Spring%20Boot%20IOC&amp;DI/" title="Spring-Boot-Spring Boot IOC&amp;DI">
-                        <span class="hidden-mobile">Spring-Boot-Spring Boot IOC&amp;DI</span>
+                      <a href="/2022/04/13/Spring-Boot/38-Spring-Boot-IOC&amp;DI/" title="38-Spring Boot IOC&amp;DI">
+                        <span class="hidden-mobile">38-Spring Boot IOC&amp;DI</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

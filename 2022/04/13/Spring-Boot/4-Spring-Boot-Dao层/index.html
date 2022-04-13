@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Spring-Boot-Spring Boot Dao层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4-Spring Boot Dao层">
+<meta property="og:url" content="https://spricoder.github.io/2022/04/13/Spring-Boot/4-Spring-Boot-Dao%E5%B1%82/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="Spring-Boot-Spring Boot Dao层">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/2.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/3.png">
+<meta property="article:published_time" content="2022-04-13T01:12:41.000Z">
+<meta property="article:modified_time" content="2022-04-13T02:03:49.947Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="spring boot">
+<meta property="article:tag" content="dao">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/1.png">
+  
+  
+  <title>4-Spring Boot Dao层 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-13 09:12" pubdate>
+          2022年4月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">4-Spring Boot Dao层</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="spring-dao层"><a class="markdownIt-Anchor" href="#spring-dao层"></a> Spring Dao层</h2>
+<h1 id="1-repository层"><a class="markdownIt-Anchor" href="#1-repository层"></a> 1. Repository层</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Repository</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">StoryDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">JpaRepository</span>&lt;Story, Integer&gt; &#123;<br>    <span class="hljs-meta">@Modifying</span><br>    <span class="hljs-meta">@Query(&quot;update Story set posId=posId+1 where posId&gt;:posId&quot;)</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateCreatePosID</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;posId&quot;)</span> <span class="hljs-type">int</span> posId)</span>;<br>    List&lt;Story&gt; <span class="hljs-title function_">findByTaskIdOrderByPosIdDesc</span><span class="hljs-params">(<span class="hljs-type">int</span> taskId)</span>;<br>    List&lt;Story&gt; <span class="hljs-title function_">findByTaskId</span><span class="hljs-params">(<span class="hljs-type">int</span> taskId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>@Repository对应数据访问层的Bean。表示Spring容器中会存在StoryDao的bean，当Service需要使用StoryDao的实例时，就可以将Spring创建好的bean注入：在Service只需要声明一个变量storyDao来接收。接收方式如下：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoryServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">StoryService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StoryDao storyDao;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="11-jparepository"><a class="markdownIt-Anchor" href="#11-jparepository"></a> 1.1. JpaRepository</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Repository</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">StoryDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">JpaRepository</span>&lt;Story, Integer&gt; &#123;<br>    <span class="hljs-meta">@Modifying</span><br>    <span class="hljs-meta">@Query(&quot;update Story set posId=posId+1 where posId&gt;:posId&quot;)</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateCreatePosID</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;posId&quot;)</span> <span class="hljs-type">int</span> posId)</span>;<br>    List&lt;Story&gt; <span class="hljs-title function_">findByTaskIdOrderByPosIdDesc</span><span class="hljs-params">(<span class="hljs-type">int</span> taskId)</span>;<br>    List&lt;Story&gt; <span class="hljs-title function_">findByTaskId</span><span class="hljs-params">(<span class="hljs-type">int</span> taskId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>JpaRepository实现一组JPA规范相关的方法， StoryDao接口继承了JpaRepository，就具备了通用的数据访问控制层的能力。</li>
+<li>JpaRepository支持接口规范方法名查询。意思是如果在接口中定义的查询方法符合它的命名规则，就可以不用写实现。比如findByTaskIdOrderByPosIdDesc实现的就是…  Where story.taskId = ?1 order by story.posId desc。</li>
+<li>也可以使用@Query自定义查询。 @Query与 @Modifying 两个annotation一起声明，可定义个性化更新操作，例如只涉及某些字段更新时最为常用。</li>
+<li>本例的query语句意思是由于各个story有顺序关系，在新插入一个story时需要将它后面的story的位置id加一。</li>
+</ol>
+<h2 id="12-jpa"><a class="markdownIt-Anchor" href="#12-jpa"></a> 1.2. Jpa</h2>
+<ol>
+<li>全称Java Presistence API,java持久层API</li>
+<li>通过将接口Dao层集成JPARepository来完成使用</li>
+</ol>
+<h2 id="13-jpa的部分标签情况"><a class="markdownIt-Anchor" href="#13-jpa的部分标签情况"></a> 1.3. JPA的部分标签情况</h2>
+<table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>功能</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Entity</td>
+<td>用来表示这个类似实体类，(UserEntity) 默认对应user_entity表</td>
+<td>-</td>
+</tr>
+<tr>
+<td>@Column</td>
+<td>定义将成员属性映射到关系表中的对应列，以及对应列的结构信息</td>
+<td>可以包含name、unique、nullable、length、insertable、length、updatetable、columnDefination、secondaryTable</td>
+</tr>
+<tr>
+<td>@id</td>
+<td>用来标识指定表的逐渐，有多重生成方式</td>
+<td>table(使用低层数据表)、SEQUENCE，使用序列生成唯一、INDENTITY使用数据库IDENTITY列保证唯一、AUTO 由容器挑选一个合适的方式保证唯一、NONE 容器不负责主键的生成，有程序完成</td>
+</tr>
+<tr>
+<td>@GeneratedValue(strategy = GenerationType.IDENTITY)</td>
+<td>用来指定生成的方式</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="14-自定义更新-查询-删除"><a class="markdownIt-Anchor" href="#14-自定义更新-查询-删除"></a> 1.4. 自定义更新、查询、删除</h2>
+<h3 id="141-自定义更新"><a class="markdownIt-Anchor" href="#141-自定义更新"></a> 1.4.1. 自定义更新</h3>
+<p>TODO</p>
+<h1 id="2-mapper注解"><a class="markdownIt-Anchor" href="#2-mapper注解"></a> 2. @Mapper注解</h1>
+<ol>
+<li>注解到Dao层的接口:这样子帮助我们自动生成处理</li>
+</ol>
+<h1 id="3-jdbc"><a class="markdownIt-Anchor" href="#3-jdbc"></a> 3. JDBC</h1>
+<blockquote>
+<p>主要步骤如下</p>
+</blockquote>
+<ol>
+<li>登记并加载JDBC驱动器。</li>
+<li>建⽴与SQL数据库的连接；</li>
+<li>传送⼀个SQL操作；</li>
+<li>获得数据结果;</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="31-api"><a class="markdownIt-Anchor" href="#31-api"></a> 3.1. API</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1.加载驱动程序</span><br>Class.forName(<span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span>);<br><span class="hljs-comment">//2. 获得数据库连接</span><br><span class="hljs-type">Connection</span> <span class="hljs-variable">conn</span> <span class="hljs-operator">=</span> DriverManager.getConnection(URL, USER, PASSWORD);<br><span class="hljs-comment">//3.操作数据库，实现增删改查</span><br><span class="hljs-type">Statement</span> <span class="hljs-variable">stmt</span> <span class="hljs-operator">=</span> conn.createStatement();<br><span class="hljs-type">ResultSet</span> <span class="hljs-variable">rs</span> <span class="hljs-operator">=</span> stmt.executeQuery(<span class="hljs-string">&quot;SELECT user_name, age FROM imooc_goddess&quot;</span>);<br><span class="hljs-comment">//如果有数据，rs.next()返回true</span><br><span class="hljs-keyword">while</span>(rs.next())&#123;<br>    System.out.println(rs.getString(<span class="hljs-string">&quot;user_name&quot;</span>)+<span class="hljs-string">&quot; 年龄：&quot;</span>+rs.getInt(<span class="hljs-string">&quot;age&quot;</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="4-dao"><a class="markdownIt-Anchor" href="#4-dao"></a> 4. DAO</h1>
+<h2 id="41-dao模式"><a class="markdownIt-Anchor" href="#41-dao模式"></a> 4.1. DAO模式</h2>
+<ol>
+<li>DAO (Data Access objects 数据存取对象)是指位于业务逻辑和持久化数据之间实现对持久化数据的访问。通俗来讲，就是将数据库操作都封装起来。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="411-对外提供相应的接口"><a class="markdownIt-Anchor" href="#411-对外提供相应的接口"></a> 4.1.1. 对外提供相应的接⼝</h3>
+<ol>
+<li>在⾯向对象设计过程中，有⼀些&quot;套路&quot;⽤于解决特定问题称为模式。</li>
+<li>DAO 模式提供了访问关系型数据库系统所需操作的接⼝，将数据访问和业务逻辑分离对上层提供⾯向对象的数据访问接⼝。</li>
+<li>从以上 DAO 模式使用可以看出，DAO 模式的优势就在于它实现了两次隔离。
+<ol>
+<li>隔离了<strong>数据访问代码和业务逻辑代码</strong>。业务逻辑代码直接调⽤DAO⽅法即可，完全感觉不到数据库表的存在。分⼯明确，数据访问层代码变化不影响业务逻辑代码,这符合单⼀职能原则，降低了藕合性，提⾼了可复⽤性。</li>
+<li>隔离了<strong>不同数据库实现</strong>。采⽤面向接口编程，如果底层数据库变化，如由 MySQL 变成 Oracle 只要增加 DAO 接⼝的新实现类即可，原有 MySQ 实现不⽤修改。这符合 “开-闭” 原则。该原则降低了代码的藕合性，提⾼了代码扩展性和系统的可移植性。</li>
+</ol>
+</li>
+<li>也就是我们只需要处理对象就行，而对象和数据库之间的交互交给DAO完成</li>
+</ol>
+<h2 id="42-组成部分"><a class="markdownIt-Anchor" href="#42-组成部分"></a> 4.2. 组成部分</h2>
+<ol>
+<li>DAO接⼝：把对数据库的所有操作定义成抽象方法，可以提供多种实现。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">PetDao</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 查询所有宠物</span><br><span class="hljs-comment">    */</span><br>    List&lt;Pet&gt; <span class="hljs-title function_">findAllPets</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>DAO 实现类：针对不同数据库给出DAO接⼝定义方法的具体实现。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PetDaoImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseDao</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">PetDao</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 查询所有宠物</span><br><span class="hljs-comment">    */</span><br>    <span class="hljs-keyword">public</span> List&lt;Pet&gt; <span class="hljs-title function_">findAllPets</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        Connection conn=BaseDao.getConnection();<br>        String sql=<span class="hljs-string">&quot;select * from pet&quot;</span>;<br>        PreparedStatement stmt= conn.prepareStatement(sql);<br>        ResultSet rs= stmt.executeQuery();<br>        List&lt;Pet&gt; petList=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Pet&gt;();<br>        <span class="hljs-keyword">while</span>(rs.next()) &#123;<br>            Pet pet=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pet</span>(<br>                rs.getInt(<span class="hljs-string">&quot;id&quot;</span>),<br>                rs.getInt(<span class="hljs-string">&quot;owner_id&quot;</span>),<br>                rs.getInt(<span class="hljs-string">&quot;store_id&quot;</span>),<br>                rs.getString(<span class="hljs-string">&quot;name&quot;</span>),<br>                rs.getString(<span class="hljs-string">&quot;type_name&quot;</span>),<br>                rs.getInt(<span class="hljs-string">&quot;health&quot;</span>),<br>                rs.getInt(<span class="hljs-string">&quot;love&quot;</span>),<br>                rs.getDate(<span class="hljs-string">&quot;birthday&quot;</span>)<br>            );<br>        petList.add(pet);<br>        &#125;<br>        BaseDao.closeAll(conn, stmt, rs);<br>        <span class="hljs-keyword">return</span> petList;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>实体类：⽤于存放与传输对象数据。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Pet</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer id;<br>    <span class="hljs-keyword">private</span> Integer ownerId; <span class="hljs-comment">//主⼈ID</span><br>    <span class="hljs-keyword">private</span> Integer storeId; <span class="hljs-comment">//商店ID</span><br>    <span class="hljs-keyword">private</span> String name; <span class="hljs-comment">//姓名</span><br>    <span class="hljs-keyword">private</span> String typeName; <span class="hljs-comment">//类型</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> health; <span class="hljs-comment">//健康值</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> love; <span class="hljs-comment">//爱⼼值</span><br>    <span class="hljs-keyword">private</span> Date birthday; <span class="hljs-comment">//⽣⽇</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>数据库连接和关闭⼯具类： 避免了数据库连接和关闭代码的重复使⽤，⽅便修改</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseDao</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String driver=<span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String url=<span class="hljs-string">&quot;jdbc:mysql://127.0.0.1:3306/database_name&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String user=<span class="hljs-string">&quot;root&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String password=<span class="hljs-string">&quot;root&quot;</span>;<br>    <span class="hljs-keyword">static</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Class.forName(driver);<br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Connection <span class="hljs-title function_">getConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>        <span class="hljs-keyword">return</span> DriverManager.getConnection(url, user, password);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">closeAll</span><span class="hljs-params">(Connection conn,Statement stmt,ResultSet rs)</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>        <span class="hljs-keyword">if</span>(rs!=<span class="hljs-literal">null</span>) &#123;<br>            rs.close();<br>        &#125;<br>        <span class="hljs-keyword">if</span>(stmt!=<span class="hljs-literal">null</span>) &#123;<br>            stmt.close();<br>        &#125;<br>        <span class="hljs-keyword">if</span>(conn!=<span class="hljs-literal">null</span>) &#123;<br>            conn.close();<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">executeSQL</span><span class="hljs-params">(String preparedSql, Object[] param)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException &#123;<br>        <span class="hljs-type">Connection</span> <span class="hljs-variable">conn</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">PreparedStatement</span> <span class="hljs-variable">pstmt</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-comment">/* 处理SQL,执⾏SQL */</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            conn = getConnection(); <span class="hljs-comment">// 得到数据库连接</span><br>            pstmt = conn.prepareStatement(preparedSql); <span class="hljs-comment">// 得到PreparedStatement对象</span><br>            <span class="hljs-keyword">if</span> (param != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; param.length; i++) &#123;<br>                    pstmt.setObject(i + <span class="hljs-number">1</span>, param[i]); <span class="hljs-comment">// 为预编译sql设置参数</span><br>                &#125;<br>            &#125;<br>            <span class="hljs-type">ResultSet</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> pstmt.executeQuery(); <span class="hljs-comment">// 执⾏SQL语句</span><br>        &#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;<br>            e.printStackTrace(); <span class="hljs-comment">// 处理SQLException异常</span><br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                BaseDao.closeAll(conn, pstmt, <span class="hljs-literal">null</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="5-mybatis"><a class="markdownIt-Anchor" href="#5-mybatis"></a> 5. Mybatis</h1>
+<ol>
+<li>MyBatis 是⽀持定制化 SQL、存储过程以及⾼级映射的优秀的持久层框架。MyBatis 避免了⼏乎所有的JDBC 代码和⼿动设置参数以及获取结果集。MyBatis 可以对配置和原⽣Map使⽤简单的 XML 或注解，将接⼝和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/Dao/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol start="2">
+<li>ORM是Object和Relation之间的映射，包括Object-&gt;Relation和Relation-&gt;Object两⽅⾯。Hibernate是个完整的ORM框架，⽽MyBatis完成的是Relation-&gt;Object，也就是其所说的Data Mapper Framework。</li>
+<li>JPA是ORM框架标准，主流的ORM框架都实现了这个标准。MyBatis没有实现JPA，它和ORM框架的设计思路不完全⼀样。MyBatis是拥抱SQL，⽽ORM则更靠近⾯向对象，不建议写SQL，实在要写，则推荐你⽤框架⾃带的类SQL代替。MyBatis是SQL映射框架⽽不是ORM框架，当然ORM和MyBatis都是持久层框架。</li>
+<li>最典型的ORM 框架是Hibernate，它是全⾃动ORM框架，⽽MyBatis是半⾃动的。Hibernate完全可以通过对象关系模型实现对数据库的操作，拥有完整的JavaBean对象与数据库的映射结构来⾃动⽣成SQL。⽽MyBatis仅有基本的字段映射，对象数据以及对象实际关系仍然需要通过⼿写SQL来实现和管理。</li>
+</ol>
+<h2 id="51-配置文件"><a class="markdownIt-Anchor" href="#51-配置文件"></a> 5.1. 配置文件</h2>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>    <span class="hljs-attr">datasource:</span><br>        <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://localhost:3306/Hotel?</span><br>        <span class="hljs-string">serverTimezone=CTT&amp;characterEncoding=UTF-8</span><br>        <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>        <span class="hljs-attr">password:</span> <span class="hljs-string">******</span><br>        <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br>        <span class="hljs-attr">max-active:</span> <span class="hljs-number">200</span><br>        <span class="hljs-attr">max-idle:</span> <span class="hljs-number">20</span><br>        <span class="hljs-attr">min-idle:</span> <span class="hljs-number">10</span><br>    <span class="hljs-attr">thymeleaf:</span><br>        <span class="hljs-attr">cache:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">jackson:</span><br>        <span class="hljs-attr">time-zone:</span> <span class="hljs-string">GMT+8</span><br>    <span class="hljs-attr">mybatis:</span><br>        <span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">classpath:dataImpl/*/*Mapper.xml</span><br></code></pre></td></tr></table></figure>
+<h2 id="52-实体情况"><a class="markdownIt-Anchor" href="#52-实体情况"></a> 5.2. 实体情况</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Mapper</span><br><span class="hljs-meta">@Repository</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">AdminMapper</span> &#123;<br> <span class="hljs-type">int</span> <span class="hljs-title function_">addManager</span><span class="hljs-params">(User user)</span>;<br> List&lt;User&gt; <span class="hljs-title function_">getAllManagers</span><span class="hljs-params">()</span>;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123; <span class="hljs-comment">//省略getter、setter</span><br>    <span class="hljs-keyword">private</span> Integer id;<br>    <span class="hljs-keyword">private</span> String email;<br>    <span class="hljs-keyword">private</span> String password;<br>    <span class="hljs-keyword">private</span> String userName;<br>    <span class="hljs-keyword">private</span> String phoneNumber;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> credit;<br>    <span class="hljs-keyword">private</span> UserType userType;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="53-映射的xml文件"><a class="markdownIt-Anchor" href="#53-映射的xml文件"></a> 5.3. 映射的xml文件</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span> <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta"><span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.example.hotel.data.admin.AdminMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;addManager&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;com.example.hotel.po.User&quot;</span> <span class="hljs-attr">useGeneratedKeys</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">keyProperty</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><br>        insert into User(email,password,usertype)values(#&#123;email&#125;,#&#123;password&#125;,#&#123;userType&#125;)<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getAllManagers&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>        select * from User where usertype=&#x27;HotelManager&#x27;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;User&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;com.example.hotel.po.User&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;userName&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;phonenumber&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;phoneNumber&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;credit&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;credit&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;usertype&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;userType&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">result</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="54-参考"><a class="markdownIt-Anchor" href="#54-参考"></a> 5.4. 参考</h2>
+<ol>
+<li><a href = "https://pppppkun.github.io/2019/10/11/SpringBoot入门之Mybatis集成/">Spring Boot入门之Mybatis集成</a></li>
+</ol>
+<h1 id="6-orm和mybatis"><a class="markdownIt-Anchor" href="#6-orm和mybatis"></a> 6. ORM和Mybatis</h1>
+<h2 id="61-orm"><a class="markdownIt-Anchor" href="#61-orm"></a> 6.1. ORM</h2>
+<table>
+<thead>
+<tr>
+<th>关系型数据库</th>
+<th>⾯向对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库的表(table)</td>
+<td>类(class)</td>
+</tr>
+<tr>
+<td>记录(record，⾏数据)</td>
+<td>对象(object)</td>
+</tr>
+<tr>
+<td>字段(field)</td>
+<td>对象的属性(attribute)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="62-例子"><a class="markdownIt-Anchor" href="#62-例子"></a> 6.2. 例子</h2>
+<ul>
+<li>举例来说，下⾯是⼀⾏ SQL 语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> id, first_name, last_name, phone, birth_date, sex<br>    <span class="hljs-keyword">FROM</span> persons<br>    <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>程序直接运⾏ SQL，操作数据库的写法如下。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">res = db.execSql(sql);<br>name = res[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;FIRST_NAME&quot;</span>];<br></code></pre></td></tr></table></figure>
+<ul>
+<li>改成 ORM 的写法如下。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">p = Person.get(<span class="hljs-number">10</span>);<br>name = p.first_name;<br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Spring-Boot/" class="category-chain-item">Spring-Boot</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/spring-boot/">#spring boot</a>
+      
+        <a href="/tags/dao/">#dao</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>4-Spring Boot Dao层</div>
+      <div>https://spricoder.github.io/2022/04/13/Spring-Boot/4-Spring-Boot-Dao%E5%B1%82/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/13/Spring-Boot/5-Spring-Boot-Service%E5%B1%82/" title="5-Spring Boot Service层">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">5-Spring Boot Service层</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/13/Spring-Boot/3-Spring-Boot-Controller%E5%B1%82/" title="3-Spring Boot Controller层">
+                        <span class="hidden-mobile">3-Spring Boot Controller层</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
