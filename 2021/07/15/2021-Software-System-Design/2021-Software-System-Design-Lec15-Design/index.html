@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/26.png">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/27.png">
 <meta property="article:published_time" content="2021-07-15T11:15:00.000Z">
-<meta property="article:modified_time" content="2022-03-07T10:47:31.295Z">
+<meta property="article:modified_time" content="2024-07-11T06:15:22.425Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="设计">
@@ -331,8 +331,8 @@
 <li>ASR的选择意味着需求的<strong>优先级</strong> The choice of ASRs implies a prioritization of the requirements.
 <ol>
 <li>您<strong>仍然可以满足</strong>其他需求 You can still meet the other requirements.</li>
-<li>您可以<strong>稍加调整</strong>现有<strong>设计</strong>来完成与其他人通信 You can meet the others with a slight adjustment of the existing design.</li>
-<li>您无法在当前设计下沟通其他人 You cannot meet the others under the current design.
+<li>您可以<strong>稍加调整</strong>现有<strong>设计</strong>来满足其他需求 You can meet the others with a slight adjustment of the existing design.</li>
+<li>您无法在当前设计下满足其他需求 You cannot meet the others under the current design.
 <ol>
 <li>您<strong>即将</strong>满足需求 you are close to meeting the requirements.</li>
 <li>重新确定需求的<strong>优先级</strong>并<strong>重新设计</strong> reprioritize the requirements and revisit the design.</li>
@@ -410,12 +410,12 @@
 <ol>
 <li>系统的涉众已根据业务和任务目标确定了<strong>需求</strong>的<strong>优先级</strong>。The system’s stakeholders have prioritized the requirements according to business and mission goals.</li>
 <li>您可以确定设计期间要重点关注的<strong>系统元素</strong>。You determine which system elements to focus on during the design.</li>
-<li>您确定是否有关于系统质量属性要求的<strong>足够信息</strong>：&quot;<strong>刺激反应</strong>&quot;形式(图)。You determine if there is sufficient information about the quality attribute requirements of the system:stimulus-response form.</li>
+<li>您确定是否有关于系统质量属性需求的<strong>足够信息</strong>：&quot;<strong>刺激反应</strong>&quot;形式(图)。You determine if there is sufficient information about the quality attribute requirements of the system:stimulus-response form.</li>
 </ol>
 <h3 id="222-步骤2选择要分解的系统元素-step-2-choose-an-element-of-the-system-to-decompose"><a class="markdownIt-Anchor" href="#222-步骤2选择要分解的系统元素-step-2-choose-an-element-of-the-system-to-decompose"></a> 2.2.2. 步骤2：选择要分解的系统元素 Step 2: Choose an element of the system to decompose</h3>
 <ol>
 <li>如果是第一次作为&quot;<strong>未开发</strong>&quot;开发的一部分，则将<strong>所有需求</strong>分配给系统。If the first time as part of a greenfield development, all requirements are assigned to the system.</li>
-<li><strong>完善</strong>部分设计的系统时，系统已划分为多个元素，并为其分配了要求。从这些元素中选择<strong>一个</strong>作为聚焦点。When refining a partially designed system, the system has been partitioned into elements with requirements assigned to them. Choose one of these elements as the focus.</li>
+<li><strong>完善</strong>部分设计的系统时，系统已划分为多个元素，并为其分配了需求。从这些元素中选择<strong>一个</strong>作为聚焦点。When refining a partially designed system, the system has been partitioned into elements with requirements assigned to them. Choose one of these elements as the focus.</li>
 <li>Ploughed field：耕种过的地</li>
 </ol>
 <h3 id="223-步骤3确定所选元素的asr-step-3-ldentify-the-asrs-for-the-chosen-element"><a class="markdownIt-Anchor" href="#223-步骤3确定所选元素的asr-step-3-ldentify-the-asrs-for-the-chosen-element"></a> 2.2.3. 步骤3：确定所选元素的ASR Step 3: ldentify the ASRs for the chosen element</h3>
@@ -423,7 +423,7 @@
 <li>根据对每个需求的高影响，中影响或低影响，根据对架构的相对<strong>影响</strong>第二次对这些相同需求进行<strong>排名</strong>。Rank these same requirements a second time based on their relative impact on the architecture as assigning high impact,&quot; medium impact,&quot; or&quot; low impact&quot; to each requirement.</li>
 <li>(H，H) (H，M) (H，L) (M，H) (M，M) (M，L) (L，H) (L，M) (L，L)
 <ol>
-<li>第一个字母表示要求对涉众的重要性 The first letter indicates the importance of requirements to stakeholders</li>
+<li>第一个字母表示需求对涉众的重要性 The first letter indicates the importance of requirements to stakeholders</li>
 <li>第二个字母表示需求对体系结构的潜在影响 The second letter indicates the potential impact of requirements on the architecture</li>
 </ol>
 </li>
@@ -471,14 +471,14 @@
 <ol>
 <li>实例化您选择的<strong>每种元素</strong>的一个<strong>实例</strong>。Instantiate one instance of every type of element you chose.</li>
 <li>根据<strong>子元素</strong>的类型<strong>分配职责</strong>。Assign responsibilities to child elements according to their type.</li>
-<li>在其子级之间<strong>分配</strong>与父级元素相关联的责任。Allocate responsibilities associated with the parent element among its children.</li>
+<li>在其子级之间<strong>分配</strong>与父级元素相关联的职责。Allocate responsibilities associated with the parent element among its children.</li>
 <li>分析并<strong>记录</strong>您所做的设计决策。Analyze and document the design decisions you have made.</li>
 </ol>
 <h3 id="226-步骤6为实例化元素定义接口-step6-define-interfaces-for-instantiated-elements"><a class="markdownIt-Anchor" href="#226-步骤6为实例化元素定义接口-step6-define-interfaces-for-instantiated-elements"></a> 2.2.6. 步骤6：为实例化元素定义接口 Step6: Define interfaces for instantiated elements</h3>
 <ol>
 <li>接口描述了PROVIDES和REQUIRES假设，即软件元素之间相互联系。Interfaces describe the PROVIDES and REQUIRES assumptions that software elements make about one another.
 <ol>
-<li>练习涉及您实例化的元素的<strong>功能要求</strong>。Exercise the functional requirements that involve the elements you instantiated.</li>
+<li>练习涉及您实例化的元素的<strong>功能需求</strong>。Exercise the functional requirements that involve the elements you instantiated.</li>
 <li>观察由一个元素<strong>产生</strong>并由另一元素<strong>消耗</strong>的<strong>任何信息</strong>。Observe any information that is produced by one element and consumed by another.</li>
 </ol>
 </li>
@@ -494,7 +494,7 @@
 <ol>
 <li><strong>软件元素</strong>：履行各种角色和<strong>职责</strong>，具有预定<strong>属性</strong>并与其他软件元素相关以组成系统架构的计算或开发工件 software element: a computational or developmental artifact that fulills various roles and responsibilities, has defined properties, and re elates to other software elements to compose the architecture of a system</li>
 <li><strong>角色</strong>：一组相关职责 role: a set of related responsibilities</li>
-<li><strong>责任</strong>：软件元素提供的<strong>功能，数据或信息</strong> responsibility: the functionality, data, or information that a software element provides</li>
+<li><strong>职责</strong>：软件元素提供的<strong>功能，数据或信息</strong> responsibility: the functionality, data, or information that a software element provides</li>
 <li><strong>属性</strong>：有关软件元素的附加信息 property: additional information about a software element</li>
 <li><strong>关系</strong>：两个软件元素如何相互<strong>关联或交互</strong>的定义 relationship: a definition of how two software elements are associated with or interact with one another</li>
 </ol>
@@ -515,7 +515,7 @@
 <ol>
 <li><strong>容量限制</strong>：提供的处理器在交付时应具有<strong>50%的备用处理器</strong>和<strong>内存</strong>容量，而局域网(LAN)具有<strong>50%的备用吞吐量</strong>能力。有<strong>100个更新</strong>客户端和<strong>25个查询</strong>客户端。为了进行时序估算，假设每秒有<strong>100个更新和5个查询</strong>。capacity restrictions: The provided processors shall have 50% spare processor and memory capacity on delivery, and the local area network (L AN) has 50% spare throughput capability. There are 100 update clients and 25 query clients. For the purposes of timing estimates, assume that there are 100 updates and 5 queries per second.</li>
 <li><strong>持久性存储服务</strong>：我的服务将<strong>维护状态</strong>副本，该副本至少由Track Manager<strong>每分钟检查一次</strong>。 如果Track Manager的所有副本均失败，则可以从检查点文件开始<strong>重新启动</strong>。persistent storage service: T his service will maintain a copy of state that is checked at least once per minute by the Track Manager. If all replicas of the Track Manager fail, a restart can begin from the checkpoint file.</li>
-<li><strong>两个副本</strong>：为了满足可用性和可靠性要求，已经进行了可靠性，可用性和可维护性(RMA)研究，并且在正常情况下，Track Manager和永久性存储元素都应具有两个副本。two replicas: To satisfy the availability and reliability requirements, a Reliability, Availability, and Maintainability (RMA) study has been conducted, and the Track Manager and persistent storage elements shall all have two replicas operating during normal circumstances.</li>
+<li><strong>两个副本</strong>：为了满足可用性和可靠性需求，已经进行了可靠性，可用性和可维护性(RMA)研究，并且在正常情况下，Track Manager和永久性存储元素都应具有两个副本。two replicas: To satisfy the availability and reliability requirements, a Reliability, Availability, and Maintainability (RMA) study has been conducted, and the Track Manager and persistent storage elements shall all have two replicas operating during normal circumstances.</li>
 </ol>
 <h3 id="323-实例的质量属性需求-quality-attribute-requirements"><a class="markdownIt-Anchor" href="#323-实例的质量属性需求-quality-attribute-requirements"></a> 3.2.3. 实例的质量属性需求 Quality Attribute Requirements</h3>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
@@ -555,13 +555,13 @@
 </ul>
 <h2 id="35-步骤-3identify-the-asrs-for-the-chosen-element"><a class="markdownIt-Anchor" href="#35-步骤-3identify-the-asrs-for-the-chosen-element"></a> 3.5. 步骤 3：Identify the ASRs for the chosen element</h2>
 <ol>
-<li>识别出架构上重要的要求，如下图所示 Architectually Significant Requirements</li>
+<li>识别出架构上重要的需求，如下图所示 Architectually Significant Requirements</li>
 </ol>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol start="2">
-<li>从初始<strong>体系结构要求</strong>中识别出<strong>7</strong>个ASR。7 ASRs are identified from the initial architecture requirements.</li>
+<li>从初始<strong>体系结构需求</strong>中识别出<strong>7</strong>个ASR。7 ASRs are identified from the initial architecture requirements.</li>
 <li>从ADD的第一次迭代产生的<strong>设计约束</strong>中识别出<strong>3</strong>个ASR。3 ASRs are identified from the design constraints resulting from the first iteration of ADD.</li>
-<li>标记为(<strong>高，高</strong>)的ASR直接取决于方案1(<strong>最难满足</strong>且具有<strong>最高优先级</strong>驱动程序)中<strong>2秒</strong>的端到端定时要求。ASRs labeled (high, high) bear directly on the end-to-end timing requirement of 2 seconds in Scenario 1 (the most difficult to satisfy and has the highest priority drivers</li>
+<li>标记为(<strong>高，高</strong>)的ASR直接取决于方案1(<strong>最难满足</strong>且具有<strong>最高优先级</strong>驱动程序)中<strong>2秒</strong>的端到端定时需求。ASRs labeled (high, high) bear directly on the end-to-end timing requirement of 2 seconds in Scenario 1 (the most difficult to satisfy and has the highest priority drivers</li>
 <li>标有(<strong>中，中</strong>)的ASR与运行追踪管理器的单个副本的时间相关联，并且恢复应在<strong>2</strong>分钟内发生。ASRs labeled (medium, medium) are associated with the timing when a single copy of the Track Manager is operating, and restoration should occur within 2 minutes.</li>
 <li>重新启动场景最不重要，因此单独的启动设计工作正在考虑其细节。The restart scenario is least important, and a separate “start-up&quot; design effort is considering its details.</li>
 </ol>
@@ -583,7 +583,7 @@
 <h4 id="3612-设计考量可能的策略"><a class="markdownIt-Anchor" href="#3612-设计考量可能的策略"></a> 3.6.1.2. 设计考量(可能的策略)</h4>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="362-步骤-42-list-alternative-patternstactics-for-subordinate-concerns"><a class="markdownIt-Anchor" href="#362-步骤-42-list-alternative-patternstactics-for-subordinate-concerns"></a> 3.6.2. 步骤 4.2: List alternative patterns/tactics for subordinate concerns</h3>
-<h4 id="3621-可替代的重启策略-alternative-restart-tactics"><a class="markdownIt-Anchor" href="#3621-可替代的重启策略-alternative-restart-tactics"></a> 3.6.2.1. 可替代的重启策略 Alternative Restart Tactics</h4>
+<h4 id="3621-可选的重启策略-alternative-restart-tactics"><a class="markdownIt-Anchor" href="#3621-可选的重启策略-alternative-restart-tactics"></a> 3.6.2.1. 可选的重启策略 Alternative Restart Tactics</h4>
 <ol>
 <li>区分参数：Discriminating parameters:
 <ol>
@@ -593,7 +593,7 @@
 </li>
 </ol>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3622-可替代的部署策略"><a class="markdownIt-Anchor" href="#3622-可替代的部署策略"></a> 3.6.2.2. 可替代的部署策略</h4>
+<h4 id="3622-可选的部署策略"><a class="markdownIt-Anchor" href="#3622-可选的部署策略"></a> 3.6.2.2. 可选的部署策略</h4>
 <ol>
 <li>区分参数：Discriminating parameters:
 <ol>
@@ -603,11 +603,11 @@
 </li>
 </ol>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3623-可替代的数据集成策略"><a class="markdownIt-Anchor" href="#3623-可替代的数据集成策略"></a> 3.6.2.3. 可替代的数据集成策略</h4>
+<h4 id="3623-可选的数据集成策略"><a class="markdownIt-Anchor" href="#3623-可选的数据集成策略"></a> 3.6.2.3. 可选的数据集成策略</h4>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3624-可替代的生命检测策略"><a class="markdownIt-Anchor" href="#3624-可替代的生命检测策略"></a> 3.6.2.4. 可替代的生命检测策略</h4>
+<h4 id="3624-可选的生命检测策略"><a class="markdownIt-Anchor" href="#3624-可选的生命检测策略"></a> 3.6.2.4. 可选的生命检测策略</h4>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<h4 id="3625-可替代的透明策略"><a class="markdownIt-Anchor" href="#3625-可替代的透明策略"></a> 3.6.2.5. 可替代的透明策略</h4>
+<h4 id="3625-可选的透明策略"><a class="markdownIt-Anchor" href="#3625-可选的透明策略"></a> 3.6.2.5. 可选的透明策略</h4>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="363-步骤-43-select-patternstactics-from-the-list"><a class="markdownIt-Anchor" href="#363-步骤-43-select-patternstactics-from-the-list"></a> 3.6.3. 步骤 4.3: Select patterns/tactics from the list</h3>
 <h4 id="3631-可选重启策略-alternative-restart-tactics"><a class="markdownIt-Anchor" href="#3631-可选重启策略-alternative-restart-tactics"></a> 3.6.3.1. 可选重启策略 Alternative Restart Tactics</h4>
@@ -619,8 +619,8 @@
 <ol>
 <li>推理 Reasoning
 <ol>
-<li>方案1和要求1都指示<strong>重新启动时间</strong>必须<strong>少于2秒</strong>；因此，冷重启策略是不合适的。Both Scenario1 and Requirement 1 indicate that the restart time must be less than two seconds; thus, Cold Restart tactic is inappropriate.</li>
-<li>“热备份”策略比“主/主”或“老兄共享”策略更<strong>易于实施</strong>；并且似乎很容易满足场景中描述的时间要求。The Warm Standby tactic is simpler to implement than the Master/ Master or L oad Sharing tactics; and it seems to easily satisfy the timing requirement described in scenario 1.</li>
+<li>方案1和需求1都指示<strong>重新启动时间</strong>必须<strong>少于2秒</strong>；因此，冷重启策略是不合适的。Both Scenario1 and Requirement 1 indicate that the restart time must be less than two seconds; thus, Cold Restart tactic is inappropriate.</li>
+<li>“热备份”策略比“主/主”或“老兄共享”策略更<strong>易于实施</strong>；并且似乎很容易满足场景中描述的时间需求。The Warm Standby tactic is simpler to implement than the Master/ Master or L oad Sharing tactics; and it seems to easily satisfy the timing requirement described in scenario 1.</li>
 </ol>
 </li>
 <li>决策：使用<strong>热备份</strong>策略。Decision: Use the Warm Standby tactic.</li>
@@ -645,7 +645,7 @@
 <li>推理 Reasoning
 <ol>
 <li>即使恢复时间较慢，架构师也<strong>熟悉</strong>采用<strong>单一故障</strong>转移方案从软件或硬件故障中恢复(统称为策略)。The architect is familiar with having a single failover scheme for recovery from a software or hardware failure (Together tactic), even though it has a slower recovery time.</li>
-<li>该策略可以满足处理要求，尽管可以减少处理次数。This tactic meets the processing requirements, although it can pertorm less processing.</li>
+<li>该策略可以满足处理需求，尽管可以减少处理次数。This tactic meets the processing requirements, although it can pertorm less processing.</li>
 </ol>
 </li>
 <li>决策：使用<strong>共同</strong>战术。Decision: Use the Together tactic.</li>
@@ -662,7 +662,7 @@
 <li>推理 Reasoning
 <ol>
 <li>显然，需要每分钟有一个状态检查点才能满足方案2。但是，<strong>一分钟前</strong>的状态不能满足方案1。策略1被拒绝。Clearly a checkpoint of state every minute is needed to satisfy Scenario 2. However, a state that is one minute old cannot satisfy Scenario 1. Tactic 1 is rejected.</li>
-<li>策略2满足方案1和2的升级要求；但是，这会带来不可接受的<strong>通信负载</strong>。策略2被拒绝。Tactic 2 would satisfy the upgrade requirements of Scenarios 1 and 2; however, it places an unacceptable communication load. Tactic 2 is rejected.</li>
+<li>策略2满足方案1和2的升级需求；但是，这会带来不可接受的<strong>通信负载</strong>。策略2被拒绝。Tactic 2 would satisfy the upgrade requirements of Scenarios 1 and 2; however, it places an unacceptable communication load. Tactic 2 is rejected.</li>
 <li>策略3将满足方案1和2，但是(如策略2一样)它给通信系统带来了沉重的负担。策略3被拒绝。Tactic 3 would satisfy Scenarios1 and 2, but like Tactic 2) it places a significant burden on the communication system. Tactic了is rejected.</li>
 <li><strong>如果x小于2秒</strong>，则策略4满足方案1和2。这也带来了更合理的通信负载。捆绑升级周期为2秒似乎令人满意。选择了战术4。Tactic 4 satisfies Scenarios 1 and 2 ifx is less than 2 seconds. It also puts a more reasonable communication load. Having a bundled upgrade periodicity of 2 seconds appears to be satisfactory. Tactic 4 is selected.</li>
 <li>策略5也可以满足这种情况，但<strong>更为复杂</strong>，因为辅助服务器必须每隔x秒执行一次以更新其状态副本。策略5被拒绝。Tactic 5 also satisfies the scenarios but is more complex, since the secondary must execute every x seconds to update its state copy. Tactic 5 is rejected.</li>
@@ -781,7 +781,7 @@
 <li>A每分钟将其状态复制到检查点文件A。A copies its state to CheckpointFileA every minute.</li>
 <li>A会累积由于更新客户端消息而导致的状态更改，并每1.0秒将其写入LogFileA。A accumulates the state changes made due to update client messages and writes them to LogFileA every 1.0 seconds. This write is synchronized with sending the check- point.</li>
 <li>此写入与发送检查点同步。 A和A’的启动未解决(另一个团队)。 The start-up of A and A’ was not addressed (by another team).</li>
-<li>proxy元素将收到一个请求，要求元素A的两个副本都失败，将停止发送更新，并通知必要的参与者。The proxy element will receive a request that both copies of the element A have failed, will stop sending updates, and will notify the necessary actors.</li>
+<li>proxy元素将收到一个请求，需求元素A的两个副本都失败，将停止发送更新，并通知必要的参与者。The proxy element will receive a request that both copies of the element A have failed, will stop sending updates, and will notify the necessary actors.</li>
 </ol>
 <h3 id="373-解释2"><a class="markdownIt-Anchor" href="#373-解释2"></a> 3.7.3. 解释2</h3>
 <ol>
@@ -807,7 +807,7 @@
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/25.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h2 id="39-步骤-7verify-and-refine-requirements-and-make-them-constraints-for-instantiated-elements"><a class="markdownIt-Anchor" href="#39-步骤-7verify-and-refine-requirements-and-make-them-constraints-for-instantiated-elements"></a> 3.9. 步骤 7：Verify and refine requirements and make them constraints for instantiated elements</h2>
 <ul>
-<li>架构上重要的要求 Architectually Significant Requirements<br />
+<li>架构上重要的需求 Architectually Significant Requirements<br />
 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec15/26.png" srcset="/img/loading.gif" lazyload alt="" /></li>
 </ul>
 <h1 id="4-阅读材料"><a class="markdownIt-Anchor" href="#4-阅读材料"></a> 4. 阅读材料</h1>
