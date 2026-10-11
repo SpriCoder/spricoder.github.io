@@ -31,9 +31,9 @@
 <meta property="article:published_time" content="2021-05-01T11:04:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:45:15.387Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
-<meta property="article:tag" content="数据集成">
 <meta property="article:tag" content="数据抓取">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/spider/1.png">
   
@@ -81,7 +81,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -194,7 +194,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-数据集成-Lec4-Python数据爬取技术与实战">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -290,8 +290,8 @@
 <p>复杂的字符串处理可以使用正则表达式，下表展示了常用的正则表达式。</p>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/spider/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ol>
-<li>正则表达式详细教程详见https://www.w3cschool.cn/zhengzebiaodashi/。</li>
-<li>Python的re模块提供了大量的方法，实现了正则表达式的各类操作。详细的使用说明见https://docs.python.org/3/library/re.html。</li>
+<li>正则表达式详细教程详见<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/zhengzebiaodashi/%E3%80%82">https://www.w3cschool.cn/zhengzebiaodashi/。</a></li>
+<li>Python的re模块提供了大量的方法，实现了正则表达式的各类操作。详细的使用说明见<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/re.html%E3%80%82">https://docs.python.org/3/library/re.html。</a></li>
 <li>以下实例给出正则表达式的一些简单使用方法。</li>
 </ol>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/spider/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
@@ -306,7 +306,7 @@
 <li>Comment:是一个特殊类型的 NavigableString 对象，其输出的内容不包括注释符号。</li>
 </ol>
 </li>
-<li>更多信息详见https://www.crummy.com/software/BeautifulSoup/bs4/doc/。</li>
+<li>更多信息详见<a target="_blank" rel="noopener" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/%E3%80%82">https://www.crummy.com/software/BeautifulSoup/bs4/doc/。</a></li>
 <li>示例</li>
 </ol>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> re<br>file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./aa.html&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>)<br>html = file.read()<br>bs = BeautifulSoup(html, <span class="hljs-string">&quot;html.parser&quot;</span>)<br><span class="hljs-comment">#查询id=head的Tag</span><br>t_list = bs.find_all(<span class="hljs-built_in">id</span>=<span class="hljs-string">&quot;head&quot;</span>)<br><span class="hljs-built_in">print</span>(t_list)<br><span class="hljs-comment">#查询href属性包含ss1.bdstatic.com的Tag</span><br>t_list = bs.find_all(href=re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">&quot;http://news.baidu.com&quot;</span>))<br><span class="hljs-built_in">print</span>(t_list)<br><span class="hljs-comment">#查询所有包含class的Tag(注意: class在Python中 属于关键字，所以加_以示区别)</span><br>t_list= bs.find_all(class_ =<span class="hljs-literal">True</span>)<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> t_list:<br>  <span class="hljs-built_in">print</span>(item)<br></code></pre></td></tr></table></figure>
@@ -320,7 +320,7 @@
 </ol>
 <h1 id="2-单机数据爬取"><a class="markdownIt-Anchor" href="#2-单机数据爬取"></a> 2. 单机数据爬取</h1>
 <ol>
-<li>Spynner：Sypnner是基于pyqt的一种库，封装了pyqt强大的webkit，具有执行javascript的能力，使用Spynner可以完全模拟一个浏览器的功能和行为。在抓取的时候可以动态显示整个抓取进展。使用Spynner可以对javascript实现的动态内容进行抓取。详见https://pypi.org/project/spynner/。</li>
+<li>Spynner：Sypnner是基于pyqt的一种库，封装了pyqt强大的webkit，具有执行javascript的能力，使用Spynner可以完全模拟一个浏览器的功能和行为。在抓取的时候可以动态显示整个抓取进展。使用Spynner可以对javascript实现的动态内容进行抓取。详见<a target="_blank" rel="noopener" href="https://pypi.org/project/spynner/%E3%80%82">https://pypi.org/project/spynner/。</a></li>
 <li>requests：request是Python的http库，可以完成绝大部分与http应用相关的工作。与Spynner不同，requests是一种非界面化的库，它提供了丰富的且易于调用的多种方法实现对http相关方式的模拟。</li>
 </ol>
 <h2 id="21-spynner"><a class="markdownIt-Anchor" href="#21-spynner"></a> 2.1. Spynner</h2>
@@ -351,7 +351,7 @@
 <ol>
 <li>Selenium主要用于Web开发领域的自动化测试，其提供的接口和方法也可用于数据抓取领域，基于grid技术可以方便地搭建分布式抓取环境。相比Spynner，Selenium的功能更为完备，文档资料也更加丰富。</li>
 <li>利用Selenium可以实现对多种浏览器的调用，如Firefox、Chrome、IE、Opera等，基本的使用流程是相似的。</li>
-<li>以FireFox为例来说明使用Selenium进行网页抓取的流程。抓取的目标为电子工业出版社网站，抓取首页http://www.phei.com.cn/，代码为</li>
+<li>以FireFox为例来说明使用Selenium进行网页抓取的流程。抓取的目标为电子工业出版社网站，抓取首页<a target="_blank" rel="noopener" href="http://www.phei.com.cn/%EF%BC%8C%E4%BB%A3%E7%A0%81%E4%B8%BA">http://www.phei.com.cn/，代码为</a></li>
 </ol>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#利用webdriver可以初始化各种浏览器</span><br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-comment">#为了在后面调用sleep函数，在页面加载后有一定的时间间隔用于观察</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-comment">#初始化一个Firefox浏览器用于抓取的实施</span><br>firefox = webdriver.Firefox()<br><span class="hljs-comment">#抓取的目标网页地址</span><br>url = <span class="hljs-string">&#x27;http://www.phei.com.cn/&quot;</span><br><span class="hljs-string">#调用get方法抓取</span><br><span class="hljs-string">firefox.get(url)</span><br><span class="hljs-string">#有10s等待时间用于观察</span><br><span class="hljs-string">time.sleep(10)</span><br><span class="hljs-string">#将加载的页面保存在本地，存储的是页面加载后的HTML文本.</span><br><span class="hljs-string">with open(a.html&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>f.write(firefox.page_ source)<br><span class="hljs-comment">#抓取完毕后，调用quit()方 法退出浏览器</span><br>firefox.quit()<br></code></pre></td></tr></table></figure>
 <h2 id="31-selenium的profile配置"><a class="markdownIt-Anchor" href="#31-selenium的profile配置"></a> 3.1. Selenium的Profile配置</h2>
@@ -913,5 +913,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

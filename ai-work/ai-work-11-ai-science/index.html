@@ -1,0 +1,950 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AI 做科研，真正难的不是生成一个假设 让 AI 围绕一个研究问题提出十个假设，已经不难。 它可以迅速给出听起来新颖的机制、候选变量和实验方向，语言完整，逻辑顺滑，甚至像一份成熟的研究计划。但如果继续追问：这个想法是否早已发表？关键前提来自哪篇论文？怎样设计能够证伪它的实验？失败结果如何解释？分析代码能否复现？同一结论换一批样本是否仍然成立？ 任务会立刻变得困难。  原创配图：科研不是一次生成，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 做科研，真正难的不是生成一个假设">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-11-ai-science/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="AI 做科研，真正难的不是生成一个假设 让 AI 围绕一个研究问题提出十个假设，已经不难。 它可以迅速给出听起来新颖的机制、候选变量和实验方向，语言完整，逻辑顺滑，甚至像一份成熟的研究计划。但如果继续追问：这个想法是否早已发表？关键前提来自哪篇论文？怎样设计能够证伪它的实验？失败结果如何解释？分析代码能否复现？同一结论换一批样本是否仍然成立？ 任务会立刻变得困难。  原创配图：科研不是一次生成，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.github.io/images/ai-work/11-ai-science-evidence-loop.png">
+<meta property="article:published_time" content="2026-07-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.709Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="AI4Science">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="可复现性">
+<meta property="article:tag" content="科研">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.github.io/images/ai-work/11-ai-science-evidence-loop.png">
+  
+  
+  <title>AI 做科研，真正难的不是生成一个假设 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-23 00:00" pubdate>
+          2026年7月23日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AI 做科研，真正难的不是生成一个假设</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="ai-做科研真正难的不是生成一个假设"><a class="markdownIt-Anchor" href="#ai-做科研真正难的不是生成一个假设"></a> AI 做科研，真正难的不是生成一个假设</h1>
+<p>让 AI 围绕一个研究问题提出十个假设，已经不难。</p>
+<p>它可以迅速给出听起来新颖的机制、候选变量和实验方向，语言完整，逻辑顺滑，甚至像一份成熟的研究计划。但如果继续追问：这个想法是否早已发表？关键前提来自哪篇论文？怎样设计能够证伪它的实验？失败结果如何解释？分析代码能否复现？同一结论换一批样本是否仍然成立？</p>
+<p>任务会立刻变得困难。</p>
+<p><img src="/images/ai-work/11-ai-science-evidence-loop.png" srcset="/img/loading.gif" lazyload alt="人类科学家与 AI 协作完成从文献、假设到实验、分析和复现的证据闭环" /></p>
+<p><em>原创配图：科研不是一次生成，而是文献、候选假设、实验、数据分析、验证与复现不断循环的证据闭环。</em></p>
+<p>AI 做科研真正困难的，不是产生一个像样的想法，而是把想法推进成一条<strong>可以追溯、可以证伪、可以重复、能够经受外部检查的证据链</strong>。</p>
+<h2 id="假设只是科研漏斗的入口"><a class="markdownIt-Anchor" href="#假设只是科研漏斗的入口"></a> 假设只是科研漏斗的入口</h2>
+<p>一项科学主张从出现到成立，通常需要经过多个不同性质的环节：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>核心问题</th>
+<th>仅靠生成文本为什么不够</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>问题定义</td>
+<td>研究对象、变量和边界是否清楚</td>
+<td>模糊问题会产生无法检验的宏大结论</td>
+</tr>
+<tr>
+<td>文献定位</td>
+<td>已知什么、争议什么、缺口在哪里</td>
+<td>模型可能遗漏文献或把已有想法误判为新颖</td>
+</tr>
+<tr>
+<td>假设形成</td>
+<td>机制是否合理，预测是否具体</td>
+<td>合理叙事不等于真实机制</td>
+</tr>
+<tr>
+<td>实验设计</td>
+<td>什么观察能够支持或推翻假设</td>
+<td>缺少对照、样本和干预设计就无法归因</td>
+</tr>
+<tr>
+<td>数据分析</td>
+<td>处理流程和统计选择是否稳健</td>
+<td>不同过滤、参数和指标可能得到不同结论</td>
+</tr>
+<tr>
+<td>复现与评审</td>
+<td>他人能否重复，边界是否被正确表达</td>
+<td>一次成功和一张漂亮图不能证明普遍成立</td>
+</tr>
+</tbody>
+</table>
+<p>因此，“AI 生成了一个新假设”和“AI 完成了一项科学发现”之间，隔着完整的研究过程。前者是候选的产生，后者至少还需要独立证据、实验或观测验证，以及对替代解释的排除。</p>
+<h2 id="科研需要的是闭环而不是流水线终点"><a class="markdownIt-Anchor" href="#科研需要的是闭环而不是流水线终点"></a> 科研需要的是闭环，而不是流水线终点</h2>
+<p>科研过程并不总是按直线前进。实验失败可能迫使人重新定义问题，数据分析可能暴露混杂变量，文献核查也可能证明所谓新想法早已有过系统研究。</p>
+<pre><code class=" mermaid">flowchart LR
+    Q[定义问题与边界] --&gt; L[检索文献与已有证据]
+    L --&gt; H[形成可检验假设]
+    H --&gt; D[设计实验与分析方案]
+    D --&gt; X[执行实验或采集数据]
+    X --&gt; A[分析数据与检查稳健性]
+    A --&gt; V[验证、复现与同行审查]
+    V --&gt;|证据支持但仍有限| R[形成有限结论]
+    V --&gt;|失败、冲突或新线索| Q
+    R --&gt; Q
+</code></pre>
+<p>AI 可以参与每个节点，但没有任何一个节点天然等于最终真理。闭环的价值在于，后续证据可以推翻前面的判断，并把失败重新送回问题定义和假设形成阶段。</p>
+<h2 id="第一难判断新颖必须接回文献"><a class="markdownIt-Anchor" href="#第一难判断新颖必须接回文献"></a> 第一难：判断“新颖”必须接回文献</h2>
+<p>大模型擅长重组知识，也因此容易生成“听起来新”的组合。问题是，新颖性不是语言属性，而是相对于已有研究的关系判断。</p>
+<p>一个假设是否新颖，需要检查：相关机制是否已经提出，类似实验是否做过，已有结果是否相互矛盾，负结果是否存在，以及新方案究竟改变了哪个条件。没有检索和来源绑定，模型只能凭自身记忆判断，很容易把遗漏当成空白。</p>
+<p>因此，AI 的新颖性评审至少应当输出：检索范围、最接近的已有工作、与已有工作的实质差异，以及尚未覆盖的来源。查不到证据只能说明当前检索没有找到，不能直接写成“从未有人研究”。</p>
+<h2 id="第二难把叙事变成可以失败的预测"><a class="markdownIt-Anchor" href="#第二难把叙事变成可以失败的预测"></a> 第二难：把叙事变成可以失败的预测</h2>
+<p>不容易失败的假设，也不容易被科学检验。</p>
+<p>“某因素可能影响系统表现”几乎总能在结果出来后得到一种解释。更可检验的表达需要明确：改变什么变量，在什么对象和条件下，预计观察到什么方向或幅度的变化；如果没有出现，哪些解释将被削弱。</p>
+<table>
+<thead>
+<tr>
+<th>叙事式表达</th>
+<th>可检验表达需要补什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>某方法可能改善结果</td>
+<td>对照方法、评价指标、适用数据和预期差异</td>
+</tr>
+<tr>
+<td>某机制可能导致异常</td>
+<td>干预变量、观测变量、时间顺序和替代机制</td>
+</tr>
+<tr>
+<td>某药物可能对疾病有效</td>
+<td>生物模型、剂量、对照、终点和安全边界</td>
+</tr>
+</tbody>
+</table>
+<p>AI 可以帮助把模糊想法拆成变量、预测和反例，但最终实验是否合理，仍需要领域知识、资源条件和伦理约束共同判断。</p>
+<h2 id="第三难实验反馈不只是成功或失败"><a class="markdownIt-Anchor" href="#第三难实验反馈不只是成功或失败"></a> 第三难：实验反馈不只是“成功或失败”</h2>
+<p>现实实验会产生大量中间状态：样本质量不足、仪器漂移、对照异常、统计功效不够、实验协议执行偏差，或者结果只在一个特定条件下成立。</p>
+<p>如果 Agent 只接收一句“实验成功”，下一轮假设更新会丢失最重要的信息。更有价值的反馈包括原始数据、实验条件、排除记录、失败原因、分析参数和不确定性。</p>
+<p>这也是为什么实验室在环比“全自动科研”的口号更准确。AI 可以加快候选生成、文献综合和数据分析，人仍需负责实验执行、异常判断、伦理审查和证据采用。</p>
+<h2 id="第四难数据分析本身是一组选择"><a class="markdownIt-Anchor" href="#第四难数据分析本身是一组选择"></a> 第四难：数据分析本身是一组选择</h2>
+<p>同一份数据可能经过不同的清洗、过滤、归一化、统计模型和可视化方式。每项选择都可能影响最终结论。</p>
+<p>让 Agent 自动写出一段能运行的分析代码，并不等于分析已经可信。还需要记录：数据版本、排除规则、参数、随机种子、软件环境、中间产物和失败尝试；重要结论还应通过替代指标、敏感性分析或独立分析路径复核。</p>
+<p>多条分析轨迹的意义也不是简单投票。如果多条轨迹使用了相同错误前提，它们会稳定地一起出错。真正有用的是保存可执行 notebook 或脚本，比较不同路径在哪些假设和参数上分叉，再由证据和领域规则判断。</p>
+<h2 id="三种看似完成-实际没有闭环的科研产物"><a class="markdownIt-Anchor" href="#三种看似完成-实际没有闭环的科研产物"></a> 三种看似完成、实际没有闭环的科研产物</h2>
+<h3 id="1-只有漂亮的机制故事"><a class="markdownIt-Anchor" href="#1-只有漂亮的机制故事"></a> 1. 只有漂亮的机制故事</h3>
+<p>文章把若干文献线索连成一个完整机制，却没有给出来源对应关系，也没有说明哪些环节只是推测。这属于可读的研究构想，不是得到验证的结论。</p>
+<h3 id="2-只有一个更高的基准分数"><a class="markdownIt-Anchor" href="#2-只有一个更高的基准分数"></a> 2. 只有一个更高的基准分数</h3>
+<p>方法在某个数据集上超过基线，但没有固定数据切分、消除泄漏、做多次运行或分析适用边界。它证明的是一次配置下的分数，不自动等于新的科学规律。</p>
+<h3 id="3-只有一次阳性实验"><a class="markdownIt-Anchor" href="#3-只有一次阳性实验"></a> 3. 只有一次阳性实验</h3>
+<p>单次实验得到预期方向，却缺少独立重复、替代对照和失败样本。它可以作为继续研究的信号，不能直接外推为稳定机制或实际应用效果。</p>
+<h2 id="人和-ai-应该怎样分工"><a class="markdownIt-Anchor" href="#人和-ai-应该怎样分工"></a> 人和 AI 应该怎样分工</h2>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>AI 更适合承担</th>
+<th>人必须保留的责任</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文献检索</td>
+<td>扩大检索、聚类主题、整理证据卡片</td>
+<td>判断来源权威、检索缺口与争议</td>
+</tr>
+<tr>
+<td>假设生成</td>
+<td>组合跨领域线索、提出多个候选</td>
+<td>决定问题价值、机制合理性与风险</td>
+</tr>
+<tr>
+<td>实验设计</td>
+<td>枚举变量、对照、失败条件和分析计划</td>
+<td>资源、伦理、实验可行性与最终审批</td>
+</tr>
+<tr>
+<td>数据分析</td>
+<td>执行重复流程、生成代码、探索替代分析</td>
+<td>判断异常、统计口径与结论强度</td>
+</tr>
+<tr>
+<td>写作表达</td>
+<td>组织结构、生成图表和初稿</td>
+<td>保证事实、署名、责任和证据边界</td>
+</tr>
+</tbody>
+</table>
+<p>最健康的关系不是 AI 取代科学家，而是 AI 扩大候选空间和执行能力，人负责研究方向、证据门槛与最终责任。</p>
+<h2 id="一个最小可复现研究包"><a class="markdownIt-Anchor" href="#一个最小可复现研究包"></a> 一个最小可复现研究包</h2>
+<p>如果 AI 真正参与了科研工作，最终交付不应只有一份结论摘要。一个最小研究包至少包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">研究问题：对象、范围、变量和排除项。<br>证据表：每项关键主张对应的来源与核验状态。<br>假设卡：机制、预测、反例和替代解释。<br>实验记录：协议版本、样本、对照、偏差和失败情况。<br>分析产物：原始数据引用、代码、参数、环境与中间结果。<br>结论边界：当前证据支持什么，不能推出什么。<br>复现入口：他人如何重新运行、检查或重复实验。<br></code></pre></td></tr></table></figure>
+<p>这个研究包不会保证结论一定正确，却能让错误更容易被发现，也让后续研究可以从真实状态继续，而不是从一段无法追溯的聊天记录重新开始。</p>
+<h2 id="使用-ai-做科研前的-30-秒检查"><a class="markdownIt-Anchor" href="#使用-ai-做科研前的-30-秒检查"></a> 使用 AI 做科研前的 30 秒检查</h2>
+<ul>
+<li>研究问题是否足够具体，哪些范围明确不讨论？</li>
+<li>所谓新颖性是否经过文献检索，而不是由模型自行声明？</li>
+<li>每个关键前提能否回到论文、数据或实验记录？</li>
+<li>假设是否给出了可以失败的预测和替代解释？</li>
+<li>实验是否包含必要的对照、重复和停止条件？</li>
+<li>数据分析的版本、参数、排除规则和环境是否可复现？</li>
+<li>阳性结果是否经过替代分析或独立重复？</li>
+<li>负结果和失败过程是否被保存，而不是从报告中删除？</li>
+<li>人类专家在哪些节点拥有否决权，并对最终结论负责？</li>
+</ul>
+<p>AI 可以让科研更快地产生候选、连接文献和执行分析。但科研的价值从来不在于产生最多的想法，而在于用证据不断淘汰错误、缩小不确定性。</p>
+<p>真正值得追求的不是“AI 想出了什么”，而是：<strong>这个想法经过了什么检验，我们现在究竟有理由相信到哪一步。</strong></p>
+<h2 id="延伸阅读"><a class="markdownIt-Anchor" href="#延伸阅读"></a> 延伸阅读</h2>
+<ul>
+<li>Juraj Gottweis 等：<a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41586-026-10644-y">Accelerating scientific discovery with Co-Scientist</a>。</li>
+<li>Ali Essam Ghareeb 等：<a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41586-026-10652-y">Towards an AI co-scientist: multi-agent scientific discovery</a>。</li>
+</ul>
+<hr />
+<p><a href="/ai-work/ai-work-open-open-reasoning/">上一篇：Open-Open-Reasoning 在做什么</a> · <a href="/ai-work/ai-work-series/">系列目录</a> · <a href="/ai-work/ai-work-12-agent-friendly-database/">下一篇：数据库为什么需要变得 Agent-Friendly？</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/AI4Science/">#AI4Science</a>
+      
+        <a href="/tags/%E7%A7%91%E7%A0%94/">#科研</a>
+      
+        <a href="/tags/%E5%8F%AF%E5%A4%8D%E7%8E%B0%E6%80%A7/">#可复现性</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI 做科研，真正难的不是生成一个假设</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-11-ai-science/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-12-agent-friendly-database/" title="数据库为什么需要变得 Agent-Friendly">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据库为什么需要变得 Agent-Friendly</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-08-agent-trajectory/" title="与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案">
+                        <span class="hidden-mobile">与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

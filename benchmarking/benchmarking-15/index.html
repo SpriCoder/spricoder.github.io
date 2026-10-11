@@ -1,0 +1,1363 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型 前十四篇文章分别解决了一个局部问题：怎样构造负载、读懂波动、进行公平比较、验证正确性、测试集群并保存结果。到了真正的数据库选型现场，这些方法必须被组织成一条决策链。 选型不是寻找一个脱离场景的“最快数据库”，而是判断哪个候选在当前业务约束下更合适。最高吞吐量可能伴随不可接受的 P99、资源成本或正确性问题；功能最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/benchmarking-15/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型 前十四篇文章分别解决了一个局部问题：怎样构造负载、读懂波动、进行公平比较、验证正确性、测试集群并保存结果。到了真正的数据库选型现场，这些方法必须被组织成一条决策链。 选型不是寻找一个脱离场景的“最快数据库”，而是判断哪个候选在当前业务约束下更合适。最高吞吐量可能伴随不可接受的 P99、资源成本或正确性问题；功能最">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.722Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="IoT Benchmark">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="数据库选型">
+<meta property="article:tag" content="时序数据库">
+<meta property="article:tag" content="测试工具">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-18 00:00" pubdate>
+          2026年7月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="基准测试工具之你不知道的两三事-15-端到端案例如何完成一次时序数据库选型"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-15-端到端案例如何完成一次时序数据库选型"></a> 基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型</h1>
+<p>前十四篇文章分别解决了一个局部问题：怎样构造负载、读懂波动、进行公平比较、验证正确性、测试集群并保存结果。到了真正的数据库选型现场，这些方法必须被组织成一条决策链。</p>
+<p>选型不是寻找一个脱离场景的“最快数据库”，而是判断哪个候选在当前业务约束下更合适。最高吞吐量可能伴随不可接受的 P99、资源成本或正确性问题；功能最丰富的产品也可能让部署和运维成本超出团队能力。</p>
+<p>这一篇以一个<strong>假设的工业设备监测平台</strong>为例，演示怎样用 IoT Benchmark 完成一次端到端选型。文中的候选 A、B、C、权重和表格都是方法示意，所有性能数据都应通过真实测试填写。</p>
+<blockquote>
+<p>🏁 选型的最终产物不是一张总分榜，而是“在什么条件下，为什么选择谁，以及这个结论不覆盖什么”。</p>
+</blockquote>
+<h2 id="1-从业务问题开始而不是从跑分开始"><a class="markdownIt-Anchor" href="#1-从业务问题开始而不是从跑分开始"></a> 1. 从业务问题开始，而不是从跑分开始</h2>
+<p>假设平台持续接收设备遥测数据，同时提供最近状态、时间范围、聚合统计和告警查询。设备可能因网络中断产生乱序数据，系统未来还需要从单机扩展到集群。</p>
+<p>第一步不是安装三个数据库，而是把业务事实补全：</p>
+<table>
+<thead>
+<tr>
+<th>业务维度</th>
+<th>需要获得的真实输入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据规模</td>
+<td>当前与规划设备数、每设备测点数、数据类型。</td>
+</tr>
+<tr>
+<td>写入节奏</td>
+<td>正常速率、峰值阶段、批大小、持续时间。</td>
+</tr>
+<tr>
+<td>乱序行为</td>
+<td>乱序比例、延迟窗口、集中补写还是持续抖动。</td>
+</tr>
+<tr>
+<td>查询行为</td>
+<td>点查、范围、聚合、最近数据查询的比例和窗口。</td>
+</tr>
+<tr>
+<td>服务目标</td>
+<td>可接受 P99、失败率、数据可见时间和正确性要求。</td>
+</tr>
+<tr>
+<td>保留与成本</td>
+<td>数据保留周期、硬件预算、压缩和冷热分层要求。</td>
+</tr>
+<tr>
+<td>运维约束</td>
+<td>部署方式、团队经验、升级、备份、监控和故障处理。</td>
+</tr>
+</tbody>
+</table>
+<p>这里不应凭经验填一个“典型值”。最可靠的来源是线上流量、查询日志、设备协议、容量规划和业务 SLA。暂时拿不到的数据应明确标为“待补”，并在结论中限制适用范围。</p>
+<pre><code class=" mermaid">flowchart LR
+    A[&quot;业务需求&quot;] --&gt; B[&quot;候选与淘汰条件&quot;]
+    B --&gt; C[&quot;统一环境与数据模型&quot;]
+    C --&gt; D[&quot;正确性验证&quot;]
+    D --&gt; E[&quot;纯写基线&quot;]
+    E --&gt; F[&quot;读写混合与乱序&quot;]
+    F --&gt; G[&quot;并发、批量与集群&quot;]
+    G --&gt; H[&quot;稳定性、资源与成本&quot;]
+    H --&gt; I[&quot;条件化选型结论&quot;]
+</code></pre>
+<h2 id="2-先设置硬门槛再讨论性能排名"><a class="markdownIt-Anchor" href="#2-先设置硬门槛再讨论性能排名"></a> 2. 先设置硬门槛，再讨论性能排名</h2>
+<p>有些要求不是用更高吞吐量可以补偿的。例如关键查询不支持、数据写入后无法正确读取、当前部署方式不符合安全要求，这些候选应先被标记为不满足，而不是进入加权平均。</p>
+<table>
+<thead>
+<tr>
+<th>硬门槛</th>
+<th>通过条件</th>
+<th>验证方式</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>必需写入和查询语义</td>
+<td>待填</td>
+<td>功能验证与独立查询</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>数据正确性</td>
+<td>数量、时间戳、类型和值无未解释差异</td>
+<td>验证模式与抽样复核</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>失败率和 P99 上限</td>
+<td>待填</td>
+<td>多轮目标负载测试</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>部署与安全要求</td>
+<td>待填</td>
+<td>架构和配置审查</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>备份恢复或高可用要求</td>
+<td>待填</td>
+<td>功能验证或独立演练</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+</tbody>
+</table>
+<p>未通过硬门槛的候选有两种处理方式：如果问题可以通过明确、可接受的配置修复，则固定修复方案后重测；如果属于能力缺失或成本不可接受，则退出当前场景的后续排名。</p>
+<h2 id="3-缩小候选范围但不要提前宣布冠军"><a class="markdownIt-Anchor" href="#3-缩小候选范围但不要提前宣布冠军"></a> 3. 缩小候选范围，但不要提前宣布冠军</h2>
+<p>进入性能测试前，可以先完成文档、许可、接口和部署条件审查，淘汰明显不符合要求的产品。此阶段的输出应是一张“候选适用性表”，而不是性能结论。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>候选 A</th>
+<th>候选 B</th>
+<th>候选 C</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>所需写入接口</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>官方文档 / 实际验证</td>
+</tr>
+<tr>
+<td>查询语义</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>官方文档 / 实际验证</td>
+</tr>
+<tr>
+<td>单机与集群部署</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>官方文档 / PoC</td>
+</tr>
+<tr>
+<td>许可与成本</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>待核实</td>
+<td>合同 / 许可文本</td>
+</tr>
+<tr>
+<td>团队运维能力</td>
+<td>待评估</td>
+<td>待评估</td>
+<td>待评估</td>
+<td>内部能力盘点</td>
+</tr>
+</tbody>
+</table>
+<p>文档宣称“支持”只能证明功能入口存在，不能替代当前版本和当前数据模型下的实际验证。</p>
+<h2 id="4-建立统一的外部测试契约"><a class="markdownIt-Anchor" href="#4-建立统一的外部测试契约"></a> 4. 建立统一的外部测试契约</h2>
+<p>不同数据库内部机制不同，无法要求所有参数完全一致。公平比较应统一对业务可见的条件：逻辑数据、操作语义、资源预算、运行过程和结果口径。</p>
+<pre><code class=" mermaid">flowchart TB
+    D[&quot;同一逻辑数据&quot;] --&gt; A[&quot;候选 A 适配器&quot;]
+    D --&gt; B[&quot;候选 B 适配器&quot;]
+    D --&gt; C[&quot;候选 C 适配器&quot;]
+    W[&quot;同一操作与到达节奏&quot;] --&gt; A
+    W --&gt; B
+    W --&gt; C
+    R[&quot;等价资源与运行流程&quot;] --&gt; A
+    R --&gt; B
+    R --&gt; C
+    A --&gt; M[&quot;统一成功、延迟、资源与正确性口径&quot;]
+    B --&gt; M
+    C --&gt; M
+</code></pre>
+<p>测试契约至少固定以下内容：</p>
+<ol>
+<li>同一设备、测点、数据类型、时间范围和预期值；</li>
+<li>同一写入节奏、批大小、并发和操作比例；</li>
+<li>同一查询语义，而不是只要求 SQL 文本相同；</li>
+<li>等价的 CPU、内存、磁盘、网络和节点数量；</li>
+<li>相同预热、正式运行、清理和重复规则；</li>
+<li>相同的正确性、P99、失败率和资源统计口径。</li>
+</ol>
+<p>数据库特有优化可以使用，但必须记录。最好分别报告“默认推荐配置”和“经调优配置”，避免把一个产品的默认状态与另一个产品的深度调优状态混为一谈。</p>
+<h2 id="5-第一关用固定数据集验证正确性"><a class="markdownIt-Anchor" href="#5-第一关用固定数据集验证正确性"></a> 5. 第一关：用固定数据集验证正确性</h2>
+<p>正式压测前，为 A、B、C 使用同一份可重复数据集，按“生成数据 → 验证写入 → 验证查询”的流程检查数量、设备、时间戳、类型和值。</p>
+<table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>预期</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写入成功点数</td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>实际设备、行和点数</td>
+<td>与预期一致</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>时间戳与字段定位</td>
+<td>无差异</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>类型与具体值</td>
+<td>无差异</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>点查、范围和聚合</td>
+<td>与参考结果一致</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+</tbody>
+</table>
+<p>不能只看 Benchmark 汇总中的失败数。还应检查验证错误日志，并用独立查询抽样复核。任何未解释的数据差异都会让该轮性能数字失去比较资格。</p>
+<h2 id="6-第二关建立顺序纯写基线"><a class="markdownIt-Anchor" href="#6-第二关建立顺序纯写基线"></a> 6. 第二关：建立顺序纯写基线</h2>
+<p>正确性通过后，先运行最简单的顺序纯写工作负载。它的目标不是完成选型，而是建立每个候选的稳定基线，并确认发压端没有成为瓶颈。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>固定项</th>
+<th>扫描项</th>
+<th>主要观察</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低压基线</td>
+<td>数据模型、接口、批大小</td>
+<td>无</td>
+<td>结果能否稳定复现。</td>
+</tr>
+<tr>
+<td>并发扫描</td>
+<td>数据、批大小、写入节奏</td>
+<td>客户端数</td>
+<td>吞吐平台和 P99 拐点。</td>
+</tr>
+<tr>
+<td>批大小扫描</td>
+<td>数据、候选并发</td>
+<td>批大小</td>
+<td>请求开销与尾延迟平衡。</td>
+</tr>
+</tbody>
+</table>
+<p>每个候选都应执行多轮，并同时记录吞吐量、平均延迟、P99、失败数、客户端资源和服务端资源。若候选之间结果范围高度重叠，应报告“当前场景未观察到稳定差异”，而不是按某一次最好成绩强行排名。</p>
+<h2 id="7-第三关恢复真实读写混合负载"><a class="markdownIt-Anchor" href="#7-第三关恢复真实读写混合负载"></a> 7. 第三关：恢复真实读写混合负载</h2>
+<p>纯写只覆盖采集路径，无法代表线上系统。接下来根据真实日志设置写入、点查、范围查询、聚合和最近数据查询的比例，并固定每类查询的设备数、测点数和时间窗口。</p>
+<pre><code class=" mermaid">flowchart LR
+    W[&quot;持续写入&quot;] --&gt; S[&quot;共享数据库资源&quot;]
+    P[&quot;点查 / 最近值&quot;] --&gt; S
+    R[&quot;范围查询&quot;] --&gt; S
+    A[&quot;聚合查询&quot;] --&gt; S
+    S --&gt; O[&quot;分操作吞吐、P99、失败与资源&quot;]
+</code></pre>
+<p>混合负载必须按操作类型报告结果。总吞吐更高，不代表关键告警查询的 P99 更低；写入表现更好，也不能掩盖范围查询失败。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>业务重要度</th>
+<th>吞吐量</th>
+<th>P99</th>
+<th>失败数</th>
+<th>是否满足目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写入</td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>待判断</td>
+</tr>
+<tr>
+<td>点查 / 最近值</td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>待判断</td>
+</tr>
+<tr>
+<td>范围查询</td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>待判断</td>
+</tr>
+<tr>
+<td>聚合查询</td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>待判断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-第四关加入乱序和峰值阶段"><a class="markdownIt-Anchor" href="#8-第四关加入乱序和峰值阶段"></a> 8. 第四关：加入乱序和峰值阶段</h2>
+<p>设备离线后的数据补写、网络抖动和不同链路延迟，会让到达顺序偏离事件时间顺序。应在固定总点数、并发、批大小和操作比例的前提下，分别测试顺序写与不同乱序形态。</p>
+<p>乱序不能只写一个比例。还要说明旧数据落后多长时间、是在少量设备持续发生，还是在一批设备上集中出现。二者可能触发完全不同的存储行为。</p>
+<p>对于高峰写入，也不能仅用一个固定频率代表完整过程。应按前文的“基线—峰值—恢复”阶段分别运行，并记录峰值后的积压、P99 和资源是否回到稳定范围。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>到达节奏</th>
+<th>乱序形态</th>
+<th>观察重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基线</td>
+<td>业务常态，待填</td>
+<td>待填</td>
+<td>稳态吞吐和 P99。</td>
+</tr>
+<tr>
+<td>峰值</td>
+<td>峰值强度与持续时间，待填</td>
+<td>待填</td>
+<td>失败、排队和资源饱和。</td>
+</tr>
+<tr>
+<td>恢复</td>
+<td>回到基线</td>
+<td>待填</td>
+<td>积压是否消化、延迟是否恢复。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-第五关从单机走向集群"><a class="markdownIt-Anchor" href="#9-第五关从单机走向集群"></a> 9. 第五关：从单机走向集群</h2>
+<p>如果目标部署包含集群，应在单机基线之后增加两类实验：固定总负载比较集群额外开销，以及随节点数增加负载观察扩展效率。</p>
+<p>使用多个 Benchmark 实例时，为每个实例设置不同的 <code>BENCHMARK_INDEX</code>，让设备区间互不重叠；同时保存每台压测机的单独结果。还要验证数据库内部的数据、请求和资源是否真的分布到多个节点。</p>
+<table>
+<thead>
+<tr>
+<th>规模</th>
+<th>总目标负载</th>
+<th>客户端实例</th>
+<th>数据分布</th>
+<th>每节点资源</th>
+<th>正确性</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单机</td>
+<td>待填</td>
+<td>待填</td>
+<td>不适用</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>集群规模 1</td>
+<td>待填</td>
+<td>待填</td>
+<td>待核实</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>集群规模 2</td>
+<td>待填</td>
+<td>待填</td>
+<td>待核实</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+</tr>
+</tbody>
+</table>
+<p>不要简单相加各客户端打印的吞吐量。应基于统一有效时间窗口、成功点数和完整实例集合进行聚合。</p>
+<h2 id="10-性能之外还要评估哪些内容"><a class="markdownIt-Anchor" href="#10-性能之外还要评估哪些内容"></a> 10. 性能之外，还要评估哪些内容</h2>
+<p>IoT Benchmark 可以为性能和部分正确性提供重要证据，但数据库选型还需要单独评估功能、运维、成本和生态。</p>
+<table>
+<thead>
+<tr>
+<th>决策维度</th>
+<th>典型问题</th>
+<th>证据方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性能</td>
+<td>目标负载下吞吐、P99、失败和资源如何？</td>
+<td>基准测试与监控。</td>
+</tr>
+<tr>
+<td>正确性</td>
+<td>写入、查询、覆盖、乱序语义是否符合预期？</td>
+<td>验证模式与独立查询。</td>
+</tr>
+<tr>
+<td>功能</td>
+<td>数据模型、查询、保留、压缩等是否满足需求？</td>
+<td>功能 PoC 与官方文档。</td>
+</tr>
+<tr>
+<td>运维</td>
+<td>部署、升级、扩容、监控、备份恢复是否可控？</td>
+<td>演练和团队评估。</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>节点异常、网络故障和恢复行为如何？</td>
+<td>独立故障实验。</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>软硬件、许可、云资源和人力成本如何？</td>
+<td>容量与财务测算。</td>
+</tr>
+<tr>
+<td>生态</td>
+<td>驱动、工具、社区和供应支持是否匹配？</td>
+<td>证据审查与试用。</td>
+</tr>
+</tbody>
+</table>
+<p>这些维度不能全部压缩成吞吐量。特别是故障恢复和备份恢复，应作为独立实验，不能从正常运行的集群压测中推断。</p>
+<h2 id="11-用门禁-权重形成决策而不是只看总分"><a class="markdownIt-Anchor" href="#11-用门禁-权重形成决策而不是只看总分"></a> 11. 用“门禁 + 权重”形成决策，而不是只看总分</h2>
+<p>第一步先应用硬门槛：正确性或必需能力未通过的候选不进入最终性能评分。第二步再根据业务优先级设置权重。下面的权重只是示意，真实项目必须由业务、研发和运维共同确认。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th style="text-align:right">示例权重</th>
+<th style="text-align:right">候选 A</th>
+<th style="text-align:right">候选 B</th>
+<th style="text-align:right">候选 C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标负载性能</td>
+<td style="text-align:right">30%</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+</tr>
+<tr>
+<td>资源与成本</td>
+<td style="text-align:right">20%</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+</tr>
+<tr>
+<td>功能匹配</td>
+<td style="text-align:right">15%</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+</tr>
+<tr>
+<td>运维与可靠性</td>
+<td style="text-align:right">20%</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+</tr>
+<tr>
+<td>生态与团队匹配</td>
+<td style="text-align:right">15%</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+<td style="text-align:right">待评</td>
+</tr>
+<tr>
+<td>硬门槛</td>
+<td style="text-align:right">必须通过</td>
+<td style="text-align:right">待测</td>
+<td style="text-align:right">待测</td>
+<td style="text-align:right">待测</td>
+</tr>
+</tbody>
+</table>
+<p>加权总分只能辅助决策，必须同时保留原始指标和关键差异。例如两个候选总分接近，但一个在关键查询 P99 上更稳定，另一个运维成本更低，这种权衡不能被一个小数点后的总分掩盖。</p>
+<p>评分规则也要在结果产生前确定。不能对吞吐量使用一套归一化方式，对成本临时使用另一套有利于某个候选的方式。</p>
+<h2 id="12-最终结论应该写成条件选择"><a class="markdownIt-Anchor" href="#12-最终结论应该写成条件选择"></a> 12. 最终结论应该写成条件选择</h2>
+<p>一份可信的选型结论可以采用下面的结构：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">在【业务规模、硬件资源、数据模型、工作负载和部署方式】下，<br>候选【X】通过了【正确性与功能硬门槛】，并在【关键操作】上满足【实际目标】。<br>相较其他候选，它的主要优势是【基于证据的优势】，主要代价是【资源、运维或功能代价】。<br>因此，当【当前条件】成立时建议选择【X】；若未来进入【未覆盖场景】，需要重新评估或补充测试。<br></code></pre></td></tr></table></figure>
+<p>如果不同候选适合不同边界，也可以形成条件矩阵：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>更适合的候选</th>
+<th>依据</th>
+<th>需要接受的代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关键目标 1</td>
+<td>待填</td>
+<td>待填</td>
+<td>待填</td>
+</tr>
+<tr>
+<td>关键目标 2</td>
+<td>待填</td>
+<td>待填</td>
+<td>待填</td>
+</tr>
+<tr>
+<td>未来规模 3</td>
+<td>待填</td>
+<td>待填</td>
+<td>待填</td>
+</tr>
+</tbody>
+</table>
+<p>这比宣布一个“万能冠军”更接近真实工程决策，也便于在业务规模、成本或团队能力变化后重新评估。</p>
+<h2 id="13-最终交付物清单"><a class="markdownIt-Anchor" href="#13-最终交付物清单"></a> 13. 最终交付物清单</h2>
+<p>一次完整选型至少应交付：</p>
+<ol>
+<li>业务需求、硬门槛与候选清单；</li>
+<li>统一测试方案和每个候选的适配说明；</li>
+<li>所有有效与无效轮次的运行编号；</li>
+<li>完整配置、版本、日志、CSV、监控和正确性证据；</li>
+<li>分操作、多轮范围和资源结果，而非只给最高吞吐；</li>
+<li>功能、运维、可靠性、成本与生态评估；</li>
+<li>决策矩阵、推荐条件、主要风险和未覆盖范围；</li>
+<li>未来需要重新评估的触发条件。</li>
+</ol>
+<p>未来触发条件可以是设备规模跨越某个区间、读写比例显著变化、开始部署集群、数据库大版本升级，或 SLA 发生变化。选型结论不是永久证书，而是特定条件下的证据快照。</p>
+<h2 id="14-系列小结"><a class="markdownIt-Anchor" href="#14-系列小结"></a> 14. 系列小结</h2>
+<p>从第一篇“数据库基准测试工具是什么”开始，这个系列逐步完成了一次认知转变：Benchmark 不是为了制造一个更大的数字，而是为了把业务问题转换成可重复的负载，再用正确性、性能、资源和环境证据回答它。</p>
+<p>一场可信的时序数据库选型，应遵循下面的顺序：</p>
+<pre><code class=" mermaid">flowchart LR
+    Q[&quot;问题清楚&quot;] --&gt; W[&quot;负载真实&quot;]
+    W --&gt; F[&quot;比较公平&quot;]
+    F --&gt; C[&quot;正确性通过&quot;]
+    C --&gt; R[&quot;结果可复盘&quot;]
+    R --&gt; D[&quot;结论有边界&quot;]
+</code></pre>
+<p>只要其中一环缺失，最终排名就可能失去解释力。反过来，即使测试没有产生一个绝对冠军，只要它明确了各候选的适用条件、风险和证据边界，这次选型就已经完成了最重要的工作。</p>
+<hr />
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/thulab/iot-benchmark/blob/de2f8f3fe43e837186a7cc80fa0c7b498b2d65df/README-cn.md">IoT Benchmark README（中文）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thulab/iot-benchmark/blob/de2f8f3fe43e837186a7cc80fa0c7b498b2d65df/configuration/conf/config.properties">IoT Benchmark 默认配置文件</a></li>
+<li><a href="/benchmarking/benchmarking-series/">系列目录</a></li>
+<li><a href="/benchmarking/benchmarking-14/">上一篇：14. 一份可复用的 IoT Benchmark 测试方案模板</a></li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">#测试工具</a>
+      
+        <a href="/tags/IoT-Benchmark/">#IoT Benchmark</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%89%E5%9E%8B/">#数据库选型</a>
+      
+        <a href="/tags/%E6%97%B6%E5%BA%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">#时序数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型</div>
+      <div>https://spricoder.github.io/benchmarking/benchmarking-15/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月18日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-11/" title="基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-13/" title="基准测试工具之你不知道的两三事 | 13. 怎样保存和复盘一轮测试">
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 13. 怎样保存和复盘一轮测试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

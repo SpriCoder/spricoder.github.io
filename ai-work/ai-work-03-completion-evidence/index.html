@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？ 让 AI 修改一份文档、修复一个 Bug 或整理一组资料后，我们经常会收到一段令人安心的总结：已经完成修改，已经运行检查，没有发现问题。 这段话很像工作的终点。它结构清楚，语气肯定，还会列出改了什么、验证了什么。于是，人很容易看完总结就直接进入下一项任务。 问题在于，“AI 说完成了”只是一条状态声明，不是任务已经完成的证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-03-completion-evidence/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？ 让 AI 修改一份文档、修复一个 Bug 或整理一组资料后，我们经常会收到一段令人安心的总结：已经完成修改，已经运行检查，没有发现问题。 这段话很像工作的终点。它结构清楚，语气肯定，还会列出改了什么、验证了什么。于是，人很容易看完总结就直接进入下一项任务。 问题在于，“AI 说完成了”只是一条状态声明，不是任务已经完成的证">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/202bf4127c7d4fdabb29f72e1ca017a9.png">
+<meta property="article:published_time" content="2026-07-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.422Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="人机协作">
+<meta property="article:tag" content="工作方法">
+<meta property="article:tag" content="验证">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/202bf4127c7d4fdabb29f72e1ca017a9.png">
+  
+  
+  <title>与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？ - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-21 00:00" pubdate>
+          2026年7月21日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="与-ai-一起工作-3-ai-说完成了为什么你还不能相信它"><a class="markdownIt-Anchor" href="#与-ai-一起工作-3-ai-说完成了为什么你还不能相信它"></a> 与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？</h1>
+<p>让 AI 修改一份文档、修复一个 Bug 或整理一组资料后，我们经常会收到一段令人安心的总结：已经完成修改，已经运行检查，没有发现问题。</p>
+<p>这段话很像工作的终点。它结构清楚，语气肯定，还会列出改了什么、验证了什么。于是，人很容易看完总结就直接进入下一项任务。</p>
+<p>问题在于，<strong>“AI 说完成了”只是一条状态声明，不是任务已经完成的证据。</strong></p>
+<p>AI 未必是在故意夸大。更常见的情况是，它只能根据自己看见的文件、命令输出和局部反馈判断状态，而我们真正关心的目标可能存在于它没有观察到的地方：页面是否真的恢复正常，引用是否真的支持结论，消息是否发给了正确的人，迁移后的数据是否仍然完整。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/202bf4127c7d4fdabb29f72e1ca017a9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h3 id="完成其实有四层含义"><a class="markdownIt-Anchor" href="#完成其实有四层含义"></a> “完成”其实有四层含义</h3>
+<p>很多误解来自我们把不同层次的“完成”都压缩成了同一个词。</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>实际发生的事</th>
+<th>它能证明什么</th>
+<th>还不能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已生成</td>
+<td>AI 产出了一段文本、代码或方案</td>
+<td>已经有可供检查的产物</td>
+<td>内容正确、可用</td>
+</tr>
+<tr>
+<td>已执行</td>
+<td>文件被修改，命令或工具被调用</td>
+<td>指定动作确实发生</td>
+<td>动作产生了预期效果</td>
+</tr>
+<tr>
+<td>已验证</td>
+<td>测试、检查或人工复核通过</td>
+<td>某组验收条件得到满足</td>
+<td>验收条件覆盖了全部目标</td>
+</tr>
+<tr>
+<td>已实现目标</td>
+<td>用户关心的问题已经解决</td>
+<td>任务在真实场景中成立</td>
+<td>是否适合长期维持、是否还有新风险</td>
+</tr>
+</tbody>
+</table>
+<p>例如，AI 修改了登录模块，这是“已执行”；认证测试通过，这是“已验证”；用户刷新页面后仍能保持登录，而且其他登录方式没有受到影响，才更接近“已实现目标”。</p>
+<p>这四层并不是每次都要走得同样复杂。改一个错别字，查看 Diff 可能就足够；修改生产数据，则需要备份、试运行、结果核对和明确授权。验证的强度应当与出错后的代价相匹配。</p>
+<h3 id="为什么一句完成声明不够"><a class="markdownIt-Anchor" href="#为什么一句完成声明不够"></a> 为什么一句完成声明不够</h3>
+<p>AI 对任务状态的判断，通常来自当前上下文中的可见信号。它看见命令返回成功，就可能判断“运行正常”；看见测试全部通过，就可能判断“问题已经修复”；看见文件里出现了参考文献，就可能判断“引用已经补全”。</p>
+<p>这些判断都可能有依据，却只覆盖了任务的一部分。</p>
+<p>命令返回成功，可能只说明程序没有立即报错；测试通过，可能是因为测试没有覆盖真正的故障路径；参考文献存在，也不等于原文支持当前这句话。问题不在于这些信号毫无价值，而在于我们常常给了它们超出自身范围的解释。</p>
+<p>因此，可靠协作的关键不是要求 AI “更自信地检查一遍”，而是提前把目标翻译成可以观察的验收信号。</p>
+<p>图中最重要的一步，是从“真实目标”到“可观察的验收条件”。如果这一层没有定义清楚，后面的测试再多，也可能只是在认真检查一个没有回答原问题的指标。</p>
+<h3 id="三类任务需要看三种不同证据"><a class="markdownIt-Anchor" href="#三类任务需要看三种不同证据"></a> 三类任务，需要看三种不同证据</h3>
+<p>同一句“已经完成”，放在不同任务中需要完全不同的证据。代码修改要回到行为和测试，研究写作要回到来源，外部操作则要回到系统中的实际状态。</p>
+<h4 id="修改代码不要只看文件已经改了"><a class="markdownIt-Anchor" href="#修改代码不要只看文件已经改了"></a> 修改代码：不要只看“文件已经改了”</h4>
+<p>假设任务是修复“刷新页面后登录态丢失”。一份有用的完成证据至少应回答：问题是否可以稳定复现，修改集中在哪些文件，什么测试覆盖了原来的失败路径，以及刷新后的真实行为是否符合预期。</p>
+<p>仅仅展示一段 Diff，只能证明代码发生了变化；仅仅运行整个测试套件，也不能保证目标场景包含在其中。更可靠的顺序是：先复现，再修改，然后运行针对性测试，最后回到原场景检查问题是否消失。</p>
+<h4 id="整理研究材料不要只看文章很完整"><a class="markdownIt-Anchor" href="#整理研究材料不要只看文章很完整"></a> 整理研究材料：不要只看“文章很完整”</h4>
+<p>AI 很容易生成结构完整的调研稿，但一篇文章有标题、表格和参考资料，并不等于事实链已经闭合。</p>
+<p>此时需要检查的不是文字是否流畅，而是关键结论能否对应到原始材料：来源是否真实存在，原文是否真的支持这句话，事实、作者主张和自己的判断是否被混在一起，以及没有找到依据的部分是否被明确标出。</p>
+<p>对于研究任务，“看起来像一篇报告”属于已生成；“核心论断都能回到证据”才接近已验证。</p>
+<h4 id="调用外部工具不要只看请求成功"><a class="markdownIt-Anchor" href="#调用外部工具不要只看请求成功"></a> 调用外部工具：不要只看“请求成功”</h4>
+<p>发送消息、创建日程、写入数据库或发布文档，会把影响带出当前对话。工具返回成功，可能只说明请求被系统接收，并不能自动证明接收人、正文、附件、时间和权限都正确。</p>
+<p>这类任务需要结果回读：重新读取已经创建的内容，核对实际收件人和关键字段，并明确区分“已提交请求”“系统已保存”和“对方已经收到”。外部状态越重要，越不能只依赖执行工具自己的成功提示。</p>
+<h3 id="证据要与风险相匹配"><a class="markdownIt-Anchor" href="#证据要与风险相匹配"></a> 证据要与风险相匹配</h3>
+<p>并非所有任务都值得建立一套沉重的审计流程。真正实用的做法，是按影响范围逐步增加验证强度。</p>
+<table>
+<thead>
+<tr>
+<th>任务影响</th>
+<th>例子</th>
+<th>合理的验证方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低</td>
+<td>改错别字、调整局部格式</td>
+<td>查看目标段落或 Diff</td>
+</tr>
+<tr>
+<td>中</td>
+<td>改页面、修 Bug、重组文档</td>
+<td>针对性测试、截图、链接和结构检查</td>
+</tr>
+<tr>
+<td>高</td>
+<td>数据迁移、批量删除、权限修改</td>
+<td>试运行、备份、抽样核对、完整回读和人工确认</td>
+</tr>
+<tr>
+<td>外部影响</td>
+<td>发消息、发布内容、创建审批</td>
+<td>执行前预览，执行后核对接收方、正文和系统状态</td>
+</tr>
+</tbody>
+</table>
+<p>这里没有一套适用于所有场景的固定清单。原则只有一个：错误越难撤销、影响的人越多、涉及的数据越敏感，就越需要独立于完成声明的证据。</p>
+<h3 id="让-ai-报告证据而不是只报告结论"><a class="markdownIt-Anchor" href="#让-ai-报告证据而不是只报告结论"></a> 让 AI 报告证据，而不是只报告结论</h3>
+<p>与其在任务末尾只问“完成了吗”，不如要求它按下面的结构说明：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 实际修改或执行了什么？<br><span class="hljs-bullet">2.</span> 用什么方法验证？<br><span class="hljs-bullet">3.</span> 验证产生了什么可查看的结果？<br><span class="hljs-bullet">4.</span> 哪些部分没有验证，为什么？<br><span class="hljs-bullet">5.</span> 我怎样可以独立复现或抽查？<br></code></pre></td></tr></table></figure>
+<p>这种问法不会让 AI 自动变得正确，但会迫使任务状态变得更具体。它也让人能够区分：哪些是已经观察到的事实，哪些是根据局部信号作出的解释，哪些仍然只是合理猜测。</p>
+<h3 id="采用结果前的-30-秒检查"><a class="markdownIt-Anchor" href="#采用结果前的-30-秒检查"></a> 采用结果前的 30 秒检查</h3>
+<p>当 AI 再次说“已经完成”时，可以快速问自己五个问题：</p>
+<ul>
+<li>它完成的是一个动作，还是我真正关心的目标？</li>
+<li>它提供了原始结果，还是只提供了自己的总结？</li>
+<li>验证是否覆盖了最初出现问题的场景？</li>
+<li>有没有明确写出未检查的部分和结论边界？</li>
+<li>如果这次判断错了，是否能够恢复，谁会受到影响？</li>
+</ul>
+<p>“完成”不是一句结束语，而是目标与证据之间已经建立了可检查的联系。AI 可以帮助执行，也可以帮助验证，但接受结果的那一步仍然需要人的判断。</p>
+<p>下一次看到“任务已完成”，不必立刻怀疑，也不要立刻相信。先看看它留下了什么证据。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/%E9%AA%8C%E8%AF%81/">#验证</a>
+      
+        <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%96%B9%E6%B3%95/">#工作方法</a>
+      
+        <a href="/tags/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C/">#人机协作</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-03-completion-evidence/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-06-context-memory/" title="与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-series/" title="与 AI 一起工作｜系列目录">
+                        <span class="hidden-mobile">与 AI 一起工作｜系列目录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

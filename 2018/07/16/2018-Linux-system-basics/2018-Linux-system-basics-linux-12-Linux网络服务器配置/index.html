@@ -27,9 +27,9 @@
 <meta property="article:modified_time" content="2022-03-07T10:32:13.608Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="课程笔记">
-<meta property="article:tag" content="网络">
 <meta property="article:tag" content="服务器">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -76,7 +76,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -189,7 +189,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2018-Linux系统基础-linux-12-Linux网络服务器配置">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -435,7 +435,7 @@
 <li>可以使用文本编辑器编辑NFS配置文件，NFS服务器的主要配置文件是/etc/exports，该文件控制着NFS服务器导出哪些目录。</li>
 <li>/etc/exports文件
 <ol>
-<li><code>[目录] [主机](选项)</code></li>
+<li><code>[目录]  [主机](选项)</code></li>
 <li>请谨慎处理/etc/exports文件中的空格。</li>
 <li>文件被改变后，必须使用如下命令重新载入配置文件:<code>service nfs reload</code></li>
 </ol>
@@ -1127,5 +1127,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

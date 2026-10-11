@@ -47,8 +47,8 @@
 <meta property="article:published_time" content="2021-07-15T11:02:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:47:31.294Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="软件系统设计">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec02/1.png">
@@ -97,7 +97,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -210,7 +210,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-软件系统设计-Lec02-Strategy Pattern">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -469,7 +469,7 @@
 <li>存在许多用于将文本流分成行的算法。将所有这样的算法硬连接到类中是不可取的。</li>
 <li>不满足开闭原则，每次修改都要反复检查每一个条件语句</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Context</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">algorithm</span><span class="hljs-params">(String type)</span>&#123;<br>      <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyA&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyA</span>();<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyB&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyB</span>();<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyC&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyC</span>();<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Context</span>&#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">algorithm</span><span class="hljs-params">(String type)</span>&#123;<br>      <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyA&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyA</span>();<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyB&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyB</span>();<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.equals(<span class="hljs-string">&quot;strategyC&quot;</span>)) &#123;<br>         <span class="hljs-built_in">this</span>.strategy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategyC</span>();<br>      &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="73-应用场景"><a class="markdownIt-Anchor" href="#73-应用场景"></a> 7.3. 应用场景</h2>
 <ol>
 <li>在以下情况下使用策略模式
@@ -1072,5 +1072,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

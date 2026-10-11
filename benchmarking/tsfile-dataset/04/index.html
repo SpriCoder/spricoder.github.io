@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="04-让 TsFile 像 Unix 文件一样进入工具链 各机房每天提交一份温湿度 TsFile，数据接收方希望自动生成检查报告：文件是否可以读取、表结构是否符合约定、温度超过阈值的记录有多少。Shell 可以负责目录遍历与任务编排，TsFile-Cli 负责单个文件的结构化访问，jq 负责筛选和汇总。原有的 Unix 自动化流程由此可以纳入二进制时序数据集。 本篇回到导读提出的“可组合”价值：让">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-让 TsFile 像 Unix 文件一样进入工具链">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/04/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="04-让 TsFile 像 Unix 文件一样进入工具链 各机房每天提交一份温湿度 TsFile，数据接收方希望自动生成检查报告：文件是否可以读取、表结构是否符合约定、温度超过阈值的记录有多少。Shell 可以负责目录遍历与任务编排，TsFile-Cli 负责单个文件的结构化访问，jq 负责筛选和汇总。原有的 Unix 自动化流程由此可以纳入二进制时序数据集。 本篇回到导读提出的“可组合”价值：让">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.714Z">
+<meta property="article:author" content="SpriCoder">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>04-让 TsFile 像 Unix 文件一样进入工具链 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-11 00:00" pubdate>
+          2026年10月11日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">04-让 TsFile 像 Unix 文件一样进入工具链</h1>
+            
+            <div class="markdown-body">
+              
+              <p>04-让 TsFile 像 Unix 文件一样进入工具链</p>
+<p>各机房每天提交一份温湿度 TsFile，数据接收方希望自动生成检查报告：文件是否可以读取、表结构是否符合约定、温度超过阈值的记录有多少。Shell 可以负责目录遍历与任务编排，TsFile-Cli 负责单个文件的结构化访问，jq 负责筛选和汇总。原有的 Unix 自动化流程由此可以纳入二进制时序数据集。</p>
+<p>本篇回到导读提出的“可组合”价值：让文件访问结果进入 Shell、CI 和数据处理流程。</p>
+<p>这一组合依赖稳定的进程接口：结果写入 stdout，诊断写入 stderr，命令退出码表示执行状态。TsFile-Cli 提供文件访问能力，Shell 和下游程序提供组合能力，各工具可以直接共享实现语言或 SDK。</p>
+<p>本文沿用专栏的四行 sensors 示例。time 约定为 Unix 毫秒时间戳，temperature 为摄氏温度，humidity 为相对湿度百分比。这些是示例的数据约定，业务单位需要配套说明；TsFile 的字段类型应代替单位说明。</p>
+<h2 id="先准备一个可复用的命令"><a class="markdownIt-Anchor" href="#先准备一个可复用的命令"></a> 先准备一个可复用的命令</h2>
+<p>下面示例中的 <code>/absolute/path/to/...</code> 是占位符，请替换为你本机的 TsFile 源码、二进制或演示目录。</p>
+<p>把构建产物放到变量中，后面的命令就采用变量定位工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">TSFILE_CLI=/absolute/path/to/project-tsfile/cpp/build/Debug/bin/tsfile-cli<br>DEMO_DIR=/absolute/path/to/tsfile-cli-demo<br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>如果二进制尚未构建，在 TsFile 源码的 <code>cpp/</code> 目录执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash build.sh -t=Debug --disable-antlr4<br></code></pre></td></tr></table></figure>
+<p>若已经完成第 01 篇，沿用原文件并跳过以下创建步骤；单独练习时使用新的演示目录。用下面的数据创建文件。site 和 rack 是 TAG，三个观测列是 FIELD；相同 TAG 组合代表同一设备的时间线。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.csv&quot;</span> &lt;&lt;<span class="hljs-string">&#x27;CSV&#x27;</span><br><span class="hljs-keyword">time</span>,site,rack,temperature,humidity,status<br>1725148800000,beijing,rack-a,24.6,46.0,ok<br>1725148860000,shanghai,rack-b,28.9,68.5,warn<br>1725148920000,beijing,rack-a,25.1,47.2,ok<br>1725148980000,shanghai,rack-b,29.4,70.1,warn<br>CSV<br><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> write \<br>  --table sensors \<br>  --tag site STRING \<br>  --tag rack STRING \<br>  --field temperature DOUBLE \<br>  --field humidity DOUBLE \<br>  --field status STRING \<br>  --input <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.csv&quot;</span> \<br>  --output <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p><code>write</code> 成功时默认保持安静，退出码为 <code>0</code>；加上 <code>-v</code> 才会在 <code>stderr</code> 输出创建摘要。它只创建新的单表 table-model TsFile，不修改已有文件，也不创建 tree-model 文件。</p>
+<h2 id="1-stdout-是结果stderr-是诊断"><a class="markdownIt-Anchor" href="#1-stdout-是结果stderr-是诊断"></a> 1. stdout 是结果，stderr 是诊断</h2>
+<p>先看文件级信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>读取类命令把结构化结果写到 <code>stdout</code>。因此可以把结果保存下来，或者直接交给下游程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -o pipefail<br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors \<br>  --tag-filter site eq beijing \<br>  -m temperature -m humidity \<br>  -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span> \<br>  | jq -s <span class="hljs-string">&#x27;&#123;rows: length, max_temperature: (map(.temperature) | max | . * 10 | round / 10)&#125;&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>对本文四行样例，预期显示：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;rows&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;max_temperature&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">25.1</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>这里将最大值四舍五入到一位小数，仅用于显示；底层浮点序列化可能出现更长的小数尾数。无损往返验证必须保留原始数值，应用显示舍入掩盖差异。pipefail 使上游 CLI 失败能够导致整条管道失败，但下游输出保持原样下游已经输出的内容；自动化流程必须检查整条管道状态后再接受结果。</p>
+<p><code>stderr</code> 应该混入这条数据流。比如打开 <code>-v</code> 或发生错误时，摘要和诊断仍然写在 <code>stderr</code>，所以调用方可以安全地把 <code>stdout</code> 交给 JSON 解析器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson \<br>  <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/rows.ndjson&quot;</span> \<br>  2&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/rows.err&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p><code>rows.ndjson</code> 保存数据，<code>rows.err</code> 保存诊断，两者可以分别归档。</p>
+<h2 id="2-以退出码判断命令是否完整成功"><a class="markdownIt-Anchor" href="#2-以退出码判断命令是否完整成功"></a> 2. 以退出码判断命令是否完整成功</h2>
+<p>TsFile-Cli 使用四类退出状态：</p>
+<table>
+<thead>
+<tr>
+<th>退出码</th>
+<th>含义</th>
+<th>调用方该怎么做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>完整成功</td>
+<td>接受 stdout 或正式输出文件</td>
+</tr>
+<tr>
+<td>1</td>
+<td>用法或参数错误</td>
+<td>修正命令、模型、对象或列名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>输入问题</td>
+<td>检查文件是否存在、损坏，或 CSV 是否非法</td>
+</tr>
+<tr>
+<td>3</td>
+<td>运行或目标交付失败</td>
+<td>检查查询执行、输出写入、flush/close、目标冲突等问题</td>
+</tr>
+</tbody>
+</table>
+<p>请以退出码作为完整性判断，stdout 只作为数据载体。<code>cat</code>、<code>head</code> 和 <code>export</code> 需要解码数据页，错误可能发生在已经输出部分结果之后；只要退出码为 <code>0</code> 时接受结果，其他状态进入诊断流程。一个脚本可以这样写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br><br><span class="hljs-keyword">if</span> ! <span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span> \<br>      &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/all.ndjson&quot;</span> \<br>      2&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/all.err&quot;</span>; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;TsFile read failed; see %s\n&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/all.err&quot;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><br>jq -s <span class="hljs-string">&#x27;length&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/all.ndjson&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>这里的 <code>exit 1</code> 是外层脚本自己的失败状态；真实失败原因仍保留在 <code>all.err</code>。如果下游提前关闭管道，写端也可能收到 <code>SIGPIPE/EPIPE</code>，按工具契约返回运行期失败。对于只想取前几行的场景，优先使用 <code>tsfile-cli head -n</code>，这样限制发生在 TsFile-Cli 内部：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">head</span> -t sensors -n 2 -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="3-ndjson-和-csv-是给程序的接口"><a class="markdownIt-Anchor" href="#3-ndjson-和-csv-是给程序的接口"></a> 3. NDJSON 和 CSV 是给程序的接口</h2>
+<p>TsFile-Cli 提供 <code>table</code>、<code>csv</code> 和 <code>ndjson</code> 三种输出形式：</p>
+<ul>
+<li>table 适合人直接阅读；为对齐列，它可能使用临时 spool，需要结合资源消耗选择流式格式。</li>
+<li>csv 遵循 RFC 4180，适合支持 CSV 语法的工具。空值写作未引用的 \N，空字符串写作 “”。</li>
+<li>ndjson 每行一个 JSON 对象，适合 jq 或逐行处理器。空值是 null，非有限浮点数也归一化为 JSON null。</li>
+</ul>
+<p>例如，用 NDJSON 筛选温度达到或超过 28 摄氏度的记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -o pipefail<br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -m temperature -m humidity \<br>  -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span> \<br>  | jq <span class="hljs-string">&#x27;select(.temperature != null and .temperature &gt;= 28)&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>本文样例对应上海机房的两条记录。通用 CSV 可能包含引号、字段内逗号和换行，应使用 awk -F, 代替 CSV 解析器。</p>
+<p>在自动化脚本中建议显式指定 <code>-f csv</code> 或 <code>-f ndjson</code>，请依赖终端环境推测格式。这样同一条命令在交互式终端、重定向和 CI 中都会产生可预期的字节流。</p>
+<h2 id="4-管道不仅能读也能写"><a class="markdownIt-Anchor" href="#4-管道不仅能读也能写"></a> 4. 管道不仅能读，也能写</h2>
+<p><code>write --stdin</code> 允许上游程序把 CSV 直接送进 TsFile-Cli：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -euo pipefail<br><span class="hljs-built_in">cat</span> <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.csv&quot;</span> \<br>  | <span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> write \<br>      --table sensors \<br>      --tag site STRING --tag rack STRING \<br>      --field temperature DOUBLE \<br>      --field humidity DOUBLE \<br>      --field status STRING \<br>      --stdin -o <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/from-stdin.tsfile&quot;</span><br><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> count -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/from-stdin.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>写入有几个容易被忽略的约束：输入必须有唯一表头，并且包含保留列 <code>time</code>；列名必须与命令行声明的 TAG/FIELD 完全对应；类型不会自动推断；同一 TAG 组合内的时间戳必须严格递增。不同设备之间可以交错输入，但同一设备乱序会失败并报告行号。</p>
+<p>失败导入会保持目标文件缺失。目标文件请使用独立路径。成功提交后再用 <code>count</code>、<code>meta</code> 或 <code>schema</code> 回读，是比“目标文件已经出现”更可靠的校验。</p>
+<h2 id="5-需要落盘时使用-export-而是裸重定向"><a class="markdownIt-Anchor" href="#5-需要落盘时使用-export-而是裸重定向"></a> 5. 需要落盘时，使用 export 而是裸重定向</h2>
+<p>管道适合把数据交给另一个进程；需要生成一个可交付文件时，使用 <code>export</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">export</span> -t sensors --<span class="hljs-built_in">type</span> csv \<br>  -o <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors-export.csv&quot;</span> \<br>  <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p><code>export</code> 在命令级校验、读取和写入成功后才提交正式目标；<code>cat &gt; sensors-export.csv</code> 则由 shell 立即创建目标，过程中失败可能留下半文件。这个差别在数据集发布、批处理和流水线重试时尤其重要。</p>
+<h2 id="6-为每日数据目录生成检查报告"><a class="markdownIt-Anchor" href="#6-为每日数据目录生成检查报告"></a> 6. 为每日数据目录生成检查报告</h2>
+<p>下面是一个基于同一 sensors Schema 的 Bash 示例。它遍历 DEMO_DIR 顶层的 TsFile，保存结构信息，读取温度列，并汇总阈值记录数。每次执行使用独立报告目录，失败文件保留诊断，尚未完成的报告不会发布为正式报告。该示例需要 Bash 与 jq，已在本专栏 TsFile-Cli 基线上对四行样例实际执行；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -euo pipefail<br>REPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/check-report.XXXXXX&quot;</span>)<br><span class="hljs-built_in">shopt</span> -s nullglob<br>files=(<span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>&quot;</span>/*.tsfile)<br><span class="hljs-keyword">if</span> (( <span class="hljs-variable">$&#123;#files[@]&#125;</span> == <span class="hljs-number">0</span> )); <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;No TsFile input found.\n&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>: &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/summary.pending.ndjson&quot;</span><br>failed=0<br>index=0<br><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;files[@]&#125;</span>&quot;</span>; <span class="hljs-keyword">do</span><br>  index=$((index + <span class="hljs-number">1</span>))<br>  prefix=<span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/<span class="hljs-variable">$index</span>&quot;</span><br>  <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.meta&quot;</span> 2&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.err&quot;</span> &amp;&amp;<br>     <span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.schema&quot;</span> 2&gt;&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.err&quot;</span> &amp;&amp;<br>     <span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -m temperature -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.rows&quot;</span> 2&gt;&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.err&quot;</span>; <span class="hljs-keyword">then</span><br>    jq -s --arg file <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> \<br>      <span class="hljs-string">&#x27;&#123;file: $file, rows: length,</span><br><span class="hljs-string">        temperature_ge_28: (map(select(.temperature != null and .temperature &gt;= 28)) | length)&#125;&#x27;</span> \<br>      <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.rows&quot;</span> &gt;&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/summary.pending.ndjson&quot;</span><br>  <span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;Check failed: %s; diagnostics: %s\n&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$file</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$prefix</span>.err&quot;</span> &gt;&amp;2<br>    failed=1<br>  <span class="hljs-keyword">fi</span><br><span class="hljs-keyword">done</span><br><span class="hljs-keyword">if</span> (( failed != <span class="hljs-number">0</span> )); <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;Report incomplete: %s\n&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>&quot;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><span class="hljs-built_in">mv</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/summary.pending.ndjson&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/summary.ndjson&quot;</span><br><span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;Report: %s\n&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPORT_DIR</span>/summary.ndjson&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>对本文四行 sensors.tsfile，预期报告包含 4 条记录，其中 2 条温度达到或超过 28 摄氏度。本次本地执行得到 rows=4、temperature_ge_28=2，与样例预期一致。脚本保存 Schema 供检查，但尚未实现与基准 Schema 的自动比对；生产流程可以在此基础上增加字段、类型和业务单位的验收规则。</p>
+<p>目录遍历和报告管理由 Shell 承担，单文件访问由 TsFile-Cli 承担，业务阈值计算由 jq 承担。需要将通过验收的文件纳入在线服务时，再由 IoTDB 工具执行 LOAD；TsFile-Cli 专注于文件侧操作数据库。</p>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p>标准输出、诊断信息和退出状态分开后，Shell 就能组合文件读取、筛选、统计和交付操作。需要正式输出文件时，使用 <code>export</code> 或 <code>write</code>，并检查命令结果。</p>
+<p>本文的每日报告就是一个例子：TsFile-Cli 读取文件，jq 计算温度统计，Shell 管理文件清单和报告目录。</p>
+<h2 id="继续阅读"><a class="markdownIt-Anchor" href="#继续阅读"></a> 继续阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/K0J7dNBC0owgU6xHlRachysvnQg">上一篇：文件还是数据库？</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/Ni7Kdaiv3oLBhYxKMNNcFRuqnqs">下一篇：一条 LOAD 命令接入 IoTDB</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/R0Sydx5Klo4cUSxKnB9cgIkAnLb">返回专栏目录</a></p>
+<h2 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/apache/tsfile/tree/develop/cpp/tools">Apache TsFile C++ CLI README</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apache/tsfile/blob/develop/cpp/tools/skills/tsfile-cli/SKILL.md">TsFile-Cli Skill</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apache/tsfile/pull/915">Apache TsFile PR 915</a></li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>04-让 TsFile 像 Unix 文件一样进入工具链</div>
+      <div>https://spricoder.github.io/benchmarking/tsfile-dataset/04/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/07/" title="07-LOAD 之后继续验证：用闭环脚本验证往返一致性">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">07-LOAD 之后继续验证：用闭环脚本验证往返一致性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/00/" title="00-专栏导读：AI-Native 的时序数据集">
+                        <span class="hidden-mobile">00-专栏导读：AI-Native 的时序数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

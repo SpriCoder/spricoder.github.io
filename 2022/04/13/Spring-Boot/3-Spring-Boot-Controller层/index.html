@@ -26,9 +26,9 @@
 <meta property="article:published_time" content="2022-04-13T01:11:42.000Z">
 <meta property="article:modified_time" content="2022-04-13T02:03:46.526Z">
 <meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="controller">
 <meta property="article:tag" content="spring boot">
 <meta property="article:tag" content="注解">
-<meta property="article:tag" content="controller">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -75,7 +75,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -188,7 +188,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="3-Spring Boot Controller层">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -223,7 +223,7 @@
         
         
         
-          33 分钟
+          32 分钟
         
       </span>
     
@@ -301,18 +301,18 @@
 </li>
 </ol>
 <h2 id="13-requestparam"><a class="markdownIt-Anchor" href="#13-requestparam"></a> 1.3. RequestParam</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/story&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoryController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StoryService storyService;<br>    <span class="hljs-comment">/*** 交换两个story*/</span><br>    <span class="hljs-meta">@PostMapping(&quot;/exchange&quot;)</span><br>    <span class="hljs-keyword">public</span> ResultVO&lt;Story&gt; <span class="hljs-title function_">exchangeById</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> src_id,<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> tar_id)</span>&#123;…&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/story&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoryController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StoryService storyService;<br>    <span class="hljs-comment">/*** 交换两个story*/</span><br>    <span class="hljs-meta">@PostMapping(&quot;/exchange&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">ResultVO</span>&lt;Story&gt; <span class="hljs-title function_">exchangeById</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> src_id,<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> tar_id)</span>&#123;…&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>@RequestParam从request里面取参数值。<br />
-使用http://IP:port/story/exchange?src_id=num1&amp;tar_id=num2访问，将num1和num2传递赋值给src_id和tar_id</li>
-<li>Eg.@PostMapping(&quot;/url&quot;) 等同于@RequestMapping(value = “/url”,method = RequestMethod.POST)</li>
+使用<a target="_blank" rel="noopener" href="http://IP">http://IP</a>:port/story/exchange?src_id=num1&amp;tar_id=num2访问，将num1和num2传递赋值给src_id和tar_id</li>
+<li>Eg.@PostMapping(“/url”) 等同于@RequestMapping(value = “/url”,method = RequestMethod.POST)</li>
 </ol>
 <h2 id="14-pathvariable"><a class="markdownIt-Anchor" href="#14-pathvariable"></a> 1.4. PathVariable</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**根据task获取对应的所有story*/</span><br><span class="hljs-meta">@GetMapping(&quot;/list/&#123;taskId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> ResultVO&lt;List&lt;Story&gt;&gt; <span class="hljs-title function_">getByTask</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> <span class="hljs-type">int</span> taskId)</span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**根据task获取对应的所有story*/</span><br><span class="hljs-meta">@GetMapping(&quot;/list/&#123;taskId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">ResultVO</span>&lt;List&lt;Story&gt;&gt; <span class="hljs-title function_">getByTask</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> <span class="hljs-type">int</span> taskId)</span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>@PathVariable映射url片段到java方法的参数。</li>
-<li>Eg.使用http://IP:port/story/list/num访问，num将作为参数传递给taskId</li>
-<li>Eg.@GetMapping(&quot;/url&quot;) 等同于<br />
+<li>Eg.使用<a target="_blank" rel="noopener" href="http://IP">http://IP</a>:port/story/list/num访问，num将作为参数传递给taskId</li>
+<li>Eg.@GetMapping(“/url”) 等同于<br />
 @RequestMapping(value = “/url”,method = RequestMethod.GET)</li>
 <li>@PathVariable 支持三种参数
 <ul>
@@ -324,7 +324,7 @@
 </li>
 </ol>
 <h2 id="15-requestbody"><a class="markdownIt-Anchor" href="#15-requestbody"></a> 1.5. RequestBody</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**新增story*/</span><br><span class="hljs-meta">@PostMapping(&quot;/create&quot;)</span><br><span class="hljs-keyword">public</span> ResultVO&lt;Story&gt; <span class="hljs-title function_">createStory</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> StoryVO storyInput)</span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**新增story*/</span><br><span class="hljs-meta">@PostMapping(&quot;/create&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">ResultVO</span>&lt;Story&gt; <span class="hljs-title function_">createStory</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> StoryVO storyInput)</span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>@RequestBody映射请求体到java方法的参数，一般不用于get请求。</li>
 <li>前端访问需要传递JSON字符串，字符串定义了StoryVO的属性值。</li>
@@ -333,7 +333,7 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> data = &#123;<br>    <span class="hljs-string">&quot;taskId&quot;</span>: $(<span class="hljs-string">&quot;#taskId&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;name&quot;</span>: $(<span class="hljs-string">&quot;#name&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;storyPoint&quot;</span>: $(<span class="hljs-string">&quot;#storyPoint&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;priority&quot;</span>: $(<span class="hljs-string">&quot;#priority&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;description&quot;</span>: <br>$(<span class="hljs-string">&quot;#description&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;posId&quot;</span>: $(<span class="hljs-string">&quot;#posId&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;acceptance&quot;</span>:<br>$(<span class="hljs-string">&quot;#acceptance&quot;</span>).<span class="hljs-title function_">val</span>(),<br>    <span class="hljs-string">&quot;releaseId&quot;</span>: $(<span class="hljs-string">&quot;#iteration&quot;</span>).<span class="hljs-title function_">val</span>(),<br>&#125;<br>$.<span class="hljs-title function_">ajax</span>(&#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/story/create&quot;</span>,<br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&quot;json&quot;</span>,<br>    contentType : ‘application/json’,<br>    <span class="hljs-attr">data</span>:<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),<br>    <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) &#123;…&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 <h2 id="16-getmapping"><a class="markdownIt-Anchor" href="#16-getmapping"></a> 1.6. GetMapping</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/storyMapping&quot;)</span><br><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title function_">getMapping</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> proId)</span>&#123;<br>    <span class="hljs-type">ModelAndView</span> <span class="hljs-variable">modelAndView</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ModelAndView</span>(<span class="hljs-string">&quot;storymap&quot;</span>);<br>    modelAndView.addObject(<span class="hljs-string">&quot;proId&quot;</span>,proId);<br>    <span class="hljs-keyword">return</span> modelAndView;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/storyMapping&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">ModelAndView</span> <span class="hljs-title function_">getMapping</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam</span> <span class="hljs-type">int</span> proId)</span>&#123;<br>    <span class="hljs-type">ModelAndView</span> <span class="hljs-variable">modelAndView</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ModelAndView</span>(<span class="hljs-string">&quot;storymap&quot;</span>);<br>    modelAndView.addObject(<span class="hljs-string">&quot;proId&quot;</span>,proId);<br>    <span class="hljs-keyword">return</span> modelAndView;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>controller除了下发操作到数据库，还用于跳转界面，返回值为ModelAndView类型。</li>
 <li>ModelAndView的构造参数storymap是指要跳转的目标页面storymap.html的路径。</li>
@@ -854,5 +854,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

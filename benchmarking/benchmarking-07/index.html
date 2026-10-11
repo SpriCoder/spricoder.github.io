@@ -1,0 +1,972 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比 前面的文章中，我们已经能够构造纯写和读写混合负载，也知道单次结果不能轻易代表系统能力。接下来就到了基准测试最容易产生误解、也最有实际价值的一步：比较。  比较两个数据库版本、两种写入接口，甚至两款数据库时，真正的问题不是“谁的吞吐量更大”，而是“这两个结果是否真的在回答同一个问题”。如果工作负载、硬件、配置或运行过程不同，数字再漂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/benchmarking-07/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比 前面的文章中，我们已经能够构造纯写和读写混合负载，也知道单次结果不能轻易代表系统能力。接下来就到了基准测试最容易产生误解、也最有实际价值的一步：比较。  比较两个数据库版本、两种写入接口，甚至两款数据库时，真正的问题不是“谁的吞吐量更大”，而是“这两个结果是否真的在回答同一个问题”。如果工作负载、硬件、配置或运行过程不同，数字再漂">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2fd3003282dc486c898a7cc83b5f7378.png">
+<meta property="article:published_time" content="2026-07-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.287Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="IoT Benchmark">
+<meta property="article:tag" content="性能对比">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="时序数据库">
+<meta property="article:tag" content="测试工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/2fd3003282dc486c898a7cc83b5f7378.png">
+  
+  
+  <title>基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-16 00:00" pubdate>
+          2026年7月16日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="基准测试工具之你不知道的两三事-7怎样做一场公平的性能对比"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-7怎样做一场公平的性能对比"></a> 基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">前面的文章</a>中，我们已经能够构造纯写和读写混合负载，也知道单次结果不能轻易代表系统能力。接下来就到了基准测试最容易产生误解、也最有实际价值的一步：比较。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/2fd3003282dc486c898a7cc83b5f7378.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<p>比较两个数据库版本、两种写入接口，甚至两款数据库时，真正的问题不是“谁的吞吐量更大”，而是“这两个结果是否真的在回答同一个问题”。如果工作负载、硬件、配置或运行过程不同，数字再漂亮也无法构成公平结论。</p>
+<p>这一篇讨论怎样把一场性能对比设计成可复现、可解释的实验，而不是一张只有排名的表格。</p>
+<h3 id="1-先确定这轮到底要比较什么"><a class="markdownIt-Anchor" href="#1-先确定这轮到底要比较什么"></a> 1. 先确定：这轮到底要比较什么？</h3>
+<p>一次对比只能有一个清晰的研究对象。常见的对象包括：</p>
+<table>
+<thead>
+<tr>
+<th>想回答的问题</th>
+<th>对比对象</th>
+<th>应保持不变的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新版本是否带来写入退化</td>
+<td>同一数据库的两个版本</td>
+<td>硬件、数据规模、连接方式、写入负载与配置。</td>
+</tr>
+<tr>
+<td>哪种写入接口更适合当前场景</td>
+<td>同一数据库的不同接口</td>
+<td>数据库版本、服务端配置、数据规模、客户端并发和负载。</td>
+</tr>
+<tr>
+<td>两款数据库对同一场景的表现如何</td>
+<td>不同数据库产品</td>
+<td>硬件、逻辑数据、写入节奏、查询语义和运行次数。</td>
+</tr>
+<tr>
+<td>批大小是否影响性能</td>
+<td>同一系统的两组参数</td>
+<td>除 <code>BATCH_SIZE_PER_WRITE</code> 外的所有配置和环境。</td>
+</tr>
+</tbody>
+</table>
+<p>“数据库 A 和数据库 B 谁更快”并不是一个足够完整的问题。至少还要说明：快的是哪一种负载，是纯写还是读写混合，写入是否允许乱序，查询是什么类型，以及用什么指标判断“更快”。</p>
+<h3 id="2-建立一份对比实验方案"><a class="markdownIt-Anchor" href="#2-建立一份对比实验方案"></a> 2. 建立一份对比实验方案</h3>
+<p>在运行之前，先把每轮测试要固定的东西写下来。它可以很短，但必须足够让后来的自己或其他人复现。</p>
+<p>这份“实验契约”至少应包含以下几部分：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>需要记录的内容</th>
+<th>为什么不能省略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>被测对象</td>
+<td>数据库名称、版本、写入接口、关键服务端设置</td>
+<td>这是唯一允许主动变化的部分。</td>
+</tr>
+<tr>
+<td>机器环境</td>
+<td>CPU、内存、磁盘、网络、部署方式</td>
+<td>资源差异可能比软件差异更大。</td>
+</tr>
+<tr>
+<td>数据负载</td>
+<td>设备数、测点数、数据类型、时间间隔、乱序比例</td>
+<td>它决定测试的数据形态。</td>
+</tr>
+<tr>
+<td>操作负载</td>
+<td>写入/查询比例、查询范围、客户端数、批大小</td>
+<td>它决定系统实际面对的请求。</td>
+</tr>
+<tr>
+<td>运行记录</td>
+<td>运行编号、完整配置、日志位置、开始时间</td>
+<td>它让异常结果可以被追溯。</td>
+</tr>
+<tr>
+<td>结果口径</td>
+<td>写入与查询吞吐量、P99、成功与失败数</td>
+<td>它防止只挑选对自己有利的指标。</td>
+</tr>
+</tbody>
+</table>
+<p>IoT Benchmark 的主配置、结果矩阵和延迟矩阵正好可以承载这份契约的大部分信息，但机器环境、服务端版本与部署方式仍需要额外记录。</p>
+<h3 id="3-不要把默认配置当成公平配置"><a class="markdownIt-Anchor" href="#3-不要把默认配置当成公平配置"></a> 3. 不要把“默认配置”当成公平配置</h3>
+<p>很多不公平比较并非出于主观选择，而是来自看似无害的默认差异。例如，两个数据库的连接方式不同、一个启用了压缩而另一个没有、一个测试使用本地 SSD 而另一个使用共享存储，或者一个系统测的是纯写，另一个测的是读写混合。</p>
+<p>下面几种比较不能直接成立：</p>
+<table>
+<thead>
+<tr>
+<th>不可直接比较的情况</th>
+<th>为什么不成立</th>
+<th>正确做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两组设备数、测点数或总点数不同</td>
+<td>处理的数据规模不同</td>
+<td>固定逻辑数据规模后再比较。</td>
+</tr>
+<tr>
+<td>两组 <code>DB_SWITCH</code> 或接口不同</td>
+<td>请求路径和客户端开销不同</td>
+<td>要么固定接口，要么把“接口差异”明确设为唯一变量。</td>
+</tr>
+<tr>
+<td>一组有乱序、一组无乱序</td>
+<td>写入顺序不同，存储代价也不同</td>
+<td>分别做顺序写和乱序写两组对比。</td>
+</tr>
+<tr>
+<td>一组纯写、一组读写混合</td>
+<td>系统承受的负载类型不同</td>
+<td>为两组系统执行同一份操作比例。</td>
+</tr>
+<tr>
+<td>一组出现失败、另一组全部成功</td>
+<td>成功处理的数据并不相同</td>
+<td>先解释失败并恢复可用性，再讨论性能。</td>
+</tr>
+</tbody>
+</table>
+<p>这并不要求不同数据库的所有内部设置完全一致。内部实现本来就不同，不能强行把所有选项对齐。关键在于对外可见的工作负载和可用资源应相同，而每个系统自身的必要配置都应被记录。</p>
+<h3 id="4-用基线和多轮结果替代最好的一次"><a class="markdownIt-Anchor" href="#4-用基线和多轮结果替代最好的一次"></a> 4. 用基线和多轮结果替代“最好的一次”</h3>
+<p>任何一个被测对象都应该先获得自己的稳定基线，再进入比较。做法是：在同一环境、同一负载下连续运行多轮，记录写入与查询各自的吞吐量、P99 和失败数，观察它们通常落在哪个范围。</p>
+<p>单次最高吞吐量不应成为结论，因为它可能只是暂时的缓存状态或偶然波动。更可靠的表述是：在某个固定负载和环境下，系统 A 的多轮结果通常落在某个范围，系统 B 落在另一个范围；同时，两者的尾延迟和失败数分别如何。</p>
+<p>若两个范围高度重叠，就不应强行给出“谁更快”的结论。此时可以诚实地说明：在当前负载和环境下，尚未观察到稳定差异；再根据业务需要扩大数据规模、调整负载或补充更多轮次。</p>
+<h3 id="5-结果要按操作类型分别比较"><a class="markdownIt-Anchor" href="#5-结果要按操作类型分别比较"></a> 5. 结果要按操作类型分别比较</h3>
+<p>当负载中既有写入又有查询时，不能用一个总吞吐量给系统排名。IoT Benchmark 会按操作类型给出成功数、失败数、吞吐量和延迟统计，比较时也应逐行阅读。</p>
+<table>
+<thead>
+<tr>
+<th>结果表现</th>
+<th>可以作出的判断</th>
+<th>还不能作出的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 的写入吞吐更高、P99 更低，且两者均无失败</td>
+<td>当前纯写场景下 A 的写入表现更好</td>
+<td>A 在所有查询场景下都更好。</td>
+</tr>
+<tr>
+<td>A 的写入更快，但 Q2 范围查询 P99 更高</td>
+<td>A 的写优化可能伴随该查询形态的代价</td>
+<td>A 整体体验一定更差。</td>
+</tr>
+<tr>
+<td>A 与 B 吞吐接近，但 A 的失败数更高</td>
+<td>A 当前配置下的可用性或兼容性存在问题</td>
+<td>A 的性能更高。</td>
+</tr>
+<tr>
+<td>一方只在某类聚合查询中落后</td>
+<td>差异与该查询路径有关</td>
+<td>所有读请求都会同样落后。</td>
+</tr>
+</tbody>
+</table>
+<p>这张表背后的原则很简单：结论必须与负载和指标的粒度相同。测的是 Q2，就只对 Q2 下结论；测的是顺序写，就不能延伸到乱序写；测的是单机，就不能延伸到集群部署。</p>
+<h3 id="6-写结论时保留边界比写排名更重要"><a class="markdownIt-Anchor" href="#6-写结论时保留边界比写排名更重要"></a> 6. 写结论时，保留边界比写排名更重要</h3>
+<p>一份可信的对比结论通常包含四句话：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart">在什么环境、什么版本和什么负载下；<br>比较了哪些对象，唯一变化是什么；<br>多轮运行中观察到了哪些吞吐量、<span class="hljs-title class_">P99</span> 和失败数范围；<br>这个结论不覆盖哪些场景。<br></code></pre></td></tr></table></figure>
+<p>例如，好的结论会说“在固定的顺序写入负载下，接口 A 的写入吞吐范围高于接口 B，且两者没有失败；本结果不代表乱序写入、范围查询或集群部署下的表现”。</p>
+<p>这样的表述看似保守，实际更有价值：它让读者知道结论可以被复现，也知道什么时候不能套用。</p>
+<h3 id="7-小结"><a class="markdownIt-Anchor" href="#7-小结"></a> 7. 小结</h3>
+<p>公平的性能对比，不是把两组数字放在一起，而是让两组数字来自同一份问题、同一份负载和同一套可追溯条件。先明确唯一变量，冻结环境与 workload，再执行多轮测试，最后分别比较写入、查询、P99 和失败数。</p>
+<p>在开始对比前，可以用下面的清单自查：</p>
+<ol>
+<li>本轮比较的唯一对象是什么？</li>
+<li>两组测试的机器环境与逻辑工作负载是否一致？</li>
+<li>两组是否都成功完成，没有被失败数掩盖？</li>
+<li>是否使用多轮范围，而非最好的一次？</li>
+<li>结论是否明确了适用场景与不覆盖的边界？</li>
+</ol>
+<p>当这些问题都有答案时，性能比较才不只是一次“跑分”，而能成为版本回归、接口选择和数据库选型的可靠依据。下一篇将继续讨论：怎样通过参数扫描找到并发与批大小的合理区间。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">#测试工具</a>
+      
+        <a href="/tags/IoT-Benchmark/">#IoT Benchmark</a>
+      
+        <a href="/tags/%E6%97%B6%E5%BA%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">#时序数据库</a>
+      
+        <a href="/tags/%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94/">#性能对比</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基准测试工具之你不知道的两三事 | 7.怎样做一场公平的性能对比</div>
+      <div>https://spricoder.github.io/benchmarking/benchmarking-07/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-08/" title="基准测试工具之你不知道的两三事 | 8.怎样找到并发与批大小的合理区间">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 8.怎样找到并发与批大小的合理区间</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-05/" title="基准测试工具之你不知道的两三事 | 5.什么是读写混合负载">
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 5.什么是读写混合负载</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

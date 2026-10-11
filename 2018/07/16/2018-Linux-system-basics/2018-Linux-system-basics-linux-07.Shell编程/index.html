@@ -28,8 +28,8 @@
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="shell">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="语法">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -76,7 +76,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -189,7 +189,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2018-Linux系统基础-linux-07.Shell编程">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -304,26 +304,26 @@
 <li>在/root目录下使用vi编辑器创建文件date</li>
 <li>命令：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta">#</span><span class="language-bash">filename:<span class="hljs-built_in">date</span></span><br>echo &quot;Mr.$USER,Today is:&quot;<br>date<br>ehcho whish you a lucky day!<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">filename:<span class="hljs-built_in">date</span></span><br>echo &quot;Mr.$USER,Today is:&quot;<br>date<br>ehcho whish you a lucky day!<br></code></pre></td></tr></table></figure>
 <h3 id="122-设置可执行权限"><a class="markdownIt-Anchor" href="#122-设置可执行权限"></a> 1.2.2. 设置可执行权限</h3>
 <ol>
 <li>创建完date文件后它还不能执行，需要我们给它设置可执行权限，使用如下命令给文件设置权限</li>
 <li>并且查看当前的date文件的可执行权限</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LIUNX~]# </span><span class="language-bash"><span class="hljs-built_in">chmod</span> u+x/root/date</span><br><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash"><span class="hljs-built_in">ls</span> -l /root/date</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta prompt_">[root@PC-LIUNX~]# </span><span class="language-bash"><span class="hljs-built_in">chmod</span> u+x/root/date</span><br><span class="hljs-meta prompt_">[root@PC-LINUX~]# </span><span class="language-bash"><span class="hljs-built_in">ls</span> -l /root/date</span><br></code></pre></td></tr></table></figure>
 <h3 id="123-执行shell程序"><a class="markdownIt-Anchor" href="#123-执行shell程序"></a> 1.2.3. 执行Shell程序</h3>
 <ol>
 <li>输入整个文件的完整路径执行Shell程序</li>
 <li>需要如下命令:</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">/root/date</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta prompt_">[root@PC-LINUX~]# </span><span class="language-bash">/root/date</span><br></code></pre></td></tr></table></figure>
 <h3 id="124-使用bash命令执行程序"><a class="markdownIt-Anchor" href="#124-使用bash命令执行程序"></a> 1.2.4. 使用bash命令执行程序</h3>
 <ol>
 <li>如果未设置文件的可执行权限，那么我们需要设置bash命令来告诉系统它是一个课执行的脚本，使用如下命令执行Shell程序</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">[root@PC-LINUX~]# </span><span class="language-bash">bash /root/date</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta prompt_">[root@PC-LINUX~]# </span><span class="language-bash">bash /root/date</span><br></code></pre></td></tr></table></figure>
 <h2 id="13-显示欢迎界面的shell程序"><a class="markdownIt-Anchor" href="#13-显示欢迎界面的shell程序"></a> 1.3. 显示欢迎界面的Shell程序</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta">#</span><span class="language-bash">!/bin/bash</span> <br><span class="hljs-meta">#</span><span class="language-bash">filename:welcome</span> <br>first() &#123;<br>     echo &quot;==============================================&quot;<br>    echo &quot;Hello! Everyone! Welcome to the Linux world。&quot; <br>    echo &quot;==============================================&quot; <br>&#125; <br>second() <br>&#123; <br>    echo &quot;**********************************************&quot; <br>&#125; <br>first <br>second <br>second <br>first <br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span> <br><span class="hljs-meta prompt_">#</span><span class="language-bash">filename:welcome</span> <br>first() &#123;<br>     echo &quot;==============================================&quot;<br>    echo &quot;Hello! Everyone! Welcome to the Linux world。&quot; <br>    echo &quot;==============================================&quot; <br>&#125; <br>second() <br>&#123; <br>    echo &quot;**********************************************&quot; <br>&#125; <br>first <br>second <br>second <br>first <br></code></pre></td></tr></table></figure>
 <ol>
 <li>注意函数的定义方式和引用方式</li>
 </ol>
@@ -362,7 +362,7 @@
 <li>建议所有的变量名都大写</li>
 </ol>
 </li>
-<li>用户引用变量：<code>$name or $&#123;name&#125;</code></li>
+<li>用户引用变量：<code>$name or ${name}</code></li>
 <li>说明变量是一个特定的值，之后不再改变它的值，语法：<code>readonly 变量名</code></li>
 <li>任何时候创建的变量都是局部变量，不能被Shell运行的其他命令或Shell程序所利用，如果想要声明为全局的话，语法是：<code>export 变量名||export 变量名=变量值</code></li>
 </ol>
@@ -381,8 +381,8 @@
 <li>$*：所有位置参数的内容。</li>
 <li>$?：命令执行后返回的状态。</li>
 <li>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">：</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">前</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">程</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">进</mi><mi mathvariant="normal">程</mi><mi mathvariant="normal">号</mi><mi mathvariant="normal">。</mi></mrow><annotation encoding="application/x-tex">：当前进程的进程号。
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">：</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">前</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">。</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>：当前进程的进程号。</mtext></mrow><annotation encoding="application/x-tex">：当前进程的进程号。
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">：</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">前</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">。</span></span></span></span></span></p>
 </li>
 <li>$0：当前执行的进程名。</li>
 </ol>
@@ -393,15 +393,15 @@
 <li>Shell提供了参数置换功能以便用户可以根据不同条件来给变量赋不同值</li>
 <li>五种不同形式：
 <ol>
-<li><code>$&#123;variable:-value&#125;</code>如果变量variable存在，则返回其值，否则返回值value</li>
-<li><code>$&#123;variable:=value&#125;</code>如果变量variable存在，则返回其值，否则将value赋值给variable，然后返回值value。
+<li><code>${variable:-value}</code>如果变量variable存在，则返回其值，否则返回值value</li>
+<li><code>${variable:=value}</code>如果变量variable存在，则返回其值，否则将value赋值给variable，然后返回值value。
 <ul>
 <li>位置参数不可以这样</li>
 </ul>
 </li>
-<li><code>$&#123;variable:+value&#125;</code>如果变量variable存在，则返回value的值，否则返回空值</li>
-<li><code>$&#123;variable:?value&#125;</code>如果variable存在则返回variable的值，否则把value送到标准错误输出显示，并退出shell程序</li>
-<li><code>$&#123;variable:offset[:length]&#125;</code>其中offset和length都是整数数字，中括号表示可选部分，这种引用范式返回从变量variable的第(offset+1)个字符开始的、长度为length的子串</li>
+<li><code>${variable:+value}</code>如果变量variable存在，则返回value的值，否则返回空值</li>
+<li><code>${variable:?value}</code>如果variable存在则返回variable的值，否则把value送到标准错误输出显示，并退出shell程序</li>
+<li><code>${variable:offset[:length]}</code>其中offset和length都是整数数字，中括号表示可选部分，这种引用范式返回从变量variable的第(offset+1)个字符开始的、长度为length的子串</li>
 </ol>
 </li>
 </ol>
@@ -1081,5 +1081,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

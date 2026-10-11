@@ -73,7 +73,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -186,7 +186,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="10-Spring Boot 获取Header参数">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -273,9 +273,9 @@
               
               <h2 id="spring-获取header参数"><a class="markdownIt-Anchor" href="#spring-获取header参数"></a> Spring 获取Header参数</h2>
 <h1 id="1-方法一对应的部分加入requestheader获取"><a class="markdownIt-Anchor" href="#1-方法一对应的部分加入requestheader获取"></a> 1. 方法一:对应的部分加入@RequestHeader获取</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloController</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(value = &quot;/hello&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">hello</span><span class="hljs-params">(<span class="hljs-meta">@RequestHeader(value=&quot;User-Agent&quot;)</span> String userAgent)</span>&#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloController</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(value = &quot;/hello&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">hello</span><span class="hljs-params">(<span class="hljs-meta">@RequestHeader(value=&quot;User-Agent&quot;)</span> String userAgent)</span>&#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h1 id="2-方法二类级别注入httpservletrequest"><a class="markdownIt-Anchor" href="#2-方法二类级别注入httpservletrequest"></a> 2. 方法二:类级别注入HttpServletRequest</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-meta">@RequestMapping(&quot;/hello&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloController</span> &#123;<br>     <span class="hljs-meta">@Autowired</span><br>     <span class="hljs-keyword">private</span> HttpServletRequest request;<br><br>     <span class="hljs-meta">@RequestMapping(value=&quot;/printname/&#123;name&#125;&quot;, method=RequestMethod.GET)</span><br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">printName</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> String name,</span><br><span class="hljs-params">              <span class="hljs-meta">@RequestHeader</span> HttpHeaders headers)</span> &#123;<br>          System.out.println(<span class="hljs-string">&quot;from request:&quot;</span> + request.getHeader(<span class="hljs-string">&quot;code&quot;</span>));<br>          System.out.println(<span class="hljs-string">&quot;from parameter:&quot;</span> + headers.getFirst(<span class="hljs-string">&quot;code&quot;</span>));<br>          <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello&quot;</span>;<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-meta">@RequestMapping(&quot;/hello&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloController</span> &#123;<br>     <span class="hljs-meta">@Autowired</span><br>     <span class="hljs-keyword">private</span> HttpServletRequest request;<br><br>     <span class="hljs-meta">@RequestMapping(value=&quot;/printname/&#123;name&#125;&quot;, method=RequestMethod.GET)</span><br>     <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">printName</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> String name,</span><br><span class="hljs-params">              <span class="hljs-meta">@RequestHeader</span> HttpHeaders headers)</span> &#123;<br>          System.out.println(<span class="hljs-string">&quot;from request:&quot;</span> + request.getHeader(<span class="hljs-string">&quot;code&quot;</span>));<br>          System.out.println(<span class="hljs-string">&quot;from parameter:&quot;</span> + headers.getFirst(<span class="hljs-string">&quot;code&quot;</span>));<br>          <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello&quot;</span>;<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h1 id="3-参考"><a class="markdownIt-Anchor" href="#3-参考"></a> 3. 参考</h1>
 <ol>
 <li><a href = "https://www.cnblogs.com/yuwentims/articles/9721953.html">spring mvc获取header</a></li>
@@ -773,5 +773,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

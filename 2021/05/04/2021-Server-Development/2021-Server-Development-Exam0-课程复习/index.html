@@ -60,8 +60,8 @@
 <meta property="article:published_time" content="2021-05-04T11:00:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:51:15.235Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="考试">
 <meta property="article:tag" content="服务端开发">
+<meta property="article:tag" content="考试">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/1.png">
   
@@ -109,7 +109,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -222,7 +222,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-服务端开发-Exam0-课程复习">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -257,7 +257,7 @@
         
         
         
-          314 分钟
+          313 分钟
         
       </span>
     
@@ -428,7 +428,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 使用会话和请求作用域</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Scope(value=WebApplicationContext.SCOPE_SESSION,</span><br><span class="hljs-meta">       proxyMode=ScopedProxyMode.INTERFACES)</span><br><span class="hljs-keyword">public</span> ShoppingCart <span class="hljs-title function_">cart</span><span class="hljs-params">()</span>&#123;....&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 使用会话和请求作用域</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Scope(value=WebApplicationContext.SCOPE_SESSION,</span><br><span class="hljs-meta">       proxyMode=ScopedProxyMode.INTERFACES)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">ShoppingCart</span> <span class="hljs-title function_">cart</span><span class="hljs-params">()</span>&#123;....&#125;<br></code></pre></td></tr></table></figure>
 <ol start="5">
 <li>一般情况下配置类和业务类会分包存储。</li>
 </ol>
@@ -512,7 +512,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.myapp;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Profile;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;<br><span class="hljs-keyword">import</span> org.springframework.jndi.JndiObjectFactoryBean;<br><span class="hljs-keyword">import</span> javax.sql.DataSource;<br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataSourceConfig</span> &#123;<br>    <span class="hljs-meta">@Bean(destroyMethod = &quot;shutdown&quot;)</span><br>    <span class="hljs-meta">@Profile(&quot;dev&quot;)</span> <span class="hljs-comment">// 开发环境</span><br>    <span class="hljs-keyword">public</span> DataSource <span class="hljs-title function_">embeddedDataSource</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EmbeddedDatabaseBuilder</span>()<br>                .setType(EmbeddedDatabaseType.H2)<br>                .addScript(<span class="hljs-string">&quot;classpath:schema.sql&quot;</span>)<br>                .addScript(<span class="hljs-string">&quot;classpath:test-data.sql&quot;</span>)<br>                .build();<br>    &#125;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-meta">@Profile(&quot;prod&quot;)</span> <span class="hljs-comment">//W生产环境</span><br>    <span class="hljs-keyword">public</span> DataSource <span class="hljs-title function_">jndiDataSource</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">JndiObjectFactoryBean</span> <span class="hljs-variable">jndiObjectFactoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JndiObjectFactoryBean</span>();<br>        jndiObjectFactoryBean.setJndiName(<span class="hljs-string">&quot;jdbc/myDS&quot;</span>);<br>        jndiObjectFactoryBean.setResourceRef(<span class="hljs-literal">true</span>);<br>        jndiObjectFactoryBean.setProxyInterface(javax.sql.DataSource.class);<br>        <span class="hljs-keyword">return</span> (DataSource) jndiObjectFactoryBean.getObject();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.myapp;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Profile;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;<br><span class="hljs-keyword">import</span> org.springframework.jndi.JndiObjectFactoryBean;<br><span class="hljs-keyword">import</span> javax.sql.DataSource;<br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DataSourceConfig</span> &#123;<br>    <span class="hljs-meta">@Bean(destroyMethod = &quot;shutdown&quot;)</span><br>    <span class="hljs-meta">@Profile(&quot;dev&quot;)</span> <span class="hljs-comment">// 开发环境</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">DataSource</span> <span class="hljs-title function_">embeddedDataSource</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EmbeddedDatabaseBuilder</span>()<br>                .setType(EmbeddedDatabaseType.H2)<br>                .addScript(<span class="hljs-string">&quot;classpath:schema.sql&quot;</span>)<br>                .addScript(<span class="hljs-string">&quot;classpath:test-data.sql&quot;</span>)<br>                .build();<br>    &#125;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-meta">@Profile(&quot;prod&quot;)</span> <span class="hljs-comment">//W生产环境</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">DataSource</span> <span class="hljs-title function_">jndiDataSource</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">JndiObjectFactoryBean</span> <span class="hljs-variable">jndiObjectFactoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JndiObjectFactoryBean</span>();<br>        jndiObjectFactoryBean.setJndiName(<span class="hljs-string">&quot;jdbc/myDS&quot;</span>);<br>        jndiObjectFactoryBean.setResourceRef(<span class="hljs-literal">true</span>);<br>        jndiObjectFactoryBean.setProxyInterface(javax.sql.DataSource.class);<br>        <span class="hljs-keyword">return</span> (DataSource) jndiObjectFactoryBean.getObject();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="362-conditional"><a class="markdownIt-Anchor" href="#362-conditional"></a> 3.6.2. @Conditional</h3>
 <ol>
 <li>Conditional的**.class实现了Condition接口，自己决定什么时候创建这个Bean，什么时候不创建这个Bean</li>
@@ -545,7 +545,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Qualifier</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> cold&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="364-通过代理注入给单例对象"><a class="markdownIt-Anchor" href="#364-通过代理注入给单例对象"></a> 3.6.4. 通过代理注入给单例对象</h3>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoreService</span>&#123; <br>   <span class="hljs-comment">// 单实例，注入每一个人创建的每一个购物车</span><br>   <span class="hljs-comment">// Spring如何把一个会话范围的对象注入到一个单例对象中呢？Spring实际上注入的是一个代理对象</span><br>   <span class="hljs-comment">// 最开始注入的时候Spring注入了一个代理对象，如果一开始是A的购物车，那么就会讲代理对象和对应的A的Bean对应起来</span><br>   <span class="hljs-meta">@Autowired</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setShoppingCart</span><span class="hljs-params">(ShoppingCart shoppingCart)</span>&#123;&#125;<br>   <span class="hljs-comment">// StoreService是单例对象</span><br>   <span class="hljs-comment">// ShoppingCart是接口</span><br>   <span class="hljs-comment">// shoppingCart是会话范围的对象</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoreService</span>&#123; <br>   <span class="hljs-comment">// 单实例，注入每一个人创建的每一个购物车</span><br>   <span class="hljs-comment">// Spring如何把一个会话范围的对象注入到一个单例对象中呢？Spring实际上注入的是一个代理对象</span><br>   <span class="hljs-comment">// 最开始注入的时候Spring注入了一个代理对象，如果一开始是A的购物车，那么就会讲代理对象和对应的A的Bean对应起来</span><br>   <span class="hljs-meta">@Autowired</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setShoppingCart</span><span class="hljs-params">(ShoppingCart shoppingCart)</span>&#123;&#125;<br>   <span class="hljs-comment">// StoreService是单例对象</span><br>   <span class="hljs-comment">// ShoppingCart是接口</span><br>   <span class="hljs-comment">// shoppingCart是会话范围的对象</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h1 id="4-面向切面编程-aop"><a class="markdownIt-Anchor" href="#4-面向切面编程-aop"></a> 4. 面向切面编程 AOP</h1>
 <h2 id="41-概述"><a class="markdownIt-Anchor" href="#41-概述"></a> 4.1. 概述</h2>
 <ol>
@@ -695,7 +695,7 @@
 </li>
 <li>检查回调结果</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 注意参数Errors必须紧跟在带有@Valid注解的参数后面</span><br><span class="hljs-meta">@RequestMapping(value = &quot;/add&quot;, method = RequestMethod.POST)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">savePerson</span><span class="hljs-params">(<span class="hljs-meta">@Valid</span> Person person, Errors errors)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">if</span> (errors.hasErrors()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;personForm&quot;</span>;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 注意参数Errors必须紧跟在带有@Valid注解的参数后面</span><br><span class="hljs-meta">@RequestMapping(value = &quot;/add&quot;, method = RequestMethod.POST)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">savePerson</span><span class="hljs-params">(<span class="hljs-meta">@Valid</span> Person person, Errors errors)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">if</span> (errors.hasErrors()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;personForm&quot;</span>;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="58-前后端分离和前后端不分离"><a class="markdownIt-Anchor" href="#58-前后端分离和前后端不分离"></a> 5.8. 前后端分离和前后端不分离</h2>
 <table>
 <thead>
@@ -726,11 +726,11 @@
 <ol start="2">
 <li>异常与响应页面的关联</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ExceptionHandler(DuplicateSpittleException.class)</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">handleNotFound</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error/duplicate&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ExceptionHandler(DuplicateSpittleException.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">handleNotFound</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error/duplicate&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="3">
 <li>为控制器添加通知</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ControllerAdvice</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppWideExceptionHandler</span> &#123;<br>   <span class="hljs-meta">@ExceptionHandler(DuplicateSpittleException.class)</span><br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">handleNotFound</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error/duplicate&quot;</span>; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ControllerAdvice</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AppWideExceptionHandler</span> &#123;<br>   <span class="hljs-meta">@ExceptionHandler(DuplicateSpittleException.class)</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">handleNotFound</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;error/duplicate&quot;</span>; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="4">
 <li>跨重定向请求传递数据：自学7章</li>
 </ol>
@@ -743,7 +743,7 @@
 这两个同时存在</li>
 </ol>
 <h2 id="62-安全配置"><a class="markdownIt-Anchor" href="#62-安全配置"></a> 6.2. 安全配置</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@EnableWebMvcSecurity</span> <span class="hljs-comment">// 打开Spring Security</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SecurityConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebSecurityConfigurerAdapter</span> &#123;<br>   <span class="hljs-comment">// 配如何通过拦截器保护请求</span><br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(HttpSecurity http)</span><br><br>   <span class="hljs-comment">// 配用户数据存储 内存、数据库表</span><br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(AuthenticationManagerBuilder auth)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@EnableWebMvcSecurity</span> <span class="hljs-comment">// 打开Spring Security</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SecurityConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">WebSecurityConfigurerAdapter</span> &#123;<br>   <span class="hljs-comment">// 配如何通过拦截器保护请求</span><br>   <span class="hljs-type">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(HttpSecurity http)</span><br><br>   <span class="hljs-comment">// 配用户数据存储 内存、数据库表</span><br>   <span class="hljs-type">void</span> <span class="hljs-title function_">configure</span><span class="hljs-params">(AuthenticationManagerBuilder auth)</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li><code>@EnableWebMvcSecurity</code>相比于<code>@EnableWebSecurity</code>，增加：
 <ol>
@@ -808,7 +808,7 @@
 <ol>
 <li>spring自带注解
 <ol>
-<li><code>@Secured(&#123;&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;&#125;)</code></li>
+<li><code>@Secured({&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;})</code></li>
 <li><code>securedEnabled=true</code></li>
 </ol>
 </li>
@@ -871,7 +871,7 @@
 <li>类似于<code>@Component</code></li>
 <li>转换成Spring的统一异常，实现持久化异常转换的Bean</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> BeanPostProcessor <span class="hljs-title function_">persistenceTranslation</span><span class="hljs-params">()</span>&#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PersistenceExceptionTranslationPostProcessor</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">BeanPostProcessor</span> <span class="hljs-title function_">persistenceTranslation</span><span class="hljs-params">()</span>&#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PersistenceExceptionTranslationPostProcessor</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="74-jpa-java-persistence-api"><a class="markdownIt-Anchor" href="#74-jpa-java-persistence-api"></a> 7.4. JPA Java Persistence API</h2>
 <ol>
 <li>JPA: Java持久化 API，为POJO提供持久化标准规范</li>
@@ -1304,7 +1304,7 @@
 <ol start="2">
 <li>配置CacheManager</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> EhCacheCacheManager <span class="hljs-title function_">cacheManager</span><span class="hljs-params">(CacheManager cm)</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EhCacheCacheManager</span>(cm);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">EhCacheCacheManager</span> <span class="hljs-title function_">cacheManager</span><span class="hljs-params">(CacheManager cm)</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EhCacheCacheManager</span>(cm);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="933-spring-与-redis-集成"><a class="markdownIt-Anchor" href="#933-spring-与-redis-集成"></a> 9.3.3. Spring 与 Redis 集成</h3>
 <ol>
 <li>pom依赖</li>
@@ -1313,7 +1313,7 @@
 <ol start="2">
 <li>配置CacheManager</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> CacheManager <span class="hljs-title function_">cacheManager</span><span class="hljs-params">(RedisTemplate redisTemplate)</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisCacheManager</span>(redisTemplate);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">CacheManager</span> <span class="hljs-title function_">cacheManager</span><span class="hljs-params">(RedisTemplate redisTemplate)</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisCacheManager</span>(redisTemplate);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="94-缓存注解"><a class="markdownIt-Anchor" href="#94-缓存注解"></a> 9.4. 缓存注解</h2>
 <ol>
 <li><code>@Cacheable</code>：先去缓存中查找，如果没有找到则去数据库中查找，并将结构缓存，参数是Cache的名字
@@ -1461,7 +1461,7 @@
 <li>自己创建的网络和真实的网络是一样的</li>
 <li>一个容器可以有多个网卡(IP地址)</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">connect  NETWORK CONTAINER    Connect a container to a network<br>create      Create a network<br>disconnect  NETWORK CONTAINER  Disconnect a container from a network<br>inspect     Display detailed information on one or more networks<br>ls          List networks<br>prune       Remove all unused networks<br>rm          Remove one or more networks<br>docker network create my-network<br>docker run --net=my-network --name mymongo -d mongo <br>docker run --net=my-network  -it  --rm mongo mongo --host mymongo<br><span class="hljs-meta"># </span><span class="language-bash">Docker 挂载网络</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">connect  NETWORK CONTAINER    Connect a container to a network<br>create      Create a network<br>disconnect  NETWORK CONTAINER  Disconnect a container from a network<br>inspect     Display detailed information on one or more networks<br>ls          List networks<br>prune       Remove all unused networks<br>rm          Remove one or more networks<br>docker network create my-network<br>docker run --net=my-network --name mymongo -d mongo <br>docker run --net=my-network  -it  --rm mongo mongo --host mymongo<br><span class="hljs-meta prompt_"># </span><span class="language-bash">Docker 挂载网络</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="11-微服务"><a class="markdownIt-Anchor" href="#11-微服务"></a> 11. 微服务</h1>
 <h2 id="111-单体-vs-微服务"><a class="markdownIt-Anchor" href="#111-单体-vs-微服务"></a> 11.1. 单体 VS 微服务</h2>
@@ -1580,7 +1580,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(value = &quot;/ab/ab&quot;, method = RequestMethod.GET, produces = &quot;application/json&quot;)</span><span class="hljs-keyword">public</span> ResponseEntity&lt;String&gt; <span class="hljs-title function_">bar</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">final</span> HttpHeaders httpHeaders= <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpHeaders</span>();<br>   httpHeaders.setContentType(MediaType.APPLICATION_JSON);<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;String&gt;(<span class="hljs-string">&quot;&#123;\&quot;test\&quot;: \&quot;jsonResponseExample\&quot;&#125;&quot;</span>, httpHeaders, HttpStatus.OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(value = &quot;/ab/ab&quot;, method = RequestMethod.GET, produces = &quot;application/json&quot;)</span><span class="hljs-keyword">public</span> <span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">bar</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">final</span> <span class="hljs-type">HttpHeaders</span> <span class="hljs-variable">httpHeaders</span><span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpHeaders</span>();<br>   httpHeaders.setContentType(MediaType.APPLICATION_JSON);<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;String&gt;(<span class="hljs-string">&quot;&#123;\&quot;test\&quot;: \&quot;jsonResponseExample\&quot;&#125;&quot;</span>, httpHeaders, HttpStatus.OK);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="1135-rest客户端"><a class="markdownIt-Anchor" href="#1135-rest客户端"></a> 11.3.5. REST客户端</h3>
 <ol>
 <li>new RestTemplats()</li>
@@ -1670,7 +1670,7 @@
 <li>CMD [“param1”,“param2”] (设置了ENTRYPOINT，则直接调用ENTRYPOINT添加参数)</li>
 <li>CMD command param1 param2 (执行shell内部命令)</li>
 <li>CMD echo “This is a test.” | wc -</li>
-<li>CMD [&quot;/usr/bin/wc&quot;,&quot;–help&quot;]</li>
+<li>CMD [“/usr/bin/wc”,“–help”]</li>
 </ol>
 </li>
 <li>ENTRYPOINT：配置容器，使其可执行化。配合CMD可省去&quot;application&quot;，只使用参数</li>
@@ -2018,7 +2018,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> DiscoveryClient discoveryClient;<br></code></pre></td></tr></table></figure>
 <h3 id="1346-ribbon自带负载均衡策略"><a class="markdownIt-Anchor" href="#1346-ribbon自带负载均衡策略"></a> 13.4.6. Ribbon自带负载均衡策略</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// localhost:8080/v1/tools/eureka/services</span><br><br><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> IRule <span class="hljs-title function_">ribbonRule</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RandomRule</span>();<br>   <span class="hljs-comment">//BestAvailableRule();</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// localhost:8080/v1/tools/eureka/services</span><br><br><span class="hljs-meta">@Bean</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">IRule</span> <span class="hljs-title function_">ribbonRule</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RandomRule</span>();<br>   <span class="hljs-comment">//BestAvailableRule();</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/21.png" srcset="/img/loading.gif" lazyload alt="" /><br />
 <img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/22.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h1 id="14-第十四章客户端弹性-断路器模式"><a class="markdownIt-Anchor" href="#14-第十四章客户端弹性-断路器模式"></a> 14. 第十四章：客户端弹性 断路器模式</h1>
@@ -2072,7 +2072,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/26.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <h2 id="146-断路器模式circuit-breaker-patten"><a class="markdownIt-Anchor" href="#146-断路器模式circuit-breaker-patten"></a> 14.6. 断路器模式(Circuit Breaker Patten)</h2>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/27.png" srcset="/img/loading.gif" lazyload alt="" /></p>
@@ -2765,5 +2764,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

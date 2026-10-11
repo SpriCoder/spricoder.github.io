@@ -32,10 +32,10 @@
 <meta property="article:published_time" content="2020-01-16T11:10:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:33:11.604Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="COA">
-<meta property="article:tag" content="计算机错误">
 <meta property="article:tag" content="奇偶校验">
+<meta property="article:tag" content="计算机错误">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt10/1.png">
   
@@ -83,7 +83,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -196,7 +196,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2019-计算机组织与结构-lecture10">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -317,7 +317,7 @@
 <li>Process(过程)
 <ul>
 <li>Data in(输入): produce a 𝐾 bits code 𝐶 on the 𝑀 bits data 𝐷 with a function 𝑓(原始数据D，其长度M，对其应用方法f生成额外信息C,其长度为K位，然后我们存储D和C)</li>
-<li>Data out(输出): produce a new 𝐾 bits code 𝐶′′ on the data 𝐷′ with function 𝑓, and compare with the obtained 𝐾 bits code 𝐶′(根据新的取出来的D’，再次对其应用方法f得到新的额外信息C’’，和拿出来的C’进行比较。)
+<li>Data out(输出): produce a new 𝐾 bits code 𝐶′′ on the data 𝐷′ with function 𝑓, and compare with the obtained 𝐾 bits code 𝐶′(根据新的取出来的D’，再次对其应用方法f得到新的额外信息C’'，和拿出来的C’进行比较。)
 <ul>
 <li>No error detected: send <strong>𝐷′</strong></li>
 <li>An error detected which can be corrected: correct it and send 𝐷’’</li>
@@ -376,7 +376,7 @@
 <ul>
 <li>𝑆 = 1: the number of error bits is odd(有奇数个位置是错误的)</li>
 <li>𝑆 = 0: correct or the number of error bits is even(有偶数个位置是错误(正确)的，ps.也有可能本身没有出错)</li>
-<li>上面的位置错误的数字是C’’(D’)和C’中错误的位数的综合。</li>
+<li>上面的位置错误的数字是C’‘(D’)和C’中错误的位数的综合。</li>
 </ul>
 </li>
 </ul>
@@ -1085,5 +1085,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

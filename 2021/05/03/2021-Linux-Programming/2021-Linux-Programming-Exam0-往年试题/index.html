@@ -77,7 +77,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -190,7 +190,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-Linux程序设计-Exam0-往年试题">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -554,7 +554,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bindiff</span><span class="hljs-params">(<span class="hljs-type">char</span> *file1, <span class="hljs-type">char</span> *file2, <span class="hljs-type">char</span> *fileo)</span></span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">bindiff</span>(<span class="hljs-string">&quot;1.txt&quot;</span>,<span class="hljs-string">&quot;2.txt&quot;</span>,<span class="hljs-string">&quot;3.txt&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bindiff</span><span class="hljs-params">(<span class="hljs-type">char</span> *file1, <span class="hljs-type">char</span> *file2, <span class="hljs-type">char</span> *fileo)</span></span><br><span class="hljs-function"></span>&#123;<br>	FILE * fp1 = <span class="hljs-number">0</span>,*fp2=<span class="hljs-number">0</span>,*fpo=<span class="hljs-number">0</span>;<br>	<span class="hljs-type">char</span> ch1,  ch2;<br>	fp1 = <span class="hljs-built_in">fopen</span>(file1,<span class="hljs-string">&quot;r&quot;</span>);<br>	fp2 = <span class="hljs-built_in">fopen</span>(file2,<span class="hljs-string">&quot;r&quot;</span>);<br>	fpo = <span class="hljs-built_in">fopen</span>(fileo,<span class="hljs-string">&quot;w&quot;</span>);<br>	<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>	&#123;<br>		ch1 = (<span class="hljs-type">char</span>)<span class="hljs-built_in">fgetc</span>(fp1);<br>		ch2 = (<span class="hljs-type">char</span>)<span class="hljs-built_in">fgetc</span>(fp2);<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">feof</span>(fp1) || <span class="hljs-built_in">feof</span>(fp2))<br>		&#123;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (ch1 == ch2)<br>		&#123;<br>			<span class="hljs-built_in">fputc</span>(ch2,fpo);<br>		&#125;<br>	&#125;<br>	<span class="hljs-built_in">fclose</span>(fp1);<br>	<span class="hljs-built_in">fclose</span>(fp2);<br>	<span class="hljs-built_in">fclose</span>(fpo);<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="3">
 <li>【2015】看代码，是否有缓冲区溢出？如何改进？</li>
-<li>【2015】用系统调用实现输出给定文件夹中所有文件的名字 用空格隔开，并在文件夹及文本文件的输出后注上&quot;（文件夹）&quot;、&quot;（文本文件）&quot;</li>
+<li>【2015】用系统调用实现输出给定文件夹中所有文件的名字 用空格隔开，并在文件夹及文本文件的输出后注上&quot;（文件夹）“、”（文本文件）&quot;</li>
 <li>shell脚本编程
 <ol>
 <li>【2015】获得用户输入的100个整数，并输出其最大值，最小值，总和。</li>
@@ -1091,5 +1091,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -39,9 +39,9 @@
 <meta property="article:published_time" content="2020-01-17T11:03:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:33:41.338Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="算法复杂度">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-Data-Structure/img/cpt2/im2.1.png">
   
@@ -89,7 +89,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -202,7 +202,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2019-数据结构-数据结构2-algrorithm Analysis">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -519,8 +519,8 @@
 <ol>
 <li>例子:通过前一个子序列加上之后的一个元素的和即为结果。</li>
 </ol>
-<h2 id="-code1-进一步的优化"><a class="markdownIt-Anchor" href="#-code1-进一步的优化"></a> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxSubSum2</span><span class="hljs-params">( <span class="hljs-type">int</span> [] a )</span> &#123;   <br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++ ) &#123;   <br>        <span class="hljs-type">int</span> <span class="hljs-variable">thisSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>        <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i; j &lt; a.length; j++ ) &#123;<br>            <span class="hljs-comment">//不从头加，进行累加</span><br>            thisSum += a[j]; <br>            <span class="hljs-keyword">if</span> ( thisSum &gt; maxSum ) <br>            maxSum = thisSum; <br>        &#125; <br>    &#125; <br>    <span class="hljs-keyword">return</span> maxSum; <br>&#125;<br></code></pre></td></tr></table></figure><br />
-进一步的优化</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxSubSum2</span><span class="hljs-params">( <span class="hljs-type">int</span> [] a )</span> &#123;   <br>    <span class="hljs-type">int</span> <span class="hljs-variable">maxSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++ ) &#123;   <br>        <span class="hljs-type">int</span> <span class="hljs-variable">thisSum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>        <span class="hljs-keyword">for</span> ( <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i; j &lt; a.length; j++ ) &#123;<br>            <span class="hljs-comment">//不从头加，进行累加</span><br>            thisSum += a[j]; <br>            <span class="hljs-keyword">if</span> ( thisSum &gt; maxSum ) <br>            maxSum = thisSum; <br>        &#125; <br>    &#125; <br>    <span class="hljs-keyword">return</span> maxSum; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="进一步的优化"><a class="markdownIt-Anchor" href="#进一步的优化"></a> 进一步的优化</h2>
 <ol>
 <li>我们使用分治法:将一个问题分为两个部分来解决。</li>
 <li><strong>分阶段</strong>:把问题分成两个大致相等的子问题，然后递归地对它们求解。</li>
@@ -1080,5 +1080,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

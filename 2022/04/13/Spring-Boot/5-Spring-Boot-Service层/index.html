@@ -27,8 +27,8 @@
 <meta property="article:published_time" content="2022-04-13T01:13:45.000Z">
 <meta property="article:modified_time" content="2022-04-13T02:03:53.154Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="spring boot">
 <meta property="article:tag" content="service">
+<meta property="article:tag" content="spring boot">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/service/1.png">
   
@@ -76,7 +76,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -189,7 +189,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="5-Spring Boot Service层">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -276,7 +276,7 @@
               
               <h2 id="spring-service层"><a class="markdownIt-Anchor" href="#spring-service层"></a> Spring Service层</h2>
 <h1 id="1-service层"><a class="markdownIt-Anchor" href="#1-service层"></a> 1. Service层</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoryServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">StoryService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StoryDao storyDao;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">()</span>;<span class="hljs-comment">//需要重载</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StoryServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">StoryService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> StoryDao storyDao;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">()</span>;<span class="hljs-comment">//需要重载</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>@Service对应业务层的Bean。</li>
 <li>@Service注解是告诉Spring，Spring容器中会存在StoryServiceImpl的bean，当Controller需要使用StoryServiceImpl的的实例时，就可以将Spring创建好的bean注入。在Controller只需要声明一个变量storyService来接收，不用通过new StoryServiceImpl()实例化。接收方式如下</li>
@@ -812,5 +812,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -35,8 +35,8 @@
 <meta property="article:published_time" content="2022-02-24T01:06:52.000Z">
 <meta property="article:modified_time" content="2022-02-24T01:06:44.113Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="服务器">
 <meta property="article:tag" content="Docker">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Tec-Be/Jenkins/1.png">
   
@@ -84,7 +84,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -197,7 +197,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="Docker 安装 Jenkins">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -321,7 +321,7 @@
 <li><code>W: Unable to read /etc/apt/preferences.d/ - DirectoryExists (2: No such file or directory)</code>:这时新建此文件夹即可mkdir /etc/apt/preferences.d</li>
 <li>如果没有vim，先<code>apt update</code>，然后<code>apt install vim</code></li>
 </ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-updates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian/</span> buster-backports main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free</span><br>deb https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/debian-security buster/u</span>pdates main contrib non-free<br><span class="hljs-comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free</span><br><span class="hljs-meta"># deb-src https:<span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free</span></span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free</span><br><span class="hljs-meta"># deb-src https:<span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free</span></span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free</span><br><span class="hljs-meta"># deb-src https:<span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free</span></span><br>deb https<span class="hljs-punctuation">:</span><span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</span><br><span class="hljs-meta"># deb-src https:<span class="hljs-comment">//mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free</span></span><br></code></pre></td></tr></table></figure>
 <ol start="5">
 <li>添加node源：<code>curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -</code></li>
 </ol>
@@ -995,5 +995,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

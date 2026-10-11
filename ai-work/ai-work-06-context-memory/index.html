@@ -1,0 +1,909 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事 使用 AI 一段时间后，人很容易遇到三种看似矛盾的情况：刚刚说过的要求，它转眼就忘了；几天前形成的写作偏好，它有时又能继续遵守；资料明明已经放进知识库，回答时却仍然没有引用到。 这些现象常被笼统地归结为“AI 的记忆不好”。但这里其实混合了三个不同问题：模型当前看见了什么，系统为以后保留了什么，以及外部资料能否在需要时被找到。 它们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-06-context-memory/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事 使用 AI 一段时间后，人很容易遇到三种看似矛盾的情况：刚刚说过的要求，它转眼就忘了；几天前形成的写作偏好，它有时又能继续遵守；资料明明已经放进知识库，回答时却仍然没有引用到。 这些现象常被笼统地归结为“AI 的记忆不好”。但这里其实混合了三个不同问题：模型当前看见了什么，系统为以后保留了什么，以及外部资料能否在需要时被找到。 它们">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/3e354b6914d14baf95d5d8606b562454.png">
+<meta property="article:published_time" content="2026-07-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.454Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="上下文">
+<meta property="article:tag" content="知识库">
+<meta property="article:tag" content="记忆">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/3e354b6914d14baf95d5d8606b562454.png">
+  
+  
+  <title>与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-22 00:00" pubdate>
+          2026年7月22日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="与-ai-一起工作-6上下文-记忆与知识库不是同一回事"><a class="markdownIt-Anchor" href="#与-ai-一起工作-6上下文-记忆与知识库不是同一回事"></a> 与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事</h1>
+<p>使用 AI 一段时间后，人很容易遇到三种看似矛盾的情况：刚刚说过的要求，它转眼就忘了；几天前形成的写作偏好，它有时又能继续遵守；资料明明已经放进知识库，回答时却仍然没有引用到。</p>
+<p>这些现象常被笼统地归结为“AI 的记忆不好”。但这里其实混合了三个不同问题：模型当前看见了什么，系统为以后保留了什么，以及外部资料能否在需要时被找到。</p>
+<p>它们分别对应<strong>上下文、记忆和知识库</strong>。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/3e354b6914d14baf95d5d8606b562454.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><br />
+一句话概括：**上下文是当前工作台，记忆是跨任务保留的信息，知识库是需要主动查找的外部资料。**三者可以协同，却不能相互替代。</p>
+<h3 id="先看三者分别解决什么问题"><a class="markdownIt-Anchor" href="#先看三者分别解决什么问题"></a> 先看三者分别解决什么问题</h3>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>核心问题</th>
+<th>信息通常来自哪里</th>
+<th>主要失效方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上下文</td>
+<td>这一次任务中，AI 当前能看见什么</td>
+<td>当前对话、系统指令、打开的文件、工具返回</td>
+<td>过长、噪声、冲突、关键内容被淹没</td>
+</tr>
+<tr>
+<td>记忆</td>
+<td>哪些过去信息值得以后继续使用</td>
+<td>历史任务、稳定偏好、项目状态、已确认结论</td>
+<td>过时、写错、召回错误、混入其他任务</td>
+</tr>
+<tr>
+<td>知识库</td>
+<td>需要依据哪些外部资料回答</td>
+<td>文档、网页、数据库、论文和内部资料</td>
+<td>索引遗漏、检索不准、权限不匹配、来源过时</td>
+</tr>
+</tbody>
+</table>
+<p>这张表最重要的区别，是信息是否已经进入当前工作区。知识库里存着一千份文档，并不意味着模型此刻正在阅读这一千份文档；记忆系统保存了一条偏好，也不意味着它一定会在本轮任务中被召回。</p>
+<h3 id="上下文模型眼前的工作台"><a class="markdownIt-Anchor" href="#上下文模型眼前的工作台"></a> 上下文：模型眼前的工作台</h3>
+<p>上下文可以理解为 AI 当前摊在桌面上的材料，包括这轮任务的目标、前面的对话、相关文件、工具结果和行为约束。模型要基于这些可见内容判断下一步做什么。</p>
+<p>上下文的优势是直接。只要一条信息明确出现在当前工作台上，它就有机会立即影响回答。问题是，工作台的面积有限，而且信息越多并不一定越好。</p>
+<p>如果同时放入多份重复文档、长日志、旧版本方案和互相矛盾的要求，关键约束反而更难被识别。所谓“上下文工程”并不只是设法塞入更多内容，而是决定哪些材料现在必须出现，哪些可以暂时收起，以及冲突时以谁为准。</p>
+<p>因此，当前任务最关键的信息——目标、范围、禁止事项和验收条件——应当明确出现在上下文中，不能期待 AI 从遥远的历史对话里自行找回。</p>
+<h3 id="记忆不是保存全部历史而是决定以后带走什么"><a class="markdownIt-Anchor" href="#记忆不是保存全部历史而是决定以后带走什么"></a> 记忆：不是保存全部历史，而是决定以后带走什么</h3>
+<p>记忆解决的是跨任务连续性。例如，一个人偏好中文写作，一个项目要求保留原始文档，或者某项研究已经确定了统一名称。这些信息不应每次从头解释，于是系统会把它们保存下来，在后续任务中按需召回。</p>
+<p>但记忆并不是完整聊天记录的另一个名字。真正有用的记忆至少包含三个动作：</p>
+<ol>
+<li>判断什么值得保存，而不是把所有细节永久堆积起来。</li>
+<li>在新事实出现时更新或替换旧信息，而不是只追加。</li>
+<li>在相关任务中准确召回，并说明信息来自哪里、形成于何时。</li>
+</ol>
+<p>如果缺少这些动作，记忆很快会变成新的噪声源。一次临时要求可能被误当成长期偏好，一条旧结论可能在条件已经变化后继续生效，不同项目的规则也可能被错误地带到一起。</p>
+<p>所以，记忆的核心不是“存得多”，而是<strong>保存、更新、召回和遗忘的规则是否可靠</strong>。</p>
+<h3 id="知识库像图书馆不像人的记忆"><a class="markdownIt-Anchor" href="#知识库像图书馆不像人的记忆"></a> 知识库：像图书馆，不像人的记忆</h3>
+<p>知识库保存的是可查询资料：制度文件、产品文档、论文、项目记录、数据库表或历史报告。它的价值在于把事实来源留在外部，而不是要求模型在参数或对话中永久记住全部内容。</p>
+<p>当 AI 需要回答问题时，系统先根据查询寻找相关片段，再把结果送入当前上下文。RAG 是实现这种“先检索、再生成”的常见方式之一，但知识库本身并不等于 RAG，也不等于可靠答案。</p>
+<p>一份资料进入知识库后，仍然可能因为标题含糊、切片不合理、权限缺失、关键词不同或版本过时而没有被找到。即使找到了正确片段，模型也可能误读来源或把局部条件扩展为普遍结论。</p>
+<p>因此，知识库解决的是“资料放在哪里、怎样找到”，不能自动解决“找到的资料是否足够、怎样解释才正确”。</p>
+<h3 id="三者怎样一起工作"><a class="markdownIt-Anchor" href="#三者怎样一起工作"></a> 三者怎样一起工作</h3>
+<p>无论信息最初来自记忆还是知识库，真正影响当前回答之前，都要以某种形式进入本轮上下文。</p>
+<p>这个流程说明了三件容易被忽略的事：</p>
+<ul>
+<li><strong>保存了，不等于本轮召回了。</strong></li>
+<li><strong>召回了，不等于已经正确理解。</strong></li>
+<li><strong>生成了，不等于结论经过验证。</strong></li>
+</ul>
+<p>记忆和知识库负责把候选信息带到工作台，最终仍需要根据当前目标组织、比较和核验。</p>
+<h3 id="用一次报告写作看清三者"><a class="markdownIt-Anchor" href="#用一次报告写作看清三者"></a> 用一次报告写作看清三者</h3>
+<p>假设我们要让 AI 编写一份本月研究进展报告。</p>
+<p>当前报告的时间范围、栏目、读者和字数要求属于<strong>上下文</strong>，因为它们直接决定这一次任务怎样执行。</p>
+<p>长期使用的中文文风、固定章节顺序，以及“区分事实与判断”的写作偏好适合进入<strong>记忆</strong>，因为它们会在多次写作中重复使用。</p>
+<p>本月日报、论文原文、实验记录和官方公告属于<strong>知识库或外部资料源</strong>，因为它们数量较多、持续更新，并且需要保留来源与版本。</p>
+<p>如果把三者混在一起，就会出现典型问题：把本月字数要求记成永久规则，把旧报告里的事实当作当前事实，或者因为知识库中存在一份材料就声称已经核验过它。</p>
+<h3 id="什么信息应该放在哪里"><a class="markdownIt-Anchor" href="#什么信息应该放在哪里"></a> 什么信息应该放在哪里</h3>
+<table>
+<thead>
+<tr>
+<th>信息类型</th>
+<th>更适合的位置</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前任务目标和验收条件</td>
+<td>上下文</td>
+<td>本轮必须直接可见，且可能很快失效</td>
+</tr>
+<tr>
+<td>稳定的表达偏好和长期规则</td>
+<td>记忆</td>
+<td>会跨任务复用，但需要更新机制</td>
+</tr>
+<tr>
+<td>大量事实材料和原始文档</td>
+<td>知识库</td>
+<td>需要检索、引用、权限和版本管理</td>
+</tr>
+<tr>
+<td>一次性的中间日志</td>
+<td>临时上下文或任务产物</td>
+<td>通常不值得长期保留</td>
+</tr>
+<tr>
+<td>已确认的项目状态</td>
+<td>带日期和来源的记忆</td>
+<td>后续需要延续，但容易随进度变化</td>
+</tr>
+<tr>
+<td>高风险事实与最终结论</td>
+<td>原始证据加当前核验</td>
+<td>不能只依赖模型记忆或检索摘要</td>
+</tr>
+</tbody>
+</table>
+<p>这不是绝对分类。同一条信息可能先出现在上下文中，经过确认后写入记忆；一份记忆也可能只保存知识库文档的位置，而不复制整篇内容。重点是明确每条信息的生命周期和权威来源。</p>
+<h3 id="三个常见误区"><a class="markdownIt-Anchor" href="#三个常见误区"></a> 三个常见误区</h3>
+<p>第一，<strong>以为上下文越长，回答一定越好</strong>。过多材料会带来噪声、冲突和注意力分散，关键是选择与组织。</p>
+<p>第二，<strong>以为保存了聊天记录，就拥有了可靠记忆</strong>。历史记录只是原材料；没有更新、去重和召回规则，它很难稳定支持后续任务。</p>
+<p>第三，<strong>以为接入知识库，就解决了幻觉问题</strong>。知识库可以提供依据，但检索、解释和引用仍然可能出错，关键结论依然需要回到原始来源。</p>
+<h3 id="使用前的-30-秒检查"><a class="markdownIt-Anchor" href="#使用前的-30-秒检查"></a> 使用前的 30 秒检查</h3>
+<p>当 AI 出现“忘记了”或“明明有资料却没用上”的情况时，可以快速判断：</p>
+<ul>
+<li>这条信息是否明确出现在当前上下文中？</li>
+<li>它是临时要求，还是值得跨任务保存的稳定信息？</li>
+<li>记忆是否已经过时，是否带有日期和适用范围？</li>
+<li>知识库是否真的检索到了相关原文，而不是只显示相似标题？</li>
+<li>当前回答能否指出使用了哪条记忆或哪份来源？</li>
+<li>如果信息互相冲突，是否规定了权威顺序？</li>
+</ul>
+<p>上下文、记忆与知识库共同决定了 AI 能够依据什么工作，但它们承担的是不同职责。把三者分清之后，我们才知道问题到底出在“没有放到眼前”“没有保存下来”，还是“资料没有被正确找到”。</p>
+<p>AI 的连续性，不来自一个无限扩张的对话框，而来自对信息生命周期的清楚管理。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%B0%E5%BF%86/">#记忆</a>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87/">#上下文</a>
+      
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/">#知识库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-06-context-memory/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-07-multi-agent/" title="与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-03-completion-evidence/" title="与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？">
+                        <span class="hidden-mobile">与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

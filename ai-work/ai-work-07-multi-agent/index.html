@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口 当一个 AI 完成任务不够快或结果不够好时，最直觉的想法是：再启动几个 AI，让它们一起做。 于是，同一个问题被同时交给三个 Agent。过一会儿，我们得到三份结构相似、观点略有差异的答案，还需要自己重新核对事实、消除重复、处理冲突并拼成最终版本。计算量增加了，工作却没有真正减少。 这不是多 Agent 协作，只是把同一项工作重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-07-multi-agent/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口 当一个 AI 完成任务不够快或结果不够好时，最直觉的想法是：再启动几个 AI，让它们一起做。 于是，同一个问题被同时交给三个 Agent。过一会儿，我们得到三份结构相似、观点略有差异的答案，还需要自己重新核对事实、消除重复、处理冲突并拼成最终版本。计算量增加了，工作却没有真正减少。 这不是多 Agent 协作，只是把同一项工作重">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/7921e55efe8c47cc97193051835939a2.png">
+<meta property="article:published_time" content="2026-07-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.464Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="协作">
+<meta property="article:tag" content="多Agent">
+<meta property="article:tag" content="工作流">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/7921e55efe8c47cc97193051835939a2.png">
+  
+  
+  <title>与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-22 00:00" pubdate>
+          2026年7月22日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="与-ai-一起工作-7-多-agent不是多开几个聊天窗口"><a class="markdownIt-Anchor" href="#与-ai-一起工作-7-多-agent不是多开几个聊天窗口"></a> 与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口</h1>
+<p>当一个 AI 完成任务不够快或结果不够好时，最直觉的想法是：再启动几个 AI，让它们一起做。</p>
+<p>于是，同一个问题被同时交给三个 Agent。过一会儿，我们得到三份结构相似、观点略有差异的答案，还需要自己重新核对事实、消除重复、处理冲突并拼成最终版本。计算量增加了，工作却没有真正减少。</p>
+<p>这不是多 Agent 协作，只是把同一项工作重复了几遍。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/7921e55efe8c47cc97193051835939a2.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<p>多 Agent 的价值不来自数量，而来自<strong>任务能否被合理拆分、每个 Agent 是否拥有清楚边界，以及最终结果能否被可靠合并</strong>。</p>
+<h3 id="多-agent-真正增加了什么"><a class="markdownIt-Anchor" href="#多-agent-真正增加了什么"></a> 多 Agent 真正增加了什么</h3>
+<p>单个 Agent 通常在一个上下文中依次理解问题、查找资料、执行操作并形成答案。多 Agent 则把部分工作交给拥有独立上下文的执行者，使它们可以并行探索不同方向，或由不同角色依次检查同一产物。</p>
+<p>这里真正增加的不是“更多聪明”，而是三种系统能力：</p>
+<ol>
+<li><strong>隔离上下文</strong>：每个 Agent 只接收与自身任务相关的材料，减少无关信息干扰。</li>
+<li><strong>明确所有权</strong>：不同子任务由不同 Agent 负责，避免所有人都做一半。</li>
+<li><strong>并行或交叉验证</strong>：独立任务可以同时推进，关键结论也可以由另一角色复核。</li>
+</ol>
+<p>代价同样明显：需要编写委托、同步状态、处理重复、解决冲突并检查最终合并。子任务越模糊，这些协调成本越高。</p>
+<h3 id="什么任务适合拆成多个-agent"><a class="markdownIt-Anchor" href="#什么任务适合拆成多个-agent"></a> 什么任务适合拆成多个 Agent</h3>
+<table>
+<thead>
+<tr>
+<th>任务特征</th>
+<th>是否适合</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多个子问题彼此独立</td>
+<td>适合</td>
+<td>可以并行完成，互相等待较少</td>
+</tr>
+<tr>
+<td>需要不同资料、工具或专业视角</td>
+<td>适合</td>
+<td>可以按能力和证据范围分工</td>
+</tr>
+<tr>
+<td>结论需要独立复核</td>
+<td>适合</td>
+<td>生成与验证可以由不同角色承担</td>
+</tr>
+<tr>
+<td>任务很小且步骤高度连续</td>
+<td>不适合</td>
+<td>委托和合并成本可能超过执行本身</td>
+</tr>
+<tr>
+<td>多人必须同时修改同一文件</td>
+<td>通常不适合</td>
+<td>容易发生覆盖、冲突和结构漂移</td>
+</tr>
+<tr>
+<td>目标本身仍然模糊</td>
+<td>不适合</td>
+<td>模糊会被复制到每个子任务中</td>
+</tr>
+</tbody>
+</table>
+<p>一个简单判断是：如果不能用一句话说明每个 Agent 应交付什么，就还没有准备好并行。</p>
+<h3 id="一次可靠拆分需要四个部分"><a class="markdownIt-Anchor" href="#一次可靠拆分需要四个部分"></a> 一次可靠拆分需要四个部分</h3>
+<h4 id="1-任务边界"><a class="markdownIt-Anchor" href="#1-任务边界"></a> 1. 任务边界</h4>
+<p>每个 Agent 需要知道自己解决哪个问题，以及明确不解决什么。让一个 Agent “研究一下相关内容”通常会得到范围重叠的长报告；让它“只核对三项关键结论的一手来源，并输出来源、原文依据和不确定项”，结果更容易被使用。</p>
+<h4 id="2-输入边界"><a class="markdownIt-Anchor" href="#2-输入边界"></a> 2. 输入边界</h4>
+<p>不同角色不一定需要看到全部材料。检索 Agent 需要关键词和来源要求，写作 Agent 需要已经核验过的证据卡片，验证 Agent 则需要成稿、验收规则和原始证据。</p>
+<p>把所有上下文复制给所有 Agent，看似省事，实际会增加成本，也让无关材料更容易影响判断。</p>
+<h4 id="3-输出契约"><a class="markdownIt-Anchor" href="#3-输出契约"></a> 3. 输出契约</h4>
+<p>子 Agent 的输出应当可以被直接检查和合并。最小输出契约通常包括：结论、证据、适用范围、不确定项和产物位置。</p>
+<p>如果一个 Agent 只返回“已经研究完成，整体可行”，主 Agent 几乎无法判断它做了什么；如果它返回结构化证据清单，后续写作和核验就有了稳定接口。</p>
+<h4 id="4-合并权威"><a class="markdownIt-Anchor" href="#4-合并权威"></a> 4. 合并权威</h4>
+<p>多个 Agent 得出不同结论时，需要有人决定如何处理。这个角色可以是主 Agent，也可以是专门的验证者，但不能依靠简单多数票。</p>
+<p>三个 Agent 重复了同一个错误，仍然是错误。冲突应回到证据、任务规则和来源权威，而不是看哪种表述出现次数更多。</p>
+<h3 id="一个基本的协作结构"><a class="markdownIt-Anchor" href="#一个基本的协作结构"></a> 一个基本的协作结构</h3>
+<p>图中的中心不是 Agent 数量，而是“共享产物—验证—统一合并”这条链。如果缺少合并门，多个子任务只会生成更多需要人工整理的材料。</p>
+<h3 id="多-agent-最容易浪费在协调上"><a class="markdownIt-Anchor" href="#多-agent-最容易浪费在协调上"></a> 多 Agent 最容易浪费在协调上</h3>
+<p>多 Agent 系统常见的失败，并不是某个 Agent 完全不会做任务，而是协作过程中出现了结构性损耗。</p>
+<p>第一是<strong>重复劳动</strong>。多个 Agent 使用相同关键词、读取相同材料并输出相似摘要，名义上并行，实际上没有增加覆盖面。</p>
+<p>第二是<strong>前提不一致</strong>。一个 Agent 使用最新版本，另一个使用历史文档；一个按公开读者写作，另一个按学术论文组织，最终结果无法直接合并。</p>
+<p>第三是<strong>状态过期</strong>。子任务发出后，主任务的目标或材料已经变化，但子 Agent 仍根据旧上下文继续工作。</p>
+<p>第四是<strong>写入冲突</strong>。多个 Agent 同时修改同一文件，很容易覆盖彼此内容，或者让标题、术语和论证结构不断漂移。</p>
+<p>第五是<strong>合并失真</strong>。主 Agent 为了压缩输出，只保留各子任务的结论，却丢失了证据边界和未解决问题。</p>
+<p>这些成本说明，多 Agent 不是免费的并行计算。它更像组织一个临时团队：成员越多，越需要清楚的角色、接口和决策机制。</p>
+<h3 id="以一份研究报告为例"><a class="markdownIt-Anchor" href="#以一份研究报告为例"></a> 以一份研究报告为例</h3>
+<p>假设要撰写一份“AI Agent 数据安全风险”报告，可以这样分工：</p>
+<ul>
+<li><strong>证据 Agent</strong>只负责查找一手来源，输出事件、日期、原文与核验状态。</li>
+<li><strong>机制 Agent</strong>只负责把案例归纳为权限继承、提示注入、外部发送和日志残留等风险链。</li>
+<li><strong>治理 Agent</strong>只负责整理现有制度能够覆盖什么、尚不能直接推出什么。</li>
+<li><strong>验证 Agent</strong>检查正文中的每项事实能否回到来源，标题是否强于证据。</li>
+<li><strong>主 Agent</strong>决定文章结构、处理冲突，并形成统一文风的最终版本。</li>
+</ul>
+<p>这种拆法的价值在于不同角色拥有不同责任。证据 Agent 不负责写漂亮结论，写作角色也不能自行补造来源。只要输出契约清楚，多个 Agent 才能真正降低主任务的认知负担。</p>
+<h3 id="让-agent-交接产物不要交接整段对话"><a class="markdownIt-Anchor" href="#让-agent-交接产物不要交接整段对话"></a> 让 Agent 交接产物，不要交接整段对话</h3>
+<p>Agent 之间最稳定的交接对象，通常不是长篇聊天记录，而是可以验证的产物。一个简单的交接卡片可以写成：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart">任务：本 <span class="hljs-title class_">Agent</span> 负责的问题。<br><br>结论：已经得到的有限结论。<br><br>证据：来源、文件或实际运行结果。<br><br>边界：结论成立的条件和未覆盖范围。<br><br>待处理：需要下一个角色继续解决的问题。<br><br>产物：保存位置或可复现入口。<br></code></pre></td></tr></table></figure>
+<p>这种方式不会消除所有信息损失，但能够让接收者快速区分事实、解释和待办。如果确实需要了解推理过程，也应当回到相关证据和中间产物，而不是默认转发全部对话。</p>
+<h3 id="三个常见误区"><a class="markdownIt-Anchor" href="#三个常见误区"></a> 三个常见误区</h3>
+<p>第一，<strong>认为 Agent 越多，答案越可靠</strong>。相同模型、相同材料和相同提示可能产生高度相关的错误，数量不能替代独立证据。</p>
+<p>第二，<strong>把所有任务都并行化</strong>。存在明确依赖关系的步骤应当顺序执行，例如必须先确认数据口径，才能开始统计和写结论。</p>
+<p>第三，<strong>让每个 Agent 都交付完整终稿</strong>。完整终稿最难合并；明确的证据清单、对照表、检查结果和局部草稿通常更有复用价值。</p>
+<h3 id="启动多个-agent-前的-30-秒检查"><a class="markdownIt-Anchor" href="#启动多个-agent-前的-30-秒检查"></a> 启动多个 Agent 前的 30 秒检查</h3>
+<ul>
+<li>这个任务是否真的包含可以独立推进的子问题？</li>
+<li>每个 Agent 的输入、输出和禁止范围是否清楚？</li>
+<li>不同 Agent 是否会同时修改同一份产物？</li>
+<li>子任务之间有哪些依赖，哪些可以并行？</li>
+<li>结论冲突时，依据什么规则和证据裁决？</li>
+<li>谁负责最终合并，并检查遗漏、重复和文风一致性？</li>
+<li>并行带来的时间收益，是否大于委托和整合成本？</li>
+</ul>
+<p>多 Agent 不是把一个问题复制给更多模型，而是把复杂任务设计成一组边界明确、能够交接、可以验证的工作单元。</p>
+<p>真正重要的不是有多少 Agent 在运行，而是它们完成的工作能否在最后汇聚成一个可信结果。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%8F%E4%BD%9C/">#协作</a>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/%E5%A4%9AAgent/">#多Agent</a>
+      
+        <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">#工作流</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-07-multi-agent/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-09-llm-judge/" title="与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-06-context-memory/" title="与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事">
+                        <span class="hidden-mobile">与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

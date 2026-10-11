@@ -38,8 +38,8 @@
 <meta property="article:published_time" content="2021-07-15T11:05:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:47:31.295Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="软件系统设计">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Software-System-Design/img/lec05/1.png">
@@ -88,7 +88,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -201,7 +201,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-软件系统设计-Lec05-State&amp;Command">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -453,19 +453,19 @@
 <li>命令模式的关键在于<strong>引入了抽象命令接口</strong>，且<strong>发送者针对抽象命令接口编程</strong>，只有实现了抽象命令接口的<strong>具体命令才能与接收者相关联</strong>。</li>
 <li>典型的抽象命令类代码：</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Command</span>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Command</span>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="7">
 <li>典型的调用者代码</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Invoker</span>&#123;<br>  <span class="hljs-keyword">private</span> Command command;<br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Invoker</span><span class="hljs-params">(Command command)</span>&#123;<br>    <span class="hljs-built_in">this</span>.command=command;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCommand</span><span class="hljs-params">(Command command)</span>&#123;<br>    <span class="hljs-built_in">this</span>.command=command;<br>  &#125;<br>  <span class="hljs-comment">//业务方法，用于调用命令类的方法</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">call</span><span class="hljs-params">()</span>&#123;<br>    command.execute();<br>  &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Invoker</span>&#123;<br>  <span class="hljs-keyword">private</span> Command command;<br>  <span class="hljs-type">public</span> <span class="hljs-title function_">Invoker</span><span class="hljs-params">(Command command)</span>&#123;<br>    <span class="hljs-built_in">this</span>.command=command;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setCommand</span><span class="hljs-params">(Command command)</span>&#123;<br>    <span class="hljs-built_in">this</span>.command=command;<br>  &#125;<br>  <span class="hljs-comment">//业务方法，用于调用命令类的方法</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">call</span><span class="hljs-params">()</span>&#123;<br>    command.execute();<br>  &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
 <ol start="8">
 <li>典型的具体命令类代码</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteCommand</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Command</span><br>&#123;<br>  <span class="hljs-keyword">private</span> Receiver receiver;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">()</span><br>  &#123;<br>    receiver.action();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteCommand</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Command</span><br>&#123;<br>  <span class="hljs-keyword">private</span> Receiver receiver;<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">execute</span><span class="hljs-params">()</span><br>  &#123;<br>    receiver.action();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="9">
 <li>典型的请求接收者代码</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Receiver</span><br>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">action</span><span class="hljs-params">()</span><br>  &#123;<br>    <span class="hljs-comment">//具体操作</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Receiver</span><br>&#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">action</span><span class="hljs-params">()</span><br>  &#123;<br>    <span class="hljs-comment">//具体操作</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="10">
 <li>命令模式顺序图</li>
 </ol>
@@ -1046,5 +1046,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

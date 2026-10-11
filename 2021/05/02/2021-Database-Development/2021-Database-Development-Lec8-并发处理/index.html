@@ -38,10 +38,10 @@
 <meta property="article:published_time" content="2021-05-02T11:08:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:45:42.404Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="并发">
 <meta property="article:tag" content="性能">
 <meta property="article:tag" content="数据库">
-<meta property="article:tag" content="并发">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec8/1.png">
   
@@ -89,7 +89,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -202,7 +202,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-数据库开发-Lec8-并发处理">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -461,7 +461,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs sql">ORDERS<br>order_id        <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) (<span class="hljs-keyword">primary</span> key)<br>customer_id     <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>)<br>order_date      datetime<br>order_shipping  <span class="hljs-type">char</span>(<span class="hljs-number">1</span>)<br>order_comment   <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>)<br><br># <span class="hljs-keyword">primary</span> key<span class="hljs-operator">-</span>based <span class="hljs-keyword">search</span>:<br><span class="hljs-keyword">select</span> order_date<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">where</span> order_id <span class="hljs-operator">=</span> ?<br><br># sort:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> order_date<br><br># <span class="hljs-keyword">grouping</span>:<br><span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br><span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;</span> <span class="hljs-number">3</span><br><br><br># maximum <span class="hljs-keyword">value</span> <span class="hljs-keyword">in</span> a nonindexed <span class="hljs-keyword">column</span>:<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(order_date)<br><span class="hljs-keyword">from</span> orders<br><br># &quot;top 5&quot; customers <span class="hljs-keyword">by</span> number <span class="hljs-keyword">of</span> orders:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br>      <span class="hljs-keyword">from</span> orders<br>      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br>      <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span> <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> sorted_customers<br>limit <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs sql">ORDERS<br>order_id        <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) (<span class="hljs-keyword">primary key</span>)<br>customer_id     <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>)<br>order_date      datetime<br>order_shipping  <span class="hljs-type">char</span>(<span class="hljs-number">1</span>)<br>order_comment   <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>)<br><br># <span class="hljs-keyword">primary key</span><span class="hljs-operator">-</span>based <span class="hljs-keyword">search</span>:<br><span class="hljs-keyword">select</span> order_date<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">where</span> order_id <span class="hljs-operator">=</span> ?<br><br># sort:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> order_date<br><br># <span class="hljs-keyword">grouping</span>:<br><span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br><span class="hljs-keyword">from</span> orders<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br><span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;</span> <span class="hljs-number">3</span><br><br><br># maximum <span class="hljs-keyword">value</span> <span class="hljs-keyword">in</span> a nonindexed <span class="hljs-keyword">column</span>:<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(order_date)<br><span class="hljs-keyword">from</span> orders<br><br># &quot;top 5&quot; customers <span class="hljs-keyword">by</span> number <span class="hljs-keyword">of</span> orders:<br><span class="hljs-keyword">select</span> customer_id<br><span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> customer_id, <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>)<br>      <span class="hljs-keyword">from</span> orders<br>      <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> customer_id<br>      <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-number">2</span> <span class="hljs-keyword">desc</span>) <span class="hljs-keyword">as</span> sorted_customers<br>limit <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
 <ol start="6">
 <li>记录数大概从8000-1000000之间，不同的cid大概3000个</li>
 </ol>
@@ -1001,5 +1001,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -48,10 +48,10 @@
 <meta property="article:published_time" content="2021-01-15T11:04:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:36:23.849Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="商务智能">
 <meta property="article:tag" content="数据仓库">
 <meta property="article:tag" content="设计">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec4/1.png">
   
@@ -99,7 +99,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -212,7 +212,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2020-商务智能-Lecture4-Design of Data Warehouse">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -461,7 +461,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec4/5.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <ol start="3">
 <li>从操作型环境到数据仓库有三种装载工作要做：
@@ -694,12 +693,12 @@
 <li>商品固有信息：<code>商品表(商品号，商品名，类型，颜色，...) /* 细节数据 */</code></li>
 <li>商品销售信息：<code>(细节数据、天、周、月、季度、年)</code></li>
 </ol>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* 细节数据 */</span><br>销售表(商品号，顾客号，销售日期，售价，销售量，...)<br><span class="hljs-comment">/* 以&quot;天&quot;为时间统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">d1</span>(时间属性_日 ，商品属性，... ，销售总量)<br><span class="hljs-comment">/* 以&quot;周&quot;为时间统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">d2</span>(时间属性_周 ，商品属性， ... ，销售总量)<br><span class="hljs-comment">/* 以&quot;月&quot;为时间统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">d3</span>(时间属性_月 ，商品属性， ... ，销售总量)<br><span class="hljs-comment">/* 以&quot;季度&quot;为时间统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">d4</span>(时间属性_季度，商品属性， ... ，销售总量)<br><span class="hljs-comment">/* 以&quot;年&quot;为时间统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">d5</span>(时间属性_年，商品属性， ... ，销售总量)<br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dns">/* 细节数据 */<br>销售表<span class="hljs-punctuation">(</span>商品号，顾客号，销售日期，售价，销售量，...<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;天&quot;</span>为时间统计单位的综合数据 */<br>销售表d1<span class="hljs-punctuation">(</span>时间属性_日 ，商品属性，... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;周&quot;</span>为时间统计单位的综合数据 */<br>销售表d2<span class="hljs-punctuation">(</span>时间属性_周 ，商品属性， ... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;月&quot;</span>为时间统计单位的综合数据 */<br>销售表d3<span class="hljs-punctuation">(</span>时间属性_月 ，商品属性， ... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;季度&quot;</span>为时间统计单位的综合数据 */<br>销售表d4<span class="hljs-punctuation">(</span>时间属性_季度，商品属性， ... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;年&quot;</span>为时间统计单位的综合数据 */<br>销售表d5<span class="hljs-punctuation">(</span>时间属性_年，商品属性， ... ，销售总量<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <h4 id="5312-商品销售-商品属性的粒度设计"><a class="markdownIt-Anchor" href="#5312-商品销售-商品属性的粒度设计"></a> 5.3.1.2. 商品销售 –&quot;商品&quot;属性的粒度设计</h4>
 <ol>
 <li>商品销售信息：商品属性角度的粒度设计补充，细节、商品、小类、大类</li>
 </ol>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* 细节数据 */</span><br>销售表(商品号，顾客号，销售日期，售价，销售量，...)<br><span class="hljs-comment">/* 以具体&quot;商品&quot;为商品属性的统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">p1</span>(时间属性_X ，商品属性_商品号，... ，销售总量)<br><span class="hljs-comment">/* 以&quot;小类&quot;为商品属性的统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">p2</span>(时间属性_X ，商品属性_小类 ， ... ，销售总量)<br><span class="hljs-comment">/* 以&quot;大类&quot;为商品属性的统计单位的综合数据 */</span><br>销售表<span class="hljs-built_in">p3</span>(时间属性_X ，商品属性_大类 ， ... ，销售总量)<br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dns">/* 细节数据 */<br>销售表<span class="hljs-punctuation">(</span>商品号，顾客号，销售日期，售价，销售量，...<span class="hljs-punctuation">)</span><br>/* 以具体<span class="hljs-string">&quot;商品&quot;</span>为商品属性的统计单位的综合数据 */<br>销售表p1<span class="hljs-punctuation">(</span>时间属性_X ，商品属性_商品号，... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;小类&quot;</span>为商品属性的统计单位的综合数据 */<br>销售表p2<span class="hljs-punctuation">(</span>时间属性_X ，商品属性_小类 ， ... ，销售总量<span class="hljs-punctuation">)</span><br>/* 以<span class="hljs-string">&quot;大类&quot;</span>为商品属性的统计单位的综合数据 */<br>销售表p3<span class="hljs-punctuation">(</span>时间属性_X ，商品属性_大类 ， ... ，销售总量<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>将时间、商品等属性综合起来考虑，上述的统计表有很多。</li>
 </ol>
@@ -707,7 +706,7 @@
 <ol>
 <li>商品库存信息：</li>
 </ol>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-comment">/* 细节数据 */</span><br>库存表<span class="hljs-comment">(商品号，库房号，库存量，日期，...)</span><br><span class="hljs-comment">/* 样本数据 */</span><br>库存表<span class="hljs-number">1</span><span class="hljs-comment">(商品号，库房号，库存量，取样时间_周，...)</span><br>库存表<span class="hljs-number">2</span><span class="hljs-comment">(商品号，库房号，库存量，取样时间_月，...)</span><br>库存表<span class="hljs-number">3</span><span class="hljs-comment">(商品号，库房号，库存量，取样时间_季度，...)</span><br>库存表<span class="hljs-number">4</span><span class="hljs-comment">(商品号，库房号，库存量，取样时间_年，...)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dns">/* 细节数据 */<br>库存表<span class="hljs-punctuation">(</span>商品号，库房号，库存量，日期，...<span class="hljs-punctuation">)</span><br>/* 样本数据 */<br>库存表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，取样时间_周，...<span class="hljs-punctuation">)</span><br>库存表<span class="hljs-number">2</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，取样时间_月，...<span class="hljs-punctuation">)</span><br>库存表<span class="hljs-number">3</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，取样时间_季度，...<span class="hljs-punctuation">)</span><br>库存表<span class="hljs-number">4</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，取样时间_年，...<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>数据综合的方式与前面的商品销售主题不同</li>
 </ol>
@@ -1340,5 +1339,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

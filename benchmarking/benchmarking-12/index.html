@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同 前面的文章中，我们已经讨论了怎样验证正确性、比较接口和寻找合理的并发区间。接下来把数据库从单机换成集群，是不是只要增加节点，再把客户端数乘几倍就可以了？ 并不是。单机测试主要观察一台服务器上的 CPU、内存、磁盘和数据库执行路径；集群测试还会引入网络、请求路由、数据分片、副本写入和节点间负载均衡。此时，测试结果不仅由数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/benchmarking-12/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同 前面的文章中，我们已经讨论了怎样验证正确性、比较接口和寻找合理的并发区间。接下来把数据库从单机换成集群，是不是只要增加节点，再把客户端数乘几倍就可以了？ 并不是。单机测试主要观察一台服务器上的 CPU、内存、磁盘和数据库执行路径；集群测试还会引入网络、请求路由、数据分片、副本写入和节点间负载均衡。此时，测试结果不仅由数据库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/8626d5ec12354c04b4fc1687bcf7702f.png">
+<meta property="article:published_time" content="2026-07-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.354Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="IoT Benchmark">
+<meta property="article:tag" content="分布式系统">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="测试工具">
+<meta property="article:tag" content="集群测试">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/8626d5ec12354c04b4fc1687bcf7702f.png">
+  
+  
+  <title>基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-18 00:00" pubdate>
+          2026年7月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="基准测试工具之你不知道的两三事-12-单机测试与集群测试有什么不同"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-12-单机测试与集群测试有什么不同"></a> 基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同</h1>
+<p>前面的文章中，我们已经讨论了怎样验证正确性、比较接口和寻找合理的并发区间。接下来把数据库从单机换成集群，是不是只要增加节点，再把客户端数乘几倍就可以了？</p>
+<p>并不是。单机测试主要观察一台服务器上的 CPU、内存、磁盘和数据库执行路径；集群测试还会引入网络、请求路由、数据分片、副本写入和节点间负载均衡。此时，测试结果不仅由数据库“单节点有多快”决定，也取决于数据和请求是否真的分散到了多个节点。</p>
+<p>更容易混淆的是，IoT Benchmark 配置中的“Benchmark 集群模式”指的是<strong>多个压测工具实例协同发压</strong>，并不等于待测数据库已经部署成集群。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/8626d5ec12354c04b4fc1687bcf7702f.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h3 id="1-先分清两种集群"><a class="markdownIt-Anchor" href="#1-先分清两种集群"></a> 1. 先分清两种“集群”</h3>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>被扩展的对象</th>
+<th>主要目的</th>
+<th>不能自动保证什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库集群</td>
+<td>数据库服务端节点</td>
+<td>扩展容量、吞吐、可用性或副本能力</td>
+<td>请求一定均匀、容量一定线性增长。</td>
+</tr>
+<tr>
+<td>Benchmark 多实例</td>
+<td>压测客户端进程或机器</td>
+<td>避免单个客户端成为瓶颈，产生更大或更分散的压力</td>
+<td>数据库已经负载均衡、结果已经自动汇总。</td>
+</tr>
+</tbody>
+</table>
+<p>两者可以自由组合：单个 Benchmark 实例测试单机数据库；单个 Benchmark 实例测试数据库集群；多个 Benchmark 实例测试数据库集群；甚至多个实例共同测试一个单机数据库，用来确认客户端是否曾是瓶颈。</p>
+<p>图中左侧实例是否真的打到不同服务端节点，取决于数据库驱动、访问入口和路由策略，不能仅凭“启动了三个 Benchmark”推断。</p>
+<h3 id="2-单机测试和集群测试回答的问题不同"><a class="markdownIt-Anchor" href="#2-单机测试和集群测试回答的问题不同"></a> 2. 单机测试和集群测试回答的问题不同</h3>
+<p>单机测试适合建立基础能力边界：在固定硬件、固定数据和固定负载下，一个数据库实例的吞吐量、P99 和资源消耗处于什么范围。它更容易控制变量，也更适合发现版本退化和接口差异。</p>
+<p>集群测试则要回答另一组问题：增加节点后容量能否扩展，请求和数据是否均衡，网络与副本带来多少额外代价，以及某个热点是否会让部分节点先达到瓶颈。</p>
+<table>
+<thead>
+<tr>
+<th>测试问题</th>
+<th>更适合的部署</th>
+<th>需要额外观察的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新版本的单节点写入路径是否退化</td>
+<td>单机</td>
+<td>单机 CPU、磁盘、内存、吞吐和尾延迟。</td>
+</tr>
+<tr>
+<td>三个节点能否承载更大的总负载</td>
+<td>集群</td>
+<td>每节点资源、路由分布、分片分布和总吞吐。</td>
+</tr>
+<tr>
+<td>增加节点能否降低同一负载下的延迟</td>
+<td>单机基线 + 集群对照</td>
+<td>固定总负载下的 P99 与集群内部开销。</td>
+</tr>
+<tr>
+<td>热门设备持续写入时是否出现热点</td>
+<td>集群</td>
+<td>设备到分片的映射、各节点请求量和磁盘写入量。</td>
+</tr>
+<tr>
+<td>节点异常是否影响连续服务</td>
+<td>独立的故障实验</td>
+<td>故障注入时间、失败窗口、恢复时间和数据正确性。</td>
+</tr>
+</tbody>
+</table>
+<p>因此，“单机每秒处理多少点”和“集群每秒处理多少点”通常不能直接放在一起排名。前者是单实例能力，后者混入了节点数、网络和分布策略。</p>
+<h3 id="3-iot-benchmark-的多实例模式做了什么"><a class="markdownIt-Anchor" href="#3-iot-benchmark-的多实例模式做了什么"></a> 3. IoT Benchmark 的多实例模式做了什么</h3>
+<p>在当前代码版本中，多实例模式由以下两个参数控制：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 所有参与实例都开启</span><br><span class="hljs-attr">BENCHMARK_CLUSTER</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 每个实例使用不同编号，从 0 开始</span><br><span class="hljs-attr">BENCHMARK_INDEX</span><span class="hljs-operator">=</span>0<br></code></pre></td></tr></table></figure>
+<p>当 <code>BENCHMARK_CLUSTER=true</code> 时，工具会按下面的关系计算当前实例的首个设备编号：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">FIRST_DEVICE_INDEX</span> <span class="hljs-operator">=</span> BENCHMARK_INDEX × DEVICE_NUMBER<br></code></pre></td></tr></table></figure>
+<p>假设每个实例配置 <code>DEVICE_NUMBER=1000</code>，设备区间会形成如下映射：</p>
+<p>这样做的核心作用，是避免多个 Benchmark 实例默认生成相同设备名，导致不同客户端向同一批设备和时间序列写入。这个偏移也会被 schema 和查询工作负载使用，使每个实例围绕自己的设备区间工作。</p>
+<p>但这两个参数<strong>不会</strong>替你完成以下工作：</p>
+<ol>
+<li>不会创建或启动数据库集群；</li>
+<li>不会配置数据库的分片、副本和负载均衡；</li>
+<li>不会检查各客户端机器的时钟是否一致；</li>
+<li>不会自动判断所有实例是否同时开始、同时结束；</li>
+<li>不会把多台机器上的结果自动解释成一个可信的集群结论。</li>
+</ol>
+<p>所以，多实例模式解决的是设备编号隔离，而完整的分布式压测仍需要额外的启动编排、监控和结果汇总。</p>
+<h3 id="4-集群测试不能只把客户端数乘倍数"><a class="markdownIt-Anchor" href="#4-集群测试不能只把客户端数乘倍数"></a> 4. 集群测试不能只把客户端数乘倍数</h3>
+<p>如果单个 Benchmark 实例已经把所在机器的 CPU 或网络跑满，继续增加客户端线程可能只是在测试压测机。反过来，如果直接启动多个实例，却没有检查数据库节点分布，也可能出现所有请求都经由同一入口、落到同一个热点节点的情况。</p>
+<p>一轮可靠的集群测试至少包含四层检查：</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>需要检查什么</th>
+<th>常见异常</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>客户端</td>
+<td>客户端 CPU、网络、GC、连接数和生成数据速度</td>
+<td>数据库还有余量，但发压端已经到顶。</td>
+</tr>
+<tr>
+<td>接入与网络</td>
+<td>目标地址、连接分布、客户端到节点的网络时延</td>
+<td>所有连接集中到一个入口或跨区域链路。</td>
+</tr>
+<tr>
+<td>数据分布</td>
+<td>设备、时间分区、分片和副本的实际归属</td>
+<td>设备名不同，但分片仍集中在少数节点。</td>
+</tr>
+<tr>
+<td>服务端</td>
+<td>每节点请求量、CPU、内存、磁盘与网络</td>
+<td>总体看似正常，某个节点已成为热点。</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>各实例成功点数、失败数、P99 与正确性证据</td>
+<td>汇总吞吐升高，但部分实例持续失败。</td>
+</tr>
+</tbody>
+</table>
+<p>只有这几层证据能够互相对应，才可以说测试覆盖了数据库集群，而不是“几台客户端同时运行”。</p>
+<h3 id="5-两种常见的扩展性测试口径"><a class="markdownIt-Anchor" href="#5-两种常见的扩展性测试口径"></a> 5. 两种常见的扩展性测试口径</h3>
+<p>比较单机和集群时，至少应区分两种实验。</p>
+<h4 id="51-固定总负载观察集群额外开销与余量"><a class="markdownIt-Anchor" href="#51-固定总负载观察集群额外开销与余量"></a> 5.1 固定总负载：观察集群额外开销与余量</h4>
+<p>保持总设备数、总写入速率、操作比例和数据量不变，只改变数据库部署方式。这个实验适合回答：相同业务负载从单机迁移到集群后，延迟、资源和稳定性如何变化。</p>
+<p>由于集群可能引入网络和副本开销，总吞吐不一定自动提高；但单节点资源压力可能下降，并获得更多容量或可用性余量。</p>
+<h4 id="52-随节点数增加负载观察扩展效率"><a class="markdownIt-Anchor" href="#52-随节点数增加负载观察扩展效率"></a> 5.2 随节点数增加负载：观察扩展效率</h4>
+<p>分别测试 1、2、3……个服务端节点，并按预先约定增加总设备数或目标速率。每个规模下都要重新确认客户端不是瓶颈、数据分布均衡且正确性通过。</p>
+<p>可以用下面的比值辅助描述扩展情况：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">扩展效率 = <span class="hljs-built_in">N</span> 节点稳定吞吐量 ÷（<span class="hljs-built_in">N</span> × 单节点稳定吞吐量）<br></code></pre></td></tr></table></figure>
+<p>它只是当前环境下的观察指标，不是越接近 100% 就一定越好。副本数、网络拓扑、存储介质和一致性要求不同，都会改变合理范围。真正的结论仍应同时包含 P99、失败数、每节点资源与正确性。</p>
+<h3 id="6-一份多实例配置示意"><a class="markdownIt-Anchor" href="#6-一份多实例配置示意"></a> 6. 一份多实例配置示意</h3>
+<p>假设使用三台压测机，每台负责相同数量但不同编号的设备，可以分别准备三份配置。除实例编号、客户端本机地址等必要差异外，其余工作负载应保持一致。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 三台机器相同</span><br><span class="hljs-attribute">BENCHMARK_CLUSTER</span>=true<br><span class="hljs-attribute">DEVICE_NUMBER</span>=<span class="hljs-number">1000</span><br><span class="hljs-attribute">SENSOR_NUMBER</span>=<span class="hljs-number">10</span><br><span class="hljs-attribute">OPERATION_PROPORTION</span>=<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span><br><br><span class="hljs-comment"># 三台机器分别设置 0、1、2</span><br><span class="hljs-attribute">BENCHMARK_INDEX</span>=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>运行前还应建立一张映射表：</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th><code>BENCHMARK_INDEX</code></th>
+<th>设备区间</th>
+<th>数据库入口</th>
+<th>结果文件</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client-0</td>
+<td>0</td>
+<td>0—999</td>
+<td>待填</td>
+<td>待填</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>client-1</td>
+<td>1</td>
+<td>1000—1999</td>
+<td>待填</td>
+<td>待填</td>
+<td>待测</td>
+</tr>
+<tr>
+<td>client-2</td>
+<td>2</td>
+<td>2000—2999</td>
+<td>待填</td>
+<td>待填</td>
+<td>待测</td>
+</tr>
+</tbody>
+</table>
+<p>表中的结果文件必须分别保留。汇总时先逐实例检查失败数和 P99，再计算成功点数与总运行时间口径一致的聚合结果，不能简单相加各自打印的 <code>point/s</code> 而忽略开始、结束时间差。</p>
+<h3 id="7-五个常见误区"><a class="markdownIt-Anchor" href="#7-五个常见误区"></a> 7. 五个常见误区</h3>
+<p>第一，<strong>把 <code>BENCHMARK_CLUSTER=true</code> 当作数据库集群开关</strong>。它只改变 Benchmark 的多实例设备编号逻辑。</p>
+<p>第二，<strong>多个实例使用相同 <code>BENCHMARK_INDEX</code></strong>。这会造成设备区间重叠，测试语义随之改变。</p>
+<p>第三，<strong>只看集群总 CPU</strong>。总量会掩盖单节点热点，应始终保留每节点数据。</p>
+<p>第四，<strong>把节点数增加等同于性能线性增长</strong>。路由、网络、副本和分片都可能限制扩展效率。</p>
+<p>第五，<strong>直接相加不同时间窗口的吞吐量</strong>。聚合结果必须基于统一的有效运行窗口和成功点数口径。</p>
+<h3 id="8-小结"><a class="markdownIt-Anchor" href="#8-小结"></a> 8. 小结</h3>
+<p>单机测试用于建立清晰、可控的基础能力；集群测试则要额外验证客户端、网络、路由、分片、副本和节点均衡。IoT Benchmark 的 <code>BENCHMARK_CLUSTER</code> 与 <code>BENCHMARK_INDEX</code> 可以让多个压测实例使用不同设备区间，但不会自动完成数据库集群部署、流量均衡和结果复盘。</p>
+<p>开始集群测试前，可以用三个问题自查：</p>
+<ol>
+<li>我扩展的是数据库节点、Benchmark 实例，还是两者同时扩展？</li>
+<li>数据与请求是否有证据表明确实分布到了多个节点？</li>
+<li>聚合结论是否同时包含正确性、尾延迟、失败数和每节点资源？</li>
+</ol>
+<p>把这三件事说清楚，集群测试才不只是“机器更多了”。下一篇将讨论怎样保存一轮测试的配置、日志、结果和环境，使异常能够被复盘、结论能够被重现。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">#分布式系统</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">#测试工具</a>
+      
+        <a href="/tags/IoT-Benchmark/">#IoT Benchmark</a>
+      
+        <a href="/tags/%E9%9B%86%E7%BE%A4%E6%B5%8B%E8%AF%95/">#集群测试</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基准测试工具之你不知道的两三事 | 12. 单机测试与集群测试有什么不同</div>
+      <div>https://spricoder.github.io/benchmarking/benchmarking-12/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月18日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-13/" title="基准测试工具之你不知道的两三事 | 13. 怎样保存和复盘一轮测试">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 13. 怎样保存和复盘一轮测试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-14/" title="基准测试工具之你不知道的两三事 | 14. 一份可复用的基准测试方案模板">
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 14. 一份可复用的基准测试方案模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

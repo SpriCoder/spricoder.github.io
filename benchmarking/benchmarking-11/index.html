@@ -1,0 +1,1003 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别 一轮基准测试结束后，我们通常最先看到的是吞吐量、平均延迟、P99 和失败数。如果吞吐足够高、失败数又是 0，能否直接说明测试通过？ 不能。性能测试回答的是“系统处理得多快”，正确性验证回答的是“系统处理的结果是否符合预期”。一次请求返回成功，只能说明客户端收到了一次成功响应，并不能自动证明所有数据都以正确的设备、时间戳、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/benchmarking-11/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别 一轮基准测试结束后，我们通常最先看到的是吞吐量、平均延迟、P99 和失败数。如果吞吐足够高、失败数又是 0，能否直接说明测试通过？ 不能。性能测试回答的是“系统处理得多快”，正确性验证回答的是“系统处理的结果是否符合预期”。一次请求返回成功，只能说明客户端收到了一次成功响应，并不能自动证明所有数据都以正确的设备、时间戳、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2a92a26436c54d8888b654cda4aeb8ca.png">
+<meta property="article:published_time" content="2026-07-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.341Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="IoT Benchmark">
+<meta property="article:tag" content="性能测试">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="正确性验证">
+<meta property="article:tag" content="测试工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/2a92a26436c54d8888b654cda4aeb8ca.png">
+  
+  
+  <title>基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-18 00:00" pubdate>
+          2026年7月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="基准测试工具之你不知道的两三事-11-性能测试与正确性验证有什么区别"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-11-性能测试与正确性验证有什么区别"></a> 基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别</h1>
+<p>一轮基准测试结束后，我们通常最先看到的是吞吐量、平均延迟、P99 和失败数。如果吞吐足够高、失败数又是 0，能否直接说明测试通过？</p>
+<p>不能。性能测试回答的是“系统处理得多快”，正确性验证回答的是“系统处理的结果是否符合预期”。一次请求返回成功，只能说明客户端收到了一次成功响应，并不能自动证明所有数据都以正确的设备、时间戳、类型和值落入数据库。</p>
+<p>这一篇结合 IoT Benchmark 的实际实现，讲清性能与正确性应怎样分开测试，又怎样合并为一个可信结论。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/2a92a26436c54d8888b654cda4aeb8ca.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h3 id="1-两类测试回答的是不同问题"><a class="markdownIt-Anchor" href="#1-两类测试回答的是不同问题"></a> 1. 两类测试回答的是不同问题</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>性能测试</th>
+<th>正确性验证</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>系统能处理多快、多稳？</td>
+<td>写入和查询结果是否符合预期？</td>
+</tr>
+<tr>
+<td>常见指标</td>
+<td>吞吐量、平均延迟、P99、失败率、CPU、内存、磁盘与网络</td>
+<td>记录数、时间戳、设备与测点、数据类型、具体值、查询结果集合</td>
+</tr>
+<tr>
+<td>主要输入</td>
+<td>工作负载配置与环境配置</td>
+<td>可重复读取的预期数据集或可信参考结果</td>
+</tr>
+<tr>
+<td>典型结论</td>
+<td>“在当前并发和批大小下，系统达到某性能区间。”</td>
+<td>“预期写入的记录均可查询，且字段和值一致。”</td>
+</tr>
+<tr>
+<td>失败表现</td>
+<td>延迟抬升、吞吐平台、超时、资源饱和</td>
+<td>少行、多行、错值、错类型、时间戳偏移、重复或覆盖</td>
+</tr>
+</tbody>
+</table>
+<p>两者不是互相替代的关系。正确但很慢，说明系统能力不满足业务目标；很快但写错，性能数字则失去了意义。</p>
+<h3 id="2-为什么写入成功仍可能写错"><a class="markdownIt-Anchor" href="#2-为什么写入成功仍可能写错"></a> 2. 为什么“写入成功”仍可能写错</h3>
+<p>客户端成功调用写入接口，并不等于业务数据完全正确。实际测试中至少可能出现以下情况：</p>
+<table>
+<thead>
+<tr>
+<th>表面现象</th>
+<th>可能隐藏的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请求返回成功</td>
+<td>批内部分记录被忽略，客户端只看到整体响应。</td>
+</tr>
+<tr>
+<td>失败数为 0</td>
+<td>数据写入了错误设备、表、测点或时间分区。</td>
+</tr>
+<tr>
+<td>写入点数符合预期</td>
+<td>字段顺序、数据类型或具体值发生变化。</td>
+</tr>
+<tr>
+<td>查询能返回数据</td>
+<td>返回的是旧数据、重复数据，或被相同时间戳覆盖后的结果。</td>
+</tr>
+<tr>
+<td>两个系统吞吐接近</td>
+<td>两边真正持久化的数据量或写入语义并不相同。</td>
+</tr>
+</tbody>
+</table>
+<p>因此，写入正确性至少应核对四层：</p>
+<ol>
+<li><strong>数量正确</strong>：预期多少行、多少点，实际是否一致。</li>
+<li><strong>定位正确</strong>：设备、表、测点、标签和时间戳是否正确。</li>
+<li><strong>内容正确</strong>：类型、空值语义和具体值是否一致。</li>
+<li><strong>查询正确</strong>：点查、范围查询和聚合是否返回预期结果。</li>
+</ol>
+<p>如果测试还涉及重试、相同时间戳覆盖或乱序写入，则应再增加重复、幂等和最终可见性检查。</p>
+<h3 id="3-iot-benchmark-的三段式验证流程"><a class="markdownIt-Anchor" href="#3-iot-benchmark-的三段式验证流程"></a> 3. IoT Benchmark 的三段式验证流程</h3>
+<p>IoT Benchmark 提供了 <code>generateDataMode</code>、<code>verificationWriteMode</code> 和 <code>verificationQueryMode</code>。从代码看，它们组成了一条“准备预期数据 → 写入数据库 → 查询核对”的流程。</p>
+<p>三个模式的职责并不相同：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>主要职责</th>
+<th>它不能单独证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>generateDataMode</code></td>
+<td>生成可复用的数据文件和 schema。</td>
+<td>不会把数据写入待测数据库。</td>
+</tr>
+<tr>
+<td><code>verificationWriteMode</code></td>
+<td>从 <code>FILE_PATH</code> 读取批次、注册 schema 并执行写入，同时统计写入性能。</td>
+<td>写入结束本身不代表数据已经逐值校验。</td>
+</tr>
+<tr>
+<td><code>verificationQueryMode</code></td>
+<td>再次读取同一数据集，构造验证查询，并将查询结果与预期时间戳和值比较。</td>
+<td>不能替代高并发性能压测，也不是所有数据库适配器都必然支持。</td>
+</tr>
+</tbody>
+</table>
+<p>这意味着，若只运行 <code>verificationWriteMode</code> 并看到失败数为 0，最多能说“写入调用没有被工具判定为失败”，不能说“所有数据已经验证正确”。</p>
+<h3 id="4-验证查询在代码中怎样工作"><a class="markdownIt-Anchor" href="#4-验证查询在代码中怎样工作"></a> 4. 验证查询在代码中怎样工作</h3>
+<p>在 <code>verificationQueryMode</code> 下，<code>RealDataSetQueryClient</code> 会从数据文件中取得一个 <code>IBatch</code>，再构造 <code>VerificationQuery</code>。这个对象同时携带：</p>
+<ul>
+<li>目标设备及其测点 schema；</li>
+<li>该批记录的时间戳；</li>
+<li>每个时间戳对应的预期值。</li>
+</ul>
+<p>数据库适配器据此生成查询，读取这些时间戳对应的数据，并把返回值与预期值逐项比较。以当前 IoTDB 适配器为例，代码还会对 BLOB、DATE 等类型做格式转换，再进入比较。</p>
+<p>这一逻辑比简单的 <code>count(*)</code> 更严格，因为“行数相同”仍可能包含错误值。但它也有明确边界：验证覆盖范围取决于对应数据库适配器的 <code>verificationQuery</code> 实现；接口默认实现会返回“不支持验证查询”。因此，开始测试前应先确认所用 <code>DB_SWITCH</code> 对应的适配器确实实现了该能力。</p>
+<h3 id="5-一个必须检查的实现细节错误日志不等于失败计数"><a class="markdownIt-Anchor" href="#5-一个必须检查的实现细节错误日志不等于失败计数"></a> 5. 一个必须检查的实现细节：错误日志不等于失败计数</h3>
+<p>按本文读取的本地版本 <code>de2f8f3f</code>，IoTDB 的验证查询在发现值不一致或返回行数不一致时会输出 <code>ERROR</code> 日志；但只要查询过程本身没有抛出异常，方法最后仍可能返回 <code>Status(true, point)</code>。</p>
+<p>随后，<code>DBWrapper</code> 会把 <code>Status.isOk()</code> 为真的操作计入成功测量。也就是说：</p>
+<blockquote>
+<p>最终报告中的查询失败数为 0，不足以证明逐值比较没有发现差异。</p>
+</blockquote>
+<p>因此，正确性判定至少要同时查看：</p>
+<table>
+<thead>
+<tr>
+<th>证据</th>
+<th>应检查的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>验证日志</td>
+<td>是否出现 <code>Expected ... but was ...</code>、预期行数不一致或查询错误。</td>
+</tr>
+<tr>
+<td>返回点数</td>
+<td>实际匹配点数是否等于根据数据集计算出的预期点数。</td>
+</tr>
+<tr>
+<td>数据集规模</td>
+<td>输入文件的设备数、记录数和测点数是否与测试方案一致。</td>
+</tr>
+<tr>
+<td>抽样复核</td>
+<td>手工或独立脚本查询若干设备与时间范围，确认值和类型。</td>
+</tr>
+<tr>
+<td>服务端状态</td>
+<td>是否仍存在异步写入、后台处理或尚未可见的数据。</td>
+</tr>
+</tbody>
+</table>
+<p>这个细节并不意味着验证模式没有价值，而是提醒我们：<strong>日志和预期数量也是验证结果的一部分，不能只看最终汇总表。</strong></p>
+<h3 id="6-如何实际运行一轮验证"><a class="markdownIt-Anchor" href="#6-如何实际运行一轮验证"></a> 6. 如何实际运行一轮验证</h3>
+<p>首先准备一份固定数据集。可以使用 <code>generateDataMode</code> 生成，也可以按 IoT Benchmark 要求准备 <code>FILE_PATH</code> 下的数据文件和 schema。</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 第一步：准备数据文件</span><br><span class="hljs-attr">BENCHMARK_WORK_MODE</span><span class="hljs-operator">=</span>generateDataMode<br><span class="hljs-attr">FILE_PATH</span><span class="hljs-operator">=</span>data/verification<br></code></pre></td></tr></table></figure>
+<p>随后清理目标范围并写入同一份数据：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 第二步：写入验证数据，同时获得写入性能</span><br><span class="hljs-attr">BENCHMARK_WORK_MODE</span><span class="hljs-operator">=</span>verificationWriteMode<br><span class="hljs-attr">FILE_PATH</span><span class="hljs-operator">=</span>data/verification<br><span class="hljs-attr">CREATE_SCHEMA</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br><span class="hljs-attr">IS_DELETE_DATA</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>写入完成后不要清理目标数据，再切换为查询验证：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 第三步：查询并核对同一份数据</span><br><span class="hljs-attr">BENCHMARK_WORK_MODE</span><span class="hljs-operator">=</span>verificationQueryMode<br><span class="hljs-attr">FILE_PATH</span><span class="hljs-operator">=</span>data/verification<br></code></pre></td></tr></table></figure>
+<p>示例只表达模式切换关系。实际运行时还应完整冻结数据库版本、<code>DB_SWITCH</code>、数据模型、批大小、客户端数、数据文件校验值和测试日志。</p>
+<h3 id="7-性能对比应该设置正确性门禁"><a class="markdownIt-Anchor" href="#7-性能对比应该设置正确性门禁"></a> 7. 性能对比应该设置正确性门禁</h3>
+<p>当比较两个版本、接口或产品时，建议先定义门禁，再生成性能排名。</p>
+<table>
+<thead>
+<tr>
+<th>门禁</th>
+<th>通过条件示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写入调用门禁</td>
+<td>无未解释的超时和失败，成功写入量达到预期。</td>
+</tr>
+<tr>
+<td>数量门禁</td>
+<td>设备、记录和数据点数量与固定数据集一致。</td>
+</tr>
+<tr>
+<td>内容门禁</td>
+<td>时间戳、类型和值的比较无差异。</td>
+</tr>
+<tr>
+<td>查询门禁</td>
+<td>关键点查、范围查询与聚合结果符合参考结果。</td>
+</tr>
+<tr>
+<td>可见性门禁</td>
+<td>在约定等待或刷新条件后，数据对新查询可见。</td>
+</tr>
+</tbody>
+</table>
+<p>只有全部通过，吞吐量和延迟才进入最终结果表。若某个系统更快但未通过正确性门禁，应报告为“结果无效”或“当前配置下验证失败”，而不是继续参与排名。</p>
+<h3 id="8-四个常见误区"><a class="markdownIt-Anchor" href="#8-四个常见误区"></a> 8. 四个常见误区</h3>
+<p>第一，<strong>把失败数为 0 当作数据完全正确</strong>。失败数反映工具如何判定操作状态，不一定覆盖逐值差异。</p>
+<p>第二，<strong>只比较总行数</strong>。相同时间戳覆盖、错设备和错字段都可能让总量看似正常。</p>
+<p>第三，<strong>性能测试结束后直接清库</strong>。如果还没有保存配置、日志并执行查询验证，正确性证据会一并消失。</p>
+<p>第四，<strong>一边验证，一边随意更换数据集或 schema</strong>。预期数据必须固定，否则比较对象本身已经发生变化。</p>
+<h3 id="9-小结"><a class="markdownIt-Anchor" href="#9-小结"></a> 9. 小结</h3>
+<p>性能测试关注吞吐、延迟和资源，正确性验证关注数量、位置、类型和值。IoT Benchmark 可以通过生成数据、验证写入和验证查询三个模式组织这条流程，但使用者仍需检查适配器支持范围、错误日志和预期点数。</p>
+<p>最稳妥的原则是：<strong>先证明写对，再讨论写快；正确性门禁未通过的性能数字，不参与比较。</strong> 下一篇将继续讨论单机测试与集群测试的区别，以及节点、网络和数据分布如何改变测试结论。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">#性能测试</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">#测试工具</a>
+      
+        <a href="/tags/IoT-Benchmark/">#IoT Benchmark</a>
+      
+        <a href="/tags/%E6%AD%A3%E7%A1%AE%E6%80%A7%E9%AA%8C%E8%AF%81/">#正确性验证</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基准测试工具之你不知道的两三事 | 11. 性能测试与正确性验证有什么区别</div>
+      <div>https://spricoder.github.io/benchmarking/benchmarking-11/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月18日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-01/" title="基准测试工具之你不知道的两三事 | 1.数据库基准测试工具是什么">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 1.数据库基准测试工具是什么</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-15/" title="基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型">
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 15. 端到端案例：如何完成一次时序数据库选型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

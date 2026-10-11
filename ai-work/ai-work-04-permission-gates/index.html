@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？ 当 AI 只能在对话框里生成文字时，最常见的风险是答案不准确。即使它写错了一段代码或误解了一份材料，人仍然可以在复制、粘贴和执行之前停下来检查。 但当 AI 能够读取本地文件、修改代码、查询数据库、创建日程和发送消息后，情况发生了变化。它不再只是给出建议，而是可能直接改变现实状态。 这时真正的问题不再是“要不要给 A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-04-permission-gates/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？ 当 AI 只能在对话框里生成文字时，最常见的风险是答案不准确。即使它写错了一段代码或误解了一份材料，人仍然可以在复制、粘贴和执行之前停下来检查。 但当 AI 能够读取本地文件、修改代码、查询数据库、创建日程和发送消息后，情况发生了变化。它不再只是给出建议，而是可能直接改变现实状态。 这时真正的问题不再是“要不要给 A">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ca7fc873eb3b4648844c6ae063953bc9.png">
+<meta property="article:published_time" content="2026-07-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.432Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="人机协作">
+<meta property="article:tag" content="安全">
+<meta property="article:tag" content="权限">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/ca7fc873eb3b4648844c6ae063953bc9.png">
+  
+  
+  <title>与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？ - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-21 00:00" pubdate>
+          2026年7月21日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="与-ai-一起工作-4当-ai-可以修改文件和发送消息权限应该怎样给"><a class="markdownIt-Anchor" href="#与-ai-一起工作-4当-ai-可以修改文件和发送消息权限应该怎样给"></a> 与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？</h1>
+<p>当 AI 只能在对话框里生成文字时，最常见的风险是答案不准确。即使它写错了一段代码或误解了一份材料，人仍然可以在复制、粘贴和执行之前停下来检查。</p>
+<p>但当 AI 能够读取本地文件、修改代码、查询数据库、创建日程和发送消息后，情况发生了变化。它不再只是给出建议，而是可能直接改变现实状态。</p>
+<p>这时真正的问题不再是“要不要给 AI 权限”，而是：<strong>它可以访问什么、执行什么、做到什么范围、持续多长时间，以及哪些动作必须再次经过人的确认。</strong></p>
+<p>权限不是一个总开关。一个可靠的 Agent 不需要随时拥有所有能力，而应当只在完成当前任务所必需的范围内获得权限。<br />
+<img src="https://i-blog.csdnimg.cn/direct/ca7fc873eb3b4648844c6ae063953bc9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h3 id="先把权限拆成五个问题"><a class="markdownIt-Anchor" href="#先把权限拆成五个问题"></a> 先把权限拆成五个问题</h3>
+<p>讨论权限时，人们很容易只关注“允许”与“拒绝”。但同一个“允许读取文件”，可以意味着读取一个指定文档，也可以意味着扫描整个主目录；同一个“允许发送消息”，可以意味着生成一份草稿，也可以意味着直接向所有联系人群发。</p>
+<p>至少需要把权限拆成下面五个维度：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>需要回答的问题</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对象</td>
+<td>AI 可以接触什么</td>
+<td>指定文件、某个数据库、一个聊天群</td>
+</tr>
+<tr>
+<td>动作</td>
+<td>AI 可以做什么</td>
+<td>读取、修改、删除、导出、发送</td>
+</tr>
+<tr>
+<td>范围</td>
+<td>一次可以影响多少</td>
+<td>单个文件、十条记录、整个目录</td>
+</tr>
+<tr>
+<td>时效</td>
+<td>权限持续多久</td>
+<td>当前步骤、当前任务、长期有效</td>
+</tr>
+<tr>
+<td>去向</td>
+<td>数据和结果可以流向哪里</td>
+<td>仅本地、内部系统、外部联系人</td>
+</tr>
+</tbody>
+</table>
+<p>这五个问题共同决定了权限的真实含义。只写“允许访问数据库”几乎没有可执行价值，因为它没有说明可以访问哪些表、能否写入、能返回多少数据，也没有说明结果是否可以被发送到外部服务。</p>
+<h3 id="动作越接近现实确认点越应该靠近执行"><a class="markdownIt-Anchor" href="#动作越接近现实确认点越应该靠近执行"></a> 动作越接近现实，确认点越应该靠近执行</h3>
+<p>不同动作产生的影响并不相同。读取一份公开文档、修改一个可以恢复的本地文件、批量删除记录和向客户发送邮件，不能使用同一种授权方式。</p>
+<p>从左向右，影响逐步扩大。权限设计也应随之收紧：</p>
+<ul>
+<li><strong>生成建议</strong>通常不改变外部状态，可以直接执行。</li>
+<li><strong>限定范围读取</strong>需要明确数据边界，避免顺带扫描无关文件和敏感信息。</li>
+<li><strong>可恢复的本地修改</strong>应保留 Diff、版本记录或其他恢复路径。</li>
+<li><strong>批量或不可逆操作</strong>应先试运行，展示将受影响的对象，再等待确认。</li>
+<li><strong>发送、发布或改变外部状态</strong>应在执行前核对接收方、正文、附件和关键参数。</li>
+</ul>
+<p>这里的关键不是每一步都弹出确认框，而是把确认放在真正改变风险的边界上。频繁、无差别的确认只会让人机械点击；太晚的确认则只是在通知人一件已经发生的事。</p>
+<h3 id="权限应该形成一个闭环"><a class="markdownIt-Anchor" href="#权限应该形成一个闭环"></a> 权限应该形成一个闭环</h3>
+<p>一次授权不应只包含“允许执行”这个瞬间。可靠的流程需要在执行前展示真实动作，在执行后回读结果，并在任务结束后收回临时权限。</p>
+<p>这个闭环把权限从静态配置变成了任务过程的一部分：需要什么才申请什么，批准什么才执行什么，执行完成后还能确认实际发生了什么。</p>
+<h3 id="读取文件给目录不要给整台机器"><a class="markdownIt-Anchor" href="#读取文件给目录不要给整台机器"></a> 读取文件：给目录，不要给整台机器</h3>
+<p>假设我们让 AI 整理一份项目文档。完成任务可能只需要读取项目目录中的 Markdown 文件，却没有必要让它同时接触浏览器数据、个人照片、下载目录、密钥文件和其他项目。</p>
+<p>比较清楚的授权方式是：允许读取指定项目，明确排除凭据、隐私数据和无关目录；需要扩大范围时，再说明为什么当前材料不足。</p>
+<p>最小权限并不意味着永远只给最少的一个文件，而是让权限跟着任务逐步扩大，而不是一开始就把所有可能用到的资源全部交出去。</p>
+<h3 id="修改文件先保留可恢复性"><a class="markdownIt-Anchor" href="#修改文件先保留可恢复性"></a> 修改文件：先保留可恢复性</h3>
+<p>AI 修改本地文件时，风险通常不是某一行写错，而是改动范围超出预期，或者在没有意识到用户已有修改的情况下覆盖内容。</p>
+<p>因此，权限不仅要限制“可以修改哪些文件”，还要规定修改后的检查和恢复方式：先查看当前状态，只改指定范围，保留已有改动，展示 Diff，并在删除或大范围迁移前等待确认。删除类任务还应优先采用可恢复的归档方式，而不是直接物理清除。</p>
+<p>一个本地改动如果没有可查看的差异，也没有可靠的恢复路径，就不应仅凭一句“已经修改完成”进入下一步。</p>
+<h3 id="写数据库不要把查询权自动升级为写入权"><a class="markdownIt-Anchor" href="#写数据库不要把查询权自动升级为写入权"></a> 写数据库：不要把查询权自动升级为写入权</h3>
+<p>能读取数据库，不代表可以修改数据库；能够更新一条测试记录，也不代表可以批量处理整张表。</p>
+<p>对于写入任务，应尽量把读取、生成变更方案和真正提交拆开。先展示将修改哪些记录、旧值和新值分别是什么，再限制单次影响范围；能够使用测试环境、事务、备份或试运行时，先用这些手段缩小错误后果。</p>
+<p>尤其需要警惕“为了方便”长期保留高权限账号。Agent 可以继承一个账号的技术权限，却不会自动继承账号持有者对组织关系、业务例外和后果的完整理解。</p>
+<h3 id="发送消息草稿权与发送权应该分开"><a class="markdownIt-Anchor" href="#发送消息草稿权与发送权应该分开"></a> 发送消息：草稿权与发送权应该分开</h3>
+<p>生成一封邮件和真正发送邮件，是两项不同的能力。</p>
+<p>AI 可以先根据上下文起草正文，但在发送前，人仍应看到实际接收人、抄送对象、标题、正文和附件。如果收件人来自模型推断、模糊搜索或历史记录，更需要重新确认。</p>
+<p>发送完成后还应回读系统状态，核对实际发送对象和内容。工具返回“成功”只说明调用完成，不自动证明没有选错联系人、漏掉附件或发错版本。</p>
+<p>类似的边界也适用于发布文章、创建公开日程、提交审批和触发工单：生成内容可以自动化，改变外部状态应保留清楚的最后确认。</p>
+<h3 id="一份可复用的授权模板"><a class="markdownIt-Anchor" href="#一份可复用的授权模板"></a> 一份可复用的授权模板</h3>
+<p>把权限写进任务时，不必使用复杂的安全术语。下面这份简单结构已经能够覆盖多数日常场景：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs">目标：最终要完成什么。<br><br>允许：可以读取哪些资料，可以调用哪些工具，可以修改哪些对象。<br><br>禁止：不得访问的数据、不得执行的动作、不得输出到的位置。<br><br>确认点：哪些动作只能先生成预览，得到确认后才能执行。<br><br>恢复方式：发生错误后如何撤销、回滚或重新核对。<br><br>验收：执行后需要回读什么结果，怎样证明没有越界。<br></code></pre></td></tr></table></figure>
+<p>例如，与其说“整理旧文件并清理掉”，不如说：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">只检查 project/docs 目录，列出疑似废弃文件及判断依据。<br>当前阶段只读，不移动、不删除、不修改引用。<br>我确认清单后，才能把指定文件移动到可恢复的归档目录。<br>完成后重新列出原目录和归档目录，核对实际移动结果。<br></code></pre></td></tr></table></figure>
+<p>这里最重要的不是文字更长，而是建议、授权和执行被分成了不同阶段。</p>
+<h3 id="四个常见的权限误区"><a class="markdownIt-Anchor" href="#四个常见的权限误区"></a> 四个常见的权限误区</h3>
+<p>第一，<strong>把人的账号权限直接当成 AI 的合理权限</strong>。一个人可以访问某个系统，不代表当前任务需要让 Agent 使用其中的全部能力。</p>
+<p>第二，<strong>只限制读取对象，不限制输出去向</strong>。内部文档即使读取合法，一旦摘要、日志或工具参数流向外部服务，仍可能越过原有边界。</p>
+<p>第三，<strong>只记录成功或失败，不记录实际动作</strong>。如果日志只写“调用成功”，却没有对象、参数、接收方和确认记录，出错后很难还原发生了什么。</p>
+<p>第四，<strong>把一次授权变成永久授权</strong>。临时任务结束后，令牌、连接器、插件和服务账号如果继续有效，就会把一次需要变成长期暴露面。</p>
+<h3 id="授权前的-30-秒检查"><a class="markdownIt-Anchor" href="#授权前的-30-秒检查"></a> 授权前的 30 秒检查</h3>
+<p>在允许 AI 执行动作前，可以快速确认：</p>
+<ul>
+<li>它要访问的对象是否与当前任务直接相关？</li>
+<li>它需要读取、修改，还是只需要生成建议？</li>
+<li>单次动作最多会影响多少文件、记录或联系人？</li>
+<li>数据是否可能通过日志、插件或消息流向外部？</li>
+<li>不可逆动作之前是否有清楚的预览和确认点？</li>
+<li>出错后能否恢复，并能否回读实际结果？</li>
+<li>任务结束后，临时权限是否会失效？</li>
+</ul>
+<p>真正可靠的权限设计，不是让 AI 什么都不能做，也不是为了效率把所有权限一次性打开。它要实现的是：低风险步骤可以顺畅推进，高风险动作能够被看见、被理解，并在发生之前由真正承担后果的人作出决定。</p>
+<p>AI 可以帮助我们行动，但行动的边界仍然应由人定义。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%85%A8/">#安全</a>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C/">#人机协作</a>
+      
+        <a href="/tags/%E6%9D%83%E9%99%90/">#权限</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-04-permission-gates/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-series/" title="与 AI 一起工作｜系列目录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作｜系列目录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-01/" title="基准测试工具之你不知道的两三事 | 1.数据库基准测试工具是什么">
+                        <span class="hidden-mobile">基准测试工具之你不知道的两三事 | 1.数据库基准测试工具是什么</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

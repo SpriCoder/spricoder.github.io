@@ -19,7 +19,7 @@
     <meta name="description" content="IoT Benchmark 是基于 Java 开发的时序数据库测试工具，支持 Apache IoTDB 各版本、InfluxDB 等多款数据库的测试，支持生成模拟数据集和使用真实数据集，可以自配置多种比例的读写混合测试，同样支持基于 Differential Testing 的数据库正确性测试。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用指南 | IoT Benchmark 的使用说明与原理介绍">
-<meta property="og:url" content="https://spricoder.github.io/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20|%20IoT%20Benchmark%20%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:url" content="https://spricoder.github.io/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20%7C%20IoT%20Benchmark%20%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
 <meta property="og:description" content="IoT Benchmark 是基于 Java 开发的时序数据库测试工具，支持 Apache IoTDB 各版本、InfluxDB 等多款数据库的测试，支持生成模拟数据集和使用真实数据集，可以自配置多种比例的读写混合测试，同样支持基于 Differential Testing 的数据库正确性测试。">
 <meta property="og:locale" content="zh_CN">
@@ -44,8 +44,8 @@
 <meta property="article:published_time" content="2024-01-20T03:00:00.000Z">
 <meta property="article:modified_time" content="2024-01-20T02:18:16.200Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="IoT">
 <meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="IoT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/1.png">
   
@@ -93,7 +93,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -206,7 +206,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="使用指南 | IoT Benchmark 的使用说明与原理介绍">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          3.9k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          31 分钟
+          33 分钟
         
       </span>
     
@@ -292,54 +292,65 @@
             <div class="markdown-body">
               
               <p>IoT Benchmark 是基于 Java 开发的时序数据库测试工具，支持 Apache IoTDB 各版本、InfluxDB 等多款数据库的测试，支持生成模拟数据集和使用真实数据集，可以自配置多种比例的读写混合测试，同样支持基于 Differential Testing 的数据库正确性测试。</p>
-<h1 id="1-IoT-Benchmark-使用说明"><a href="#1-IoT-Benchmark-使用说明" class="headerlink" title="1. IoT Benchmark 使用说明"></a>1. IoT Benchmark 使用说明</h1><blockquote>
+<h1 id="1-iot-benchmark-使用说明"><a class="markdownIt-Anchor" href="#1-iot-benchmark-使用说明"></a> 1. IoT Benchmark 使用说明</h1>
+<blockquote>
 <p>GitHub 仓库地址：<a target="_blank" rel="noopener" href="https://github.com/thulab/iot-benchmark">https://github.com/thulab/iot-benchmark</a></p>
 </blockquote>
 <p>IoT Benchmark 支持多种方式获取，可以通过在 GitHub 仓库右侧直接下载编译好的二进制包，也可以将 GitHub 仓库 Clone 到本地，然后在主目录执行 mvn clean package -DskipTests 完成编译，获取二进制包。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>IoT Benchmark 针对每一款被测数据库编译生成测试包，以 Apache IoTDB 1.0 为例，其包结构如下图所示。其中启动脚本为 benchmark.sh(for Linux/MacOS), benchmark.bat(for Windows)，测试配置文件为 conf/config.properties。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p>IoT Benchmark 针对每一款被测数据库编译生成测试包，以 Apache IoTDB 1.0 为例，其包结构如下图所示。其中启动脚本为 <a target="_blank" rel="noopener" href="http://benchmark.sh">benchmark.sh</a>(for Linux/MacOS), benchmark.bat(for Windows)，测试配置文件为 conf/config.properties。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/2.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>启动被测数据库后，修改完成 conf/config.properties 中的相关测试配置参数，执行启动脚本即可启动测试，测试结果会生成在 data/csvOutput 文件夹下，具体描述见用户手册。</p>
-<h1 id="2-IoT-Benchmark-原理介绍"><a href="#2-IoT-Benchmark-原理介绍" class="headerlink" title="2. IoT Benchmark 原理介绍"></a>2. IoT Benchmark 原理介绍</h1><p>IoT Benchmark 包含<strong>负载生成器、测试客户端线程池、TSDB 接口层和系统监控</strong>等模块。<strong>负载生成器</strong>模块包含元数据生成器、时序数据生成器、查询语句生成器、负载语句模板、时间戳生成器等部分，可以完成真实数据集的读取、模拟数据集的生成、模拟查询语句的生成混合后生成不同特征的测试负载。<strong>测试客户端线程池模块</strong>将使用负载生成器模块生成的负载在具体的数据库上执行测试，在这个过程中<strong>系统监控模块</strong>将统计所有测试数据，并生成测试统计报告。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-1-测试核心配置与原理说明"><a href="#2-1-测试核心配置与原理说明" class="headerlink" title="2.1. 测试核心配置与原理说明"></a>2.1. 测试核心配置与原理说明</h2><p>IoT Benchmark 目前支持常规测试模式（读写混合负载）、生成数据模式（将数据集生成到文件系统）、单数据库正确性写入模式、单数据库正确性查询模式、服务器资源使用监控模块，本文主要介绍常规测试模式，其他模式将在后续分享中持续更新。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="2-iot-benchmark-原理介绍"><a class="markdownIt-Anchor" href="#2-iot-benchmark-原理介绍"></a> 2. IoT Benchmark 原理介绍</h1>
+<p>IoT Benchmark 包含<strong>负载生成器、测试客户端线程池、TSDB 接口层和系统监控</strong>等模块。<strong>负载生成器</strong>模块包含元数据生成器、时序数据生成器、查询语句生成器、负载语句模板、时间戳生成器等部分，可以完成真实数据集的读取、模拟数据集的生成、模拟查询语句的生成混合后生成不同特征的测试负载。<strong>测试客户端线程池模块</strong>将使用负载生成器模块生成的负载在具体的数据库上执行测试，在这个过程中<strong>系统监控模块</strong>将统计所有测试数据，并生成测试统计报告。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="21-测试核心配置与原理说明"><a class="markdownIt-Anchor" href="#21-测试核心配置与原理说明"></a> 2.1. 测试核心配置与原理说明</h2>
+<p>IoT Benchmark 目前支持常规测试模式（读写混合负载）、生成数据模式（将数据集生成到文件系统）、单数据库正确性写入模式、单数据库正确性查询模式、服务器资源使用监控模块，本文主要介绍常规测试模式，其他模式将在后续分享中持续更新。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/4.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>其中，<strong>LOOP 参数</strong>代表每个测试客户端现成执行的操作总数，<strong>OPERATION_PROPORTION 参数</strong>代表执行不同操作的比例。由于具体执行操作类型是通过随机数控制的，在 LOOP 较小的情况下，实际操作比例和配置操作比例略有偏差。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/5.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>值得一提的是， IoT Benchmark 为了适配部分被测数据库的分布式架构，同样支持<strong>集群模式</strong>，可以通过 <strong>BENCHMARK_CLUSTER 参数</strong>打开，其实现原理是通过元数据划分保证不同 IoT Benchmark 写入不同的数据，例如 BENCHMARK_INDEX = 0 是写入 0 到 DEVICE_NUMBER - 1 号设备，而 BENCHMARK_INDEX = 1 则是写入 DEVICE_NUMBER 到 2 * DEVICE_NUMBER - 1 号设备。通常情况下，每个数据库节点可以配置 1 台集群模式的 IoT Benchmark 进行测试。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-2-被测数据库配置与原理说明"><a href="#2-2-被测数据库配置与原理说明" class="headerlink" title="2.2. 被测数据库配置与原理说明"></a>2.2. 被测数据库配置与原理说明</h2><p>每个 DataClient 代表一个测试客户端线程。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/6.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="22-被测数据库配置与原理说明"><a class="markdownIt-Anchor" href="#22-被测数据库配置与原理说明"></a> 2.2. 被测数据库配置与原理说明</h2>
+<p>每个 DataClient 代表一个测试客户端线程。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/7.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>目前 IoT Benchmark 支持测试 Apache IoTDB 1.0, 0.13, 0.12, 0.11, 0.10, 0.9, InfluxDB 1.x &amp; 2.x, TDengine 2.x &amp; 3.x, Victoriametrics, OpenTSDB, TimescaleDB, KariosDB, SQLite, QuestDB, MSSQLServer 等数据库，具体数据库类型、版本和插入方式可以通过 DB_SWITCH 参数配置，并通过 HOST 等参数配置其他配套参数。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/8.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="2-3-元数据生成配置与原理说明"><a href="#2-3-元数据生成配置与原理说明" class="headerlink" title="2.3. 元数据生成配置与原理说明"></a>2.3. 元数据生成配置与原理说明</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/8.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="23-元数据生成配置与原理说明"><a class="markdownIt-Anchor" href="#23-元数据生成配置与原理说明"></a> 2.3. 元数据生成配置与原理说明</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/9.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>IoT Benchmark 的元数据是并发创建的，并发数可以通过 <strong>CLIENT_NUMBER 参数</strong>配置。可以通过 <strong>CREATE_SCHEMA 参数</strong>来配置测试过程是否首先创建元数据。</p>
 <p>IoT Benchmark 的每次测试，涉及 <strong>DEVICE_NUMBER</strong> 个 Device，每个 Device 包含 <strong>SENSOR_NUMBER</strong> 个传感器，传感器的数据类型可以通过 <strong>INSERT_DATATYPE_PROPORTION</strong> 参数配置。在实现过程中，所有的 Device 会根据分组策略 <strong>SG_STRATEGY</strong> 分配到对应的 Client 中去执行创建。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/10.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>其中，当被测数据库是 Apache IoTDB 时，还可以通过 <strong>GROUP_NUMBER 参数</strong>来配置存储组个数，通过<strong>COMPRESSOR 参数</strong>配置数据压缩方式，通过 <strong>ENCODEING_${TYPE} 参数</strong>配置数据编码方式。</p>
-<h2 id="2-4-数据生成配置与原理说明"><a href="#2-4-数据生成配置与原理说明" class="headerlink" title="2.4. 数据生成配置与原理说明"></a>2.4. 数据生成配置与原理说明</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="24-数据生成配置与原理说明"><a class="markdownIt-Anchor" href="#24-数据生成配置与原理说明"></a> 2.4. 数据生成配置与原理说明</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/11.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>IoT Benchmark 的数据同样是并发按 <strong>Batch</strong> 写入的，并发数可以通过 <strong>CLIENT_NUMBER 参数</strong>配置。可以通过 <strong>IS_DELETE_DATA 参数</strong>来配置在每次测试开始前是否首先清理原有数据，通过 <strong>INIT_WAIT_TIME 参数</strong>来配置等待数据清理完成时间，单位为毫秒。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>其中每个 Batch 包含 <strong>BATCH_SIZE_PER_WRITE</strong> 行数据，相邻两行时间间隔为 <strong>POINT_STEP</strong>，行间时间间隔是否等长可以通过 <strong>IS_REGULAR_FREQUENCY 参数</strong>配置，如果该参数为 true，则行间时间间隔为 POINT_STEP，否则行间时间间隔为(0, POINT_STEP)区间内的一个随机值。</p>
 <p>测试生成数据开始时间为 <strong>START_TIME 参数</strong>配置，生成数据时间精度为 <strong>TIMESTAMP_PRECISION 参数</strong>配置，生成字符串长度为 <strong>STRING_LENGTH</strong>，生成浮点数小数位数为 <strong>DOUBLE_LENGTH</strong>。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/13.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/13.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>此外，IoT Benchmark 还支持生成乱序数据，将 <strong>IS_OUT_OF_ORDER 参数</strong>设置为 true 开启生成乱序数据，可以通过修改 <strong>OUT_OF_ORDER_MODE 参数</strong>修改乱序模式，修改 <strong>OUT_OF_ORDER_RATIO 参数</strong>修改乱序写入比例。</p>
-<h2 id="2-5-查询生成配置与原理说明"><a href="#2-5-查询生成配置与原理说明" class="headerlink" title="2.5. 查询生成配置与原理说明"></a>2.5. 查询生成配置与原理说明</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/14.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="25-查询生成配置与原理说明"><a class="markdownIt-Anchor" href="#25-查询生成配置与原理说明"></a> 2.5. 查询生成配置与原理说明</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/14.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>IoT Benchmark 的插叙同样是并发执行的，并发数可以通过 <strong>CLIENT_NUMBER 参数</strong>配置，其中可以通过配置 <strong>IS_RECENT_QUERY</strong> 参数来设置优先查询最近数据，可以通过设置 <strong>IS_QUIET_MODE 参数</strong>为 false 打印所有查询语句和统计情况。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/15.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/15.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>测试生成查询的起始时间步长间隔为 <strong>STEP_SIZE</strong>，涉及时间范围的查询的跨度为 <strong>QUERY_INTERVAL</strong>。此外还可以通过 <strong>QUERY_AGGREGATE_FUN</strong> 参数配置具体聚合函数，通过 <strong>QUERY_LOWER_VALUE</strong> 来配置值范围查询的最小值，通过 <strong>GROUP_BY_TIME_UNIT</strong> 来设置 Group By 查询中的组大小。</p>
-<h2 id="2-6-测试结果配置与原理说明"><a href="#2-6-测试结果配置与原理说明" class="headerlink" title="2.6. 测试结果配置与原理说明"></a>2.6. 测试结果配置与原理说明</h2><p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/16.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="26-测试结果配置与原理说明"><a class="markdownIt-Anchor" href="#26-测试结果配置与原理说明"></a> 2.6. 测试结果配置与原理说明</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/16.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>IoT Benchmark 可以通过设置 U<strong>SE_MEASUREMENT 参数</strong>来开启对测试操作时间分布情况的统计，并且通过 <strong>RESULT_PRECISION 参数</strong>来设置统计结果的精度，单位为%。IoT Benchmark 测试过程进度日志可以通过 <strong>LOG_PRINT_INTERVAL 参数</strong>配置，单位为秒。</p>
 <p>其中，IoT Benchmark 也支持将过程数据（每次操作数据）进行持久化，可以通过 <strong>TEST_DATA_PERSISTENCE 参数</strong>选择是否进行<strong>过程数据持久化</strong>以及具体的持久化介质。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/17.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>其中，IoT Benchmark 也支持将测试配置和最终结果持久化到 data/csvOutput下，可以通过 <strong>CSV_OUTPUT 参数</strong>配置。</p>
-<h2 id="2-7-测试统计说明"><a href="#2-7-测试统计说明" class="headerlink" title="2.7. 测试统计说明"></a>2.7. 测试统计说明</h2><p>IoT Benchmark 支持对测试耗时、测试结果、测试延迟进行统计。其中，<strong>测试耗时</strong>包含元数据创建耗时（单位为秒）、测试总耗时（不含元数据创建，单位为秒），<strong>结果矩阵</strong>包含 okOperation（执行成功操作数）、okPoint（写入成功点数/查询结果点数）、failOperation（执行失败操作数）、failPoint（写入失败点数）、throughtput（吞吐，点数每秒），延迟矩阵（单位为毫秒）包含Operation（操作类型）、AVG（均值）、MIN（最小值）、MAX（最大值），MEDIAN（中位数）、Pn（对应的n分位数）。</p>
-<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/18.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="27-测试统计说明"><a class="markdownIt-Anchor" href="#27-测试统计说明"></a> 2.7. 测试统计说明</h2>
+<p>IoT Benchmark 支持对测试耗时、测试结果、测试延迟进行统计。其中，<strong>测试耗时</strong>包含元数据创建耗时（单位为秒）、测试总耗时（不含元数据创建，单位为秒），<strong>结果矩阵</strong>包含 okOperation（执行成功操作数）、okPoint（写入成功点数/查询结果点数）、failOperation（执行失败操作数）、failPoint（写入失败点数）、throughtput（吞吐，点数每秒），延迟矩阵（单位为毫秒）包含Operation（操作类型）、AVG（均值）、MIN（最小值）、MAX（最大值），MEDIAN（中位数）、Pn（对应的n分位数）。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/intro/18.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <p>在纯写入场景下，okOperation 和 okPoint 满足如下公式：</p>
-<script type="math/tex; mode=display">
-okPoint = DEVICE\_NUMBER * LOOP \\ okPoint = okOperation * BATCH\_SIZE\_PER\_WRITE * SENSOR\_NUMBER</script><p>在纯查询场景下，okOperation 和 okPoint 满足如下公式：</p>
-<script type="math/tex; mode=display">
-okOperation = CLIENT\_NUMBER * LOOP \\ okPoint = actual\ points</script><p>在读写混合场景下，对应的值和 <strong>OPERATION_PROPORTION 参数</strong>有关。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>o</mi><mi>k</mi><mi>P</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo>=</mo><mi>D</mi><mi>E</mi><mi>V</mi><mi>I</mi><mi>C</mi><mi>E</mi><mi mathvariant="normal">_</mi><mi>N</mi><mi>U</mi><mi>M</mi><mi>B</mi><mi>E</mi><mi>R</mi><mo>∗</mo><mi>L</mi><mi>O</mi><mi>O</mi><mi>P</mi><mspace linebreak="newline"></mspace><mi>o</mi><mi>k</mi><mi>P</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo>=</mo><mi>o</mi><mi>k</mi><mi>O</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>∗</mo><mi>B</mi><mi>A</mi><mi>T</mi><mi>C</mi><mi>H</mi><mi mathvariant="normal">_</mi><mi>S</mi><mi>I</mi><mi>Z</mi><mi>E</mi><mi mathvariant="normal">_</mi><mi>P</mi><mi>E</mi><mi>R</mi><mi mathvariant="normal">_</mi><mi>W</mi><mi>R</mi><mi>I</mi><mi>T</mi><mi>E</mi><mo>∗</mo><mi>S</mi><mi>E</mi><mi>N</mi><mi>S</mi><mi>O</mi><mi>R</mi><mi mathvariant="normal">_</mi><mi>N</mi><mi>U</mi><mi>M</mi><mi>B</mi><mi>E</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">okPoint = DEVICE\_NUMBER * LOOP \\ okPoint = okOperation * BATCH\_SIZE\_PER\_WRITE * SENSOR\_NUMBER
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.99333em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">p</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.99333em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.99333em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></p>
+<p>在纯查询场景下，okOperation 和 okPoint 满足如下公式：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>o</mi><mi>k</mi><mi>O</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mi>C</mi><mi>L</mi><mi>I</mi><mi>E</mi><mi>N</mi><mi>T</mi><mi mathvariant="normal">_</mi><mi>N</mi><mi>U</mi><mi>M</mi><mi>B</mi><mi>E</mi><mi>R</mi><mo>∗</mo><mi>L</mi><mi>O</mi><mi>O</mi><mi>P</mi><mspace linebreak="newline"></mspace><mi>o</mi><mi>k</mi><mi>P</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo>=</mo><mi>a</mi><mi>c</mi><mi>t</mi><mi>u</mi><mi>a</mi><mi>l</mi><mtext> </mtext><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">okOperation = CLIENT\_NUMBER * LOOP \\ okPoint = actual\ points
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">p</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.99333em;vertical-align:-0.31em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord mathnormal">u</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace"> </span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span></span></p>
+<p>在读写混合场景下，对应的值和 <strong>OPERATION_PROPORTION 参数</strong>有关。</p>
 <p>以上便是对于 IoT Benchmark 的使用说明和原理介绍，后续还将继续分享 IoT Benchmark 的更多功能。</p>
 
               
@@ -388,7 +399,7 @@ okOperation = CLIENT\_NUMBER * LOOP \\ okPoint = actual\ points</script><p>在�
   <div class="license-box my-3">
     <div class="license-title">
       <div>使用指南 | IoT Benchmark 的使用说明与原理介绍</div>
-      <div>https://spricoder.github.io/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20|%20IoT%20Benchmark%20%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</div>
+      <div>https://spricoder.github.io/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20%7C%20IoT%20Benchmark%20%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</div>
     </div>
     <div class="license-meta">
       
@@ -440,8 +451,8 @@ okOperation = CLIENT\_NUMBER * LOOP \\ okPoint = actual\ points</script><p>在�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20%7C%20IoT%20Benchmark%20%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E9%9B%86%E5%92%8C%E5%86%99%E5%85%A5/" title="使用指南 | IoT Benchmark 生成模拟数据集和写入">
-                        <span class="hidden-mobile">使用指南 | IoT Benchmark 生成模拟数据集和写入</span>
+                      <a href="/2024/01/20/Apache%20IoTDB/jmeter/Apache%20JMeter%20%E5%8D%95%E6%9C%BA%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E6%B5%8B%E8%AF%95/" title="Apache JMeter 单机与分布式测试">
+                        <span class="hidden-mobile">Apache JMeter 单机与分布式测试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -836,5 +847,21 @@ okOperation = CLIENT\_NUMBER * LOOP \\ okPoint = actual\ points</script><p>在�
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

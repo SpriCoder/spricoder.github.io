@@ -47,10 +47,10 @@
 <meta property="article:published_time" content="2021-05-01T11:05:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:45:15.328Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="存储">
-<meta property="article:tag" content="数据集成">
 <meta property="article:tag" content="批处理">
+<meta property="article:tag" content="数据集成">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Data-Integration/img/batch/1.png">
   
@@ -98,7 +98,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -211,7 +211,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-数据集成-Lec5-批数据集成">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -483,7 +483,7 @@
 </ul>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqooplist-tables \<br><span class="hljs-params">--connect</span> jdbc<span class="hljs-function">:mysql</span>:<span class="hljs-string">//IP</span><span class="hljs-function">:PORT</span>/testDB\<br><span class="hljs-params">--username</span> USER \<br><span class="hljs-params">--password-file</span> file:<span class="hljs-string">/temp</span><br></code></pre></td></tr></table></figure>
 <h4 id="2143-全量数据导入"><a class="markdownIt-Anchor" href="#2143-全量数据导入"></a> 2.1.4.3. 全量数据导入</h4>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sqoop import \<br>  <span class="hljs-attr">--connect</span> jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br>  <span class="hljs-attr">--username</span> USER \<br>  <span class="hljs-attr">--password</span> PASSWD \<br>  <span class="hljs-attr">--query</span> <span class="hljs-string">&quot;select * from testdbwhere \$CONDITIONS&quot;</span> \<br>  <span class="hljs-attr">--target-dir</span>/<span class="hljs-selector-tag">input</span> \<br>  <span class="hljs-attr">--fields-terminated-by</span> <span class="hljs-string">&quot;\\01&quot;</span> \<br>  <span class="hljs-attr">--hive-drop-import-delims</span>\<br>  <span class="hljs-attr">--null-string</span> <span class="hljs-string">&quot;\\N&quot;</span> \<br>  <span class="hljs-attr">--null-non-string</span> <span class="hljs-string">&quot;\\N&quot;</span> \<br>  <span class="hljs-attr">--split-by</span> id \<br>  -m <span class="hljs-number">6</span> \<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sqoop</span> import <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --connect jdbc:mysql://IP:PORT/testDB<span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --username USER <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --password PASSWD <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --query <span class="hljs-string">&quot;select * from testdbwhere \$CONDITIONS&quot;</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --target-dir/input <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --fields-terminated-by <span class="hljs-string">&quot;\\01&quot;</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --hive-drop-import-delims<span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --null-string <span class="hljs-string">&quot;\\N&quot;</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --null-non-string <span class="hljs-string">&quot;\\N&quot;</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --split-by id <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -m <span class="hljs-number">6</span> \<br></code></pre></td></tr></table></figure>
 <ul>
 <li>参数说明
 <ul>
@@ -498,7 +498,7 @@
 </li>
 </ul>
 <h4 id="2144-基于递增列的增量数据导入append"><a class="markdownIt-Anchor" href="#2144-基于递增列的增量数据导入append"></a> 2.1.4.4. 基于递增列的增量数据导入(Append)</h4>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs arduino">sqoop <span class="hljs-keyword">import</span> \<br>  --connect jdbc:mysql:<span class="hljs-comment">//IP:PORT/testDB\</span><br><span class="hljs-comment">  --username USER \</span><br><span class="hljs-comment">  --password PASSWD \</span><br><span class="hljs-comment">  --query &quot;select * from table1 where \$CONDITIONS&quot; \</span><br><span class="hljs-comment">  --target-dir/input \</span><br><span class="hljs-comment">  --split-by id \</span><br><span class="hljs-comment">  -m 6 \</span><br><span class="hljs-comment">  --incremental append \</span><br><span class="hljs-comment">  --check-column id \</span><br><span class="hljs-comment">  --last-value 4</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sqoop</span> import <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --connect jdbc:mysql://IP:PORT/testDB<span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --username USER <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --password PASSWD <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --query <span class="hljs-string">&quot;select * from table1 where \$CONDITIONS&quot;</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --target-dir/input <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --split-by id <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  -m <span class="hljs-number">6</span> <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --incremental append <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --check-column id <span class="hljs-punctuation">\</span><br><span class="hljs-punctuation"></span>  --last-value <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>参数说明
 <ul>
@@ -1682,5 +1682,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

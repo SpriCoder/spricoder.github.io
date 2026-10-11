@@ -84,7 +84,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -197,7 +197,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-软件系统设计-Lec10-Defensive Programming">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -431,11 +431,11 @@
 <ol>
 <li>不要断言方法的规范</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh rate.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> rate refresh rate, in frames per second.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@throws</span> IllegalArgumentException if rate &lt;= 0 or</span><br><span class="hljs-comment">* rate &gt; MAX_REFRESH_RATE.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setRefreshRate</span><span class="hljs-params">(<span class="hljs-type">int</span> rate)</span>&#123;<br>  <span class="hljs-comment">// Enforce specified precondition in public method</span><br>  <span class="hljs-keyword">if</span> (rate &lt;= <span class="hljs-number">0</span> || rate &gt; MAX_REFRESH_RATE)<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Illegal rate: &quot;</span> + rate);<br>  setRefreshInterval(<span class="hljs-number">1000</span>/rate);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh rate.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> rate refresh rate, in frames per second.</span><br><span class="hljs-comment">* <span class="hljs-doctag">@throws</span> IllegalArgumentException if rate &lt;= 0 or</span><br><span class="hljs-comment">* rate &gt; MAX_REFRESH_RATE.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setRefreshRate</span><span class="hljs-params">(<span class="hljs-type">int</span> rate)</span>&#123;<br>  <span class="hljs-comment">// Enforce specified precondition in public method</span><br>  <span class="hljs-keyword">if</span> (rate &lt;= <span class="hljs-number">0</span> || rate &gt; MAX_REFRESH_RATE)<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Illegal rate: &quot;</span> + rate);<br>  setRefreshInterval(<span class="hljs-number">1000</span>/rate);<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>可以断言非public方法的前置条件</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh interval (to a legal frame rate).</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> interval refresh interval in milliseconds.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setRefreshInterval</span><span class="hljs-params">( <span class="hljs-type">int</span> interval )</span><br>&#123;<br>  <span class="hljs-comment">// preconditions in nonpublic method</span><br>  <span class="hljs-keyword">assert</span> interval &gt; <span class="hljs-number">0</span> &amp;&amp; interval &lt;= <span class="hljs-number">1000</span>/MAX_REFRESH_RATE : interval;<br>  ... <span class="hljs-comment">// Set the refresh interval</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Sets the refresh interval (to a legal frame rate).</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> interval refresh interval in milliseconds.</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setRefreshInterval</span><span class="hljs-params">( <span class="hljs-type">int</span> interval )</span><br>&#123;<br>  <span class="hljs-comment">// preconditions in nonpublic method</span><br>  <span class="hljs-keyword">assert</span> interval &gt; <span class="hljs-number">0</span> &amp;&amp; interval &lt;= <span class="hljs-number">1000</span>/MAX_REFRESH_RATE : interval;<br>  ... <span class="hljs-comment">// Set the refresh interval</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="248-不变式invariants"><a class="markdownIt-Anchor" href="#248-不变式invariants"></a> 2.4.8. 不变式Invariants</h3>
 <ol>
 <li>永远都应该为真的条件</li>
@@ -470,7 +470,7 @@
 <li>不能依赖断言来让代码正常工作：最佳方式是在一开始不要在代码中引入错误</li>
 <li>断言不能有任何副作用</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> i= pullNumberFromThinAir();<br><span class="hljs-keyword">assert</span>(i = <span class="hljs-number">6</span>); <span class="hljs-comment">//错误的断言导致i被赋值</span><br>printf(<span class="hljs-string">&quot;i is 8d\n&quot;</span>,i);<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span><span class="hljs-operator">=</span> pullNumberFromThinAir();<br><span class="hljs-keyword">assert</span>(i = <span class="hljs-number">6</span>); <span class="hljs-comment">//错误的断言导致i被赋值</span><br>printf(<span class="hljs-string">&quot;i is 8d\n&quot;</span>,i);<br></code></pre></td></tr></table></figure>
 <h3 id="2410-question-应该进行多少约束校验"><a class="markdownIt-Anchor" href="#2410-question-应该进行多少约束校验"></a> 2.4.10. Question: 应该进行多少约束校验？</h3>
 <ol>
 <li>每一行都设置一个校验？过多的约束校验，可能使得代码的逻辑变得不明确</li>
@@ -482,7 +482,7 @@
 </li>
 </ol>
 <h3 id="2411-补充断言举例"><a class="markdownIt-Anchor" href="#2411-补充断言举例"></a> 2.4.11. 补充：断言举例</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AssertionDemo</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span> i; <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>      sum += i;<br>    &#125;<br>    <span class="hljs-type">assert</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span>= <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">assert</span> sum &gt; <span class="hljs-number">10</span> &amp;&amp; sum &lt; <span class="hljs-number">5</span> * <span class="hljs-number">10</span> : <span class="hljs-string">&quot;sum is &quot;</span> + sum;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AssertionDemo</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span> i; <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>      sum += i;<br>    &#125;<br>    <span class="hljs-keyword">assert</span> i == <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">assert</span> sum &gt; <span class="hljs-number">10</span> &amp;&amp; sum &lt; <span class="hljs-number">5</span> * <span class="hljs-number">10</span> : <span class="hljs-string">&quot;sum is &quot;</span> + sum;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>冒泡排序的前置后置条件
 <ol>
@@ -656,7 +656,7 @@
 <ol>
 <li>抛出的异常也是程序接口的一部分，和其他具体的数据类型一样</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java反例: 抛出抽象层次不一致的异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> TaxId <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EOFException &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java反例: 抛出抽象层次不一致的异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">TaxId</span> <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EOFException &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>子程序的调用方代码不是与Employee类的代码耦合，而是与比Employee类层次更低的抛出EOFException异常的代码耦合起来了</li>
 </ol>
@@ -664,7 +664,7 @@
 <ol>
 <li>GetTaxId() 代码应抛回一个与其所在类的接口相一致的异常</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java示例:一个在一致的抽象层次上抛出异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> TaxId <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EmployeeDataNotAvailable &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Java示例:一个在一致的抽象层次上抛出异常的类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Employee</span> (<br>  <span class="hljs-keyword">public</span> <span class="hljs-type">TaxId</span> <span class="hljs-title function_">GetTaxld</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> EmployeeDataNotAvailable &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>在设计上需要增加EmployeeDataNotAvailable异常类型，<br />
 并将更底层的EOFException异常映射为该异常类型3</li>
@@ -1350,5 +1350,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

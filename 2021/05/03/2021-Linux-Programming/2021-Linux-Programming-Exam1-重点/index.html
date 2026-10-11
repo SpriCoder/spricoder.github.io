@@ -24,6 +24,10 @@
 <meta property="og:description" content="2021-Linux程序设计-Exam1-重点">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/6.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/3.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/1.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/4.png">
+<meta property="og:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/5.png">
 <meta property="article:published_time" content="2021-05-03T11:07:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:51:02.596Z">
 <meta property="article:author" content="SpriCoder">
@@ -76,7 +80,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -189,7 +193,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-Linux程序设计-Exam1-重点">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -213,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.4k 字
+          23k 字
         
       </span>
     
@@ -224,7 +228,7 @@
         
         
         
-          54 分钟
+          189 分钟
         
       </span>
     
@@ -565,9 +569,9 @@
 <li><code>?</code>匹配0或1次</li>
 <li><code>*</code>匹配0次或多次</li>
 <li><code>+</code>匹配一次或多次</li>
-<li><code>&#123;n&#125;</code>匹配n次</li>
-<li><code>&#123;n,&#125;</code>匹配n次或n次以上</li>
-<li><code>&#123;n,m&#125;</code>匹配n次到m次</li>
+<li><code>{n}</code>匹配n次</li>
+<li><code>{n,}</code>匹配n次或n次以上</li>
+<li><code>{n,m}</code>匹配n次到m次</li>
 </ol>
 <h2 id="27-read-单引号-双引号-转义符"><a class="markdownIt-Anchor" href="#27-read-单引号-双引号-转义符"></a> 2.7. Read、单引号、双引号、转义符</h2>
 <ol>
@@ -638,16 +642,16 @@
 <h3 id="292-case语句"><a class="markdownIt-Anchor" href="#292-case语句"></a> 2.9.2. case语句</h3>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">case</span> str <span class="hljs-keyword">in</span><br>   str1 | str2) statements;;<br>   str3 | str4) statements;;<br>   *) statements;;<br><span class="hljs-keyword">esac</span><br></code></pre></td></tr></table></figure>
 <h3 id="293-for语句"><a class="markdownIt-Anchor" href="#293-for语句"></a> 2.9.3. for语句</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> list<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br><br><span class="hljs-keyword">for</span>((i=1;i&lt;5;i++))<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">for</span> var <span class="hljs-keyword">in</span> list<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br><br><span class="hljs-keyword">for</span>((i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">5</span>;i++))<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 <h3 id="294-while语句"><a class="markdownIt-Anchor" href="#294-while语句"></a> 2.9.4. while语句</h3>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">while</span> condition<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 <h3 id="295-until语句"><a class="markdownIt-Anchor" href="#295-until语句"></a> 2.9.5. until语句</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">until condition<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">until</span> condition<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 <h3 id="296-select语句"><a class="markdownIt-Anchor" href="#296-select语句"></a> 2.9.6. select语句</h3>
 <ol>
 <li>Select后面输入的是数字，对应item list</li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">select item <span class="hljs-keyword">in</span> itemlist<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-keyword">select</span> item <span class="hljs-keyword">in</span> itemlist<br><span class="hljs-keyword">do</span><br>   statements<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 <h3 id="297-命令组合"><a class="markdownIt-Anchor" href="#297-命令组合"></a> 2.9.7. 命令组合</h3>
 <ol>
 <li>分号串联:<code>command1;command2;...</code></li>
@@ -684,12 +688,765 @@
 <li>算术扩展：<code>$(($x+1))</code></li>
 <li>参数扩展：
 <ol>
-<li><code>$&#123;param=default&#125;</code>：如果param不存在，则返回default，并将它设置为default的值</li>
-<li><code>$&#123;param:=default&#125;</code>：如果param不存在或值为空，做如上操作</li>
-<li>`$</li>
+<li><code>${param=default}</code>：如果param不存在，则返回default，并将它设置为default的值</li>
+<li><code>${param:=default}</code>：如果param不存在或值为空，做如上操作</li>
+<li><code>${#param}</code>：给出param的长度</li>
+<li><code>${var_name-default}</code>，如果var_name不存在，则返回default的值</li>
+<li><code>${var_name:-default}</code>，如果var_name不存在或者值为空，则返回default的值</li>
+<li><code>${var_name+default}</code>，如果var_name存在，则返回default的值</li>
+<li><code>${var_name:+default}</code>，如果var_name存在且不为空，则返回default的值</li>
+<li><code>${var_name?default}</code>，如果var_name不存在，则报错并输出default的值</li>
+<li><code>${var_name:?default}</code>，如果var_name不存在或者值为空，则报错并default的值</li>
+<li><code>${param%word}</code>：从param的尾部开始删除与word匹配的最小部分，然后返回剩余部分</li>
+<li><code>${param%%word}</code>：从param的尾部开始删除与word匹配的最长部分，然后返回剩余部分</li>
+<li><code>${param#word}</code>：从param的头部开始删除与word匹配的最小部分，然后返回剩余部分</li>
+<li><code>${param##word}</code>：从param的头部开始删除与word匹配的最长部分，然后返回剩余部分</li>
+<li><code>${var_name:x:y}</code>，提取var_name的值
+<ol>
+<li>如果x
+<ol>
+<li>是非负数：从左侧开始第x个字节开始</li>
+<li>是负数：</li>
+</ol>
+</li>
+<li>如果y
+<ol>
+<li>是非负数：的连续y个字节的内容</li>
+<li>是负数：到从右侧开始数y个字节的内容</li>
 </ol>
 </li>
 </ol>
+</li>
+<li><code>${var_name/regex/sub}</code>，替换var_name中的内容，语法和sed及vim的替换指令一样，只替换一次</li>
+<li><code>${var_name/regex/sub}</code>，替换var_name中的内容，语法和sed及vim的替换指令一样，替换全部</li>
+</ol>
+</li>
+</ol>
+<h2 id="210-即时文档"><a class="markdownIt-Anchor" href="#210-即时文档"></a> 2.10. 即时文档</h2>
+<ol>
+<li><code>cat &gt;&gt; file.txt &lt;&lt; !CATINPUT!</code></li>
+</ol>
+<h1 id="3-linux-programming-persuite"><a class="markdownIt-Anchor" href="#3-linux-programming-persuite"></a> 3. Linux Programming Persuite</h1>
+<h2 id="31-gcc命令"><a class="markdownIt-Anchor" href="#31-gcc命令"></a> 3.1. gcc命令</h2>
+<ol>
+<li>Usage:
+<ol>
+<li>gcc [options] [filename]</li>
+</ol>
+</li>
+<li>gcc 链接(如果文件为.o，则自动只做链接，生成可执行文件) 或 编译+链接
+<ol>
+<li><code>-E</code>：只对源程序进行预处理(调用cpp预处理器)</li>
+<li><code>-S</code>：只对源程序进行预处理、编译</li>
+<li><code>-c</code>：执行预处理、编译、汇编而不连接</li>
+<li><code>-o</code>：output_file：输出执行文件名</li>
+<li><code>-g</code>：产生调试工具所必须的符号信息</li>
+<li><code>-O/On</code>：在程序编译、连接过程中进行优化处理</li>
+<li><code>-Wall</code>：显示所有的警告信息</li>
+<li><code>-ldir</code>：指定额外的<strong>头文件</strong>搜索路径，dir是文件路径</li>
+<li><code>-Ldir</code>：指定额外的<strong>库文件</strong>搜索路径，dir是文件路径</li>
+<li><code>-lname</code>：链接时搜索指定的库文件</li>
+<li><code>-DMACRO[=DEFN]</code>：定义MACRO宏，比如<code>gcc -DAA=2</code>相当于源码中添加了#define AA 2</li>
+</ol>
+</li>
+<li>g++ C++对应命令</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh">gcc –o hello hello.c ： 将hello.c文件编译成hello的可执行文件<br>gcc –c hello.c ： 将hello.c文件生成hello.o文件 gcc -E hello.c ： 只是激活预处理，不生成文档，需要把它重定向到另外一个文档里<br>gcc –S hello.c ： 将hello.c文件生成hello.s文件的汇编代码<br>gcc –pipe –o hello hello.c ： 使用管道代替编译中临时文档<br>gcc hello.c –include /root/hello.h ：包含某个代码，简单来说，就是以某个文档，需要另外一个文档的时候，就能够用它设定，功能就相当于在代码中使<br></code></pre></td></tr></table></figure>
+<h2 id="32-gdb"><a class="markdownIt-Anchor" href="#32-gdb"></a> 3.2. gdb</h2>
+<ol>
+<li><code>file</code> 打开要调试的文件</li>
+<li><code>break/tbreak</code> 设置调试</li>
+<li><code>run</code> 执行当前调试的程序</li>
+<li><code>list</code> 列出源代码一部分</li>
+<li><code>next</code> 执行一步但不进入函数</li>
+<li><code>step</code> 执行一步进入函数</li>
+<li><code>display</code> 显示表达式的值</li>
+<li><code>print</code> 临时显示表达式的值</li>
+<li><code>kill</code> 中止调试</li>
+<li><code>quit</code> 退出</li>
+</ol>
+<h2 id="33-编译链接图"><a class="markdownIt-Anchor" href="#33-编译链接图"></a> 3.3. 编译链接图</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/3.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<ol>
+<li>每一个源代码和目标文件是一一对应的</li>
+<li>链接器是将所有的目标文件进行连接</li>
+<li>打包后得到了.a静态库文件</li>
+</ol>
+<h2 id="34-静态库和动态库"><a class="markdownIt-Anchor" href="#34-静态库和动态库"></a> 3.4. 静态库和动态库</h2>
+<ol>
+<li>二者的不同点在于代码被载入的时刻不同。
+<ol>
+<li>静态库的代码在编译过程中已经被载入可执行程序，因此体积比较大。</li>
+<li>动态库(共享库)的代码在可执行程序运行时才载入内存，在编译过程中仅简单的引用，因此代码体积比较小。</li>
+<li>不同的应用程序如果调用相同的库，那么在内存中只需要有一份该动态库(共享库)的实例。</li>
+<li>静态库和动态库的最大区别：静态情况下，把库直接加载到程序中，而动态库链接的时候，它只是保留接口，将动态库与程序代码独立，这样就可以提高代码的可复用度，和降低程序的耦合度。</li>
+</ol>
+</li>
+<li>静态库：编译链接时，把库文件的代码全部加入可执行文件中，因此生成的文件比较大，但是运行时也就不需要库文件了，后缀名一般为<code>.a</code>
+<ol>
+<li>为什么需要静态库：通过静态库的方式降低复杂度，在升级更新时尽量做到增量更新，但是静态库会导致复用性降低，磁盘占用高。</li>
+</ol>
+</li>
+<li>动态库：在编译链接时并没有把库文件的代码加入可执行文件中，而是在程序执行时由运行时链接文件加载库，这样可以节省系统的开销，后缀名一般为<code>.so</code>。
+<ol>
+<li>动态库的作用
+<ol>
+<li>库文件不在可执行文件中，放置在外侧</li>
+<li>升级更新会方便快捷</li>
+<li>动态库会存在冲突(版本问题)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>gcc/g++在编译时默认使用动态库。无论静态库还是动态库，都是由.o文件构成的</li>
+</ol>
+<h2 id="35-makefile"><a class="markdownIt-Anchor" href="#35-makefile"></a> 3.5. Makefile</h2>
+<ol>
+<li>Makefile描述模块间的依赖关系，会记录所有文件的信息，在make时决定链接时需要重新编译哪些</li>
+<li>如果找到，它会找文件中的第一个目标文件(target)</li>
+<li>如果文件不存在，或后依赖的.o文件的修改时间新于这个文件，那么则会执行后面所定义的命令来生成这个文件。</li>
+</ol>
+<h3 id="351-make"><a class="markdownIt-Anchor" href="#351-make"></a> 3.5.1. make</h3>
+<ol>
+<li>命令根据Makefile对程序进行管理和维护</li>
+<li>make命令格式:<code>make [-f Makefile][option][target]</code></li>
+<li>make判断被维护文件的时序关系</li>
+<li>make install 需要root权限</li>
+</ol>
+<h3 id="352-makefile语法"><a class="markdownIt-Anchor" href="#352-makefile语法"></a> 3.5.2. makefile语法</h3>
+<ol>
+<li>缩进
+<ol>
+<li>顶格的为规则</li>
+<li>缩进的为命令</li>
+</ol>
+</li>
+<li>makefile语法
+<ol>
+<li>target是一个目标文件</li>
+<li>prerequisites是生成target所需的文件或目标</li>
+<li>command是make需要执行的命令</li>
+<li>默认回显：如果不想要回显则在命令前添加@</li>
+<li>“%.o&quot;表明要所有以”.o&quot;结尾的目标，即&quot;foo.o bar.o&quot;，就是变量$object集合的模式</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">target: prerequisites</span><br>   command<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>举例：依赖关系，如果后面的文件更新，则执行如下代码，若输出文件不存在是执行如下代码则为违反规则。</li>
+</ol>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs makefile">hello : main.o kbd.o<br>  gcc -o hello main.o kbd.o<br>main.o : main.c defs.h<br>  cc -c main.c<br>kbd.o : kbd.c defs.h command.h<br>  cc -c kbd.c<br>clean :<br>  rm edit main.o kbd.o <span class="hljs-comment"># 伪目标</span><br></code></pre></td></tr></table></figure>
+<h3 id="353-伪目标"><a class="markdownIt-Anchor" href="#353-伪目标"></a> 3.5.3. 伪目标</h3>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">clean:</span><br>   rm *.o hello<br></code></pre></td></tr></table></figure>
+<ol>
+<li>伪目标并不是一个文件，只是一个标签，所以make无法生成器依赖关系和决定它是否要执行，只能显式的指明目标才能使其生效。</li>
+<li>伪目标取名不能和文件名重名：可以使用<code>.PHONY</code>标记来显示地指明一个目标是伪目标，向make说明，不管是否有这个文件，这个目标是伪目标</li>
+<li>伪目标一般无依赖文件，但是也可以执行</li>
+<li>伪目标可以作为默认目标，只要放到第一个</li>
+</ol>
+<h3 id="354-makefile例子"><a class="markdownIt-Anchor" href="#354-makefile例子"></a> 3.5.4. makefile例子</h3>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs makefile">TOPDIR = ../<br><span class="hljs-keyword">include</span> <span class="hljs-variable">$(TOPDIR)</span>Rules.mak<br>EXTRA LIBS += :<br>EXEC = <span class="hljs-variable">$(INSTALL_DIR)</span>/hello<br><span class="hljs-comment"># make时会找到makefile文件，找到其中的第一个目标文件，如果不存在或旧的，则会执行后面命令来生成hello文件</span><br>OBJS = hello.o <span class="hljs-comment"># make uninstall之后系统中源代码仍然存在</span><br><span class="hljs-comment"># 变量定义，makefile可以include别的makefile</span><br><br><span class="hljs-section">all: <span class="hljs-variable">$(EXEC)</span> # 默认执行make all</span><br>  <span class="hljs-variable">$(EXEC)</span>: <span class="hljs-variable">$(OBJS)</span><br>  <span class="hljs-variable">$(CC)</span> <span class="hljs-variable">$(LDFLAGS)</span> -0 <span class="hljs-variable">$@</span> <span class="hljs-variable">$(OBJS)</span> <span class="hljs-variable">$(EXTRA_LIBS)</span> <span class="hljs-comment"># gcc的别名CC，$@明确了目标文件放置位置</span><br><span class="hljs-section">install:</span><br>  <span class="hljs-variable">$(EXP_INSTALL)</span> <span class="hljs-variable">$(EXEC)</span> <span class="hljs-variable">$(INSTALL_ DIR)</span> <span class="hljs-comment"># make install执行的指定目标</span><br><span class="hljs-section">clean:</span><br>  -rm -f <span class="hljs-variable">$(EXEC)</span> *.elf*.gdb *.o<br></code></pre></td></tr></table></figure>
+<h3 id="355-预定义变量"><a class="markdownIt-Anchor" href="#355-预定义变量"></a> 3.5.5. 预定义变量</h3>
+<ol>
+<li><code>$&lt;</code> 第一个依赖文件的名称</li>
+<li><code>$?</code> 所有的依赖文件，以空格分开，这些依赖文件的修改日期比目标的创建日期晚</li>
+<li><code>$+</code> 所有的依赖文件，以空格分开，并以出现的先后为序，可能包含重复的依赖文件</li>
+<li><code>$^</code> 所有的依赖文件，以空格分开，不包含重复的依赖文件</li>
+<li><code>$*</code> 不包括扩展名的目标文件名称</li>
+<li><code>$@</code> 目标的完整名称</li>
+<li><code>$%</code> 如果目标是归档成员，则该变量表示目标的归档成员名称</li>
+</ol>
+<h1 id="4-linux-system-programmming-file-system"><a class="markdownIt-Anchor" href="#4-linux-system-programmming-file-system"></a> 4. Linux System Programmming - File System</h1>
+<h2 id="41-文件和文件系统"><a class="markdownIt-Anchor" href="#41-文件和文件系统"></a> 4.1. 文件和文件系统</h2>
+<ol>
+<li>文件：是数据的集合，可以写入、读取或两者兼有的对象(文件具有某些属性，包括访问权限和类型)。逻辑上是字节，文件必然是整数字节。</li>
+<li>文件结构：字节流(Linux)、记录序列、记录树</li>
+<li>文件系统：操作系统中负责访问和管理文件的部分，是文件及其某种属性的集合，为引用文件的文件序列号提供了名称空间。
+<ol>
+<li>一种特定的文件格式</li>
+<li>指按指定格式进行格式化的一块存储介质</li>
+<li>指操作系统中(通常内核中)用来管理文件系统以及对文件进行操作的机制及其实现</li>
+</ol>
+</li>
+</ol>
+<h3 id="411-文件类型七种"><a class="markdownIt-Anchor" href="#411-文件类型七种"></a> 4.1.1. 文件类型：七种</h3>
+<ol>
+<li><code>-</code> 普通文件：文件或代码数据，没有特别的内部结构</li>
+<li><code>d</code> 目录</li>
+<li><code>l</code> 符号链接</li>
+<li><code>s</code> 套接字文件(网络接口):启动一个程序来监听客户端的要求，而客户端可以通过这个socket来进行数据的沟通</li>
+<li><code>b</code> 块设备文件：发大量数据，比如移动硬盘，字符设备按块读取</li>
+<li><code>c</code> 字符设备文件：发少量数据，按字符读取</li>
+<li><code>p</code> 命名管道文件：结果多个程序同时存取一个文件的错误问题</li>
+</ol>
+<h3 id="412-文件夹结构"><a class="markdownIt-Anchor" href="#412-文件夹结构"></a> 4.1.2. 文件夹结构</h3>
+<ol>
+<li><code>/boot</code>：内核、bootloader的配置，包括引导加载程序相关的文件</li>
+<li><code>/etc</code>：系统的配置文件所在地(包含下载的软件的配置)</li>
+<li><code>/bin</code>：程序文件夹，包含二进制可执行文件，例如<code>ls</code>，其实是在执行一个程序，也有一部分程序在<code>/usr/bin</code>(在我的linux上，/bin是/usr/bin的软链接)</li>
+<li><code>/sbin</code>：系统二进制文件，但是这个目录下的Linux命令通常<strong>由系统管理员使用，对系统进行维护</strong>，例如<code>ifconfig/fdisk</code>也有部分程序在<code>/sbin</code>，例如分区命令<code>fdisk</code></li>
+<li><code>/mnt</code>：<strong>挂载目录</strong>，临时挂载目录，系统管理员可以挂载文件系统。</li>
+<li><code>/usr</code>：资源文件夹(和编程相关的)；编译器、默认的头文件、系统中的库文件，包含二进制文件、库文件、文档和二级程序的源代码
+<ol>
+<li><code>/usr/bin</code>中包含用户程序的二进制文件。</li>
+<li><code>/usr/sbin</code>中包含系统管理员的二进制文件。</li>
+<li><code>/usr/lib</code>中包含了<code>/usr/bin</code>和<code>/usr/sbin</code>用到的库。</li>
+<li><code>/usr/local</code>中包含了从源安装的用户程序。</li>
+</ol>
+</li>
+<li><code>/lib</code>：系统库。包含<strong>支持位于/bin和/sbin下的二进制文件的库文件</strong>；库文件名为 <code>ld*或lib*.so.*</code></li>
+<li><code>/proc</code>：包括<strong>系统进行相关信息</strong>。这是一个虚拟的文件系统，包含有关正在运行的进程的信息；系统资源以文本信息形式存在。</li>
+<li><code>/var</code>：系统里的可变数据，<strong>变量文件</strong>，并不是存放在磁盘上的数据，一般是存放在内存中的数据。
+<ol>
+<li>系统日志文件 <code>/var/log</code></li>
+<li>包和数据库文件 <code>/var/lib</code></li>
+<li>电子邮件 <code>/var/mail</code></li>
+<li>打印队列 <code>/var/spool</code></li>
+<li>锁文件 <code>/var/lock</code></li>
+<li>多次重新启动需要的临时文件 <code>/var/tmp</code></li>
+</ol>
+</li>
+<li><code>/dev</code>：包含<strong>设备文件</strong>，这些包括终端设备、USB或连接到系统的任何设备。例如<code>/dev/tty1</code></li>
+<li><code>/tmp</code>：包含系统和用户创建的<strong>临时文件</strong>，当系统重新启动时，这个目录下的文件都将被删除。</li>
+<li><code>/home</code>：用home目录来存储他们的个人档案。</li>
+<li><code>/opt</code>：可选的附加应用程序</li>
+<li><code>/media</code>：用于挂载<strong>可移动设备</strong>的临时目录。举例来说，挂载CD-ROM的/media/cdrom，挂载软盘驱动器的/media/floppy</li>
+<li><code>/srv</code>：srv代表服务。包含服务器特定服务相关的数据。</li>
+<li>修改环境变量PATH，临时修改可以直接<code>PATH=$PATH:/bin</code>，但是要永久生效得修改配置文件<code>/etc/profile</code></li>
+</ol>
+<h3 id="413-文件的属性"><a class="markdownIt-Anchor" href="#413-文件的属性"></a> 4.1.3. 文件的属性</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/1.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h2 id="42-文件权限"><a class="markdownIt-Anchor" href="#42-文件权限"></a> 4.2. 文件权限</h2>
+<ol>
+<li>文件权限要求掌握，SUID、SGID等权限
+<ol>
+<li>sticky：在这个文件夹创建的文件是否具有用户互斥性，比如在一个文件夹中是否允许user1写入的文件被user2删除</li>
+<li>SUID：将用户提升到root权限，经典：su</li>
+<li>SGID：将组提升到root，经典：sudo</li>
+</ol>
+</li>
+<li>文件权限层次
+<ol>
+<li>用户：创建文件的用户</li>
+<li>组：拥有文件的组中的所有用户</li>
+<li>其他用户：其他</li>
+</ol>
+</li>
+<li>三个类型
+<ol>
+<li>读 r 读取文件内容或列表内容目录</li>
+<li>写 w 更改文件内容或创建/删除文件在目录中</li>
+<li>执行 x 以程序执行文件或使用目录作为活动目录</li>
+</ol>
+</li>
+</ol>
+<h2 id="43-vfs"><a class="markdownIt-Anchor" href="#43-vfs"></a> 4.3. VFS</h2>
+<h3 id="431-什么是vfs"><a class="markdownIt-Anchor" href="#431-什么是vfs"></a> 4.3.1. 什么是VFS</h3>
+<ol>
+<li>采用标准的Unix系统调用读写位于不同物理介质上的不同文件系统，使得open()等系统调用不用关心底层的存储介质和文件类型</li>
+<li>VFS：Virtual File System Switch</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/4.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/exam1/5.png" srcset="/img/loading.gif" lazyload alt="" /></th>
+</tr>
+</thead>
+</table>
+<h3 id="432-vfs在系统内建立的四种结构体和含义"><a class="markdownIt-Anchor" href="#432-vfs在系统内建立的四种结构体和含义"></a> 4.3.2. VFS在系统内建立的四种结构体和含义</h3>
+<ol>
+<li>超级块(super block)：某一个磁盘的某一个分区的文件系统的信息，记录了文件系统类型和参数。</li>
+<li>i-node 对象(i-node object)：记录真正的文件，文件存储在磁盘上时是按照索引号访问文件的，软链接是不同的文件，但是硬链接是相同的inode号，同一个文件。</li>
+<li>文件对象(file object)：记录了文件描述符、索引号，不对应真正的文件，文件打开会创建出文件对象，文件关闭才会释放内核中的文件对象。记录了文件的读写状态。</li>
+<li>目录对象(dentry object)：维护了目录中的逻辑关系，若要通过目录来查找文件，都需要这个对象。在路径上，无论是目录还是文件，都是一个dentry对象对应到目录包含的i-node上，目录项包括索引节点编号，目录项名称长度以及名称。</li>
+</ol>
+<h2 id="44-硬链接和软链接-掌握"><a class="markdownIt-Anchor" href="#44-硬链接和软链接-掌握"></a> 4.4. 硬链接和软链接 掌握</h2>
+<ol>
+<li>硬链接
+<ol>
+<li>不同的文件名对应同一个inode</li>
+<li>不能跨越文件系统</li>
+<li>对应系统调用link</li>
+<li>ln -s [原文件名] [连接文件名]</li>
+</ol>
+</li>
+<li>软链接
+<ol>
+<li>存储被链接文件的文件名(而不是inode)实现链接</li>
+<li>可以跨越文件系统</li>
+<li>对应系统调用symlink</li>
+<li>ln [原文件名] [连接文件名]</li>
+</ol>
+</li>
+</ol>
+<h2 id="45-系统调用和c库区别"><a class="markdownIt-Anchor" href="#45-系统调用和c库区别"></a> 4.5. 系统调用和C库区别</h2>
+<ol>
+<li>都以C库函数的形式出现</li>
+<li>系统调用：需要切换到内核态来进行相应的操作，编译运行速度和效率高，是Linux内核对外的位移接口(用户程序和内核之间的唯一接口)，提供出最小接口。</li>
+<li>库函数：库函数的可移植性好，依赖于系统调用，提供较为复杂的功能，例如标准I/O库</li>
+</ol>
+<h3 id="451-系统调用"><a class="markdownIt-Anchor" href="#451-系统调用"></a> 4.5.1. 系统调用</h3>
+<ol>
+<li>文件描述符：一个非负整数</li>
+<li>文件操作的一般步骤：打开-读/写-寻道-关闭</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>   <span class="hljs-type">int</span> fd, nread;<br>   <span class="hljs-type">char</span> buf[<span class="hljs-number">1024</span>];<br><br>   fd = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;data&quot;</span>, O_RDONLY);<br>   nread = <span class="hljs-built_in">read</span>(fd, buf, <span class="hljs-number">1024</span>);<br>   <span class="hljs-built_in">close</span>(fd);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="452-文件系统调用函数"><a class="markdownIt-Anchor" href="#452-文件系统调用函数"></a> 4.5.2. 文件系统调用函数</h3>
+<h4 id="4521-头文件unistdh"><a class="markdownIt-Anchor" href="#4521-头文件unistdh"></a> 4.5.2.1. 头文件<code>&lt;unistd.h&gt;</code></h4>
+<ol>
+<li>int open(const char *pathname, int flags);</li>
+<li>int open(const char *pathname, int flags, mode_t mode);</li>
+<li>int creat(const char *pathname, mode_t mode); (Return: a new file descriptor if success; -1 if failure)
+<ol>
+<li>flags
+<ol>
+<li>O_RDONLY：只读</li>
+<li>O_WRONLY：只写</li>
+<li>O_RDWR：读写</li>
+<li>O_APPEND：追加模式打开</li>
+<li>O_TRUNC：覆盖模式</li>
+<li>O_CREAT：文件不存在则创建</li>
+<li>O_EXCL：和O_CREAT同时使用，存在时出错</li>
+<li>O_NONBLOCK：非阻塞</li>
+</ol>
+</li>
+<li>mode
+<ol>
+<li>S_IRUSR</li>
+<li>S_IWUSR</li>
+<li>S_IXUSR</li>
+<li>S_IRWXU</li>
+<li>S_IRGRP</li>
+<li>S_IWGRP</li>
+<li>S_IXGRP</li>
+<li>S_IRWXG</li>
+<li>S_IROTH</li>
+<li>S_IWOTH</li>
+<li>S_IXOTH</li>
+<li>S_IRWXO</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>int close(int fd) 关闭文件描述符，释放资源</li>
+<li>size_t read(int fd, void *buf, size_t count) 返回值为读到的字节数，如果已经到文件尾为0，若出错为-1</li>
+<li>size_t write(int fd, const void *buf, size_t count) 返回值为已经成功写的字节数，若出错为-1
+<ol>
+<li>STDIN_FIFENO(0) 标准输入</li>
+<li>STDOUT_FIFENO(1) 标准输出</li>
+<li>STDERR_FIFENO(2) 标准错误</li>
+</ol>
+</li>
+<li>off_t lseek(int fildes, off_t offset, int whence)：如果成功返回偏移地址，否则为-1
+<ol>
+<li>SEEK_SET：从头偏移offset</li>
+<li>SEEK_CUR：从当前偏移offset</li>
+<li>SEEK_END：从尾偏移offset</li>
+</ol>
+</li>
+<li>int dup(int oldfd) 提供一种复制文件描述符的方法，我们可以用两个或多个描述符来访问同一个文件。作用:复制文件描述符。dup产生一个相同的文件描述符指向同一个文件:
+<ol>
+<li><code>fd2 = dup(STDOUT_FILENO)</code> 保存标准输出</li>
+</ol>
+</li>
+<li>int dup2(int oldfd, int newfd) 如果成功返回一个文件描述符。dup2复制一个旧的文件描述符到新的文件描述符，使得新的文件描述符与旧的文件描述符完全一样，过程主要是先关闭新的文件描述符对应的文件，然后进行复制</li>
+<li>int link(const char* oldpath, const char* newpath) 创建文件的一个新连接</li>
+<li>int unlink(const char *pathname)删除文件名和可能的引用文件</li>
+<li>int symlink(const char *pathname, const char *newpath)创建一个符号链接</li>
+<li>int readlink(const char *path, char *buf, size_t bufsiz) 从符号链接中读取值</li>
+<li>int access(const char* pathname, int mode) 按实际用户ID和实际组ID测试文件的存取权限，mode为R_OK，W_OK，X_OK，F_OK(文件是否存在)</li>
+<li>int chown(const char *path, uid_t owner, gid_t group)</li>
+<li>int fchown(int fd, uid_t owner, gid_t group)</li>
+<li>int lchown(const char *path, uid_t owner, gid_t group)</li>
+<li>char *getcwd(char *buf, size_t size) 获取绝对路径</li>
+</ol>
+<h4 id="4522-头文件systypesh"><a class="markdownIt-Anchor" href="#4522-头文件systypesh"></a> 4.5.2.2. 头文件<code>&lt;sys/types.h&gt;</code></h4>
+<h4 id="4523-头文件fcntlh"><a class="markdownIt-Anchor" href="#4523-头文件fcntlh"></a> 4.5.2.3. 头文件<code>&lt;fcntl.h&gt;</code></h4>
+<ol>
+<li>int fcntl(int fd, int cmd);</li>
+<li>int fcntl(int fd, int cmd, long arg);</li>
+<li>int fcntl(int fd, int cmd, struct flock *lock);返回值；若成功则依赖于cmd，若出错则为-1
+<ol>
+<li>F_DUPDF：复制文件描述符</li>
+<li>F_GETFD/F_SETFD：获取/设置文件描述符标志，为解决fork子进程执行其他任务(exec等)导致父进程的文件描述符被复制到子进程中，使得对应文件描述符无法被之后需要的进程获取。设置了这个标记后可以使得子进程在执行exce等命令后释放对应的文件描述符资源。</li>
+<li>F_GETFL/F_SETFL:获得/设置文件状态标志(open/creat中的flags 参数)，目前只能更改0_APPEND , 0_ASYNC, 0_DIRECT, 0_NOATIME,O_NONBLOCK</li>
+<li>F_GETOWN/F_SETOWN: 管理1/0可用相关的信号。获得或设置当前文件描述符会接受SIGI0和SIGURG信号的进程或进程组编号F_GETLK/F_SETLK/F_SETLKW: 获得/设置文件锁,设置为F_GETLK时需要传入flock* 指针用于存放最后的锁信息。S_SETLK 需要传入flock *指针表示需要改变的锁的内容,如果不能被设置,则立即返回EAGAIN。</li>
+<li>s_SETLKW同s_SETLK，但是在锁无法设置时会阻塞等待任务完成。</li>
+</ol>
+</li>
+</ol>
+<h4 id="4524-头文件sysstath"><a class="markdownIt-Anchor" href="#4524-头文件sysstath"></a> 4.5.2.4. 头文件<code>&lt;sys/stat.h&gt;</code></h4>
+<ol>
+<li><code>int stat(const char *filename, struct stat *buf); </code>
+<ol>
+<li>把对应文件名的相关信息存到对应地址里</li>
+<li>filename 文件名</li>
+<li>遇到文件软链接的时候得到的属性是软链接文件的属性</li>
+</ol>
+</li>
+<li><code>int fstat(int filedes, struct stat *buf);</code>
+<ol>
+<li>把对应文件描述符的相关信息存储到对应地址</li>
+<li>fstat系统调用的接受的是一个文件描述符，而其他接受的是文件全路径。</li>
+</ol>
+</li>
+<li><code>int lstat(const char *file_ name, struct stat *buf);Return: 0 if success; -1 if failure)</code>
+<ol>
+<li>当文件是一个符号链接时，lstat返回的是符号链接本身的信息，而stat返回的是指向的文件的信息。</li>
+</ol>
+</li>
+<li><code>int chmod(const char *path, mode_t mode)</code></li>
+<li><code>int fchmod(int fildes, mode_t mode)</code></li>
+<li><code>mode_t umask(mode_t mask)</code>为进程设置文件存取权限屏蔽字，并返回以前的值
+<ol>
+<li>mask进程默认八进制022，文件最终权限是mode &amp; ~ mask的结果</li>
+</ol>
+</li>
+<li>int mkdir(const char *pathname, mode_t mode);</li>
+<li>int rmdir(const char *pathname)</li>
+<li>int chdir(const char *path) 改变工作目录</li>
+<li>int fchdir(int fd); 改变工作目录</li>
+</ol>
+<h4 id="4525-头文件direnth"><a class="markdownIt-Anchor" href="#4525-头文件direnth"></a> 4.5.2.5. 头文件<code>&lt;dirent.h&gt;</code></h4>
+<ol>
+<li>DIR * opendir(const char *name);</li>
+<li>int closedir(DIR *dir);</li>
+<li>struct dirent* readdir(DIR *dir);</li>
+<li>off_t telldir(DIR *dir);</li>
+<li>void seekdir(DIR *dir, off_t offset);</li>
+<li>相关结构体略</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">stat</span> &#123;<br>   <span class="hljs-type">mode_t</span>   st_mode;    <span class="hljs-comment">/*file type &amp; mode 低9位保存权限信息，之后为sticky、SGID、SUID，[12:17]保存了文件类型*/</span><br>   <span class="hljs-type">ino_t</span>    st_ino;     <span class="hljs-comment">/*inode number (serial number)*/</span><br>   <span class="hljs-type">dev_t</span>    st_rdev;    <span class="hljs-comment">/*device number (ile system)*/</span>，<br>   <span class="hljs-type">nlink_t</span>  st_nlink;   <span class="hljs-comment">/*link count 硬链接计数 */</span><br>   <span class="hljs-type">uid_t</span>    st_uid;     <span class="hljs-comment">/*user ID of owner*/</span><br>   <span class="hljs-type">gid_t</span>    st_gid;     <span class="hljs-comment">/*group ID of owner*/</span><br>   <span class="hljs-type">off_t</span>    st_size;    <span class="hljs-comment">/*size of file, in bytes*/</span><br>   <span class="hljs-type">time_t</span>   st_atime;   <span class="hljs-comment">/*time of last access*/</span><br>   <span class="hljs-type">time_t</span>   st_mtime;   <span class="hljs-comment">/*time of last modification*/</span><br>   <span class="hljs-type">time_t</span>   st_ctime;   <span class="hljs-comment">/*time of last file status change*/</span><br>   <span class="hljs-type">long</span>     st_blksize; <span class="hljs-comment">/*Optimal block size for I/O*/</span><br>   <span class="hljs-type">long</span>     st_blocks;  <span class="hljs-comment">/*number 512-byte blocks allocated*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="46-使用c编写重定向"><a class="markdownIt-Anchor" href="#46-使用c编写重定向"></a> 4.6. 使用C编写重定向</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">savefd = <span class="hljs-built_in">dup</span>(STDOUT_FILENO); <span class="hljs-comment">// savefd指向终端</span><br><span class="hljs-built_in">dup2</span>(connfd, STDOUT_FILENO); <span class="hljs-comment">// STDOUT_FIFENO(1)重新指向connfd</span><br><span class="hljs-comment">// 处理事情</span><br><span class="hljs-built_in">dup2</span>(savefd, STDOUT_FIFENO); <span class="hljs-comment">// STDOUT_FIFENO(1)恢复指向savefd</span><br></code></pre></td></tr></table></figure>
+<h2 id="47-标准io依赖c库"><a class="markdownIt-Anchor" href="#47-标准io依赖c库"></a> 4.7. 标准I/O依赖(C库)</h2>
+<h3 id="471-文件流"><a class="markdownIt-Anchor" href="#471-文件流"></a> 4.7.1. 文件流</h3>
+<ol>
+<li>流和FILE结构
+<ol>
+<li>FILE* fp</li>
+<li>预定义的指针：stdin，stdout，stderr</li>
+</ol>
+</li>
+<li>缓冲I/O
+<ol>
+<li>三种类型的缓冲
+<ol>
+<li>全缓冲 全缓冲指的是系统在填满标准IO缓冲区之后才进行实际的IO操作；注意，对于驻留在磁盘上的文件来说通常是由标准IO库实施全缓冲。</li>
+<li>行缓冲 在这种情况下，标准IO在输入和输出中遇到换行符时执行IO操作；注意，当流涉及终端的时候，通常使用的是行缓冲。</li>
+<li>无缓冲 无缓冲指的是标准IO库不对字符进行缓冲存储；注意，标准出错流stderr通常是无缓冲的。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="472-流操作头文件include-stdioh"><a class="markdownIt-Anchor" href="#472-流操作头文件include-stdioh"></a> 4.7.2. 流操作：头文件<code>#include &lt;stdio.h&gt;</code></h3>
+<ol>
+<li><code>FILE *fopen(const char * filename, const char* mode);</code>
+<ol>
+<li>r 读</li>
+<li>w 清空写</li>
+<li>a 追加</li>
+<li>r+ 读写</li>
+<li>w+ 清空读写</li>
+<li>a+ 不清空读写</li>
+</ol>
+</li>
+<li><code>int fclose(FILE *stream)</code></li>
+<li><code>int getc(FILE *fp)</code>：是预定义宏，无函数副作用，更快</li>
+<li><code>int fgetc(FILE *fp)</code>：常用，在用到函数副作用/函数指针用</li>
+<li><code>int getchar(void)</code>：由stdin读取一个字节，默认行缓冲</li>
+<li>返回为char的int型</li>
+<li>三种函数
+<ol>
+<li><code>ferror</code></li>
+<li><code>feof</code></li>
+<li><code>clearerr</code></li>
+</ol>
+</li>
+<li><code>int putc(int c, FILE *fp)</code></li>
+<li><code>int fputc(int c, FILE *fp)</code></li>
+<li><code>int putchar(int c)</code></li>
+<li><code>char *fgets(char *s, int size, FILE *stream)</code>常用，最多从流中读取并存储size-1个字符，并最后添加一个\0</li>
+<li><code>char *gets(char *s)</code>不常用</li>
+<li><code>int fputs(const char *s, FILE * stream);</code></li>
+<li><code>int puts(const char *s);</code></li>
+<li><code>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)</code> size 一次读取或写入的字节数 nmemb 读取或写入的字节数 stream 文件流</li>
+<li><code>size fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);</code>，例如:<code>fwrite(&amp;data[2], sizeof(float), 4, fp)!=4</code></li>
+<li><code>int scanf(const char * format, ...)</code></li>
+<li><code>int fscanf(FILE *stream, const char *format, ...)</code></li>
+<li><code>int sscanf(const char * str, const char *format, ...)</code></li>
+<li><code>int printf(const char *format, ...)</code></li>
+<li><code>int fprintf(FILE *stream, const char *format, ...)</code></li>
+<li><code>int sprintf(char * str, const char *format, ...)</code></li>
+<li><code>int fseek(FILE *stream, long int offset, int whence)</code>，whence的取值：0是文件首、1是不跳转、2是文件尾向前。</li>
+<li><code>long ftell(FILE *stream)</code>当前位置到文件开头位置</li>
+<li><code>void rewind(FILE *stream)</code>跳到开头</li>
+<li><code>int fgetpos(FILE *fp, fpos_t *pos)</code>使用结构体解决文件太大，int不足的问题</li>
+<li><code>int fsetpos(FILE *fp, const fpos_t *pos)</code></li>
+<li><code>int fflush(FILE *stream)</code>刷新文件流，将流里的数据立刻写入文件</li>
+<li><code>int fileno(FILE *fp)</code>确认流使用的底层文件描述符</li>
+<li><code>FILE *fdopen(int fildes, const char *mode)</code>根据已打开的文件描述符创建一个流</li>
+<li><code>char *tmpnam(char *s)</code>创建临时文件名，返回唯一路径名的指针</li>
+<li><code>FILE *tmpfile(void)</code>若成功为文件指针，若出错为NULL</li>
+<li><code>void setbuf(FILE *stream, char *buf)</code>：设置缓冲区</li>
+<li><code>void setvbuf(FILE *stream, char *buf, int mode, size_t size)</code>：设置缓冲区，mode缓冲区类型：_IOFBF 满缓冲，_IOLBF 行缓冲 _IONBF 无缓冲</li>
+</ol>
+<h2 id="48-进程"><a class="markdownIt-Anchor" href="#48-进程"></a> 4.8. 进程</h2>
+<ol>
+<li>进程：是一个正在执行的程序实例，是操作系统的执行单位，由执行程序、当前值、状态信息以及通过操作系统管理此进程执行情况的资源组成；包含有一个地址空间，在该空间内指定一个或多个线程，并分配这些线程所需的系统资源。</li>
+<li><code>echi $$</code>告知shell当前的进程号</li>
+<li>进程的启动都由其他进程启动：所有的进程都是由内核进程(PID=1)来启动的，往往都具有父子进程关系，init(1号进程)由内核本身启动，形成树状的层次结构。</li>
+<li>进程的终止
+<ol>
+<li>正常终止
+<ol>
+<li>从main返回</li>
+<li>调用exit函数(库函数，做清理处理)</li>
+<li>调用_exit函数(系统函数，立即进入内核)</li>
+</ol>
+</li>
+<li>异常终止
+<ol>
+<li>调用abort函数</li>
+<li>由一个信号终止</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Daemons 守护进程：守护进程指的是一个永无止境的进程，通常是控制诸如打印机队列之类的系统资源或执行网络的系统进程。</li>
+</ol>
+<h2 id="49-文件夹扫描程序"><a class="markdownIt-Anchor" href="#49-文件夹扫描程序"></a> 4.9. 文件夹扫描程序</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">dirent</span> &#123;<br>   <span class="hljs-type">long</span> d_ino;<br>   <span class="hljs-type">off_t</span> d_off;<br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> d_reclen;<br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> d_type;<br>   <span class="hljs-type">char</span> d_name [NAME_MAX + <span class="hljs-number">1</span>];<br>&#125;<br><br>DIR *dp;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">dirent</span> * entry;<br><span class="hljs-keyword">if</span>((dp = <span class="hljs-built_in">opendir</span>(dir)) == <span class="hljs-literal">NULL</span>)<br>   <span class="hljs-built_in">err_sys</span>();<br><span class="hljs-keyword">while</span>((entry = <span class="hljs-built_in">readdir</span>(dp)) != <span class="hljs-literal">NULL</span>)&#123;<br>   <span class="hljs-built_in">lstat</span>(entry-&gt;d_name, &amp;statbuf);<br>   <span class="hljs-keyword">if</span>(<span class="hljs-built_in">S_ISDIR</span>(statbuf.st_mode))&#123;&#125;<br>   <span class="hljs-keyword">else</span>&#123;&#125;<br>&#125;<br><span class="hljs-built_in">closedir</span>(dp);<br></code></pre></td></tr></table></figure>
+<h2 id="410-文件锁掌握"><a class="markdownIt-Anchor" href="#410-文件锁掌握"></a> 4.10. 文件锁(掌握)</h2>
+<ol>
+<li>文件锁要求掌握，扩展文件锁(共享强制锁等不用掌握)，锁的标记位不需要掌握，锁的系统调用需要掌握。</li>
+</ol>
+<h3 id="4101-文件锁记录"><a class="markdownIt-Anchor" href="#4101-文件锁记录"></a> 4.10.1. 文件锁记录</h3>
+<ol>
+<li>记录锁：按记录加锁</li>
+<li>劝告锁：
+<ol>
+<li>检查，加锁有应用程序自己控制</li>
+<li>不会强制应用程序不允许访问，只是提醒</li>
+</ol>
+</li>
+<li>强制锁
+<ol>
+<li>检查，加锁由内核控制</li>
+<li>影响 open() read() write()</li>
+</ol>
+</li>
+<li>共享锁：可以读</li>
+<li>排它锁：读写均不可</li>
+<li>相关结构体</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">flock</span>&#123;<br>   <span class="hljs-type">short</span> l_type;  <span class="hljs-comment">/* Type of lock: F_RDLCK, F_WRLCK, F_UNLCK */</span><br>   <span class="hljs-type">short</span> l_whence;<span class="hljs-comment">/* How to interpret l_start: SEEK_SET, SEEK_CUR, SEEK_END */</span><br>   <span class="hljs-type">off_t</span> l_start; <span class="hljs-comment">/* Starting offset for lock */</span><br>   <span class="hljs-type">off_t</span> l_len;   <span class="hljs-comment">/* Number of bytes to lock */</span><br>   <span class="hljs-type">pid_t</span> l_pid;   <span class="hljs-comment">/* PID of process blocking our lock (F_GETLK only) */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="4102-fcntl记录锁"><a class="markdownIt-Anchor" href="#4102-fcntl记录锁"></a> 4.10.2. fcntl记录锁</h3>
+<ol>
+<li>用于记录锁的fcntl函数原型</li>
+<li><code>int fcntl(int fd, int cmd, struct flock *lock)</code></li>
+<li>cmd的取值
+<ol>
+<li>F_GETLK：获得文件的封锁信息</li>
+<li>F_SETLK：对文件的某个区域封锁或解封</li>
+<li>F_SETLKW：功能和F_SETLK，wait方式相同</li>
+</ol>
+</li>
+</ol>
+<h3 id="4103-其他封锁命令"><a class="markdownIt-Anchor" href="#4103-其他封锁命令"></a> 4.10.3. 其他封锁命令</h3>
+<ol>
+<li>头文件:<code>#include&lt;sys/file.h&gt;</code></li>
+<li><code>int lockf(int fd, int cmd, off_t len)</code>
+<ol>
+<li>cmd：指定的操作类型
+<ol>
+<li>F_LOCK：给文件夹互斥锁。若已被加锁则阻塞直到成功</li>
+<li>F_TLOCK：同上，但不会阻塞，直接失败</li>
+<li>F_ULOCK：解锁</li>
+<li>F_TEST：测试是否上锁。未上锁则0，否则-1</li>
+</ol>
+</li>
+<li>len：从当前位置开始要锁住多长</li>
+<li>这个函数是对fcntl的一层封装</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-内核"><a class="markdownIt-Anchor" href="#5-内核"></a> 5. 内核</h1>
+<h2 id="51-内核的概念"><a class="markdownIt-Anchor" href="#51-内核的概念"></a> 5.1. 内核的概念</h2>
+<ol>
+<li>操作系统是一系列程序的集合，其中最重要的部分构成了内核</li>
+<li>单内核/微内核
+<ol>
+<li>单内核是一个很大的进程，内部可以分为若干模块，运行时是一个独立的二进制文件，模块间通讯通过直接调用函数实现</li>
+<li>微内核中大部分内核作为独立的进程在特权下运行，通过消息传递进行通</li>
+</ol>
+</li>
+<li>Linux内核的能力：内存管理，文件系统，进程管理，多线程支持，抢占式，多处理支持</li>
+<li>Linux内核区别于其他UNIX商业内核的优点
+<ol>
+<li>单内核，模块支持</li>
+<li>免费/开源</li>
+<li>支持多种CPU，硬件支持能力非常强大</li>
+<li>Linux开发者都是非常出色的程序员.</li>
+<li>通过学习Linux内核的源码可以了解现代操作系统的实现原理</li>
+</ol>
+</li>
+</ol>
+<h2 id="52-初始化程序的建立"><a class="markdownIt-Anchor" href="#52-初始化程序的建立"></a> 5.2. 初始化程序的建立</h2>
+<ol>
+<li>initrd
+<ol>
+<li>mkinitrd /boot/initrd.img $(uname -r)</li>
+</ol>
+</li>
+<li>initramfs
+<ol>
+<li>mkinitramfs -o /boot/initrd.img 2.6.24-16</li>
+<li>update-initramfs -u</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-模块ko-掌握"><a class="markdownIt-Anchor" href="#53-模块ko-掌握"></a> 5.3. 模块.ko 掌握</h2>
+<ol>
+<li>加载和释放模块的命令
+<ol>
+<li>底层命令
+<ol>
+<li><code>insmod &lt;module.ko&gt; [module parameters]</code>：装载一个模块，只有超级用户才可以使用</li>
+<li><code>rmmod</code>：卸载一个模块</li>
+</ol>
+</li>
+<li>高层命令
+<ol>
+<li><code>modprobe</code></li>
+<li><code>modprobe -r</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>理解模块之间的依赖关系(比如模块A需要引用模块B所导出的符号)：自动按需加载、卸载
+<ol>
+<li><code>moddep</code></li>
+<li><code>lsmod</code>：列举所有在内核中装载的模块，等价于cat /proc/modules</li>
+<li><code>modinfo</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="54-最简单的内核模块例子"><a class="markdownIt-Anchor" href="#54-最简单的内核模块例子"></a> 5.4. 最简单的内核模块例子</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;linux/kernel.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;linux/module.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;linux/init.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> __init <span class="hljs-title">hello_init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>   <span class="hljs-comment">// __init标记 该函数只在初始化期间使用。模块装载后，将函数占用的空间释放</span><br>   <span class="hljs-built_in">printk</span>(KERN_INFO <span class="hljs-string">&quot;Hello world\n&quot;</span>);<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> __exit <span class="hljs-title">hello_exit</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>   <span class="hljs-comment">// __exit标记 该代码近用于模块卸载</span><br>   <span class="hljs-built_in">printk</span>(KERN_INFO <span class="hljs-string">&quot;Goodbye world\n&quot;</span>);<br>&#125;<br>module_init(hello_init);<br>module_exit(hello_exit);<br></code></pre></td></tr></table></figure>
+<h2 id="55-内核基本功能"><a class="markdownIt-Anchor" href="#55-内核基本功能"></a> 5.5. 内核基本功能</h2>
+<p>内存管理，文件系统，进程管理，多线程支持，抢占式，多处理支持</p>
+<h2 id="56-编译步骤"><a class="markdownIt-Anchor" href="#56-编译步骤"></a> 5.6. 编译步骤</h2>
+<ol>
+<li>解压</li>
+<li>清楚之前编译产生的目标文件:<code>make clean</code></li>
+<li>配置内核:<code>make menuconfig</code></li>
+</ol>
+<h2 id="57-注意点"><a class="markdownIt-Anchor" href="#57-注意点"></a> 5.7. 注意点</h2>
+<ol>
+<li>不能使用C库开发驱动程序</li>
+<li>没有内存保护机制</li>
+<li>小内核栈</li>
+<li>并发考虑</li>
+</ol>
+<h2 id="58-内核程序和用户态程序区别"><a class="markdownIt-Anchor" href="#58-内核程序和用户态程序区别"></a> 5.8. 内核程序和用户态程序区别</h2>
+<table>
+<thead>
+<tr>
+<th>用户态程序</th>
+<th>内核态程序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户空间运行</td>
+<td>内核空间运行</td>
+</tr>
+<tr>
+<td>入口是main()</td>
+<td>入口由module_init()指定</td>
+</tr>
+<tr>
+<td>没有出口</td>
+<td>出口由module_exit()指定</td>
+</tr>
+<tr>
+<td>直接运行</td>
+<td>程序由insmod命令载入</td>
+</tr>
+<tr>
+<td>gdb调试</td>
+<td>kdbug、kdb、kgdb等调试</td>
+</tr>
+</tbody>
+</table>
+<h2 id="59-内核模块操作"><a class="markdownIt-Anchor" href="#59-内核模块操作"></a> 5.9. 内核模块操作</h2>
+<ol>
+<li>导出符号表
+<ol>
+<li><code>EXPORT_SYMBOL(name)</code></li>
+<li><code>EXPORT_SYMBOL_GPL(name)</code></li>
+</ol>
+</li>
+<li>Moduls仅可以使用由Kernel或者其他Modules导出的符号，不能使用Libc</li>
+<li>显示所有导出符号:<code>cat /proc/kallsy</code></li>
+<li>模块间参数传递
+<ol>
+<li>加载时传递:<code>insmod hello.ko test=2</code></li>
+<li>参数需要使用module_param宏声明:<code>module_param(变量名称，类型，访问许可掩码)</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="510-驱动设备"><a class="markdownIt-Anchor" href="#510-驱动设备"></a> 5.10. 驱动设备</h2>
+<ol>
+<li>Linux系统将设备分为3种类型：
+<ol>
+<li>字符设备 Character Driver-&gt;字符型文件</li>
+<li>块设备 Block Driver-&gt;块文件</li>
+<li>网络接口设备 Network Driver-&gt;Socket</li>
+</ol>
+</li>
+</ol>
+<h3 id="5101-文件操作"><a class="markdownIt-Anchor" href="#5101-文件操作"></a> 5.10.1. 文件操作</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">ssize_t</span> (*read) (<span class="hljs-keyword">struct</span> file *, <span class="hljs-type">char</span> __user *, <span class="hljs-type">size_t</span>, <span class="hljs-type">loff_t</span> *);<br><span class="hljs-built_in">ssize_t</span> (*write) (<span class="hljs-keyword">struct</span> file *, <span class="hljs-type">const</span> <span class="hljs-type">char</span> __user *, <span class="hljs-type">size_t</span>, <span class="hljs-type">loff_t</span> *);<br><span class="hljs-built_in">int</span> (*flush) (<span class="hljs-keyword">struct</span> file *);<br><span class="hljs-built_in">Zint</span> (*ioctl) (<span class="hljs-keyword">struct</span> inode *, <span class="hljs-keyword">struct</span> file *, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>, <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span>);<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">file_operations</span> scull_fops = &#123;<br>   .owner = THIS MODULE,<br>   .llseek = scull_llseek,<br>   .read = scull_read,<br>   .Write = scull_write,<br>   .ioctl = scull_ioctl,<br>   .open = scull_open,<br>   .release = scull_release,<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="5102-字符设备驱动程序的初始化加载过程"><a class="markdownIt-Anchor" href="#5102-字符设备驱动程序的初始化加载过程"></a> 5.10.2. 字符设备驱动程序的初始化加载过程</h3>
+<ol>
+<li>申请设备号：每一个字符设备或块设备都有一个主设备号或次设备号
+<ol>
+<li>主设备号：表示一个特定的驱动程序</li>
+<li>次设备号：表示使用该驱动程序的各设备</li>
+</ol>
+</li>
+<li>定义文件操作结构体file_operations</li>
+<li>创建并初始化定义结构体cdev
+<ol>
+<li>cdev结构体描述字符设备</li>
+<li>该结构体是所有字符设备的抽象，其包含了大量字符设备所共有的特性。</li>
+</ol>
+</li>
+<li>将cdev注册到系统，并和对应的设备号绑定</li>
+<li>在/dev文件系统中用mknod创建设备文件，并将该文件绑定到设备号上
+<ol>
+<li>设定设备号:<code>device=scull</code></li>
+<li>定义主设备号:<code>major=15</code></li>
+<li>用户可以通过访问<code>/dev/scull</code>来访问当前的驱动设备</li>
+</ol>
+</li>
+</ol>
+<h3 id="5103-申请和释放设备号"><a class="markdownIt-Anchor" href="#5103-申请和释放设备号"></a> 5.10.3. 申请和释放设备号</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">register_chrdev_region</span><span class="hljs-params">(<span class="hljs-type">dev_t</span> first, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> count, <span class="hljs-type">char</span> *name)</span></span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">alloc_chrdev_region</span><span class="hljs-params">(<span class="hljs-type">dev_t</span> *dev, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> firstminor, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> count, <span class="hljs-type">char</span> *name)</span></span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">unregister_chrdev_region</span><span class="hljs-params">(<span class="hljs-type">dev_t</span> first, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> count)</span></span>;<br></code></pre></td></tr></table></figure>
+<h3 id="5104-cdev结构体的初始化"><a class="markdownIt-Anchor" href="#5104-cdev结构体的初始化"></a> 5.10.4. cdev结构体的初始化</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">cdev</span> *my_cdev = <span class="hljs-built_in">cdev_alloc</span>();<br>my_cdev-&gt;ops = &amp;my_fops;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">cdev_init</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> cdev *cdev, <span class="hljs-keyword">struct</span> file_operations *fops)</span></span>;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">scull_dev</span> &#123;<br>   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">scull</span> qset *data; <span class="hljs-comment">/* Pointer to first quantum set */</span><br>   <span class="hljs-type">int</span> quantum; <span class="hljs-comment">/* the current quantum size */</span><br>   <span class="hljs-type">int</span> qset; <span class="hljs-comment">/* the current array size */</span><br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> size; <span class="hljs-comment">/* amount of data stored here */</span><br>   <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> access_ key; <span class="hljs-comment">/* used by sculluid and scullpriv */</span><br>   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">semaphore</span> sem; <span class="hljs-comment">/* mutual exclus ion semaphore */</span><br>   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">cdev</span> cdev;<span class="hljs-comment">/* Char device structure*/</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="5105-设备注册"><a class="markdownIt-Anchor" href="#5105-设备注册"></a> 5.10.5. 设备注册</h3>
+<ol>
+<li>将设备注册到系统中：<code>int cdev_add(struct cdev *dev, dev_t num, unsigned int count);</code></li>
+<li>释放一个已经注册的设备：<code>void cdev_del(struct cdev *dev);</code></li>
+</ol>
+<h1 id="6-shell编程例子1"><a class="markdownIt-Anchor" href="#6-shell编程例子1"></a> 6. shell编程例子1</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">read</span> mealCost<br><span class="hljs-built_in">read</span> tipPercent<br><span class="hljs-built_in">read</span> taxPercent<br>tip=`<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$mealCost</span> * <span class="hljs-variable">$tipPercent</span> / 100&quot;</span> | bc -1`<br>tax=`<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$mealCost</span> * <span class="hljs-variable">$taxPercent</span> / 100&quot;</span> | bc -1`<br>totalCost=`<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$mealCost</span> + <span class="hljs-variable">$tip</span> + <span class="hljs-variable">$tax</span>&quot;</span>| bc -1`<br>rCost=`<span class="hljs-built_in">printf</span> <span class="hljs-string">&quot;%. 0f&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$totalCost</span>&quot;</span>`<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The total meal cost is <span class="hljs-variable">$rCost</span> dollars.&quot;</span><br></code></pre></td></tr></table></figure>
+<p>数值计算使用(())</p>
 
               
             </div>
@@ -1185,5 +1942,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

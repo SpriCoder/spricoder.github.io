@@ -73,7 +73,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -186,7 +186,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="21-Spring Boot ResponseEntity">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -285,7 +285,7 @@
 <li>HeadersBuilder:不能设置任何响应体属性</li>
 <li>BodyBuilder(是上面的子接口)</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/hello&quot;)</span><br>ResponseEntity&lt;String&gt; <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/hello&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="12-常见相应响应"><a class="markdownIt-Anchor" href="#12-常见相应响应"></a> 1.2. 常见相应响应</h2>
 <ol>
 <li>BodyBuilder accepted();</li>
@@ -298,11 +298,11 @@
 <li>BodyBuilder status(int status)</li>
 </ol>
 <h3 id="121-status的使用"><a class="markdownIt-Anchor" href="#121-status的使用"></a> 1.2.1. status()的使用</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br>ResponseEntity&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> ResponseEntity.badRequest()<br>            .body(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> ResponseEntity.status(HttpStatus.OK)<br>        .body(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth));<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> ResponseEntity.badRequest()<br>            .body(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> ResponseEntity.status(HttpStatus.OK)<br>        .body(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth));<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="13-简单使用"><a class="markdownIt-Anchor" href="#13-简单使用"></a> 1.3. 简单使用</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br>ResponseEntity&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>, HttpStatus.BAD_REQUEST);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth), HttpStatus.OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>, HttpStatus.BAD_REQUEST);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth), HttpStatus.OK);<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="14-设置http响应头"><a class="markdownIt-Anchor" href="#14-设置http响应头"></a> 1.4. 设置Http响应头</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//方式一</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br>ResponseEntity&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">HttpHeaders</span> <span class="hljs-variable">headers</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpHeaders</span>();<br>    headers.add(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Custom header set&quot;</span>, headers, HttpStatus.OK);<br>&#125;<br><span class="hljs-comment">//方式二</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br>ResponseEntity&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok()<br>        .header(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>)<br>        .body(<span class="hljs-string">&quot;Custom header set&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//方式一</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">HttpHeaders</span> <span class="hljs-variable">headers</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpHeaders</span>();<br>    headers.add(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Custom header set&quot;</span>, headers, HttpStatus.OK);<br>&#125;<br><span class="hljs-comment">//方式二</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok()<br>        .header(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>)<br>        .body(<span class="hljs-string">&quot;Custom header set&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li><code>.body()</code>返回的是ResponseEntity，而并不是BodyBuilder，需要在最后进行调用。</li>
 </ol>
@@ -799,5 +799,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -1,0 +1,911 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判 让人评价一万条开放式回答，昂贵而缓慢；用关键词、字符串匹配或传统自动指标，又很难判断一段解释是否清楚、完整、切题。 于是，一个自然的办法出现了：让另一个大语言模型阅读任务、候选回答和评分标准，再输出分数、偏好或评语。这就是通常所说的 LLM-as-a-Judge，也就是“让大模型担任评委”。 问题是：一个会犯错、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-09-llm-judge/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判 让人评价一万条开放式回答，昂贵而缓慢；用关键词、字符串匹配或传统自动指标，又很难判断一段解释是否清楚、完整、切题。 于是，一个自然的办法出现了：让另一个大语言模型阅读任务、候选回答和评分标准，再输出分数、偏好或评语。这就是通常所说的 LLM-as-a-Judge，也就是“让大模型担任评委”。 问题是：一个会犯错、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/692bbc37262648be8ce5d55ee897c443.png">
+<meta property="article:published_time" content="2026-07-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:50:16.486Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="LLM-as-a-Judge">
+<meta property="article:tag" content="人机协作">
+<meta property="article:tag" content="偏差">
+<meta property="article:tag" content="评测">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/692bbc37262648be8ce5d55ee897c443.png">
+  
+  
+  <title>与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-23 00:00" pubdate>
+          2026年7月23日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="与-ai-一起工作-9-llm-as-a-judge-能不能给-ai-当裁判"><a class="markdownIt-Anchor" href="#与-ai-一起工作-9-llm-as-a-judge-能不能给-ai-当裁判"></a> 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判</h1>
+<p>让人评价一万条开放式回答，昂贵而缓慢；用关键词、字符串匹配或传统自动指标，又很难判断一段解释是否清楚、完整、切题。</p>
+<p>于是，一个自然的办法出现了：让另一个大语言模型阅读任务、候选回答和评分标准，再输出分数、偏好或评语。这就是通常所说的 <strong>LLM-as-a-Judge</strong>，也就是“让大模型担任评委”。</p>
+<p>问题是：一个会犯错、会受提示影响的模型，能不能评价另一个模型？</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/692bbc37262648be8ce5d55ee897c443.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><br />
+答案是：<strong>可以用，但不能迷信。LLM 评委是一种可扩展的评价工具，不是客观真理来源。</strong> 它擅长处理开放式质量判断，却不应替代确定性检查、原始证据和高风险场景中的人工决策。</p>
+<h3 id="llm-评委实际在做什么"><a class="markdownIt-Anchor" href="#llm-评委实际在做什么"></a> LLM 评委实际在做什么</h3>
+<p>一次 LLM 评审至少包含四部分输入：待评价的任务、评价标准、候选回答，以及可选的参考答案或证据。它根据这些内容生成分数、胜负关系、解释或修改建议。</p>
+<p>因此，所谓“评委能力”并不是一个脱离环境的固定属性。换一套评分量表、交换候选顺序、删掉参考答案，甚至改变提示中的措辞，结果都可能变化。</p>
+<p>更准确的理解是：LLM 评委执行的是一个<strong>条件化的判断程序</strong>。我们不仅要问“用了哪个模型”，还要问：它看到了什么、按什么标准判断、输出格式是什么、如何处理不确定和分歧。</p>
+<h3 id="pointwise-与-pairwise两种常见方式"><a class="markdownIt-Anchor" href="#pointwise-与-pairwise两种常见方式"></a> Pointwise 与 Pairwise：两种常见方式</h3>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>做法</th>
+<th>优点</th>
+<th>主要风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pointwise 单点评分</td>
+<td>对每个回答独立打分，例如按准确、完整、清晰等维度给分</td>
+<td>易形成绝对分数，适合检查单个产物是否达标</td>
+<td>不同批次尺度可能漂移，7 分和 8 分的边界不稳定</td>
+</tr>
+<tr>
+<td>Pairwise 两两比较</td>
+<td>同时展示两个回答，判断哪个更好或是否平局</td>
+<td>相对判断通常更直观，适合候选排序</td>
+<td>容易受展示顺序影响，比较次数会随候选数量增加</td>
+</tr>
+</tbody>
+</table>
+<p>还有一次比较多个候选的 Listwise 方式，但候选越多，上下文干扰和排序复杂度也越高。实践中不必追求一种方式包办所有任务：质量门禁可以用 Pointwise，候选筛选可以用 Pairwise，关键分歧再交给人工复核。</p>
+<h3 id="六类常见偏差和不稳定来源"><a class="markdownIt-Anchor" href="#六类常见偏差和不稳定来源"></a> 六类常见偏差和不稳定来源</h3>
+<h4 id="1-位置偏差"><a class="markdownIt-Anchor" href="#1-位置偏差"></a> 1. 位置偏差</h4>
+<p>在两两比较中，评委可能更偏好先出现或后出现的答案。只交换候选顺序，胜负就发生变化，说明结论依赖展示位置，而不完全依赖内容。</p>
+<h4 id="2-冗长偏好"><a class="markdownIt-Anchor" href="#2-冗长偏好"></a> 2. 冗长偏好</h4>
+<p>更长的回答看起来信息更多，也更容易呈现完整结构，但长度不等于正确。一个重复、绕远甚至夹杂错误的长答案，可能压过简洁而准确的答案。</p>
+<h4 id="3-表达与权威感偏好"><a class="markdownIt-Anchor" href="#3-表达与权威感偏好"></a> 3. 表达与权威感偏好</h4>
+<p>术语丰富、语气自信、格式精致的内容容易获得更高评价。问题在于，事实错误也可以被包装得很专业。评委如果没有原始证据，只能在“像是正确”和“确实正确”之间猜测。</p>
+<h4 id="4-自我偏好"><a class="markdownIt-Anchor" href="#4-自我偏好"></a> 4. 自我偏好</h4>
+<p>评委可能偏好与自身表达习惯、模型家族或训练偏好更接近的答案。让生成者直接评价自己的产物，也容易把共同盲点带进评分。</p>
+<h4 id="5-量表与提示敏感性"><a class="markdownIt-Anchor" href="#5-量表与提示敏感性"></a> 5. 量表与提示敏感性</h4>
+<p>“整体质量如何”和“先检查事实错误，任何关键错误都不得高于 2 分”会得到不同结果。模糊标准让评委自行补齐规则，最终比较的可能不是候选答案，而是评委各自想象的任务。</p>
+<h4 id="6-尺度漂移与过度自信"><a class="markdownIt-Anchor" href="#6-尺度漂移与过度自信"></a> 6. 尺度漂移与过度自信</h4>
+<p>同一质量的回答在不同批次可能得到不同分数；评委也可能在证据不足时给出非常确定的解释。流畅的评语只能说明模型能够说明自己的选择，不能证明选择正确。</p>
+<p>这些问题并不意味着 LLM 评委完全无用。它们意味着：<strong>评委也必须被评测，评审流程也必须留下可检查的记录。</strong></p>
+<h3 id="一条更可信的评审流水线"><a class="markdownIt-Anchor" href="#一条更可信的评审流水线"></a> 一条更可信的评审流水线</h3>
+<p>这条流程有几个关键点。</p>
+<p>第一，<strong>确定性检查在前</strong>。能用程序、数据库约束、测试或原始来源判断的事项，不必交给语言模型猜。</p>
+<p>第二，<strong>候选匿名化</strong>。尽量移除模型名称、作者身份、品牌和无关元信息，减少权威与自我偏好。</p>
+<p>第三，<strong>冻结评价量表</strong>。先定义维度、权重、硬性失败条件和分数锚点，再开始批量评价。不要看到结果后临时修改标准。</p>
+<p>第四，<strong>做换序和重复评审</strong>。Pairwise 至少交换一次候选顺序；重要任务可用不同随机种子、不同评委或不同提示复核，并报告一致与分歧。</p>
+<p>第五，<strong>给分歧留出口</strong>。不一致不是需要被隐藏的噪声，它可能说明任务标准含糊、候选差异很小，或评委缺少必要证据。</p>
+<h3 id="哪些交给规则哪些交给-llm"><a class="markdownIt-Anchor" href="#哪些交给规则哪些交给-llm"></a> 哪些交给规则，哪些交给 LLM</h3>
+<table>
+<thead>
+<tr>
+<th>评价对象</th>
+<th>优先方法</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件是否存在、程序是否通过测试</td>
+<td>确定性检查</td>
+<td>状态可直接读取，不需要语言判断</td>
+</tr>
+<tr>
+<td>数字计算、日期、权限、调用次数</td>
+<td>程序或结构化规则</td>
+<td>可以精确复算或审计</td>
+</tr>
+<tr>
+<td>引用是否真实、结论是否有来源</td>
+<td>原始证据与检索核验</td>
+<td>评委可能对虚构引用给出流畅解释</td>
+</tr>
+<tr>
+<td>回答是否切题、清楚、有帮助</td>
+<td>LLM 评委 + 量表</td>
+<td>需要语义和整体表达判断</td>
+</tr>
+<tr>
+<td>两个方案哪一个组织更合理</td>
+<td>Pairwise + 换序复核</td>
+<td>相对质量适合比较式判断</td>
+</tr>
+<tr>
+<td>医疗、法律、财务或安全决策</td>
+<td>领域专家与责任人</td>
+<td>错误代价高，不能把责任外包给模型</td>
+</tr>
+</tbody>
+</table>
+<p>最稳妥的分工不是“规则或 LLM 二选一”，而是<strong>规则负责能确定的事实，LLM 负责开放式质量，人负责高风险判断和争议裁决</strong>。</p>
+<h3 id="以评价两篇博客为例"><a class="markdownIt-Anchor" href="#以评价两篇博客为例"></a> 以评价两篇博客为例</h3>
+<p>假设现在有两篇解释“上下文与记忆区别”的文章。直接问评委“哪篇更好”，评委很可能把篇幅、排版和语气混成一个整体印象。</p>
+<p>更可靠的做法是先拆出评价协议：</p>
+<ol>
+<li>用确定性检查确认两篇文章的链接、引用和术语映射没有明显错误。</li>
+<li>冻结四个语义维度：概念边界、例子有效性、结构清晰度、行动建议可用性。</li>
+<li>规定硬性条件：如果把“当前上下文”写成“跨任务永久记忆”，概念边界项不得及格。</li>
+<li>隐去作者和模型名称，随机决定 A、B 顺序。</li>
+<li>让评委逐项引用候选中的具体句子，再给出比较结果。</li>
+<li>交换 A、B 顺序再次评价；若胜负反转，标记为不稳定，不直接宣布赢家。</li>
+<li>由人检查关键事实和分歧项，决定最终采用或修改哪一篇。</li>
+</ol>
+<p>这里，LLM 评委降低了逐篇阅读和归类的成本，却没有取得最终裁决权。它更像一个快速、可复制的初审员，而不是无需监督的终审法官。</p>
+<h3 id="评审结果也要可审计"><a class="markdownIt-Anchor" href="#评审结果也要可审计"></a> 评审结果也要可审计</h3>
+<p>一个只有“8.5 分”的结果几乎不可使用。至少应保存：评审协议版本、候选匿名编号、评价维度、分数或胜负、引用的候选证据、评委的不确定项、换序结果，以及是否经过人工复核。</p>
+<p>同样，不应默认要求或保存评委的私有思维链。需要的是与评分相关的<strong>简短理由和候选证据定位</strong>，让人能够检查“这个分数依据了什么”，而不是把更长的模型解释误当成更强的证明。</p>
+<h3 id="使用-llm-评委前的-30-秒检查"><a class="markdownIt-Anchor" href="#使用-llm-评委前的-30-秒检查"></a> 使用 LLM 评委前的 30 秒检查</h3>
+<ul>
+<li>这项判断是否真的需要语言理解，还是可以确定性验证？</li>
+<li>评价维度、分数锚点和硬性失败条件是否已经写清？</li>
+<li>评委是否拿到了判断事实所需的参考答案或原始证据？</li>
+<li>候选中的模型名、作者和展示顺序是否会引入偏差？</li>
+<li>Pairwise 是否交换了顺序，重要结果是否重复评审？</li>
+<li>是否记录了一致性、分歧和不确定项，而不只是平均分？</li>
+<li>评委的理由能否引用候选中的具体证据？</li>
+<li>高风险或有争议的结果由谁负责人工复核？</li>
+<li>是否用一批人工标注样本校准过评委，而不是直接大规模使用？</li>
+</ul>
+<p>LLM-as-a-Judge 的真正价值，不是让评价从此不需要人，而是让人把稀缺注意力放到标准设计、证据核验和争议样本上。</p>
+<p>可以让 AI 当裁判，但要记住：<strong>裁判也有偏差，规则必须先于裁判，重要判决还需要回看录像。</strong></p>
+<h3 id="延伸阅读"><a class="markdownIt-Anchor" href="#延伸阅读"></a> 延伸阅读</h3>
+<ul>
+<li>Haitao Li 等：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2412.05579">LLMs-as-Judges: A Comprehensive Survey on LLM-based Evaluation Methods</a>，系统梳理了 LLM 评估的功能、方法、应用、元评估与局限。</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C/">#人机协作</a>
+      
+        <a href="/tags/%E8%AF%84%E6%B5%8B/">#评测</a>
+      
+        <a href="/tags/LLM-as-a-Judge/">#LLM-as-a-Judge</a>
+      
+        <a href="/tags/%E5%81%8F%E5%B7%AE/">#偏差</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-09-llm-judge/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-08-agent-trajectory/" title="与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-07-multi-agent/" title="与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口">
+                        <span class="hidden-mobile">与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

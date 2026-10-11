@@ -50,10 +50,10 @@
 <meta property="article:published_time" content="2020-07-06T11:15:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:43:13.539Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="OOP">
-<meta property="article:tag" content="软件工程与计算II">
 <meta property="article:tag" content="封装">
+<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="软件工程与计算II">
 <meta property="article:tag" content="隐藏">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt15/1.png">
@@ -102,7 +102,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -215,7 +215,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2020-软件工程与计算II-15-面向对象的信息隐藏">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -405,7 +405,7 @@
 <li>如果需要，请使用访问器和变量，而不是公共成员</li>
 <li>访问器和变量是有意义的行为：约束，转换，格式 …</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//防止非法输入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSpeed</span><span class="hljs-params">(<span class="hljs-type">double</span> newSpeed)</span> &#123;<br>    <span class="hljs-keyword">if</span> (newSpeed &lt; <span class="hljs-number">0</span>) &#123;<br>        sendErrorMessage(...);<br>        newSpeed = Math.abs(newSpeed);<br>    &#125;<br>    speed = newSpeed;<br>&#125; <br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//防止非法输入</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setSpeed</span><span class="hljs-params">(<span class="hljs-type">double</span> newSpeed)</span> &#123;<br>    <span class="hljs-keyword">if</span> (newSpeed &lt; <span class="hljs-number">0</span>) &#123;<br>        sendErrorMessage(...);<br>        newSpeed = Math.abs(newSpeed);<br>    &#125;<br>    speed = newSpeed;<br>&#125; <br></code></pre></td></tr></table></figure>
 <h4 id="3412-使用getter和setter方法的时候不单纯将这些方法与类的成员关联"><a class="markdownIt-Anchor" href="#3412-使用getter和setter方法的时候不单纯将这些方法与类的成员关联"></a> 3.4.1.2. 使用Getter和Setter方法的时候，不单纯将这些方法与类的成员关联</h4>
 <ol>
 <li>类内部可能只是记录了生日，而并没有记录年龄，那么我们应该提供的是getAge()方法而不是calculateAge()暴露内部的实现</li>
@@ -548,7 +548,7 @@
 <li>通过类型切换或if-else-if结构识别它们</li>
 </ol>
 <h3 id="422-rtti违背了开闭原则和里氏替换原则"><a class="markdownIt-Anchor" href="#422-rtti违背了开闭原则和里氏替换原则"></a> 4.2.2. RTTI违背了开闭原则和里氏替换原则</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> &#123;&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">drawSquare</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw         </span><br>    &#125;     <br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">drawCircle</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw         </span><br>    &#125;     <br>&#125; <br><span class="hljs-keyword">void</span> <span class="hljs-title function_">drawShapes</span><span class="hljs-params">(List&lt;Shape&gt; shapes)</span> &#123;<br>    <span class="hljs-keyword">for</span> (Shape shape : shapes) &#123;<br>        <span class="hljs-comment">//这里写法不合适</span><br>        <span class="hljs-keyword">if</span> (shape <span class="hljs-keyword">instanceof</span> Square) &#123;<br>            ((Square) shape).drawSquare();<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (shape <span class="hljs-keyword">instanceof</span> Circle) &#123;<br>            ((Circle) shape).drawCircle();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> &#123;&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">drawSquare</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw         </span><br>    &#125;     <br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">drawCircle</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw         </span><br>    &#125;     <br>&#125; <br><span class="hljs-type">void</span> <span class="hljs-title function_">drawShapes</span><span class="hljs-params">(List&lt;Shape&gt; shapes)</span> &#123;<br>    <span class="hljs-keyword">for</span> (Shape shape : shapes) &#123;<br>        <span class="hljs-comment">//这里写法不合适</span><br>        <span class="hljs-keyword">if</span> (shape <span class="hljs-keyword">instanceof</span> Square) &#123;<br>            ((Square) shape).drawSquare();<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (shape <span class="hljs-keyword">instanceof</span> Circle) &#123;<br>            ((Circle) shape).drawCircle();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ol>
 <li>都有draw方法，应该将draw放到shape里面</li>
 </ol>
@@ -563,7 +563,7 @@
 <li>C++使用template机制，Java使用泛化机制。</li>
 </ol>
 <h3 id="432-abstraction-and-polymorphism-that-does-not-violate-the-open-closed-principle-and-lsp-不违反开放原则和lsp的抽象和多态性"><a class="markdownIt-Anchor" href="#432-abstraction-and-polymorphism-that-does-not-violate-the-open-closed-principle-and-lsp-不违反开放原则和lsp的抽象和多态性"></a> 4.3.2. Abstraction and Polymorphism that does not violate the open-closed principle and LSP 不违反开放原则和LSP的抽象和多态性</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span>;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw implementation</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw implementation</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">void</span> <span class="hljs-title function_">drawShapes</span><span class="hljs-params">(List&lt;Shape&gt; shapes)</span> &#123;<br>    <span class="hljs-keyword">for</span> (Shape shape : shapes) &#123;<br>        shape.draw();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span>;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw implementation</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-type">void</span> <span class="hljs-title function_">draw</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// draw implementation</span><br>    &#125;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">drawShapes</span><span class="hljs-params">(List&lt;Shape&gt; shapes)</span> &#123;<br>    <span class="hljs-keyword">for</span> (Shape shape : shapes) &#123;<br>        shape.draw();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Software-Engineering-and-Computing-II/img/cpt15/19.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <ul>
 <li>违反开闭原则:对扩展开放，对修改关闭，因为如果发生扩展，必须要进行代码的修改。</li>
@@ -1164,5 +1164,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

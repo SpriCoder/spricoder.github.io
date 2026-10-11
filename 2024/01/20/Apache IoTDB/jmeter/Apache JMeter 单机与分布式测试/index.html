@@ -42,8 +42,8 @@
 <meta property="article:published_time" content="2024-01-20T03:00:00.000Z">
 <meta property="article:modified_time" content="2024-01-20T03:00:54.968Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="IoT">
 <meta property="article:tag" content="Benchmark">
+<meta property="article:tag" content="IoT">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/1.png">
   
@@ -91,7 +91,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -204,7 +204,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="Apache JMeter 单机与分布式测试">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -386,10 +386,10 @@
 <h2 id="31-环境准备"><a class="markdownIt-Anchor" href="#31-环境准备"></a> 3.1. 环境准备</h2>
 <p>在执行测试前，我们需要完成集群环境的准备：</p>
 <p>首先，需要保证 controller 机器同所有 slave 机器网络联通。</p>
-<p>之后，需要将本次测试使用的全部 jar 包等文件上传到 slave 机器的对应位置上，保证 jmeter-server 启动后可以访问，同时关闭 jmeter-server 的 ssl 避免（修改 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties）：</p>
+<p>之后，需要将本次测试使用的全部 jar 包等文件上传到 slave 机器的对应位置上，保证 jmeter-server 启动后可以访问，同时关闭 jmeter-server 的 ssl 避免（修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties）：</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Set this if you don&#x27;t want to use SSL for RMI</span><br><span class="hljs-attr">server.rmi.ssl.disable</span>=<span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
-<p>随后，需要在每个 slave 机器上启动 JMeter-Server（启动命令 ./<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>/bin/jmeter-server），默认情况下 JMeter-Server 侦听 1099 端口，可以通过查看 jmeter.log 查看具体侦听端口</p>
-<p>最后，需要在 controller 机器上配置远程节点，修改 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties：</p>
+<p>随后，需要在每个 slave 机器上启动 JMeter-Server（启动命令 ./<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>/bin/jmeter-server），默认情况下 JMeter-Server 侦听 1099 端口，可以通过查看 jmeter.log 查看具体侦听端口</p>
+<p>最后，需要在 controller 机器上配置远程节点，修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties：</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Remote Hosts - comma delimited</span><br><span class="hljs-attr">remote_hosts</span>=<span class="hljs-string">11.101.17.17:1099,11.101.17.18:1099,11.101.17.33:1099</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Set this if you don&#x27;t want to use SSL for RMI</span><br><span class="hljs-attr">server.rmi.ssl.disable</span>=<span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
 <h2 id="32-执行测试"><a class="markdownIt-Anchor" href="#32-执行测试"></a> 3.2. 执行测试</h2>
 <blockquote>
@@ -497,9 +497,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/20/Apache%20IoTDB/metric/Grafana%20%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%BF%AB%E7%85%A7%E5%AF%BC%E5%87%BA%E6%96%B9%E6%B3%95/" title="Grafana 面板数据快照导出方法">
+                      <a href="/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20%7C%20IoT%20Benchmark%20%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="使用指南 | IoT Benchmark 的使用说明与原理介绍">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Grafana 面板数据快照导出方法</span>
+                        <span class="hidden-mobile">使用指南 | IoT Benchmark 的使用说明与原理介绍</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -507,8 +507,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/20/Apache%20IoTDB/metric/Datasource%20AAAAAAAAA%20was%20not%20found?%20Grafana%20%E9%9D%A2%E6%9D%BF%E5%AF%BC%E5%87%BA%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="Datasource AAAAAAAAA was not found? Grafana 面板导出出错解决方案">
-                        <span class="hidden-mobile">Datasource AAAAAAAAA was not found? Grafana 面板导出出错解决方案</span>
+                      <a href="/2024/01/20/Apache%20IoTDB/benchmark/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%20%7C%20IoT%20Benchmark%20%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E9%9B%86%E5%92%8C%E5%86%99%E5%85%A5/" title="使用指南 | IoT Benchmark 生成模拟数据集和写入">
+                        <span class="hidden-mobile">使用指南 | IoT Benchmark 生成模拟数据集和写入</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -903,5 +903,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始 在上一篇文章中，我们了解了数据库基准测试工具是什么，以及它为什么会出现在数据库选型和性能优化的过程中。 但知道“要测”只是第一步。真正打开工具时，很多人马上会遇到新的问题：测试程序该怎样启动？配置文件里那么多参数先看哪个？终端最后打印出一大张表，到底应该关注什么？ 这一篇就以 IoT Benchmark 为例，完成一次最小可运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/benchmarking-02-iot-benchmark/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始 在上一篇文章中，我们了解了数据库基准测试工具是什么，以及它为什么会出现在数据库选型和性能优化的过程中。 但知道“要测”只是第一步。真正打开工具时，很多人马上会遇到新的问题：测试程序该怎样启动？配置文件里那么多参数先看哪个？终端最后打印出一大张表，到底应该关注什么？ 这一篇就以 IoT Benchmark 为例，完成一次最小可运">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/b974f4bf147644a4afe2c655ac89dba8.png">
+<meta property="article:published_time" content="2026-07-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:53:33.102Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="IoT Benchmark">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="时序数据库">
+<meta property="article:tag" content="测试工具">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/b974f4bf147644a4afe2c655ac89dba8.png">
+  
+  
+  <title>基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-14 00:00" pubdate>
+          2026年7月14日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="基准测试工具之你不知道的两三事-2从一次时序数据库写入测试开始"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-2从一次时序数据库写入测试开始"></a> 基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始</h1>
+<p>在<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">上一篇文章</a>中，我们了解了数据库基准测试工具是什么，以及它为什么会出现在数据库选型和性能优化的过程中。</p>
+<p>但知道“要测”只是第一步。真正打开工具时，很多人马上会遇到新的问题：测试程序该怎样启动？配置文件里那么多参数先看哪个？终端最后打印出一大张表，到底应该关注什么？</p>
+<p>这一篇就以 <a target="_blank" rel="noopener" href="https://github.com/thulab/iot-benchmark">IoT Benchmark</a> 为例，完成一次最小可运行的时序数据库写入测试。这里使用 IoTDB 2.0.10 作为被测系统，通过一个具体场景把基准测试从“概念”落到“操作”。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/b974f4bf147644a4afe2c655ac89dba8.png" srcset="/img/loading.gif" lazyload alt="IoT-Benchmark" /></p>
+<h3 id="1-先跑通再谈比较"><a class="markdownIt-Anchor" href="#1-先跑通再谈比较"></a> 1. 先跑通，再谈比较</h3>
+<p>第一次接触基准测试时，很容易把目标定成“测出谁更快”。其实更合理的顺序恰好相反：先稳定地跑出一轮自己能解释、别人能复现的测试，再考虑比较不同配置、不同版本，或不同数据库。</p>
+<p>一次可信的测试结果至少由三部分组成：被测环境、工作负载和输出结果。只保留最后一个吞吐量数字，往往没有多少意义。换一台机器、换一块磁盘、改一个并发数，结果都可能不同。</p>
+<p>因此，本文的目标很简单：先完成这个闭环。跑通之后，你得到的不是某个“标准答案”，而是一份可以继续调整、重复执行和说明来路的测试基线。</p>
+<h3 id="2-准备工作"><a class="markdownIt-Anchor" href="#2-准备工作"></a> 2. 准备工作</h3>
+<p>根据项目当前说明，运行 IoT Benchmark 需要准备以下环境：</p>
+<ol>
+<li>Java 17。</li>
+<li>Maven。</li>
+<li><a target="_blank" rel="noopener" href="https://iotdb.apache.org/Download/">IoTDB 2.0.10</a></li>
+</ol>
+<p>本文以 IoTDB 2.0.10 为例。完成编译后，需要先在本机 <code>6667</code> 端口启动对应的 IoTDB 服务。当前 IoT Benchmark 2.0 的默认配置启用了 IoTDB RPC 压缩，因此目标 IoTDB 建议使用 <code>2.0.6</code> 或更高版本；若测试更早的 IoTDB 2.0 版本，则需要在配置中关闭该选项：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">ENABLE_IOTDB_RPC_COMPRESSION</span><span class="hljs-operator">=</span><span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>这里还有一个小提醒：基准测试会写入数据，也会消耗 CPU、内存和磁盘空间。第一次运行时，建议先在测试环境或本地开发环境进行，不要直接对生产实例执行默认负载。</p>
+<h3 id="3-运行第一次写入测试"><a class="markdownIt-Anchor" href="#3-运行第一次写入测试"></a> 3. 运行第一次写入测试</h3>
+<p>环境准备完成后，可以按下面的顺序获取和构建工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/thulab/iot-benchmark.git<br><span class="hljs-built_in">cd</span> iot-benchmark<br>mvn clean package -Dmaven.test.skip=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>构建完成后，进入 IoTDB 2.0 对应的产物目录并启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> iotdb-2.0/target/iot-benchmark-iotdb-2.0/iot-benchmark-iotdb-2.0<br>./benchmark.sh<br></code></pre></td></tr></table></figure>
+<p>默认配置会启动一次写入测试。运行过程中，终端会持续输出各个客户端的完成进度；当看到 <code>All dataClients finished</code> 一类信息时，说明所有数据客户端已经完成。</p>
+<p>这一步看似只是运行了一条命令，但它已经帮我们完成了三件事：根据配置生成周期性时序数据、把数据写入目标数据库、汇总本轮测试的配置和统计结果。后面无论要增加读操作、测试乱序写入，还是比较两套配置，都是在这个最小闭环上继续调整。</p>
+<h3 id="4-配置文件里先看这三个地方"><a class="markdownIt-Anchor" href="#4-配置文件里先看这三个地方"></a> 4. 配置文件里，先看这三个地方</h3>
+<p>测试产物目录下的 <code>conf</code> 文件夹保存配置文件。参数很多，但第一次不需要逐项研究。先看下面三个位置，就能回答“测谁、测多大、测什么”这三个基本问题。</p>
+<table>
+<thead>
+<tr>
+<th>要回答的问题</th>
+<th>重点参数</th>
+<th>它决定什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测谁</td>
+<td><code>DB_SWITCH</code></td>
+<td>被测数据库及所使用的连接实现，必须与实际启动的数据库版本匹配。</td>
+</tr>
+<tr>
+<td>测多大</td>
+<td><code>DEVICE_NUMBER</code>、<code>SENSOR_NUMBER</code>、<code>DATA_CLIENT_NUMBER</code>、<code>BATCH_SIZE_PER_WRITE</code>、<code>LOOP</code></td>
+<td>设备与测点规模、客户端并发、单批写入量，以及总操作量。</td>
+</tr>
+<tr>
+<td>测什么</td>
+<td><code>BENCHMARK_WORK_MODE</code>、<code>OPERATION_PROPORTION</code></td>
+<td>运行模式，以及写入和各类查询操作在工作负载中的比例。</td>
+</tr>
+</tbody>
+</table>
+<p>其中，<code>DB_SWITCH</code> 是最先要确认的参数。以 IoTDB 2.0.10 为例，项目 README 列出了 JDBC、REST、Session 等不同连接实现。配置写成了一个数据库不支持的取值，后续再怎么调并发也没有意义。</p>
+<p><code>DATA_CLIENT_NUMBER</code> 表示负责读写数据的客户端数量，<code>BATCH_SIZE_PER_WRITE</code> 则控制每次写入批次的行数。提高它们可能提升吞吐，也可能让客户端、网络或服务端先达到瓶颈。因此，改动时不要同时把多个参数拉高，最好一次只改一个变量。</p>
+<p>最后是工作负载。常规模式使用：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">BENCHMARK_WORK_MODE</span><span class="hljs-operator">=</span>testWithDefaultPath<br></code></pre></td></tr></table></figure>
+<p>默认的 <code>OPERATION_PROPORTION</code> 为写入比例为 1、其他操作比例为 0，也就是一轮纯写入测试。IoT Benchmark 还支持把数据生成到磁盘的 <code>generateDataMode</code>，以及基于数据集做正确性写入和正确性查询的 <code>verificationWriteMode</code>、<code>verificationQueryMode</code>。这些模式适合后续做数据复用或正确性验证；第一次上手先保持默认模式即可。</p>
+<h3 id="5-测试结束后应该看什么"><a class="markdownIt-Anchor" href="#5-测试结束后应该看什么"></a> 5. 测试结束后，应该看什么</h3>
+<p>测试结束时，终端会输出主配置、总耗时、结果矩阵和延迟矩阵。真正有价值的，不是盯着一个最大的数字，而是把它们放在一起看。</p>
+<p>先看主配置。它相当于这份结果的“实验条件”：目标数据库、设备数、测点数、客户端数、批大小、写入或查询比例都在其中。离开这些条件，结果不能被正确解释。</p>
+<p>然后看结果矩阵中的几个字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>第一次测试时怎样看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>okOperation</code></td>
+<td>成功执行的请求或 SQL 数量</td>
+<td>确认负载是否按预期完成。</td>
+</tr>
+<tr>
+<td><code>okPoint</code></td>
+<td>成功写入的数据点数，或查询成功返回的数据点数</td>
+<td>与配置一起检查实际处理的数据规模。</td>
+</tr>
+<tr>
+<td><code>failOperation</code></td>
+<td>执行失败的请求或 SQL 数量</td>
+<td>不应只看吞吐量而忽略失败。</td>
+</tr>
+<tr>
+<td><code>failPoint</code></td>
+<td>写入失败的数据点数</td>
+<td>写入测试中应重点关注。</td>
+</tr>
+<tr>
+<td><code>throughput</code></td>
+<td><code>okPoint / Test elapsed time</code></td>
+<td>用于比较相同环境、相同负载下的处理速率。</td>
+</tr>
+</tbody>
+</table>
+<p>延迟矩阵则用于观察每次操作花了多长时间。平均值能给出整体印象，但它会掩盖少量慢请求。<code>P99</code> 更值得额外关注：它表示 99% 的已记录操作延迟不超过该值，剩下约 1% 的操作更慢。若平均延迟不高、P99 却很高，通常说明尾部请求存在明显抖动，继续调优前应先结合日志检查原因。</p>
+<p>请特别注意，项目文档里的示例输出来自特定硬件、磁盘和参数设置；它展示的是报告的格式，不是你的机器应该达到的性能目标。对你而言，最重要的是让每一轮结果都能对应到一份明确的配置和环境记录。</p>
+<h3 id="6-三个容易忽略的测试习惯"><a class="markdownIt-Anchor" href="#6-三个容易忽略的测试习惯"></a> 6. 三个容易忽略的测试习惯</h3>
+<p>第一，<strong>固定环境再比较</strong>。数据库版本、CPU、内存、磁盘、网络、部署方式不同，都会影响结果。要比较两个数据库或两个版本时，应尽量让这些条件保持一致。</p>
+<p>第二，<strong>一次只改一个变量</strong>。例如先固定数据规模，只调整 <code>DATA_CLIENT_NUMBER</code>；或先固定并发，只调整批大小。这样才能知道结果变化到底由什么造成。一次改五个参数，最后通常只能得到一张很热闹、却难以解释的表。</p>
+<p>第三，<strong>不要只保存截图</strong>。IoT Benchmark 会把运行信息记录到运行设备的 <code>logs</code> 文件夹。除了日志，还应记录服务端版本、硬件与存储情况、完整配置文件和重复运行的结果。它们才是以后复查、复现和讨论差异时真正需要的材料。</p>
+<h3 id="7-小结"><a class="markdownIt-Anchor" href="#7-小结"></a> 7. 小结</h3>
+<p>现在，我们已经完成了一次最小的 IoT Benchmark 测试流程：准备环境，启动对应版本的 IoTDB，构建并运行工具，确认关键配置，再从吞吐、失败数和尾部延迟三个角度阅读结果。</p>
+<p>在开始下一轮测试前，可以用下面这份清单做一次确认：</p>
+<ol>
+<li>被测数据库版本和 <code>DB_SWITCH</code> 是否匹配？</li>
+<li>本轮的设备数、测点数、客户端数和批大小是否已记录？</li>
+<li>写入与查询的比例是否符合本轮想回答的问题？</li>
+<li>是否检查了失败操作和 P99，而不只看吞吐量？</li>
+<li>是否保留了配置文件、环境信息和 <code>logs</code> 中的完整结果？</li>
+</ol>
+<p>当这些问题都有答案时，基准测试才真正从“跑了一条命令”变成了可以支撑判断的材料。下一篇文章可以继续讨论更关键的一步：怎样根据自己的业务场景，设计一份更贴近真实负载的测试方案。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">#测试工具</a>
+      
+        <a href="/tags/IoT-Benchmark/">#IoT Benchmark</a>
+      
+        <a href="/tags/%E6%97%B6%E5%BA%8F%E6%95%B0%E6%8D%AE%E5%BA%93/">#时序数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始</div>
+      <div>https://spricoder.github.io/benchmarking/benchmarking-02-iot-benchmark/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月14日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-slower-judgment/" title="与 AI 一起工作 | 1. 我们需要的不是更快的 AI，而是更慢一点的判断">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">与 AI 一起工作 | 1. 我们需要的不是更快的 AI，而是更慢一点的判断</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/benchmarking-workload-design/" title="怎样让基准测试更像业务：用 IoT Benchmark 设计写入工作负载">
+                        <span class="hidden-mobile">怎样让基准测试更像业务：用 IoT Benchmark 设计写入工作负载</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

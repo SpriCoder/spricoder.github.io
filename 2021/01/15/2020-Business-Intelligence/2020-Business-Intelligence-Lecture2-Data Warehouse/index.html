@@ -60,9 +60,9 @@
 <meta property="article:published_time" content="2021-01-15T11:02:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:36:23.849Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="商务智能">
 <meta property="article:tag" content="数据仓库">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec2/1.png">
   
@@ -110,7 +110,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -223,7 +223,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2020-商务智能-Lecture2-Data Warehouse">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -313,7 +313,7 @@
 <h2 id="11-事务处理应用中的数据库技术"><a class="markdownIt-Anchor" href="#11-事务处理应用中的数据库技术"></a> 1.1. 事务处理应用中的数据库技术</h2>
 <ol>
 <li><strong>数据库技术的进步</strong>:关系数据模型的出现极大地促进了数据库技术的发展和联机事务处理(OLTP)技术的发展，数据库技术被广泛应用于商业管理、政府办公、科学研究和工程开发等领域</li>
-<li><strong>数据量的变化</strong>:数据库中的数据量已经从过去的兆(M)、千兆(G)字节过渡到现在的兆兆(T)、千兆兆§字节</li>
+<li><strong>数据量的变化</strong>:数据库中的数据量已经从过去的兆(M)、千兆(G)字节过渡到现在的兆兆(T)、千兆兆(P)字节</li>
 </ol>
 <h2 id="12-操作型或分析型"><a class="markdownIt-Anchor" href="#12-操作型或分析型"></a> 1.2. 操作型或分析型</h2>
 <ol>
@@ -603,7 +603,7 @@
 <ul>
 <li>面向<strong>应用</strong>的数据组织(数据库)</li>
 </ul>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs gcode">采购子系统：<br>  订单<span class="hljs-comment">(订单号，供应商号，总金额，日期)</span><br>  订单细则<span class="hljs-comment">(订单号，商品号，类别，单价，数量)</span><br>  供应商<span class="hljs-comment">(供应商号，供应商名，地址，电话)</span><br>销售子系统：<br>  顾客<span class="hljs-comment">(顾客号，姓名，性别，年龄，文化程度，地址，电话)</span><br>  销售<span class="hljs-comment">(员工号，顾客号，商品号，数量，单价，日期)</span><br>库存管理子系统：<br>  领料单<span class="hljs-comment">(领料单号，领料人，商品号，数量，日期)</span><br>  进料单<span class="hljs-comment">(进料单号，订单号，进料人，收料人，日期)</span><br>  库存<span class="hljs-comment">(商品号，库房号，库存量，日期)</span><br>  库房<span class="hljs-comment">(库房号，仓库管理员，地点，库存商品描述)</span><br>人事管理子系统：<br>  员工<span class="hljs-comment">(员工号，姓名，性别，年龄，文化程度，部门号)</span><br>  部门<span class="hljs-comment">(部门号，部门名称，部门主管，电话)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dns">采购子系统：<br>  订单<span class="hljs-punctuation">(</span>订单号，供应商号，总金额，日期<span class="hljs-punctuation">)</span><br>  订单细则<span class="hljs-punctuation">(</span>订单号，商品号，类别，单价，数量<span class="hljs-punctuation">)</span><br>  供应商<span class="hljs-punctuation">(</span>供应商号，供应商名，地址，电话<span class="hljs-punctuation">)</span><br>销售子系统：<br>  顾客<span class="hljs-punctuation">(</span>顾客号，姓名，性别，年龄，文化程度，地址，电话<span class="hljs-punctuation">)</span><br>  销售<span class="hljs-punctuation">(</span>员工号，顾客号，商品号，数量，单价，日期<span class="hljs-punctuation">)</span><br>库存管理子系统：<br>  领料单<span class="hljs-punctuation">(</span>领料单号，领料人，商品号，数量，日期<span class="hljs-punctuation">)</span><br>  进料单<span class="hljs-punctuation">(</span>进料单号，订单号，进料人，收料人，日期<span class="hljs-punctuation">)</span><br>  库存<span class="hljs-punctuation">(</span>商品号，库房号，库存量，日期<span class="hljs-punctuation">)</span><br>  库房<span class="hljs-punctuation">(</span>库房号，仓库管理员，地点，库存商品描述<span class="hljs-punctuation">)</span><br>人事管理子系统：<br>  员工<span class="hljs-punctuation">(</span>员工号，姓名，性别，年龄，文化程度，部门号<span class="hljs-punctuation">)</span><br>  部门<span class="hljs-punctuation">(</span>部门号，部门名称，部门主管，电话<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <ol>
 <li>面向应用的数据组织特点
 <ol>
@@ -680,7 +680,7 @@
 </li>
 <li>以&quot;商品&quot;这个主题为例，其公共码键是&quot;商品号&quot;，其关系存储如下：</li>
 </ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 商品的固有信息<br><span class="hljs-bullet">   1.</span> 细节数据<br><span class="hljs-bullet">      1.</span> 商品表(商品号，商品名，类型，颜色，…)<br><span class="hljs-bullet">   2.</span> 综合数据<br><span class="hljs-bullet">      1.</span> 商品表1(商品类别，商品颜色)<br><span class="hljs-bullet">      2.</span> 商品表2(价格，商品种类)<br><span class="hljs-bullet">2.</span> 采购信息<br><span class="hljs-bullet">   1.</span> 细节数据<br><span class="hljs-bullet">      1.</span> 采购表(商品号，供应商号，供应日期，供应价，…)<br><span class="hljs-bullet">   2.</span> 综合数据：根据不同的时间段(月、季度、年)来统计商品的采购总量<br><span class="hljs-bullet">      1.</span> 采购表H1(商品号，时间段1，采购总量，…)<br><span class="hljs-bullet">      2.</span> .....<br><span class="hljs-bullet">      3.</span> 采购表Hn(商品号，时间段n，采购总量，…)<br><span class="hljs-bullet">3.</span> 销售信息<br><span class="hljs-bullet">   1.</span> 细节数据<br><span class="hljs-bullet">      1.</span> 销售表(商品号，顾客号，销售日期，售价，销售量，…)<br><span class="hljs-bullet">   2.</span> 综合数据：根据不同的时间段(日、周、月、年)统计得到的销售总量<br><span class="hljs-bullet">      1.</span> 销售表1(商品号，时间段1，销售总量，…)<br><span class="hljs-bullet">      2.</span> ......<br><span class="hljs-bullet">      3.</span> 销售表n(商品号，时间段n，销售总量，…)<br><span class="hljs-bullet">4.</span> 库存信息<br><span class="hljs-bullet">   1.</span> 细节数据<br><span class="hljs-bullet">      1.</span> 库存表(商品号，库房号，库存量，日期，…)<br><span class="hljs-bullet">   2.</span> 综合数据：根据不同的时间点抽样得到的商品库存数量<br><span class="hljs-bullet">      1.</span> 库存表1(商品号，库房号，库存量，星期，…)<br><span class="hljs-bullet">      2.</span> ......<br><span class="hljs-bullet">      3.</span> 库存表n(商品号，库房号，库存量，年份，…)<br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-number">1</span>. 商品的固有信息<br>   <span class="hljs-number">1</span>. 细节数据<br>      <span class="hljs-number">1</span>. 商品表<span class="hljs-punctuation">(</span>商品号，商品名，类型，颜色，…<span class="hljs-punctuation">)</span><br>   <span class="hljs-number">2</span>. 综合数据<br>      <span class="hljs-number">1</span>. 商品表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品类别，商品颜色<span class="hljs-punctuation">)</span><br>      <span class="hljs-number">2</span>. 商品表<span class="hljs-number">2</span><span class="hljs-punctuation">(</span>价格，商品种类<span class="hljs-punctuation">)</span><br><span class="hljs-number">2</span>. 采购信息<br>   <span class="hljs-number">1</span>. 细节数据<br>      <span class="hljs-number">1</span>. 采购表<span class="hljs-punctuation">(</span>商品号，供应商号，供应日期，供应价，…<span class="hljs-punctuation">)</span><br>   <span class="hljs-number">2</span>. 综合数据：根据不同的时间段<span class="hljs-punctuation">(</span>月、季度、年<span class="hljs-punctuation">)</span>来统计商品的采购总量<br>      <span class="hljs-number">1</span>. 采购表H1<span class="hljs-punctuation">(</span>商品号，时间段<span class="hljs-number">1</span>，采购总量，…<span class="hljs-punctuation">)</span><br>      <span class="hljs-number">2</span>. .....<br>      <span class="hljs-number">3</span>. 采购表Hn<span class="hljs-punctuation">(</span>商品号，时间段n，采购总量，…<span class="hljs-punctuation">)</span><br><span class="hljs-number">3</span>. 销售信息<br>   <span class="hljs-number">1</span>. 细节数据<br>      <span class="hljs-number">1</span>. 销售表<span class="hljs-punctuation">(</span>商品号，顾客号，销售日期，售价，销售量，…<span class="hljs-punctuation">)</span><br>   <span class="hljs-number">2</span>. 综合数据：根据不同的时间段<span class="hljs-punctuation">(</span>日、周、月、年<span class="hljs-punctuation">)</span>统计得到的销售总量<br>      <span class="hljs-number">1</span>. 销售表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品号，时间段<span class="hljs-number">1</span>，销售总量，…<span class="hljs-punctuation">)</span><br>      <span class="hljs-number">2</span>. ......<br>      <span class="hljs-number">3</span>. 销售表n<span class="hljs-punctuation">(</span>商品号，时间段n，销售总量，…<span class="hljs-punctuation">)</span><br><span class="hljs-number">4</span>. 库存信息<br>   <span class="hljs-number">1</span>. 细节数据<br>      <span class="hljs-number">1</span>. 库存表<span class="hljs-punctuation">(</span>商品号，库房号，库存量，日期，…<span class="hljs-punctuation">)</span><br>   <span class="hljs-number">2</span>. 综合数据：根据不同的时间点抽样得到的商品库存数量<br>      <span class="hljs-number">1</span>. 库存表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，星期，…<span class="hljs-punctuation">)</span><br>      <span class="hljs-number">2</span>. ......<br>      <span class="hljs-number">3</span>. 库存表n<span class="hljs-punctuation">(</span>商品号，库房号，库存量，年份，…<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <h3 id="222-集成"><a class="markdownIt-Anchor" href="#222-集成"></a> 2.2.2. 集成</h3>
 <ol>
 <li>数据仓库中的数据是为<strong>分析</strong>服务的，而分析需要多种广泛的<strong>不同数据源</strong>以便进行比较、鉴别，因此数据仓库中的数据必须从<strong>多个数据源</strong>中获取，这些数据源包括多种类型数据库、文件系统以及Internet网上数据等，它们通过数据集成而形成数据仓库中的数据</li>
@@ -1027,7 +1027,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs scss">采购表(商品号，供应商号，供应日期，供应价，…)<br>   采购表<span class="hljs-selector-tag">H1</span>(商品号，时间段<span class="hljs-number">1</span>，采购总量，…)<br>   ……<br>   采购表<span class="hljs-built_in">Hn</span>(商品号，时间段n，采购总量，…)<br>销售表(商品号，顾客号，销售日期，售价，销售量，…)<br>   销售表<span class="hljs-number">1</span>(商品号，时间段<span class="hljs-number">1</span>，销售总量，…)<br>   ……<br>   销售表<span class="hljs-built_in">n</span>(商品号，时间段n，销售总量，…)<br>库存表(商品号，库房号，库存量，日期，…)<br>   库存表<span class="hljs-number">1</span>(商品号，库房号，库存量，星期，…)<br>   ……<br>   库存表<span class="hljs-built_in">n</span>(商品号，库房号，库存量，年份，…)<br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dns">采购表<span class="hljs-punctuation">(</span>商品号，供应商号，供应日期，供应价，…<span class="hljs-punctuation">)</span><br>   采购表H1<span class="hljs-punctuation">(</span>商品号，时间段<span class="hljs-number">1</span>，采购总量，…<span class="hljs-punctuation">)</span><br>   ……<br>   采购表Hn<span class="hljs-punctuation">(</span>商品号，时间段n，采购总量，…<span class="hljs-punctuation">)</span><br>销售表<span class="hljs-punctuation">(</span>商品号，顾客号，销售日期，售价，销售量，…<span class="hljs-punctuation">)</span><br>   销售表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品号，时间段<span class="hljs-number">1</span>，销售总量，…<span class="hljs-punctuation">)</span><br>   ……<br>   销售表n<span class="hljs-punctuation">(</span>商品号，时间段n，销售总量，…<span class="hljs-punctuation">)</span><br>库存表<span class="hljs-punctuation">(</span>商品号，库房号，库存量，日期，…<span class="hljs-punctuation">)</span><br>   库存表<span class="hljs-number">1</span><span class="hljs-punctuation">(</span>商品号，库房号，库存量，星期，…<span class="hljs-punctuation">)</span><br>   ……<br>   库存表n<span class="hljs-punctuation">(</span>商品号，库房号，库存量，年份，…<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <h2 id="316-多重粒度"><a class="markdownIt-Anchor" href="#316-多重粒度"></a> 3.16. 多重粒度</h2>
 <table>
 <thead>
@@ -1036,7 +1036,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec2/14.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <ol>
 <li>对于上面的左图，如果这样子设计的话，高粒度，低细节的数据无法应对过于细节的问题，</li>
@@ -2191,5 +2190,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

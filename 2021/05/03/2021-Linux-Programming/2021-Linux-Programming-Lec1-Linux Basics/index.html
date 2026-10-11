@@ -46,10 +46,10 @@
 <meta property="article:modified_time" content="2022-03-07T10:51:02.576Z">
 <meta property="article:author" content="SpriCoder">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="分区">
 <meta property="article:tag" content="命令">
 <meta property="article:tag" content="文件">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec1/1.png">
   
@@ -97,7 +97,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -210,7 +210,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-Linux程序设计-Lec1-Linux Basics">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -326,7 +326,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec1/2.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <h2 id="12-gnu和linux"><a class="markdownIt-Anchor" href="#12-gnu和linux"></a> 1.2. GNU和Linux</h2>
 <ol>
@@ -876,7 +875,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec1/12.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <h2 id="315-默认文件权限"><a class="markdownIt-Anchor" href="#315-默认文件权限"></a> 3.15. 默认文件权限</h2>
 <ol>
@@ -1023,7 +1021,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec1/16.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <h1 id="6-programmers-viewpoint"><a class="markdownIt-Anchor" href="#6-programmers-viewpoint"></a> 6. Programmer’s Viewpoint</h1>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Linux-Programming/img/lec1/17.png" srcset="/img/loading.gif" lazyload alt="" /></p>
@@ -1066,7 +1063,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat &lt; abc.txt<br><br>cat 文件名<br><span class="hljs-meta"># </span><span class="language-bash">这里的文件名作为<span class="hljs-built_in">cat</span>参数存在</span><br><span class="hljs-meta"># </span><span class="language-bash">类似于C语言中，main(int argc, char** argv)</span><br><span class="hljs-meta"># </span><span class="language-bash">当argc等于0，在system.in中读，再system.out打印</span><br><span class="hljs-meta"># </span><span class="language-bash">当<span class="hljs-built_in">cat</span>后面加上参数，就读出文件内容，输出在屏幕上</span><br><span class="hljs-meta"># </span><span class="language-bash"><span class="hljs-built_in">cat</span> &lt; 文件名，这里是重定向</span><br><span class="hljs-meta"># </span><span class="language-bash">执行流程完全不一样，仍然是走<span class="hljs-keyword">else</span>分支</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat &lt; abc.txt<br><br>cat 文件名<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里的文件名作为<span class="hljs-built_in">cat</span>参数存在</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">类似于C语言中，main(int argc, char** argv)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">当argc等于0，在system.in中读，再system.out打印</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">当<span class="hljs-built_in">cat</span>后面加上参数，就读出文件内容，输出在屏幕上</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">cat</span> &lt; 文件名，这里是重定向</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">执行流程完全不一样，仍然是走<span class="hljs-keyword">else</span>分支</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . -name &#x27;*.c&#x27; | grep <br></code></pre></td></tr></table></figure>
 <ol>
 <li>前面的的结果会一个一个的交给grep命令</li>
@@ -1104,7 +1101,7 @@
 <h1 id="11-高级命令与正则表达式"><a class="markdownIt-Anchor" href="#11-高级命令与正则表达式"></a> 11. 高级命令与正则表达式</h1>
 <ol>
 <li>find</li>
-<li>sed：<code>sed 's/\([0-9A-Za-z_]\&#123;1,\&#125;\)\[ \&#123;0,\&#125;\]\[ \&#123;0,\&#125;\]/*\1\[\]/g' code1.cpp</code></li>
+<li>sed：<code>sed 's/\([0-9A-Za-z_]\{1,\}\)\[ \{0,\}\]\[ \{0,\}\]/*\1\[\]/g' code1.cpp</code></li>
 <li>grep</li>
 </ol>
 
@@ -1608,5 +1605,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

@@ -1,0 +1,832 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/06/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.715Z">
+<meta property="article:author" content="SpriCoder">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>06-从 IoTDB 把表带回文件：导出 table-model TsFile - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-11 00:00" pubdate>
+          2026年10月11日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">06-从 IoTDB 把表带回文件：导出 table-model TsFile</h1>
+            
+            <div class="markdown-body">
+              
+              <p>06-从 IoTDB 把表带回文件：导出 table-model TsFile</p>
+<p>已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 <code>tsfile_cli_demo.sensors</code> 导出并读回检查。</p>
+<p>本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。</p>
+<p>例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供应商复核。导出由 IoTDB 工具完成，文件检查使用 TsFile-Cli。</p>
+<p>本文仍使用北京、上海机房各两条观测记录组成的四行 sensors 示例。配套约定为 Unix 毫秒时间戳、摄氏温度和相对湿度百分比（%）。完整数据与 Schema 见第 01 篇；以下应用场景属于演示场景。</p>
+<h2 id="你将得到什么"><a class="markdownIt-Anchor" href="#你将得到什么"></a> 你将得到什么</h2>
+<p>本文从已经加载数据的 IoTDB 数据库 <code>tsfile_cli_demo</code> 出发，只导出 <code>sensors</code> 表：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">IoTDB table tsfile_cli_demo.sensors<br>  -&gt; export-data.sh (-ft tsfile, table dialect)<br>  -&gt; exported/*.tsfile<br>  -&gt; tsfile-cli meta/schema/cat<br></code></pre></td></tr></table></figure>
+<p>导出完成的判断有三层：</p>
+<ol>
+<li>工具进程返回退出码 <code>0</code>，输出 <code>Export completely!</code>；</li>
+<li>导出目录中出现 <code>.tsfile</code> 文件；</li>
+<li>TsFile-Cli 能识别其为 table-model，并读出 <code>sensors</code> 的 schema 和 4 行数据。</li>
+</ol>
+<h2 id="1-准备已运行的-iotdb"><a class="markdownIt-Anchor" href="#1-准备已运行的-iotdb"></a> 1. 准备已运行的 IoTDB</h2>
+<p>下面的 <code>IOTDB_DIST</code>、<code>DEMO_DIR</code> 和 <code>TSFILE_CLI</code> 请替换为你本机的实际路径；导出目录建议每次使用新的临时空目录。</p>
+<p>本文承接上一篇已加载数据的状态。以下命令在同一个 Bash 会话中执行；实例已运行时可以直接再次启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br>IOTDB_DIST=/absolute/path/to/apache-iotdb-2.x-all-bin<br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br><span class="hljs-comment"># 仅当本地演示实例尚未运行时，才执行：</span><br><span class="hljs-comment"># ./sbin/start-standalone.sh</span><br><br></code></pre></td></tr></table></figure>
+<p>准备导出目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">DEMO_DIR=/absolute/path/to/tsfile-cli-demo<br>TSFILE_CLI=/absolute/path/to/tsfile-cli<br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>&quot;</span><br>EXPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/export.XXXXXX&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>先验证数据库和表存在：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;show tables from tsfile_cli_demo&quot;</span><br></code></pre></td></tr></table></figure>
+<p>如果这里缺少 <code>sensors</code>，先回到“从本地 TsFile 加载进入 IoTDB”一文完成导入，请将一个空目录误判成导出工具故障。</p>
+<h2 id="2-用-export-datash-导出表模型-tsfile"><a class="markdownIt-Anchor" href="#2-用-export-datash-导出表模型-tsfile"></a> 2. 用 <a target="_blank" rel="noopener" href="http://export-data.sh">export-data.sh</a> 导出表模型 TsFile</h2>
+<p>IoTDB 的 <code>tools/export-data.sh</code> 支持多种输出格式。对于 table-model TsFile，关键是同时指定 <code>-ft tsfile</code> 和 <code>-sql_dialect table</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br>tools/export-data.sh \<br>  -h 127.0.0.1 -p 6667 \<br>  -u root -pw root \<br>  -ft tsfile \<br>  -sql_dialect table \<br>  -db tsfile_cli_demo \<br>  -table sensors \<br>  -t <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>此前实跑命令返回成功，并在输出中打印：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Export completely!<br></code></pre></td></tr></table></figure>
+<p><code>-db</code> 是必需的目标数据库，<code>-table sensors</code> 把导出范围限制为一张表，<code>-t</code> 是目标目录。工具默认使用 <code>dump</code> 作为文件名前缀，实际文件名可能是 <code>dump0.tsfile</code>；请在脚本中硬编码文件名，先列目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span> -maxdepth 1 -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&#x27;*.tsfile&#x27;</span> -<span class="hljs-built_in">print</span><br></code></pre></td></tr></table></figure>
+<p>如果需要更明确的前缀，请查看 <code>tools/export-data.sh -help tsfile</code>，再使用工具支持的 <code>-pfn</code> 参数。</p>
+<h2 id="3-用-tsfile-cli-回读导出文件"><a class="markdownIt-Anchor" href="#3-用-tsfile-cli-回读导出文件"></a> 3. 用 TsFile-Cli 回读导出文件</h2>
+<p>定义 CLI 路径和导出文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -- <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span>/*.tsfile<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 1 ] || [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&#x27;本例要求恰好一个导出 TsFile；请检查导出日志和文件清单。&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>EXPORTED_TSFILE=<span class="hljs-variable">$1</span><br><br></code></pre></td></tr></table></figure>
+<p>本例针对四行输入显式要求单个导出文件。一般数据集可能产生多个文件，应逐个检查并汇总，应结合取第一个文件作为全部结果。</p>
+<p>先检查元数据与字段计数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">ls</span> -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> count -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>应看到：</p>
+<ul>
+<li><code>model=table</code>；</li>
+<li>对象 <code>sensors</code>；</li>
+<li><code>site</code>、<code>rack</code> 为 TAG，三个观测列为 FIELD；</li>
+<li>总行数对应 4 条记录。</li>
+</ul>
+<p>再读取实际数据页：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出可以直接交给 <code>jq</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -o pipefail<br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  | jq -s <span class="hljs-string">&#x27;&#123;rows: length, sites: (map(.site) | unique), max_temperature: (map(.temperature) | max)&#125;&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>预期得到 4 条记录、<code>beijing</code> 和 <code>shanghai</code> 两个站点，最高温度约为 29.4 °C。这里的最大值用于检查结果；第 07 篇还会比较完整字段与记录。</p>
+<h2 id="4-export-data-和-export-tsfile-的边界"><a class="markdownIt-Anchor" href="#4-export-data-和-export-tsfile-的边界"></a> 4. export-data 和 export-tsfile 的边界</h2>
+<p>IoTDB 目录中还可能看到 <code>tools/export-tsfile.sh</code>。它走的是 Subscription 消费路径，与本文使用的 <code>export-data.sh</code> 查询导出属于同一件事：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://export-data.sh">export-data.sh</a> -ft tsfile -sql_dialect table：执行表查询，把结果写成新的 table-model TsFile，适合一次性数据交付或脚本化导出；</li>
+<li><a target="_blank" rel="noopener" href="http://export-tsfile.sh">export-tsfile.sh</a>：从 Subscription 消费 TsFile 消息，依赖主题、消费者组和 Subscription 配置，适合持续消费场景。</li>
+</ul>
+<p>使用 <code>export-tsfile.sh</code> 前需要配置 Subscription。本文的一次性表导出使用 <code>export-data.sh</code>。</p>
+<h2 id="5-导出的文件到底是什么"><a class="markdownIt-Anchor" href="#5-导出的文件到底是什么"></a> 5. 导出的文件到底是什么</h2>
+<p><code>export-data.sh</code> 的 table 分支会先执行 <code>select * from sensors</code>，再根据查询结果和现有表 schema 构造 <code>Tablet</code>，最后用 TsFile writer 写出新文件。它是一次<strong>逻辑重建</strong>，属于逻辑 IoTDB 内部某个物理 TsFile 原样复制出来。</p>
+<p>这带来几个实际含义：</p>
+<ul>
+<li>导出文件拥有 table-model 的表名、列类别和类型，可被 TsFile-Cli 或另一个 IoTDB 实例读取；</li>
+<li>文件的压缩、页组织、分块边界和内部布局可以与原始文件不同；</li>
+<li>导出范围由 SQL、时间条件和表参数决定，应将导出文件默认当成数据库全量物理备份；</li>
+<li>聚合 SQL 适用范围有限 TsFile 导出输入，工具会拒绝包含 <code>count</code>、<code>sum</code>、<code>avg</code> 等聚合的查询，因为聚合结果已继续对应原始明细行。</li>
+</ul>
+<p>按时间范围导出时，先核对 <code>-start_time</code> 和 <code>-end_time</code> 的支持及端点含义。导出后用 <code>cat</code> 检查实际记录，用 <code>stats</code> 查看时间范围，并核对筛选条件。</p>
+<h2 id="6-面向-unix-工具链的导出习惯"><a class="markdownIt-Anchor" href="#6-面向-unix-工具链的导出习惯"></a> 6. 面向 Unix 工具链的导出习惯</h2>
+<p>导出命令可以作为一个普通进程嵌入脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br>EXPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/export.XXXXXX&quot;</span>)<br>tools/export-data.sh \<br>  -h 127.0.0.1 -p 6667 -u root -pw root \<br>  -ft tsfile -sql_dialect table \<br>  -db tsfile_cli_demo -table sensors -t <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>后续检查只读已完成的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -- <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span>/*.tsfile<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 1 ] || [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&#x27;本例要求恰好一个导出 TsFile。&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>EXPORTED_TSFILE=<span class="hljs-variable">$1</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>/meta.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>/sensors.ndjson&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>导出完成后，TsFile-Cli 负责读回文件；后续可以使用 jq 等工具分析结果。运行脚本时还应保存导出日志，便于检查失败原因。</p>
+<h2 id="继续阅读"><a class="markdownIt-Anchor" href="#继续阅读"></a> 继续阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/Ni7Kdaiv3oLBhYxKMNNcFRuqnqs">上一篇：从本地 TsFile 加载进入 IoTDB</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/APQido4BRoaH6QxbwVPcz5cpn9e">下一篇：双向闭环验证</a></p>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p><code>export-data.sh</code> 根据查询结果生成新的 TsFile。接收方可以离线读取，也可以将它加载到兼容的 IoTDB 实例。</p>
+<p>这个出口保存查询范围内的逻辑数据，属于查询范围内的逻辑导出，快照行为需由独立测试确认。本例使用固定、停止写入的演示数据，数据库查询和文件回读共同构成交付检查。<a target="_blank" rel="noopener" href="http://export-tsfile.sh">export-tsfile.sh</a> 是另一条依赖 Subscription 的持续消费链路。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>06-从 IoTDB 把表带回文件：导出 table-model TsFile</div>
+      <div>https://spricoder.github.io/benchmarking/tsfile-dataset/06/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/02/" title="02-从元数据到数据行：认识一个 TsFile">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">02-从元数据到数据行：认识一个 TsFile</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/08/" title="08-让 AI 少猜一步：用 Skill 可靠访问 TsFile">
+                        <span class="hidden-mobile">08-让 AI 少猜一步：用 Skill 可靠访问 TsFile</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

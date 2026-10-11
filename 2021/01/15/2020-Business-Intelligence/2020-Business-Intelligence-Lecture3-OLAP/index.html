@@ -67,10 +67,10 @@
 <meta property="article:published_time" content="2021-01-15T11:03:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:36:23.868Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
+<meta property="article:tag" content="olap">
 <meta property="article:tag" content="商务智能">
 <meta property="article:tag" content="多维分析">
-<meta property="article:tag" content="olap">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/1.png">
   
@@ -118,7 +118,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -231,7 +231,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2020-商务智能-Lecture3-OLAP">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.1k 字
+          9k 字
         
       </span>
     
@@ -521,7 +521,7 @@
 </ol>
 <h2 id="37-多维数组和联机分析处理"><a class="markdownIt-Anchor" href="#37-多维数组和联机分析处理"></a> 3.7. 多维数组和联机分析处理</h2>
 <ol>
-<li>假设：在一个分析型应用中需要若干个度量值(设为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>个)， 以它们为聚焦点作不同角度(设每个分析对象有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>个维)与深度(设每个维上又分为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个层)的分析，那么可以得到多种不同的统计分析结果(共为(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种)，即可以构造出(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种多维数组。</li>
+<li>假设：在一个分析型应用中需要若干个度量值(设为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>个)， 以它们为聚焦点作不同角度(设每个分析对象有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span>个维)与深度(设每个维上又分为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>个层)的分析，那么可以得到多种不同的统计分析结果(共为(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种)，即可以构造出(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>×</mo><msup><mi>n</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">r×n^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>)种多维数组。</li>
 <li>为了方便快速地查到这些统计分析结果，OLAP需要解决以下两个问题：
 <ol>
 <li>OLAP的数据构造方式</li>
@@ -673,7 +673,7 @@
 <ol start="3">
 <li>上述的星型模式可以转化成下面的四个关系</li>
 </ol>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gcode">事实表：<br>   销售表<span class="hljs-comment">(产品标识符，商店标识符，日期标识符，销售额)</span><br>维表<span class="hljs-number">1</span>：<br>   产品表<span class="hljs-comment">(产品标识符，类别，大类别)</span><br>维表<span class="hljs-number">2</span>：<br>   商店表<span class="hljs-comment">(商店标识符，市名，省名，国名，洲名)</span><br>维表<span class="hljs-number">3</span>：<br>   时间表<span class="hljs-comment">(时间标识符，日期，月份，季度，年份)</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dns">事实表：<br>   销售表<span class="hljs-punctuation">(</span>产品标识符，商店标识符，日期标识符，销售额<span class="hljs-punctuation">)</span><br>维表<span class="hljs-number">1</span>：<br>   产品表<span class="hljs-punctuation">(</span>产品标识符，类别，大类别<span class="hljs-punctuation">)</span><br>维表<span class="hljs-number">2</span>：<br>   商店表<span class="hljs-punctuation">(</span>商店标识符，市名，省名，国名，洲名<span class="hljs-punctuation">)</span><br>维表<span class="hljs-number">3</span>：<br>   时间表<span class="hljs-punctuation">(</span>时间标识符，日期，月份，季度，年份<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/12.png" srcset="/img/loading.gif" lazyload alt="" /></p>
 <h3 id="553-雪花模式"><a class="markdownIt-Anchor" href="#553-雪花模式"></a> 5.5.3. 雪花模式</h3>
 <ol>
@@ -773,7 +773,7 @@
 <h2 id="65-数据立方体的物化"><a class="markdownIt-Anchor" href="#65-数据立方体的物化"></a> 6.5. 数据立方体的物化</h2>
 <ol>
 <li><strong>不进行物化</strong></li>
-<li><strong>全物化</strong>：n维 L层的立方体包含<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>L</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T = \prod\limits_{i=1}\limits^{n}(L_i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.329066em;vertical-align:-0.9776689999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∏</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>种子方，之所以加1是因为包含了All层次</li>
+<li><strong>全物化</strong>：n维 L层的立方体包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>L</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T = \prod\limits_{i=1}\limits^{n}(L_i+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.329066em;vertical-align:-0.9776689999999999em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3513970000000004em;"><span style="top:-2.122331em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0000050000000003em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∏</span></span></span><span style="top:-3.950005em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9776689999999999em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>种子方，之所以加1是因为包含了All层次</li>
 <li><strong>部分物化</strong>
 <ol>
 <li>确定要<strong>物化</strong>的方体子集:
@@ -802,7 +802,6 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/28.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <blockquote>
 <p>我们需要仔细考虑空间问题：因为空间开销比较大，所以我们开辟了三个2D方体来缓存数据内容</p>
@@ -824,13 +823,12 @@
 <th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/32.png" srcset="/img/loading.gif" lazyload alt="" /></th>
 </tr>
 </thead>
-<tbody></tbody>
 </table>
 <ol>
 <li>对比上面的两种情况，下者比上面的部分要大10倍</li>
 <li>我们调用要按照维度<strong>从小到大</strong>的方式来调用，这样子可以保证所有的二维物化表空间最小化。</li>
 <li>A，B，C是该多维模型的维度，其中右边的数量是A，B，C三个维度上的&quot;刻度&quot;大小，即在图中的一小格，包含多少个可以区分的维成员。</li>
-<li>因为物化的顺序不同的前提下，需要使用的中间存储空间分别<strong>是&quot;一格&quot;，&quot;一列&quot;和&quot;一片&quot;</strong></li>
+<li>因为物化的顺序不同的前提下，需要使用的中间存储空间分别<strong>是&quot;一格&quot;，“一列&quot;和&quot;一片”</strong></li>
 </ol>
 <h2 id="67-olap与数据仓库"><a class="markdownIt-Anchor" href="#67-olap与数据仓库"></a> 6.7. OLAP与数据仓库</h2>
 <p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Business-Intelligence/img/lec3/33.png" srcset="/img/loading.gif" lazyload alt="" /></p>
@@ -1395,5 +1393,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

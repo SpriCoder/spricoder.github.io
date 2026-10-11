@@ -55,9 +55,9 @@
 <meta property="article:published_time" content="2021-05-02T11:04:00.000Z">
 <meta property="article:modified_time" content="2022-03-07T10:45:42.464Z">
 <meta property="article:author" content="SpriCoder">
-<meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="查询优化">
+<meta property="article:tag" content="课程笔记">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Database-Development/img/lec4/1.png">
   
@@ -105,7 +105,7 @@
   <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 8.1.2"></head>
 
 
 <body>
@@ -218,7 +218,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="2021-数据库开发-Lec4-SQL优化">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -310,7 +310,7 @@
 <li>E.FCodd关系理论之父，关系代数究竟有什么用?</li>
 <li>代数是表达式的等价变换</li>
 </ol>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left right" columnspacing="0em 1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>6</mn><mo>×</mo><mn>3</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>=</mo><mn>18</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo>+</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left right" columnspacing="0em 1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>6</mn><mo>×</mo><mn>3</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mo>=</mo><mn>18</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo>+</mo><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{aligned}
 (2 + 4) \times 3 &amp;=  6 \times 3  &amp;= 18 \\
   &amp;=(2 + 2 + 2) \times 3\\
@@ -535,11 +535,11 @@
 <ol>
 <li>select中的函数只计算一次，而where中的函数要计算多次</li>
 </ol>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-comment">(1)</span> a = <span class="hljs-number">1000</span><br><span class="hljs-comment">(2)</span> a = <span class="hljs-number">500</span> + <span class="hljs-number">500</span> CBO只能将<span class="hljs-comment">(2)</span>自动转化成<span class="hljs-comment">(1)</span>，无法改变<span class="hljs-comment">(3)</span>，这是f<span class="hljs-comment">()</span><br><span class="hljs-comment">(3)</span> a – <span class="hljs-number">500</span> = <span class="hljs-number">500</span> 在全表扫描的时候，<span class="hljs-comment">(2)</span><span class="hljs-comment">(1)</span>是一个比较操作，<span class="hljs-comment">(3)</span>是一个减法操作<br></code></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span> <span class="hljs-keyword">a</span> = <span class="hljs-number">1000</span><br><span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span> <span class="hljs-keyword">a</span> = <span class="hljs-number">500</span> + <span class="hljs-number">500</span> CBO只能将<span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span>自动转化成<span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span>，无法改变<span class="hljs-punctuation">(</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span>，这是f<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><span class="hljs-punctuation">(</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span> <span class="hljs-keyword">a</span> – <span class="hljs-number">500</span> = <span class="hljs-number">500</span> 在全表扫描的时候，<span class="hljs-punctuation">(</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span>是一个比较操作，<span class="hljs-punctuation">(</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span>是一个减法操作<br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>请看下面这个例子，分析3条SQL语句的差别</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> t <span class="hljs-keyword">as</span> <span class="hljs-keyword">select</span> x <span class="hljs-keyword">from</span> dba_objects;<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> t <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> t;<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create table</span> t <span class="hljs-keyword">as</span> <span class="hljs-keyword">select</span> x <span class="hljs-keyword">from</span> dba_objects;<br><span class="hljs-keyword">insert into</span> t <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> t;<br></code></pre></td></tr></table></figure>
 <ol start="3">
 <li>创建一个40万+的表</li>
 <li>统计3条SQL语句的差别，都是统计2019年4月20日这一天每个用户下的对象的个数</li>
@@ -695,7 +695,7 @@
 <li>遇到空值怎么办？直接忽略空值</li>
 <li>如果需要统计空值？</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> t2(sal <span class="hljs-type">integer</span>)<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-number">10</span>)<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-number">20</span>)<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-keyword">null</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create table</span> t2(sal <span class="hljs-type">integer</span>)<br><span class="hljs-keyword">insert into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-number">10</span>)<br><span class="hljs-keyword">insert into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-number">20</span>)<br><span class="hljs-keyword">insert into</span> t2 <span class="hljs-keyword">values</span> (<span class="hljs-keyword">null</span>)<br></code></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">avg</span>(sal)<br>  <span class="hljs-keyword">from</span> t2<br><br><span class="hljs-built_in">AVG</span>(SAL)<br><span class="hljs-comment">----------</span><br><span class="hljs-number">15</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">avg</span>(<span class="hljs-built_in">coalesce</span>(sal,<span class="hljs-number">0</span>))<br>  <span class="hljs-keyword">from</span> t2<br><br><span class="hljs-built_in">AVG</span>(<span class="hljs-built_in">COALESCE</span>(SAL,<span class="hljs-number">0</span>))<br><span class="hljs-comment">--------------------</span><br><span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1</span> <span class="hljs-keyword">select</span> deptno, <span class="hljs-built_in">avg</span>(sal) <span class="hljs-keyword">as</span> avg_sal<br><span class="hljs-number">2</span>   <span class="hljs-keyword">from</span> emp<br><span class="hljs-number">3</span>   <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptno<br><br>DEPTNO        AVG_SAL<br><span class="hljs-comment">-----------   ----------------</span><br><span class="hljs-number">10</span>            <span class="hljs-number">2916.66667</span><br><span class="hljs-number">20</span>            <span class="hljs-number">2175</span><br><span class="hljs-number">30</span>            <span class="hljs-number">1566.66667</span><br></code></pre></td></tr></table></figure>
@@ -1344,5 +1344,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

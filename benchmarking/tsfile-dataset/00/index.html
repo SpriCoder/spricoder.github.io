@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="00-专栏导读：AI-Native 的时序数据集 一份时序数据集可能需要交付给其他团队、加载到数据库提供查询服务，也可能用于 AI 分析与预测。在这些场景中，使用者都需要知道数据来自哪里、各字段代表什么，以及如何读取和核验结果。 这些需求涉及三类边界：时序数据与文件系统之间；时序数据与数据库之间；时序数据集与 AI 之间。缺少共同的数据载体与访问约定时，结构说明、导入配置和分析代码往往分散在不同位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="00-专栏导读：AI-Native 的时序数据集">
+<meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/00/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="00-专栏导读：AI-Native 的时序数据集 一份时序数据集可能需要交付给其他团队、加载到数据库提供查询服务，也可能用于 AI 分析与预测。在这些场景中，使用者都需要知道数据来自哪里、各字段代表什么，以及如何读取和核验结果。 这些需求涉及三类边界：时序数据与文件系统之间；时序数据与数据库之间；时序数据集与 AI 之间。缺少共同的数据载体与访问约定时，结构说明、导入配置和分析代码往往分散在不同位">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.713Z">
+<meta property="article:author" content="SpriCoder">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>00-专栏导读：AI-Native 的时序数据集 - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-11 00:00" pubdate>
+          2026年10月11日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">00-专栏导读：AI-Native 的时序数据集</h1>
+            
+            <div class="markdown-body">
+              
+              <p>00-专栏导读：AI-Native 的时序数据集</p>
+<p>一份时序数据集可能需要交付给其他团队、加载到数据库提供查询服务，也可能用于 AI 分析与预测。在这些场景中，使用者都需要知道数据来自哪里、各字段代表什么，以及如何读取和核验结果。</p>
+<p>这些需求涉及三类边界：时序数据与文件系统之间；时序数据与数据库之间；时序数据集与 AI 之间。缺少共同的数据载体与访问约定时，结构说明、导入配置和分析代码往往分散在不同位置，数据每次流转都需要重新核对其含义与处理方式。</p>
+<p>本专栏围绕同一份时序数据集，介绍 TsFile 如何保存与交付数据，IoTDB 如何提供在线管理与查询，TsFile-Cli 与 Skill 如何支持脚本和 Agent 使用数据，以及 TimechoAI / Timer 如何承接时序预测。操作示例沿用机房温湿度数据 <code>sensors.csv</code>；应用场景则以飞机试飞数据说明同一批数据如何服务不同团队与任务。</p>
+<h2 id="ai-native-的时序数据集"><a class="markdownIt-Anchor" href="#ai-native-的时序数据集"></a> AI-Native 的时序数据集</h2>
+<p>本专栏用 AI-Native 描述一种面向 AI 使用的数据集组织与访问方式：AI 可以借助明确的结构说明和工具接口，识别数据、选择操作并核验结果。这需要数据格式、访问工具与业务说明共同配合，具体体现在以下几个方面：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>具体表现</th>
+<th>支持方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可发现</td>
+<td>识别数据采用的模型、包含的表或设备，以及文件的基本信息</td>
+<td>TsFile 元数据与文件检查工具</td>
+</tr>
+<tr>
+<td>可理解</td>
+<td>了解时间、对象身份、字段类型及其业务含义</td>
+<td>文件中的结构定义（Schema）与配套业务说明</td>
+</tr>
+<tr>
+<td>可操作</td>
+<td>按对象、时间和字段读取、筛选或导出数据</td>
+<td>TsFile-Cli 提供明确的文件操作命令</td>
+</tr>
+<tr>
+<td>可组合</td>
+<td>将读取结果交给脚本、数据处理程序或自动化任务</td>
+<td>标准数据输出、诊断信息和退出状态</td>
+</tr>
+<tr>
+<td>可验证</td>
+<td>检查执行状态，并通过回读比较数据范围与内容</td>
+<td>结果回读与逻辑内容比较</td>
+</tr>
+<tr>
+<td>可流转</td>
+<td>在文件交付和数据库在线服务之间转换</td>
+<td>IoTDB 的加载与导出工具</td>
+</tr>
+<tr>
+<td>可委托</td>
+<td>由 Agent 根据自然语言任务选择工具并检查结果</td>
+<td>Skill 中的操作指引与工具接口</td>
+</tr>
+</tbody>
+</table>
+<p>这些能力共同形成一条<strong>机器可发现、机器可操作、机器可验证</strong>的访问路径，让数据能够被脚本、Agent 和其他程序稳定使用。</p>
+<p>高质量数据集还需要准确的观测记录、清楚的单位与来源，以及适合任务的时间范围和工况覆盖。明确的访问方式使数据便于使用，数据质量则影响分析与预测是否可靠。</p>
+<h2 id="tsfile"><a class="markdownIt-Anchor" href="#tsfile"></a> TsFile</h2>
+<h3 id="将观测记录与结构信息共同保存"><a class="markdownIt-Anchor" href="#将观测记录与结构信息共同保存"></a> 将观测记录与结构信息共同保存</h3>
+<p>TsFile 将时序观测记录与描述这些记录的结构信息保存在一起。以表模型为例，可以从以下几个方面理解：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">观测记录    时间戳、观测值、状态<br>对象身份    站点、机架、设备标识<br>数据结构    表、标签列（TAG）、测量字段（FIELD）、数据类型<br>存储信息    编码、压缩、统计信息<br></code></pre></td></tr></table></figure>
+<p>例如，这一行 CSV：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">1725148920000,beijing,rack-a,25.1,47.2,ok<br></code></pre></td></tr></table></figure>
+<p>只有在配合表头和外部约定时才容易解释。进入 table-model TsFile 后，接收方还可以从文件中读出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">table       = sensors<br>site        = TAG STRING<br>rack        = TAG STRING<br>temperature = FIELD DOUBLE<br>humidity    = FIELD DOUBLE<br>status      = FIELD STRING<br></code></pre></td></tr></table></figure>
+<p>这体现了 TsFile 与普通文本文件的差异：TsFile 同时保存数据值与解释这些值所需的结构信息。数据、时间轴、实体身份和 Schema 可以作为一个整体被复制、检查和交付。</p>
+<p>结构信息还需要与业务说明配合使用。本文约定：<code>time</code> 为 Unix 毫秒时间戳，<code>temperature</code> 使用摄氏度，<code>humidity</code> 使用相对湿度百分比。这些含义应结合由数值类型推断；采集条件、数据来源与处理过程也需要配套记录。</p>
+<h3 id="时序数据集生态中的统一数据载体"><a class="markdownIt-Anchor" href="#时序数据集生态中的统一数据载体"></a> 时序数据集生态中的统一数据载体</h3>
+<p>在时序数据生态中，TsFile 可以充当连接上下游的共同数据形态：</p>
+<p><whiteboard comment-refs="c1" token="T5vgw09B7h6LNmb9sZxc8ljonif"></whiteboard></p>
+<p>上游可以采用不同的采集与写入方式，下游也可以有不同的使用者。共同的文件格式使各环节能够复用数据中的对象标识与结构定义，减少重复描述和转换的工作。图中的端侧写入与云侧写入表示进入生态的不同路径；后续使用仍需结合数据模型与业务说明确认兼容性。</p>
+<h2 id="时序数据集与其他生态系统协同"><a class="markdownIt-Anchor" href="#时序数据集与其他生态系统协同"></a> 时序数据集与其他生态系统协同</h2>
+<h3 id="时序数据集与文件系统"><a class="markdownIt-Anchor" href="#时序数据集与文件系统"></a> 时序数据集与文件系统</h3>
+<p>传统文件系统主要处理路径、文件名、字节、大小和修改时间；TsFile-Cli 负责解释 .tsfile 中的表、TAG、时间范围和数据类型。</p>
+<p>TsFile 提供结构，TsFile-Cli 提供访问：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">tsfile-cli meta sensors.tsfile<br>tsfile-cli <span class="hljs-built_in">ls</span> sensors.tsfile<br>tsfile-cli schema -t sensors sensors.tsfile<br>tsfile-cli count -t sensors sensors.tsfile<br></code></pre></td></tr></table></figure>
+<p>由此，使用者可以通过命令行直接检查时序文件的结构和数据，并将结果交给现有脚本处理。TsFile 提供文件载体，TsFile-Cli 降低文件的访问门槛，使离线检查、筛选和数据交换能够在 IoTDB 未启动时完成。</p>
+<h3 id="时序数据集与时序数据库"><a class="markdownIt-Anchor" href="#时序数据集与时序数据库"></a> 时序数据集与时序数据库</h3>
+<p>当时序数据需要持续写入、多用户查询和统一管理时，需要将其纳入数据库实例。TsFile 提供 IoTDB 能够识别的共同格式，IoTDB 的加载与导出工具负责完成数据在文件形态和数据库管理形态之间的转换：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">待加载的 TsFile<br>    ↓ IoTDB 加载工具<br>IoTDB 管理的时序数据<br>    ↓ 导出工具<br>新的 TsFile（本专栏采用表模型）<br></code></pre></td></tr></table></figure>
+<p>这一连接由 TsFile 格式与 IoTDB 工具直接支撑。TsFile-Cli 的作用是加载前检查文件、导出后回读验证；数据库连接、加载执行与在线查询由 IoTDB 工具负责。</p>
+<p>加载与导出过程中，文件的内部组织可能改变。核验往返结果时，应比较对象标识、时间、字段类型和数据记录，确认所选范围的逻辑内容是否一致。</p>
+<h3 id="时序数据集与-llm-agent"><a class="markdownIt-Anchor" href="#时序数据集与-llm-agent"></a> 时序数据集与 LLM / Agent</h3>
+<p>大语言模型（LLM）负责理解自然语言任务，Agent 借助工具读取数据并执行操作。面对陌生的二进制文件，Agent 需要先确认数据模型、对象与字段，再检查工具是否成功执行。TsFile-Cli 为这些操作提供命令行接口：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">meta / schema  → 查看文件模型与结构<br>stats / count  → 查看统计信息与数据规模<br>head / cat     → 读取选定范围的数据<br>write / export → 写入或导出文件<br>stdout         → 输出数据结果<br>stderr         → 输出诊断信息<br>退出码         → 表示命令执行状态<br></code></pre></td></tr></table></figure>
+<p>Skill 是提供给 Agent 的操作指引，说明工具的用法、适用条件和检查步骤。例如，用户问“北京机房最高温度是多少”，Agent 可以先确认站点与温度字段，筛选北京机房的记录，再借助计算工具求最大值。回答时，还应说明读取的数据范围，并核对执行状态与输出是否完整。</p>
+<p>TsFile-Cli 提供明确的文件访问能力，Skill 帮助 Agent 正确选择和使用这些能力，实际读取与计算结果则为回答提供依据。</p>
+<h3 id="时序数据集与-timechoai-timer"><a class="markdownIt-Anchor" href="#时序数据集与-timechoai-timer"></a> 时序数据集与 TimechoAI / Timer</h3>
+<p>时序数据集记录过去发生了什么，也为判断未来如何变化提供基础。企业持续积累的设备运行、生产经营或试飞观测数据，经过整理并补充业务背景后，可以反复用于趋势预测，逐步形成可复用的行业数据资产。</p>
+<p>在这一过程中，数据集提供历史事实与业务上下文，Timer 从时间序列中学习变化规律并生成预测，TimechoAI 则将以 Timer 为核心的模型能力通过云服务开放给业务团队。TsFile 和 IoTDB 中积累的数据由此可以进入模型应用，支持设备运行趋势分析、能源需求预测等业务任务。</p>
+<p>数据与模型的连接还会持续产生反馈：团队将预测与后续实测数据对照，检验模型在不同条件下的表现，并据此发现需要补充的数据和业务背景。高质量数据集支撑模型使用，实际使用又推动数据集不断完善，让数据积累持续服务于业务判断。</p>
+<h2 id="时序数据集的一体多面"><a class="markdownIt-Anchor" href="#时序数据集的一体多面"></a> 时序数据集的“一体多面”</h2>
+<p>前面的机房数据用于演示具体操作。下面以同一架飞机的多架次试飞数据，说明这些能力如何用于实际业务场景。每次试飞采集的高度、空速、姿态、发动机温度和振动等参数，经过解析与整理，形成持续积累的时序数据集。“一体”是这批可追溯的数据及其业务背景；“多面”是它在文件交付、在线协作、自动分析和时序预测中的不同用途。以下为应用场景示意。</p>
+<h3 id="tsfile按试飞架次归档与交付的数据文件"><a class="markdownIt-Anchor" href="#tsfile按试飞架次归档与交付的数据文件"></a> TsFile：按试飞架次归档与交付的数据文件</h3>
+<p>一次试飞结束后，数据团队可以将整理后的观测记录写入一个或多个 TsFile，按飞机标识、试飞架次和测量对象组织数据，作为该架次的归档与交付材料。接收方可以直接读取文件中的时间序列、字段类型和可用统计信息，检查包含哪些参数、覆盖什么时段，可以直接依赖最初的数据导入脚本。</p>
+<p>参数单位、时间基准、传感器标定信息、飞机配置和试飞科目等业务背景随配套说明共同交付。后续复盘某次机动或比较改装前后的表现时，团队可以重新读取对应文件，追溯到具体架次、观测记录及其处理过程。TsFile 让数据与结构信息共同保存，配套说明则帮助接收方正确理解这些记录。</p>
+<h3 id="iotdb围绕同一批试飞数据开展多专业协作"><a class="markdownIt-Anchor" href="#iotdb围绕同一批试飞数据开展多专业协作"></a> IoTDB：围绕同一批试飞数据开展多专业协作</h3>
+<p>当多个架次的数据需要联合分析时，平台团队可以将兼容的 TsFile 加载到 IoTDB。飞行性能团队查询指定试飞科目前后的高度与空速，动力团队查看同一时段的发动机温度与转速，结构团队分析相应测点的振动变化。各团队围绕共同的飞机标识、架次和时间范围访问数据，分别选择自己关心的参数。</p>
+<p>例如，复盘某次爬升阶段的温度变化时，可以同时查询该时段的飞行状态，并筛选配置、环境与工况可比的其他架次作对照。选定范围的明细数据还可以通过导出工具重新生成 TsFile，交给其他分析工具或作为复查材料。数据库由此为按架次归档的文件提供跨架次查询和统一管理能力；加载与导出后的数据范围和内容一致性仍需核对。</p>
+<h3 id="llm-agent-工具生态从批量检查到可复查的试飞分析"><a class="markdownIt-Anchor" href="#llm-agent-工具生态从批量检查到可复查的试飞分析"></a> LLM / Agent 工具生态：从批量检查到可复查的试飞分析</h3>
+<p>每天的试飞数据归档后，脚本可以调用 TsFile-Cli 批量检查各架次文件的结构与数据规模，再将选定记录交给分析程序检查缺测、统计观测范围或计算阈值超限次数。检查报告同时列出未能完整读取的文件，便于数据团队继续处理。</p>
+<p>在此基础上，工程师可以向 Agent 提出请求：“比较这架飞机两次试飞在指定爬升时段的发动机最高温度，并列出对应时刻的高度和空速。”Agent 在 Skill 指引下确认架次、参数、单位和时间范围，借助 CLI 或数据库查询工具取得记录并计算结果；不同采样频率的参数需要关联时，采用明确的时间匹配规则。</p>
+<p>回答中列出所用文件或查询范围、筛选条件、峰值时刻及对应记录，工程师便可回到数据中复核。Skill 提供操作顺序与错误处理要求，确定性工具负责读取和计算，LLM 负责理解任务与组织说明。分析结论以实际执行结果为依据，跨架次差异的工程原因仍需结合试飞条件判断。</p>
+<h3 id="timechoai-timer让试飞数据积累服务于时序建模"><a class="markdownIt-Anchor" href="#timechoai-timer让试飞数据积累服务于时序建模"></a> TimechoAI / Timer：让试飞数据积累服务于时序建模</h3>
+<p>随着试飞架次增加，团队可以从 TsFile 或 IoTDB 中选取工况相近的稳定飞行片段，经整理后交给 TimechoAI / Timer，根据发动机温度的历史变化预测后续短时趋势。此前用于交付和查询的数据，由此也能成为模型应用的数据基础。</p>
+<p>后续实测数据可以用于检验预测表现。例如，某些飞行阶段的误差较大时，团队可以回查是否缺少相应工况的数据、参数说明是否充分，再据此完善后续采集与数据集建设。模型在试飞场景中的价值，需要通过这些实际对照逐步确认。</p>
+<p>这四个方面围绕同一批试飞数据展开：TsFile 支持按架次保存与交付，IoTDB 支持跨架次查询和多专业协作，LLM / Agent 借助 CLI、Skills 和 Tools 完成检查与分析，TimechoAI / Timer 支持时序建模与预测验证。各环节可以采用不同的数据组织和访问方式，并通过飞机标识、架次、参数与时间范围保持来源可追溯，这就是时序数据集的“一体多面”。</p>
+<h2 id="时序数据集的流转"><a class="markdownIt-Anchor" href="#时序数据集的流转"></a> 时序数据集的流转</h2>
+<p>回到本专栏的 <code>sensors</code> 操作示例，文件与数据库之间的往返路径如下。脚本或 Agent 可以借助工具参与其中的检查与验证：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">CSV<br>  ↓ 声明字段类型与对象标识<br>sensors.tsfile<br>  ↓ TsFile-Cli 检查<br>待加载的 TsFile<br>  ↓ IoTDB LOAD（文件须可由加载端访问）<br>tsfile_cli_demo.sensors<br>  ↓ SQL 查询与管理<br>  ↓ IoTDB 导出工具（export-data.sh）<br>新的表模型 TsFile<br>  ↓ 回读并比较结构与数据<br>确认所选范围的往返结果<br></code></pre></td></tr></table></figure>
+<p>在这一过程中，载体和物理布局可以发生变化。对于未改变明细范围的往返操作，可以通过时间、实体身份、列类别、数据类型和数据行的比较，验证逻辑内容是否保持一致。</p>
+<p>合法的 TsFile 为接入 IoTDB 提供了格式基础。加载成功后，需要通过查询回读确认实际进入实例的数据。</p>
+<h2 id="专栏文章"><a class="markdownIt-Anchor" href="#专栏文章"></a> 专栏文章</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>数据集状态</th>
+<th>新获得的价值</th>
+<th>后续文章</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件化</td>
+<td>CSV → TsFile</td>
+<td>从外部约定变成自描述文件</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/LRwGd6a8zo0l9gxR6R7cPKjLnkc">01-从 CSV 到 TsFile：自描述的时序数据集</a></td>
+</tr>
+<tr>
+<td>可观察</td>
+<td>二进制 → 可解释对象</td>
+<td>模型、Schema、统计和数据行可见</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/M1IRd82rso1rnuxgEvUcLVlWned">02-从元数据到数据行：认识一个 TsFile</a></td>
+</tr>
+<tr>
+<td>工具选择</td>
+<td>文件、服务、程序</td>
+<td>根据任务选择正确访问层</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/K0J7dNBC0owgU6xHlRachysvnQg">03-什么时候用 TsFile，什么时候用 IoTDB？</a></td>
+</tr>
+<tr>
+<td>可组合</td>
+<td>TsFile → 标准数据流</td>
+<td>接入 Shell、CI、ETL 和 Unix 工具</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/OWmCdYG97ojuJLx6OyOcUbx4nRf">04-让 TsFile 像 Unix 文件一样进入工具链</a></td>
+</tr>
+<tr>
+<td>可服务</td>
+<td>TsFile → IoTDB 表</td>
+<td>获得 SQL、并发访问和实例管理</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/Ni7Kdaiv3oLBhYxKMNNcFRuqnqs">05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB</a></td>
+</tr>
+<tr>
+<td>可导出</td>
+<td>IoTDB 表 → TsFile</td>
+<td>数据重新获得文件形态</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/MVCKdL1suos4vHxk2vPcE7Udn4j">06-从 IoTDB 把表带回文件：导出 table-model TsFile</a></td>
+</tr>
+<tr>
+<td>可验证</td>
+<td>原始 → 导出</td>
+<td>核验往返前后的数据结构与记录是否一致</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/APQido4BRoaH6QxbwVPcz5cpn9e">07-LOAD 之后继续验证：用闭环脚本验证往返一致性</a></td>
+</tr>
+<tr>
+<td>可委托</td>
+<td>人的任务 → 工具调用</td>
+<td>Agent 按操作指引访问数据，并提供分析依据</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/BSGhd65zZoZSQqxVMoHc9xqBnkb">08-让 AI 少猜一步：用 Skill 可靠访问 TsFile</a></td>
+</tr>
+<tr>
+<td>可预测</td>
+<td>历史观测 → 未来趋势</td>
+<td>连接数据积累与模型使用，并用实测结果持续验证</td>
+<td><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/PBJbdfR6lohJZzxR8LCcC0XFneb">09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p>同一份时序数据集可以有多种用途：以 TsFile 保存和交付，由 IoTDB 提供在线管理与查询，通过 CLI 与 Skill 供脚本和 Agent 分析，并经整理后用于 TimechoAI / Timer 的时序预测。各环节共享可追溯的数据来源与结构信息，分别满足不同的使用需求。</p>
+<p>本专栏所讨论的 AI-Native，关注的是如何让这些使用过程更加明确、可复查。清楚的数据结构、可靠的访问工具、充分的业务说明和持续的结果验证，共同帮助时序数据从一次性交付材料积累为可反复使用的数据资产。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>00-专栏导读：AI-Native 的时序数据集</div>
+      <div>https://spricoder.github.io/benchmarking/tsfile-dataset/00/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/04/" title="04-让 TsFile 像 Unix 文件一样进入工具链">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">04-让 TsFile 像 Unix 文件一样进入工具链</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/02/" title="02-从元数据到数据行：认识一个 TsFile">
+                        <span class="hidden-mobile">02-从元数据到数据行：认识一个 TsFile</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>

@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="SpriCoder">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="数据库为什么需要变得 Agent-Friendly 给 Agent 一个数据库连接、一份 schema 和执行 SQL 的工具，它就能可靠地回答数据问题了吗？ 很多失败并不是 Agent 不会写 SQL，而是它不知道某个字段的业务含义，不清楚单位和时区，无法判断两个系统里的客户编号是否指向同一实体，也不知道空结果来自“确实没有数据”还是“查询条件写错了”。即使最终数字正确，它也可能使用了过期快照">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库为什么需要变得 Agent-Friendly">
+<meta property="og:url" content="https://spricoder.github.io/ai-work/ai-work-12-agent-friendly-database/index.html">
+<meta property="og:site_name" content="SpriCoder的博客">
+<meta property="og:description" content="数据库为什么需要变得 Agent-Friendly 给 Agent 一个数据库连接、一份 schema 和执行 SQL 的工具，它就能可靠地回答数据问题了吗？ 很多失败并不是 Agent 不会写 SQL，而是它不知道某个字段的业务含义，不清楚单位和时区，无法判断两个系统里的客户编号是否指向同一实体，也不知道空结果来自“确实没有数据”还是“查询条件写错了”。即使最终数字正确，它也可能使用了过期快照">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://spricoder.github.io/images/ai-work/12-agent-friendly-database.png">
+<meta property="article:published_time" content="2026-07-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.709Z">
+<meta property="article:author" content="SpriCoder">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Agent-Friendly">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="数据系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spricoder.github.io/images/ai-work/12-agent-friendly-database.png">
+  
+  
+  <title>数据库为什么需要变得 Agent-Friendly - SpriCoder的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"spricoder.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"DYxfU2PHurs2yXd95Sq85bU2-gzGzoHsz","app_key":"YWKSJ5KaDC4GQh2F8JraQPBr","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>SpriCoder的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/website.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="Everyday is today.">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-23 00:00" pubdate>
+          2026年7月23日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库为什么需要变得 Agent-Friendly</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="数据库为什么需要变得-agent-friendly"><a class="markdownIt-Anchor" href="#数据库为什么需要变得-agent-friendly"></a> 数据库为什么需要变得 Agent-Friendly</h1>
+<p>给 Agent 一个数据库连接、一份 schema 和执行 SQL 的工具，它就能可靠地回答数据问题了吗？</p>
+<p>很多失败并不是 Agent 不会写 SQL，而是它不知道某个字段的业务含义，不清楚单位和时区，无法判断两个系统里的客户编号是否指向同一实体，也不知道空结果来自“确实没有数据”还是“查询条件写错了”。即使最终数字正确，它也可能使用了过期快照、扫描了不该读取的数据，或者无法说明结论来自哪些记录。</p>
+<p><img src="/images/ai-work/12-agent-friendly-database.png" srcset="/img/loading.gif" lazyload alt="Agent 通过语义、权限、验证和恢复能力安全访问数据库" /></p>
+<p><em>原创配图：Agent-Friendly 数据库不仅提供查询入口，还显式提供语义关系、权限门禁、证据验证、状态观察和失败恢复路径。</em></p>
+<p>Agent-Friendly 不是在数据库前面加一个聊天框，而是让数据系统能够向机器清楚表达：<strong>有什么数据、这些数据是什么意思、允许怎样操作、结果如何验证，以及失败后应该怎样安全恢复。</strong></p>
+<h2 id="对人友好不自动等于对-agent-友好"><a class="markdownIt-Anchor" href="#对人友好不自动等于对-agent-友好"></a> 对人友好，不自动等于对 Agent 友好</h2>
+<p>人类数据工程师遇到陌生表时，会阅读文档、询问同事、抽样查看数据，并根据经验补齐大量隐含背景。Agent 没有这些默认知识，只能依赖系统显式提供的描述和工具反馈。</p>
+<table>
+<thead>
+<tr>
+<th>面向人的传统设计</th>
+<th>Agent 还需要什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表名、列名和数据类型</td>
+<td>业务定义、实体关系、单位、时区和口径</td>
+</tr>
+<tr>
+<td>一个通用 SQL 入口</td>
+<td>可发现、受约束、可组合的专用工具</td>
+</tr>
+<tr>
+<td>返回结果集或错误字符串</td>
+<td>结构化证据、来源、状态和可行动错误</td>
+</tr>
+<tr>
+<td>靠工程师理解权限规则</td>
+<td>机器可读的允许动作、范围、预算和确认点</td>
+</tr>
+<tr>
+<td>靠经验处理空结果和异常</td>
+<td>明确的诊断、重试、替代路径和停止条件</td>
+</tr>
+</tbody>
+</table>
+<p>所谓 Agent-Friendly，本质上是把过去藏在人脑、文档和组织经验中的接口契约，变成机器能够读取和执行的系统能力。</p>
+<h2 id="第一层让-agent-能发现数据也能理解语义"><a class="markdownIt-Anchor" href="#第一层让-agent-能发现数据也能理解语义"></a> 第一层：让 Agent 能发现数据，也能理解语义</h2>
+<p>Schema 只告诉 Agent 一列叫 <code>value</code>，类型是浮点数，却不会自动说明它是摄氏温度、瞬时功率还是累计流量。<code>created_at</code> 也可能是事件发生时间、数据入库时间或记录更新时间。</p>
+<p>一个可用的语义层至少应表达：</p>
+<ul>
+<li>表、字段和实体之间的关系；</li>
+<li>指标定义、单位、时区、采样频率和聚合规则；</li>
+<li>缺失值、异常值和迟到数据怎样处理；</li>
+<li>数据版本、更新时间和适用范围；</li>
+<li>公司内部概念和业务口径，例如“活跃用户”的具体定义。</li>
+</ul>
+<p>语义层的目的不是替 Agent 做完推理，而是避免它在错误口径上进行一段逻辑完美的计算。</p>
+<h2 id="第二层把数据库能力拆成可约束的工具"><a class="markdownIt-Anchor" href="#第二层把数据库能力拆成可约束的工具"></a> 第二层：把数据库能力拆成可约束的工具</h2>
+<p>只提供一个“执行任意 SQL”工具，权限很大，反馈却很少。更适合 Agent 的接口可以按动作拆开：</p>
+<pre><code class=" mermaid">flowchart LR
+    G[理解用户目标] --&gt; D[发现数据与语义]
+    D --&gt; P[生成计划并估算成本]
+    P --&gt; Q[预览查询与权限检查]
+    Q --&gt; E[执行受约束工具]
+    E --&gt; V[验证结果与证据]
+    V --&gt;|通过| A[形成回答]
+    V --&gt;|空结果或错误| R[诊断并选择恢复路径]
+    R --&gt; P
+</code></pre>
+<p>一组更清楚的工具可能包括：</p>
+<ul>
+<li><code>list_sources</code>：发现当前可访问的数据源；</li>
+<li><code>describe_entity</code>：读取字段、关系、指标和样例；</li>
+<li><code>preview_query</code>：检查扫描范围、权限和预期成本；</li>
+<li><code>execute_query</code>：执行只读或明确授权的操作；</li>
+<li><code>verify_result</code>：复算关键指标、检查行数和数据快照；</li>
+<li><code>recover_query</code>：根据结构化错误生成安全替代路径。</li>
+</ul>
+<p>工具拆分不是为了增加调用次数，而是给关键动作设置检查点。高风险写操作还需要幂等键、事务、确认和回读，防止网络重试产生重复修改。</p>
+<h2 id="第三层给-agent-提供领域原语"><a class="markdownIt-Anchor" href="#第三层给-agent-提供领域原语"></a> 第三层：给 Agent 提供领域原语</h2>
+<p>SQL 擅长过滤、连接和聚合，却不适合表达所有数据任务。</p>
+<p>例如，“找出过去一年中温度先快速上升、随后维持平台的时间段”，包含连续形态、相对速度和局部分布。把“快速”硬编码成某个固定斜率，可能在不同设备和季节下完全失效。</p>
+<p>更合理的方式是先用数据库中的索引和统计特征搜索候选窗口，再在原始信号上用时序算子精确验证。这种“先搜索、后验证”的分工说明，Agent-Friendly 数据库不仅要暴露底层记录，还应提供适合领域任务的操作把手。</p>
+<table>
+<thead>
+<tr>
+<th>数据问题</th>
+<th>可能需要的专用原语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由文本中的日期、实体和类别</td>
+<td>日期解析、实体识别、结构化抽取</td>
+</tr>
+<tr>
+<td>时序趋势、周期和异常窗口</td>
+<td>趋势、变点、相似片段、周期检测</td>
+</tr>
+<tr>
+<td>跨库脏连接键</td>
+<td>标准化、模糊匹配、实体解析</td>
+</tr>
+<tr>
+<td>大规模聚合与比较</td>
+<td>聚合下推、分区统计、近似预览</td>
+</tr>
+</tbody>
+</table>
+<p>如果系统只给 Agent SQL 和一个通用编程环境，Agent 会重复实现这些操作，也更容易在正则、边界条件和数据规模上犯错。把稳定能力封装成受测试的原语，能让模型把注意力放在计划和解释上。</p>
+<h2 id="第四层结果必须自带证据"><a class="markdownIt-Anchor" href="#第四层结果必须自带证据"></a> 第四层：结果必须自带证据</h2>
+<p>对人类用户来说，一个数字常常已经像答案；对 Agent 系统来说，它还需要说明这个数字怎样得到。</p>
+<p>一份可审计的查询结果可以同时返回：数据快照、查询或执行计划、涉及的表和字段、时间范围、扫描规模、过滤条件、聚合口径、验证器结果，以及关键记录或证据包的位置。</p>
+<p>这样做有三个好处：</p>
+<ol>
+<li>Agent 能在回答前自查单位、范围和空结果。</li>
+<li>人可以判断结论是否使用了正确数据，而不只看语言解释。</li>
+<li>同一问题可以在固定快照上重放，区分数据变化和模型变化。</li>
+</ol>
+<p>证据不等于把全部数据库内容塞进上下文。系统应该返回紧凑摘要和稳定引用，需要时再按引用读取原始片段。</p>
+<h2 id="第五层错误必须可以行动"><a class="markdownIt-Anchor" href="#第五层错误必须可以行动"></a> 第五层：错误必须可以行动</h2>
+<p>传统数据库错误常面向工程师设计。Agent 收到一大段异常文本后，可能盲目改写查询，也可能重复执行同一个失败动作。</p>
+<p>更适合 Agent 的错误应当结构化表达：错误类型、失败阶段、是否可重试、建议动作、剩余预算和当前状态。例如，明确区分：</p>
+<ul>
+<li>字段不存在，需要重新发现 schema；</li>
+<li>权限不足，应停止并请求授权；</li>
+<li>扫描预算超限，应缩小时间范围或先做预览；</li>
+<li>空结果已被验证，可能需要澄清用户意图；</li>
+<li>查询语法失败，可以在不改变业务口径的前提下修复；</li>
+<li>外部写入状态不明，必须先回读，不能直接重试。</li>
+</ul>
+<p>恢复能力不意味着 Agent 永远给出答案。有时最正确的行为是停止，并清楚说明缺少什么数据、权限或业务定义。</p>
+<h2 id="一个最小的-agent-数据契约"><a class="markdownIt-Anchor" href="#一个最小的-agent-数据契约"></a> 一个最小的 Agent 数据契约</h2>
+<p>Agent-Friendly 不要求一开始建设庞大的平台。可以先为关键任务提供一份最小契约：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">data_contract:</span><br>  <span class="hljs-attr">source:</span> <span class="hljs-string">数据源与固定快照</span><br>  <span class="hljs-attr">entities:</span> <span class="hljs-string">实体、关系与主键</span><br>  <span class="hljs-attr">freshness:</span> <span class="hljs-string">更新时间与适用范围</span><br><br><span class="hljs-attr">metric_contract:</span><br>  <span class="hljs-attr">definition:</span> <span class="hljs-string">指标的业务定义</span><br>  <span class="hljs-attr">unit:</span> <span class="hljs-string">单位与时区</span><br>  <span class="hljs-attr">aggregation:</span> <span class="hljs-string">聚合、对齐和缺失值规则</span><br><br><span class="hljs-attr">tool_contract:</span><br>  <span class="hljs-attr">allowed_actions:</span> <span class="hljs-string">允许的读取、预览、执行和验证动作</span><br>  <span class="hljs-attr">scope:</span> <span class="hljs-string">可访问对象与数据范围</span><br>  <span class="hljs-attr">budget:</span> <span class="hljs-string">扫描量、调用次数和时间限制</span><br>  <span class="hljs-attr">verify:</span> <span class="hljs-string">结果回读与证据要求</span><br></code></pre></td></tr></table></figure>
+<p>契约的作用，是把“Agent 算错了”和“系统没有说清楚”分开。没有明确契约，失败很难归因，也很难持续改进。</p>
+<h2 id="agent-friendly-不是什么"><a class="markdownIt-Anchor" href="#agent-friendly-不是什么"></a> Agent-Friendly 不是什么</h2>
+<p>第一，它不是取消 SQL。SQL 仍然是稳定、强大且可优化的执行语言，Agent-Friendly 做的是补充语义发现、领域原语和验证接口。</p>
+<p>第二，它不是开放更多权限。相反，越方便机器行动，越需要最小权限、预算、预览、幂等和审计。</p>
+<p>第三，它不是把所有数据放进模型上下文。Agent 应主动检索、逐步缩小范围，让数据库继续承担过滤、连接、聚合和存储。</p>
+<p>第四，它不是保证 Agent 永远正确。专用语义层和工具能够降低部分错误，但规划、实现和领域判断仍需评测与人工监督。</p>
+<h2 id="一次数据问答的完整验收"><a class="markdownIt-Anchor" href="#一次数据问答的完整验收"></a> 一次数据问答的完整验收</h2>
+<p>假设用户问：“比较两组设备上月的异常率，并解释差异。”可靠的 Agent 不应直接生成一条大查询然后写结论，而应：</p>
+<ol>
+<li>确认“异常率”的指标定义、设备范围、时区和上月边界。</li>
+<li>发现两组设备对应的数据源和跨表关系。</li>
+<li>预览查询计划、扫描规模和权限。</li>
+<li>执行聚合，并把关键中间结果绑定到固定快照。</li>
+<li>检查缺失数据、样本量差异和异常定义是否一致。</li>
+<li>用替代计算或验证器复算关键数字。</li>
+<li>区分“观察到差异”和“已经证明原因”，避免把相关性写成因果。</li>
+<li>返回结论、证据、限制和可复现入口。</li>
+</ol>
+<p>这时，数据库不只是被动存储，还是 Agent 的语义来源、执行环境和证据基础设施。</p>
+<h2 id="建设-agent-friendly-数据系统前的-30-秒检查"><a class="markdownIt-Anchor" href="#建设-agent-friendly-数据系统前的-30-秒检查"></a> 建设 Agent-Friendly 数据系统前的 30 秒检查</h2>
+<ul>
+<li>Agent 能否发现自己有权访问哪些数据？</li>
+<li>字段、指标、单位、时区和业务口径是否机器可读？</li>
+<li>数据版本、更新时间和适用范围是否明确？</li>
+<li>是否提供预览、成本估算和最小权限工具？</li>
+<li>常见领域任务是否有受测试的专用原语？</li>
+<li>查询结果能否绑定到来源、快照、计划和验证结果？</li>
+<li>错误是否区分可重试、需澄清、需授权和必须停止？</li>
+<li>写操作是否支持幂等、事务、确认和回读？</li>
+<li>是否记录工具调用、状态变化、预算和恢复过程？</li>
+<li>人类责任人能否检查并否决高风险操作？</li>
+</ul>
+<p>未来的数据系统不仅要被应用程序调用，也会被能够规划、试探、修正和解释的 Agent 使用。接口的重点因此会从“能不能执行查询”扩展为“能不能让机器正确理解、受控行动并证明结果”。</p>
+<p>真正的 Agent-Friendly，不是让 Agent 更自由，而是让它<strong>更少猜测、更容易验证、更安全地失败</strong>。</p>
+<h2 id="延伸阅读"><a class="markdownIt-Anchor" href="#延伸阅读"></a> 延伸阅读</h2>
+<ul>
+<li>Zhao Tan 等：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2602.17001">Sonar-TS: Search-Then-Verify Natural Language Querying for Time Series Databases</a>。</li>
+<li>Ruiying Ma 等：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.20576">Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents</a>。</li>
+</ul>
+<hr />
+<p><a href="/ai-work/ai-work-11-ai-science/">上一篇：AI 做科研，真正难的不是生成一个假设</a> · <a href="/ai-work/ai-work-series/">系列目录</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+        <a href="/tags/Agent/">#Agent</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F/">#数据系统</a>
+      
+        <a href="/tags/Agent-Friendly/">#Agent-Friendly</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据库为什么需要变得 Agent-Friendly</div>
+      <div>https://spricoder.github.io/ai-work/ai-work-12-agent-friendly-database/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>SpriCoder</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/benchmarking/tsfile-dataset/series/" title="玩转时序数据集｜系列目录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">玩转时序数据集｜系列目录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ai-work/ai-work-11-ai-science/" title="AI 做科研，真正难的不是生成一个假设">
+                        <span class="hidden-mobile">AI 做科研，真正难的不是生成一个假设</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'SpriCoder/spricoder-blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  <!-- <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证123456号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备12345678号</span>
+        </a>
+      </span>
+    
+  
+</div>
+ -->
+  
+</footer>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+</html>
