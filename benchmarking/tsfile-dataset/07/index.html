@@ -16,15 +16,15 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性 文件加载到 IoTDB 后，怎样确认再次导出的数据缺少变化？本文使用同一个 TsFile-Cli 读取原始文件与导出文件，比较表结构、字段计数和明细记录。 本篇回到导读提出的“可验证”价值：比较加载前后的结构与明细，留下可复查依据。 机房联合排查结束后，团队需要确认交给设备供应商的数据与进入 IoTDB 前的记录相符。本文">
+    <meta name="description" content="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性 文件加载到 IoTDB 后，怎样确认再次导出的数据缺少变化？本文使用同一个 TsFile-Cli 读取原始文件与导出文件，比较表结构、字段计数和明细记录。 本篇回到导读提出的“可验证”价值：比较加载前后的结构与明细，留下可复查依据。 机房联合排查结束后，团队需要确认交给设备供应商的数据与进入 IoTDB 前的记录相符。本文把前两篇文章串成一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性">
 <meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/07/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性 文件加载到 IoTDB 后，怎样确认再次导出的数据缺少变化？本文使用同一个 TsFile-Cli 读取原始文件与导出文件，比较表结构、字段计数和明细记录。 本篇回到导读提出的“可验证”价值：比较加载前后的结构与明细，留下可复查依据。 机房联合排查结束后，团队需要确认交给设备供应商的数据与进入 IoTDB 前的记录相符。本文">
+<meta property="og:description" content="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性 文件加载到 IoTDB 后，怎样确认再次导出的数据缺少变化？本文使用同一个 TsFile-Cli 读取原始文件与导出文件，比较表结构、字段计数和明细记录。 本篇回到导读提出的“可验证”价值：比较加载前后的结构与明细，留下可复查依据。 机房联合排查结束后，团队需要确认交给设备供应商的数据与进入 IoTDB 前的记录相符。本文把前两篇文章串成一个">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-11T10:49:39.465Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.715Z">
 <meta property="article:author" content="SpriCoder">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -185,7 +185,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="Everyday is today.">
+          <span id="subtitle" title="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性">
             
           </span>
         </div>
@@ -431,9 +431,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/08/" title="玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile">
+                      <a href="/benchmarking/tsfile-dataset/00/" title="玩转 TsFile｜00-专栏导读：AI-Native 的时序数据集">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile</span>
+                        <span class="hidden-mobile">玩转 TsFile｜00-专栏导读：AI-Native 的时序数据集</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -441,8 +441,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/09/" title="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型">
-                        <span class="hidden-mobile">玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型</span>
+                      <a href="/benchmarking/tsfile-dataset/06/" title="玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile">
+                        <span class="hidden-mobile">玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -837,21 +837,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 </html>

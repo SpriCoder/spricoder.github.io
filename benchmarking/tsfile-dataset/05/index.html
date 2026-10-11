@@ -16,15 +16,15 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB 前几篇文章把一份 CSV 做成了可携带的 table-model TsFile，并用 TsFile-Cli 在本地完成了检查。现在把这份文件交给 IoTDB，看看它怎样从文件识别表结构、建立数据库中的对象，并让数据重新出现在 SQL 查询结果里。 本篇回到导读提出的“可流转”价值：将已检查的文件交给 IoTDB">
+    <meta name="description" content="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB 前几篇文章把一份 CSV 做成了可携带的 table-model TsFile，并用 TsFile-Cli 在本地完成了检查。现在把这份文件交给 IoTDB，看看它怎样从文件识别表结构、建立数据库中的对象，并让数据重新出现在 SQL 查询结果里。 本篇回到导读提出的“可流转”价值：将已检查的文件交给 IoTDB，形成在线查询对象。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB">
 <meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/05/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB 前几篇文章把一份 CSV 做成了可携带的 table-model TsFile，并用 TsFile-Cli 在本地完成了检查。现在把这份文件交给 IoTDB，看看它怎样从文件识别表结构、建立数据库中的对象，并让数据重新出现在 SQL 查询结果里。 本篇回到导读提出的“可流转”价值：将已检查的文件交给 IoTDB">
+<meta property="og:description" content="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB 前几篇文章把一份 CSV 做成了可携带的 table-model TsFile，并用 TsFile-Cli 在本地完成了检查。现在把这份文件交给 IoTDB，看看它怎样从文件识别表结构、建立数据库中的对象，并让数据重新出现在 SQL 查询结果里。 本篇回到导读提出的“可流转”价值：将已检查的文件交给 IoTDB，形成在线查询对象。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-11T10:49:39.458Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.715Z">
 <meta property="article:author" content="SpriCoder">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -185,7 +185,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="Everyday is today.">
+          <span id="subtitle" title="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB">
             
           </span>
         </div>
@@ -446,9 +446,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/03/" title="玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？">
+                      <a href="/benchmarking/tsfile-dataset/01/" title="玩转 TsFile｜01-从 CSV 到 TsFile：自描述的时序数据集">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？</span>
+                        <span class="hidden-mobile">玩转 TsFile｜01-从 CSV 到 TsFile：自描述的时序数据集</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -456,8 +456,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/06/" title="玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile">
-                        <span class="hidden-mobile">玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</span>
+                      <a href="/benchmarking/tsfile-dataset/03/" title="玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？">
+                        <span class="hidden-mobile">玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -852,21 +852,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 </html>

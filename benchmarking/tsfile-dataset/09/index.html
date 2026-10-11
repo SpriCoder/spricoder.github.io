@@ -16,15 +16,15 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI &#x2F; Timer 连接数据与模型 前面的文章介绍了如何保存、查询和分析时序数据。本篇以发动机温度预测为场景，说明怎样准备历史序列，通过 TimechoAI &#x2F; Timer 获得预测，并与后续观测对照。 本篇回到导读提出的“可流转、可验证”价值：整理历史序列，生成预测并用后续观测检查结果。 本文提供接入说明和命令模板，适合已了解 T">
+    <meta name="description" content="09-从时序数据集到预测：用 TimechoAI &#x2F; Timer 连接数据与模型 前面的文章介绍了如何保存、查询和分析时序数据。本篇以发动机温度预测为场景，说明怎样准备历史序列，通过 TimechoAI &#x2F; Timer 获得预测，并与后续观测对照。 本篇回到导读提出的“可流转、可验证”价值：整理历史序列，生成预测并用后续观测检查结果。 本文提供接入说明和命令模板，适合已了解 TsFile 或 Io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI &#x2F; Timer 连接数据与模型">
+<meta property="og:title" content="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型">
 <meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/09/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI &#x2F; Timer 连接数据与模型 前面的文章介绍了如何保存、查询和分析时序数据。本篇以发动机温度预测为场景，说明怎样准备历史序列，通过 TimechoAI &#x2F; Timer 获得预测，并与后续观测对照。 本篇回到导读提出的“可流转、可验证”价值：整理历史序列，生成预测并用后续观测检查结果。 本文提供接入说明和命令模板，适合已了解 T">
+<meta property="og:description" content="09-从时序数据集到预测：用 TimechoAI &#x2F; Timer 连接数据与模型 前面的文章介绍了如何保存、查询和分析时序数据。本篇以发动机温度预测为场景，说明怎样准备历史序列，通过 TimechoAI &#x2F; Timer 获得预测，并与后续观测对照。 本篇回到导读提出的“可流转、可验证”价值：整理历史序列，生成预测并用后续观测检查结果。 本文提供接入说明和命令模板，适合已了解 TsFile 或 Io">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-11T10:48:00.086Z">
+<meta property="article:modified_time" content="2026-10-11T07:15:31.716Z">
 <meta property="article:author" content="SpriCoder">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -185,7 +185,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="Everyday is today.">
+          <span id="subtitle" title="玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型">
             
           </span>
         </div>
@@ -354,9 +354,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/07/" title="玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性">
+                      <a href="/benchmarking/tsfile-dataset/series/" title="玩转时序数据集｜系列目录">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性</span>
+                        <span class="hidden-mobile">玩转时序数据集｜系列目录</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -364,8 +364,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/series/" title="玩转时序数据集｜系列目录">
-                        <span class="hidden-mobile">玩转时序数据集｜系列目录</span>
+                      <a href="/ai-work/ai-work-12-agent-friendly-database/" title="数据库为什么需要变得 Agent-Friendly">
+                        <span class="hidden-mobile">数据库为什么需要变得 Agent-Friendly</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -760,21 +760,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 </html>
