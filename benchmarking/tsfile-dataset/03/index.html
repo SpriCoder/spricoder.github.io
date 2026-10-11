@@ -16,20 +16,20 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="03-什么时候用 TsFile，什么时候用 IoTDB？ 同一份时序数据，在离线交付和在线查询时需要的工具不同。本文以 sensors.tsfile 为例，说明如何选择文件工具、数据库工具或 SDK。 本篇回到导读提出的“可流转”价值：根据任务在本地文件、在线数据库和程序接口之间选择合适的入口。 选择时先看任务：只是检查一个文件，还是需要持续写入、多人查询与统一管理？如果要把读写逻辑放进长期运行的">
+    <meta name="description" content="玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？ 同一份时序数据，在离线交付和在线查询时需要的工具不同。本文以 sensors.tsfile 为例，说明如何选择文件工具、数据库工具或 SDK。 本篇回到导读提出的“可流转”价值：根据任务在本地文件、在线数据库和程序接口之间选择合适的入口。 选择时先看任务：只是检查一个文件，还是需要持续写入、多人查询与统一管理？如果要把读">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03-什么时候用 TsFile，什么时候用 IoTDB？">
+<meta property="og:title" content="玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？">
 <meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/03/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="03-什么时候用 TsFile，什么时候用 IoTDB？ 同一份时序数据，在离线交付和在线查询时需要的工具不同。本文以 sensors.tsfile 为例，说明如何选择文件工具、数据库工具或 SDK。 本篇回到导读提出的“可流转”价值：根据任务在本地文件、在线数据库和程序接口之间选择合适的入口。 选择时先看任务：只是检查一个文件，还是需要持续写入、多人查询与统一管理？如果要把读写逻辑放进长期运行的">
+<meta property="og:description" content="玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？ 同一份时序数据，在离线交付和在线查询时需要的工具不同。本文以 sensors.tsfile 为例，说明如何选择文件工具、数据库工具或 SDK。 本篇回到导读提出的“可流转”价值：根据任务在本地文件、在线数据库和程序接口之间选择合适的入口。 选择时先看任务：只是检查一个文件，还是需要持续写入、多人查询与统一管理？如果要把读">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-11T07:15:31.714Z">
+<meta property="article:modified_time" content="2026-10-11T10:49:39.450Z">
 <meta property="article:author" content="SpriCoder">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>03-什么时候用 TsFile，什么时候用 IoTDB？ - SpriCoder的博客</title>
+  <title>玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？ - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +185,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="03-什么时候用 TsFile，什么时候用 IoTDB？">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -266,11 +266,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">03-什么时候用 TsFile，什么时候用 IoTDB？</h1>
+            <h1 style="display: none">玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？</h1>
             
             <div class="markdown-body">
               
-              <p>03-什么时候用 TsFile，什么时候用 IoTDB？</p>
+              <p>玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？</p>
 <p>同一份时序数据，在离线交付和在线查询时需要的工具不同。本文以 <code>sensors.tsfile</code> 为例，说明如何选择文件工具、数据库工具或 SDK。</p>
 <p>本篇回到导读提出的“可流转”价值：根据任务在本地文件、在线数据库和程序接口之间选择合适的入口。</p>
 <p>选择时先看任务：只是检查一个文件，还是需要持续写入、多人查询与统一管理？如果要把读写逻辑放进长期运行的应用，还需要考虑 SDK。</p>
@@ -389,7 +389,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>03-什么时候用 TsFile，什么时候用 IoTDB？</div>
+      <div>玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？</div>
       <div>https://spricoder.github.io/benchmarking/tsfile-dataset/03/</div>
     </div>
     <div class="license-meta">
@@ -432,9 +432,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/05/" title="05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB">
+                      <a href="/benchmarking/tsfile-dataset/04/" title="玩转 TsFile｜04-让 TsFile 像 Unix 文件一样进入工具链">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB</span>
+                        <span class="hidden-mobile">玩转 TsFile｜04-让 TsFile 像 Unix 文件一样进入工具链</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -442,8 +442,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/00/" title="00-专栏导读：AI-Native 的时序数据集">
-                        <span class="hidden-mobile">00-专栏导读：AI-Native 的时序数据集</span>
+                      <a href="/benchmarking/tsfile-dataset/05/" title="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB">
+                        <span class="hidden-mobile">玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -838,5 +838,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>

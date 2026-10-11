@@ -16,20 +16,20 @@
   <meta name="author" content="SpriCoder">
   <meta name="keywords" content="">
   
-    <meta name="description" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供">
+    <meta name="description" content="玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile">
+<meta property="og:title" content="玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile">
 <meta property="og:url" content="https://spricoder.github.io/benchmarking/tsfile-dataset/06/index.html">
 <meta property="og:site_name" content="SpriCoder的博客">
-<meta property="og:description" content="06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供">
+<meta property="og:description" content="玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile 已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 tsfile_cli_demo.sensors 导出并读回检查。 本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。 例如，机房异常排查结束后，团队可以把选定">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-10-11T07:15:31.715Z">
+<meta property="article:modified_time" content="2026-10-11T10:49:39.462Z">
 <meta property="article:author" content="SpriCoder">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>06-从 IoTDB 把表带回文件：导出 table-model TsFile - SpriCoder的博客</title>
+  <title>玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile - SpriCoder的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +185,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="06-从 IoTDB 把表带回文件：导出 table-model TsFile">
+          <span id="subtitle" title="Everyday is today.">
             
           </span>
         </div>
@@ -266,11 +266,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">06-从 IoTDB 把表带回文件：导出 table-model TsFile</h1>
+            <h1 style="display: none">玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</h1>
             
             <div class="markdown-body">
               
-              <p>06-从 IoTDB 把表带回文件：导出 table-model TsFile</p>
+              <p>玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</p>
 <p>已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 <code>tsfile_cli_demo.sensors</code> 导出并读回检查。</p>
 <p>本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。</p>
 <p>例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供应商复核。导出由 IoTDB 工具完成，文件检查使用 TsFile-Cli。</p>
@@ -363,7 +363,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>06-从 IoTDB 把表带回文件：导出 table-model TsFile</div>
+      <div>玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</div>
       <div>https://spricoder.github.io/benchmarking/tsfile-dataset/06/</div>
     </div>
     <div class="license-meta">
@@ -406,9 +406,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/07/" title="07-LOAD 之后继续验证：用闭环脚本验证往返一致性">
+                      <a href="/benchmarking/tsfile-dataset/05/" title="玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">07-LOAD 之后继续验证：用闭环脚本验证往返一致性</span>
+                        <span class="hidden-mobile">玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -416,8 +416,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/benchmarking/tsfile-dataset/08/" title="08-让 AI 少猜一步：用 Skill 可靠访问 TsFile">
-                        <span class="hidden-mobile">08-让 AI 少猜一步：用 Skill 可靠访问 TsFile</span>
+                      <a href="/benchmarking/tsfile-dataset/08/" title="玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile">
+                        <span class="hidden-mobile">玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -812,5 +812,21 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>
