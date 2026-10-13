@@ -1,0 +1,25 @@
+<h2 id="部署到linux服务器"><a class="markdownIt-Anchor" href="#部署到linux服务器"></a> 部署到linux服务器</h2>
+<h1 id="1-将spring-boot项目打包"><a class="markdownIt-Anchor" href="#1-将spring-boot项目打包"></a> 1. 将spring boot项目打包</h1>
+<ol>
+<li>以maven为例，首先用<code>maven clean</code>处理项目</li>
+<li>之后用<code>maven install</code>打包为jar</li>
+</ol>
+<h1 id="2-上传到服务器"><a class="markdownIt-Anchor" href="#2-上传到服务器"></a> 2. 上传到服务器</h1>
+<ol>
+<li>使用xftp进行数据上传。</li>
+</ol>
+<h1 id="3-在服务器端挂起项目"><a class="markdownIt-Anchor" href="#3-在服务器端挂起项目"></a> 3. 在服务器端挂起项目</h1>
+<ol>
+<li>使用nohup命令运行:<code>nohup java -jar filename.jar 2&gt;&amp;1 &amp;</code></li>
+<li>查看进程:<code>netstat -ntpl|grep java</code>
+<ul>
+<li>使用命令<code>netstat -ntpl</code>查看所有在运行进程。</li>
+</ul>
+</li>
+<li>彻底杀死进程:<code>kill -9 (pid)</code></li>
+</ol>
+<h1 id="4-参考"><a class="markdownIt-Anchor" href="#4-参考"></a> 4. 参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/qq_31489805/article/details/80105928">spring boot打包部署</a></li>
+<li><a href = "https://blog.csdn.net/educast/article/details/28273301">spring项目打包过程中的重定向问题</a></li>
+</ol>

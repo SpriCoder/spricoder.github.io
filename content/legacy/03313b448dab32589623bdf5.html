@@ -1,0 +1,14 @@
+<h2 id="beanutils"><a class="markdownIt-Anchor" href="#beanutils"></a> Beanutils</h2>
+<h1 id="1-beanutils的介绍"><a class="markdownIt-Anchor" href="#1-beanutils的介绍"></a> 1. BeanUtils的介绍</h1>
+<ol>
+<li>Beanuils提供了对Java的反射和自省API的包装。其主要目的是利用反射机制对JavaBean的属性进行处理</li>
+</ol>
+<h1 id="2-beanutils的用法"><a class="markdownIt-Anchor" href="#2-beanutils的用法"></a> 2. BeanUtils的用法</h1>
+<h2 id="21-拷贝属性"><a class="markdownIt-Anchor" href="#21-拷贝属性"></a> 2.1. 拷贝属性</h2>
+<ol>
+<li>对于有较多相同属性的JavaBean，我们可以通过拷贝方法来完成。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">UserActionForm</span> <span class="hljs-variable">uForm</span> <span class="hljs-operator">=</span> (UserActionForm) form;<br><span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>BeanUtils.copyProperties(uForm,user);<span class="hljs-comment">//将值拷贝给后面的</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>对于不同属性的类则不会进行处理</li>
+</ol>

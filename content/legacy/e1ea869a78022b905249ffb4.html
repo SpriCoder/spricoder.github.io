@@ -1,0 +1,101 @@
+<h1 id="1-报文格式总结"><a class="markdownIt-Anchor" href="#1-报文格式总结"></a> 1. 报文格式总结</h1>
+<h2 id="11-mac帧格式"><a class="markdownIt-Anchor" href="#11-mac帧格式"></a> 1.1. MAC帧格式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec03/5.png" alt="" /></p>
+<blockquote>
+<p>字节为单位</p>
+</blockquote>
+<ol>
+<li>前同步码:0x10101010|0x10101011</li>
+<li>目的地址(48bit)</li>
+<li>源地址(48bit)</li>
+<li>长度字段(16bit)</li>
+<li>数据(不定长)</li>
+<li>FCS(32bit)</li>
+</ol>
+<h2 id="12-无线网数据帧"><a class="markdownIt-Anchor" href="#12-无线网数据帧"></a> 1.2. 无线网数据帧</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec03/13.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec03/14.png" alt="" /></p>
+<ul>
+<li>有时间窗口，超时重传</li>
+</ul>
+<h2 id="13-ipv4报文"><a class="markdownIt-Anchor" href="#13-ipv4报文"></a> 1.3. Ipv4报文</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/3.png" alt="" /></p>
+<blockquote>
+<p>单位为bit</p>
+</blockquote>
+<ul>
+<li>标志
+<ul>
+<li>DF(Don’t fragement):是否允许做分片，0允许做分片,1不允许做分片</li>
+<li>MF:MF为0表示最后一个分片,1是指后面还有分片</li>
+</ul>
+</li>
+<li>偏移：单位：8 bit为一单位</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/40.png" alt="" /></p>
+<h2 id="14-arp请求"><a class="markdownIt-Anchor" href="#14-arp请求"></a> 1.4. ARP请求</h2>
+<ol>
+<li>ARP Request:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/31.png" alt="" /></p>
+<ol start="2">
+<li>ARP Checking:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/32.png" alt="" /></p>
+<ol start="3">
+<li>ARP Reply:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/33.png" alt="" /></p>
+<ol start="4">
+<li>ARP Caching:</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/34.png" alt="" /></p>
+<h2 id="15-icmp报文格式"><a class="markdownIt-Anchor" href="#15-icmp报文格式"></a> 1.5. ICMP报文格式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec04/61.png" alt="" /></p>
+<h2 id="16-udp报文格式"><a class="markdownIt-Anchor" href="#16-udp报文格式"></a> 1.6. UDP报文格式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec05/23.png" alt="" /></p>
+<blockquote>
+<p>源端口(16 bit)、目的端口(16 bit)、长度(16 bit)、校验(data)(16 bit)、Data</p>
+</blockquote>
+<h2 id="17-tcp报文格式"><a class="markdownIt-Anchor" href="#17-tcp报文格式"></a> 1.7. TCP报文格式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec05/2.png" alt="" /></p>
+<blockquote>
+<p>单位bit</p>
+</blockquote>
+<ul>
+<li>固定首部20字节</li>
+<li>源地址(16 bit)、目的地址(16 bit)</li>
+<li>确认号：希望下一个数据的序号</li>
+<li>特殊位
+<ul>
+<li>URG：1表示紧急，尽快传送</li>
+<li>ACK：1表示确认号字段有效，反之无效</li>
+<li>PSH：1表示尽快交付(将缓存部分全部交付)</li>
+<li>RST：1表示TCP连接中出现严重差错，立即释放连接重建</li>
+<li>SYN：1同步，表示连接请求</li>
+<li>FIN：1表示发送端数据发送完毕，释放连接</li>
+</ul>
+</li>
+<li>填充字段：保证长度位4字节的倍数</li>
+</ul>
+<h2 id="18-http报文结构"><a class="markdownIt-Anchor" href="#18-http报文结构"></a> 1.8. HTTP报文结构</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec06/7.png" alt="" /></p>
+<h2 id="19-ospf报文"><a class="markdownIt-Anchor" href="#19-ospf报文"></a> 1.9. OSPF报文</h2>
+<ul>
+<li>Hello报文</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec08/27.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec08/28.png" alt="" /></p>
+<h2 id="110-ppp帧格式"><a class="markdownIt-Anchor" href="#110-ppp帧格式"></a> 1.10. PPP帧格式</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/lec10/10.jpg" alt="" /></p>
+<blockquote>
+<p>数字的单位是字节</p>
+</blockquote>
+<ol>
+<li>Flag: 01111110 标记：帧的开头或结尾，01111110，一位可能会连续接受到多个帧</li>
+<li>Address：11111111，广播地址</li>
+<li>Control：00000011，用户数据作为无序帧传输</li>
+<li>Protocol: 数据字段中的协议类型</li>
+<li>Data: 数据报，最大默认值为1500字节</li>
+<li>FCS: 2或者4字节</li>
+</ol>

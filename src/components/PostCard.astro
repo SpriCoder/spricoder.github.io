@@ -1,0 +1,32 @@
+---
+interface Post {
+  title: string;
+  url: string;
+  date: string;
+  updated?: string;
+  description?: string;
+  tags: string[];
+  categories: string[];
+  series?: string;
+  series_order?: number;
+  readingMinutes: number;
+}
+interface Props { post: Post; }
+const { post } = Astro.props;
+const date = new Date(post.date);
+const dateLabel = Number.isNaN(date.valueOf()) ? post.date.slice(0, 10) : date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai' }).replaceAll('/', '.');
+const topic = post.series || post.categories?.[0] || post.tags?.[0];
+---
+
+<article class="post-card">
+  <div class="post-card-meta">
+    <time datetime={post.date}>{dateLabel}</time>
+    {topic && <><span aria-hidden="true">/</span><span class="post-card-topic">{topic}</span></>}
+  </div>
+  <h3 class="post-card-title"><a href={post.url}>{post.title}</a></h3>
+  {post.description && <p class="post-card-description">{post.description}</p>}
+  <div class="post-card-bottom">
+    <span class="post-card-reading">约 {Math.max(1, post.readingMinutes || 1)} 分钟阅读</span>
+    <a class="post-card-read" href={post.url} aria-label={`阅读：${post.title}`}>阅读全文 <span aria-hidden="true">↗</span></a>
+  </div>
+</article>

@@ -1,0 +1,35 @@
+<h2 id="spring-responseentity"><a class="markdownIt-Anchor" href="#spring-responseentity"></a> Spring ResponseEntity</h2>
+<ol>
+<li>ResponseEntity处理http响应</li>
+</ol>
+<h1 id="1-responseentity"><a class="markdownIt-Anchor" href="#1-responseentity"></a> 1. ResponseEntity</h1>
+<ol>
+<li>标识了整个http响应:状态码、头部信息以及相应体内容</li>
+<li>如果要使用ReponseEntity,必须在请求点返回，通常在spring rest中实现。</li>
+</ol>
+<h2 id="11-内嵌接口"><a class="markdownIt-Anchor" href="#11-内嵌接口"></a> 1.1. 内嵌接口</h2>
+<ol>
+<li>HeadersBuilder:不能设置任何响应体属性</li>
+<li>BodyBuilder(是上面的子接口)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/hello&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">hello</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="12-常见相应响应"><a class="markdownIt-Anchor" href="#12-常见相应响应"></a> 1.2. 常见相应响应</h2>
+<ol>
+<li>BodyBuilder accepted();</li>
+<li>BodyBuilder badRequest();</li>
+<li>BodyBuilder created(java.net.URI location);</li>
+<li>HeadersBuilder&lt;?&gt; noContent();</li>
+<li>HeadersBuilder&lt;?&gt; notFound();</li>
+<li>BodyBuilder ok();</li>
+<li>BodyBuilder status(HttpStatus status)</li>
+<li>BodyBuilder status(int status)</li>
+</ol>
+<h3 id="121-status的使用"><a class="markdownIt-Anchor" href="#121-status的使用"></a> 1.2.1. status()的使用</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> ResponseEntity.badRequest()<br>            .body(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> ResponseEntity.status(HttpStatus.OK)<br>        .body(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="13-简单使用"><a class="markdownIt-Anchor" href="#13-简单使用"></a> 1.3. 简单使用</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/age&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">age</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;yearOfBirth&quot;)</span> <span class="hljs-type">int</span> yearOfBirth)</span> &#123;<br>    <span class="hljs-keyword">if</span> (isInFuture(yearOfBirth)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Year of birth cannot be in the future&quot;</span>, HttpStatus.BAD_REQUEST);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Your age is &quot;</span> + calculateAge(yearOfBirth), HttpStatus.OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="14-设置http响应头"><a class="markdownIt-Anchor" href="#14-设置http响应头"></a> 1.4. 设置Http响应头</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//方式一</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">HttpHeaders</span> <span class="hljs-variable">headers</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HttpHeaders</span>();<br>    headers.add(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResponseEntity</span>&lt;&gt;(<span class="hljs-string">&quot;Custom header set&quot;</span>, headers, HttpStatus.OK);<br>&#125;<br><span class="hljs-comment">//方式二</span><br><span class="hljs-meta">@GetMapping(&quot;/customHeader&quot;)</span><br><span class="hljs-type">ResponseEntity</span>&lt;String&gt; <span class="hljs-title function_">customHeader</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> ResponseEntity.ok()<br>        .header(<span class="hljs-string">&quot;Custom-Header&quot;</span>, <span class="hljs-string">&quot;foo&quot;</span>)<br>        .body(<span class="hljs-string">&quot;Custom header set&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li><code>.body()</code>返回的是ResponseEntity，而并不是BodyBuilder，需要在最后进行调用。</li>
+</ol>

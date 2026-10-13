@@ -1,0 +1,117 @@
+<h2 id="docker常用命令部分"><a class="markdownIt-Anchor" href="#docker常用命令部分"></a> docker常用命令部分</h2>
+<ol>
+<li>日常工作的环境，docker1.13.1版本完全可以满足工作需求了,若需要求其它版本，则指定docker的yum源去指定安装更高版本。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yum -y upgrade</code></td>
+<td>升级</td>
+</tr>
+<tr>
+<td><code>yum -y install wget</code></td>
+<td>安装wget</td>
+</tr>
+<tr>
+<td><code>yum -y install yum-utils</code></td>
+<td>安装<code>yum-config-manager</code></td>
+</tr>
+<tr>
+<td><code>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></td>
+<td>添加docker仓库文件docker-ce.repo仓库</td>
+</tr>
+<tr>
+<td><code>yum install  docker-ce</code></td>
+<td>安装docker-ce算是客户端工具吧</td>
+</tr>
+<tr>
+<td>`yum list docker-ce --showduplicates</td>
+<td>grep “doc”</td>
+</tr>
+<tr>
+<td><code>yum -y install docker-ce-18.06.3.ce-3.el7</code></td>
+<td>选择安装的docker版本</td>
+</tr>
+<tr>
+<td><code>systemctl start docker</code></td>
+<td>启动docker</td>
+</tr>
+<tr>
+<td><code>sudo systemctl start dockersudo systemctl enable docker</code></td>
+<td>启动 并加入开机启动</td>
+</tr>
+</tbody>
+</table>
+<h1 id="1-docker本身命令"><a class="markdownIt-Anchor" href="#1-docker本身命令"></a> 1. Docker本身命令</h1>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker version</code></td>
+<td>版本</td>
+</tr>
+<tr>
+<td><code>docker info</code></td>
+<td>系统信息</td>
+</tr>
+<tr>
+<td><code>docker logs</code></td>
+<td>日志信息</td>
+</tr>
+<tr>
+<td><code>service docker status</code></td>
+<td>故障检测</td>
+</tr>
+<tr>
+<td>`docker sudo service docker start</td>
+<td>stop`</td>
+</tr>
+<tr>
+<td><code>docker ps</code></td>
+<td>查看当前运行的容器</td>
+</tr>
+<tr>
+<td><code>docker ps -a</code></td>
+<td>查看所有的容器</td>
+</tr>
+<tr>
+<td><code>docker ps -a -q</code></td>
+<td>查看全部容器启用的id和信息</td>
+</tr>
+<tr>
+<td><code>docker ps -as</code></td>
+<td>查看全部容器占据的空间</td>
+</tr>
+<tr>
+<td><code>docker top</code></td>
+<td>查看一个正在运行的容器进程</td>
+</tr>
+<tr>
+<td><code>sudo docker inspect -f '&#123;&#123;.id&#125;&#125;'[id]</code></td>
+<td>查看容器的示例id</td>
+</tr>
+<tr>
+<td><code>docker inspect</code></td>
+<td>检查镜像或者容器的参数，默认返回JSON格式</td>
+</tr>
+<tr>
+<td><code>docker.run</code></td>
+<td>创建容器</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-参考"><a class="markdownIt-Anchor" href="#2-参考"></a> 2. 参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/TOP__ONE/article/details/101426455">docker容器</a></li>
+</ol>

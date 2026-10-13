@@ -1,0 +1,100 @@
+<h2 id="lec9-探索可观测性的技术原理"><a class="markdownIt-Anchor" href="#lec9-探索可观测性的技术原理"></a> Lec9-探索可观测性的技术原理</h2>
+<h1 id="1-软件架构的演进"><a class="markdownIt-Anchor" href="#1-软件架构的演进"></a> 1. 软件架构的演进</h1>
+<ol>
+<li>在软件架构的演进过程中，也出现了一些问题
+<ol>
+<li>服务之间存在错综复杂的关系</li>
+<li>应用部署到生产环境只是刚刚开始</li>
+<li>天下没有不宕机的系统，时刻做好恢复系统的准备</li>
+<li>如果系统是分布式的，那么它的故障也可能在哪里都存在</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-分布式链路追踪的起源"><a class="markdownIt-Anchor" href="#2-分布式链路追踪的起源"></a> 2. 分布式链路追踪的起源</h1>
+<ol>
+<li>Google Dapper论文</li>
+<li>记录并不难，将记录进行关联才是解决问题的关键
+<ol>
+<li>黑盒方案：方便、基于统计学、不准确</li>
+<li>基于注释的监控方案：利用应用程序或中间件给每条记录赋予一个全局性的标示符</li>
+</ol>
+</li>
+<li>如何收集关联数据？
+<ol>
+<li>埋点/日志</li>
+<li>JVM字节码增强技术</li>
+</ol>
+</li>
+<li>构建分布式追踪系统难点
+<ol>
+<li>低开销：开销越小，开发人员越能接受</li>
+<li>可扩展性：能够满足至少未来几年需求</li>
+<li>应用层透明：应该对程序员是不可见的</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-链路追踪与可观测性"><a class="markdownIt-Anchor" href="#3-链路追踪与可观测性"></a> 3. 链路追踪与可观测性</h1>
+<ol>
+<li>APM——Application Performance Management</li>
+<li>可观测性的定义与本质
+<ol>
+<li>监控告诉我们系统的那部分是工作的。</li>
+<li>可观测性告诉我们那里为何不工作了。</li>
+</ol>
+</li>
+<li>可观测性的三根支柱
+<ol>
+<li>Log 日志</li>
+<li>Metric 指标</li>
+<li>Tracing 应用追踪</li>
+</ol>
+</li>
+<li>分层级构建可观测性(适用于云原生应用的可观测性建设四步法)
+<ol>
+<li>健康检查</li>
+<li>指标</li>
+<li>日志</li>
+<li>应用追踪</li>
+</ol>
+</li>
+<li>典型问题排查过程
+<ol>
+<li>Alert</li>
+<li>Dashboard</li>
+<li>Adhoc Query</li>
+<li>Log Aggregation</li>
+<li>Distributed Tracing</li>
+<li>Fix！</li>
+</ol>
+</li>
+<li>工具的可用性是实施可观测性的关键
+<ol>
+<li>成本低的追踪埋点</li>
+<li>容易浏览查询分析</li>
+<li>可靠性值得信任</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-常见开源方案"><a class="markdownIt-Anchor" href="#4-常见开源方案"></a> 4. 常见开源方案</h1>
+<h2 id="41-apache-skywalking-深度剖析"><a class="markdownIt-Anchor" href="#41-apache-skywalking-深度剖析"></a> 4.1. Apache Skywalking 深度剖析</h2>
+<ol>
+<li>三个维度
+<ol>
+<li>Tracing 追踪链路数据</li>
+<li>Logging 日志数据</li>
+<li>Metrics 指标数据</li>
+</ol>
+</li>
+<li>三个层级
+<ol>
+<li>Receiver 接收器：解析和适配不同协议</li>
+<li>Analysis Core 分析内核：OAL/MAL</li>
+<li>Query Core 内核：多维度数据查询</li>
+</ol>
+</li>
+</ol>
+<h3 id="411-探针工作原理剖析"><a class="markdownIt-Anchor" href="#411-探针工作原理剖析"></a> 4.1.1. 探针工作原理剖析</h3>
+<h3 id="412-探针协议剖析"><a class="markdownIt-Anchor" href="#412-探针协议剖析"></a> 4.1.2. 探针协议剖析</h3>
+<h3 id="413-指标分析剖析"><a class="markdownIt-Anchor" href="#413-指标分析剖析"></a> 4.1.3. 指标分析剖析</h3>
+<h3 id="414-指标存储与查询剖析"><a class="markdownIt-Anchor" href="#414-指标存储与查询剖析"></a> 4.1.4. 指标存储与查询剖析</h3>
+<h1 id="5-小结"><a class="markdownIt-Anchor" href="#5-小结"></a> 5. 小结</h1>

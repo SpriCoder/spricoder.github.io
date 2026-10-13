@@ -1,0 +1,6 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import about from '../data/about.json';
+const html = about.html;
+---
+<SiteLayout title="关于我"><div class="container"><header class="page-header"><p class="eyebrow">ABOUT</p><h1>关于 SpriCoder</h1><p>学习、实践，以及在过程中留下的记录。</p></header><article class="article-content" set:html={html}></article></div></SiteLayout>

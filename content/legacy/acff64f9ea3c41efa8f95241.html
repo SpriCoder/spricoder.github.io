@@ -1,0 +1,68 @@
+<h1 id="与-ai-一起工作-2-一个好的-prompt不是更长的命令而是更清楚的任务边界"><a class="markdownIt-Anchor" href="#与-ai-一起工作-2-一个好的-prompt不是更长的命令而是更清楚的任务边界"></a> 与 AI 一起工作 | 2. 一个好的 Prompt，不是更长的命令，而是更清楚的任务边界</h1>
+<p>刚开始使用 Codex 时，人很容易把 Prompt 当成一种“咒语”：多写一点背景，多加几个形容词，再要求它仔细思考，似乎就会得到更可靠的结果。</p>
+<p>但在真实开发中，最常见的失败通常不是命令太短，而是任务边界不清楚。比如“修一下登录问题”“把这个页面改好看”“清理旧文件”，每一句都很自然，却都把最重要的判断留白了：修哪个问题，改到哪里为止，哪些东西不能动，怎样才算完成？</p>
+<p>Codex 可以阅读代码、提出计划、修改文件并协助验证；但它无法替我们决定需求的边界，也不能替我们承担上线后的后果。一个好的 Prompt 做的事，是把这些本应由人作出的判断，变成一份可以执行、可以审查的任务委托。</p>
+<h3 id="先写清五件事"><a class="markdownIt-Anchor" href="#先写清五件事"></a> 先写清五件事</h3>
+<p>不必每次都写成长篇大论。多数任务只要补全下面五件事，就已经比“请帮我优化一下”可靠得多：</p>
+<p>它们分别回答五个不同的问题：要什么结果、做到哪里为止、基于什么事实、哪些动作不可接受，以及如何确认没有白做。篇幅只是副产品；边界才是重点。</p>
+<h3 id="六个典型场景"><a class="markdownIt-Anchor" href="#六个典型场景"></a> 六个典型场景</h3>
+<p>接下来我们通过例子展示同一类任务怎样从模糊命令变成可协作的委托。</p>
+<h4 id="1-修-bug不要直接把修复当作验收"><a class="markdownIt-Anchor" href="#1-修-bug不要直接把修复当作验收"></a> 1. 修 Bug：不要直接把“修复”当作验收</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">修一下登录偶尔失败的问题。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">排查测试环境中“刷新页面后登录态丢失”的问题。<br>先复现并说明根因；只修改 src<span class="hljs-regexp">/auth/</span> 与对应测试，不升级依赖、不改接口契约。<br>修复后运行现有认证测试，并说明新增或调整了哪些用例。<br></code></pre></td></tr></table></figure>
+<p>这里真正增加的不是客套话，而是问题现象、允许修改的范围，以及验证方式。这样 Codex 不必猜“偶尔失败”指什么，读者也能在最终改动中检查它有没有越界。</p>
+<h4 id="2-加功能先定义不做什么"><a class="markdownIt-Anchor" href="#2-加功能先定义不做什么"></a> 2. 加功能：先定义“不做什么”</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">给项目加一个用户登录功能。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">为现有的邮箱密码账户补充登录页和会话恢复。<br>复用当前的用户表与认证接口；本次不支持注册、第三方登录和密码重置。<br>先给出涉及文件与数据流的计划，确认后再修改；完成标准是登录、退出和刷新后保持登录态的测试通过。<br></code></pre></td></tr></table></figure>
+<p>“本次不支持什么”往往比“希望支持什么”更重要。它防止一个小需求悄悄膨胀成账户体系重做。</p>
+<h4 id="3-改页面把好看换成可观察的结果"><a class="markdownIt-Anchor" href="#3-改页面把好看换成可观察的结果"></a> 3. 改页面：把“好看”换成可观察的结果</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">把设置页面改得好看一点。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">只调整设置页的布局和样式，不改接口、文案含义和交互流程。<br>沿用项目已有的组件与色彩变量；桌面端和移动端都不能出现文字溢出或按钮遮挡。<br>完成后给出改动摘要，并提供两个常用视口下的截图或可复现检查步骤。<br></code></pre></td></tr></table></figure>
+<p>视觉判断很难完全量化，但“只改哪里”“沿用什么”“不能坏什么”仍然可以写清。这样才不会把页面优化变成一次无关的设计系统重写。</p>
+<h4 id="4-读陌生仓库把解释一下变成有边界的调研"><a class="markdownIt-Anchor" href="#4-读陌生仓库把解释一下变成有边界的调研"></a> 4. 读陌生仓库：把“解释一下”变成有边界的调研</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">看一下这个仓库，告诉我它是干什么的。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">只读分析，不修改任何文件。<br>请用 README、入口文件、依赖清单和测试目录回答：项目解决什么问题、核心执行入口在哪里、主要模块如何协作、怎样在本地验证。<br>不确定之处请标成“待确认”，不要根据目录名补全事实。<br></code></pre></td></tr></table></figure>
+<p>这类任务的关键是限定证据来源和输出结构。尤其在陌生仓库里，“看起来像”不等于“就是”。</p>
+<h4 id="5-重构模块先守住不变的行为"><a class="markdownIt-Anchor" href="#5-重构模块先守住不变的行为"></a> 5. 重构模块：先守住不变的行为</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">重构一下订单模块，代码太乱了。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">梳理 <span class="hljs-keyword">order</span> <span class="hljs-title">模块中重复的状态转换逻辑，目标是减少重复，不改变对外 API</span>、数据库 schema 和现有业务规则。<br>先列出重复点与拟议的最小改动；为每个不变行为说明如何由现有测试覆盖。<br>如果必须修改公共接口，停止并先说明影响范围，不要自行扩展重构范围。<br></code></pre></td></tr></table></figure>
+<p>重构最怕“看起来更整洁，实际上悄悄改了行为”。因此，边界的中心不是新结构有多漂亮，而是哪些行为必须保持不变。</p>
+<h4 id="6-清理与工具调用高影响动作必须有确认点"><a class="markdownIt-Anchor" href="#6-清理与工具调用高影响动作必须有确认点"></a> 6. 清理与工具调用：高影响动作必须有确认点</h4>
+<p><strong>原始命令：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">把没用的文件清理掉，顺便更新配置。<br></code></pre></td></tr></table></figure>
+<p><strong>边界清楚的任务：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">先只列出疑似废弃的文件、判断依据和被引用位置，不删除、不移动、不更新配置。<br>把候选项按“可安全清理”“需要人工确认”分类；我确认后再执行指定项。<br>若任务涉及外部工具、数据库或发送消息，先说明将访问什么数据、执行什么动作，再等待确认。<br></code></pre></td></tr></table></figure>
+<p>当 Codex 从“给建议”进入“实际操作”时，Prompt 里的确认点不是摩擦，而是权限设计的一部分。</p>
+<h3 id="从模糊请求到可审查改动"><a class="markdownIt-Anchor" href="#从模糊请求到可审查改动"></a> 从模糊请求到可审查改动</h3>
+<p>一个可靠的协作过程，通常不是“发一句话，得到一堆代码”，而是让每一步都有可回看的依据：</p>
+<p>这并不意味着每个小改动都要走一遍繁琐流程。改一个错别字可以很短；但只要任务会影响多个文件、公共接口、数据或外部系统，就值得把“计划、范围、验证”明确写出来。</p>
+<h3 id="六条可复用的原则"><a class="markdownIt-Anchor" href="#六条可复用的原则"></a> 六条可复用的原则</h3>
+<ol>
+<li><strong>先说结果，不要只说动作。</strong> “让刷新后保持登录态”比“修认证代码”更接近真正的目标。</li>
+<li><strong>范围本身就是需求。</strong> 写明允许改什么、明确不改什么，能显著减少无关变更。</li>
+<li><strong>上下文要少而关键。</strong> 指出相关文件、现象、日志或已有约定，比粘贴一大段背景更有用。</li>
+<li><strong>限制必须显式出现。</strong> 不升级依赖、不改公共接口、只读分析，这些不能期待工具自行猜到。</li>
+<li><strong>验收要能观察。</strong> 测试命令、截图、Diff、复现步骤，至少要有一种方式证明结果。</li>
+<li><strong>高风险任务保留确认点。</strong> 删除、迁移、写数据库、发消息、修改权限之前，先看计划与影响范围。</li>
+</ol>
+<h3 id="发送前的-30-秒检查"><a class="markdownIt-Anchor" href="#发送前的-30-秒检查"></a> 发送前的 30 秒检查</h3>
+<p>在把任务交给 Codex 前，快速看一遍：</p>
+<ul>
+<li>我说清了最终要解决的问题吗？</li>
+<li>我写明了哪些文件、模块或动作在范围内吗？</li>
+<li>我指出了不能碰的接口、数据或行为吗？</li>
+<li>对方能从上下文中找到判断依据吗？</li>
+<li>完成后我要看什么来判断它做对了？</li>
+<li>如果这个任务可能造成外部影响，我留了确认点吗？</li>
+</ul>
+<p>好 Prompt 不需要像需求文档一样冗长。它只需要在真正重要的地方不含糊：让 Codex 知道该往哪里走，也让你知道它不该越过哪条线。</p>

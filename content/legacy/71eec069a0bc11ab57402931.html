@@ -1,0 +1,173 @@
+<h2 id="lec6-软件架构演化与最新进展"><a class="markdownIt-Anchor" href="#lec6-软件架构演化与最新进展"></a> Lec6-软件架构演化与最新进展</h2>
+<h1 id="1-架构历史"><a class="markdownIt-Anchor" href="#1-架构历史"></a> 1. 架构历史</h1>
+<ol>
+<li>C/S架构，进一步改进得到B/S架构(Broswer/Server架构)</li>
+<li>B/S架构</li>
+<li>服务端MVC架构</li>
+<li>客户端MVC架构</li>
+<li>服务端-N层架构：展示层、业务层、持久层、数据库</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/1.png" alt="" /></p>
+<ol start="6">
+<li>SOA架构
+<ol>
+<li>服务封装</li>
+<li>服务松耦合：服务之间的关系最小化，仅互相知道</li>
+<li>服务契约：服务按照服务描述文档所定义的服务契约行事</li>
+<li>服务抽象：除了服务契约中所描述的内容，服务将对外部隐藏逻辑</li>
+<li>服务的重用性：将逻辑分布在不同的内容中，以提供服务的重用性</li>
+<li>服务的可组合性：一组服务可以协调工作并组合起来形成一个组合服务</li>
+<li>服务自治：服务对所封装的逻辑具有控制权</li>
+<li>服务无状态：服务将一个活动所需保存的资讯最小化</li>
+<li>服务的可被发现性：服务需要对外部提供描述资讯，这样可以通过现有的发现机制发现并访问这些服务</li>
+</ol>
+</li>
+<li>ESB(Enterprise Service Bus)</li>
+</ol>
+<h1 id="2-应用架构演进趋势"><a class="markdownIt-Anchor" href="#2-应用架构演进趋势"></a> 2. 应用架构演进趋势</h1>
+<ol>
+<li>企业应用机构演进：大型机时代 -&gt; 客户端服务端时代 -&gt; Web时代 -&gt; 分布式时代</li>
+</ol>
+<h2 id="21-单体架构"><a class="markdownIt-Anchor" href="#21-单体架构"></a> 2.1. 单体架构</h2>
+<ol>
+<li>优点：为人熟知、IDE友好、便于共享、易于测试、容易部署。</li>
+<li>缺点：不顾灵活、妨碍持续交付、受技术栈限制、技术债务积累、性能、可用性、伸缩性、扩展性、安全性。</li>
+</ol>
+<h2 id="22-架构设计策略"><a class="markdownIt-Anchor" href="#22-架构设计策略"></a> 2.2. 架构设计策略</h2>
+<ol>
+<li>缓存与读写分离</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/2.png" alt="" /></p>
+<ol start="2">
+<li>动静分离</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/3.png" alt="" /></p>
+<ol start="3">
+<li>集群化高可用架构</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/4.png" alt="" /></p>
+<ol start="4">
+<li>业务拆分与分布式</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/5.png" alt="" /></p>
+<ol start="5">
+<li>微服务架构</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/6.png" alt="" /></p>
+<h2 id="23-微服务架构"><a class="markdownIt-Anchor" href="#23-微服务架构"></a> 2.3. 微服务架构</h2>
+<ol>
+<li>微服务架构的特点
+<ol>
+<li>每个微服务可独立运行在自己的进程中</li>
+<li>每个微服务只服务于某个特定的业务进程</li>
+<li>微服务之间通过一些轻量的通信机制进行通信，如REST API</li>
+<li>可以使用不同的语言和数据存储技术</li>
+<li>全自动的部署/监控/运维机制</li>
+</ol>
+</li>
+<li>微服务的理念：分而治之</li>
+</ol>
+<h2 id="24-akf可扩展性模型"><a class="markdownIt-Anchor" href="#24-akf可扩展性模型"></a> 2.4. AKF可扩展性模型</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/7.png" alt="" /></p>
+<ol>
+<li>AKF扩展原则
+<ol>
+<li>理论上按照三种扩展模式可以将单体系统进行无限扩展。</li>
+<li>X轴：水平复制，配合负载均衡</li>
+<li>Z轴：数据分区，不同地区有不同的数据分区</li>
+<li>Y周：微服务的拆分模式，基于不同的业务进行拆分</li>
+</ol>
+</li>
+<li>微服务的原则
+<ol>
+<li>围绕业务概念建模</li>
+<li>自动化文化</li>
+<li>隐藏内部实现细节</li>
+<li>一切都去中心化</li>
+<li>独立部署</li>
+<li>隔离失败</li>
+<li>高度可观察</li>
+</ol>
+</li>
+</ol>
+<h2 id="25-应用架构比较"><a class="markdownIt-Anchor" href="#25-应用架构比较"></a> 2.5. 应用架构比较</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/8.png" alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/9.png" alt="" /></th>
+</tr>
+</thead>
+</table>
+<h1 id="3-云原生简介"><a class="markdownIt-Anchor" href="#3-云原生简介"></a> 3. 云原生简介</h1>
+<ol>
+<li>云原生的代表技术包括<strong>容器、服务网格、微服务、不可变基础设施和声明式API</strong>。</li>
+<li>云原生是一种基于微服务的软件架构思想以及基于Devops进行软件开发实践的一组方法论，其实现了以分布式和容器技术为核心在异构云平台环境下利用云计算交付模型优势来快速构建、部署和进行企业应用。</li>
+<li>业界选择云原生的原因
+<ol>
+<li>更高的资源效率可以用更少的服务器运行相同数量的服务</li>
+<li>云原生基础设施提高了开发速度</li>
+<li>云原生支持多种云和混合云开发</li>
+<li>云原生使得快速部署成为可能</li>
+</ol>
+</li>
+</ol>
+<h2 id="31-k8s"><a class="markdownIt-Anchor" href="#31-k8s"></a> 3.1. K8S</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/10.png" alt="" /></th>
+<th><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/11.png" alt="" /></th>
+</tr>
+</thead>
+</table>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/12.png" alt="" /></p>
+<h2 id="32-应用上云"><a class="markdownIt-Anchor" href="#32-应用上云"></a> 3.2. 应用上云</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/13.png" alt="" /></p>
+<ol>
+<li>Devops的本质：文化建设、流程规范、技术规范、工具支撑。</li>
+</ol>
+<h1 id="4-微服务治理"><a class="markdownIt-Anchor" href="#4-微服务治理"></a> 4. 微服务治理</h1>
+<h2 id="41-微服务架构转型遇到的挑战"><a class="markdownIt-Anchor" href="#41-微服务架构转型遇到的挑战"></a> 4.1. 微服务架构转型遇到的挑战</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/14.png" alt="" /></p>
+<h2 id="42-分布式追踪"><a class="markdownIt-Anchor" href="#42-分布式追踪"></a> 4.2. 分布式追踪</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Devops-introduction/img/lec6/15.png" alt="" /></p>
+<ol>
+<li>Skywalking核心概念和组件
+<ol>
+<li>两个维度
+<ol>
+<li>Tracing 追踪链路数据</li>
+<li>Metrixs 指标数据</li>
+</ol>
+</li>
+<li>三个层级
+<ol>
+<li>Receiver 接收器：解析和适配不同协议</li>
+<li>Analysis Core 分析内核：OAL</li>
+<li>Query Core 内核：多维度数据查询</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-微服务设计"><a class="markdownIt-Anchor" href="#5-微服务设计"></a> 5. 微服务设计</h1>
+<h2 id="51-微服务设计原则"><a class="markdownIt-Anchor" href="#51-微服务设计原则"></a> 5.1. 微服务设计原则</h2>
+<ol>
+<li>大平台
+<ol>
+<li>以业务分层方式将核心业务功能沉淀到平台中</li>
+<li>采用微服务架构,支持互联网使用场景</li>
+<li>采用持续交付平台,更好支撑先有研发流程,并提升效率</li>
+<li>采用敏捷基础架构,更好支撑微服务架构应用</li>
+<li>采用统一监控运维平台,提升运维自动化水平和效率</li>
+</ol>
+</li>
+<li>微应用
+<ol>
+<li>只包含特定业务逻辑和展现</li>
+<li>支持多种触点方式</li>
+<li>支持快速创新与试错</li>
+</ol>
+</li>
+</ol>

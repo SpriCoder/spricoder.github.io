@@ -1,0 +1,46 @@
+<h2 id="lecture0-概论"><a class="markdownIt-Anchor" href="#lecture0-概论"></a> Lecture0-概论</h2>
+<h1 id="1-操作系统中最基本的抽象"><a class="markdownIt-Anchor" href="#1-操作系统中最基本的抽象"></a> 1. 操作系统中最基本的抽象</h1>
+<ol>
+<li>进程抽象:对已进入主存正在运行的程序在处理器上操作的状态集的抽象</li>
+<li>虚存抽象:是物理内存的抽象，进程可获得一个硕大的连续地址空间来存放可执行程序和数据，可使用虚拟地址来引用物理主存单元。</li>
+<li>文件抽象:是对设备(磁盘)的抽象</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec0/1.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec0/2.png" alt="" /></p>
+<h1 id="2-计算机仿真成虚拟计算机"><a class="markdownIt-Anchor" href="#2-计算机仿真成虚拟计算机"></a> 2. 计算机仿真成虚拟计算机</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec0/3.png" alt="" /></p>
+<h1 id="3-roadmap"><a class="markdownIt-Anchor" href="#3-roadmap"></a> 3. RoadMap</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-OS/img/lec0/4.png" alt="" /></p>
+<ol>
+<li>多道程序设计是一种程序设计的思想</li>
+<li>第二章:实现多道程序并发的基础
+<ol>
+<li>特权指令只有在内核态才可以使用</li>
+<li>处理器调度算法</li>
+</ol>
+</li>
+<li>第三章:
+<ol>
+<li>同步和互斥的实现:PV操作方法，通用(对硬件没有要求)且重要</li>
+<li>管程和进程通信的方法</li>
+</ol>
+</li>
+<li>第四章:
+<ol>
+<li>固定、动态分区</li>
+<li>虚存抽象
+<ol>
+<li>内存管理</li>
+<li>虚存管理</li>
+<li>虚拟段页式:通过调度，缺页缺段不会经常出现</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>第五章:
+<ol>
+<li>I/O设备管理</li>
+<li>磁盘设备的调度</li>
+</ol>
+</li>
+</ol>

@@ -1,0 +1,109 @@
+<h1 id="基准测试工具之你不知道的两三事-9如何模拟乱序写入"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-9如何模拟乱序写入"></a> 基准测试工具之你不知道的两三事 | 9.如何模拟乱序写入</h1>
+<p>顺序写入通常是时序数据库最容易处理的路径：同一条序列持续写入递增的时间戳。网络抖动、异步链路或边缘缓存则可能让较早的时间戳晚于新数据抵达。</p>
+<p>IoT Benchmark 的“乱序”并不是把一批记录随机打散后直接发送。阅读它的实现会发现：工具先根据一个 <code>stepOffset</code> 生成记录，再在生成<strong>时间戳</strong>时按模式改写这个 offset。理解这条链路，才能知道 <code>OUT_OF_ORDER_RATIO</code>、<code>POISSON</code> 和 <code>BATCH</code> 实际改变了什么。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/06ef55cf8fd2470b8c891e52cb6eee06.png" alt="在这里插入图片描述" /></p>
+<h3 id="1-什么才算乱序"><a class="markdownIt-Anchor" href="#1-什么才算乱序"></a> 1. 什么才算乱序</h3>
+<p>以一条设备序列为例：数据库已经收到 <code>10:06</code> 的数据，随后又收到 <code>10:03</code> 的数据；后到数据的时间戳更早，这才是乱序。</p>
+<p>反过来，设备在 10:06 才上传自己在 10:01 至 10:05 产生的数据，但该序列自 10:00 后没有写入任何更新数据，这批数据虽然迟到，对这一序列仍可以是顺序写入。</p>
+<p>所以，测试前要先写清楚：哪些序列发生乱序、迟到点占多少、以及迟到点相对同序列最新点落后多少。不能只写“开启了乱序”。</p>
+<h3 id="2-代码中的一条记录怎样获得时间戳"><a class="markdownIt-Anchor" href="#2-代码中的一条记录怎样获得时间戳"></a> 2. 代码中的一条记录怎样获得时间戳</h3>
+<p>生成写入负载时，<code>SingletonWorkDataWorkLoad</code> 先用全局递增的 <code>insertLoop</code> 为设备批次分配位置，再为 batch 内每条记录计算原始 <code>stepOffset</code>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">stepOffset</span> = (curLoop / DEVICE_NUMBER) * BATCH_SIZE_PER_WRITE + batch<span class="hljs-literal">Off</span>set<br></code></pre></td></tr></table></figure>
+<p>随后，代码分别做两件事：</p>
+<ol>
+<li>调用 <code>getCurrentTimestamp(stepOffset)</code> 生成时间戳；</li>
+<li>调用 <code>generateOneRow(..., stepOffset)</code> 生成测点值。</li>
+</ol>
+<p>当使用等长时间戳（<code>IS_REGULAR_FREQUENCY=true</code>）时，时间戳可概括为：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">timestamp</span> <span class="hljs-operator">=</span> START_TIMESTAMP × precision + POINT_STEP × stepOffset&#x27; + POINT_STEP<br></code></pre></td></tr></table></figure>
+<p>其中 <code>stepOffset'</code> 是可能被乱序模式改写后的 offset。若关闭等长时间戳，最后一个 <code>POINT_STEP</code> 会替换为一个随机的 <code>[0, POINT_STEP)</code> 内偏移。</p>
+<p>这张图揭示了一个容易忽略的事实：<strong>当前实现只改时间戳，不改生成测点值所使用的原始 offset。</strong> 因而它模拟的是“带有当前生成值的记录，以较早时间戳抵达”的写入压力，而不是从历史缓存中原样重放一条完整旧记录。若业务特别依赖“值与事件发生时刻”的严格对应关系，应采用真实数据集模式或自行构造数据，而不能把该生成模式直接当作历史回放。</p>
+<h3 id="3-poisson逐点决定是否后移"><a class="markdownIt-Anchor" href="#3-poisson逐点决定是否后移"></a> 3. <code>POISSON</code>：逐点决定是否后移</h3>
+<p>在 <code>POISSON</code> 模式下，每生成一条记录，代码先以 <code>OUT_OF_ORDER_RATIO</code> 为概率抽样：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">if random<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> &lt; OUT_OF_ORDER_RATIO:<br>    stepOffset&#x27; = stepOffset - poissonDelta<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>else:<br>    stepOffset&#x27; = stepOffset<br></code></pre></td></tr></table></figure>
+<p><code>poissonDelta()</code> 由 <code>PoissonDistribution</code> 产生。<code>LAMBDA</code> 和 <code>MAX_K</code> 用来控制该离散分布的取值；delta 的单位是 <strong>step</strong>，转换成时间差后约为 <code>delta × POINT_STEP</code>。</p>
+<p>因此，<code>POISSON</code> 适合表达“多数数据按原节奏到达，少数点随机变旧”的形态。这里的 <code>OUT_OF_ORDER_RATIO</code> 是每条记录被选中改写 offset 的概率，实际采样比例会随运行而波动；它不是服务端最终统计到的、精确不变的乱序事件比例。</p>
+<p>还应注意两个边界：</p>
+<table>
+<thead>
+<tr>
+<th>边界</th>
+<th>对测试的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delta 大于当前 stepOffset</td>
+<td>代码不会把 offset 截断到 0，早期记录可能被推到基准开始时间之前。</td>
+</tr>
+<tr>
+<td>多客户端并发</td>
+<td>工具决定的是记录的时间戳；同一序列请求的实际抵达顺序仍会受线程调度和网络影响。</td>
+</tr>
+</tbody>
+</table>
+<p>所以，<code>POISSON</code> 的结果应通过抽样写入数据或服务端记录验证，而不应只凭配置值认定“已经产生了 x% 的乱序”。</p>
+<h3 id="4-batch对-offset-做循环平移"><a class="markdownIt-Anchor" href="#4-batch对-offset-做循环平移"></a> 4. <code>BATCH</code>：对 offset 做循环平移</h3>
+<p><code>BATCH</code> 不是“对每一条记录按概率抽一次”。它先计算：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns">OUT_OF_ORDER_BASE = floor<span class="hljs-punctuation">(</span>LOOP × OUT_OF_ORDER_RATIO<span class="hljs-punctuation">)</span><br>stepOffset&#x27; = <span class="hljs-punctuation">(</span>stepOffset + OUT_OF_ORDER_BASE<span class="hljs-punctuation">)</span> mod LOOP<br></code></pre></td></tr></table></figure>
+<p>同时，<code>SingletonWorkDataWorkLoad</code> 会把全局 <code>insertLoop</code> 的起点设置为同一个 <code>OUT_OF_ORDER_BASE</code>。也就是说，这一模式通过确定性的索引平移与回绕，生成一段成批出现的时间戳重排；它不是随机地从 batch 中挑出若干点。</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>代码层面的机制</th>
+<th>更适合观察的压力形态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POISSON</code></td>
+<td>每条记录独立地按概率回退若干 step</td>
+<td>零散、持续出现的迟到点。</td>
+</tr>
+<tr>
+<td><code>BATCH</code></td>
+<td>使用 <code>floor(LOOP × ratio)</code> 计算平移基数，再按 <code>LOOP</code> 取模</td>
+<td>成段时间戳回绕带来的批式重排。</td>
+</tr>
+</tbody>
+</table>
+<p>这里有一个很重要的细节：在 <code>BATCH</code> 模式中，<code>OUT_OF_ORDER_RATIO</code> 是计算平移基数的输入，而不像 <code>POISSON</code> 那样直接作为逐条抽样概率。再加上取模的模数是 <code>LOOP</code>，实际写入的时间戳序列与“乱序点恰好占 ratio”并不应简单画等号。使用 <code>BATCH</code> 时尤其要导出或抽样检查时间戳序列。</p>
+<h3 id="5-两个容易让乱序失效或变复杂的开关"><a class="markdownIt-Anchor" href="#5-两个容易让乱序失效或变复杂的开关"></a> 5. 两个容易让乱序失效或变复杂的开关</h3>
+<p>第一，<code>IS_RECORD_CURRENT_REALLY_TIME=true</code> 时，<code>SingletonWorkDataWorkLoad</code> 会直接以 <code>System.currentTimeMillis()</code> 作为记录时间戳，并不调用 <code>getCurrentTimestamp(stepOffset)</code>。因此，基于 <code>IS_OUT_OF_ORDER</code> 的这套时间戳改写逻辑不会生效。要测试工具生成的乱序，应该保持该开关为 <code>false</code>。</p>
+<p>第二，<code>IS_REGULAR_FREQUENCY=false</code> 会额外给每个时间戳加入随机的子 <code>POINT_STEP</code> 偏移。它可以用于不规则采样数据，但会把“采样不规则”与“乱序”叠加。第一次定位乱序代价时，建议使用 <code>IS_REGULAR_FREQUENCY=true</code>，先把两类变量分开。</p>
+<h3 id="6-一套更可靠的配置与验证流程"><a class="markdownIt-Anchor" href="#6-一套更可靠的配置与验证流程"></a> 6. 一套更可靠的配置与验证流程</h3>
+<p>先固定数据规模、并发、批大小、写入间隔、<code>POINT_STEP</code> 和数据库版本，仅改变乱序相关配置。</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 先做顺序写基线</span><br><span class="hljs-attr">IS_RECORD_CURRENT_REALLY_TIME</span><span class="hljs-operator">=</span><span class="hljs-literal">false</span><br><span class="hljs-attr">IS_REGULAR_FREQUENCY</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br><span class="hljs-attr">IS_OUT_OF_ORDER</span><span class="hljs-operator">=</span><span class="hljs-literal">false</span><br><br><span class="hljs-comment"># 再开启乱序；其余负载参数保持不变</span><br><span class="hljs-attr">IS_OUT_OF_ORDER</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br><span class="hljs-attr">OUT_OF_ORDER_MODE</span><span class="hljs-operator">=</span>POISSON<br><span class="hljs-attr">OUT_OF_ORDER_RATIO</span><span class="hljs-operator">=</span>&lt;从较低比例开始&gt;<br><span class="hljs-attr">LAMBDA</span><span class="hljs-operator">=</span>&lt;按目标迟到跨度设置&gt;<br><span class="hljs-attr">MAX_K</span><span class="hljs-operator">=</span>&lt;按目标迟到跨度设置&gt;<br></code></pre></td></tr></table></figure>
+<p>推荐按以下顺序进行：</p>
+<ol>
+<li>跑顺序写基线，记录吞吐、P99、失败数和服务端资源。</li>
+<li>选择 <code>POISSON</code>，从较低 <code>OUT_OF_ORDER_RATIO</code> 开始扫描；同时抽样确认迟到时间差是否接近预期。</li>
+<li>在相同负载下切换 <code>BATCH</code>，检查回绕后的时间戳序列，而不是只看配置文件。</li>
+<li>只有当两种模式的时间戳形态都被验证后，再比较吞吐、P99、失败、CPU、内存、磁盘和查询结果。</li>
+</ol>
+<p>对每轮测试，至少保存配置快照、版本号、原始日志、抽样时间戳以及数据核验结果。乱序写入的吞吐高，不代表时间戳、数值和写入数量已经正确落库。</p>
+<h3 id="7-三个常见误区"><a class="markdownIt-Anchor" href="#7-三个常见误区"></a> 7. 三个常见误区</h3>
+<p>第一，<strong>把 <code>OUT_OF_ORDER_RATIO</code> 当作所有模式下的精确乱序比例</strong>。在 <code>POISSON</code> 中它是逐点抽样概率；在 <code>BATCH</code> 中它参与计算平移基数。两者的代码语义不同。</p>
+<p>第二，<strong>把 <code>BATCH</code> 直接理解为业务补传</strong>。它实现的是 batch 式时间戳重排，不会描述设备离线时长、缓存积压量或恢复过程。</p>
+<p>第三，<strong>开启真实当前时间后还期待乱序生效</strong>。<code>IS_RECORD_CURRENT_REALLY_TIME=true</code> 绕过了乱序时间戳生成路径。</p>
+<h3 id="8-小结"><a class="markdownIt-Anchor" href="#8-小结"></a> 8. 小结</h3>
+<p>IoT Benchmark 的乱序逻辑可以概括为：先由 <code>stepOffset</code> 生成记录，再在生成时间戳时按 <code>POISSON</code> 或 <code>BATCH</code> 改写该 offset。<code>POISSON</code> 是逐点概率抽样加随机回退；<code>BATCH</code> 是按 <code>LOOP</code> 的确定性循环平移。</p>
+<p>理解这层实现后，测试的重点就很清楚：固定其他负载变量，验证真实生成的时间戳形态，并把“配置参数”与“实际落到数据库的乱序序列”分开记录。这样得到的结果，才真正能说明系统面对哪一种乱序压力会付出多大代价。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>

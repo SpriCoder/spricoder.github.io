@@ -1,0 +1,83 @@
+<h2 id="类的成员变量"><a class="markdownIt-Anchor" href="#类的成员变量"></a> 类的成员变量</h2>
+<h1 id="1-const成员"><a class="markdownIt-Anchor" href="#1-const成员"></a> 1. Const成员</h1>
+<h2 id="11-const成员变量"><a class="markdownIt-Anchor" href="#11-const成员变量"></a> 1.1. const成员变量</h2>
+<ol>
+<li>初始化放在构造函数的成员初始化表中进行：
+<ol>
+<li>常量在初始化的时候必须被给值，而不是赋值，所以不能写在构造函数内</li>
+<li>所以我们通过初始化表的方式完成。</li>
+</ol>
+</li>
+<li>每一个Const变量是指对于这个对象的生命周期内是不变的</li>
+<li>static const:编译器内的常量，所有的对象都是一样的，最好在定义的地方进行初始化。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> x;<span class="hljs-comment">//常成员变量</span><br>    <span class="hljs-keyword">public</span>:<br>	    <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> c):<span class="hljs-built_in">x</span>(c)&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="12-const成员函数"><a class="markdownIt-Anchor" href="#12-const成员函数"></a> 1.2. Const成员函数</h2>
+<ol>
+<li>可以是函数也可以是参数</li>
+<li>我们将不修改对象内变量的值的时候，将对应方法声明为const</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> x,y;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> x1, <span class="hljs-type">int</span> y1);<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;<span class="hljs-comment">//前后要保证一致，const在后面</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">A::f</span><span class="hljs-params">()</span></span>&#123;x = <span class="hljs-number">1</span>; y = <span class="hljs-number">1</span>;&#125;<span class="hljs-comment">//编译器怎么能发现不是const的？转化为防止变量被赋值，见下面，所以const指针不能修改</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">(A * <span class="hljs-type">const</span> <span class="hljs-keyword">this</span>)</span></span>;<span class="hljs-comment">//上面的函数相当于这个</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">A::show</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span><br><span class="hljs-function"></span>&#123;cout &lt;&lt;x &lt;&lt; y;&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">(<span class="hljs-type">const</span> A* <span class="hljs-type">const</span> <span class="hljs-keyword">this</span>)</span></span>;<span class="hljs-comment">//上面的函数相当于这个，第一个const表示指向对象常量，后一个const表示指针本身是常量</span><br><br><span class="hljs-function"><span class="hljs-type">const</span> A <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)</span></span>;<span class="hljs-comment">//常对象:这个对象是不可以修改的</span><br>a.<span class="hljs-built_in">f</span>(); <span class="hljs-comment">//错误，常对象无法调用非常方法</span><br>a.<span class="hljs-built_in">show</span>();<span class="hljs-comment">//正确</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>声明为const的对象只能调用常成员对象函数</li>
+<li>如果是非const的对象，则都可以进行调用</li>
+<li>是否const方法真的就不能修改对象里面的值了呢？不是,const只是语法上避免了，但是不是完全不可修改</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">int</span> &amp; indirect_int;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">A</span>():<span class="hljs-built_in">indirect_int</span>(*<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>)&#123; ... &#125;<br>        ~<span class="hljs-built_in">A</span>() &#123;<br>            <span class="hljs-keyword">delete</span> &amp;indirect_int;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>&#123;<br>            <span class="hljs-comment">//只要不是直接修改变量的值就OK</span><br>            <span class="hljs-comment">//引用本身是不能修改的，所以编译器认为没问题</span><br>            indirect_int++;<span class="hljs-comment">//只是指向的内容发生了变化</span><br>        &#125;<br>&#125;;<br><span class="hljs-comment">//用a来做初始化</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>关键词mutable:表示成员可以再const中进行修改，而不是用间接的方式来做。</li>
+<li>去掉const转换:<code>(const_cast)&lt;A*&gt;(this)-&gt;x</code>转换后可以修改原来的成员</li>
+</ol>
+<h1 id="2-静态成员"><a class="markdownIt-Anchor" href="#2-静态成员"></a> 2. 静态成员</h1>
+<ol>
+<li>放在类的外部，只能初始化一次。</li>
+<li>一个类共享变量</li>
+</ol>
+<h2 id="21-静态成员简介"><a class="markdownIt-Anchor" href="#21-静态成员简介"></a> 2.1. 静态成员简介</h2>
+<ol>
+<li>类刻画了一组具有相同属性的对象</li>
+<li>对象是类的实例</li>
+<li>问题:为什么不声明成全局变量，而是声明成类的成员。
+<ol>
+<li>如果把这些共享变量定义为全局变量，却缺乏数据保护</li>
+<li>名污染</li>
+</ol>
+</li>
+<li>struct和class在封装上大致类似
+<ol>
+<li>struct默认访问public</li>
+<li>class默认访问private</li>
+</ol>
+</li>
+</ol>
+<h2 id="22-静态成员变量"><a class="markdownIt-Anchor" href="#22-静态成员变量"></a> 2.2. 静态成员变量</h2>
+<ol>
+<li>静态成员变量是类对象所共享</li>
+<li>唯一拷贝</li>
+<li>遵循类访问控制</li>
+<li>必须放置在类外</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">int</span> x,y;<br>	<span class="hljs-type">static</span> <span class="hljs-type">int</span> shared;<br>&#125;;<br><span class="hljs-type">int</span> A::shared=<span class="hljs-number">0</span>;<span class="hljs-comment">//j静态成员的初始化放在类的外部，只能被赋值一次，所以不再头文件中定义，而是在实现中定义，避免重复。并且定义的时候不用再写static</span><br>A a,b;<br></code></pre></td></tr></table></figure>
+<h2 id="23-静态成员函数"><a class="markdownIt-Anchor" href="#23-静态成员函数"></a> 2.3. 静态成员函数</h2>
+<ol>
+<li><strong>只能存取静态成员变量，调用静态成员函数</strong></li>
+<li>遵循类访问控制：在类上直接访问只能是静态成员变量</li>
+<li>类也是一种对象，可以通过类直接调用静态方法</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> shared;<br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-keyword">public</span>:<br>	    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>&#123;shared&#125;<br>	    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">q</span><span class="hljs-params">()</span> </span>&#123; x,shared&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="24-调用静态成员"><a class="markdownIt-Anchor" href="#24-调用静态成员"></a> 2.4. 调用静态成员</h2>
+<ol>
+<li>通过对象使用:<code>A a;a.f();</code></li>
+<li>通过类使用:<code>A::f();</code></li>
+<li>C++支持观点&quot;类也是对象&quot;
+<ol>
+<li>smalltalk</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> obj_count;<br>	<span class="hljs-keyword">public</span>:<br>	    <span class="hljs-built_in">A</span>()&#123;obj_count++;&#125;<span class="hljs-comment">//追踪创建了多少个对象</span><br>	    ~<span class="hljs-built_in">A</span>()&#123;obj_count--;&#125;<br>	    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">get_num_of_obj</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//查看已经创建了多少个对象</span><br>&#125;;<br><span class="hljs-type">int</span> A::obj_count=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">A::get_num_of_obj</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> obj_count; &#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>原则:谁创建，谁归还。解决方法:自动归还</li>
+<li>singleton:单件模式:通过静态成员函数来创建对象</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span>  <span class="hljs-title class_">singleton</span>&#123;<br>    <span class="hljs-keyword">protected</span>:<span class="hljs-comment">//构造函数外部不可以使用</span><br>		<span class="hljs-built_in">singleton</span>()&#123;&#125;<br>		<span class="hljs-built_in">singleton</span>(<span class="hljs-type">const</span> singleton &amp;);<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-function"><span class="hljs-type">static</span> singleton *<span class="hljs-title">instance</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span>  m_instance == <span class="hljs-literal">NULL</span>? <br>			m_instance = <span class="hljs-keyword">new</span> singleton: m_instance;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span>  </span>&#123; <span class="hljs-keyword">delete</span> m_instance; m_instance = <span class="hljs-literal">NULL</span>; &#125;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-type">static</span> singleton *m_instance;<span class="hljs-comment">//保存对象的指针也是static的</span><br>&#125;;<br>singleton *singleton::m_instance= <span class="hljs-literal">NULL</span>;<span class="hljs-comment">//初始化</span><br></code></pre></td></tr></table></figure>

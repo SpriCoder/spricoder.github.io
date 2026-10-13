@@ -1,0 +1,40 @@
+<h2 id="patterns-of-patterns"><a class="markdownIt-Anchor" href="#patterns-of-patterns"></a> Patterns of Patterns</h2>
+<h1 id="1-working-together"><a class="markdownIt-Anchor" href="#1-working-together"></a> 1. Working together</h1>
+<ol>
+<li>组合模式 Compound Pattern
+<ol>
+<li>是在你的设计中一起出现的</li>
+<li>应用被处理很多问题的</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-duck-reunion"><a class="markdownIt-Anchor" href="#2-duck-reunion"></a> 2. Duck reunion</h1>
+<ol>
+<li>实现Quackable接口</li>
+<li>a Goose class：需要被simulation使用，使用适配器模式</li>
+<li>使用adapter</li>
+<li>统计鸭叫的次数（要求不能修改原有的代码）：装饰器模式(不改变原本代码，而增加功能，装饰者接口与被装饰者接口一致)
+<ol>
+<li>装饰者两个缺点：设计上的缺点(注意)</li>
+<li>想要封装的更好：工厂模式，抽象工厂(所有的行为要么都被观测，要么不被观察)
+<ol>
+<li>抽象工厂</li>
+<li>抽象产品</li>
+</ol>
+</li>
+<li>Counting Duck Factory
+<ol>
+<li>产品都是装饰者鸭</li>
+</ol>
+</li>
+<li>三个模式的联用</li>
+<li>不同的鸭群要分开管理，想要在一群鸭子上执行操作：组合模式，只是监听(中介者模式)，实现对组合的整体操作，结合迭代器模式</li>
+</ol>
+</li>
+<li>实时跟踪每一个鸭子的叫的行为：观察者模式</li>
+</ol>
+<h1 id="练习题"><a class="markdownIt-Anchor" href="#练习题"></a> 练习题</h1>
+<ol>
+<li>变化点：adapter(不一致的接口)</li>
+<li>class diagram</li>
+</ol>

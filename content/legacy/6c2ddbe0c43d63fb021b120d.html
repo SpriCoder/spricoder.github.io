@@ -1,0 +1,182 @@
+<h2 id="c-数据"><a class="markdownIt-Anchor" href="#c-数据"></a> C++ 数据</h2>
+<h1 id="1-结构化程序设计"><a class="markdownIt-Anchor" href="#1-结构化程序设计"></a> 1. 结构化程序设计</h1>
+<ol>
+<li>Data Structure + Algorithm</li>
+</ol>
+<h1 id="2-数据"><a class="markdownIt-Anchor" href="#2-数据"></a> 2. 数据</h1>
+<ol>
+<li>数据的组成:名、值、地址、类型、性质</li>
+</ol>
+<h2 id="21-数据类型"><a class="markdownIt-Anchor" href="#21-数据类型"></a> 2.1. 数据类型</h2>
+<ol>
+<li>基本类型：都属于Built-in的类型
+<ol>
+<li>整型:int
+<ol>
+<li>短整型,short int</li>
+<li>整形,int</li>
+<li>长整型,long int</li>
+</ol>
+</li>
+<li>字符型,char</li>
+<li>浮点型:float
+<ol>
+<li>单精度型,float</li>
+<li>双精度型.double</li>
+<li>长双精度型.long double</li>
+</ol>
+</li>
+<li>布尔型,bool</li>
+</ol>
+</li>
+<li>派生类型：
+<ol>
+<li>指针类型,*</li>
+<li>枚举类型,enum</li>
+<li>数组类型,[]</li>
+<li>结构体类型,struct</li>
+<li>公用体类型,union</li>
+<li>类类型,class</li>
+</ol>
+</li>
+<li>空类型,void</li>
+<li>数据类型是第一层的封装
+<ul>
+<li>数据类型包括了Value Set和Operation</li>
+</ul>
+</li>
+</ol>
+<h3 id="211-抽象数据类型-adt"><a class="markdownIt-Anchor" href="#211-抽象数据类型-adt"></a> 2.1.1. 抽象数据类型 ADT</h3>
+<ol>
+<li>Mathmatical Model</li>
+<li>约束着我们的操作：类型决定了取值</li>
+<li>类型系统:
+<ol>
+<li>强/弱:是指类型严格与否，弱类型允许进行隐式转换</li>
+<li>静/动:静是指在编译之前就已经确定类型，而动是指在编译过程中确定类型。</li>
+<li>compiler + linker</li>
+</ol>
+</li>
+<li>C++的特征:
+<ol>
+<li>强类型(通过特殊的手段是可以打破强类型的手段)</li>
+<li>动/静结合</li>
+<li>类型安全不能代替测试</li>
+</ol>
+</li>
+<li>动态类型和静态类型的区别
+<ol>
+<li>java:“666”/3，编译报错</li>
+<li>python: “666”/3，运行报错</li>
+</ol>
+</li>
+</ol>
+<h3 id="212-变量修饰符"><a class="markdownIt-Anchor" href="#212-变量修饰符"></a> 2.1.2. 变量修饰符</h3>
+<ol>
+<li>注解:对于char、int、float、double(四种基本数据类型)和修饰符(long、short、signed、unsigned):
+<ol>
+<li>char只可以被signed和unsigned修饰</li>
+<li>float不能被修饰</li>
+<li>double只能用long修饰</li>
+<li>int可以被四种修饰符组合修饰</li>
+</ol>
+</li>
+<li>省略表示</li>
+</ol>
+<h3 id="213-sizeof操作符"><a class="markdownIt-Anchor" href="#213-sizeof操作符"></a> 2.1.3. sizeof操作符</h3>
+<ol>
+<li>用来返回该数据占有的内存空间的大小。(字节)</li>
+</ol>
+<h3 id="214-typedef关键字"><a class="markdownIt-Anchor" href="#214-typedef关键字"></a> 2.1.4. typedef关键字</h3>
+<ol>
+<li>用来为已有的类型定义一个同义词(别名)</li>
+<li>格式:<code>typedef [原本类型] [同义词/别名]</code></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-type">double</span> profit;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>提高程序可移植性(应用的价值所在)
+<ul>
+<li>16位系统:<code>typedef int INT16</code></li>
+<li>32位系统:<code>typedef short INT16</code></li>
+</ul>
+</li>
+<li>是为了已有类型定义别名，而不是定义新的类型</li>
+</ol>
+<h2 id="22-常值"><a class="markdownIt-Anchor" href="#22-常值"></a> 2.2. 常值</h2>
+<h3 id="221-数值常量"><a class="markdownIt-Anchor" href="#221-数值常量"></a> 2.2.1. 数值常量</h3>
+<ol>
+<li>整形常量的表示
+<ol>
+<li>0开头:八进制</li>
+<li>0X开头：十六进制</li>
+<li>其他正常进制：十进制</li>
+</ol>
+</li>
+<li>浮点数的表示
+<ol>
+<li>十进制小数形式：78.</li>
+<li>指数形式(浮点形式):3.14*10<sup>0</sup>，字符 数字部分 指数部分</li>
+</ol>
+</li>
+<li>字符常量
+<ol>
+<li>普通的字符常量</li>
+<li>转义字符常量</li>
+<li>字符串常量：字符串结尾<code>\0</code></li>
+</ol>
+</li>
+<li>符号常量：
+<ol>
+<li>#define NUM 10</li>
+<li>进行预定义操作</li>
+</ol>
+</li>
+</ol>
+<h3 id="222-枚举常量"><a class="markdownIt-Anchor" href="#222-枚举常量"></a> 2.2.2. 枚举常量</h3>
+<ol>
+<li>直接输出枚举常量，会在屏幕上显示对应的值，而不是枚举的名称</li>
+<li>不能直接给枚举类赋一个int值，可以today = weekday(4),其中weekday是预定义好的枚举类。</li>
+</ol>
+<h2 id="23-变量"><a class="markdownIt-Anchor" href="#23-变量"></a> 2.3. 变量</h2>
+<h3 id="231-局部变量"><a class="markdownIt-Anchor" href="#231-局部变量"></a> 2.3.1. 局部变量</h3>
+<ol>
+<li>生存域，在函数局部等地方生存。</li>
+</ol>
+<h3 id="232-全局变量"><a class="markdownIt-Anchor" href="#232-全局变量"></a> 2.3.2. 全局变量</h3>
+<ol>
+<li>从定义位置到程序结束都是有效的。</li>
+</ol>
+<h3 id="233-自动变量"><a class="markdownIt-Anchor" href="#233-自动变量"></a> 2.3.3. 自动变量</h3>
+<ol>
+<li>如果不用static声明变量类型，编译器对它们是动态地分配储存空间的</li>
+</ol>
+<h3 id="234-指针变量"><a class="markdownIt-Anchor" href="#234-指针变量"></a> 2.3.4. 指针变量</h3>
+<ol>
+<li>int *pointer;定义</li>
+<li>间接访问指针变量：
+<ol>
+<li>&amp;取地址运算符</li>
+<li>*间接访问运算符:访问地址上的函数值。</li>
+</ol>
+</li>
+</ol>
+<h3 id="235-作用域"><a class="markdownIt-Anchor" href="#235-作用域"></a> 2.3.5. 作用域</h3>
+<ol>
+<li>文件作用域</li>
+<li>函数作用域</li>
+<li>块作用域</li>
+<li>函数原型作用域</li>
+</ol>
+<h3 id="236-变量的存储类别"><a class="markdownIt-Anchor" href="#236-变量的存储类别"></a> 2.3.6. 变量的存储类别</h3>
+<ol>
+<li>动态存储方式</li>
+<li>静态存储方式</li>
+<li>存储类别有：
+<ol>
+<li>自动的(auto)</li>
+<li>静态的(static)，阻止本程序的有些变量被其他程序使用</li>
+<li>寄存器的(register)</li>
+<li>外部的(extern)</li>
+</ol>
+</li>
+</ol>

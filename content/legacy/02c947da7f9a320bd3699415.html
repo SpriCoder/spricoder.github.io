@@ -1,0 +1,28 @@
+<h2 id="tec3-yolo"><a class="markdownIt-Anchor" href="#tec3-yolo"></a> Tec3-yolo</h2>
+<h1 id="1-配置"><a class="markdownIt-Anchor" href="#1-配置"></a> 1. 配置</h1>
+<ol>
+<li>yolo:v3</li>
+</ol>
+<h1 id="2-问题"><a class="markdownIt-Anchor" href="#2-问题"></a> 2. 问题</h1>
+<h2 id="21-没有框的解决方案"><a class="markdownIt-Anchor" href="#21-没有框的解决方案"></a> 2.1. 没有框的解决方案</h2>
+<blockquote>
+<p>提高训练模型的置信度</p>
+</blockquote>
+<ol>
+<li>给定恰当的场景:
+<ol>
+<li>都市人车</li>
+<li>车展人车</li>
+</ol>
+</li>
+<li>调整Batch_size:我们调整参数、设置合适的训练集的目的是为了让梯度朝向更加合理的方向下降。
+<ol>
+<li>比较大的Batch_size，需要比较大的显存，比较注重整体的效果，计算机可以一次性了解所有的图片的特征。</li>
+<li>比较小的Batch_size，每张图片要训练更加仔细一些，但是时间会明显增长。</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-参考"><a class="markdownIt-Anchor" href="#3-参考"></a> 3. 参考</h1>
+<ol>
+<li><a href = "https://blog.csdn.net/Nire_Yeyu/article/details/105403220">Yolov3模型没有框的解决方案之——提高训练模型的置信度</a></li>
+</ol>

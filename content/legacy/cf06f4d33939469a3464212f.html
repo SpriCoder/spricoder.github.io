@@ -1,0 +1,226 @@
+<h1 id="基准测试工具之你不知道的两三事-6如何模拟线上读写混合负载"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-6如何模拟线上读写混合负载"></a> 基准测试工具之你不知道的两三事 | 6.如何模拟线上读写混合负载</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">上一篇文章</a>中，我们介绍了读写混合负载为何不能只看纯写或纯读结果；在此之前，我们已经跑通了写入测试，并把线上设备的上报节奏、批写、乱序和峰值翻译成了写入负载。</p>
+<p>但真实系统往往不会在写入时完全停止读取。设备持续上报的同时，仪表盘要刷新最新状态，值班人员会查看一段时间内的趋势，告警服务也可能触发聚合统计。此时，只测纯写入已经不足以回答“线上运行是否流畅”。</p>
+<p>这一篇继续使用 <a target="_blank" rel="noopener" href="https://github.com/thulab/iot-benchmark">IoT Benchmark</a>，讨论怎样从纯写基线出发，逐步构造一份可解释的读写混合负载。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/ffb1722dbaa243da920ad5d3ad8d3a9e.png" alt="在这里插入图片描述" /></p>
+<h3 id="1-先想清楚写入时谁在读什么"><a class="markdownIt-Anchor" href="#1-先想清楚写入时谁在读什么"></a> 1. 先想清楚：写入时，谁在读什么？</h3>
+<p>读写混合负载的难点不在于“加几个查询”，而在于读请求本身可能完全不同。查看设备最新状态、展示过去一小时曲线、统计当天平均值，虽然都叫“查询”，但对数据库施加的压力并不一样。</p>
+<p>在配置前，先用业务语言回答下面三个问题：</p>
+<ol>
+<li><strong>谁在读</strong>：是少量运维人员、固定仪表盘，还是大量终端用户？</li>
+<li><strong>读什么</strong>：是一个设备的最新点、一个时间范围，还是带聚合的统计结果？</li>
+<li><strong>读多频繁</strong>：是每秒刷新，还是告警触发后偶尔回溯？</li>
+</ol>
+<p>只有这三个问题有了答案，读操作比例和查询时间范围才有明确的来路。</p>
+<p>图中的三类读请求不必同时出现。一次测试只应保留业务中确实存在、且当前希望评估的那几类操作。</p>
+<h3 id="2-用-operation_proportion-组织操作比例"><a class="markdownIt-Anchor" href="#2-用-operation_proportion-组织操作比例"></a> 2. 用 <code>OPERATION_PROPORTION</code> 组织操作比例</h3>
+<p>IoT Benchmark 的常规模式 <code>testWithDefaultPath</code> 支持读写混合。核心配置项是 <code>OPERATION_PROPORTION</code>：它用一串以英文冒号分隔的整数，定义写入与各类查询操作的相对比例。</p>
+<p>当前默认配置的顺序为：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">写入 : <span class="hljs-type">Q1</span> : <span class="hljs-type">Q2</span> : <span class="hljs-type">Q3</span> : <span class="hljs-type">Q4</span> : <span class="hljs-type">Q5</span> : <span class="hljs-type">Q6</span> : <span class="hljs-type">Q7</span> : <span class="hljs-type">Q8</span> : <span class="hljs-type">Q9</span> : <span class="hljs-type">Q10</span> : <span class="hljs-type">Q11</span> : <span class="hljs-type">Q12</span><br></code></pre></td></tr></table></figure>
+<p>其中，Q1 是精确点查询，Q2 是按时间范围查询，Q4 是带时间条件的聚合查询，Q8 是最近点查询；其余位置对应带值过滤、分组、倒序或集合操作等查询。具体查询类型和支持范围应以当前 <code>config.properties</code> 及目标数据库模块的说明为准。</p>
+<p>例如，下面的配置并不是性能推荐值，而是表达一种业务假设：四份写入操作对应一份精确点查询、一份时间聚合查询和一份最近点查询。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">BENCHMARK_WORK_MODE</span>=testWithDefaultPath<br><br><span class="hljs-comment"># 写入 : Q1 : Q2 : Q3 : Q4 : Q5 : Q6 : Q7 : Q8 : Q9 : Q10 : Q11 : Q12</span><br><span class="hljs-attribute">OPERATION_PROPORTION</span>=<span class="hljs-number">4</span>:<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>比例表达的是相对构成，不是“每秒必须执行几次”。真正的到达节奏还会受到客户端数量、批写大小和操作间隔等设置影响。因此，在文章或报告中应同时记录比例、并发和时间参数，而不能只写一串比例数字。</p>
+<h3 id="3-十三种操作分别在模拟什么"><a class="markdownIt-Anchor" href="#3-十三种操作分别在模拟什么"></a> 3. 十三种操作分别在模拟什么？</h3>
+<p><code>OPERATION_PROPORTION</code> 中的每一个位置都对应一种明确操作。写入操作和 Q1-Q12 加起来一共 13 项；不需要全部启用，但应知道每一项在模拟什么，才能正确选择比例。</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>操作</th>
+<th>操作含义</th>
+<th>更贴近的线上场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 1 项</td>
+<td>写入</td>
+<td>向数据库写入生成的时序数据</td>
+<td>设备、网关或应用持续上报。</td>
+</tr>
+<tr>
+<td>Q1</td>
+<td>精确点查询</td>
+<td>查询指定设备在某个时间点的数据</td>
+<td>点击某时刻的数据点，或核对单条采样。</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>时间范围查询</td>
+<td>只按起止时间过滤的范围查询</td>
+<td>展示某设备最近一小时或一天的趋势。</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>带值过滤的范围查询</td>
+<td>在时间范围内再按数值条件过滤</td>
+<td>查找温度超过阈值的历史记录。</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td>带时间条件的聚合查询</td>
+<td>在一个时间范围内计算聚合结果</td>
+<td>统计某时段的平均值、最大值或计数。</td>
+</tr>
+<tr>
+<td>Q5</td>
+<td>带值过滤的聚合查询</td>
+<td>对满足数值条件的数据进行聚合</td>
+<td>统计超过阈值的数据量。</td>
+</tr>
+<tr>
+<td>Q6</td>
+<td>带时间和值过滤的聚合查询</td>
+<td>同时限制时间范围和数值条件后聚合</td>
+<td>统计某个班次内的异常指标。</td>
+</tr>
+<tr>
+<td>Q7</td>
+<td>分组聚合查询</td>
+<td>按时间窗口分组后聚合</td>
+<td>把原始数据降采样后绘制趋势图。</td>
+</tr>
+<tr>
+<td>Q8</td>
+<td>最近点查询</td>
+<td>获取某设备最新的时间和值</td>
+<td>实时状态卡片、设备在线概览。</td>
+</tr>
+<tr>
+<td>Q9</td>
+<td>倒序范围查询</td>
+<td>按时间倒序返回一个时间范围的数据</td>
+<td>页面优先展示最新的历史事件。</td>
+</tr>
+<tr>
+<td>Q10</td>
+<td>倒序带值过滤的范围查询</td>
+<td>倒序返回满足数值条件的数据</td>
+<td>优先查看最近发生的异常记录。</td>
+</tr>
+<tr>
+<td>Q11</td>
+<td>倒序分组聚合查询</td>
+<td>按时间窗口聚合后倒序返回</td>
+<td>从最新窗口开始查看统计趋势。</td>
+</tr>
+<tr>
+<td>Q12</td>
+<td>集合操作查询</td>
+<td>将多个范围查询用 <code>union</code> 等集合操作组合</td>
+<td>对多个条件或多个时间窗口的结果做集合运算。</td>
+</tr>
+</tbody>
+</table>
+<p>当前配置注释还标出了部分限制：Q11 目前仅支持 IoTDB、TDengine 3.0 和 InfluxDB v1；Q12 当前仅支持 IoTDB 2.0 的表模型。其他操作是否支持，也应在测试前查看目标数据库模块的说明。</p>
+<p>初次构造混合负载时，通常优先从 Q8、Q2 和 Q4 中选择：它们分别覆盖“看最新状态”“看一段趋势”和“看一段统计”三类常见需求。Q3、Q5、Q6、Q9-Q12 更适合业务确实有阈值筛选、倒序浏览或集合计算时再单独加入。</p>
+<p>例如，下面两组比例都只表达场景，不代表通用推荐值：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 设备状态页：8 份写入，对应 1 份最近点查询（Q8）</span><br><span class="hljs-attribute">OPERATION_PROPORTION</span>=<span class="hljs-number">8</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span><br><br><span class="hljs-comment"># 趋势页面：8 份写入，对应 1 份时间范围查询（Q2）</span><br><span class="hljs-attribute">OPERATION_PROPORTION</span>=<span class="hljs-number">8</span>:<span class="hljs-number">0</span>:<span class="hljs-number">1</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span>:<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>如果业务同时既要看状态又要看趋势，不要马上叠加所有操作。建议先分别运行“写入 + Q8”和“写入 + Q2”，确认每类查询的影响后，再设计包含两者的组合负载。</p>
+<h3 id="4-新近数据与历史数据要分开设计"><a class="markdownIt-Anchor" href="#4-新近数据与历史数据要分开设计"></a> 4. 新近数据与历史数据，要分开设计</h3>
+<p>线上仪表盘常常关心刚刚写入的数据。IoT Benchmark 提供了 <code>IS_RECENT_QUERY</code> 参数：在读写混合场景下开启后，查询会优先落在最近写入数据附近。</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 在读写混合场景下，优先查询最近写入的数据</span><br><span class="hljs-attr">IS_RECENT_QUERY</span><span class="hljs-operator">=</span><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>这适合模拟“设备正在上报，页面同时刷新”的场景。但它不等于所有业务查询都应该读取最新数据。历史趋势分析、班次报表或事故回溯，往往会访问更早的时间范围；若把它们都混进“最近数据”测试，结果反而失去业务含义。</p>
+<p>可以按查询目标把场景分成两类：</p>
+<table>
+<thead>
+<tr>
+<th>线上行为</th>
+<th>更贴近的查询设计</th>
+<th>需要重点观察</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设备状态卡片持续刷新</td>
+<td>最近点查询或最近数据附近的查询</td>
+<td>写入是否仍稳定，最新读是否出现明显尾延迟。</td>
+</tr>
+<tr>
+<td>趋势图展示一段时间曲线</td>
+<td>时间范围查询</td>
+<td>查询范围增大后，是否影响写入吞吐和 P99。</td>
+</tr>
+<tr>
+<td>告警后查看统计摘要</td>
+<td>带时间条件的聚合查询</td>
+<td>聚合请求出现时，写入和查询是否都保持可接受延迟。</td>
+</tr>
+<tr>
+<td>离线报表或历史回溯</td>
+<td>单独设计历史读负载</td>
+<td>不要把低频重查询误当成实时面板请求。</td>
+</tr>
+</tbody>
+</table>
+<p><code>QUERY_DEVICE_NUM</code>、<code>QUERY_SENSOR_NUM</code>、<code>QUERY_INTERVAL</code> 等参数用来继续描述查询涉及多少设备、多少测点和多长的时间范围。它们应来自页面实际一次会展示多少设备和多长窗口，而不是为了“把查询压大”随意填写。</p>
+<h3 id="5-从纯写基线逐步加入查询"><a class="markdownIt-Anchor" href="#5-从纯写基线逐步加入查询"></a> 5. 从纯写基线，逐步加入查询</h3>
+<p>读写混合最稳妥的设计方式，不是从一开始就同时开启多种查询，而是把纯写负载作为基线，再逐步加入一类读操作。</p>
+<p>例如，可以先保持写入的设备数、客户端数、批大小和乱序比例不变，只把 <code>OPERATION_PROPORTION</code> 从纯写改为“写入 + 最近点查询”。确认这一步的写入吞吐、写入 P99、查询 P99 和失败数后，再考虑加入时间范围或聚合查询。</p>
+<p>这样的顺序有两个好处：第一，性能变化更容易归因；第二，若某个查询类型并不被目标数据库模块支持，可以尽早发现，而不会把“功能不支持”和“性能下降”混在一起。</p>
+<h3 id="6-结果矩阵应按操作类型分别阅读"><a class="markdownIt-Anchor" href="#6-结果矩阵应按操作类型分别阅读"></a> 6. 结果矩阵应按操作类型分别阅读</h3>
+<p>混合负载结束后，IoT Benchmark 会分别列出写入和各类查询操作的成功数、失败数、吞吐量与延迟统计。读结果时，不能把所有行合并成一个总分。</p>
+<table>
+<thead>
+<tr>
+<th>观察到的情况</th>
+<th>应怎样理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写入吞吐下降，但查询延迟稳定</td>
+<td>查询可能已开始与写入争用资源；先与纯写基线比较下降幅度。</td>
+</tr>
+<tr>
+<td>写入稳定，但某类查询 P99 很高</td>
+<td>说明在线写入未必受影响，但该查询形态可能不适合当前配置。</td>
+</tr>
+<tr>
+<td>写入和查询都出现失败</td>
+<td>先检查连接、配置、操作支持与超时，再讨论性能。</td>
+</tr>
+<tr>
+<td>最近数据查询稳定，范围查询波动很大</td>
+<td>不应把两类查询合并评价；它们访问的数据量和路径不同。</td>
+</tr>
+<tr>
+<td>总吞吐提高，但写入行或查询行的失败数不为 0</td>
+<td>这轮不能作为“性能更好”的结论依据。</td>
+</tr>
+</tbody>
+</table>
+<p>特别是在读写混合时，写入吞吐量的下降并不天然是坏事。它可能反映了系统在为真实读请求分配资源。真正需要回答的是：在业务可接受的读延迟下，写入能力还剩多少；反过来，在写入不退化到不可接受的前提下，查询是否足够及时。</p>
+<h3 id="7-三个常见误区"><a class="markdownIt-Anchor" href="#7-三个常见误区"></a> 7. 三个常见误区</h3>
+<p>第一，<strong>把读写比例当成业务本身</strong>。<code>4:1:0:0:1...</code> 只是对业务行为的编码，不是一个通用最佳比例。比例改变前，应能说清楚对应多少用户、多少页面或多少告警任务。</p>
+<p>第二，<strong>一轮测试同时混入所有查询类型</strong>。精确点、范围、聚合、倒序和集合查询的代价不同。刚开始就全部混入，只会让结果很热闹，却很难知道是哪个操作带来变化。</p>
+<p>第三，<strong>忽略目标数据库的操作支持范围</strong>。IoT Benchmark 文档明确提示，不同数据库模块未必支持 <code>OPERATION_PROPORTION</code> 中的每一种操作。配置前应检查目标模块说明；若某种操作不支持，不能把失败数误解为系统性能不足。</p>
+<h3 id="8-小结"><a class="markdownIt-Anchor" href="#8-小结"></a> 8. 小结</h3>
+<p>模拟线上读写混合负载，真正要做的是把“谁在写、谁在读、读什么、读多频繁”翻译成一份可以验证的配置。开始时不妨只选择一种最典型的读请求，并以纯写测试作为对照。</p>
+<p>在提交一份混合负载结果前，可以再检查一次：</p>
+<ol>
+<li>写入负载是否仍与纯写基线保持一致？</li>
+<li>每一种查询是否都有对应的线上行为？</li>
+<li><code>OPERATION_PROPORTION</code> 中启用的操作是否被目标数据库模块支持？</li>
+<li>是否分别记录了写入和各类查询的吞吐量、P99 与失败数？</li>
+<li>当结果变化时，是否能够回到配置、日志和资源状态寻找证据？</li>
+</ol>
+<p>完成这些检查后，读写混合测试就不再只是“给纯写测试加一点查询”，而能更接近线上系统真正同时面对的压力。下一篇可以继续讨论：当两个数据库版本或两种写入接口都能跑通同一份负载时，怎样做一场更公平的性能对比。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>

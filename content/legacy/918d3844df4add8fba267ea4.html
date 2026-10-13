@@ -1,0 +1,20 @@
+<h2 id="shell编程"><a class="markdownIt-Anchor" href="#shell编程"></a> Shell编程</h2>
+<h1 id="1-bash中的空格"><a class="markdownIt-Anchor" href="#1-bash中的空格"></a> 1. Bash中的空格</h1>
+<ol>
+<li>在Shell编程过程中，空格容易会导致代码出错</li>
+</ol>
+<blockquote>
+<p><a href = "https://www.cnblogs.com/litifeng/p/6896248.html"></a></p>
+</blockquote>
+<h2 id="11-和空格有关的场景"><a class="markdownIt-Anchor" href="#11-和空格有关的场景"></a> 1.1. 和空格有关的场景</h2>
+<ol>
+<li>等号赋值两边不能有空格</li>
+<li>命令与选项之间需要空格</li>
+<li>管道两边空格可有可无</li>
+<li>[]之间的参数两侧也需要有空格</li>
+</ol>
+<h2 id="12-注意事项"><a class="markdownIt-Anchor" href="#12-注意事项"></a> 1.2. 注意事项</h2>
+<ol>
+<li>Bash中，最好给变量加上双引号，放置出现空格导致的错误</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">a=<span class="hljs-string">&quot;123 456&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;a&quot;</span><br></code></pre></td></tr></table></figure>

@@ -1,0 +1,97 @@
+<h2 id="hw01-homework-for-ucos-ii"><a class="markdownIt-Anchor" href="#hw01-homework-for-ucos-ii"></a> Hw01-Homework for uC/OS-II</h2>
+<ol>
+<li>uC/OS-II的多任务实验</li>
+</ol>
+<h1 id="1-固定优先级调度"><a class="markdownIt-Anchor" href="#1-固定优先级调度"></a> 1. 固定优先级调度</h1>
+<ol>
+<li>uC/OS-II支持固定优先级调度</li>
+<li>易于实施RM</li>
+</ol>
+<h1 id="2-周期任务"><a class="markdownIt-Anchor" href="#2-周期任务"></a> 2. 周期任务</h1>
+<h2 id="21-调用ostaskcreate来创建任务"><a class="markdownIt-Anchor" href="#21-调用ostaskcreate来创建任务"></a> 2.1. 调用OSTaskCreate来创建任务</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//A straightforward emulation of (c,p)</span><br><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>  Start=<span class="hljs-built_in">OSTimeGet</span>() ;<br>  <span class="hljs-built_in">While</span>(<span class="hljs-built_in">OStimeGet</span>()-start &lt; c) ;<br>  <span class="hljs-built_in">OSTimeDly</span> (p-c) ;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/2.png" alt="" /></p>
+<ul>
+<li>问题：如果[开始，结束]之间存在抢占，则任务未获得CPU时间的c个单位</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/1.png" alt="" /></p>
+<ul>
+<li>C =任务的时钟滴答花费</li>
+<li>delay = p-(end - start)</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/3.png" alt="" /></p>
+<ul>
+<li>使用计时器来计时</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Task</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">int</span> start ; <span class="hljs-comment">//the start time</span><br>  <span class="hljs-type">int</span> end ; <span class="hljs-comment">//the end time</span><br>  <span class="hljs-type">int</span> toDelay;<br>  start=<span class="hljs-number">0</span> ;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">while</span>(OSTCBCur-&gt;compTime&gt;<span class="hljs-number">0</span>) <span class="hljs-comment">//C ticks</span><br>    &#123;<br>      <span class="hljs-comment">// do nothing</span><br>    &#125;<br>    end=<span class="hljs-built_in">OSTimeGet</span>() ; <span class="hljs-comment">// end time</span><br>    toDelay=T-(end-start) ;<br>    start=start+T ; <span class="hljs-comment">// next start time</span><br>    OSTCBCur-&gt;compTime=C ; <span class="hljs-comment">// reset the counter (c ticks for computation)</span><br>    <span class="hljs-built_in">OSTimeDly</span> (toDelay); <span class="hljs-comment">// delay and wait (T-C) times</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="22-osinitexit"><a class="markdownIt-Anchor" href="#22-osinitexit"></a> 2.2. OSInitExit</h2>
+<ol>
+<li>在OS_CORE.C中定义</li>
+<li>该功能将在系统从ISR调用返回后管理调度</li>
+<li>我们需要在此处打印&quot;抢先&quot;事件</li>
+</ol>
+<h2 id="23-os_sched"><a class="markdownIt-Anchor" href="#23-os_sched"></a> 2.3. OS_Sched</h2>
+<ol>
+<li>在OS_CORE.C中定义</li>
+<li>当任务自愿放弃对CPU的占有时，调用OS_Sched()</li>
+<li>我们需要在这里打印出&quot;完整&quot;事件</li>
+</ol>
+<h2 id="24-printing-messages"><a class="markdownIt-Anchor" href="#24-printing-messages"></a> 2.4. Printing messages</h2>
+<ol>
+<li>Print messages</li>
+<li><code>printf(&quot;\n%10d Preempt &quot;,timestamp);</code></li>
+<li>期望输出格式:</li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-title class_">Current</span> time | <span class="hljs-title class_">Event</span> | [<span class="hljs-title class_">From</span> <span class="hljs-title class_">Task</span> ID] | [<span class="hljs-title class_">To</span> <span class="hljs-title class_">Task</span> ID]<br><span class="hljs-title class_">Time</span> tick (priority) | <span class="hljs-title class_">Preempt</span> | <span class="hljs-title class_">TaskID</span>(priority) | <span class="hljs-title class_">TaskID</span><br></code></pre></td></tr></table></figure>
+<h1 id="3-定义"><a class="markdownIt-Anchor" href="#3-定义"></a> 3. 定义</h1>
+<ol>
+<li>实施两组定期任务。
+<ol>
+<li>TaskSet 1 = {t1(1,3), t2(3,6)}</li>
+<li>TaskSet 2 = {t1(1,3), t2(3,6), t3(4,9) }}</li>
+<li>任务到达时间均为0</li>
+<li>显示上下文切换行为</li>
+<li>显示违反期限的情况</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-课程"><a class="markdownIt-Anchor" href="#4-课程"></a> 4. 课程</h1>
+<ol>
+<li>如何创建在每p单位时间中精确执行c单位时间的任务？(c，p)</li>
+<li>我们可以在内核中的哪个位置添加用于观察上下文切换行为的代码？</li>
+</ol>
+<h1 id="5-注意"><a class="markdownIt-Anchor" href="#5-注意"></a> 5. 注意</h1>
+<ol>
+<li>在实时应用程序中，确定任务周期，并通过硬件中断调用任务调用</li>
+<li>任务计算时间由最坏情况计算时间分析(WCET)确定</li>
+<li>在此项目中，我们将模拟这种行为，更重要的是，获得有关如何将CPU时间分配给任务的见解</li>
+</ol>
+<h1 id="6-测试任务集合"><a class="markdownIt-Anchor" href="#6-测试任务集合"></a> 6. 测试任务集合</h1>
+<ol>
+<li>测试集1：{t1(1,3) , t2(3,5) }</li>
+<li>测试集2：{t1(1,4) , t2(2,5) , t3(2,10)}</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/4.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Introduction-to-Embedded-Systems/img/hw01/5.png" alt="" /></p>
+<h1 id="7-实验内容"><a class="markdownIt-Anchor" href="#7-实验内容"></a> 7. 实验内容</h1>
+<ol>
+<li>⽬标： 在ucOS-II上多任务实验。</li>
+<li>要求：
+<ol>
+<li>在pc上的ucOS-II移植版本上实现，参⻅Moodle上Lecture Notes下的实验⽬录uCOSII下的源码。</li>
+<li>MISRA C 2004 Guidelines for the use of the C language in critical systems</li>
+</ol>
+</li>
+<li>提交
+<ol>
+<li>提交格式：学号_姓名.rar</li>
+<li>完整的⽂档说明实现步骤，包括所增加的代码与注释，执⾏结果截图。</li>
+</ol>
+</li>
+<li>任务集，包含3个周期性任务，选择合理的参数ti(ci,pi)，分别给出两种情况的输出：
+<ol>
+<li>任务之间没有相关性</li>
+<li>任务之间有数据相关性(优先级最⾼与最低任务之间)</li>
+</ol>
+</li>
+</ol>

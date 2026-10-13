@@ -1,0 +1,47 @@
+<h2 id="decimal-representation"><a class="markdownIt-Anchor" href="#decimal-representation"></a> Decimal Representation</h2>
+<h1 id="1-加法的问题w8421"><a class="markdownIt-Anchor" href="#1-加法的问题w8421"></a> 1. 加法的问题(W8421)</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt5/cpt5-1.png" alt="" /></p>
+<ol>
+<li>4位表示的是16进制的数字</li>
+<li>为什么会加6就正常了呢？
+<ul>
+<li>因为当满10时需要加6来进行进位</li>
+<li>红色的1代表16，但是我们按照10来进行的进位。</li>
+<li>只可能出现一次加6，因为最大的是9+9是18，而不会是26，所以最多加1次</li>
+</ul>
+</li>
+</ol>
+<h1 id="2-实现加六的电路"><a class="markdownIt-Anchor" href="#2-实现加六的电路"></a> 2. 实现加六的电路</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt5/cpt5-2.png" alt="" /></p>
+<ol>
+<li>C4线上为1，则加6</li>
+<li>如何判断存在16进行进位:C4<sup>*</sup></li>
+<li>如何判断这个电路能达到10及以上的但是不到16的。
+<ul>
+<li>判断:最高位为1，第二位、第三位至少有一位不为0即为大于等于10的数字。</li>
+</ul>
+</li>
+</ol>
+<h1 id="3-实现减法"><a class="markdownIt-Anchor" href="#3-实现减法"></a> 3. 实现减法</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2019-COA19/img/cpt5/cpt5-3.png" alt="" /></p>
+<ol>
+<li>借位是需要解决的。</li>
+<li>以67-34为例:
+<ol>
+<li>67-34 = 67 + (100-34) - 100</li>
+<li>100 - 34 = 99 -34 + 1</li>
+<li>接下来解决 9 - 3 &amp;&amp; 9 - 4
+<ul>
+<li>这个部分就是invert后的数字。</li>
+</ul>
+</li>
+<li>1001 - 0011 = 1111 - (0011 + 0110) 也可以先取反再加1</li>
+</ol>
+</li>
+<li>忽略掉进位即可，因为已经完成了进位操作。
+<ul>
+<li>还不上怎么办:取反加一再加上一个负号</li>
+<li>如果还不上:我们依旧需要还上:x-10<sup>n</sup> = x - 99…9 - 1 = -(99…9 - X + 1)</li>
+</ul>
+</li>
+</ol>

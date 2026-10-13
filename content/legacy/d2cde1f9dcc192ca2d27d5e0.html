@@ -1,0 +1,121 @@
+<h1 id="与-ai-一起工作-8-为什么评价-agent-不能只看最终答案"><a class="markdownIt-Anchor" href="#与-ai-一起工作-8-为什么评价-agent-不能只看最终答案"></a> 与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案</h1>
+<p>假设你让一个 Agent 汇总一份表格中的销售额，它返回了正确数字。只看答案，这次任务应该得满分。</p>
+<p>但如果查看执行记录，可能会发现另一幅图景：它读错了数据版本，几次查询都失败了，最后从一段旧对话里碰巧找到了同一个数字；或者它虽然生成了正确文件，却覆盖了另一列公式；又或者它在发送结果时重复提交了两次。</p>
+<p>答案可以是对的，过程仍然可能不安全、不稳定，也无法复现。<br />
+<img src="https://i-blog.csdnimg.cn/direct/a898d317c6984b3084c23e54a0ea088a.png" alt="在这里插入图片描述" /></p>
+<p>评价一个会行动的 Agent，核心不再只是“它说对了吗”，而是：<strong>它是否在允许的范围内，以可以复查的证据和可接受的成本，稳定地完成了目标。</strong></p>
+<h3 id="从回答模型到行动系统"><a class="markdownIt-Anchor" href="#从回答模型到行动系统"></a> 从回答模型到行动系统</h3>
+<p>普通问答的主要产物是一段文本，评价自然集中在正确性、相关性和表达质量上。Agent 不同，它可能读取文件、调用数据库、运行程序、修改状态、创建工单或向外部系统发送信息。</p>
+<p>这时，最终回答只是系统行为的一部分。一次任务至少包含下面这条链：</p>
+<p>只检查最后一个节点，相当于验收装修时只看一张客厅照片，却不检查水电、承重墙和施工记录。</p>
+<h3 id="评价-agent-的六个维度"><a class="markdownIt-Anchor" href="#评价-agent-的六个维度"></a> 评价 Agent 的六个维度</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>要回答的问题</th>
+<th>可观察证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务结果</td>
+<td>用户真正要求的目标是否实现</td>
+<td>验收规则、最终产物、目标系统回读</td>
+</tr>
+<tr>
+<td>动作合规</td>
+<td>是否只使用允许的工具、对象和操作</td>
+<td>工具调用、参数、权限范围、拒绝记录</td>
+</tr>
+<tr>
+<td>状态与副作用</td>
+<td>环境发生了哪些预期或非预期变化</td>
+<td>文件差异、数据库状态、消息回执、审计日志</td>
+</tr>
+<tr>
+<td>证据充分性</td>
+<td>最终结论能否回到数据和验证结果</td>
+<td>来源、查询、时间范围、校验器输出、产物哈希</td>
+</tr>
+<tr>
+<td>成本与效率</td>
+<td>在多少时间、调用和资源预算内完成</td>
+<td>工具调用数、耗时、读取量、token 或费用</td>
+</tr>
+<tr>
+<td>恢复与稳定性</td>
+<td>失败后能否正确恢复，重复执行是否一致</td>
+<td>错误记录、替代路径、回滚结果、多次运行结果</td>
+</tr>
+</tbody>
+</table>
+<p>这六个维度不是要求所有任务都记录同样多的信息。查询天气和修改生产数据库的风险不同，轨迹粒度当然也不同。原则是：风险越高、动作越不可逆，越需要完整的状态、证据和回读。</p>
+<h3 id="轨迹不是私有思维链"><a class="markdownIt-Anchor" href="#轨迹不是私有思维链"></a> 轨迹不是私有思维链</h3>
+<p>一提到“看过程”，很容易把它理解成要求模型公开全部内部推理。其实，Agent 评测需要的主要是<strong>可观察执行轨迹</strong>，而不是私有思维链。</p>
+<p>可观察轨迹包括：Agent 收到了什么任务约束，调用了什么工具，参数是什么，工具返回了什么，环境状态怎样变化，产生了哪些文件或记录，验证器是否通过，以及遇到错误后采取了什么恢复动作。</p>
+<p>这些信息能够被系统记录、重放或独立检查。至于模型内部如何逐字思考，既不一定可获得，也不是判断“文件是否真的写入”“消息是否重复发送”的必要条件。</p>
+<p>换句话说，我们要审计的是<strong>行动和证据</strong>，不是索取一篇看似合理的自我解释。</p>
+<h3 id="三种常见的幸运成功"><a class="markdownIt-Anchor" href="#三种常见的幸运成功"></a> 三种常见的“幸运成功”</h3>
+<h4 id="1-用错证据碰巧得到正确答案"><a class="markdownIt-Anchor" href="#1-用错证据碰巧得到正确答案"></a> 1. 用错证据，碰巧得到正确答案</h4>
+<p>用户要求统计最新数据，Agent 却读取了上月快照。因为目标数字刚好没有变化，最终答案仍然正确。如果只看答案，这次错误的数据绑定会被隐藏；一旦数字变化，同一流程就会失败。</p>
+<h4 id="2-主产物正确同时破坏了别处"><a class="markdownIt-Anchor" href="#2-主产物正确同时破坏了别处"></a> 2. 主产物正确，同时破坏了别处</h4>
+<p>Agent 按要求更新了配置项，目标功能也能运行，但它重写整个文件时删除了用户尚未提交的其他修改。主任务“成功”，副作用却不可接受。</p>
+<h4 id="3-第一次成功第二次重复执行"><a class="markdownIt-Anchor" href="#3-第一次成功第二次重复执行"></a> 3. 第一次成功，第二次重复执行</h4>
+<p>Agent 创建工单后没有读取系统回执，于是把网络延迟当成失败再次提交。两次请求内容都正确，外部系统中却出现了重复记录。</p>
+<p>这三种情况说明，最终答案正确只能证明“这一次输出看起来对”，不能自动证明方法正确、操作安全或系统稳定。</p>
+<h3 id="先设门禁再谈效率"><a class="markdownIt-Anchor" href="#先设门禁再谈效率"></a> 先设门禁，再谈效率</h3>
+<p>Agent 评测最容易犯的另一个错误，是把所有指标直接加权成一个总分。例如：答案正确率、速度、成本和工具调用数各占一部分。这样可能出现一种荒谬结果：一个越权读取数据但速度很快的 Agent，靠效率分抵消了安全问题。</p>
+<p>更稳妥的方法是先设门禁，再在合格运行之间比较效率：</p>
+<p>正确性、安全性和证据充分性属于资格条件；成本和速度属于合格之后的优化指标。两者不能互相抵消。</p>
+<h3 id="不要把失败简单压成一个-0"><a class="markdownIt-Anchor" href="#不要把失败简单压成一个-0"></a> 不要把失败简单压成一个 0</h3>
+<p>对 Agent 来说，失败方式本身就是重要信息。</p>
+<table>
+<thead>
+<tr>
+<th>最终答案</th>
+<th>轨迹与门禁</th>
+<th>更准确的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正确</td>
+<td>通过</td>
+<td>稳定成功，仍需多次运行确认复现性</td>
+</tr>
+<tr>
+<td>正确</td>
+<td>未通过</td>
+<td>幸运成功或不合格成功，不能直接上线</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>通过</td>
+<td>安全失败，适合定位能力缺口和改进恢复策略</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>未通过</td>
+<td>错误成功声明、越界或不可诊断失败，优先修系统护栏</td>
+</tr>
+</tbody>
+</table>
+<p>一个能在权限不足时明确停止并报告 blocker 的 Agent，可能比“想办法给出答案”却越权行动的 Agent 更值得信任。评测设计如果只奖励有答案，就会反向鼓励系统隐藏不确定性和失败。</p>
+<h3 id="一个最小轨迹记录模板"><a class="markdownIt-Anchor" href="#一个最小轨迹记录模板"></a> 一个最小轨迹记录模板</h3>
+<p>对于会调用工具的任务，可以从下面这组字段开始，不必记录冗长对话：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">run:</span><br><span class="hljs-symbol">  task_id:</span> 可复现的任务标识<br><span class="hljs-symbol">  input_snapshot:</span> 使用的数据或文件版本<br><span class="hljs-symbol">  allowed_scope:</span> 允许的对象、动作和预算<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">execution:</span><br><span class="hljs-symbol">  tool_calls:</span> 工具、参数、结果和错误<br><span class="hljs-symbol">  state_changes:</span> 修改前后状态与外部回执<br><span class="hljs-symbol">  artifacts:</span> 文件、查询结果或报告位置<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">verification:</span><br><span class="hljs-symbol">  result_check:</span> 目标是否实现<br><span class="hljs-symbol">  safety_check:</span> 是否越权或产生非预期副作用<br><span class="hljs-symbol">  evidence_links:</span> 结论对应的来源与验证器结果<br><span class="hljs-symbol">  recovery:</span> 失败原因、修复动作与最终状态<br></code></pre></td></tr></table></figure>
+<p>模板的价值不在字段数量，而在于让最终声明可以回到实际发生的动作。需要公开展示时，还应脱敏凭证、个人信息和业务数据；可审计不等于把敏感日志全部暴露。</p>
+<h3 id="评价-agent-前的-30-秒检查"><a class="markdownIt-Anchor" href="#评价-agent-前的-30-秒检查"></a> 评价 Agent 前的 30 秒检查</h3>
+<ul>
+<li>最终答案对应的真实目标是什么，怎样独立验收？</li>
+<li>Agent 使用了哪些工具、数据版本和权限范围？</li>
+<li>目标系统的状态是否真的改变，是否完成回读？</li>
+<li>有没有修改无关文件、重复发送或越权访问等副作用？</li>
+<li>每项关键结论能否绑定到来源、查询或验证结果？</li>
+<li>失败时，Agent 是正确停止、有效恢复，还是静默换了一条不可靠路径？</li>
+<li>多次运行能否稳定成功，还是只有一次碰巧通过？</li>
+<li>正确性和安全门禁通过后，成本与速度是否可接受？</li>
+</ul>
+<p>评测 Agent 不是为了收集越多日志越好，而是为了区分四件事：它说了什么、它做了什么、环境发生了什么，以及这些变化能否被证据验证。</p>
+<p>当 AI 只生成文字时，答案是主要产物；当 AI 开始行动时，<strong>轨迹、状态和副作用也成为产物的一部分</strong>。</p>

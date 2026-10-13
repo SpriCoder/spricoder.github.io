@@ -1,0 +1,119 @@
+<h1 id="1-apache-jmeter-介绍"><a class="markdownIt-Anchor" href="#1-apache-jmeter-介绍"></a> 1. Apache JMeter 介绍</h1>
+<p>Apache JMeter 是 Apache 基金会下的一款开源软件，可以用于测试静态和动态资源、Web 动态应用程序等的性能。其可以用于模拟服务器、服务器组、网络或对象上的重负载，以测试其强度或分析不同负载下的整体性能。</p>
+<p>Apache JMeter 支持的功能包括但不限于：</p>
+<ul>
+<li>能够加载和性能测试许多不同的应用程序/服务器/协议类型</li>
+<li>全功能测试 IDE，允许快速记录测试计划（从浏览器或本机应用程序）、构建和调试。</li>
+<li>CLI 模式（命令行模式（以前称为非 GUI）/无头模式）可从任何 Java 兼容操作系统（Linux、Windows、Mac OSX 等）进行负载测试</li>
+<li>完整且随时可以呈现的动态 HTML 报告</li>
+<li>通过从最流行的响应格式、HTML、JSON、XML 或任何文本格式中提取数据的能力，轻松关联</li>
+<li>完全的可移植性和 100% Java 纯度。</li>
+<li>完整的多线程框架允许多个线程并发采样，并允许单独的线程组同时采样不同的功能。</li>
+<li>测试结果的缓存和离线分析/重放。</li>
+<li>高度可扩展的核心</li>
+</ul>
+<h1 id="2-单机测试"><a class="markdownIt-Anchor" href="#2-单机测试"></a> 2. 单机测试</h1>
+<h2 id="21-创建线程组"><a class="markdownIt-Anchor" href="#21-创建线程组"></a> 2.1. 创建线程组</h2>
+<p>首先，我们执行 jmeter 命令启动 Apache JMeter，进入图形化界面后可以点击 Test Plan 首先添加线程组：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/1.png" alt="" /></p>
+<p>在配置线程组部分，我们可以配置线程组的名称、备注、异常处理方式和基本配置：</p>
+<ul>
+<li>异常处理方式：继续执行、开启下一个线程组、停止线程、停止测试（不创建新的，待其他测试结束）、立即停止测试。</li>
+<li>线程数：执行测试的线程数量</li>
+<li>Ramp-up period：JMeter 需要再在多久内启动全部线程，如果 Ramp-up period 是400s，有 40 个线程，就意味着JMeter 需要花费 400 s 时间完成 40 个线程的启动，如果设置为0，则为立即启动全部线程</li>
+<li>Loop Count：重复次数</li>
+<li>同时也允许配置每个循环的情况等其他配置</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/2.png" alt="" /></p>
+<h2 id="22-创建示例测试"><a class="markdownIt-Anchor" href="#22-创建示例测试"></a> 2.2. 创建示例测试</h2>
+<p>创建完成 Thread Group 后需要配置具体测试，JMeter 提供了种类丰富的预定义模板，并且支持自定义 Java Request。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/3.png" alt="" /></p>
+<p>本文以 Java Request 为例：</p>
+<ul>
+<li>Java Request 的使用方式为将自己编写的 Jar 包放置到 Apache JMeter 目录的 /lib/ext 下（不支持热加载，Apache JMeter 每次启动时加载）</li>
+<li>如下右图所示，本文使用了自己编写的 org.apache.iotdb.jmeter.testJmeterTest 类执行测试，该类的执行方法中定义了 op_count 和 database 两个参数</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/4.png" alt="" /></p>
+<h2 id="23-如何才能编写可以被识别的测试包呢"><a class="markdownIt-Anchor" href="#23-如何才能编写可以被识别的测试包呢"></a> 2.3. 如何才能编写可以被识别的测试包呢？</h2>
+<p>首先，创建测试类，继承AbstractJavaSamplerClient这一JMeter提供的抽象类，实现如下四个方法：</p>
+<ol>
+<li><code>public Arguments getDefaultParameters()</code>：定义默认配置参数的值</li>
+<li><code>void setupTest(JavaSamplerContext jsc)</code>：读取配置参数的值并初始化测试</li>
+<li><code>SampleResult runTest(JavaSamplerContext javaSamplerContext)</code>：执行测试</li>
+<li><code>void teardownTest(JavaSamplerContext args)</code>：结束测试并清理环境</li>
+</ol>
+<p>其次，如果在 IDEA 中进行代码编写时需要引入 <code>ApacheJMeter_core.jar</code> 包和 <code>ApacheJMeter_java.jar</code> 包，以示例代码仓库为例，需要在 <code>pom.xml</code> 文件中添加如下内容：（请保证这个 jar 包和你使用的 Apache JMeter 版本一致，这两个 Jar 包可以从 Apache JMeter 安装目录下 /lib/ext 文件夹中获取）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.jmeter<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jmeter_core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>system<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">systemPath</span>&gt;</span>$&#123;basedir&#125;/src/main/lib/ApacheJMeter_core.jar<span class="hljs-tag">&lt;/<span class="hljs-name">systemPath</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.jmeter.protocol<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jmeter_java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>system<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">systemPath</span>&gt;</span>$&#123;basedir&#125;/src/main/lib/ApacheJMeter_java.jar<span class="hljs-tag">&lt;/<span class="hljs-name">systemPath</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>最后，请将打包好的 jar 包放置到 Apache JMeter 安装目录下的 /lib/ext 文件夹中，同时将本项目依赖的所有 jar 包都放置到 /lib/ext 中，<strong>避免无法找到目标类</strong></p>
+<p>示例代码仓库：<a target="_blank" rel="noopener" href="https://github.com/SpriCoder/iotdb-jmeter/tree/TPCx-IoT">https://github.com/SpriCoder/iotdb-jmeter/tree/TPCx-IoT</a></p>
+<h3 id="231-如何自定义测试参数"><a class="markdownIt-Anchor" href="#231-如何自定义测试参数"></a> 2.3.1. 如何自定义测试参数</h3>
+<p>很显然，在很多测试场景下，我们需要自动化生成测试参数或者需要我们制定测试参数，此时我们可以通过给当前的测试添加 Config Element，包括 Counter、CSV DataSet Config等，本文以 CSV DataSet Config 为例：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/5.png" alt="" /></p>
+<p>同样，CSV Data Set Config 支持许多的自定义配置，包括：</p>
+<ul>
+<li>配置文件路径：需要注意在分布式测试中，所有机器上的配置文件配置路径需和此处一致。</li>
+<li>文件编码格式：选择文件使用的编码格式，不填默认为 UTF-8</li>
+<li>定义变量名：变量名称，使用逗号分割，格式$name。可以看到在创建第一个测试过程中，变量 Value 部分我们引用了这里的变量</li>
+<li>是否忽略首行</li>
+<li>分割符</li>
+<li>是否允许引用数据</li>
+<li>读到文件末尾是否循环读取（Recycle on EOF）：到了文件尾处，是否循环读取参数。因为CSV Data Set Config一次读入一行，分割后存入若干变量交给一个线程，如果线程数超过文本的记录行数，那么可以选择从头再次读入</li>
+<li>读到文件末尾是否停止线程(Stop thread on EOF)：到了文件尾处，是否停止线程，和Recycle on EOF会有矛盾
+<ul>
+<li>当Recycle on EOF 选择true时，Stop thread on EOF选择true和false无任何意义，通俗的讲，在前面控制了不停的循环读取，后面再来让stop或run没有任何意义</li>
+<li>当Recycle on EOF 选择flase时，Stop thread on EOF选择true，线程4个，参数3个，那么只会请求3次</li>
+<li>当Recycle on EOF 选择flase时，Stop thread on EOF选择flase，线程4个，参数3个，那么会请求4次，但第4次没有参数可取，不让循环，所以第4次请求错误</li>
+</ul>
+</li>
+<li>共享模式：All threads –所有线程，Current thread group—当前线程组，Current thread—当前线程。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/6.png" alt="" /></p>
+<h3 id="232-更多测试配置"><a class="markdownIt-Anchor" href="#232-更多测试配置"></a> 2.3.2. 更多测试配置</h3>
+<p>在测试前后仍然可以添加Assertions、Timer、Pre Processors、Post Processors等部分来自定义完成更丰富的测试配置，这里不做展开。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/7.png" alt="" /></p>
+<h2 id="24-监听并生成测试报告"><a class="markdownIt-Anchor" href="#24-监听并生成测试报告"></a> 2.4. 监听并生成测试报告</h2>
+<p>可以根据测试具体需求，添加监听并生成测试报告，具体内容如下：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/8.png" alt="" /></p>
+<h2 id="25-aggregate-report"><a class="markdownIt-Anchor" href="#25-aggregate-report"></a> 2.5. Aggregate Report</h2>
+<p>可以生成聚合报告，该组件可以在测试完成后单独导出数据，数据包括测试数、平均测试时间、中位数测试时间、P90测试时间、P95测试时间、P99测试时间、最小值、最大值、错误率、吞吐量、接收量、发送量。如果想要输出到文件可以配置 Filename，支持测试后保存数据。该组件和 Summary Report 非常相似，在统计值类型上略有不同</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/9.png" alt="" /></p>
+<h2 id="26-aggregate-graph"><a class="markdownIt-Anchor" href="#26-aggregate-graph"></a> 2.6. Aggregate Graph</h2>
+<p>可以生成聚合图，具有和 Aggregate Report 组件相同的数据，但是可以生成图像来显示数据分布情况。如果想要输出到文件可以配置 Filename，同样支持测试后保存图像和数据。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/10.png" alt="" /></p>
+<h2 id="27-graph-results"><a class="markdownIt-Anchor" href="#27-graph-results"></a> 2.7. Graph Results</h2>
+<p>将测试结果图像化显示，可以选择显示原始数据、平均值、中位值、离群值和吞吐等。输出该图需要在测试前配置 Filename。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/11.png" alt="" /></p>
+<h2 id="28-view-results-in-table"><a class="markdownIt-Anchor" href="#28-view-results-in-table"></a> 2.8. View Results in Table</h2>
+<p>将测试结果以表格形式显示，包括测试编号，开始时间、线程名称、标签、执行时间等信息，输出该表格需要在测试前配置 Filename。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/12.png" alt="" /></p>
+<h2 id="29-view-results-in-tree"><a class="markdownIt-Anchor" href="#29-view-results-in-tree"></a> 2.9. View Results in Tree</h2>
+<p>将测试结果以树形形式显示，包括测试编号，开始时间、线程名称、标签、执行时间等信息，可以点击每一个请求查看具体的 Sampler result，输出该表格需要在测试前配置 Filename。</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/13.png" alt="" /></p>
+<h1 id="3-分布式测试"><a class="markdownIt-Anchor" href="#3-分布式测试"></a> 3. 分布式测试</h1>
+<p>在许多场景中，我们需要多台机器同时执行测试，并且将测试结果进行汇总，此时就需要使用 Apache JMeter 分布式测试，其本质是将测试的 jmx 文件发送到每一个 Slave 节点上执行测试，再由每一个 Slave 节点机器将测试结果汇报给控制机 Controller，如下图所示：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/14.png" alt="" /></p>
+<h2 id="31-环境准备"><a class="markdownIt-Anchor" href="#31-环境准备"></a> 3.1. 环境准备</h2>
+<p>在执行测试前，我们需要完成集群环境的准备：</p>
+<p>首先，需要保证 controller 机器同所有 slave 机器网络联通。</p>
+<p>之后，需要将本次测试使用的全部 jar 包等文件上传到 slave 机器的对应位置上，保证 jmeter-server 启动后可以访问，同时关闭 jmeter-server 的 ssl 避免（修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties）：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Set this if you don&#x27;t want to use SSL for RMI</span><br><span class="hljs-attr">server.rmi.ssl.disable</span>=<span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
+<p>随后，需要在每个 slave 机器上启动 JMeter-Server（启动命令 ./<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>/bin/jmeter-server），默认情况下 JMeter-Server 侦听 1099 端口，可以通过查看 jmeter.log 查看具体侦听端口</p>
+<p>最后，需要在 controller 机器上配置远程节点，修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>M</mi><mi>E</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">JMETER_HOME</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span> 下的 /bin/jmeter.properties：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># Remote Hosts - comma delimited</span><br><span class="hljs-attr">remote_hosts</span>=<span class="hljs-string">11.101.17.17:1099,11.101.17.18:1099,11.101.17.33:1099</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Set this if you don&#x27;t want to use SSL for RMI</span><br><span class="hljs-attr">server.rmi.ssl.disable</span>=<span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
+<h2 id="32-执行测试"><a class="markdownIt-Anchor" href="#32-执行测试"></a> 3.2. 执行测试</h2>
+<blockquote>
+<p>分布式运行时，总并发数是脚本中设置的线程数 * slave机的个数，如线程数设置为1，使用3个slave机运行，则总并发数是3</p>
+</blockquote>
+<p>本地启动 jmeter，编写好配置文件（JMX文件），然后点击 Run内的Remote Start All启动测试</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/14.png" alt="" /></p>
+<p>测试完成后会将全部的测试结果返回给 controller 机器，并根据配置生成对应报告</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/benchmark/jmeter/15.png" alt="" /></p>
+<h1 id="4-参考"><a class="markdownIt-Anchor" href="#4-参考"></a> 4. 参考</h1>
+<ol>
+<li>参数化传递：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15076215/3806562">https://blog.51cto.com/u_15076215/3806562</a></li>
+<li>分布式参数化：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qlling/p/13647124.html">https://www.cnblogs.com/qlling/p/13647124.html</a></li>
+<li>CSV 参数说明：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/insane-Mr-Li/p/10766781.html">https://www.cnblogs.com/insane-Mr-Li/p/10766781.html</a></li>
+<li>命令行运行与生成报告：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kongzhongqijing/p/7216693.html">https://www.cnblogs.com/kongzhongqijing/p/7216693.html</a></li>
+<li>命令行运行JMeter详解（详解教程）：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1803268">https://cloud.tencent.com/developer/article/1803268</a></li>
+<li>Jmeter 分布式压力测试：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazymakerc">https://www.cnblogs.com/crazymakerc</a></li>
+</ol>

@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  article?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title = 'SpriCoder · 技术与研究笔记',
+  description = '记录关于数据库、时序数据、人工智能与软件工程的学习、研究和实践。',
+  article = false,
+  noindex = false,
+} = Astro.props;
+const pageTitle = title.startsWith('SpriCoder') ? title : `${title} · SpriCoder`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151d25" media="(prefers-color-scheme: dark)" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/atom+xml" title="SpriCoder 订阅" href="/atom.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {article && <link rel="stylesheet" href="/vendor/katex/katex.min.css" />}
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="SpriCoder" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('spricoder-theme'); } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+  </head>
+  <body class:list={[{ 'article-page': article }]}>
+    <a class="skip-link" href="#main-content">跳到正文</a>
+    <Header />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline src="/js/analytics.js" defer></script>
+    <script is:inline src="/js/duration.js" defer></script>
+  </body>
+</html>

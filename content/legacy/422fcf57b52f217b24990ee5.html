@@ -1,0 +1,81 @@
+<h2 id="vector"><a class="markdownIt-Anchor" href="#vector"></a> Vector</h2>
+<ol>
+<li>需要头文件<code>#include&lt;vector&gt;</code></li>
+<li>如果不<code>using namespace std;</code>会编译错误</li>
+<li>向量(Vector)是一个封装了动态大小数组的顺序容器，可以存放各种类型的对象。</li>
+</ol>
+<h1 id="1-容器特性"><a class="markdownIt-Anchor" href="#1-容器特性"></a> 1. 容器特性</h1>
+<ol>
+<li><strong>顺序序列</strong>
+<ul>
+<li>其中元素按照严格的线性顺序排序，可以通过元素在序列中的位置访问相应的元素。</li>
+</ul>
+</li>
+<li><strong>动态数组</strong>
+<ul>
+<li>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算术进行该操作。</li>
+</ul>
+</li>
+<li><strong>能够感知内存分配器的</strong>
+<ul>
+<li>使用了一个内存分配器对象来动态地处理它的存储需求。</li>
+</ul>
+</li>
+</ol>
+<h1 id="2-声明初始化"><a class="markdownIt-Anchor" href="#2-声明初始化"></a> 2. 声明初始化</h1>
+<h2 id="21-简单初始化"><a class="markdownIt-Anchor" href="#21-简单初始化"></a> 2.1. 简单初始化</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;<span class="hljs-type">int</span>&gt; a ;<br><span class="hljs-comment">//声明一个int型向量a</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>;<br><span class="hljs-comment">//声明一个初始大小为10的向量</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-number">10</span>, <span class="hljs-number">1</span>)</span></span>;<br><span class="hljs-comment">//声明一个初始大小为10且初始值都为1的向量</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">b</span><span class="hljs-params">(a)</span></span>;<br><span class="hljs-comment">//声明并用向量a初始化向量b</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">b</span><span class="hljs-params">(a.begin(), a.begin()<span class="hljs-number">+3</span>)</span></span>;<br><span class="hljs-comment">//将a向量中从第0个到第2个(共3个)作为向量b的初始值</span><br></code></pre></td></tr></table></figure>
+<h2 id="22-二维vector的初始化"><a class="markdownIt-Anchor" href="#22-二维vector的初始化"></a> 2.2. 二维vector的初始化</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; array;<br></code></pre></td></tr></table></figure>
+<h1 id="3-元素输入"><a class="markdownIt-Anchor" href="#3-元素输入"></a> 3. 元素输入</h1>
+<ol>
+<li>可以直接向普通数组一样使用cin&gt;&gt;，cout&lt;&lt;进行输入输出</li>
+</ol>
+<h1 id="4-特殊方法"><a class="markdownIt-Anchor" href="#4-特殊方法"></a> 4. 特殊方法</h1>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a.size()</code></td>
+<td>返回长度</td>
+</tr>
+<tr>
+<td><code>a.empty()</code></td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td><code>a.clear()</code></td>
+<td>清空向量中的元素</td>
+</tr>
+<tr>
+<td><code>a.insert(a.begin(),共几个,插入的数字)</code></td>
+<td>在一个位置上插入</td>
+</tr>
+<tr>
+<td><code>a.erase(b.begin(),b.begin()+3)</code></td>
+<td>删除某个位置或者之间的元素</td>
+</tr>
+<tr>
+<td><code>sort.(a.begin(),a.end())</code></td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>遍历器:<code>vector&lt;int&gt;::iterator t;</code>
+<ul>
+<li>t = a.begin()</li>
+<li>t!= a.end()</li>
+<li>t ++</li>
+</ul>
+</li>
+</ol>
+<h1 id="5-了解更多"><a class="markdownIt-Anchor" href="#5-了解更多"></a> 5. 了解更多</h1>
+<ol>
+<li><a href ="https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html">菜鸟教程</a></li>
+</ol>

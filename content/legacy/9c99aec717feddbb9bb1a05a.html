@@ -1,0 +1,134 @@
+<h2 id="list类"><a class="markdownIt-Anchor" href="#list类"></a> list类</h2>
+<h1 id="1-定义"><a class="markdownIt-Anchor" href="#1-定义"></a> 1. 定义</h1>
+<ol>
+<li>是一个stl实现的双向链表，与vectors相比，允许快速的插入和删除，但是随即访问却比较慢。</li>
+<li>使用头文件<code>#include&lt;list&gt;</code></li>
+</ol>
+<h1 id="2-定义和初始化"><a class="markdownIt-Anchor" href="#2-定义和初始化"></a> 2. 定义和初始化</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">list&lt;<span class="hljs-type">int</span>&gt; lst1;          <span class="hljs-comment">//创建空list</span><br><span class="hljs-function">list&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">lst2</span><span class="hljs-params">(<span class="hljs-number">5</span>)</span></span>;       <span class="hljs-comment">//创建含有5个元素的list</span><br><span class="hljs-function">list&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">lst3</span><span class="hljs-params">(<span class="hljs-number">3</span>,<span class="hljs-number">2</span>)</span></span>;  <span class="hljs-comment">//创建含有3个元素的list</span><br><span class="hljs-function">list&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">lst4</span><span class="hljs-params">(lst2)</span></span>;    <span class="hljs-comment">//使用lst2初始化lst4</span><br><span class="hljs-function">list&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">lst5</span><span class="hljs-params">(lst2.begin(),lst2.end())</span></span>;  <span class="hljs-comment">//同lst4</span><br></code></pre></td></tr></table></figure>
+<h1 id="3-list常用操作函数"><a class="markdownIt-Anchor" href="#3-list常用操作函数"></a> 3. List常用操作函数</h1>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>函数作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lst1.assign()</td>
+<td>给list赋值</td>
+</tr>
+<tr>
+<td>Lst1.back()</td>
+<td>返回最后一个元素</td>
+</tr>
+<tr>
+<td>Lst1.begin()</td>
+<td>返回指向第一个元素的迭代器</td>
+</tr>
+<tr>
+<td>Lst1.clear()</td>
+<td>删除所有元素</td>
+</tr>
+<tr>
+<td>Lst1.empty()</td>
+<td>如果list是空的则返回true</td>
+</tr>
+<tr>
+<td>Lst1.end()</td>
+<td>返回末尾的迭代器</td>
+</tr>
+<tr>
+<td>Lst1.erase()</td>
+<td>删除一个元素</td>
+</tr>
+<tr>
+<td>Lst1.front()</td>
+<td>返回第一个元素</td>
+</tr>
+<tr>
+<td>Lst1.get_allocator()</td>
+<td>返回list的配置器</td>
+</tr>
+<tr>
+<td>Lst1.insert()</td>
+<td>插入一个元素到list中</td>
+</tr>
+<tr>
+<td>Lst1.max_size()</td>
+<td>返回list能容纳的最大元素数量</td>
+</tr>
+<tr>
+<td>Lst1.merge()</td>
+<td>合并两个list</td>
+</tr>
+<tr>
+<td>Lst1.pop_back()</td>
+<td>删除最后一个元素</td>
+</tr>
+<tr>
+<td>Lst1.pop_front()</td>
+<td>删除第一个元素</td>
+</tr>
+<tr>
+<td>Lst1.push_back()</td>
+<td>在list的末尾添加一个元素</td>
+</tr>
+<tr>
+<td>Lst1.push_front()</td>
+<td>在list的头部添加一个元素</td>
+</tr>
+<tr>
+<td>Lst1.rbegin()</td>
+<td>返回指向第一个元素的逆向迭代器</td>
+</tr>
+<tr>
+<td>Lst1.remove()</td>
+<td>从list删除元素</td>
+</tr>
+<tr>
+<td>Lst1.remove_if()</td>
+<td>按指定条件删除元素</td>
+</tr>
+<tr>
+<td>Lst1.rend()</td>
+<td>指向list末尾的逆向迭代器</td>
+</tr>
+<tr>
+<td>Lst1.resize()</td>
+<td>改变list的大小</td>
+</tr>
+<tr>
+<td>Lst1.reverse()</td>
+<td>把list的元素倒转</td>
+</tr>
+<tr>
+<td>Lst1.size()</td>
+<td>返回list中的元素个数</td>
+</tr>
+<tr>
+<td>Lst1.sort()</td>
+<td>给list排序</td>
+</tr>
+<tr>
+<td>Lst1.splice()</td>
+<td>合并两个list</td>
+</tr>
+<tr>
+<td>Lst1.swap()</td>
+<td>交换两个list</td>
+</tr>
+<tr>
+<td>Lst1.unique()</td>
+<td>删除list中重复的元素</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4-链表操作"><a class="markdownIt-Anchor" href="#4-链表操作"></a> 4. 链表操作</h1>
+<h2 id="41-插入"><a class="markdownIt-Anchor" href="#41-插入"></a> 4.1. 插入</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">if</span>(!head)&#123;<br>    <span class="hljs-comment">// 空表插入</span><br>    head = tempNew;<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(value &lt;= head -&gt; val)&#123;<br>    <span class="hljs-comment">//插入头部</span><br>    tempNew-&gt;next = head;<br>    head = tempNew;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">//在中间插入</span><br>    Node* p = head;<br>    <span class="hljs-keyword">while</span>(p -&gt; next != <span class="hljs-literal">NULL</span> &amp;&amp; value &gt; p-&gt;next-&gt;value)&#123;<br>        p = p -&gt; next;<br>    &#125;<br>    tempNew-&gt;next = p -&gt; next;<br>    p -&gt; next = tempNew;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="42-删除"><a class="markdownIt-Anchor" href="#42-删除"></a> 4.2. 删除</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">if</span>( value == head-&gt;value)&#123;<br>    head = head-&gt;next;<br>    <span class="hljs-keyword">delete</span> cur;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">while</span>(cur -&gt; next != <span class="hljs-literal">NULL</span> &amp;&amp; cur -&gt; next -&gt; value != value)&#123;<br>        cur = cur -&gt; next;<br>    &#125;<br>    Node* needDel = cur -&gt; next;<br>    cur -&gt; next = needDel -&gt; next;<br>    <span class="hljs-keyword">delete</span> needDel;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="5-其他参考"><a class="markdownIt-Anchor" href="#5-其他参考"></a> 5. 其他参考</h1>
+<p><a href ="https://blog.csdn.net/fanyun_01/article/details/56881515"></a></p>

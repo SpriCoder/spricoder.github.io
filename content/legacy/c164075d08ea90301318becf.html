@@ -1,0 +1,272 @@
+<h2 id="ch03-基本sql查询语言"><a class="markdownIt-Anchor" href="#ch03-基本sql查询语言"></a> ch03-基本SQL查询语言</h2>
+<h1 id="1-sqlstructured-query-language"><a class="markdownIt-Anchor" href="#1-sqlstructured-query-language"></a> 1. SQL(Structured Query Language)</h1>
+<ol>
+<li>关系数据库管理语言</li>
+</ol>
+<h2 id="11-sql-history"><a class="markdownIt-Anchor" href="#11-sql-history"></a> 1.1. SQL History</h2>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-number">1976</span>: SEQUEL  <span class="hljs-punctuation">(</span>IBM, SYSTEM-R<span class="hljs-punctuation">)</span><br><span class="hljs-number">1979</span>: SQL <span class="hljs-punctuation">(</span>Oracle公司，第一个商用版本<span class="hljs-punctuation">)</span><br><span class="hljs-number">1986</span>: SQL-<span class="hljs-number">86</span> <span class="hljs-punctuation">(</span>ANSI<span class="hljs-punctuation">)</span><br><span class="hljs-number">1989</span>: SQL-<span class="hljs-number">89</span> <span class="hljs-punctuation">(</span>ANSI/ISO<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">(</span>SQL1<span class="hljs-punctuation">)</span><br><span class="hljs-number">1992</span>: SQL-<span class="hljs-number">92</span> <span class="hljs-punctuation">(</span>ANSI/ISO<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">(</span>SQL2<span class="hljs-punctuation">)</span><br><span class="hljs-number">1999</span>: SQL-<span class="hljs-number">99</span> <span class="hljs-punctuation">(</span>ANSI/ISO<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">(</span>SQL3<span class="hljs-punctuation">)</span><br><span class="hljs-number">2003</span>: SQL-<span class="hljs-number">2003</span> <span class="hljs-punctuation">(</span>ANSI/ISO<span class="hljs-punctuation">)</span> <span class="hljs-punctuation">(</span>SQL4<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<h2 id="12-sql-数据类型"><a class="markdownIt-Anchor" href="#12-sql-数据类型"></a> 1.2. SQL 数据类型</h2>
+<h3 id="121-字符类型"><a class="markdownIt-Anchor" href="#121-字符类型"></a> 1.2.1. 字符类型</h3>
+<ol>
+<li>CHARACTER(n),CHAR(n):定长字符串</li>
+<li>CHARACTER VARYING(n):可变长字符串</li>
+<li>CHAR VARYING(n):可变长字符串</li>
+</ol>
+<h3 id="122-数值类型"><a class="markdownIt-Anchor" href="#122-数值类型"></a> 1.2.2. 数值类型</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/1.png" alt="" /></p>
+<ol>
+<li>NUMERIC(p,s),DECIMAL(p,s),DEC(p,s)
+<ol>
+<li>precision:总共有多少位数字,可以多，不可以少</li>
+<li>scale:小数点右边有位(可以为负数)，<strong>默认为0</strong>，解释了上表中的第三个。</li>
+</ol>
+</li>
+<li>INTEGER,INT,SMALLINT</li>
+<li>FLOAT(p)</li>
+<li>REAL</li>
+<li>DOUBLE PRECISION</li>
+</ol>
+<h2 id="13-表查询"><a class="markdownIt-Anchor" href="#13-表查询"></a> 1.3. 表查询</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>  <span class="hljs-operator">*</span> <span class="hljs-operator">|</span> colname &#123; , colname ... &#125;<br>  <span class="hljs-keyword">FROM</span>  tablename &#123; , tablename ... &#125;<br>  [ <span class="hljs-keyword">WHERE</span> search_condition ]<br>  [ <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> colname &#123; , colname ... &#125;<br>  [ <span class="hljs-keyword">HAVING</span> search_condition ] ]<br>  [ <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> colname [ <span class="hljs-keyword">ASC</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">DESC</span> ]<br>  &#123; , colname [ <span class="hljs-keyword">ASC</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">DESC</span> ] ... &#125; ];<br></code></pre></td></tr></table></figure>
+<h3 id="131-表查询的例子"><a class="markdownIt-Anchor" href="#131-表查询的例子"></a> 1.3.1. 表查询的例子</h3>
+<table>
+<thead>
+<tr>
+<th>自然关系</th>
+<th>SQL语句</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>( R where Condition ) [ A1, A2, ..., Am ]</code></td>
+<td><code>SELECT  A1, A2, ..., Am FROM R WHERE Condition</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>((R1*R2*...*Rn) where Condition) [A1,A2,...,Am]</code></td>
+<td><code>SELECT A1, A2, ..., Am FROM R1, R2, …, Rn WHERE  Condition</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>( R*Condition S ) [ A1, A2, ..., Am ]</code></td>
+<td><code>SELECT  A1, A2, ..., Am FROM R, S WHERE Condition</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>每一个对应题目的理论上都有很多种答案
+<ol>
+<li>正常查询(不一定有答案)</li>
+<li>独立子查询:优先独立筛选出来一些情况</li>
+<li>相关子查询</li>
+</ol>
+</li>
+<li>差:INTERSECT</li>
+</ol>
+<h3 id="132-典型多解问题"><a class="markdownIt-Anchor" href="#132-典型多解问题"></a> 1.3.2. 典型多解问题</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/4.png" alt="" /></p>
+<ul>
+<li>上图所示的题目一共有五种答案
+<ul>
+<li>第一种：表的连接查询</li>
+<li>第二种：IN谓词 + 独立子查询</li>
+<li>第三种：SOME + 子查询</li>
+<li>第四种：IN谓词 + 相关子查询</li>
+<li>第五种：EXISTS + 相关子查询</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>课件63页之后给出了大量的例子</li>
+<li>课本73页</li>
+</ol>
+<h3 id="133-子句执行顺序"><a class="markdownIt-Anchor" href="#133-子句执行顺序"></a> 1.3.3. 子句执行顺序</h3>
+<ol>
+<li>首先对FROM子句中的所有表做笛卡尔积</li>
+<li>然后删除所有不符合WHERE子句的行</li>
+<li>然后根据GROUP BY子句对剩余的行进行分组</li>
+<li>最后求出选择列表中的表达式的值</li>
+</ol>
+<h2 id="14-谓词"><a class="markdownIt-Anchor" href="#14-谓词"></a> 1.4. 谓词</h2>
+<h3 id="141-all"><a class="markdownIt-Anchor" href="#141-all"></a> 1.4.1. ALL</h3>
+<ol>
+<li>所有的值，默认</li>
+</ol>
+<h3 id="142-distinct"><a class="markdownIt-Anchor" href="#142-distinct"></a> 1.4.2. DISTINCT</h3>
+<ol>
+<li>不包含重复的值，注意在查询子句中的使用</li>
+<li>会为查询带来额外的开销</li>
+</ol>
+<h3 id="143-in"><a class="markdownIt-Anchor" href="#143-in"></a> 1.4.3. IN</h3>
+<ol>
+<li>expr [NOT] IN (subquery)</li>
+<li>使用IN，结合子查询可以提高查询速度，如下图的查询便是，因为这种查询可以减少循环的层数。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/14.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/2.png" alt="" /></p>
+<ol>
+<li>注意内部子查询可以使用外部，而外部不可以使用内部</li>
+</ol>
+<h3 id="144-someanyall"><a class="markdownIt-Anchor" href="#144-someanyall"></a> 1.4.4. SOME|ANY|ALL</h3>
+<ol>
+<li>expr θ SOME|ANY|ALL (subquery)</li>
+<li>SOME/ANY:只要返回不止一个，基本上是等价的，ANY用的少</li>
+<li>ALL:对于返回的每一个元素</li>
+<li>IN  is =SOME</li>
+<li>NOT IN is &lt;&gt;ALL</li>
+<li>查找最小值</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/3.png" alt="" /></p>
+<h3 id="145-exists"><a class="markdownIt-Anchor" href="#145-exists"></a> 1.4.5. EXISTS</h3>
+<ol>
+<li>[NOT] EXISTS (subquery)</li>
+<li>EXISTS为真的条件，需要子查询返回一个非空集合。</li>
+<li>IN替换EXISTS谓词，往往需要调换条件的情况。</li>
+</ol>
+<h3 id="146-between"><a class="markdownIt-Anchor" href="#146-between"></a> 1.4.6. BETWEEN</h3>
+<ol>
+<li>expr [NOT] BETWEEN expr1 AND expr2</li>
+</ol>
+<h3 id="147-is"><a class="markdownIt-Anchor" href="#147-is"></a> 1.4.7. IS</h3>
+<ol>
+<li>column IS [NOT] NULL</li>
+</ol>
+<h3 id="148-like"><a class="markdownIt-Anchor" href="#148-like"></a> 1.4.8. LIKE</h3>
+<ol>
+<li>column [NOT] LIKE val1[ESCAPE val2]</li>
+<li>通配符:
+<ol>
+<li><code>_</code>:代替任何一个字符</li>
+<li><code>%</code>:代替0个或者更多个字符的序列</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/13.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/15.png" alt="" /></p>
+<h2 id="15-表别名alias"><a class="markdownIt-Anchor" href="#15-表别名alias"></a> 1.5. 表别名(alias)</h2>
+<ol>
+<li>FROM子句:<code>table_name as alias_name</code>或<code>table_name alias_name</code></li>
+<li>SELECT子句:<code>expr as alias_name</code></li>
+<li>谨慎使用表的别名</li>
+</ol>
+<h2 id="16-表连接"><a class="markdownIt-Anchor" href="#16-表连接"></a> 1.6. 表连接</h2>
+<ol>
+<li>UNION:结果中没有重复的行</li>
+<li>UNION ALL:结果中可以有重复的行</li>
+</ol>
+<h2 id="17-表除法"><a class="markdownIt-Anchor" href="#17-表除法"></a> 1.7. 表除法</h2>
+<ol>
+<li>使用双重否定，全部=没有一个不</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/7.png" alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/5.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/6.png" alt="" /></p>
+<ol start="2">
+<li>例子见课件91页开始</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/8.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/9.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/10.png" alt="" /></p>
+<h2 id="18-部分子句"><a class="markdownIt-Anchor" href="#18-部分子句"></a> 1.8. 部分子句</h2>
+<ol>
+<li>FROM:<code>FROM  tableref {, tableref … }</code></li>
+<li>JOIN:<code>INNER JOIN | [LEFT | RIGHT | FULL] [OUTER] JOIN</code></li>
+<li>tableref: (subquery) AS name</li>
+</ol>
+<h3 id="181-group-by-子句"><a class="markdownIt-Anchor" href="#181-group-by-子句"></a> 1.8.1. GROUP BY 子句</h3>
+<ol>
+<li>要保证获取的字段多余GROUP BY后的字段数量</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/11.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/12.png" alt="" /></p>
+<h3 id="182-having-子句"><a class="markdownIt-Anchor" href="#182-having-子句"></a> 1.8.2. HAVING 子句</h3>
+<ol>
+<li>搭配GROUP BY子句，筛选出来满足的群组</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/16.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Fundamentals-of-Data-Management/img/ch03/17.png" alt="" /></p>
+<h2 id="19-内置函数"><a class="markdownIt-Anchor" href="#19-内置函数"></a> 1.9. 内置函数</h2>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>参数类型</th>
+<th>结果类型</th>
+<th>函数用途</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT</td>
+<td>*</td>
+<td>数值</td>
+<td>计数有多少个</td>
+<td>不含空值的统计，空集返回0</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>数值</td>
+<td>数值</td>
+<td>求和</td>
+<td>空集返回空值</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>数值</td>
+<td>数值</td>
+<td>求均值</td>
+<td>空值在计算均值前已经抛弃，空集返回空值</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>字符或数值</td>
+<td>和参数类型相同</td>
+<td>求最大值</td>
+<td>空集返回空值</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>字符或数值</td>
+<td>和参数类型相同</td>
+<td>求最小值</td>
+<td>空集返回空值</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>在COUNT的时候，注意使用distinct关键字</li>
+<li>count(*):不存在空值问题(不统计空值)</li>
+<li>MAX的使用注意:
+<ol>
+<li>错误:<code>select cid from customers where discnt &lt; max ( discnt )</code></li>
+<li>正确:<code>select cid from customers where discnt &lt; max ( discnt )</code></li>
+</ol>
+</li>
+<li>集合函数需要谨慎的考虑空值的问题</li>
+<li>检索空值的唯一方法:IS NULL</li>
+<li>集合函数禁止嵌套，禁止出现子查询</li>
+</ol>
+<h1 id="2-表结构操作"><a class="markdownIt-Anchor" href="#2-表结构操作"></a> 2. 表结构操作</h1>
+<h2 id="21-表创建"><a class="markdownIt-Anchor" href="#21-表创建"></a> 2.1. 表创建</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE TABLE</span> tablename (<br>  colname datatype [ <span class="hljs-keyword">NOT NULL</span> ]<br>  &#123; , colname datatype [ <span class="hljs-keyword">NOT NULL</span> ] ... &#125;<br>  [ , <span class="hljs-keyword">PRIMARY KEY</span> ( colname &#123; , colname ... &#125; ) ]<br>);<br></code></pre></td></tr></table></figure>
+<h2 id="22-表插入"><a class="markdownIt-Anchor" href="#22-表插入"></a> 2.2. 表插入</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT INTO</span> tablename [ ( colname, ...... ) ]<br>  <span class="hljs-keyword">VALUES</span> ( expr<span class="hljs-operator">|</span><span class="hljs-keyword">NULL</span>, ...... ) <span class="hljs-operator">|</span> subquery<br></code></pre></td></tr></table></figure>
+<ol>
+<li>insert 操作支持插入子查询的结果</li>
+</ol>
+<h2 id="23-表更新"><a class="markdownIt-Anchor" href="#23-表更新"></a> 2.3. 表更新</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>  tablename<br>  <span class="hljs-keyword">SET</span> colname<span class="hljs-operator">=</span>expr<span class="hljs-operator">|</span><span class="hljs-keyword">NULL</span><span class="hljs-operator">|</span>subquery, ......<br>  [ <span class="hljs-keyword">WHERE</span>  <span class="hljs-keyword">search</span><span class="hljs-operator">-</span><span class="hljs-keyword">condition</span> ] ;<br></code></pre></td></tr></table></figure>
+<h2 id="24-表删除"><a class="markdownIt-Anchor" href="#24-表删除"></a> 2.4. 表删除</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>  tablename<br>  <span class="hljs-keyword">SET</span> colname<span class="hljs-operator">=</span>expr<span class="hljs-operator">|</span><span class="hljs-keyword">NULL</span><span class="hljs-operator">|</span>subquery, ......<br>  [ <span class="hljs-keyword">WHERE</span>  <span class="hljs-keyword">search</span><span class="hljs-operator">-</span><span class="hljs-keyword">condition</span> ];<br></code></pre></td></tr></table></figure>
+<h1 id="3-其他零散知识点"><a class="markdownIt-Anchor" href="#3-其他零散知识点"></a> 3. 其他零散知识点</h1>
+<ol>
+<li>集合:用来存储常数序列:<code>(&quot;12&quot;,&quot;23&quot;)</code></li>
+</ol>
+<h2 id="31-特殊运算符"><a class="markdownIt-Anchor" href="#31-特殊运算符"></a> 3.1. 特殊运算符</h2>
+<ol>
+<li>INTERSECT:做差</li>
+<li>EXCEPT:NOT EXISTS</li>
+</ol>

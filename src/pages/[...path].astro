@@ -1,0 +1,72 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { allPosts, dateLabel, seriesSlug, taxonomyUrl } from '../lib/posts';
+import legacyRoutes from '../../migration/legacy-routes.json';
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  const paths = posts.map(post => ({ params: { path: post.url.replace(/^\/+|\/+$/g, '') }, props: { post, posts } }));
+  const occupied = new Set(posts.map(post => post.url));
+  for (const listing of legacyRoutes) {
+    if (!occupied.has(listing.url)) paths.push({ params: { path: listing.url.replace(/^\/+|\/+$/g, '') }, props: { listing, posts } });
+  }
+  for (const kind of ['tags', 'categories', 'archives']) {
+    if (!legacyRoutes.some(route => route.url === `/${kind}/`)) paths.push({ params: { path: kind }, props: { listing: { url: `/${kind}/`, kind, title: kind === 'tags' ? '标签' : kind === 'categories' ? '分类' : '文章归档' }, posts } });
+  }
+  const existing = new Set(paths.map(item => item.params.path));
+  for (const kind of ['tags', 'categories'] as const) {
+    const labels = [...new Set(posts.flatMap(post => post[kind]))];
+    for (const name of labels) {
+      const url = taxonomyUrl(kind, name);
+      const route = url.replace(/^\/+|\/+$/g, '');
+      if (!existing.has(route)) {
+        paths.push({ params: { path: route }, props: { listing: { url, kind, title: `${kind === 'tags' ? '标签' : '分类'} - ${name}` }, posts } });
+        existing.add(route);
+      }
+    }
+  }
+  return paths;
+}
+const { post, listing, posts } = Astro.props;
+let selected = posts;
+let listingTitle = listing?.title;
+if (listing?.kind === 'tags' || listing?.kind === 'categories') {
+  const prefix = listing.kind === 'tags' ? '标签' : '分类';
+  const name = listing.title.replace(new RegExp(`^${prefix}\\s*[-—|]\\s*`), '');
+  if (listing.url !== `/${listing.kind}/`) selected = posts.filter(item => item[listing.kind].includes(name));
+}
+if (listing?.kind === 'archives') {
+  const match = listing.url.match(/^\/archives\/(\d{4})(?:\/(\d{2}))?/);
+  if (match) { const prefix = match[1] + (match[2] ? `-${match[2]}` : ''); selected = posts.filter(item => dateLabel(item.date).startsWith(prefix)); listingTitle = `${prefix} · 文章归档`; }
+}
+const taxonomy = listing?.url === '/tags/' ? 'tags' : listing?.url === '/categories/' ? 'categories' : null;
+const labels = taxonomy ? [...new Set(posts.flatMap(item => item[taxonomy]))].sort((a,b)=>a.localeCompare(b,'zh-CN')) : [];
+const inSeries = post?.series ? posts.filter(item => item.series === post.series).sort((a,b)=>(a.series_order??999)-(b.series_order??999)||a.title.localeCompare(b.title,'zh-CN')) : [];
+const seriesIndex = post ? inSeries.findIndex(item => item.url === post.url) : -1;
+const previous = seriesIndex > 0 ? inSeries[seriesIndex - 1] : null;
+const next = seriesIndex >= 0 ? inSeries[seriesIndex + 1] : null;
+---
+<SiteLayout title={post?.title || listingTitle} description={post?.description || 'SpriCoder 的文章归档与分类。'} article={Boolean(post)}>
+  {post ? <div class="container article-container">
+    <header class="article-header"><a class="breadcrumb" href={post.series ? `/series/${seriesSlug(post.series)}/` : '/archives/'}>← {post.series || '文章归档'}</a><h1>{post.title}</h1><div class="article-meta"><time datetime={post.date}>{dateLabel(post.date)}</time><span>约 {post.readingMinutes} 分钟阅读</span><span id="leancloud-page-views-container" data-counter-path={post.counterPath}>阅读 <span id="leancloud-page-views">—</span> 次</span></div></header>
+    <div class="article-layout"><article class="article-content" data-pagefind-body data-pagefind-meta={`title:${post.title}`} set:html={post.html}></article>{post.headings.length > 0 && <aside class="article-toc" aria-label="文章目录"><details><summary>本文目录</summary><nav>{post.headings.map(heading=><a class:list={[{'toc-sub':heading.level===3}]} href={`#${heading.id}`}>{heading.text}</a>)}</nav></details></aside>}</div>
+    {post.tags.length > 0 && <div class="tags">{post.tags.map(tag=><a href={taxonomyUrl('tags',tag)}>#{tag}</a>)}</div>}
+    {post.series && <section class="series-navigation"><a class="text-link" href={`/series/${seriesSlug(post.series)}/`}>查看「{post.series}」完整目录 →</a><div class="post-grid">{previous && <div><p class="eyebrow">上一篇</p><a href={previous.url}>{previous.title}</a></div>}{next && <div><p class="eyebrow">下一篇</p><a href={next.url}>{next.title}</a></div>}</div></section>}
+    <section class="comments" aria-label="文章评论"><h2>交流与讨论</h2><script is:inline src="https://utteranc.es/client.js" repo="SpriCoder/spricoder-blog-comment" issue-term={post.counterPath !== post.url ? encodeURI(post.counterPath) : 'pathname'} theme="preferred-color-scheme" crossorigin="anonymous" async></script></section>
+  </div> : <div class="container"><header class="page-header"><p class="eyebrow">THE ARCHIVE</p><h1>{listingTitle}</h1><p>{taxonomy ? `${labels.length} 个${taxonomy === 'tags' ? '标签' : '分类'}` : `${selected.length} 篇文章`} · 保存学习与实践的足迹</p><div class="archive-nav"><a href="/archives/">全部文章</a><a href="/categories/">按分类</a><a href="/tags/">按标签</a></div></header>{taxonomy ? <div class="tags taxonomy-tags">{labels.map(label=><a href={taxonomyUrl(taxonomy,label)}>{label} <span>{posts.filter(item=>item[taxonomy].includes(label)).length}</span></a>)}</div> : <div class="post-list">{selected.map(item=><PostCard post={item}/>)}</div>}</div>}
+</SiteLayout>
+<script>
+  const content = document.querySelector('.article-content');
+  const toc = document.querySelector('.article-toc details') as HTMLDetailsElement | null;
+  if (toc) toc.open = window.matchMedia('(min-width: 961px)').matches;
+  const firstHeading = content?.querySelector('h1:first-child');
+  if (firstHeading?.textContent?.trim() === document.querySelector('.article-header h1')?.textContent?.trim()) (firstHeading as HTMLElement).hidden = true;
+  const diagrams = document.querySelectorAll('pre.mermaid, code.mermaid, code.language-mermaid, figure.highlight.mermaid');
+  if (diagrams.length) {
+    const { default: mermaid } = await import('mermaid');
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default' });
+    const nodes: HTMLElement[] = [];
+    diagrams.forEach(node => { const pre = document.createElement('pre'); pre.className = 'mermaid'; pre.textContent = node.querySelector('td.code pre')?.textContent || node.textContent; (node.tagName === 'CODE' && node.parentElement?.tagName === 'PRE' ? node.parentElement : node).replaceWith(pre); nodes.push(pre); });
+    await mermaid.run({ nodes });
+  }
+</script>

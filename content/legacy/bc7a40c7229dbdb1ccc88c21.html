@@ -1,0 +1,95 @@
+<h2 id="spring-boot-出现的部分问题-以及对应的解决办法"><a class="markdownIt-Anchor" href="#spring-boot-出现的部分问题-以及对应的解决办法"></a> Spring boot 出现的部分问题 以及对应的解决办法</h2>
+<h1 id="1-json解析错误"><a class="markdownIt-Anchor" href="#1-json解析错误"></a> 1. JSON解析错误</h1>
+<blockquote>
+<p>org.springframework.http.converter.HttpMessageNotWritableException: Could not write content: No serializer found for class net.sf.ezmorph.MorpherRegistry and no properties discovered to create BeanSerializer</p>
+</blockquote>
+<ol>
+<li>这种错误十分常见，往往是指将JSON字符串转成javaBean时，可以直接进行转换。或者我们并没有能够提供相应的get和set方法</li>
+</ol>
+<h2 id="11-例子"><a class="markdownIt-Anchor" href="#11-例子"></a> 1.1. 例子</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">java</span>.io.Serializable&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>    <span class="hljs-keyword">private</span> String sname;<br>    <span class="hljs-keyword">private</span> Integer age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">getSname</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> sname;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setSname</span><span class="hljs-params">(String sname)</span> &#123;<br>        <span class="hljs-built_in">this</span>.sname = sname;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">Integer</span> <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> age;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(Integer age)</span> &#123;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>由字符串转javabean时可以使用以下方法:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;[&#123;\&quot;sname\&quot;:\&quot;admin\&quot;,\&quot;age\&quot;:20&#125;]&quot;</span>;<br><span class="hljs-comment">////接收&#123;&#125;对象，此处接收数组对象会有异常,故需要解决</span><br><span class="hljs-keyword">if</span> (str.indexOf(<span class="hljs-string">&quot;[&quot;</span>) != -<span class="hljs-number">1</span>) &#123;<br>    str = str.replace(<span class="hljs-string">&quot;[&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br><span class="hljs-keyword">if</span> (str.indexOf(<span class="hljs-string">&quot;]&quot;</span>) != -<span class="hljs-number">1</span>) &#123;<br>    str = str.replace(<span class="hljs-string">&quot;]&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br><span class="hljs-type">JSONObject</span> <span class="hljs-variable">jobj</span> <span class="hljs-operator">=</span> JSONObject.fromObject(str);<br><span class="hljs-type">Student</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> (Student) JSONObject.toBean(jobj，Student.class);<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>上述方法存在问题:如果存在复杂类型:比如List，Map,ArrayList就不可以了，比如如下</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">java</span>.io.Serializable&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>    <span class="hljs-keyword">private</span> String sname;<br>    <span class="hljs-keyword">private</span> Integer age;<br>    <span class="hljs-keyword">private</span> List &lt; String &gt; courses;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">getSname</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> sname;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setSname</span><span class="hljs-params">(String sname)</span> &#123;<br>        <span class="hljs-built_in">this</span>.sname = sname;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">Integer</span> <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> age;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(Integer age)</span> &#123;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">List</span> <span class="hljs-title function_">getCourses</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> courses;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setCourses</span><span class="hljs-params">(List courses)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.courses = courses;<br>    &#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>此时我们就需要这么来写了(如何仍然包含其他复杂类型，应该继续向classMap中放置对应的key和类型)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Map</span> <span class="hljs-variable">classMap</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>();<br>classMap.put(<span class="hljs-string">&quot;courses&quot;</span>,String.class);<br><span class="hljs-type">Student</span> <span class="hljs-variable">student</span> <span class="hljs-operator">=</span>( Student) JSONObject.toBean(str, Student.class, classMap);<br></code></pre></td></tr></table></figure>
+<h2 id="12-参考文献"><a class="markdownIt-Anchor" href="#12-参考文献"></a> 1.2. 参考文献</h2>
+<ol>
+<li><a href = "https://www.liangzl.com/get-article-detail-130462.html">JSON解析错误</a></li>
+</ol>
+<h2 id="13-出现400相应的问题"><a class="markdownIt-Anchor" href="#13-出现400相应的问题"></a> 1.3. 出现400相应的问题</h2>
+<blockquote>
+<p>问题描述:在我们展开的过程中，经过断点调试，我们确认，如果实体类提供了含参构造方法，则不会默认提供无参构造方法，从而会导致我们的参数传递和JSON化失败，因此我们需要检查这部分的情况。</p>
+</blockquote>
+<ol>
+<li>所以请务必注意，在提供含参构造方法的同时，我们一定要同时提供无参构造方法。</li>
+</ol>
+<h1 id="2-autowired-的-null-问题"><a class="markdownIt-Anchor" href="#2-autowired-的-null-问题"></a> 2. @Autowired 的 null 问题</h1>
+<h2 id="21-websocket-和-spring-boot-框架结合的问题"><a class="markdownIt-Anchor" href="#21-websocket-和-spring-boot-框架结合的问题"></a> 2.1. websocket 和 spring boot 框架结合的问题</h2>
+<blockquote>
+<p>@Autowired在被@ServerEndPoint和@Component修饰的类中，无法自动装配，显示null</p>
+</blockquote>
+<ol>
+<li>因为被spring boot的IOC容器管理，Bean是被单件管理的，而websocket则会被多装配。</li>
+<li>所以我们需要使用@Autowired装配给set方法,并且变为静态变量。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@ServerEndPoint(&quot;/video&quot;)</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">videoPlayer</span>()&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> StudentDao studentDao;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setStudentDao</span><span class="hljs-params">(StudentDao studentDao)</span>&#123;<br>        videoPlayer.studentDao = studentDao;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="3-springboot中的errorpagefilter"><a class="markdownIt-Anchor" href="#3-springboot中的errorpagefilter"></a> 3. springboot中的ErrorPageFilter</h1>
+<ol>
+<li>ErrorPageFilter是SpringBoot在1.4.0版本提供的一个类，本质上是一个Filter。 它的作用主要有两方面：
+<ol>
+<li>提供应用程序注册ErrorPage的接口，此时它的角色是：ErrorPageRegistry</li>
+<li>处理应用程序异常，根据异常的类型转发到对应的ErrorPage页, 从而不依赖部署的容器错误处理机制</li>
+</ol>
+</li>
+<li><a href = "https://leokongwq.github.io/2017/04/07/spring-ErrorPageFilter.html">SpringBoot异常处理之ErrorPageFilter</a></li>
+</ol>
+<h2 id="31-参考"><a class="markdownIt-Anchor" href="#31-参考"></a> 3.1. 参考</h2>
+<ol>
+<li><a href = "https://leokongwq.github.io/2017/04/07/spring-ErrorPageFilter.html">Springboot异常处理值ErrorPageFilter</a></li>
+</ol>
+<h1 id="4-requestparamrequired-false-带来的空指针问题"><a class="markdownIt-Anchor" href="#4-requestparamrequired-false-带来的空指针问题"></a> 4. @RequestParam(required = false) 带来的空指针问题</h1>
+<ol>
+<li>这种问题，我们要用Integer等封装主类型，然后之后根据null与否进行不同业务逻辑</li>
+</ol>
+<h1 id="5-spring框架没有反应的问题"><a class="markdownIt-Anchor" href="#5-spring框架没有反应的问题"></a> 5. Spring框架没有反应的问题</h1>
+<ol>
+<li>检查防火墙:是不是阿里防火墙阻断了请求。</li>
+</ol>
+<h1 id="6-上传文件时the-field-file-exceeds-its-maximum-permitted-size-of-1048576-bytes"><a class="markdownIt-Anchor" href="#6-上传文件时the-field-file-exceeds-its-maximum-permitted-size-of-1048576-bytes"></a> 6. 上传文件时:The field file exceeds its maximum permitted size of 1048576 bytes.</h1>
+<ol>
+<li>上传文件的大小大于了Spring本身默认的1M的文件大小</li>
+<li>可以修改(在配置文件中application.properities中)</li>
+</ol>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-keyword">spring</span>.servlet.multipart.<span class="hljs-keyword">max</span>-<span class="hljs-keyword">file</span>-<span class="hljs-keyword">size</span> = <span class="hljs-number">10</span>MB  <br><span class="hljs-keyword">spring</span>.servlet.multipart.<span class="hljs-keyword">max</span>-request-<span class="hljs-keyword">size</span>=<span class="hljs-number">100</span>MB<br></code></pre></td></tr></table></figure>
+<h1 id="7-时区问题"><a class="markdownIt-Anchor" href="#7-时区问题"></a> 7. 时区问题</h1>
+<blockquote>
+<p>在东八区进行操作，显示的时间和当地时间正好差8个小时，往往是Mybatis的链接中的时区的问题</p>
+</blockquote>
+<ol>
+<li>解决:<code>spring.datasource.url=jdbc:mysql://localhost:3306/lmg-test?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;zeroDateTimeBehavior=convertToNull</code>改为<code>spring.datasource.url=jdbc:mysql://localhost:3307/lmg-test?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=GMT%2B8&amp;zeroDateTimeBehavior=convertToNull</code></li>
+<li>也就是将:<code>serverTimezone</code>的<code>UTC</code>改为<code>GMT%2B8</code></li>
+<li><a href = "https://blog.csdn.net/weixin_42322648/article/details/105116600">参考</a></li>
+</ol>
+<h1 id="8-数据库问题"><a class="markdownIt-Anchor" href="#8-数据库问题"></a> 8. 数据库问题</h1>
+<h2 id="81-jpa"><a class="markdownIt-Anchor" href="#81-jpa"></a> 8.1. JPA</h2>
+<blockquote>
+<p>Can not issue data manipulation statements with executeQuery().</p>
+</blockquote>
+<ol>
+<li>这个方法是update方法，且只被Query修饰</li>
+<li>解决方案:使用<code>@Modifying</code>和<code>@Transactional</code>来进行修饰</li>
+</ol>
+<blockquote>
+<p>自定义查询</p>
+</blockquote>
+<ol>
+<li>需要使用<code>@Query</code>参数设置SQL语句，并且<code>nativeQuery</code>设置为true</li>
+</ol>

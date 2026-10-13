@@ -1,0 +1,38 @@
+<h2 id="spring-网络解释"><a class="markdownIt-Anchor" href="#spring-网络解释"></a> spring 网络解释</h2>
+<h1 id="1-spring解析url参数的多种方式"><a class="markdownIt-Anchor" href="#1-spring解析url参数的多种方式"></a> 1. spring解析URL参数的多种方式</h1>
+<h2 id="11-方式一表单的参数写到方法形参"><a class="markdownIt-Anchor" href="#11-方式一表单的参数写到方法形参"></a> 1.1. 方式一:表单的参数写到方法形参</h2>
+<ol>
+<li>可以直接把表单的参数写到Controller的对应方法的形参中</li>
+<li>目前这种方式适用于get方式提交，不适用于post方式提交</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;/addUser1&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser1</span><span class="hljs-params">(String username,String password)</span> &#123;<br></code></pre></td></tr></table></figure>
+<h2 id="12-方式二httpservletrequest"><a class="markdownIt-Anchor" href="#12-方式二httpservletrequest"></a> 1.2. 方式二:HttpServletRequest</h2>
+<ol>
+<li>支持用post、get方式来进行。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;/addUser2&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser2</span><span class="hljs-params">(HttpServletRequest request)</span> &#123;<br></code></pre></td></tr></table></figure>
+<h2 id="13-方式三通过bean来接收"><a class="markdownIt-Anchor" href="#13-方式三通过bean来接收"></a> 1.3. 方式三:通过Bean来接收</h2>
+<ol>
+<li>建立一个和表单参数对应的bean，用这个bean来接受(省去get和set方法)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserModel</span> &#123;<br>    <span class="hljs-keyword">private</span> String username;<br>    <span class="hljs-keyword">private</span> String password;<br>&#125;<br><span class="hljs-meta">@RequestMapping(&quot;/addUser3&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser3</span><span class="hljs-params">(UserModel user)</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="131-方式四通过pathvariable获取路径中的参数"><a class="markdownIt-Anchor" href="#131-方式四通过pathvariable获取路径中的参数"></a> 1.3.1. 方式四:通过@PathVariable获取路径中的参数</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(value=&quot;/addUser4/&#123;username&#125;/&#123;password&#125;&quot;,method=RequestMethod.GET)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser4</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> String username,<span class="hljs-meta">@PathVariable</span> String password)</span> &#123;<br></code></pre></td></tr></table></figure>
+<h3 id="132-方式五适用modeattribute注解获得post请求的form表单数据"><a class="markdownIt-Anchor" href="#132-方式五适用modeattribute注解获得post请求的form表单数据"></a> 1.3.2. 方式五:适用@ModeAttribute注解获得POST请求的FORM表单数据</h3>
+<ol>
+<li>JSP表单部分:</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;form action =<span class="hljs-string">&quot;&lt;%=request.getContextPath()%&gt;/demo/addUser5&quot;</span> method=<span class="hljs-string">&quot;post&quot;</span>&gt; <br>    用户名:&amp;nbsp;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>/&gt;</span></span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br>    密&amp;nbsp;&amp;nbsp;码:&amp;nbsp;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span>/&gt;</span></span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;提交&quot;</span>/&gt;</span></span> <br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;reset&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;重置&quot;</span>/&gt;</span></span> <br>&lt;/form&gt; <br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>java的Controller实现</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(value=&quot;/addUser5&quot;,method=RequestMethod.POST)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser5</span><span class="hljs-params">(<span class="hljs-meta">@ModelAttribute(&quot;user&quot;)</span> UserModel user)</span> &#123;<br></code></pre></td></tr></table></figure>
+<h3 id="133-方式六用注解requestparam绑定参数到方法入参"><a class="markdownIt-Anchor" href="#133-方式六用注解requestparam绑定参数到方法入参"></a> 1.3.3. 方式六:用注解@RequestParam绑定参数到方法入参</h3>
+<ol>
+<li>username不存在的话，可以为这个元注解，添加required的参数，设置为false</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(value=&quot;/addUser6&quot;,method=RequestMethod.GET)</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">String</span> <span class="hljs-title function_">addUser6</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;username&quot;)</span> String username,<span class="hljs-meta">@RequestParam(&quot;password&quot;)</span> String password)</span> &#123;<br></code></pre></td></tr></table></figure>
+<h1 id="2-参考"><a class="markdownIt-Anchor" href="#2-参考"></a> 2. 参考</h1>
+<ol>
+<li><a href = "https://www.cnblogs.com/Mr-Rocker/p/10430532.html">Spring中解析URL参数的两种方式</a></li>
+</ol>

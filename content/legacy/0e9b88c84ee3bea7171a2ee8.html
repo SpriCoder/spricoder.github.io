@@ -1,0 +1,12 @@
+<h2 id="map"><a class="markdownIt-Anchor" href="#map"></a> Map</h2>
+<ol>
+<li>map(正序默认是字典序): map.ﬁnd(y1)==m.end()</li>
+</ol>
+<ul>
+<li>没有y1这个key 直接m[y1]取出 value 逆序遍</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++">map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;::reverse_iterator iter;<br><span class="hljs-keyword">for</span> (iter = m.<span class="hljs-built_in">rbegin</span>(); iter != m.<span class="hljs-built_in">rend</span>(); iter++) &#123;<span class="hljs-comment">//逆序遍历</span><br>  <span class="hljs-keyword">if</span> (iter-&gt;second != <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">if</span> (iter == m.<span class="hljs-built_in">rbegin</span>())&#123;<br>      cout &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-string">&quot;x^&quot;</span> &lt;&lt; iter-&gt;first;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>      cout &lt;&lt; <span class="hljs-string">&quot; + &quot;</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-string">&quot;x^&quot;</span> &lt;&lt; iter-&gt;first;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>正序遍历</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;::iterator iter;<br><span class="hljs-keyword">for</span> (iter = m.<span class="hljs-built_in">begin</span>();iter != m.<span class="hljs-built_in">end</span>(); iter++)&#123;<br>  cout &lt;&lt; iter-&gt;first &lt;&lt; <span class="hljs-string">&quot;-&quot;</span> &lt;&lt; iter-&gt;second &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>

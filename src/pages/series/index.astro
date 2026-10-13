@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { allPosts, seriesSlug } from '../../lib/posts';
+const posts = await allPosts();
+const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as string[];
+---
+<SiteLayout title="专题系列" description="从 AI 协作、时序数据集与基准测试专题开始阅读。">
+  <div class="container"><header class="page-header"><p class="eyebrow">COLLECTIONS</p><h1>专题系列</h1><p>把相关的文章放在一起，沿着问题和阅读顺序逐步展开。</p></header>
+  <div class="series-grid">{series.map((name, index) => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><span class="series-number">0{index + 1}</span><h2>{name}</h2><p>{posts.filter(post => post.series === name).length} 篇文章</p><span class="text-link">开始阅读 ↗</span></a>)}</div></div>
+</SiteLayout>

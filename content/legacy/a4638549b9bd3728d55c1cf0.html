@@ -1,0 +1,18 @@
+<h1 id="1-物理内存不足导致进程被kill"><a class="markdownIt-Anchor" href="#1-物理内存不足导致进程被kill"></a> 1. 物理内存不足，导致进程被Kill</h1>
+<ol>
+<li>当我们遇到物理内存不足的时候，服务器的内存又不能进行修改，我们可以选择创建swap部分，建立虚拟内存，来解决这个问题。</li>
+<li>具体步骤:
+<ol>
+<li>进入/usr目录:<code>cd /usr</code></li>
+<li>创建swap文件夹，并进入:<code>mkdir swap &amp;&amp; cd swap/</code></li>
+<li>创建swap文件(4G):<code>dd if=/dev/zero of=/usr/swap/swapfile bs=1M count=4096</code></li>
+<li>查看swap文件:<code>du -sh /usr/swap/swapfile</code></li>
+<li>将目标设置为swap分区文件:<code>mkswap /usr/swap/swapfile</code></li>
+<li>激活swap分区，并立即启用交换区文件:<code>swapon /usr/swap/swapfile</code></li>
+<li>查看内存情况:<code>free -m</code></li>
+<li>设置开机自动启动虚拟内存:在<code>/etc/fstab</code>文件中加入<code>/usr/swap/swapfile swap swap defaults 0 0</code></li>
+<li>重启服务器:<code>reboot</code></li>
+</ol>
+</li>
+</ol>
+<p><a href = "https://www.cnblogs.com/yizijianxin/p/10634214.html">Linux设置虚拟内存</a></p>

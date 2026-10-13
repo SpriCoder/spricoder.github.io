@@ -1,0 +1,70 @@
+<h2 id="白盒测试"><a class="markdownIt-Anchor" href="#白盒测试"></a> 白盒测试</h2>
+<h1 id="1-图的基本概念"><a class="markdownIt-Anchor" href="#1-图的基本概念"></a> 1. 图的基本概念</h1>
+<ol>
+<li>本课程限制只有一个开始一个结束</li>
+<li>如何将一个软件抽象成为一个图，然后用测试来进行覆盖，是一个思考。</li>
+<li>源代码:控制流、需求文档:有限状态机</li>
+<li>多个初始节点、终止节点:使用亚节点</li>
+</ol>
+<h2 id="11-路径"><a class="markdownIt-Anchor" href="#11-路径"></a> 1.1. 路径</h2>
+<ol>
+<li>路径长度:边的个数
+<ol>
+<li>单点:0</li>
+</ol>
+</li>
+<li>测试路径:从开始节点到结束节点的路径</li>
+<li>无法证明一条路径不可以被任何路径覆盖到</li>
+</ol>
+<h1 id="2-图覆盖准则"><a class="markdownIt-Anchor" href="#2-图覆盖准则"></a> 2. 图覆盖准则</h1>
+<ol>
+<li>可达:
+<ol>
+<li>语法可达:在语法中的图可达</li>
+<li>语义可达:测试中可达</li>
+</ol>
+</li>
+<li>覆盖:
+<ol>
+<li>测试路径经过的结点</li>
+<li>测试路径经过的边</li>
+</ol>
+</li>
+<li>结构覆盖:只关心点和边</li>
+<li>数据流覆盖:点和边上已经有一些程序信息</li>
+</ol>
+<h2 id="21-测试准则"><a class="markdownIt-Anchor" href="#21-测试准则"></a> 2.1. 测试准则</h2>
+<ol>
+<li>TR:测试需求：描述测试路径</li>
+<li>C:测试准则</li>
+<li>对于测试准则C的一个测试需求集合，一个测试T满足C当切仅当TR中任意的测试需求，都被大的测试TR中的一个T满足</li>
+</ol>
+<h2 id="22-隐含subsume"><a class="markdownIt-Anchor" href="#22-隐含subsume"></a> 2.2. 隐含(Subsume)</h2>
+<ol>
+<li>C1隐含C2:满足C1一定满足C2</li>
+<li>一个准则隐含了另一个准则，并不意味着纠错能力更强</li>
+</ol>
+<h2 id="23-结构化覆盖"><a class="markdownIt-Anchor" href="#23-结构化覆盖"></a> 2.3. 结构化覆盖</h2>
+<ol>
+<li>边覆盖:覆盖小于等于1的子路径-&gt;问题</li>
+</ol>
+<h3 id="231-顶点覆盖vc"><a class="markdownIt-Anchor" href="#231-顶点覆盖vc"></a> 2.3.1. 顶点覆盖(VC)</h3>
+<ol>
+<li>能够覆盖所有可达顶点</li>
+</ol>
+<h3 id="232-边覆盖ec"><a class="markdownIt-Anchor" href="#232-边覆盖ec"></a> 2.3.2. 边覆盖(EC)</h3>
+<ol>
+<li>每一个可达边都被测试路径覆盖</li>
+<li>EC一定VC，但是VC不一定EC</li>
+</ol>
+<h3 id="233-边对覆盖epc"><a class="markdownIt-Anchor" href="#233-边对覆盖epc"></a> 2.3.3. 边对覆盖(EPC)</h3>
+<ol>
+<li>覆盖相邻的边</li>
+</ol>
+<h3 id="234-n路径覆盖通用"><a class="markdownIt-Anchor" href="#234-n路径覆盖通用"></a> 2.3.4. N路径覆盖(通用)</h3>
+<ol>
+<li>N = 0:VC</li>
+<li>N = 1:EC</li>
+<li>N = 2:EPC</li>
+<li>N = 无穷:CPC</li>
+</ol>

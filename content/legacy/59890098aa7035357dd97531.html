@@ -1,0 +1,142 @@
+<p>玩转 TsFile｜01-从 CSV 到 TsFile：自描述的时序数据集</p>
+<p>一份 CSV 可以保存温度记录，却通常缺少说明 <code>site</code> 和 <code>rack</code> 如何标识设备、<code>temperature</code> 应按什么类型读取。接收方往往还需要一份字段说明，或向提供数据的人确认。</p>
+<p>本篇回到导读提出的“可发现、可理解”价值：把列定义和观测记录放在同一份可读取的文件中，接收方据此开始工作。</p>
+<p>TsFile 将表名、列类别、数据类型和编码等信息与观测记录保存在一起。接收方可以从文件中读取这些信息，再选择要分析的数据。</p>
+<p>本文使用 TsFile-Cli，将一份 CSV 写成表模型（table model）TsFile，再读回文件检查结构与记录。创建和检查都在本地完成，可直接完成 IoTDB。</p>
+<h2 id="1-自描述具体描述了什么"><a class="markdownIt-Anchor" href="#1-自描述具体描述了什么"></a> 1. “自描述”具体描述了什么</h2>
+<p>对本文生成的 TsFile，文件自身能够提供以下几层信息：</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>文件中可读取的信息</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件</td>
+<td>文件大小、模型与格式信息</td>
+<td>这是哪类 TsFile，能否按预期工具读取</td>
+</tr>
+<tr>
+<td>对象</td>
+<td>表名 <code>sensors</code></td>
+<td>文件里包含哪个逻辑数据对象</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>TAG、FIELD、列名与数据类型</td>
+<td>哪些列定义实体，哪些列保存观测值</td>
+</tr>
+<tr>
+<td>物理设置</td>
+<td>编码与压缩方式</td>
+<td>数据在文件中采用怎样的物理表示</td>
+</tr>
+<tr>
+<td>统计信息</td>
+<td>点数、时间范围及可用的值统计</td>
+<td>读取概览信息即可</td>
+</tr>
+</tbody>
+</table>
+<p>文件结构还需要配套的业务说明。例如，温度使用摄氏度还是华氏度、记录来自哪个采集任务，应写入数据字典或随文件交付的说明中。</p>
+<p>“自描述”与……有区别所有统计查询都保证零扫描。</p>
+<h2 id="2-从一份明确的-csv-开始"><a class="markdownIt-Anchor" href="#2-从一份明确的-csv-开始"></a> 2. 从一份明确的 CSV 开始</h2>
+<p>本文使用四行机房温湿度演示数据，贯穿数据集创建、检查、加载、导出与 AI 访问流程，属于演示数据。将以下内容保存为 sensors.csv：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csv">time,site,rack,temperature,humidity,status<br>1725148800000,beijing,rack-a,24.6,46.0,ok<br>1725148860000,shanghai,rack-b,28.9,68.5,warn<br>1725148920000,beijing,rack-a,25.1,47.2,ok<br>1725148980000,shanghai,rack-b,29.4,70.1,warn<br></code></pre></td></tr></table></figure>
+<p>写入前先明确每一列的角色：</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>类别</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td>时间列</td>
+<td><code>INT64</code> 时间戳</td>
+<td>每条记录的时间轴</td>
+</tr>
+<tr>
+<td><code>site</code></td>
+<td>TAG</td>
+<td><code>STRING</code></td>
+<td>站点身份</td>
+</tr>
+<tr>
+<td><code>rack</code></td>
+<td>TAG</td>
+<td><code>STRING</code></td>
+<td>机架身份</td>
+</tr>
+<tr>
+<td><code>temperature</code></td>
+<td>FIELD</td>
+<td><code>DOUBLE</code></td>
+<td>温度观测值</td>
+</tr>
+<tr>
+<td><code>humidity</code></td>
+<td>FIELD</td>
+<td><code>DOUBLE</code></td>
+<td>湿度观测值</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>FIELD</td>
+<td><code>STRING</code></td>
+<td>随时间变化的状态</td>
+</tr>
+</tbody>
+</table>
+<p><code>site</code> 和 <code>rack</code> 共同标识一条设备时间线，三个 FIELD 保存随时间变化的观测。这个声明会进入 TsFile 的表模型 Schema，而继续只是导入脚本里的临时配置。</p>
+<p>本专栏约定时间采用 Unix 毫秒，温度单位为摄氏度，相对湿度单位为百分比；ok 和 warn 为来源记录的状态标签，未经 TsFile-Cli 计算。时间精度、测量单位与状态含义应结合业务说明理解，应随文件一并提供说明。</p>
+<h2 id="3-一条命令写成-tsfile"><a class="markdownIt-Anchor" href="#3-一条命令写成-tsfile"></a> 3. 一条命令写成 TsFile</h2>
+<p>假设 tsfile-cli 已经安装或构建完成，在 CSV 所在目录执行。目标 sensors.tsfile 请使用新的输出路径；重复练习时请使用新的输出路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">tsfile-cli write \<br>  --table sensors \<br>  --tag site STRING \<br>  --tag rack STRING \<br>  --field temperature DOUBLE \<br>  --field humidity DOUBLE \<br>  --field status STRING \<br>  --input sensors.csv \<br>  --output sensors.tsfile \<br>  --verbose<br></code></pre></td></tr></table></figure>
+<p>这个命令同时完成三件事：</p>
+<ol>
+<li>将 CSV 行写入新的 table-model TsFile；</li>
+<li>将表名、TAG、FIELD、数据类型、编码和压缩信息写入文件；</li>
+<li>在正式提交输出文件前检查输入和写入结果。</li>
+</ol>
+<p>这里显式声明了每一列的类型。以后换一个工具读取，仍然可以从文件中取得同样的列定义。</p>
+<h2 id="4-立即读回文件中的自描述信息"><a class="markdownIt-Anchor" href="#4-立即读回文件中的自描述信息"></a> 4. 立即读回文件中的自描述信息</h2>
+<p>创建成功后，通过只读命令检查文件的模型、对象、Schema 和实际数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">tsfile-cli meta -f csv sensors.tsfile<br>tsfile-cli <span class="hljs-built_in">ls</span> -f csv sensors.tsfile<br>tsfile-cli schema -t sensors -f csv sensors.tsfile<br>tsfile-cli count -t sensors -f csv sensors.tsfile<br>tsfile-cli <span class="hljs-built_in">head</span> -t sensors -n 2 -f csv sensors.tsfile<br></code></pre></td></tr></table></figure>
+<p>下列内容为信息摘要，属于命令输出的逐字转录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">model=table<br>object=sensors<br>site        TAG    STRING<br>rack        TAG    STRING<br>temperature FIELD  DOUBLE<br>humidity    FIELD  DOUBLE<br>status      FIELD  STRING<br></code></pre></td></tr></table></figure>
+<p>接收方可以直接读回表名和列定义。<code>head</code> 用于抽查记录；<code>count</code> 返回各列的计数，完整记录数可以在读取全部数据后另行统计。</p>
+<h2 id="5-在交付前完成创建与检查"><a class="markdownIt-Anchor" href="#5-在交付前完成创建与检查"></a> 5. 在交付前完成创建与检查</h2>
+<h3 id="在本地完成创建与检查"><a class="markdownIt-Anchor" href="#在本地完成创建与检查"></a> 在本地完成创建与检查</h3>
+<p>创建和检查都发生在本地文件系统。IoTDB 缺少启动时，仍然可以生成、复制、归档和交付 <code>sensors.tsfile</code>。</p>
+<h3 id="直接使用命令行完成文件任务"><a class="markdownIt-Anchor" href="#直接使用命令行完成文件任务"></a> 直接使用命令行完成文件任务</h3>
+<p>对于 Schema 明确的单文件任务，命令行已经给出稳定入口。Shell、CI 或 ETL 可以直接调用，一次转换维护额外工程。</p>
+<h3 id="写入后可以独立回读"><a class="markdownIt-Anchor" href="#写入后可以独立回读"></a> 写入后可以独立回读</h3>
+<p><code>write</code> 创建文件后，可以用 <code>meta</code>、<code>schema</code>、<code>count</code> 和 <code>head</code> 检查结果，接收方也能执行同样的检查。</p>
+<h3 id="输入检查通过后提交目标文件"><a class="markdownIt-Anchor" href="#输入检查通过后提交目标文件"></a> 输入检查通过后提交目标文件</h3>
+<p>请使用新的目标路径。CSV 表头、列数、类型或同一 TAG 组合内的时间顺序出现问题时，命令返回非零退出码，目标文件保持缺失。</p>
+<h2 id="6-用一次失败看懂严格性"><a class="markdownIt-Anchor" href="#6-用一次失败看懂严格性"></a> 6. 用一次失败看懂严格性</h2>
+<p>如果把温度改成无法解析的字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csv">1725148920000,beijing,rack-a,twenty-five,47.2,ok<br></code></pre></td></tr></table></figure>
+<p>为独立验证类型检查，将原 CSV 复制为 sensors-invalid.csv，保留表头和其他记录，仅将第三条数据记录替换为上述内容。使用新的目标路径，先完成输入检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">tsfile-cli write \<br>  --table sensors \<br>  --tag site STRING \<br>  --tag rack STRING \<br>  --field temperature DOUBLE \<br>  --field humidity DOUBLE \<br>  --field status STRING \<br>  --input sensors-invalid.csv \<br>  --output sensors-invalid.tsfile<br><br></code></pre></td></tr></table></figure>
+<p>预期结果为非零退出码和类型解析诊断，正式目标 sensors-invalid.tsfile 保持目标文件缺失。原有 sensors.tsfile 可继续用于后续文章。将错误定位在转换阶段，有助于降低数据进入 IoTDB 后的排查成本。</p>
+<h2 id="7-从自描述文件继续进入-iotdb-生态"><a class="markdownIt-Anchor" href="#7-从自描述文件继续进入-iotdb-生态"></a> 7. 从自描述文件继续进入 IoTDB 生态</h2>
+<p>在导读的试飞场景中，数据团队可以用类似方式整理某个架次的观测记录，并附上单位、试飞条件与采集来源。接收方取得文件后，便能查看参数结构和数据。本文的四行机房数据只用于演示文件操作。</p>
+<p>后续可以继续使用 TsFile-Cli 在本地查看、筛选和导出，也可以通过 IoTDB 工具执行 LOAD，获得 SQL、并发访问和实例管理能力。数据库接入由 TsFile 格式与 IoTDB 加载能力直接支撑，CLI 负责文件侧创建和检查。</p>
+<p>完成创建与回读后，文件即可作为后续练习的输入。</p>
+<blockquote>
+<p>交付 TsFile 时，同时提供文件中的结构定义和配套业务说明，接收方才能正确使用其中的观测记录。</p>
+</blockquote>
+<h2 id="继续阅读"><a class="markdownIt-Anchor" href="#继续阅读"></a> 继续阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/M1IRd82rso1rnuxgEvUcLVlWned">下一篇：玩转 TsFile｜02-从元数据到数据行：认识一个 TsFile</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/R0Sydx5Klo4cUSxKnB9cgIkAnLb">返回专栏目录</a></p>
+<blockquote>
+<p>本文命令围绕文件创建、读取与检查展开，使用时请结合本地工具帮助说明。</p>
+</blockquote>

@@ -1,0 +1,169 @@
+<h1 id="数据库为什么需要变得-agent-friendly"><a class="markdownIt-Anchor" href="#数据库为什么需要变得-agent-friendly"></a> 数据库为什么需要变得 Agent-Friendly</h1>
+<p>给 Agent 一个数据库连接、一份 schema 和执行 SQL 的工具，它就能可靠地回答数据问题了吗？</p>
+<p>很多失败并不是 Agent 不会写 SQL，而是它不知道某个字段的业务含义，不清楚单位和时区，无法判断两个系统里的客户编号是否指向同一实体，也不知道空结果来自“确实没有数据”还是“查询条件写错了”。即使最终数字正确，它也可能使用了过期快照、扫描了不该读取的数据，或者无法说明结论来自哪些记录。</p>
+<p><img src="/images/ai-work/12-agent-friendly-database.png" alt="Agent 通过语义、权限、验证和恢复能力安全访问数据库" /></p>
+<p><em>原创配图：Agent-Friendly 数据库不仅提供查询入口，还显式提供语义关系、权限门禁、证据验证、状态观察和失败恢复路径。</em></p>
+<p>Agent-Friendly 不是在数据库前面加一个聊天框，而是让数据系统能够向机器清楚表达：<strong>有什么数据、这些数据是什么意思、允许怎样操作、结果如何验证，以及失败后应该怎样安全恢复。</strong></p>
+<h2 id="对人友好不自动等于对-agent-友好"><a class="markdownIt-Anchor" href="#对人友好不自动等于对-agent-友好"></a> 对人友好，不自动等于对 Agent 友好</h2>
+<p>人类数据工程师遇到陌生表时，会阅读文档、询问同事、抽样查看数据，并根据经验补齐大量隐含背景。Agent 没有这些默认知识，只能依赖系统显式提供的描述和工具反馈。</p>
+<table>
+<thead>
+<tr>
+<th>面向人的传统设计</th>
+<th>Agent 还需要什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表名、列名和数据类型</td>
+<td>业务定义、实体关系、单位、时区和口径</td>
+</tr>
+<tr>
+<td>一个通用 SQL 入口</td>
+<td>可发现、受约束、可组合的专用工具</td>
+</tr>
+<tr>
+<td>返回结果集或错误字符串</td>
+<td>结构化证据、来源、状态和可行动错误</td>
+</tr>
+<tr>
+<td>靠工程师理解权限规则</td>
+<td>机器可读的允许动作、范围、预算和确认点</td>
+</tr>
+<tr>
+<td>靠经验处理空结果和异常</td>
+<td>明确的诊断、重试、替代路径和停止条件</td>
+</tr>
+</tbody>
+</table>
+<p>所谓 Agent-Friendly，本质上是把过去藏在人脑、文档和组织经验中的接口契约，变成机器能够读取和执行的系统能力。</p>
+<h2 id="第一层让-agent-能发现数据也能理解语义"><a class="markdownIt-Anchor" href="#第一层让-agent-能发现数据也能理解语义"></a> 第一层：让 Agent 能发现数据，也能理解语义</h2>
+<p>Schema 只告诉 Agent 一列叫 <code>value</code>，类型是浮点数，却不会自动说明它是摄氏温度、瞬时功率还是累计流量。<code>created_at</code> 也可能是事件发生时间、数据入库时间或记录更新时间。</p>
+<p>一个可用的语义层至少应表达：</p>
+<ul>
+<li>表、字段和实体之间的关系；</li>
+<li>指标定义、单位、时区、采样频率和聚合规则；</li>
+<li>缺失值、异常值和迟到数据怎样处理；</li>
+<li>数据版本、更新时间和适用范围；</li>
+<li>公司内部概念和业务口径，例如“活跃用户”的具体定义。</li>
+</ul>
+<p>语义层的目的不是替 Agent 做完推理，而是避免它在错误口径上进行一段逻辑完美的计算。</p>
+<h2 id="第二层把数据库能力拆成可约束的工具"><a class="markdownIt-Anchor" href="#第二层把数据库能力拆成可约束的工具"></a> 第二层：把数据库能力拆成可约束的工具</h2>
+<p>只提供一个“执行任意 SQL”工具，权限很大，反馈却很少。更适合 Agent 的接口可以按动作拆开：</p>
+<pre><code class=" mermaid">flowchart LR
+    G[理解用户目标] --&gt; D[发现数据与语义]
+    D --&gt; P[生成计划并估算成本]
+    P --&gt; Q[预览查询与权限检查]
+    Q --&gt; E[执行受约束工具]
+    E --&gt; V[验证结果与证据]
+    V --&gt;|通过| A[形成回答]
+    V --&gt;|空结果或错误| R[诊断并选择恢复路径]
+    R --&gt; P
+</code></pre>
+<p>一组更清楚的工具可能包括：</p>
+<ul>
+<li><code>list_sources</code>：发现当前可访问的数据源；</li>
+<li><code>describe_entity</code>：读取字段、关系、指标和样例；</li>
+<li><code>preview_query</code>：检查扫描范围、权限和预期成本；</li>
+<li><code>execute_query</code>：执行只读或明确授权的操作；</li>
+<li><code>verify_result</code>：复算关键指标、检查行数和数据快照；</li>
+<li><code>recover_query</code>：根据结构化错误生成安全替代路径。</li>
+</ul>
+<p>工具拆分不是为了增加调用次数，而是给关键动作设置检查点。高风险写操作还需要幂等键、事务、确认和回读，防止网络重试产生重复修改。</p>
+<h2 id="第三层给-agent-提供领域原语"><a class="markdownIt-Anchor" href="#第三层给-agent-提供领域原语"></a> 第三层：给 Agent 提供领域原语</h2>
+<p>SQL 擅长过滤、连接和聚合，却不适合表达所有数据任务。</p>
+<p>例如，“找出过去一年中温度先快速上升、随后维持平台的时间段”，包含连续形态、相对速度和局部分布。把“快速”硬编码成某个固定斜率，可能在不同设备和季节下完全失效。</p>
+<p>更合理的方式是先用数据库中的索引和统计特征搜索候选窗口，再在原始信号上用时序算子精确验证。这种“先搜索、后验证”的分工说明，Agent-Friendly 数据库不仅要暴露底层记录，还应提供适合领域任务的操作把手。</p>
+<table>
+<thead>
+<tr>
+<th>数据问题</th>
+<th>可能需要的专用原语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由文本中的日期、实体和类别</td>
+<td>日期解析、实体识别、结构化抽取</td>
+</tr>
+<tr>
+<td>时序趋势、周期和异常窗口</td>
+<td>趋势、变点、相似片段、周期检测</td>
+</tr>
+<tr>
+<td>跨库脏连接键</td>
+<td>标准化、模糊匹配、实体解析</td>
+</tr>
+<tr>
+<td>大规模聚合与比较</td>
+<td>聚合下推、分区统计、近似预览</td>
+</tr>
+</tbody>
+</table>
+<p>如果系统只给 Agent SQL 和一个通用编程环境，Agent 会重复实现这些操作，也更容易在正则、边界条件和数据规模上犯错。把稳定能力封装成受测试的原语，能让模型把注意力放在计划和解释上。</p>
+<h2 id="第四层结果必须自带证据"><a class="markdownIt-Anchor" href="#第四层结果必须自带证据"></a> 第四层：结果必须自带证据</h2>
+<p>对人类用户来说，一个数字常常已经像答案；对 Agent 系统来说，它还需要说明这个数字怎样得到。</p>
+<p>一份可审计的查询结果可以同时返回：数据快照、查询或执行计划、涉及的表和字段、时间范围、扫描规模、过滤条件、聚合口径、验证器结果，以及关键记录或证据包的位置。</p>
+<p>这样做有三个好处：</p>
+<ol>
+<li>Agent 能在回答前自查单位、范围和空结果。</li>
+<li>人可以判断结论是否使用了正确数据，而不只看语言解释。</li>
+<li>同一问题可以在固定快照上重放，区分数据变化和模型变化。</li>
+</ol>
+<p>证据不等于把全部数据库内容塞进上下文。系统应该返回紧凑摘要和稳定引用，需要时再按引用读取原始片段。</p>
+<h2 id="第五层错误必须可以行动"><a class="markdownIt-Anchor" href="#第五层错误必须可以行动"></a> 第五层：错误必须可以行动</h2>
+<p>传统数据库错误常面向工程师设计。Agent 收到一大段异常文本后，可能盲目改写查询，也可能重复执行同一个失败动作。</p>
+<p>更适合 Agent 的错误应当结构化表达：错误类型、失败阶段、是否可重试、建议动作、剩余预算和当前状态。例如，明确区分：</p>
+<ul>
+<li>字段不存在，需要重新发现 schema；</li>
+<li>权限不足，应停止并请求授权；</li>
+<li>扫描预算超限，应缩小时间范围或先做预览；</li>
+<li>空结果已被验证，可能需要澄清用户意图；</li>
+<li>查询语法失败，可以在不改变业务口径的前提下修复；</li>
+<li>外部写入状态不明，必须先回读，不能直接重试。</li>
+</ul>
+<p>恢复能力不意味着 Agent 永远给出答案。有时最正确的行为是停止，并清楚说明缺少什么数据、权限或业务定义。</p>
+<h2 id="一个最小的-agent-数据契约"><a class="markdownIt-Anchor" href="#一个最小的-agent-数据契约"></a> 一个最小的 Agent 数据契约</h2>
+<p>Agent-Friendly 不要求一开始建设庞大的平台。可以先为关键任务提供一份最小契约：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">data_contract:</span><br>  <span class="hljs-attr">source:</span> <span class="hljs-string">数据源与固定快照</span><br>  <span class="hljs-attr">entities:</span> <span class="hljs-string">实体、关系与主键</span><br>  <span class="hljs-attr">freshness:</span> <span class="hljs-string">更新时间与适用范围</span><br><br><span class="hljs-attr">metric_contract:</span><br>  <span class="hljs-attr">definition:</span> <span class="hljs-string">指标的业务定义</span><br>  <span class="hljs-attr">unit:</span> <span class="hljs-string">单位与时区</span><br>  <span class="hljs-attr">aggregation:</span> <span class="hljs-string">聚合、对齐和缺失值规则</span><br><br><span class="hljs-attr">tool_contract:</span><br>  <span class="hljs-attr">allowed_actions:</span> <span class="hljs-string">允许的读取、预览、执行和验证动作</span><br>  <span class="hljs-attr">scope:</span> <span class="hljs-string">可访问对象与数据范围</span><br>  <span class="hljs-attr">budget:</span> <span class="hljs-string">扫描量、调用次数和时间限制</span><br>  <span class="hljs-attr">verify:</span> <span class="hljs-string">结果回读与证据要求</span><br></code></pre></td></tr></table></figure>
+<p>契约的作用，是把“Agent 算错了”和“系统没有说清楚”分开。没有明确契约，失败很难归因，也很难持续改进。</p>
+<h2 id="agent-friendly-不是什么"><a class="markdownIt-Anchor" href="#agent-friendly-不是什么"></a> Agent-Friendly 不是什么</h2>
+<p>第一，它不是取消 SQL。SQL 仍然是稳定、强大且可优化的执行语言，Agent-Friendly 做的是补充语义发现、领域原语和验证接口。</p>
+<p>第二，它不是开放更多权限。相反，越方便机器行动，越需要最小权限、预算、预览、幂等和审计。</p>
+<p>第三，它不是把所有数据放进模型上下文。Agent 应主动检索、逐步缩小范围，让数据库继续承担过滤、连接、聚合和存储。</p>
+<p>第四，它不是保证 Agent 永远正确。专用语义层和工具能够降低部分错误，但规划、实现和领域判断仍需评测与人工监督。</p>
+<h2 id="一次数据问答的完整验收"><a class="markdownIt-Anchor" href="#一次数据问答的完整验收"></a> 一次数据问答的完整验收</h2>
+<p>假设用户问：“比较两组设备上月的异常率，并解释差异。”可靠的 Agent 不应直接生成一条大查询然后写结论，而应：</p>
+<ol>
+<li>确认“异常率”的指标定义、设备范围、时区和上月边界。</li>
+<li>发现两组设备对应的数据源和跨表关系。</li>
+<li>预览查询计划、扫描规模和权限。</li>
+<li>执行聚合，并把关键中间结果绑定到固定快照。</li>
+<li>检查缺失数据、样本量差异和异常定义是否一致。</li>
+<li>用替代计算或验证器复算关键数字。</li>
+<li>区分“观察到差异”和“已经证明原因”，避免把相关性写成因果。</li>
+<li>返回结论、证据、限制和可复现入口。</li>
+</ol>
+<p>这时，数据库不只是被动存储，还是 Agent 的语义来源、执行环境和证据基础设施。</p>
+<h2 id="建设-agent-friendly-数据系统前的-30-秒检查"><a class="markdownIt-Anchor" href="#建设-agent-friendly-数据系统前的-30-秒检查"></a> 建设 Agent-Friendly 数据系统前的 30 秒检查</h2>
+<ul>
+<li>Agent 能否发现自己有权访问哪些数据？</li>
+<li>字段、指标、单位、时区和业务口径是否机器可读？</li>
+<li>数据版本、更新时间和适用范围是否明确？</li>
+<li>是否提供预览、成本估算和最小权限工具？</li>
+<li>常见领域任务是否有受测试的专用原语？</li>
+<li>查询结果能否绑定到来源、快照、计划和验证结果？</li>
+<li>错误是否区分可重试、需澄清、需授权和必须停止？</li>
+<li>写操作是否支持幂等、事务、确认和回读？</li>
+<li>是否记录工具调用、状态变化、预算和恢复过程？</li>
+<li>人类责任人能否检查并否决高风险操作？</li>
+</ul>
+<p>未来的数据系统不仅要被应用程序调用，也会被能够规划、试探、修正和解释的 Agent 使用。接口的重点因此会从“能不能执行查询”扩展为“能不能让机器正确理解、受控行动并证明结果”。</p>
+<p>真正的 Agent-Friendly，不是让 Agent 更自由，而是让它<strong>更少猜测、更容易验证、更安全地失败</strong>。</p>
+<h2 id="延伸阅读"><a class="markdownIt-Anchor" href="#延伸阅读"></a> 延伸阅读</h2>
+<ul>
+<li>Zhao Tan 等：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2602.17001">Sonar-TS: Search-Then-Verify Natural Language Querying for Time Series Databases</a>。</li>
+<li>Ruiying Ma 等：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2603.20576">Can AI Agents Answer Your Data Questions? A Benchmark for Data Agents</a>。</li>
+</ul>
+<hr />
+<p><a href="/ai-work/ai-work-11-ai-science/">上一篇：AI 做科研，真正难的不是生成一个假设</a> · <a href="/ai-work/ai-work-series/">系列目录</a></p>

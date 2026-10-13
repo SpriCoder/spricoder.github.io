@@ -1,0 +1,63 @@
+<h2 id="aop"><a class="markdownIt-Anchor" href="#aop"></a> AOP</h2>
+<ol>
+<li>AOP是Spring框架的一个重要内容</li>
+</ol>
+<h1 id="1-什么是aop"><a class="markdownIt-Anchor" href="#1-什么是aop"></a> 1. 什么是AOP</h1>
+<ol>
+<li>AOP(aspect oriented programming):面向切面编程，也就是通过预编译的方法和运行期动态代理实现程序功能的统一维护的一项技术。</li>
+<li>AOP是OOP的延续，本身作为Spring框架中的一个重要内容，是函数式编程的一种衍生范型。</li>
+</ol>
+<h2 id="11-什么是切面"><a class="markdownIt-Anchor" href="#11-什么是切面"></a> 1.1. 什么是切面</h2>
+<ol>
+<li>编程中，对象与对象之间，方法与方法之间，模块与模块之间都是切面</li>
+<li>将重复的部分提取出来，进行实现，然后将其作为具体的实现注入到框架中去</li>
+</ol>
+<h1 id="2-aop的正式的相关概念"><a class="markdownIt-Anchor" href="#2-aop的正式的相关概念"></a> 2. AOP的正式的相关概念</h1>
+<h2 id="21-aspect切面"><a class="markdownIt-Anchor" href="#21-aspect切面"></a> 2.1. Aspect(切面)</h2>
+<p>其声明类似于Java中的类声明，在Aspect中会包含一些Pointcut以及向对应的Advice</p>
+<h2 id="22-joint-point连接点"><a class="markdownIt-Anchor" href="#22-joint-point连接点"></a> 2.2. Joint point(连接点)</h2>
+<p>表明程序中有明确定义的点，典型的包括方法调用，对类成员的访问以及异常处理程序块的执行，自身可以嵌套Joint point</p>
+<ol>
+<li>多种类型:
+<ol>
+<li>构造方法的调用</li>
+<li>字段的设置和获取</li>
+<li>方法的调用</li>
+<li>方法的执行：<strong>spring支持</strong></li>
+<li>异常的处理执行</li>
+<li>类的初始化</li>
+</ol>
+</li>
+</ol>
+<h2 id="23-pointcut切点"><a class="markdownIt-Anchor" href="#23-pointcut切点"></a> 2.3. Pointcut(切点)</h2>
+<p>表示一组joint point，这些joint point可以通过逻辑关系、统配、正则表达式等方式集中起来，定义了相应的Advice将要发生的位置。</p>
+<h2 id="24-advice增强"><a class="markdownIt-Anchor" href="#24-advice增强"></a> 2.4. Advice(增强)</h2>
+<p>Advice定义了在Pointcut里面定义的程序点具体要做的操作，它通过before、after和around来区别是在每个joint point之前还是之后还是代替其他代码</p>
+<ol>
+<li>类型:
+<ol>
+<li><code>before advice</code>:在join point前被执行的advice，除非出现异常，否则不能阻止join point的执行。</li>
+<li><code>after return advice</code>:在一个join point正常返回后执行的advice</li>
+<li><code>after throwing advice</code>:在一个join point抛出异常后执行的advice</li>
+<li><code>after(final) advice</code>:无论一个join point是否异常都会被执行的advice</li>
+<li><code>around advice</code>:在join point前后都会执行的advice，这个是最常见的</li>
+<li><code>introduction</code>:为原来的对象增加新的属性和方法</li>
+</ol>
+</li>
+</ol>
+<h2 id="25-target目标对象"><a class="markdownIt-Anchor" href="#25-target目标对象"></a> 2.5. Target(目标对象)</h2>
+<p>织入Advice的目标对象</p>
+<h2 id="26-weaving织入"><a class="markdownIt-Anchor" href="#26-weaving织入"></a> 2.6. Weaving(织入)</h2>
+<p>将Aspect和其他对象关联起来，创建Advice odject的过程</p>
+<h1 id="3-logger"><a class="markdownIt-Anchor" href="#3-logger"></a> 3. Logger</h1>
+<ol>
+<li>Logging框架写log步骤：
+<ol>
+<li>引入Logger类和Logger工厂类</li>
+<li>声明Logger</li>
+<li>记录日志</li>
+</ol>
+</li>
+</ol>
+<h2 id="31-logger参考"><a class="markdownIt-Anchor" href="#31-logger参考"></a> 3.1. logger参考</h2>
+<p><a href ="https://blog.csdn.net/zalan01408980/article/details/79653386">Logger打印日志</a></p>

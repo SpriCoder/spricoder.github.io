@@ -1,0 +1,102 @@
+<p>玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性</p>
+<p>文件加载到 IoTDB 后，怎样确认再次导出的数据缺少变化？本文使用同一个 TsFile-Cli 读取原始文件与导出文件，比较表结构、字段计数和明细记录。</p>
+<p>本篇回到导读提出的“可验证”价值：比较加载前后的结构与明细，留下可复查依据。</p>
+<p>机房联合排查结束后，团队需要确认交给设备供应商的数据与进入 IoTDB 前的记录相符。本文把前两篇文章串成一个可重复的验收流程。TsFile 提供共同载体，IoTDB 的加载和导出工具负责数据库侧流转，TsFile-Cli 负责读取文件并为比较提供输入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">CSV<br>  -&gt; TsFile-Cli write -&gt; original.tsfile<br>  -&gt; IoTDB LOAD -&gt; SQL table<br>  -&gt; export-data.sh -&gt; exported.tsfile<br>  -&gt; TsFile-Cli read -&gt; logical comparison<br></code></pre></td></tr></table></figure>
+<p>这里要先区分两种“一致”：</p>
+<ul>
+<li><strong>物理一致</strong>：两个 <code>.tsfile</code> 的二进制字节完全相同；</li>
+<li><strong>逻辑一致</strong>：用同一读取方式得到的表名、schema、行和字段值一致。</li>
+</ul>
+<p>IoTDB 的加载和导出会接管内部布局，所以本文的成功标准是逻辑一致，而属于物理字节相同。</p>
+<h2 id="1-固定输入与数据"><a class="markdownIt-Anchor" href="#1-固定输入与数据"></a> 1. 固定输入与数据</h2>
+<p>本文命令中的 distribution 和 CLI 路径均为占位符，请替换为本机实际路径。</p>
+<p>使用与专栏前文相同的 4 行数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csv">time,site,rack,temperature,humidity,status<br>1725148800000,beijing,rack-a,24.6,46.0,ok<br>1725148860000,shanghai,rack-b,28.9,68.5,warn<br>1725148920000,beijing,rack-a,25.1,47.2,ok<br>1725148980000,shanghai,rack-b,29.4,70.1,warn<br></code></pre></td></tr></table></figure>
+<p>配套数据约定为 Unix 毫秒时间戳、摄氏温度和相对湿度百分比（%）。这些单位来自数据说明；Schema 中的 DOUBLE 类型本身需要配套说明这层业务解释。</p>
+<p>以下代码块在同一个 Bash 会话中依次执行，沿用第 01 篇已创建的 sensors.tsfile。准备 jq，并设置路径与失败即停止的行为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br>TSFILE_CLI=/absolute/path/to/tsfile-cli<br>IOTDB_DIST=/absolute/path/to/apache-iotdb-2.x-all-bin<br>DEMO_DIR=/absolute/path/to/tsfile-cli-demo<br>ORIGINAL_TSFILE=<span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/sensors.tsfile&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>原始文件与导出文件的逻辑 Schema、字段计数和明细 CSV 一致，二进制 SHA-256 不同。</p>
+<h2 id="2-保存原始文件的比较基线"><a class="markdownIt-Anchor" href="#2-保存原始文件的比较基线"></a> 2. 保存原始文件的比较基线</h2>
+<p>先从原始文件导出一份稳定的逻辑表示。CSV 适合人工查看和 <code>cmp</code>，NDJSON 适合结构化工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">CHECK_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/checks.XXXXXX&quot;</span>)<br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.meta.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.schema.ndjson&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> count -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.count.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.rows.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.rows.ndjson&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>最小基线应满足：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">jq -e -s <span class="hljs-string">&#x27;length == 4&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.rows.ndjson&quot;</span> &gt; /dev/null<br><br></code></pre></td></tr></table></figure>
+<p>meta/schema 描述文件结构，count 检查字段点数，cat 读取明细。分开保存结果，便于区分结构、计数与数据读取问题；本例的 4 行断言来自完整读取后的 NDJSON，不用 CSV 的物理行数替代记录数。</p>
+<h2 id="3-加载并查询"><a class="markdownIt-Anchor" href="#3-加载并查询"></a> 3. 加载并查询</h2>
+<p>使用缺少其他数据、验证期间停止写入的专用演示数据库。如果已完成第 05 篇加载，直接执行查询验收；否则创建数据库并加载。已有数据混入时，应换用新的演示数据库，并同步下文数据库名，应清理未知数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br>./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;create database if not exists tsfile_cli_demo&quot;</span><br></code></pre></td></tr></table></figure>
+<p>加载时保留源文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;load &#x27;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&#x27; with (&#x27;database&#x27;=&#x27;tsfile_cli_demo&#x27;, &#x27;on-success&#x27;=&#x27;none&#x27;)&quot;</span><br></code></pre></td></tr></table></figure>
+<p>先在数据库中做行数和字段计数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;select count(*) as rows,</span><br><span class="hljs-string">             count(temperature) as temperature_points</span><br><span class="hljs-string">      from tsfile_cli_demo.sensors&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这里应得到 <code>4</code> 和 <code>4</code>。再检查时间范围和极值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;select min(time) as first_time,</span><br><span class="hljs-string">             max(time) as last_time,</span><br><span class="hljs-string">             min(temperature) as min_temperature,</span><br><span class="hljs-string">             max(temperature) as max_temperature</span><br><span class="hljs-string">      from tsfile_cli_demo.sensors&quot;</span><br></code></pre></td></tr></table></figure>
+<p>应对应源数据中的首尾时间 <code>1725148800000</code>、<code>1725148980000</code>，温度范围 <code>24.6</code> 到 <code>29.4</code>。这些聚合用于快速发现问题，但能在导出之前快速发现明显丢行或类型问题。</p>
+<h2 id="4-从-iotdb-导出新文件"><a class="markdownIt-Anchor" href="#4-从-iotdb-导出新文件"></a> 4. 从 IoTDB 导出新文件</h2>
+<p>每次新建独立空目录，避免把以前生成的文件误认为本次结果，然后执行 table-model 导出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">EXPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/export.XXXXXX&quot;</span>)<br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br>tools/export-data.sh \<br>  -h 127.0.0.1 -p 6667 \<br>  -u root -pw root \<br>  -ft tsfile \<br>  -sql_dialect table \<br>  -db tsfile_cli_demo \<br>  -table sensors \<br>  -t <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>导出成功后取得结果文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -- <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span>/*.tsfile<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 1 ] || [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&#x27;本例要求恰好一个导出 TsFile；请检查导出日志和全部文件。&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>EXPORTED_TSFILE=<span class="hljs-variable">$1</span><br><br></code></pre></td></tr></table></figure>
+<p>这里缺少假设默认文件名，但为四行示例显式断言单个文件。一般数据集可能产生多个文件，必须逐个读取并汇总验证；仅取第一个文件会遗漏数据。</p>
+<h2 id="5-用同一读取器比较结果"><a class="markdownIt-Anchor" href="#5-用同一读取器比较结果"></a> 5. 用同一读取器比较结果</h2>
+<p>为了避免把“读取器差异”混入比较，原始文件和导出文件都用同一个 TsFile-Cli、同一个表名、同一个 CSV 格式读取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.meta.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.schema.ndjson&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> count -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.count.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.rows.csv&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>先从结构化 Schema 输出中提取逻辑属性，再比较字段点数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> side <span class="hljs-keyword">in</span> original exported; <span class="hljs-keyword">do</span><br>  jq -e -s <span class="hljs-string">&#x27;</span><br><span class="hljs-string">    if length == 0 or any(.[];</span><br><span class="hljs-string">      (has(&quot;model&quot;) and has(&quot;object&quot;) and has(&quot;column&quot;) and</span><br><span class="hljs-string">       has(&quot;category&quot;) and has(&quot;data_type&quot;)) | not)</span><br><span class="hljs-string">    then error(&quot;Schema 输出为空或缺少逻辑属性&quot;)</span><br><span class="hljs-string">    else map(&#123;model, object, column, category, data_type&#125;) end</span><br><span class="hljs-string">  &#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/<span class="hljs-variable">$side</span>.schema.ndjson&quot;</span> \<br>    &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/<span class="hljs-variable">$side</span>.schema.logical.json&quot;</span><br><span class="hljs-keyword">done</span><br>cmp <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.schema.logical.json&quot;</span> \<br>    <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.schema.logical.json&quot;</span><br>cmp <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.count.csv&quot;</span> \<br>    <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.count.csv&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>逻辑 Schema 比较保留模型、对象、列名、列类别、类型及其顺序，排除 encoding 和 compression 等物理属性。上述 NDJSON 解析能够正确处理包含特殊字符的字段名，采用结构化字段解析。字段计数相同仍需结合明细比较，还需要比较明细 CSV：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmp <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.rows.csv&quot;</span> \<br>    <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.rows.csv&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>命令返回 <code>0</code> 表示逐字一致；非零则说明至少有一处表头、列顺序、时间格式、行顺序或字段值不同。此时请直接改成“只比较行数”，而应先定位差异：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">diff -u <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/original.rows.csv&quot;</span> \<br>        <span class="hljs-string">&quot;<span class="hljs-variable">$CHECK_DIR</span>/exported.rows.csv&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>本例使用同一读取器、相同列顺序与展示设置进行严格比较。逐字相同是本例的一项强验收条件；不同可以然意味着逻辑数据改变，也可能来自行序或序列化差异。一般数据集若允许忽略行序，应使用可靠的 CSV/JSON 解析器按完整记录及 (site, rack, time) 身份进行规范化，并明确空值、重复记录和浮点数的比较规则。带引号、逗号或换行的 CSV 应通过简单的 cut、删表头或逐行排序得到通用逻辑比较。浮点容差应事先约定；应为了通过验证临时放宽。</p>
+<h2 id="6-为什么二进制-sha-应作为唯一标准"><a class="markdownIt-Anchor" href="#6-为什么二进制-sha-应作为唯一标准"></a> 6. 为什么二进制 SHA 应作为唯一标准</h2>
+<p>可以记录两个文件的 SHA-256：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">shasum -a 256 <span class="hljs-string">&quot;<span class="hljs-variable">$ORIGINAL_TSFILE</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>此前实跑中，两个 SHA-256 不同。这是预期现象：导出工具根据 IoTDB 查询结果重新写文件，文件压缩、页边界、元数据布局和内部顺序都可能发生变化。即使所有逻辑数据完全一致，二进制也可以相同。</p>
+<p>源文件与数据库内部文件未必一一对应，因此应将源文件与导出结果按相同的读取方式比较。</p>
+<p>推荐把证据分成三层：</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>检查</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件可读</td>
+<td><code>meta/schema/count</code></td>
+<td>模型、schema、统计可解析</td>
+</tr>
+<tr>
+<td>数据逻辑</td>
+<td><code>cat</code> 后 <code>cmp</code>/规范化比较</td>
+<td>行和字段值一致</td>
+</tr>
+<tr>
+<td>数据库承接</td>
+<td>SQL <code>count</code>、时间范围、抽样查询</td>
+<td>实例中可查询</td>
+</tr>
+</tbody>
+</table>
+<p>文件检查、明细比较和数据库查询各自回答不同的问题，验收时一并保留结果。</p>
+<h2 id="7-将验收纳入自动化流程"><a class="markdownIt-Anchor" href="#7-将验收纳入自动化流程"></a> 7. 将验收纳入自动化流程</h2>
+<p>将前述步骤按顺序放入同一个 Bash 脚本，并保留开头的 set -eu 和 set -o pipefail。每次运行分别创建新的 CHECK_DIR 和 EXPORT_DIR，导出成功且文件数量符合本例预期后才回读，所有读取完成后才比较逻辑 Schema、字段计数和明细。任何步骤失败，都应保留该次目录和诊断信息供排查。</p>
+<p>如果需要汇总多个导出文件，应显式扩展文件清单、逐文件读取与记录合并流程；本篇单文件断言应直接删除后继续沿用单文件比较。SQL 回读仍是独立验收环节，文件比较应替代实例侧的查询检查。</p>
+<h2 id="8-如何解释验证结果"><a class="markdownIt-Anchor" href="#8-如何解释验证结果"></a> 8. 如何解释验证结果</h2>
+<p>本例在加载、查询和导出期间保持演示数据稳定。全部检查通过后，可以记录以下结果：</p>
+<p>这项结果适用于本例固定的数据和查询范围。</p>
+<ul>
+<li>具体兼容范围需要结合目标实例和数据类型逐项检查；</li>
+<li>IoTDB 会保留原文件的物理布局或 SHA-256；</li>
+<li>远程集群可以直接访问客户端本地路径；</li>
+<li><code>export-tsfile.sh</code> 在未启用 Subscription 的实例上也能工作；</li>
+<li>具有过滤、聚合或复杂表达式的 SQL 都能无损还原为明细 TsFile。</li>
+</ul>
+<h2 id="继续阅读"><a class="markdownIt-Anchor" href="#继续阅读"></a> 继续阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/MVCKdL1suos4vHxk2vPcE7Udn4j">上一篇：从 IoTDB 导出 table-model TsFile</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/BSGhd65zZoZSQqxVMoHc9xqBnkb">下一篇：AI 如何通过 Skill 可靠访问 TsFile</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/R0Sydx5Klo4cUSxKnB9cgIkAnLb">返回专栏目录</a></p>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p>出现差异时，从字段类型、空值、行序和序列化方式逐项定位。</p>
+<p>将源文件、导出文件、查询结果和比较日志保存在同一运行目录，后续便能重新检查这次往返。</p>

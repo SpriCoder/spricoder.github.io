@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { allPosts, seriesSlug } from '../../lib/posts';
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as string[];
+  return series.map(name => ({ params: { slug: seriesSlug(name) }, props: { name, posts: posts.filter(post => post.series === name).sort((a, b) => (a.series_order ?? 999) - (b.series_order ?? 999) || a.title.localeCompare(b.title, 'zh-CN')) } }));
+}
+const { name, posts } = Astro.props;
+---
+<SiteLayout title={name} description={`${name}专题的文章与阅读顺序。`}>
+  <div class="container"><header class="page-header"><a class="breadcrumb" href="/series/">← 全部专题</a><p class="eyebrow">READ IN ORDER</p><h1>{name}</h1><p>{posts.length} 篇文章 · 按系列顺序阅读</p></header><div class="post-list">{posts.map(post => <PostCard post={post} />)}</div></div>
+</SiteLayout>

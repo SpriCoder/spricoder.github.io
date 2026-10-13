@@ -1,0 +1,28 @@
+<h2 id="lecture3-parser"><a class="markdownIt-Anchor" href="#lecture3-parser"></a> Lecture3-Parser</h2>
+<ol>
+<li><strong>输入</strong>:程序文本/字符串s &amp; <strong>词法单元(token) 的规约</strong></li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec3/1.png" alt="" /></p>
+<ol start="2">
+<li><strong>输出</strong>:词法单元流</li>
+</ol>
+<h1 id="1-语法分析举例"><a class="markdownIt-Anchor" href="#1-语法分析举例"></a> 1. 语法分析举例</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec3/2.png" alt="" /></p>
+<h1 id="2-语法分析阶段的主题"><a class="markdownIt-Anchor" href="#2-语法分析阶段的主题"></a> 2. 语法分析阶段的主题</h1>
+<h2 id="21-上下文无关文法"><a class="markdownIt-Anchor" href="#21-上下文无关文法"></a> 2.1. 上下文无关文法</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec3/3.png" alt="" /></p>
+<ol>
+<li>我们需要递归来提升我们语言的能力。</li>
+</ol>
+<h2 id="22-构建语法分析树"><a class="markdownIt-Anchor" href="#22-构建语法分析树"></a> 2.2. 构建语法分析树</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/lec3/4.png" alt="" /></p>
+<ol>
+<li>自顶向上构造：比较符合直观，但是能力有限</li>
+<li>自底向下构造：Knuth算法</li>
+</ol>
+<h2 id="23-错误恢复"><a class="markdownIt-Anchor" href="#23-错误恢复"></a> 2.3. 错误恢复</h2>
+<ol>
+<li>报错</li>
+<li><strong>恢复</strong>：现在的程序是比较大的，如果直接停止编译则导致有多少错误就需要编译多少次，不合适。</li>
+<li>继续分析</li>
+</ol>

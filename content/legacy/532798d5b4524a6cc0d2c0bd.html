@@ -1,0 +1,54 @@
+<h2 id="exam1-考试题型分析"><a class="markdownIt-Anchor" href="#exam1-考试题型分析"></a> Exam1-考试题型分析</h2>
+<h1 id="1-题型"><a class="markdownIt-Anchor" href="#1-题型"></a> 1. 题型</h1>
+<ol>
+<li>单选 15个 1分</li>
+<li>多选 8个  2分(2个及以上)，全对2分，正确选项的非空子集，1分</li>
+<li>名词 8个  3分 一般是英语的缩写，
+<ol>
+<li>1分是英语全称 CSMA/CD</li>
+<li>1分是中文全称，稍微偏差</li>
+<li>解释描述，内涵或者外延，不要有错误</li>
+</ol>
+</li>
+<li>大题 6-7个
+<ol>
+<li>问答题</li>
+<li>计算题(考点不多)</li>
+</ol>
+</li>
+<li>范围:从第1讲到第11讲PPT内容，补充内容不考</li>
+<li>PPT上出现的网络指令有要求</li>
+</ol>
+<h1 id="2-例题"><a class="markdownIt-Anchor" href="#2-例题"></a> 2. 例题</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Internet-computing/img/exam1/1.png" alt="" /></p>
+<ol>
+<li>求网络号和子网掩码号,全0可以使用</li>
+<li>LAN1 如果没有地址是不行的</li>
+<li>从低地址开始分配，答案不唯一，先取0</li>
+</ol>
+<h2 id="21-过程"><a class="markdownIt-Anchor" href="#21-过程"></a> 2.1. 过程</h2>
+<ol>
+<li>一共9位可用，必然是全0可用，如果不可用则配置150的，一般会写全0可用，如果题目没写就是不可用，除非不用不行</li>
+<li>说91个地址，包含了路由器的地址</li>
+</ol>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tap">000<span class="hljs-number"> 000 </span>000<br>LAN3最大 先分配/24的网:30.138.118.0/24<br>100<span class="hljs-number"> 000 </span>000<br>LAN2 /25的网:30.138.119.0/25<br>110<span class="hljs-number"> 000 </span>000<br>LAN5 /27的网 30.138.119.128/27<br>110<span class="hljs-number"> 100 </span>000<br>偷懒版LAN1和4的做法:<br>111<span class="hljs-number"> 000 </span>000<br>111<span class="hljs-number"> 100 </span>000<br>LAN4、LAN1 /29的网(正常):<br>110<span class="hljs-number"> 100 </span>000 30.138.119.160/29<br>110<span class="hljs-number"> 101 </span>000 30.138.119.168/29<br></code></pre></td></tr></table></figure>
+<h2 id="22-答案"><a class="markdownIt-Anchor" href="#22-答案"></a> 2.2. 答案</h2>
+<ol>
+<li>lan1 3个路由器，至少是/29的网络</li>
+<li>lan2 30.138.119.0/25</li>
+<li>lan3 30.138.118.0/24</li>
+<li>lan4 30.138.119.144/30</li>
+<li>lan5 30.138.119.128/28</li>
+</ol>
+<h1 id="3-关于vlsmcidr用来划分子网的计算"><a class="markdownIt-Anchor" href="#3-关于vlsmcidr用来划分子网的计算"></a> 3. 关于VLSM+CIDR用来划分子网的计算</h1>
+<ul>
+<li>例：13年试卷A第6题，将192.168.20.0/24划分四个区域的子网，区域A有60台主机，区域B有6台主机，区域C有12台主机，区域D有31台主机
+<ul>
+<li><strong>解答：192开头，所以该IP为一个C类地址，最后8位可分割</strong></li>
+<li><strong>对于区域A，需要6位做主机号，所以子网掩码为255.255.255.192 网段为192.168.20.0/26</strong></li>
+<li><strong>对于区域D，需要5位做主机号，后8位为01000000，所以子网掩码为255.255.255.224 ，网段为192.168.20.64/27</strong></li>
+<li><strong>对于区域C，需要4位做主机号，后8位为01100000 所以子网掩码为255.255.255.240， 网段为192.168.20.96/28</strong></li>
+<li><strong>对于区域B，需要3位做主机号，后8位为01110000 所以子网掩码为255.255.255.248 网段为192.168.20.112/29</strong></li>
+</ul>
+</li>
+</ul>

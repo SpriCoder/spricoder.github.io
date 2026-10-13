@@ -1,0 +1,11 @@
+<h1 id="1-酒店管理系统"><a class="markdownIt-Anchor" href="#1-酒店管理系统"></a> 1. 酒店管理系统</h1>
+<h2 id="11-git规范"><a class="markdownIt-Anchor" href="#11-git规范"></a> 1.1. Git规范</h2>
+<p>分支的命名限定在以下范围(master | dev | develop | release | feature/xxx | hotfix/xxx | fix/xxx ) xxx为任意内容</p>
+<p>Eg. 1.feature/酒店信息管理    2.hotfix/订单流程更改</p>
+<p>每次commit时，添加的描述信息需要有一个特定的前缀，限定在以下范围(feat|doc|test|docs|chore|refactor|fix|style| perf): xxx    注意冒号后面有一个空格</p>
+<p>Eg. 1.feat: 查看酒店信息功能完成  2.fix: 浏览酒店bug修复</p>
+<p>以上限定是为了帮助同学们尽早熟悉GitFlow开发模式，关于GitFlow的更多信息，可以参考以下链接或自行谷歌百度</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xirong/my-git/blob/master/git-workflow-tutorial.md#23-gitflow%E5%B7%A5%E4%BD%9C%E6%B5%81">https://github.com/xirong/my-git/blob/master/git-workflow-tutorial.md#23-gitflow%E5%B7%A5%E4%BD%9C%E6%B5%81</a></p>
+<h3 id="111-开发规范"><a class="markdownIt-Anchor" href="#111-开发规范"></a> 1.1.1. 开发规范</h3>
+<p>只有release分支可以进行Test环境部署，clone项目之后新建release分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout -b release<br>git add .<br>git commit -m <span class="hljs-string">&#x27;feat: xxx&#x27;</span><br>git push --set-upstream origin release<br></code></pre></td></tr></table></figure>

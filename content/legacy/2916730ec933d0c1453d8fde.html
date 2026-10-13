@@ -1,0 +1,200 @@
+<h1 id="基准测试工具之你不知道的两三事-8怎样找到并发与批大小的合理区间"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事-8怎样找到并发与批大小的合理区间"></a> 基准测试工具之你不知道的两三事 | 8.怎样找到并发与批大小的合理区间</h1>
+<p>上一篇文章做完公平的性能对比后，很多人会立刻追问：把客户端并发和批大小调到多大，才能得到最好的性能？</p>
+<p>这个问题没有脱离场景的固定答案。并发过低，机器可能没有被充分利用；并发过高，客户端、网络或服务端会开始排队。批次太小，请求开销占比变大；批次太大，单次等待、内存占用和尾部延迟又可能升高。真正要找的不是一个“最大数字”，而是在当前业务约束下，吞吐量、P99、失败数和资源消耗之间的合理区间。</p>
+<p>这一篇继续使用 IoT Benchmark，说明怎样通过受控参数扫描找到这个区间，而不是靠不断把参数调大来“跑分”。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/27129be8f4b64b3186f8e4a6349bdd46.png" alt="在这里插入图片描述" /></p>
+<h3 id="1-先区分哪些参数在控制什么"><a class="markdownIt-Anchor" href="#1-先区分哪些参数在控制什么"></a> 1. 先区分：哪些参数在控制什么？</h3>
+<p>写入压力不是由单个参数决定的。IoT Benchmark 中，下面几项共同决定客户端向数据库发起请求的方式：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>它控制什么</th>
+<th>容易产生的误解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATA_CLIENT_NUMBER</code></td>
+<td>负责读写数据的客户端数量</td>
+<td>它表示测试客户端并发，不等于真实设备总数。</td>
+</tr>
+<tr>
+<td><code>BATCH_SIZE_PER_WRITE</code></td>
+<td>每批每个设备写入的数据行数</td>
+<td>它改变的是批量粒度，不是设备或测点数量。</td>
+</tr>
+<tr>
+<td><code>DEVICE_NUM_PER_WRITE</code></td>
+<td>一个批次中写入的设备数量</td>
+<td>它会和设备数、客户端分配方式一起影响单批数据量。</td>
+</tr>
+<tr>
+<td><code>OP_MIN_INTERVAL</code></td>
+<td>每个 loop 结束后的最小操作间隔</td>
+<td>它限制的是 loop 节奏，不是每一个 batch 的间隔。</td>
+</tr>
+<tr>
+<td><code>INTERVAL_BETWEEN_WRITE_BATCH</code></td>
+<td>同一 loop 内每次 batch 写入后的最小间隔</td>
+<td>它可以让写入请求在时间上分布得更均匀。</td>
+</tr>
+</tbody>
+</table>
+<p>对写入而言，单批数据点规模与 <code>DEVICE_NUM_PER_WRITE</code>、<code>SENSOR_NUMBER</code>、<code>BATCH_SIZE_PER_WRITE</code> 共同相关。也就是说，单独提高批大小时，实际增加的并不只是“行数”，还会放大到每台设备的测点数和每批设备数。</p>
+<p>因此，扫描参数时不要同时把所有旋钮调大。否则，即使吞吐量变化了，也不知道它来自更多客户端、更大的批次，还是更密集的发压节奏。</p>
+<h3 id="2-合理区间不是最高吞吐量对应的单点"><a class="markdownIt-Anchor" href="#2-合理区间不是最高吞吐量对应的单点"></a> 2. 合理区间，不是最高吞吐量对应的单点</h3>
+<p>假设不断提高 <code>DATA_CLIENT_NUMBER</code>：开始时，吞吐量可能上升；达到某个阶段后，增长会变慢；再继续提高时，P99 可能快速上升，甚至出现失败。这条曲线中的“最高吞吐量”不一定是业务的最佳选择。</p>
+<p>例如，一个实时采集系统通常会更关心：在设备持续写入时，尾部延迟是否稳定、是否存在失败，以及是否给查询和其他业务预留资源。此时，吞吐量已经接近平台区、但 P99 仍平稳的一段，往往比峰值点更适合作为生产配置候选。</p>
+<p>图中的“下一档”不需要预先规定为某个固定数值。实践中可以从较小值开始，以倍增或其他有规律的方式扩大候选范围；关键是每一档都在同一环境和同一负载下重复运行。</p>
+<h3 id="3-先单因素扫描再做小范围组合"><a class="markdownIt-Anchor" href="#3-先单因素扫描再做小范围组合"></a> 3. 先单因素扫描，再做小范围组合</h3>
+<p>最容易解释的做法是分两步进行。</p>
+<p>第一步，只扫描客户端并发。固定设备数、测点数、批大小、写入间隔和乱序比例，仅改变 <code>DATA_CLIENT_NUMBER</code>。这样可以观察并发提升何时不再带来稳定收益。</p>
+<p>第二步，只扫描批大小。把客户端数固定在第一步选出的候选区间内，仅改变 <code>BATCH_SIZE_PER_WRITE</code>。这时关注的重点从“还能否提高吞吐”变成“更大的单批请求是否开始拉高 P99 或造成失败”。</p>
+<p>只有在这两步之后，才值得在候选区间附近进行少量组合测试。例如选取两个相邻客户端数和两个相邻批大小，形成一个小矩阵，而不是一开始就穷举所有可能值。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>唯一变量</th>
+<th>保持不变</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>并发扫描</td>
+<td><code>DATA_CLIENT_NUMBER</code></td>
+<td>数据规模、批大小、间隔、乱序和环境</td>
+<td>找到并发收益趋缓或延迟恶化的位置。</td>
+</tr>
+<tr>
+<td>批大小扫描</td>
+<td><code>BATCH_SIZE_PER_WRITE</code></td>
+<td>候选客户端数、数据规模、间隔、乱序和环境</td>
+<td>找到请求开销与单批等待之间的平衡。</td>
+</tr>
+<tr>
+<td>小矩阵验证</td>
+<td>客户端数与批大小的少数候选组合</td>
+<td>数据规模、间隔、乱序和环境</td>
+<td>验证候选区间在组合下仍稳定。</td>
+</tr>
+</tbody>
+</table>
+<p>这种顺序比一次跑完整网格更省时间，也更容易说明为什么最后选择某一组配置。</p>
+<h3 id="4-一份最小参数扫描配置"><a class="markdownIt-Anchor" href="#4-一份最小参数扫描配置"></a> 4. 一份最小参数扫描配置</h3>
+<p>下面的配置只展示哪些参数通常需要被纳入扫描，不是通用性能推荐值。开始扫描前，应先把数据规模和写入负载固定下来。</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-comment"># 本轮只扫描 DATA_CLIENT_NUMBER，其他值保持不变</span><br><span class="hljs-attr">DATA_CLIENT_NUMBER</span><span class="hljs-operator">=</span>4<br><span class="hljs-attr">BATCH_SIZE_PER_WRITE</span><span class="hljs-operator">=</span>100<br><span class="hljs-attr">DEVICE_NUM_PER_WRITE</span><span class="hljs-operator">=</span>1<br><br><span class="hljs-comment"># 不额外限制 loop 与 batch 的发起间隔</span><br><span class="hljs-attr">OP_MIN_INTERVAL</span><span class="hljs-operator">=</span>0<br><span class="hljs-attr">INTERVAL_BETWEEN_WRITE_BATCH</span><span class="hljs-operator">=</span>0<br></code></pre></td></tr></table></figure>
+<p>当扫描并发时，可以为每个候选值保留一条记录；当扫描批大小时，重新固定客户端数。记录表不需要复杂，重点是能回看每一轮到底改变了什么：</p>
+<table>
+<thead>
+<tr>
+<th>运行编号</th>
+<th>唯一变量</th>
+<th>值</th>
+<th>吞吐量</th>
+<th>P99</th>
+<th>失败数</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>concurrency-01</td>
+<td><code>DATA_CLIENT_NUMBER</code></td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>其余配置固定。</td>
+</tr>
+<tr>
+<td>concurrency-02</td>
+<td><code>DATA_CLIENT_NUMBER</code></td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>其余配置固定。</td>
+</tr>
+<tr>
+<td>batch-01</td>
+<td><code>BATCH_SIZE_PER_WRITE</code></td>
+<td>待填</td>
+<td>待测</td>
+<td>待测</td>
+<td>待测</td>
+<td>客户端数已固定。</td>
+</tr>
+</tbody>
+</table>
+<p>表中的“待填”并不是结论缺失，而是提醒测试者不要在没有实际运行时先写入结果。真实测试完成后，应同时保存对应的完整配置和日志位置。</p>
+<h3 id="5-怎样读出已经到头了"><a class="markdownIt-Anchor" href="#5-怎样读出已经到头了"></a> 5. 怎样读出“已经到头了”？</h3>
+<p>参数扫描的结果通常会出现以下几种形态：</p>
+<table>
+<thead>
+<tr>
+<th>观察到的变化</th>
+<th>更可能意味着什么</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>吞吐量持续上升，P99 与失败数稳定</td>
+<td>当前负载下仍有余量</td>
+<td>可以测试下一档参数。</td>
+</tr>
+<tr>
+<td>吞吐量增幅变小，P99 仍稳定</td>
+<td>接近吞吐平台区</td>
+<td>在当前档与前一档之间选择更符合业务资源预算的配置。</td>
+</tr>
+<tr>
+<td>吞吐量几乎不再提升，P99 明显升高</td>
+<td>排队或资源争用开始显现</td>
+<td>不再单纯加压，检查日志和资源状态。</td>
+</tr>
+<tr>
+<td>吞吐量下降或出现失败</td>
+<td>当前参数已超过某一环节的承受范围</td>
+<td>回退到稳定档，定位失败原因后再测试。</td>
+</tr>
+<tr>
+<td>不同轮次差异很大</td>
+<td>环境、负载或系统状态尚未稳定</td>
+<td>回到基线，确认变量是否真的被固定。</td>
+</tr>
+</tbody>
+</table>
+<p>这些判断仍然需要结合服务端日志、CPU、内存、网络和存储状态。比如吞吐量平台区可能来自服务端瓶颈，也可能只是客户端无法再更快地生成或发送请求；仅看一张结果矩阵无法直接区分。</p>
+<h3 id="6-给生产配置留出余量"><a class="markdownIt-Anchor" href="#6-给生产配置留出余量"></a> 6. 给生产配置留出余量</h3>
+<p>基准测试可以把系统推到极限，生产配置却不一定应该停在极限点。现实系统还要面对查询、后台任务、网络波动、故障恢复和未来的负载增长。</p>
+<p>因此，从扫描中选择配置时，应优先考虑下面三点：</p>
+<ol>
+<li>在目标业务负载下，写入和必要查询的 P99 是否仍可接受？</li>
+<li>是否连续多轮没有失败，而不是恰好有一次成功？</li>
+<li>是否还保留了应对峰值和其他业务任务的资源余量？</li>
+</ol>
+<p>这也是为什么“最高吞吐量”与“最合适的生产配置”经常不是同一个答案。前者是在回答系统极限，后者是在回答系统怎样长期、稳定地服务业务。</p>
+<h3 id="7-小结"><a class="markdownIt-Anchor" href="#7-小结"></a> 7. 小结</h3>
+<p>并发与批大小没有放之四海皆准的最佳值。正确的做法是先固定工作负载与环境，分别扫描客户端数和批大小，记录吞吐量、P99、失败数与资源状态，再在候选区间做少量组合验证。</p>
+<p>当吞吐量已接近平台区，而延迟、失败数和资源余量仍在业务可接受范围内，就得到了比“峰值参数”更有价值的答案。下一篇将继续讨论：怎样模拟乱序，让测试进一步接近现场数据到达方式。</p>
+<h3 id="系列文章"><a class="markdownIt-Anchor" href="#系列文章"></a> 系列文章</h3>
+<ol>
+<li>第一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/140148941">数据库基准测试工具是什么</a></li>
+<li>第二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162877076">从一次时序数据库写入测试开始</a></li>
+<li>第三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162893750">如何模拟线上写入负载</a></li>
+<li>第四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162897725">如何读懂测试结果波动</a></li>
+<li>第五篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937119">什么是读写混合负载</a></li>
+<li>第六篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162937987">如何模拟线上读写混合负载</a></li>
+<li>第七篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162963623">怎样做一场公平的性能对比</a></li>
+<li>第八篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162966217">怎样找到并发与批大小的合理区间</a></li>
+<li>第九篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999601">如何模拟乱序写入</a></li>
+<li>第十篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/162999696">不同写入接口该怎样比较</a></li>
+<li>第十一篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018519">性能测试与正确性验证有什么区别</a></li>
+<li>第十二篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163018658">单机测试与集群测试有什么不同</a></li>
+<li>第十三篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034467">怎样保存和复盘一轮测试</a></li>
+<li>第十四篇：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44202160/article/details/163034573">一份可复用的基准测试方案模板</a></li>
+</ol>

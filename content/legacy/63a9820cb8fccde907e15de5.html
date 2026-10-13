@@ -1,0 +1,17 @@
+<h2 id="c-头文件"><a class="markdownIt-Anchor" href="#c-头文件"></a> C++ 头文件</h2>
+<h1 id="1-头文件"><a class="markdownIt-Anchor" href="#1-头文件"></a> 1. 头文件</h1>
+<ol>
+<li><code>#include</code></li>
+<li>iostream：输入输出流</li>
+<li>cmath：数学函数</li>
+<li>iomanip：I/O流控制符</li>
+</ol>
+<h1 id="2-头文件主要内容"><a class="markdownIt-Anchor" href="#2-头文件主要内容"></a> 2. 头文件主要内容</h1>
+<ol>
+<li>头文件可以包含常量定义、变量/函数声明、编译预处理、类型定义、内联函数</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//const.h</span><br><span class="hljs-type">const</span> <span class="hljs-type">double</span> pi = <span class="hljs-number">3.1415926</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//a.h</span><br><span class="hljs-keyword">extern</span> <span class="hljs-type">float</span> salary;<br><span class="hljs-function"><span class="hljs-keyword">extern</span> <span class="hljs-type">void</span> <span class="hljs-title">show</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>调用头文件:<code>#include &quot;a.h&quot;</code></li>
+</ol>

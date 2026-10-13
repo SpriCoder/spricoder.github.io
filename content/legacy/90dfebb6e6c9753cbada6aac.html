@@ -1,0 +1,31 @@
+<h2 id="spring-boot-项目启动"><a class="markdownIt-Anchor" href="#spring-boot-项目启动"></a> Spring boot 项目启动</h2>
+<h1 id="1-全过程"><a class="markdownIt-Anchor" href="#1-全过程"></a> 1. 全过程</h1>
+<blockquote>
+<p><code>SpringApplication</code>的<code>run</code>方法的实现是我们启动SpringApplication的入口，该方法的主要流程大体可以归纳如下：</p>
+</blockquote>
+<ol>
+<li>如果我们使用的是<code>SpringApplication</code>的静态run方法，那么，这个方法里面首先要创建一个<code>SpringApplication</code>对象实例，然后调用这个创建好的<code>SpringApplication</code>的实例方法。在<code>SpringApplication</code>实例初始化的时候，它会提前做几件事情：
+<ol>
+<li>根据<code>classpath</code>里面是否存在某个特征类(<code>org.springframework.web.context.ConfigurableWebApplicationContext</code>)来决定是否应该创建一个为Web应用使用的<code>ApplicationContext</code>类型。</li>
+<li>使用<code>SpringFactoriesLoader</code>在应用的classpath中查找并加载所有可用的<code>ApplicationContextInitializer</code>。</li>
+<li>使用<code>SpringFactoriesLoader</code>在应用的classpath中查找并加载所有可用的<code>ApplicationListener</code>。</li>
+<li>推断并设置main方法的定义类。</li>
+</ol>
+</li>
+<li><code>SpringApplication</code>实例初始化完成并且完成设置后，就开始执行run方法的逻辑了，方法执行伊始，首先遍历执行所有通过<code>SpringFactoriesLoader</code>可以查找到并加载的<code>SpringApplicationRunListener</code>。调用它们的<code>started()</code>方法，告诉这些<code>SpringApplicationRunListener</code>，即将开始执行。</li>
+<li>创建并配置当前Spring Boot应用将要使用的<code>Environment</code>(包括配置要使用的<code>PropertySource</code>以及<code>Profile</code>)。</li>
+<li>遍历调用所有<code>SpringApplicationRunListener</code>的<code>environmentPrepared()</code>的方法，通知他们已经准备好了。</li>
+<li>如果<code>SpringApplication</code>的<code>showBanner</code>属性被设置为true，则打印banner。</li>
+<li>根据用户是否明确设置了<code>applicationContextClass</code>类型以及初始化阶段的推断结果，决定该为当前SpringBoot应用创建什么类型的<code>ApplicationContext</code>并创建完成，然后根据条件决定是否添加<code>ShutdownHook</code>，决定是否使用自定义的<code>BeanNameGenerator</code>，决定是否使用自定义的<code>ResourceLoader</code>，当然，最重要的，将之前准备好的Environment设置给创建好的<code>ApplicationContext</code>使用。</li>
+<li><code>ApplicationContext</code>创建好之后，<code>SpringApplication</code>会再次借助<code>Spring-FactoriesLoader</code>，查找并加载<code>classpath</code>中所有可用的<code>ApplicationContext-Initializer</code>，然后遍历调用这些<code>ApplicationContextInitializer</code>的<code>initialize(applicationContext)</code>方法来对已经创建好的<code>ApplicationContext</code>进行进一步的处理。</li>
+<li>遍历调用所有<code>SpringApplicationRunListener</code>的<code>contextPrepared()</code>方法。</li>
+<li>最核心的一步，将之前通过<code>@EnableAutoConfiguration</code>获取的所有配置以及其他形式的IoC容器配置<strong>加载</strong>到已经准备完毕的<code>ApplicationContext</code>。</li>
+<li>遍历调用所有<code>SpringApplicationRunListener</code>的<code>contextLoaded()</code>方法。</li>
+<li>调用<code>ApplicationContext</code>的<code>refresh()</code>方法，完成IoC容器可用的最后一道工序。</li>
+<li>查找当前<code>ApplicationContext</code>中是否注册有<code>CommandLineRunner</code>，如果有，则遍历执行它们。</li>
+<li>正常情况下，遍历执行<code>SpringApplicationRunListener的finished()</code>方法、(如果整个过程出现异常，则依然调用所有<code>SpringApplicationRunListener</code>的<code>finished()</code>方法，只不过这种情况下会将异常信息一并传入处理)</li>
+</ol>
+<h1 id="2-参考"><a class="markdownIt-Anchor" href="#2-参考"></a> 2. 参考</h1>
+<ol>
+<li><a href = "https://pppppkun.github.io/2019/10/25/SpringBoot入门之启动原理解析/">SpringBoot入门之启动原理解析</a></li>
+</ol>

@@ -1,0 +1,37 @@
+<h2 id="spring-https"><a class="markdownIt-Anchor" href="#spring-https"></a> Spring HTTPS</h2>
+<ol>
+<li>在正常的应用场景之下，HTTPS请求会使得我们的应用程序更加安全。</li>
+</ol>
+<h1 id="1-ssl证书"><a class="markdownIt-Anchor" href="#1-ssl证书"></a> 1. SSL证书</h1>
+<ol>
+<li>SSL证书是使用HTTPS请求中必不可少的一部分</li>
+</ol>
+<h2 id="11-自制https证书"><a class="markdownIt-Anchor" href="#11-自制https证书"></a> 1.1. 自制HTTPS证书</h2>
+<ol>
+<li>KeyTool(Java自带):<code>keytool -genkey -alias tomcat  -storetype PKCS12 -keyalg RSA -keysize 2048  -keystore keystore.p12 -validity 3650</code>
+<ol>
+<li>storetype 指定密钥仓库类型</li>
+<li>keyalg 生证书的算法名称，RSA是一种非对称加密算法</li>
+<li>keysize 证书大小</li>
+<li>keystore 生成的证书文件的存储路径</li>
+<li>validity 证书的有效期</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-阿里云等证书"><a class="markdownIt-Anchor" href="#12-阿里云等证书"></a> 1.2. 阿里云等证书</h2>
+<ol>
+<li>阿里云、腾讯云等购买了服务器都可以申请免费SSL证书，免费证书大致是够用的</li>
+<li><a href = "https://blog.csdn.net/She_lock/article/details/80984992">阿里云免费ssl证书(PFX格式证书)安装</a></li>
+</ol>
+<h2 id="13-证书的位置"><a class="markdownIt-Anchor" href="#13-证书的位置"></a> 1.3. 证书的位置</h2>
+<ol>
+<li>放置到项目的根目录上。</li>
+</ol>
+<h1 id="2-pom文件设置"><a class="markdownIt-Anchor" href="#2-pom文件设置"></a> 2. POM文件设置</h1>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8000</span> <span class="hljs-comment"># 默认HTTPS端口号</span><br>  <span class="hljs-attr">ssl:</span><br>    <span class="hljs-attr">key-store:</span> <span class="hljs-string">keyname.suffix</span><br>    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">key-store-password:</span> <span class="hljs-string">password</span><br>    <span class="hljs-attr">key-store-type:</span> <span class="hljs-string">JKS</span><br></code></pre></td></tr></table></figure>
+<h1 id="3-http自动转换https请求"><a class="markdownIt-Anchor" href="#3-http自动转换https请求"></a> 3. HTTP自动转换HTTPS请求</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestApplication</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(TestApplication.class, args);<br>    &#125;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">EmbeddedServletContainerFactory</span> <span class="hljs-title function_">servletContainer</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">TomcatEmbeddedServletContainerFactory</span> <span class="hljs-variable">tomcat</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TomcatEmbeddedServletContainerFactory</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">protected</span> <span class="hljs-type">void</span> <span class="hljs-title function_">postProcessContext</span><span class="hljs-params">(Context context)</span> &#123;<br>                <span class="hljs-type">SecurityConstraint</span> <span class="hljs-variable">constraint</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecurityConstraint</span>();<br>                constraint.setUserConstraint(<span class="hljs-string">&quot;CONFIDENTIAL&quot;</span>);<br>                <span class="hljs-type">SecurityCollection</span> <span class="hljs-variable">collection</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecurityCollection</span>();<br>                collection.addPattern(<span class="hljs-string">&quot;/*&quot;</span>);<br>                constraint.addCollection(collection);<br>                context.addConstraint(constraint);<br>            &#125;<br>        &#125;;<br>        tomcat.addAdditionalTomcatConnectors(httpConnector());<br>        <span class="hljs-keyword">return</span> tomcat;<br>    &#125;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">Connector</span> <span class="hljs-title function_">httpConnector</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Connector</span> <span class="hljs-variable">connector</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Connector</span>(<span class="hljs-string">&quot;org.apache.coyote.http11.Http11NioProtocol&quot;</span>);<br>        connector.setScheme(<span class="hljs-string">&quot;http&quot;</span>);<br>        <span class="hljs-comment">//Connector监听的http的端口号</span><br>        connector.setPort(<span class="hljs-number">8080</span>);<br>        connector.setSecure(<span class="hljs-literal">false</span>);<br>        <span class="hljs-comment">//监听到http的端口号后转向到的https的端口号</span><br>        connector.setRedirectPort(<span class="hljs-number">8081</span>);<br>        <span class="hljs-keyword">return</span> connector;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="4-参考"><a class="markdownIt-Anchor" href="#4-参考"></a> 4. 参考</h1>
+<ol>
+<li><a href = "https://www.jianshu.com/p/71cd01fa8438">Spring Boot支持HTTPS请求</a></li>
+</ol>

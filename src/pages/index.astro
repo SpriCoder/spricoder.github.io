@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { allPosts, seriesSlug } from '../lib/posts';
+const posts = await allPosts();
+const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as string[];
+const descriptions: Record<string, string> = {
+  '与 AI 一起工作': '从任务、上下文与权限，到 Agent 协作、评测和科研。',
+  '玩转时序数据集': '用 TsFile、IoTDB 与工具链理解、访问和验证时序数据。',
+  '基准测试方法与实践': '工作负载、测试工具与性能结果背后的方法。',
+};
+---
+<SiteLayout>
+  <div class="container">
+    <section class="hero">
+      <p class="eyebrow">LEARNING · BUILDING · RESEARCHING</p>
+      <h1>让实践留下思考，<br /><span>让思考连接下一步。</span></h1>
+      <p class="hero-description">我是 SpriCoder。在这里记录数据库、时序数据与 AI 协作的学习和实践，也保存一路积累的软件工程笔记。</p>
+      <div class="hero-actions"><a class="button" href="/series/">从专题开始 <span aria-hidden="true">↗</span></a><a class="text-link" href="/about/">关于我 →</a></div>
+      <div class="hero-stats"><span><strong>{posts.length}</strong> 篇文章</span><span><strong>{series.length}</strong> 个专题</span><span>自 <strong>2019</strong> 年记录</span></div>
+    </section>
+    <section class="home-section">
+      <div class="section-heading"><div><p class="eyebrow">COLLECTIONS</p><h2>沿着一个问题，读一个系列</h2></div><a class="text-link" href="/series/">全部专题 →</a></div>
+      <div class="series-grid">{series.map((name, index) => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><span class="series-number">0{index + 1}</span><h3>{name}</h3><p>{descriptions[name]}</p><span class="series-card-meta">{posts.filter(post => post.series === name).length} 篇文章 <span aria-hidden="true">↗</span></span></a>)}</div>
+    </section>
+    <section class="home-section">
+      <div class="section-heading"><div><p class="eyebrow">LATEST WRITING</p><h2>最近的记录</h2></div><a class="text-link" href="/archives/">完整归档 →</a></div>
+      <div class="post-list">{posts.slice(0, 10).map(post => <PostCard post={post} />)}</div>
+    </section>
+  </div>
+</SiteLayout>

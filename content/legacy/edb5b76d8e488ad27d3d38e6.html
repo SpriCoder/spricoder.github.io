@@ -1,0 +1,81 @@
+<h2 id="lec1-introduction"><a class="markdownIt-Anchor" href="#lec1-introduction"></a> Lec1-Introduction</h2>
+<h1 id="1-distributed-system"><a class="markdownIt-Anchor" href="#1-distributed-system"></a> 1. Distributed System</h1>
+<ol>
+<li>Multiple Cooperating computers</li>
+<li>Storage for big web sites, MapReduce, peer-to-peer sharing</li>
+<li>A lots of critical infracture is distributed</li>
+</ol>
+<h2 id="11-purpose-of-distributed-system"><a class="markdownIt-Anchor" href="#11-purpose-of-distributed-system"></a> 1.1. Purpose of Distributed System</h2>
+<ol>
+<li>to increase capacity via parallism, that’s CPU, disk and so on.</li>
+<li>to tolerate faults via replication</li>
+<li>to place computing physically close to external entities.</li>
+<li>to achiece security via isolation: untrust code ans so on.</li>
+</ol>
+<h2 id="12-chanllenges-of-distributed-system"><a class="markdownIt-Anchor" href="#12-chanllenges-of-distributed-system"></a> 1.2. Chanllenges of Distributed System</h2>
+<ol>
+<li>Many concurrent parts, complex interactions</li>
+<li>Must cope with partial failure</li>
+<li>Tricky to realize performance potential</li>
+</ol>
+<h1 id="2-lab"><a class="markdownIt-Anchor" href="#2-lab"></a> 2. Lab</h1>
+<ol>
+<li>Lab1-MapReduce</li>
+<li>Lab2-Raft for fault tolerance</li>
+<li>Lab3-K/V Server</li>
+<li>Lab4-Shared K/V service</li>
+</ol>
+<h1 id="3-preview"><a class="markdownIt-Anchor" href="#3-preview"></a> 3. Preview</h1>
+<ol>
+<li>Infrastracture of application
+<ol>
+<li>storage:focus on, useeful adstraction</li>
+<li>communication: tool need to be used to create distributed system</li>
+<li>computation: mapreduce</li>
+</ol>
+</li>
+<li>for storage and computation, out goal is to discover abstraction where use of simplyfing the interface of system(hide the distributed system, make syste look like non-distributed system)</li>
+<li>topic
+<ol>
+<li>Implemenatation, Tool: RPC, Threads, Concurrency Control</li>
+<li>Performance, Scalability: increasing number of people, increasing number of computer</li>
+<li>Fault Tolerance
+<ol>
+<li>Availability：huge numbers of computer makes failure constant thing.</li>
+<li>Recoverability：for example, save disk date for recovery.</li>
+<li>Tool: non-volatile storage, replication</li>
+</ol>
+</li>
+<li>Consistency：for key-value, there are two operation: put(k, v), get(k). but in distributed system, the replica makes many version.
+<ol>
+<li>level of consistency
+<ol>
+<li>Strong consistency: make gurantee</li>
+<li>Weak consistency: do not make gurantee</li>
+</ol>
+</li>
+<li>Don’t put replica(copy) in the same place</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-mapreduce"><a class="markdownIt-Anchor" href="#4-mapreduce"></a> 4. MapReduce</h1>
+<ol>
+<li>Purpose: Looking for a framework that would make it easy for non specialists to be able to write and run giant distributed computations.</li>
+<li>Map function
+<ol>
+<li>run on each of input file(or chunk)</li>
+<li>output a list of key value pair</li>
+<li>for example, input: <code>a b</code>, output: <code>&lt;a,1&gt; &lt;b,1&gt;</code></li>
+</ol>
+</li>
+<li>Reduce function
+<ol>
+<li>collect all output of maps</li>
+<li>for example: each reduce deal with a word, result in<code>&lt;a, 2&gt;</code>, <code>&lt;b, 2&gt;</code>.</li>
+</ol>
+</li>
+<li>Output of MapReduce can be used as input of MapReduce, like PageRank</li>
+<li>More in paper.</li>
+</ol>

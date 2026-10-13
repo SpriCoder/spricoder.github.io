@@ -1,0 +1,20 @@
+<p>当绘制完成 Grafana 监控面板，选择导出时，我们发现导出的 json 文件名称开头是 undefined，打开文件后发现了如下的内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;error&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Datasource AAAAAAAAA was not found&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>问题原因：对应的 Datasource 的 Id 错误，导致 Grafana 无法导出，需要通过手动修正 Grafana 的 Json 模型，从而可以导出。</p>
+<h1 id="1-找到正确的-datasource-的-uid"><a class="markdownIt-Anchor" href="#1-找到正确的-datasource-的-uid"></a> 1. 找到正确的 Datasource 的 uid</h1>
+<p>点击 Dashboards 的 Browse 选项卡，点击新建 Dashboard：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/1.png" alt="" /></p>
+<p>点击 Add as new panel，新建一个 Panel：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/2.png" alt="" /></p>
+<p>选择 Prometheus 对应的 Datasource，任意编写一个 PromQL 后点击 Apply 保存：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/3.png" alt="" /></p>
+<p>点击 Dashboard 的<strong>设置</strong>按钮：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/4.png" alt="" /></p>
+<p>在设置中选择 <strong>JSON Model</strong>：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/5.png" alt="" /></p>
+<p>找到对应的JSON Model中的targets中的datasource里面的uid（下图例子中正确的 uid 是 yGHX6yh4k）：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/6.png" alt="" /></p>
+<h1 id="2-修复无法导出的-dashboard-面板"><a class="markdownIt-Anchor" href="#2-修复无法导出的-dashboard-面板"></a> 2. 修复无法导出的 Dashboard 面板</h1>
+<p>进入需要修复的 Grafana 面板，在设置中选择 JSON Model：</p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Apache%20IoTDB/metric/grafana-error/7.png" alt="" /></p>
+<p>将 JSON Object 中的所有错误的 Datasouce 的 uid 替换为正确的（在上面的例子里就是将 AAAAAAAAA 替换为 yGHX6yh4k），可以使用 Ctrl + R 完成替换，然后点击 Save Changes 保存，最后点击 Save dashboard。然后即可正常导出。</p>

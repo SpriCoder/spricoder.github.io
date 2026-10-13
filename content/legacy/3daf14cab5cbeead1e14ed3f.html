@@ -1,0 +1,142 @@
+<h2 id="2021复习"><a class="markdownIt-Anchor" href="#2021复习"></a> 2021复习</h2>
+<p>25道多选，5道问答</p>
+<h1 id="1-多选2020"><a class="markdownIt-Anchor" href="#1-多选2020"></a> 1. 多选[2020]</h1>
+<ol>
+<li>名为多选，实际上是不定项选择，并且全选对才有4分，少选只有1分。</li>
+<li>建议好好听课，如果听课前面的选择其实不太难。</li>
+</ol>
+<h1 id="2-简答2020"><a class="markdownIt-Anchor" href="#2-简答2020"></a> 2. 简答[2020]</h1>
+<ol>
+<li>web项目有哪些层次（分层）</li>
+<li>简述JDBC hibernate JPA的开发流程与特征</li>
+<li>微服务架构的特征，单体应用存在的问题</li>
+<li>简述服务发现与调用的开发流程（以eureka为例）</li>
+<li>简述服务网关的作用与开发流程（以zuul为例）</li>
+</ol>
+<h1 id="3-选择2021"><a class="markdownIt-Anchor" href="#3-选择2021"></a> 3. 选择[2021]</h1>
+<ol>
+<li>Spring也可以支持其他的第三方框架</li>
+<li>横切关注点包括哪些？安全、事务、日志、缓存</li>
+<li>AOP通知：advice有哪些注解？</li>
+<li>要让AOP生效：@EnableAspectJS</li>
+<li>具备Component能力的注解
+<ol>
+<li>Controller, Repository, Service,</li>
+<li>@Aspect是不是？</li>
+</ol>
+</li>
+<li>实现控制器的时候RequestMapping可以加在？类、方法上面</li>
+<li>启动MVC @EnableSpringMVC @EnableWebMVC？</li>
+<li>Controller返回的字符串，指向视图名Json 重定向 redirect</li>
+<li>数据源，通过jdbc 没有做池化处理？</li>
+<li>生产环境中：配置信息放到配置服务中</li>
+<li>业务层和data层用接口做隔离，好处是什么？</li>
+<li>Hibernate的使用
+<ol>
+<li>获得session，拿到session接口后访问数据库</li>
+<li>定义数据库表和对象的映射关系，直接通过注解方式</li>
+<li>Hql查询语言（支持标准sql查询语言）</li>
+</ol>
+</li>
+<li>Jpa实现数据访问层时需不需要定义数据库表和类的对应关系？（要）</li>
+<li>Springdatajpa提供的接口是如何使用的？</li>
+<li>注解、命名、需不需要将方法原型写一遍，继承了什么接口（JpaRepository, CrudRepository）</li>
+<li>Mongodb @document，是java.persitence定义的吗，还是谁定义的？</li>
+<li>存数据的操作，java对象不用做序列化（redis需要）</li>
+<li>Mongodb的概念
+<ol>
+<li>collection, database, document, field</li>
+<li>Shell的使用</li>
+</ol>
+</li>
+<li>Redis
+<ol>
+<li>特点</li>
+<li>支持的数据类型</li>
+</ol>
+</li>
+<li>Escache和redis的区别
+<ol>
+<li>Escache支不支持数据的持久化</li>
+<li>使用缓存编程的常用注解</li>
+</ol>
+</li>
+<li>容器
+<ol>
+<li>和虚拟机的区别</li>
+<li>Docker run常用命令参数</li>
+<li>-P随机端口 –d后台运行</li>
+<li>Docker管理命令</li>
+</ol>
+</li>
+<li>SpringBoot和Spring-cloud的关系</li>
+<li>配置服务：本身基于springboot开发，</li>
+<li>Spring-cloud能解决的问题</li>
+<li>当一个服务需要获取配置数据时，需要向配置服务获取数据，配置服务如何知道要获取的是哪个数据？服务名和profile</li>
+<li>实现配置服务需要在启动类上加注解？@EnableConfigServer</li>
+<li>使用配置服务的客户端需要加什么注解？</li>
+<li>在服务网关处可以实现哪些能力?用户认证和授权，静态路由、动态路由，数据收集，日志</li>
+</ol>
+<h1 id="4-简答2021"><a class="markdownIt-Anchor" href="#4-简答2021"></a> 4. 简答[2021]</h1>
+<ol>
+<li>控制器、业务层、数据访问层、领域模型，以及mvc的view和model<br />
+1.</li>
+<li>Dispatchservlet整个处理过程
+<ol>
+<li>第一步：携带有URL和表单信息的Request达到DispatchServlet</li>
+<li>第二步：DispatchServlet去Handler mapping中查找映射关系</li>
+<li>第三步：根据查找到的映射关系，将Request交给具体对应的Controller</li>
+<li>第四步：Controller得到携带的URL和表单信息等，在交给业务层处理后，得到业务层返回的Model和logical的视图名</li>
+<li>第五步：DispatchServlet得到对应的model和logical view name(str)，并向ViewResolver根据名称查找界面</li>
+<li>第六步：DispatchServlet得到查找到的View界面</li>
+<li>第七步：将View放置在Response中返回给客户端</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2021-Server-Development/img/exam0/6.png" alt="" /></p>
+<ol start="3">
+<li>微服务有什么特征？单体应用有什么不足
+<ol>
+<li>单体应用程序
+<ol>
+<li>数据库的表对所有模块可见</li>
+<li>一个人的修改整个应用都要重新构建、测试、部署</li>
+<li>整体复制分布式部署，不能拆分按需部署</li>
+</ol>
+</li>
+<li>微服务
+<ol>
+<li>应用程序分解为具有明确定义了职责范围的<strong>细粒度组件</strong></li>
+<li>完全独立部署、独立测试，并且可以服用</li>
+<li>使用轻量级通信协议(HTTP和JSON)，松耦合</li>
+<li>服务实现可使用<strong>多种编程语言和技术</strong></li>
+<li>将大型团队划分成多个小型开发团队，每个团队只负责他们各自的服务。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>服务注册与发现的好处
+<ol>
+<li>可以快速水平伸缩而不是垂直伸缩，不影响客户端
+<ol>
+<li>水平伸缩：根据需求增减服务的实例</li>
+<li>垂直伸缩：服务内增加更多的线程</li>
+</ol>
+</li>
+<li>更加具有弹性：容错性更强。</li>
+</ol>
+</li>
+<li>eureka、zuul、feign、ribbon的相互关系
+<ol>
+<li>Eureka：
+<ol>
+<li>中间添加了一个Eureka Server，所有的服务都找他注册、发送状态</li>
+<li>多个Eureka Server，保证可使用(信息需同步)</li>
+</ol>
+</li>
+<li>Zuul</li>
+<li>Feign</li>
+<li>Ribbon：服务端负载均衡</li>
+</ol>
+</li>
+</ol>

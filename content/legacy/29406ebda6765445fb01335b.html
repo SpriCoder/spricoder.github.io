@@ -1,0 +1,148 @@
+<h1 id="基准测试工具之你不知道的两三事系列目录"><a class="markdownIt-Anchor" href="#基准测试工具之你不知道的两三事系列目录"></a> 基准测试工具之你不知道的两三事｜系列目录</h1>
+<p>本系列围绕一个目标展开：把“跑出一组性能数字”逐步变成“能够支持版本回归、产品选型和系统调优的测试结论”。</p>
+<p>当前 CSDN 专栏已发布第 1–14 篇；第 15 篇仍是本地成稿，尚未上线。</p>
+<p>主线是：<strong>建立可信基线 → 模拟真实负载 → 做公平比较 → 沉淀可复用方法</strong>。</p>
+<h2 id="第一阶段从工具到写入基线"><a class="markdownIt-Anchor" href="#第一阶段从工具到写入基线"></a> 第一阶段：从工具到写入基线</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文章</th>
+<th>状态</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="/benchmarking/benchmarking-01/">1. 数据库基准测试工具是什么</a></td>
+<td>已发布（CSDN）</td>
+<td>基准测试为什么存在，常见工具能做什么，以及它的结论边界。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="/benchmarking/benchmarking-02-iot-benchmark/">2. 从一次时序数据库写入测试开始</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样跑通一次最小 IoT Benchmark 写入测试。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="/benchmarking/benchmarking-03/">3. 如何模拟线上写入负载</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样把设备、节奏、批写和补传映射为写入配置。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="/benchmarking/benchmarking-04/">4. 如何读懂测试结果波动</a></td>
+<td>已发布（CSDN）</td>
+<td>为什么不能用单次结果下结论，怎样建立稳定基线。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="第二阶段从纯写到读写混合"><a class="markdownIt-Anchor" href="#第二阶段从纯写到读写混合"></a> 第二阶段：从纯写到读写混合</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文章</th>
+<th>状态</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><a href="/benchmarking/benchmarking-05/">5. 什么是读写混合负载</a></td>
+<td>已发布（CSDN）</td>
+<td>为什么线上不能只测纯写或纯读。</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="/benchmarking/benchmarking-06/">6. 如何模拟线上读写混合负载</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样用操作比例、查询窗口和最近数据查询还原线上读写行为。</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="/benchmarking/benchmarking-07/">7. 怎样做一场公平的性能对比</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样在版本、接口或产品之间进行可解释比较。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="第三阶段深入真实系统行为"><a class="markdownIt-Anchor" href="#第三阶段深入真实系统行为"></a> 第三阶段：深入真实系统行为</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文章</th>
+<th>状态</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td><a href="/benchmarking/benchmarking-08/">8. 怎样找到并发与批大小的合理区间</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样做参数扫描，识别性能拐点而不是只追求最高吞吐。</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="/benchmarking/benchmarking-09/">9. 如何模拟乱序写入</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样固定其他负载变量，分别验证不同乱序比例与形态的影响。</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="/benchmarking/benchmarking-10/">10. 不同写入接口该怎样比较</a></td>
+<td>已发布（CSDN）</td>
+<td>JDBC、REST、Session 等接口比较时，哪些条件必须固定。</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="/benchmarking/benchmarking-11/">11. 性能测试与正确性验证有什么区别</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样避免“跑得快但写错了”的错误结论。</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="/benchmarking/benchmarking-12/">12. 单机测试与集群测试有什么不同</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样从本地基线走向网络、节点和部署差异。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="第四阶段沉淀可复用方法"><a class="markdownIt-Anchor" href="#第四阶段沉淀可复用方法"></a> 第四阶段：沉淀可复用方法</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>文章</th>
+<th>状态</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td><a href="/benchmarking/benchmarking-13/">13. 怎样保存和复盘一轮测试</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样保留配置、日志、环境和结果，使结论可追溯。</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a href="/benchmarking/benchmarking-14/">14. 一份可复用的基准测试方案模板</a></td>
+<td>已发布（CSDN）</td>
+<td>怎样把环境、负载、运行编号和结论边界固化为模板。</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a href="/benchmarking/benchmarking-15/">15. 端到端案例：如何完成一次时序数据库选型</a></td>
+<td>未上线（本地成稿）</td>
+<td>怎样把本系列的方法用于一次完整的选型或版本回归实践。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="阅读建议"><a class="markdownIt-Anchor" href="#阅读建议"></a> 阅读建议</h2>
+<p>首次接触 IoT Benchmark 的读者，按 1 → 2 → 3 → 4 阅读即可建立纯写测试的基本能力；需要贴近线上系统时继续阅读 5 → 6；准备进行选型或回归评估时，从第 7 篇开始进入对比方法。第 8 至 15 篇进一步补全真实系统行为、正确性门禁、结果归档和端到端决策流程。</p>

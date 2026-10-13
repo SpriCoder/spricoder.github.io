@@ -1,0 +1,77 @@
+<p>玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile</p>
+<p>已经加载到 IoTDB 的数据，还可以按表导出为 TsFile，供离线分析或交付使用。本篇承接第 05 篇，将 <code>tsfile_cli_demo.sensors</code> 导出并读回检查。</p>
+<p>本篇回到导读提出的“可流转、可验证”价值：导出在线数据并检查文件中的结构和记录。</p>
+<p>例如，机房异常排查结束后，团队可以把选定的观测记录交给设备供应商复核。导出由 IoTDB 工具完成，文件检查使用 TsFile-Cli。</p>
+<p>本文仍使用北京、上海机房各两条观测记录组成的四行 sensors 示例。配套约定为 Unix 毫秒时间戳、摄氏温度和相对湿度百分比（%）。完整数据与 Schema 见第 01 篇；以下应用场景属于演示场景。</p>
+<h2 id="你将得到什么"><a class="markdownIt-Anchor" href="#你将得到什么"></a> 你将得到什么</h2>
+<p>本文从已经加载数据的 IoTDB 数据库 <code>tsfile_cli_demo</code> 出发，只导出 <code>sensors</code> 表：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">IoTDB table tsfile_cli_demo.sensors<br>  -&gt; export-data.sh (-ft tsfile, table dialect)<br>  -&gt; exported/*.tsfile<br>  -&gt; tsfile-cli meta/schema/cat<br></code></pre></td></tr></table></figure>
+<p>导出完成的判断有三层：</p>
+<ol>
+<li>工具进程返回退出码 <code>0</code>，输出 <code>Export completely!</code>；</li>
+<li>导出目录中出现 <code>.tsfile</code> 文件；</li>
+<li>TsFile-Cli 能识别其为 table-model，并读出 <code>sensors</code> 的 schema 和 4 行数据。</li>
+</ol>
+<h2 id="1-准备已运行的-iotdb"><a class="markdownIt-Anchor" href="#1-准备已运行的-iotdb"></a> 1. 准备已运行的 IoTDB</h2>
+<p>下面的 <code>IOTDB_DIST</code>、<code>DEMO_DIR</code> 和 <code>TSFILE_CLI</code> 请替换为你本机的实际路径；导出目录建议每次使用新的临时空目录。</p>
+<p>本文承接上一篇已加载数据的状态。以下命令在同一个 Bash 会话中执行；实例已运行时可以直接再次启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br>IOTDB_DIST=/absolute/path/to/apache-iotdb-2.x-all-bin<br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br><span class="hljs-comment"># 仅当本地演示实例尚未运行时，才执行：</span><br><span class="hljs-comment"># ./sbin/start-standalone.sh</span><br><br></code></pre></td></tr></table></figure>
+<p>准备导出目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">DEMO_DIR=/absolute/path/to/tsfile-cli-demo<br>TSFILE_CLI=/absolute/path/to/tsfile-cli<br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>&quot;</span><br>EXPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/export.XXXXXX&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<p>先验证数据库和表存在：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./sbin/start-cli.sh -sql_dialect table \<br>  -e <span class="hljs-string">&quot;show tables from tsfile_cli_demo&quot;</span><br></code></pre></td></tr></table></figure>
+<p>如果这里缺少 <code>sensors</code>，先回到“从本地 TsFile 加载进入 IoTDB”一文完成导入，请将一个空目录误判成导出工具故障。</p>
+<h2 id="2-用-export-datash-导出表模型-tsfile"><a class="markdownIt-Anchor" href="#2-用-export-datash-导出表模型-tsfile"></a> 2. 用 <a target="_blank" rel="noopener" href="http://export-data.sh">export-data.sh</a> 导出表模型 TsFile</h2>
+<p>IoTDB 的 <code>tools/export-data.sh</code> 支持多种输出格式。对于 table-model TsFile，关键是同时指定 <code>-ft tsfile</code> 和 <code>-sql_dialect table</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$IOTDB_DIST</span>&quot;</span><br>tools/export-data.sh \<br>  -h 127.0.0.1 -p 6667 \<br>  -u root -pw root \<br>  -ft tsfile \<br>  -sql_dialect table \<br>  -db tsfile_cli_demo \<br>  -table sensors \<br>  -t <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>此前实跑命令返回成功，并在输出中打印：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Export completely!<br></code></pre></td></tr></table></figure>
+<p><code>-db</code> 是必需的目标数据库，<code>-table sensors</code> 把导出范围限制为一张表，<code>-t</code> 是目标目录。工具默认使用 <code>dump</code> 作为文件名前缀，实际文件名可能是 <code>dump0.tsfile</code>；请在脚本中硬编码文件名，先列目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span> -maxdepth 1 -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&#x27;*.tsfile&#x27;</span> -<span class="hljs-built_in">print</span><br></code></pre></td></tr></table></figure>
+<p>如果需要更明确的前缀，请查看 <code>tools/export-data.sh -help tsfile</code>，再使用工具支持的 <code>-pfn</code> 参数。</p>
+<h2 id="3-用-tsfile-cli-回读导出文件"><a class="markdownIt-Anchor" href="#3-用-tsfile-cli-回读导出文件"></a> 3. 用 TsFile-Cli 回读导出文件</h2>
+<p>定义 CLI 路径和导出文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -- <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span>/*.tsfile<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 1 ] || [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&#x27;本例要求恰好一个导出 TsFile；请检查导出日志和文件清单。&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>EXPORTED_TSFILE=<span class="hljs-variable">$1</span><br><br></code></pre></td></tr></table></figure>
+<p>本例针对四行输入显式要求单个导出文件。一般数据集可能产生多个文件，应逐个检查并汇总，应结合取第一个文件作为全部结果。</p>
+<p>先检查元数据与字段计数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">ls</span> -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> schema -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> count -t sensors -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>应看到：</p>
+<ul>
+<li><code>model=table</code>；</li>
+<li>对象 <code>sensors</code>；</li>
+<li><code>site</code>、<code>rack</code> 为 TAG，三个观测列为 FIELD；</li>
+<li>总行数对应 4 条记录。</li>
+</ul>
+<p>再读取实际数据页：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p>输出可以直接交给 <code>jq</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -o pipefail<br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> \<br>  | jq -s <span class="hljs-string">&#x27;&#123;rows: length, sites: (map(.site) | unique), max_temperature: (map(.temperature) | max)&#125;&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>预期得到 4 条记录、<code>beijing</code> 和 <code>shanghai</code> 两个站点，最高温度约为 29.4 °C。这里的最大值用于检查结果；第 07 篇还会比较完整字段与记录。</p>
+<h2 id="4-export-data-和-export-tsfile-的边界"><a class="markdownIt-Anchor" href="#4-export-data-和-export-tsfile-的边界"></a> 4. export-data 和 export-tsfile 的边界</h2>
+<p>IoTDB 目录中还可能看到 <code>tools/export-tsfile.sh</code>。它走的是 Subscription 消费路径，与本文使用的 <code>export-data.sh</code> 查询导出属于同一件事：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://export-data.sh">export-data.sh</a> -ft tsfile -sql_dialect table：执行表查询，把结果写成新的 table-model TsFile，适合一次性数据交付或脚本化导出；</li>
+<li><a target="_blank" rel="noopener" href="http://export-tsfile.sh">export-tsfile.sh</a>：从 Subscription 消费 TsFile 消息，依赖主题、消费者组和 Subscription 配置，适合持续消费场景。</li>
+</ul>
+<p>使用 <code>export-tsfile.sh</code> 前需要配置 Subscription。本文的一次性表导出使用 <code>export-data.sh</code>。</p>
+<h2 id="5-导出的文件到底是什么"><a class="markdownIt-Anchor" href="#5-导出的文件到底是什么"></a> 5. 导出的文件到底是什么</h2>
+<p><code>export-data.sh</code> 的 table 分支会先执行 <code>select * from sensors</code>，再根据查询结果和现有表 schema 构造 <code>Tablet</code>，最后用 TsFile writer 写出新文件。它是一次<strong>逻辑重建</strong>，属于逻辑 IoTDB 内部某个物理 TsFile 原样复制出来。</p>
+<p>这带来几个实际含义：</p>
+<ul>
+<li>导出文件拥有 table-model 的表名、列类别和类型，可被 TsFile-Cli 或另一个 IoTDB 实例读取；</li>
+<li>文件的压缩、页组织、分块边界和内部布局可以与原始文件不同；</li>
+<li>导出范围由 SQL、时间条件和表参数决定，应将导出文件默认当成数据库全量物理备份；</li>
+<li>聚合 SQL 适用范围有限 TsFile 导出输入，工具会拒绝包含 <code>count</code>、<code>sum</code>、<code>avg</code> 等聚合的查询，因为聚合结果已继续对应原始明细行。</li>
+</ul>
+<p>按时间范围导出时，先核对 <code>-start_time</code> 和 <code>-end_time</code> 的支持及端点含义。导出后用 <code>cat</code> 检查实际记录，用 <code>stats</code> 查看时间范围，并核对筛选条件。</p>
+<h2 id="6-面向-unix-工具链的导出习惯"><a class="markdownIt-Anchor" href="#6-面向-unix-工具链的导出习惯"></a> 6. 面向 Unix 工具链的导出习惯</h2>
+<p>导出命令可以作为一个普通进程嵌入脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -eu<br><span class="hljs-built_in">set</span> -o pipefail<br>EXPORT_DIR=$(<span class="hljs-built_in">mktemp</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$DEMO_DIR</span>/export.XXXXXX&quot;</span>)<br>tools/export-data.sh \<br>  -h 127.0.0.1 -p 6667 -u root -pw root \<br>  -ft tsfile -sql_dialect table \<br>  -db tsfile_cli_demo -table sensors -t <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>后续检查只读已完成的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> -- <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>&quot;</span>/*.tsfile<br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 1 ] || [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&#x27;本例要求恰好一个导出 TsFile。&#x27;</span> &gt;&amp;2<br>  <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br>EXPORTED_TSFILE=<span class="hljs-variable">$1</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> meta -f csv <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>/meta.csv&quot;</span><br><span class="hljs-string">&quot;<span class="hljs-variable">$TSFILE_CLI</span>&quot;</span> <span class="hljs-built_in">cat</span> -t sensors -f ndjson <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORTED_TSFILE</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$EXPORT_DIR</span>/sensors.ndjson&quot;</span><br><br></code></pre></td></tr></table></figure>
+<p>导出完成后，TsFile-Cli 负责读回文件；后续可以使用 jq 等工具分析结果。运行脚本时还应保存导出日志，便于检查失败原因。</p>
+<h2 id="继续阅读"><a class="markdownIt-Anchor" href="#继续阅读"></a> 继续阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/Ni7Kdaiv3oLBhYxKMNNcFRuqnqs">上一篇：从本地 TsFile 加载进入 IoTDB</a> · <a target="_blank" rel="noopener" href="https://apache-iotdb-project.feishu.cn/docx/APQido4BRoaH6QxbwVPcz5cpn9e">下一篇：双向闭环验证</a></p>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
+<p><code>export-data.sh</code> 根据查询结果生成新的 TsFile。接收方可以离线读取，也可以将它加载到兼容的 IoTDB 实例。</p>
+<p>这个出口保存查询范围内的逻辑数据，属于查询范围内的逻辑导出，快照行为需由独立测试确认。本例使用固定、停止写入的演示数据，数据库查询和文件回读共同构成交付检查。<a target="_blank" rel="noopener" href="http://export-tsfile.sh">export-tsfile.sh</a> 是另一条依赖 Subscription 的持续消费链路。</p>

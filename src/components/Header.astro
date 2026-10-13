@@ -1,0 +1,61 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { href: '/', label: '首页' },
+  { href: '/series/', label: '专题' },
+  { href: '/archives/', label: '归档' },
+  { href: '/about/', label: '关于' },
+];
+const active = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="wordmark" href="/" aria-label="SpriCoder 首页">
+      <span class="wordmark-symbol" aria-hidden="true">S<span>.</span></span>
+      <span class="wordmark-name">SpriCoder<span class="wordmark-caption">技术 · 思考 · 实践</span></span>
+    </a>
+    <div class="header-navigation">
+      <nav class="main-nav" aria-label="主导航">
+        {links.map(({ href, label }) => (
+          <a href={href} class:list={[{ active: active(href) }]} aria-current={active(href) ? 'page' : undefined}>{label}</a>
+        ))}
+      </nav>
+      <div class="header-tools">
+        <a class="icon-button search-link" href="/search/" title="搜索文章" aria-label="搜索文章">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7" /><path d="m16 16 4.4 4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+        </a>
+        <button class="icon-button theme-toggle" type="button" title="切换明暗主题" aria-label="切换明暗主题">
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 13.1A8.6 8.6 0 0 1 10.9 3.5 8.6 8.6 0 1 0 20.5 13.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4m0-14.2-1.4 1.4M6.3 17.7l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  function updateLabel() {
+    const label = document.documentElement.dataset.theme === 'dark' ? '切换为浅色主题' : '切换为深色主题';
+    toggle?.setAttribute('aria-label', label);
+    toggle?.setAttribute('title', label);
+  }
+  toggle?.addEventListener('click', () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    try { localStorage.setItem('spricoder-theme', theme); } catch {}
+    updateLabel();
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    let saved = null;
+    try { saved = localStorage.getItem('spricoder-theme'); } catch {}
+    if (saved === 'dark' || saved === 'light') return;
+    const theme = event.matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    updateLabel();
+  });
+  updateLabel();
+</script>

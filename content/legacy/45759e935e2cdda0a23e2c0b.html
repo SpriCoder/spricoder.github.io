@@ -1,0 +1,12 @@
+<h2 id="tec9-svd"><a class="markdownIt-Anchor" href="#tec9-svd"></a> Tec9-SVD</h2>
+<blockquote>
+<p>使用Python</p>
+</blockquote>
+<h1 id="1-python使用svd"><a class="markdownIt-Anchor" href="#1-python使用svd"></a> 1. Python使用SVD</h1>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">a = np.array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]])<br>U,Sigma,VT = np.linalg.svd(a)<br></code></pre></td></tr></table></figure>
+<h1 id="2-选择奇异值重构图片"><a class="markdownIt-Anchor" href="#2-选择奇异值重构图片"></a> 2. 选择奇异值重构图片</h1>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">sval_nums = <span class="hljs-number">60</span><br>restruct1 = (U[:,<span class="hljs-number">0</span>:sval_nums]).dot(np.diag(Sigma[<span class="hljs-number">0</span>:sval_nums])).dot(VT[<span class="hljs-number">0</span>:sval_nums,:])<br></code></pre></td></tr></table></figure>
+<h1 id="3-参考"><a class="markdownIt-Anchor" href="#3-参考"></a> 3. 参考</h1>
+<ol>
+<li><a href = "https://www.cnblogs.com/endlesscoding/p/10033527.html">SVD(奇异值分解)小结</a></li>
+</ol>

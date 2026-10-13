@@ -1,0 +1,118 @@
+<h2 id="crash-course-computer-science"><a class="markdownIt-Anchor" href="#crash-course-computer-science"></a> Crash Course Computer Science</h2>
+<h1 id="1-第五讲算数逻辑单元-alu"><a class="markdownIt-Anchor" href="#1-第五讲算数逻辑单元-alu"></a> 1. 第五讲：算数逻辑单元-ALU</h1>
+<ol>
+<li>计算机目标是计算，有意义的处理数字。</li>
+<li>ALU负责完成计算，基本其他所有的部件都会用到它。</li>
+<li>Eg.ALU Intel 74181:1970年发布时，是第一个封装在单个芯片内的完整的ALU，只可以进行4位计算</li>
+<li>ALU：使用AND、OR、NOT和XOR逻辑门
+<ol>
+<li>1个算术单元：负责所有数字操作，例如增量计算</li>
+<li>1个逻辑单元：计算AND、OR或NOT操作</li>
+</ol>
+</li>
+</ol>
+<h2 id="11-算术单元"><a class="markdownIt-Anchor" href="#11-算术单元"></a> 1.1. 算术单元</h2>
+<h3 id="111-半加器"><a class="markdownIt-Anchor" href="#111-半加器"></a> 1.1.1. 半加器</h3>
+<ol>
+<li>XOR可以作为一位加法器</li>
+<li>1+1是特殊的</li>
+<li>我们使用AND来进行检查进位</li>
+<li>得到两个门的电路是半加器</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/1.png" alt="" /><br />
+<img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/2.png" alt="" /></p>
+<h3 id="112-全加器"><a class="markdownIt-Anchor" href="#112-全加器"></a> 1.1.2. 全加器</h3>
+<ol>
+<li>增加一个输入(进位)</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/3.png" alt="" /></p>
+<h3 id="113-制作8位行波加法器"><a class="markdownIt-Anchor" href="#113-制作8位行波加法器"></a> 1.1.3. 制作：8位行波加法器</h3>
+<ol>
+<li>overflow：最后一位溢出</li>
+</ol>
+<h3 id="114-超前进位加法器"><a class="markdownIt-Anchor" href="#114-超前进位加法器"></a> 1.1.4. 超前进位加法器</h3>
+<h3 id="115-alu可以做基本操作"><a class="markdownIt-Anchor" href="#115-alu可以做基本操作"></a> 1.1.5. ALU可以做基本操作</h3>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/4.png" alt="" /></p>
+<h2 id="12-逻辑单元"><a class="markdownIt-Anchor" href="#12-逻辑单元"></a> 1.2. 逻辑单元</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/5.png" alt="" /></p>
+<blockquote>
+<p>检查是否为全0</p>
+</blockquote>
+<h2 id="13-alu的代表"><a class="markdownIt-Anchor" href="#13-alu的代表"></a> 1.3. ALU的代表</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/6.png" alt="" /></p>
+<h1 id="2-寄存器内存"><a class="markdownIt-Anchor" href="#2-寄存器内存"></a> 2. 寄存器&amp;内存</h1>
+<ol>
+<li>RAM:随机存储器，在有电的时候存储信息</li>
+<li>持久存储，电源关闭，数据也不会丢失</li>
+</ol>
+<h2 id="21-存储1位的单元"><a class="markdownIt-Anchor" href="#21-存储1位的单元"></a> 2.1. 存储1位的单元</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/7.png" alt="" /></p>
+<ul>
+<li>永久记录1</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/8.png" alt="" /></p>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/9.png" alt="" /></p>
+<ul>
+<li>锁存：可以读写</li>
+</ul>
+<h2 id="22-门锁"><a class="markdownIt-Anchor" href="#22-门锁"></a> 2.2. 门锁</h2>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/10.png" alt="" /></p>
+<h2 id="23-多位存储"><a class="markdownIt-Anchor" href="#23-多位存储"></a> 2.3. 多位存储</h2>
+<ol>
+<li>寄存器位宽：可以存储多长数据</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/11.png" alt="" /></p>
+<ol start="2">
+<li>存储256位只需要513根线</li>
+<li>使用矩阵，网格存储所有的锁存器，使用仅需要打开对应的行线和列线(使用AND门)，允许我们使用一根数据线进行相应操作。</li>
+<li>一共只需要35根线：
+<ol>
+<li>一根数据线</li>
+<li>一根允许写入线</li>
+<li>一根允许读取线</li>
+<li>16行线和16列线</li>
+</ol>
+</li>
+<li>多路复用器：确定行和列的位置</li>
+<li>我们使用1-16多路复用器，一个多路复用器给行，一个给列</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/12.png" alt="" /></p>
+<h2 id="24-内存特性"><a class="markdownIt-Anchor" href="#24-内存特性"></a> 2.4. 内存特性</h2>
+<ol>
+<li>内存可以任意访问存储位置.</li>
+</ol>
+<h1 id="3-cpu"><a class="markdownIt-Anchor" href="#3-cpu"></a> 3. CPU</h1>
+<ol>
+<li>指令指示计算机执行相应操作。</li>
+<li>微体系结构</li>
+<li>指令表</li>
+</ol>
+<h2 id="31-cpu执行指令"><a class="markdownIt-Anchor" href="#31-cpu执行指令"></a> 3.1. CPU执行指令</h2>
+<ol>
+<li>取指令阶段</li>
+<li>解码阶段：根据指令表，用电路来检查操作码</li>
+<li>执行阶段：最后将指令地址寄存器+1</li>
+<li>执行下一条指令</li>
+</ol>
+<blockquote>
+<p>讲解了一个加法过程:Control Unit有一个寄存器先存储结果，避免ALU无限加。</p>
+</blockquote>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/2020-Compilation-Principle/img/hw1/13.png" alt="" /></p>
+<ul>
+<li>时钟来推进操作</li>
+<li>时钟速度：CPU取指令-&gt;解码-&gt;执行的速度，动态调整频率(时钟频率)</li>
+</ul>
+<h1 id="4-指令和程序"><a class="markdownIt-Anchor" href="#4-指令和程序"></a> 4. 指令和程序</h1>
+<ol>
+<li>因为可编程，所有CPU是强大的，可以被软件控制的。</li>
+<li>将之前的部分翻译成更容易理解的语言。</li>
+<li>JUMP指令会结合flag位</li>
+<li>HALT使用区分数据和指令的命令</li>
+<li>软件实现了硬件不能实现的部分，比如除法。</li>
+<li>为了可以访问更多的操作码
+<ol>
+<li>更多位来表示操作码，比如32位或64位。</li>
+<li>可变长操作码</li>
+</ol>
+</li>
+</ol>

@@ -1,0 +1,75 @@
+<h2 id="spring-ioc-和-di"><a class="markdownIt-Anchor" href="#spring-ioc-和-di"></a> Spring IOC 和 DI</h2>
+<h1 id="1-什么是iocinversion-of-control"><a class="markdownIt-Anchor" href="#1-什么是iocinversion-of-control"></a> 1. 什么是IOC(Inversion of Control)</h1>
+<ol>
+<li>IOC:控制反转,别名:DI(Dependency Injection),就是由Spring IOC容器来负责对象的生命周期和对象之间的关系。</li>
+<li>依赖倒置:高层建筑决定需要什么，低层去实现这样的需求，但是高层并不用管理底层如何实现</li>
+<li>是spring管理bean的容器</li>
+</ol>
+<h2 id="11-ioc容器的核心问题"><a class="markdownIt-Anchor" href="#11-ioc容器的核心问题"></a> 1.1. IOC容器的核心问题</h2>
+<ol>
+<li>谁控制谁</li>
+<li>控制什么</li>
+<li>为何是反转</li>
+<li>哪些方面反转了</li>
+</ol>
+<h2 id="12-ioc容器的基本功能"><a class="markdownIt-Anchor" href="#12-ioc容器的基本功能"></a> 1.2. IOC容器的基本功能</h2>
+<ol>
+<li>通过描述管理Bean，包括发布和获取</li>
+<li>描述Bean之前的依赖关系</li>
+</ol>
+<h2 id="13-ioc的实例"><a class="markdownIt-Anchor" href="#13-ioc的实例"></a> 1.3. IoC的实例</h2>
+<ul>
+<li>通过接口调用具体实现的⽅法，可以降低耦合。但是始终⽆法消除创建对象时对具体实现的依赖。构造<br />
+⽅法没有多态。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/6.png" alt="" /></p>
+<ul>
+<li>已然会有create的那一条线来进行依赖(必须要先创建)</li>
+<li>通过装配器来完成控制反转 IoC(Inversion of Control)。</li>
+</ul>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/7.png" alt="" /></p>
+<ul>
+<li>消失一个依赖，出现了三个依赖，值得吗?因为装配器的三个依赖都是单一功能的，业务代码部分就解耦了</li>
+</ul>
+<h1 id="2-控制反转inversion-of-control"><a class="markdownIt-Anchor" href="#2-控制反转inversion-of-control"></a> 2. 控制反转(Inversion of Control)</h1>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/1.png" alt="" /></p>
+<ol>
+<li>代码解释</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/2.png" alt="" /></p>
+<ol start="2">
+<li>上述代码中，上层建筑依赖下层建筑——每一个类的构造函数都直接调用了底层代码的构造函数。</li>
+<li>所以我们修改底下的构造函数会引起上层的修改，而这在实际工程项目的修改是不可修改的。</li>
+<li>解决方案:底层类作为参数传入到上层类。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/3.png" alt="" /></p>
+<ol start="5">
+<li>此时我们修改轮胎，只需要修改最底层的类即可。</li>
+<li>此时我们写对应的单元测试，只需要Mock一下FrameWork类传入Car即可。</li>
+</ol>
+<h1 id="3-控制反转容器ioc-container"><a class="markdownIt-Anchor" href="#3-控制反转容器ioc-container"></a> 3. 控制反转容器(IOC Container)</h1>
+<ol>
+<li>比如在车类进行初始化的那段代码发生的地方，就是控制反转容器。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/4.png" alt="" /></p>
+<ol start="2">
+<li>使用依赖注入会导致，高层对象的初始化过程中就不可避免的会写大量的new。而IOC容器可以帮助我们自动对代码进行初始化。</li>
+<li>此外，IOC的功能作用还有就是我们创建实例的时候不需要了解具体细节，由容器帮助你完成。</li>
+</ol>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/5.png" alt="" /></p>
+<h1 id="4-di-依赖注入"><a class="markdownIt-Anchor" href="#4-di-依赖注入"></a> 4. DI 依赖注入</h1>
+<ol>
+<li>依赖注⼊ DI(Dependency Injection)</li>
+<li>Similarly I define a setter for the filename.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MovieLister</span>&#123;<br>    <span class="hljs-keyword">private</span> MovieFinder finder;<br>    <span class="hljs-comment">//setter方法进行注入</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setFinder</span><span class="hljs-params">(MovieFinder finder)</span> &#123;<br>    <span class="hljs-built_in">this</span>.finder = finder;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ColonMovieFinder</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">setFilename</span><span class="hljs-params">(String filename)</span> &#123;<br>        <span class="hljs-built_in">this</span>.filename = filename;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>The third step is to set up the configuration for the files. Spring supports configuration through<br />
+XML files and also through code, but XML is the expected way to do it.</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;MovieLister&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spring.MovieLister&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;finder&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">ref</span> <span class="hljs-attr">local</span>=<span class="hljs-string">&quot;MovieFinder&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;MovieFinder&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spring.ColonMovieFinder&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;filename&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--&gt;这里就已经有了Finder，由Spring进行调用&lt;!--&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>movies1.txt<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>The test then looks like this.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title function_">testWithSpring</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-type">ApplicationContext</span> <span class="hljs-variable">ctx</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileSystemXmlApplicationContext</span>(<span class="hljs-string">&quot;spring.xml&quot;</span>);<br>    <span class="hljs-type">MovieLister</span> <span class="hljs-variable">lister</span> <span class="hljs-operator">=</span> (MovieLister) ctx.getBean(<span class="hljs-string">&quot;MovieLister&quot;</span>);<br>    <span class="hljs-type">Movie</span>[] <span class="hljs-variable">movies</span> <span class="hljs-operator">=</span> lister.moviesDirectedBy(<span class="hljs-string">&quot;Sergio Leone&quot;</span>);<br>    assertEquals(<span class="hljs-string">&quot;Once Upon a Time in the West&quot;</span>, movies[<span class="hljs-number">0</span>].getTitle());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://spricoder.oss-cn-shanghai.aliyuncs.com/Spring-Boot/img/ioc/8.png" alt="" /></p>

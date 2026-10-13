@@ -1,0 +1,79 @@
+<h2 id="lombok"><a class="markdownIt-Anchor" href="#lombok"></a> Lombok</h2>
+<h1 id="1-遇见lombok"><a class="markdownIt-Anchor" href="#1-遇见lombok"></a> 1. 遇见lombok</h1>
+<h2 id="11-lombok简介"><a class="markdownIt-Anchor" href="#11-lombok简介"></a> 1.1. lombok简介</h2>
+<ol>
+<li>使用简单的注释的形式来帮助我们简化消除一些必须有但显得很臃肿的java代码工具</li>
+<li>如何安装使用：在dependency中添加<code>&lt;artifactId&gt;lombok&lt;/artifactedId&gt;</code></li>
+</ol>
+<h2 id="12-使用详情"><a class="markdownIt-Anchor" href="#12-使用详情"></a> 1.2. 使用详情</h2>
+<ol>
+<li>我们需要引入相应的lombok包</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>标签名</th>
+<th>意义</th>
+<th>使用实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@NonNull</code></td>
+<td>避免空指针</td>
+<td><code>@NonNull Person person</code></td>
+</tr>
+<tr>
+<td><code>@Cleanup</code></td>
+<td>自动帮我们调用close()方法来关闭流</td>
+<td><code>@Cleanup InputStream ...</code></td>
+</tr>
+<tr>
+<td><code>@Getter</code></td>
+<td>注解在属性上，为我们自动生成Getter方法</td>
+<td><code>@Getter private int age;</code></td>
+</tr>
+<tr>
+<td><code>@Setter</code></td>
+<td>注解在属性上，为我们自动生成Setter方法</td>
+<td><code>@Setter private int age;</code></td>
+</tr>
+<tr>
+<td><code>@NoArgsConstructor</code></td>
+<td>注解在类上，自动生成无参数构造函数</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>@AllArgsConstructor</code></td>
+<td>注解在类上，为我们生成全参数构造函数</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>@Data</code></td>
+<td>注解在类上，提供所有属性的getting和setting方法，此外提供了equals、canEqual、hashCode、toString方法</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>@Log4j</code></td>
+<td>注解在类上，为类提供一个属性名为log的log4j日志对象</td>
+<td></td>
+</tr>
+<tr>
+<td><code>@ToString</code></td>
+<td>使用lombok帮助你生成一个tostring的方法，默认打印类名和每个字段，并且保证用逗号进行分隔</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="13-官方文档"><a class="markdownIt-Anchor" href="#13-官方文档"></a> 1.3. 官方文档</h2>
+<p><a href = "https://projectlombok.org/features/all?spm=a2c4e.11153940.blogcont59972.9.2aeb6896aOg7si">查询更多标签</a></p>
+<h1 id="2-注意"><a class="markdownIt-Anchor" href="#2-注意"></a> 2. 注意</h1>
+<ol>
+<li>请务必注意引起注意的是Lombok虽然好用，但是lombok已经体现出了不可以被我们忽视的入侵性。</li>
+<li>为什么这么说呢？因为如果团队中有一个人使用lombok进行编程，则会导致所有团队成员必须使用并且配置lombok的插件，这就是为什么我们应该慎重使用lombok</li>
+</ol>
+<h1 id="3-lombok的坑"><a class="markdownIt-Anchor" href="#3-lombok的坑"></a> 3. lombok的坑</h1>
+<ol>
+<li>如果我们仅仅使用了@Data属性，而不使用@EqualsAndHashCode(callSuper = true)</li>
+<li>默认情况下为@EqualsAndHashCode(callSuper = false,这时候生成的equals()方法只会比较子类的属性，而不会考虑父类继承的属性，无论父类属性访问权限是否开放。</li>
+</ol>
