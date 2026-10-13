@@ -2,11 +2,13 @@
 title: 2020-C++高级程序设计-exam-final
 date: 2020-07-01 19:32:00
 description: "2020-C++高级程序设计-exam-final"
-tags: 
-- C++
-- 考试
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++"]
+content_type: course
+course: advanced-cpp-2020
+course_group: review
+course_order: 3
 ---
 
 exam-final

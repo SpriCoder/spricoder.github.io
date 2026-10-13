@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-web-05-GUI入门
 date: 2020-07-06 19:28:00
 description: "2020-软件工程与计算II-web-05-GUI入门"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- web
-- 视图
-- 人机交互
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","人机交互","数据库视图"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: practice
+course_order: 6
 ---
 
 05-GUI入门

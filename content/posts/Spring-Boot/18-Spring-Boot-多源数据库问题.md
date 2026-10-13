@@ -2,11 +2,10 @@
 title: 18-Spring Boot 多源数据库问题
 date: 2022-04-13 09:26:45
 description: "Spring-Boot-Spring Boot 多源数据库问题"
-tags: 
-- spring boot
-- 数据源
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","数据源","Spring"]
+content_type: practice
 ---
 
 Spring 多源数据库问题

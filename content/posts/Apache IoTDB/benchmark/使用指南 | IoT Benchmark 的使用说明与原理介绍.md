@@ -2,11 +2,10 @@
 title: 使用指南 | IoT Benchmark 的使用说明与原理介绍
 description: IoT Benchmark 是基于 Java 开发的时序数据库测试工具，支持 Apache IoTDB 各版本、InfluxDB 等多款数据库的测试，支持生成模拟数据集和使用真实数据集，可以自配置多种比例的读写混合测试，同样支持基于 Differential Testing 的数据库正确性测试。
 date: 2024-01-20 11:00:00
-tags:
-- IoT
-- Benchmark
 categories: [Benchmark]
 mathjax: false
+tags: ["IoT Benchmark","时序数据库","基准测试"]
+content_type: practice
 ---
 
 IoT Benchmark 是基于 Java 开发的时序数据库测试工具，支持 Apache IoTDB 各版本、InfluxDB 等多款数据库的测试，支持生成模拟数据集和使用真实数据集，可以自配置多种比例的读写混合测试，同样支持基于 Differential Testing 的数据库正确性测试。

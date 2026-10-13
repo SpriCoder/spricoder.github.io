@@ -2,13 +2,13 @@
 title: 2020-需求与商业模式分析-Book3-需求工程过程
 date: 2021-01-17 19:09:00
 description: "2020-需求与商业模式分析-Book3-需求工程过程"
-tags: 
-- 需求
-- 课程笔记
-- 文档
-- 用户
 categories: [2020-需求与商业模式创新]
 mathjax: true
+tags: ["需求工程","软件工程","用户管理"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 3
 ---
 
 Book3-需求工程过程

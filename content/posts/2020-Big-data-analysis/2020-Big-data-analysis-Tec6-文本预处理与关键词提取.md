@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Tec6-文本预处理与关键词提取
 date: 2020-11-01 19:06:00
 description: "2020-大数据分析-Tec6-文本预处理与关键词提取"
-tags: 
-- 大数据分析
-- 实验
-- 文本分析
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","自然语言处理"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 6
 ---
 
 Tec6-文本预处理和关键词处理

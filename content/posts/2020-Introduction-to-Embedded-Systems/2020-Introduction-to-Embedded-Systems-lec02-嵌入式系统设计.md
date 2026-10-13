@@ -2,12 +2,13 @@
 title: 2020-嵌入式系统导论-lec02-嵌入式系统设计
 date: 2020-11-02 19:02:00
 description: "2020-嵌入式系统导论-lec02-嵌入式系统设计"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 设计
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统","嵌入式设计"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 3
 ---
 
 lec02-嵌入式系统设计方法

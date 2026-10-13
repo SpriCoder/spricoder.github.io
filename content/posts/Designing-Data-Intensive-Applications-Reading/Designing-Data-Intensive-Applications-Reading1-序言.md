@@ -2,10 +2,10 @@
 title: DDIA-Reading1-序言
 date: 2022-02-18 17:13:41
 description: "DDIA读书笔记1-序言"
-tags:
-- DDIA
 categories: [Designing-Data-Intensive-Applications]
 mathjax: false
+tags: ["数据系统","DDIA"]
+content_type: reading
 ---
 序言
 ---

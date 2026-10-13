@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { allPosts } from '../../lib/posts';
+import courses from '../../data/courses.json';
+
+const posts = await allPosts();
+const domains = [...new Set(courses.map(course => course.domain))];
+const courseCounts = new Map(courses.map(course => [course.slug, posts.filter(post => post.course === course.slug).length]));
+const noteCount = posts.filter(post => post.course).length;
+---
+<SiteLayout title="课程笔记" description="按课程与知识领域浏览计算机、软件工程和数据科学学习笔记。">
+  <div class="container">
+    <header class="page-header">
+      <a class="breadcrumb" href="/series/">← 课程与专题</a>
+      <p class="eyebrow">COURSE NOTES</p>
+      <h1>课程笔记</h1>
+      <p>把分散的课堂笔记、习题、实验和复习资料放回各自的课程。进入一门课程，沿章节顺序阅读现有记录。</p>
+      <div class="collection-summary"><span><strong>{courses.length}</strong> 门课程</span><span><strong>{noteCount}</strong> 篇笔记</span><span>年份为笔记所属学习阶段</span></div>
+      <nav class="course-domain-nav" aria-label="课程领域">{domains.map((domain, index) => <a href={`#domain-${index + 1}`}>{domain}</a>)}</nav>
+    </header>
+    <div class="course-directory">{domains.map((domain, index) => <section class="course-domain" aria-labelledby={`domain-${index + 1}`}><h2 id={`domain-${index + 1}`}>{domain}</h2><ul class="course-directory-list">{courses.filter(course => course.domain === domain).map(course => <li><a class="course-directory-link" href={`/courses/${course.slug}/`}><span class="course-directory-main"><span class="course-directory-title">{course.name}</span><span class="course-directory-description">{course.description}</span></span><span class="course-directory-meta"><span>{course.year ? course.year : '学习笔记'}</span><span>{courseCounts.get(course.slug)} 篇笔记</span><span aria-hidden="true">↗</span></span></a></li>)}</ul></section>)}</div>
+  </div>
+</SiteLayout>

@@ -2,11 +2,13 @@
 title: 2020-软件工程与计算II-00-题目
 date: 2020-07-06 19:00:00
 description: "2020-软件工程与计算II-00-题目"
-tags: 
-- 软件工程与计算II
-- 考试
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: review
+course_order: 1
 ---
 
 # 1. 说明以下需求属于哪种类型

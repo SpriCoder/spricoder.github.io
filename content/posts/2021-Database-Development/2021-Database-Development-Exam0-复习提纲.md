@@ -2,11 +2,13 @@
 title: 2021-数据库开发-Exam0-复习提纲
 date: 2021-05-02 19:10:00
 description: "2021-数据库开发-Exam0-复习提纲"
-tags: 
-- 数据库
-- 考试
 categories: [2021-数据库开发]
 mathjax: false
+tags: ["数据库"]
+content_type: course
+course: database-development-2021
+course_group: review
+course_order: 1
 ---
 
 Exam0-历年试卷

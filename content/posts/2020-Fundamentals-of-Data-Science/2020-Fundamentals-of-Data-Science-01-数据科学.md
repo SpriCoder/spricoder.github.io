@@ -2,11 +2,13 @@
 title: 2020-数据科学基础-01-数据科学
 date: 2020-07-04 19:00:00
 description: "2020-数据科学基础-01-数据科学"
-tags: 
-- 数据科学
-- 课程笔记
 categories: [2020-数据科学基础]
 mathjax: false
+tags: ["数据科学"]
+content_type: course
+course: data-science-2020
+course_group: lectures
+course_order: 1
 ---
 
 # 1. 数据科学的角色

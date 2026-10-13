@@ -13,6 +13,8 @@
 
 新文章至少填写 `title`、`date`（或 `pubDate`）、`description`。推荐填写 `tags`、`categories`；系列文章填写 `series`、`series_order`。新文章可以用 `permalink` 固定网址。
 
+课程材料填写 `course`（课程目录中的稳定 slug）、`course_group` 和该分组内的 `course_order`。课程名称、学习年份、讲义／实践／复习等身份由专题管理；标签使用 1–5 个领域或具体知识点，不把章节标题、年份、考试、作业作为标签。课程目录与分组定义位于 `src/data/courses.json`，初次标签整理的规范与核对清单位于 `taxonomy/`。
+
 ```yaml
 ---
 title: 文章标题
@@ -34,7 +36,7 @@ npm run preview
 
 ## 存量文章保真
 
-首次迁移完整保留 465 篇发布文章、6 篇本地草稿及原文章地址。存量文章未修改时，构建使用 `content/legacy/` 的已发布正文快照；修改 Markdown 后，自动使用新 Markdown 渲染器。新渲染器支持原 `post_link`、数学公式、脚注和 Mermaid。
+首次迁移完整保留 465 篇发布文章、6 篇本地草稿及原文章地址。存量文章正文未修改时，构建使用 `content/legacy/` 的已发布正文快照；调整标签或课程等 Frontmatter 不会改变历史正文排版。修改正文后，自动使用新 Markdown 渲染器。新渲染器支持原 `post_link`、数学公式、脚注和 Mermaid。
 
 `migration/baseline.json` 保存每篇原文校验值、地址、日期与旧快照信息；它使旧网址不随标题变化。原时间沿用基线，若需有意调整发布日期，可填写 `pubDate`。更新日期可填写 `updated`。已迁移页面保留代码、表格、公式和图片；一个旧 Bootstrap 教程的未闭合 HTML 已修复，正文文字未变。
 
@@ -52,4 +54,4 @@ npm run preview
 
 源码分支为 `astro-source`，旧 Hexo 发布基线为 `393b59514e93fcf7681f82616e864617035f3b46`。发布及回退说明见 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)。
 
-本地迁移核验：`npm run verify`（需 Python 3 和 lxml）。校验原稿、全部文章正文、旧路径、本地图片、草稿隔离及 Hexo 备份完整性。
+本地迁移核验：`npm run verify`（需 Python 3 和 lxml）。校验全部文章正文、旧路径、本地图片、草稿隔离及 Hexo 备份完整性。标签与课程整理另用 `npm run verify:taxonomy` 核验正文、日期和地址保持一致，课程归属与分组无遗漏。

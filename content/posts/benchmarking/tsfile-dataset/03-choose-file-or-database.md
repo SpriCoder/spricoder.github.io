@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/03/
 title: 玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？
 series: 玩转时序数据集
 series_order: 3
+tags: ["时序数据集","TsFile","IoTDB","数据流转"]
+content_type: series
 ---
 
 玩转 TsFile｜03-什么时候用 TsFile，什么时候用 IoTDB？

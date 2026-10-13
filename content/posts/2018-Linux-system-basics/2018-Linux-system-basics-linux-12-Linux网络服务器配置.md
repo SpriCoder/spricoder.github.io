@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-12-Linux网络服务器配置
 date: 2018-07-16 19:12:00
 description: "2018-Linux系统基础-linux-12-Linux网络服务器配置"
-tags: 
-- linux
-- 课程笔记
-- 服务器
-- 网络
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","计算机网络"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 12
 ---
 
 Linux网络服务器配置

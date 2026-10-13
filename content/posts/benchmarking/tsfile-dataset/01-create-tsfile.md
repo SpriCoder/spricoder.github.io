@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/01/
 title: 玩转 TsFile｜01-从 CSV 到 TsFile：自描述的时序数据集
 series: 玩转时序数据集
 series_order: 1
+tags: ["时序数据集","TsFile","TsFile-Cli"]
+content_type: series
 ---
 
 玩转 TsFile｜01-从 CSV 到 TsFile：自描述的时序数据集

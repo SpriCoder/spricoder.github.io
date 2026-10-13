@@ -2,13 +2,13 @@
 title: 2020-软件工程与计算II-08-软件设计基础
 date: 2020-07-06 19:08:00
 description: "2020-软件工程与计算II-08-软件设计基础"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 设计
-- 决策
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","软件设计"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 8
 ---
 
 08-软件设计基础

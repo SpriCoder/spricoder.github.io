@@ -2,10 +2,10 @@
 title: 如何使用 Apache IoTDB 分布式系统监控
 description: 从Apache IoTDB 0.13.0版本之后可以启动监控模块对系统进行监控，并且可以使用Prometheus、Grafana等工具进行可视化
 date: 2023-01-02 14:26:29
-tags:
-- 如何使用 Apache IoTDB 分布式系统监控
 categories: [Metric]
 mathjax: false
+tags: ["IoTDB","可观测性","分布式系统"]
+content_type: practice
 ---
 如何使用 Apache IoTDB 分布式系统监控
 ---

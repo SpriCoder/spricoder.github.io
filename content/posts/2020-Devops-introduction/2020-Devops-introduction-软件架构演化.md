@@ -2,13 +2,13 @@
 title: 2020-DevOps导论-软件架构演化
 date: 2020-07-02 19:00:00
 description: "2020-DevOps导论-软件架构演化"
-tags: 
-- DevOps
-- 课程笔记
-- 服务
-- 架构
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","软件架构"]
+content_type: course
+course: devops-2020
+course_group: practice
+course_order: 2
 ---
 
 软件架构演化

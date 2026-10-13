@@ -2,11 +2,13 @@
 title: 2018-Linux系统基础-Shell编程
 date: 2018-07-16 19:00:00
 description: "2018-Linux系统基础-Shell编程"
-tags: 
-- linux
-- shell
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","Shell"]
+content_type: course
+course: linux-basics-2018
+course_group: supplement
+course_order: 1
 ---
 
 Shell编程

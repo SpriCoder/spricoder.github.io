@@ -2,12 +2,13 @@
 title: 2020-嵌入式系统导论-Ref01-物联网的M2M
 date: 2020-11-02 19:10:00
 description: "2020-嵌入式系统导论-Ref01-物联网的M2M"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 物联网
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统","物联网"]
+content_type: course
+course: embedded-systems-2020
+course_group: supplement
+course_order: 1
 ---
 
 Ref01-物联网的M2M

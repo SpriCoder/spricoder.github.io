@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-06-context-memory/
 title: 与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事
 date: 2026-07-22
-tags: [AI, Agent, 上下文, 记忆, 知识库]
+tags: ["AI Agent","上下文管理","Agent记忆","知识库"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 6.上下文、记忆与知识库，不是同一回事

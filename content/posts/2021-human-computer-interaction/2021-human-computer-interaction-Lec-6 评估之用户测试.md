@@ -2,13 +2,13 @@
 title: 2021-人机交互-Lec-6 评估之用户测试
 date: 2022-01-08 19:06:00
 description: "2021-人机交互-Lec-6 评估之用户测试"
-tags: 
-- 人机交互
-- 课程笔记
-- 用户测试
-- 参与者
 categories: [2021-人机交互]
 mathjax: false
+tags: ["人机交互","交互设计","可用性评估","可用性测试"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: lectures
+course_order: 6
 ---
 
 Lec6-用户测试

@@ -2,12 +2,13 @@
 title: 2020-计算机网络-lecture11-网络安全
 date: 2020-07-05 19:11:00
 description: "2020-计算机网络-lecture11-网络安全"
-tags: 
-- 计算机网络
-- 课程笔记
-- 网络安全
 categories: [2020-互联网计算]
 mathjax: true
+tags: ["计算机网络","网络协议","网络安全"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 11
 ---
 
 第11讲-网络安全

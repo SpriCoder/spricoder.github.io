@@ -2,15 +2,13 @@
 title: 2021-软件系统设计-Lec17-Document
 date: 2021-07-15 19:17:00
 description: "2021-软件系统设计-Lec17-Document"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 视图
-- 架构
-- 文档
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","架构文档","数据库视图"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 17
 ---
 
 lec17-Document

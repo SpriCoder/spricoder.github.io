@@ -2,14 +2,13 @@
 title: 2019-计算机组织与结构-lecture11
 date: 2020-01-16 19:11:00
 description: "2019-计算机组织与结构-lecture11"
-tags: 
-- COA
-- 课程笔记
-- 磁盘
-- 存储
-- RAID
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","存储系统","RAID"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 12
 ---
 
 RAID(磁盘冗余阵列)

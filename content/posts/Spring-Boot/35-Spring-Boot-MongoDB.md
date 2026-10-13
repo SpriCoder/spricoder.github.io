@@ -2,11 +2,10 @@
 title: 35-Spring Boot MongoDB
 date: 2022-04-13 09:43:45
 description: "Spring-Boot-Spring Boot MongoDB"
-tags: 
-- spring boot
-- mongodb
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","MongoDB"]
+content_type: practice
 ---
 
 Spring MongoDB

@@ -2,13 +2,13 @@
 title: 2021-数据集成-Lec5-批数据集成
 date: 2021-05-01 19:05:00
 description: "2021-数据集成-Lec5-批数据集成"
-tags: 
-- 数据集成
-- 课程笔记
-- 批处理
-- 存储
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","ETL","批量处理"]
+content_type: course
+course: data-integration-2021
+course_group: lectures
+course_order: 6
 ---
 
 批数据集成

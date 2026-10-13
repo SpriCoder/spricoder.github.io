@@ -2,7 +2,8 @@
 permalink: benchmarking/benchmarking-02-iot-benchmark/
 title: 基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始
 date: 2026-07-14
-tags: [数据库, 测试工具, IoT Benchmark, 时序数据库]
+tags: ["时序数据库","IoT Benchmark","基准测试","写入负载"]
+content_type: series
 ---
 
 # 基准测试工具之你不知道的两三事 | 2.从一次时序数据库写入测试开始

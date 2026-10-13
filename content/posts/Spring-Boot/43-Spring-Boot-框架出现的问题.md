@@ -2,10 +2,10 @@
 title: 43-Spring Boot 框架出现的问题
 date: 2022-04-13 09:51:42
 description: "Spring-Boot-Spring Boot 框架出现的问题"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring"]
+content_type: practice
 ---
 
 Spring boot 出现的部分问题 以及对应的解决办法

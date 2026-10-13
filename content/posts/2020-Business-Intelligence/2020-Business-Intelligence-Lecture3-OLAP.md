@@ -2,13 +2,13 @@
 title: 2020-商务智能-Lecture3-OLAP
 date: 2021-01-15 19:03:00
 description: "2020-商务智能-Lecture3-OLAP"
-tags: 
-- 商务智能
-- 课程笔记
-- 多维分析
-- olap
 categories: [2020-商务智能]
 mathjax: true
+tags: ["商业智能","数据仓库","多维分析","OLAP"]
+content_type: course
+course: business-intelligence-2020
+course_group: lectures
+course_order: 3
 ---
 
 联机分析处理 OLAP

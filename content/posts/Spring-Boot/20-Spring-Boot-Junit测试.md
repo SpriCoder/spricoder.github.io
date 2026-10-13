@@ -2,11 +2,10 @@
 title: 20-Spring Boot Junit测试
 date: 2022-04-13 09:28:45
 description: "Spring-Boot-Spring Boot Junit测试"
-tags: 
-- spring boot
-- 测试
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","JUnit","软件测试"]
+content_type: practice
 ---
 
 Spring Junit

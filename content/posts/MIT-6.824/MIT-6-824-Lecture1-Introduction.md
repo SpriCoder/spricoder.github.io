@@ -2,12 +2,13 @@
 title: MIT-6.824-Lecture1-Introduction
 date: 2022-02-18 17:17:29
 description: "MIT 6.824课程笔记 第一讲概述"
-tags:
-- MIT-6.824
-- 分布式
-- Map Reduce
 categories: [MIT-6.824]
 mathjax: false
+tags: ["分布式系统","MapReduce"]
+content_type: course
+course: mit-6-824
+course_group: lectures
+course_order: 1
 ---
 
 Lec1-Introduction

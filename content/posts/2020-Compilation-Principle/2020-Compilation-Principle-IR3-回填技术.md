@@ -2,12 +2,13 @@
 title: 2020-编译原理-IR3-回填技术
 date: 2021-01-16 19:14:00
 description: "2020-编译原理-IR3-回填技术"
-tags: 
-- 编译原理
-- 课程笔记
-- 回填
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","中间代码"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 15
 ---
 
 IR3-回填技术

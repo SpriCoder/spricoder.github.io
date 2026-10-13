@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-web-01-浏览器原理
 date: 2020-07-06 19:24:00
 description: "2020-软件工程与计算II-web-01-浏览器原理"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- web
-- 渲染
-- 浏览器
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","浏览器"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: practice
+course_order: 2
 ---
 
 01-浏览器原理

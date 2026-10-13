@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 指针与引用
 date: 2020-07-01 19:14:00
 description: "2020-C++高级程序设计-C++ 指针与引用"
-tags: 
-- C++
-- 课程笔记
-- 指针
-- 引用
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","指针与引用"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 15
 ---
 
 C++ 指针

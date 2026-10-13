@@ -2,14 +2,13 @@
 title: 2020-数据管理基础-ch10-更新事务
 date: 2020-07-03 19:10:00
 description: "2020-数据管理基础-ch10-更新事务"
-tags: 
-- 数据库
-- 课程笔记
-- 事务
-- 日志
-- 检查点
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库","事务"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 9
 ---
 
 ch10-更新事务

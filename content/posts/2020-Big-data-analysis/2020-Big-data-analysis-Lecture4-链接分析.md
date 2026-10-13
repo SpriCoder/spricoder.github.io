@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture4-链接分析
 date: 2020-11-01 19:04:00
 description: "2020-大数据分析-Lecture4-链接分析"
-tags: 
-- 大数据分析
-- 课程笔记
-- 链接
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","链接分析"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 4
 ---
 
 Lecture4-链接分析

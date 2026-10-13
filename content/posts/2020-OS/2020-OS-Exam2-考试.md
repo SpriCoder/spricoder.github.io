@@ -2,11 +2,13 @@
 title: 2020-计算机操作系统-Exam2-考试
 date: 2020-01-18 19:08:00
 description: "2020-计算机操作系统-Exam2-考试"
-tags: 
-- 计算机操作系统
-- 考试
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统"]
+content_type: course
+course: operating-systems-2020
+course_group: review
+course_order: 2
 ---
 
 Exam2-考试

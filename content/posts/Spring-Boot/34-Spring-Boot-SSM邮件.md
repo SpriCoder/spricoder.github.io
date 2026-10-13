@@ -2,11 +2,10 @@
 title: 34-Spring Boot SSM邮件
 date: 2022-04-13 09:42:44
 description: "Spring-Boot-Spring Boot SSM邮件"
-tags: 
-- spring boot
-- 邮件
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","邮件服务"]
+content_type: practice
 ---
 
 Spring SSM邮件

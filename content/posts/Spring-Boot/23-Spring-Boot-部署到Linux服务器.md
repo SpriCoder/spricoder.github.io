@@ -2,11 +2,10 @@
 title: 23-Spring Boot 部署到Linux服务器
 date: 2022-04-13 09:31:45
 description: "Spring-Boot-Spring Boot 部署到Linux服务器"
-tags: 
-- spring boot
-- 服务器
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","应用部署"]
+content_type: practice
 ---
 
 部署到linux服务器

@@ -2,12 +2,13 @@
 title: 2019-数据结构-数据结构8.0-graphs
 date: 2020-01-17 19:13:00
 description: "2019-数据结构-数据结构8.0-graphs"
-tags: 
-- 数据结构
-- 课程笔记
-- 图算法
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","图算法"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 13
 ---
 
 Graphs

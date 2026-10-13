@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book4-战略
 date: 2021-01-17 19:04:00
 description: "2020-需求与商业模式分析-Book4-战略"
-tags: 
-- 商业模式
-- 课程笔记
-- 战略
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["商业模式","产品设计"]
+content_type: course
+course: requirements-business-model-2020
+course_group: business
+course_order: 4
 ---
 
 Book4-战略

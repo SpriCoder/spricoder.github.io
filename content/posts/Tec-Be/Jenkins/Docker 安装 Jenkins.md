@@ -2,11 +2,10 @@
 title: Docker 安装 Jenkins
 date: 2022-02-24 09:06:52
 description: "使用Docker的方式安装Jenkins"
-tags:
-- 服务器
-- Docker
 categories: [服务器配置]
 mathjax: false
+tags: ["Docker","Jenkins","CI/CD"]
+content_type: practice
 ---
 
 Docker 安装 Jenkins

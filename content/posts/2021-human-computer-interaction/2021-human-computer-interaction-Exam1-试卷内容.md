@@ -2,11 +2,13 @@
 title: 2021-人机交互-Exam1-试卷内容
 date: 2022-01-08 19:11:00
 description: "2021-人机交互-Exam1-试卷内容"
-tags: 
-- 人机交互
-- 考试
 categories: [2021-人机交互]
 mathjax: true
+tags: ["人机交互","交互设计"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: review
+course_order: 1
 ---
 
 Exam1-试卷内容

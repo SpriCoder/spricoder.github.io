@@ -2,13 +2,13 @@
 title: 2021-人机交互-Lec-10-交互设计模型
 date: 2022-01-08 19:10:00
 description: "2021-人机交互-Lec-10-交互设计模型"
-tags: 
-- 人机交互
-- 课程笔记
-- 图标
-- 模型
 categories: [2021-人机交互]
 mathjax: true
+tags: ["人机交互","交互设计","交互模型"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: lectures
+course_order: 10
 ---
 
 Lec10-交互设计模型

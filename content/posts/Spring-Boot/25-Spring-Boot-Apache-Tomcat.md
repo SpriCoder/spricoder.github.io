@@ -2,11 +2,10 @@
 title: 25-Spring Apache Tomcat
 date: 2022-04-13 09:33:42
 description: "Spring-Boot-Spring Apache Tomcat"
-tags: 
-- spring boot
-- 容器
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Servlet"]
+content_type: practice
 ---
 
 Tomcat 和 Servlet原理

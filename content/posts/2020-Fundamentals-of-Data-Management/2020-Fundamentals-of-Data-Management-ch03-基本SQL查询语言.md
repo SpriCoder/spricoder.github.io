@@ -2,13 +2,13 @@
 title: 2020-数据管理基础-ch03-基本SQL查询语言
 date: 2020-07-03 19:03:00
 description: "2020-数据管理基础-ch03-基本SQL查询语言"
-tags: 
-- 数据库
-- 课程笔记
-- 查询
-- SQL
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库","SQL","数据库查询"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 3
 ---
 
 ch03-基本SQL查询语言

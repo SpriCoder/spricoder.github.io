@@ -2,12 +2,13 @@
 title: 2018-Linux系统基础-linux-11-linux网络基本配置
 date: 2018-07-16 19:11:00
 description: "2018-Linux系统基础-linux-11-linux网络基本配置"
-tags: 
-- linux
-- 课程笔记
-- 网络
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","计算机网络"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 11
 ---
 
 linux网络基本配置

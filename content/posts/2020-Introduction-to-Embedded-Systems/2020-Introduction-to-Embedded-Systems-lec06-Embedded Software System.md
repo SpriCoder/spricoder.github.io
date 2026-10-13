@@ -2,13 +2,13 @@
 title: 2020-嵌入式系统导论-lec06-Embedded Software System
 date: 2020-11-02 19:06:00
 description: "2020-嵌入式系统导论-lec06-Embedded Software System"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 优先级
-- 调度
 categories: [2020-嵌入式系统概论]
 mathjax: true
+tags: ["嵌入式系统","嵌入式软件","实时调度"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 7
 ---
 
 lec06-Embedded Software System

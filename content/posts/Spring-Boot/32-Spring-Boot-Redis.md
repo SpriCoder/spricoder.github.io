@@ -2,11 +2,10 @@
 title: 32-Spring Boot Redis
 date: 2022-04-13 09:40:45
 description: "Spring-Boot-Spring Boot Redis"
-tags: 
-- spring boot
-- redis
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring","Redis"]
+content_type: practice
 ---
 
 Spring Redis

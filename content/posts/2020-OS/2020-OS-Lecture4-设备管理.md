@@ -2,14 +2,13 @@
 title: 2020-计算机操作系统-Lecture4-设备管理
 date: 2020-01-18 19:04:00
 description: "2020-计算机操作系统-Lecture4-设备管理"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 设备
-- 磁盘
-- 缓冲区
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","输入输出","磁盘管理"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 5
 ---
 
 Lecture4-设备管理

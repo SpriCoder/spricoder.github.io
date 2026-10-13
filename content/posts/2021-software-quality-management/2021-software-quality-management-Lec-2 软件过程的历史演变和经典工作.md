@@ -2,13 +2,13 @@
 title: 2021-软件质量管理-Lec-2 软件过程的历史演变和经典工作
 date: 2022-01-09 19:02:00
 description: "2021-软件质量管理-Lec-2 软件过程的历史演变和经典工作"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 典型
-- 模型
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","软件开发过程"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 3
 ---
 
 Lec-2 软件过程的历史演变和经典工作

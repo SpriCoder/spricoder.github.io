@@ -2,12 +2,13 @@
 title: 2018-Linux系统基础-linux-02.硬盘
 date: 2018-07-16 19:02:00
 description: "2018-Linux系统基础-linux-02.硬盘"
-tags: 
-- linux
-- 课程笔记
-- 分区
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","磁盘管理"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 2
 ---
 
 # 1. 第二章：linux系统下硬盘基本知识

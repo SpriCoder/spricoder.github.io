@@ -2,10 +2,10 @@
 title: 6-Spring Boot VO、PO
 date: 2022-04-13 09:14:41
 description: "Spring-Boot-Spring Boot VO、PO"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","分层架构"]
+content_type: practice
 ---
 
 spring boot之VO、PO理解

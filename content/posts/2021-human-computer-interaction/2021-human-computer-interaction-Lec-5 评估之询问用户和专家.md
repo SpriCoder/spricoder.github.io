@@ -2,13 +2,13 @@
 title: 2021-人机交互-Lec-5 评估之询问用户和专家
 date: 2022-01-08 19:05:00
 description: "2021-人机交互-Lec-5 评估之询问用户和专家"
-tags: 
-- 人机交互
-- 课程笔记
-- 用户
-- 评估
 categories: [2021-人机交互]
 mathjax: false
+tags: ["人机交互","交互设计","可用性评估","用户研究","用户管理"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: lectures
+course_order: 5
 ---
 
 Lec5-询问用户和专家

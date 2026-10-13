@@ -2,12 +2,13 @@
 title: 2021-数据集成-Lec1-数据集成概述(企业数据集成背景)
 date: 2021-05-01 19:01:00
 description: "2021-数据集成-Lec1-数据集成概述(企业数据集成背景)"
-tags: 
-- 数据集成
-- 课程笔记
-- 计算机历史
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","计算机发展史"]
+content_type: course
+course: data-integration-2021
+course_group: lectures
+course_order: 2
 ---
 
 Lec1-数据集成概述(企业数据集成背景)

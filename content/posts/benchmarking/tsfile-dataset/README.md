@@ -2,8 +2,9 @@
 date: 2026-10-11
 permalink: benchmarking/tsfile-dataset/series/
 title: 玩转时序数据集｜系列目录
-tags: [时序数据集, TsFile, IoTDB, TsFile-Cli, TimechoAI]
 series: 玩转时序数据集
+tags: ["时序数据集","TsFile","IoTDB","TsFile-Cli","时序预测"]
+content_type: series
 ---
 
 # 玩转时序数据集｜系列目录

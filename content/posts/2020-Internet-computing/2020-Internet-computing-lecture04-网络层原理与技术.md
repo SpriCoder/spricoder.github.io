@@ -2,12 +2,13 @@
 title: 2020-计算机网络-lecture04-网络层原理与技术
 date: 2020-07-05 19:04:00
 description: "2020-计算机网络-lecture04-网络层原理与技术"
-tags: 
-- 计算机网络
-- 课程笔记
-- 网络层
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","网络层"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 4
 ---
 
 lecture04-网络层原理与技术

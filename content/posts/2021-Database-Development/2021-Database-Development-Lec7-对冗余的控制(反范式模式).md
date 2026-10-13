@@ -2,12 +2,13 @@
 title: 2021-数据库开发-Lec7-对冗余的控制(反范式模式)
 date: 2021-05-02 19:07:00
 description: "2021-数据库开发-Lec7-对冗余的控制(反范式模式)"
-tags: 
-- 数据库
-- 课程笔记
-- 范式
 categories: [2021-数据库开发]
 mathjax: false
+tags: ["数据库","数据库设计"]
+content_type: course
+course: database-development-2021
+course_group: lectures
+course_order: 7
 ---
 
 Lec7-对冗余的控制(反范式模式)

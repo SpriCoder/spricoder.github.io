@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-06.常用操作
 date: 2018-07-16 19:06:00
 description: "2018-Linux系统基础-linux-06.常用操作"
-tags: 
-- linux
-- 课程笔记
-- 语法
-- 文件
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","文件系统"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 6
 ---
 
 第六章 linux常用操作命令

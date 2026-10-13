@@ -2,10 +2,10 @@
 title: 12-Spring Boot 发起HTTP请求
 date: 2022-04-13 09:20:41
 description: "Spring-Boot-Spring Boot 发起HTTP请求"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","HTTP"]
+content_type: practice
 ---
 
 Spring 发起HTTP请求

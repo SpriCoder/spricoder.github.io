@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-08-agent-trajectory/
 title: 与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案
 date: 2026-07-23
-tags: [AI, Agent, 评测, 轨迹, 可观测性]
+tags: ["AI Agent","AI评测","可观测性"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 8. 为什么评价 Agent 不能只看最终答案

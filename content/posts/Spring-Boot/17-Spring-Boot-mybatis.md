@@ -2,12 +2,10 @@
 title: 17-Spring Boot mybatis
 date: 2022-04-13 09:25:44
 description: "Spring-Boot-Spring Boot mybatis"
-tags: 
-- spring boot
-- dao
-- mybatis
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","数据访问","MyBatis"]
+content_type: practice
 ---
 
 持久层框架-Mybatis

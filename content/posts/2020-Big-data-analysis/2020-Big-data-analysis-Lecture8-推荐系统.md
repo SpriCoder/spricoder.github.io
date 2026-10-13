@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture8-推荐系统
 date: 2020-11-01 19:08:00
 description: "2020-大数据分析-Lecture8-推荐系统"
-tags: 
-- 大数据分析
-- 课程笔记
-- 推荐
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","推荐系统"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 8
 ---
 
 Lecture8-推荐系统

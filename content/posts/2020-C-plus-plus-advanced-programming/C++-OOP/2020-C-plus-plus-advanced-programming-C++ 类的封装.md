@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 类的封装
 date: 2020-07-01 19:19:00
 description: "2020-C++高级程序设计-C++ 类的封装"
-tags: 
-- C++
-- OOP
-- 课程笔记
-- 封装
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象","封装"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 6
 ---
 
 C++ 类的封装

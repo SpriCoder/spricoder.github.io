@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 友元
 date: 2020-07-01 19:21:00
 description: "2020-C++高级程序设计-C++ 友元"
-tags: 
-- C++
-- OOP
-- 课程笔记
-- 友元函数
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 3
 ---
 
 友元函数

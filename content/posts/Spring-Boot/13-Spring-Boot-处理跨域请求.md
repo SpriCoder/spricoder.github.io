@@ -2,11 +2,10 @@
 title: 13-Spring Boot 处理跨域请求
 date: 2022-04-13 09:21:40
 description: "Spring-Boot-Spring Boot 处理跨域请求"
-tags: 
-- spring boot
-- 跨域
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","CORS"]
+content_type: practice
 ---
 
 Spring设置Cors进行跨域请求

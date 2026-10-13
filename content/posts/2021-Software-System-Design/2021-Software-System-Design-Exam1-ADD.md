@@ -2,11 +2,13 @@
 title: 2021-软件系统设计-Exam1-ADD
 date: 2021-07-15 19:24:00
 description: "2021-软件系统设计-Exam1-ADD"
-tags: 
-- 软件系统设计
-- 考试
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","ADD"]
+content_type: course
+course: software-system-design-2021
+course_group: review
+course_order: 2
 ---
 
 Exam1-ADD

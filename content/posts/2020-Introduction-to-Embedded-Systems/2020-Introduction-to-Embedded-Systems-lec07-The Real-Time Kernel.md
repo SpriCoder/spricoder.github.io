@@ -2,13 +2,13 @@
 title: 2020-嵌入式系统导论-lec07-The Real-Time Kernel
 date: 2020-11-02 19:07:00
 description: "2020-嵌入式系统导论-lec07-The Real-Time Kernel"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 优先级
-- 内存
 categories: [2020-嵌入式系统概论]
 mathjax: true
+tags: ["嵌入式系统","实时系统","内存管理"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 8
 ---
 
 Lecture07-The Real-Time Kernel

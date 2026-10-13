@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ Vector
 date: 2020-07-01 19:30:00
 description: "2020-C++高级程序设计-C++ Vector"
-tags: 
-- C++
-- 数据结构
-- 课程笔记
-- vector
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","STL","数据结构"]
+content_type: course
+course: advanced-cpp-2020
+course_group: data-structures
+course_order: 6
 ---
 
 Vector

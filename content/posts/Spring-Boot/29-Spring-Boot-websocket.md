@@ -2,11 +2,10 @@
 title: 29-Spring Boot websocket
 date: 2022-04-13 09:37:45
 description: "Spring-Boot-Spring Boot websocket"
-tags: 
-- spring boot
-- websocket
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","WebSocket"]
+content_type: practice
 ---
 
 java websocket

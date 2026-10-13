@@ -2,12 +2,13 @@
 title: 2021-数据库开发-Lec4-SQL优化
 date: 2021-05-02 19:04:00
 description: "2021-数据库开发-Lec4-SQL优化"
-tags: 
-- 数据库
-- 课程笔记
-- 查询优化
 categories: [2021-数据库开发]
 mathjax: false
+tags: ["数据库","SQL","查询优化"]
+content_type: course
+course: database-development-2021
+course_group: lectures
+course_order: 4
 ---
 
 Lec4-SQL优化

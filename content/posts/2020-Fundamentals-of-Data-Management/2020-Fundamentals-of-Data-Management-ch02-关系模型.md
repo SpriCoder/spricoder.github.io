@@ -2,12 +2,13 @@
 title: 2020-数据管理基础-ch02-关系模型
 date: 2020-07-03 19:02:00
 description: "2020-数据管理基础-ch02-关系模型"
-tags: 
-- 数据库
-- 课程笔记
-- 关系模型
 categories: [2020-数据管理基础]
 mathjax: true
+tags: ["数据库","关系模型"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 2
 ---
 
 ch02-关系模型

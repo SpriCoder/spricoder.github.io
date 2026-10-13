@@ -2,13 +2,13 @@
 title: 2020-数据科学基础-03-概率分布
 date: 2020-07-04 19:02:00
 description: "2020-数据科学基础-03-概率分布"
-tags: 
-- 数据科学
-- 课程笔记
-- 概率分布
-- 随机变量
 categories: [2020-数据科学基础]
 mathjax: false
+tags: ["数据科学","概率分布","随机变量"]
+content_type: course
+course: data-science-2020
+course_group: lectures
+course_order: 3
 ---
 
 # 1. 数据分布与概率分布

@@ -2,14 +2,13 @@
 title: 2020-编译原理-Parser2-上下文无关文法
 date: 2021-01-16 19:03:00
 description: "2020-编译原理-Parser2-上下文无关文法"
-tags: 
-- 编译原理
-- 课程笔记
-- 文法
-- 推导
-- 二义性
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语法分析","形式文法"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 4
 ---
 
 上下文无关文法(CFG, Context-Free Grammer, 上下文无关文法)

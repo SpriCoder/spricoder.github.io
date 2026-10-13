@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 部分内置函数
 date: 2020-07-01 19:03:00
 description: "2020-C++高级程序设计-C++ 部分内置函数"
-tags: 
-- C++
-- 课程笔记
-- 内置函数
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","函数设计"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 4
 ---
 
 C++部分内置函数

@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-git说明规范
 date: 2020-07-06 19:00:00
 description: "2020-软件工程与计算II-git说明规范"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- git
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","Git"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: practice
+course_order: 1
 ---
 
 # 1. 酒店管理系统

@@ -2,13 +2,10 @@
 title: 'DDIA-Reading2-可靠性,可伸缩性,可维护性'
 date: 2022-02-18 17:14:41
 description: "DDIA读书笔记2-可靠性,可伸缩性,可维护性"
-tags:
-- DDIA
-- 可靠性
-- 可伸缩性
-- 可维护性
 categories: [Designing-Data-Intensive-Applications]
 mathjax: false
+tags: ["数据系统","DDIA","可靠性","可扩展性"]
+content_type: reading
 ---
 第一章：可靠性、可伸缩性、可维护性
 ---

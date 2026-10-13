@@ -2,13 +2,13 @@
 title: 2019-数据结构-数据结构3.1-stack and queue
 date: 2020-01-17 19:05:00
 description: "2019-数据结构-数据结构3.1-stack and queue"
-tags: 
-- 数据结构
-- 课程笔记
-- 数组
-- 队列
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","栈","队列","数组"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 5
 ---
 
 Stack and Queue

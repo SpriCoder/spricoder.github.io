@@ -2,11 +2,10 @@
 title: 39-Beanutils
 date: 2022-04-13 09:47:41
 description: "Spring-Boot-Beanutils"
-tags: 
-- spring boot
-- BeanUtils
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring","BeanUtils"]
+content_type: practice
 ---
 
 Beanutils

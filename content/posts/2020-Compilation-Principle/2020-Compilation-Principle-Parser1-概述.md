@@ -2,13 +2,13 @@
 title: 2020-编译原理-Parser1-概述
 date: 2021-01-16 19:02:00
 description: "2020-编译原理-Parser1-概述"
-tags: 
-- 编译原理
-- 课程笔记
-- 词法
-- 语法分析
 categories: [2020-编译原理]
 mathjax: false
+tags: ["编译原理","语法分析"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 3
 ---
 
 Lecture3-Parser

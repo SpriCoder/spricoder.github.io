@@ -1,6 +1,7 @@
 """Verify copied originals, published body, URLs, assets and backup integrity."""
 import hashlib
 import json
+import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
 
@@ -28,7 +29,12 @@ def inner(node):
 
 for item in baseline:
     copied = ROOT / 'content' / ('posts' if item['published'] else 'drafts') / item['id']
-    check(copied.exists() and sha(copied) == item['markdown_sha256'], f"Original Markdown changed: {item['id']}")
+    if item['published'] and item.get('markdown_body_sha256'):
+        match = re.match(r'^\ufeff?---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)([\s\S]*)$', copied.read_text())
+        digest = hashlib.sha256(match.group(1).encode()).hexdigest() if match else None
+        check(digest == item['markdown_body_sha256'], f"Original article body changed: {item['id']}")
+    else:
+        check(copied.exists() and sha(copied) == item['markdown_sha256'], f"Original Markdown changed: {item['id']}")
     if not item['published']:
         check(item['id'] not in by_id, f"Draft published: {item['id']}")
         continue

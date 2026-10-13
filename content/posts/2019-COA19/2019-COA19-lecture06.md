@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture06
 date: 2020-01-16 19:06:00
 description: "2019-计算机组织与结构-lecture06"
-tags: 
-- COA
-- 课程笔记
-- 浮点数
-- 数据表示
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","计算机算术","浮点运算","数据表示"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 7
 ---
 
 Floating-point Arithmetic

@@ -2,11 +2,13 @@
 title: 2020-数据管理基础-exam-考试题目考点整理
 date: 2020-07-03 19:11:00
 description: "2020-数据管理基础-exam-考试题目考点整理"
-tags: 
-- 数据库
-- 考试
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库"]
+content_type: course
+course: data-management-2020
+course_group: review
+course_order: 1
 ---
 
 Exam01-考试题目考点整理

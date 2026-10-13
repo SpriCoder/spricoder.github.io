@@ -2,10 +2,10 @@
 title: 凤凰架构-Reading1-什么是凤凰架构
 date: 2022-02-18 10:29:52
 description: "凤凰架构读书笔记1-什么是凤凰架构"
-tags:
-- 凤凰架构
 categories: [凤凰架构]
 mathjax: false
+tags: ["软件架构","分布式系统"]
+content_type: reading
 ---
 
 # 1. 什么是凤凰架构

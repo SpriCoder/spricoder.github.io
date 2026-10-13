@@ -9,13 +9,15 @@ interface Post {
   categories: string[];
   series?: string;
   series_order?: number;
+  course?: string;
+  courseName?: string;
   readingMinutes: number;
 }
 interface Props { post: Post; }
 const { post } = Astro.props;
 const date = new Date(post.date);
 const dateLabel = Number.isNaN(date.valueOf()) ? post.date.slice(0, 10) : date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai' }).replaceAll('/', '.');
-const topic = post.series || post.categories?.[0] || post.tags?.[0];
+const topic = post.courseName || post.series || post.categories?.[0] || post.tags?.[0];
 ---
 
 <article class="post-card">

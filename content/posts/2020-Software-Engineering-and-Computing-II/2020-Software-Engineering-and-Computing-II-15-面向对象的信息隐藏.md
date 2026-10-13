@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-15-面向对象的信息隐藏
 date: 2020-07-06 19:15:00
 description: "2020-软件工程与计算II-15-面向对象的信息隐藏"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- OOP
-- 封装
-- 隐藏
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","模块化","面向对象","封装"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 15
 ---
 
 15-面向对象的信息隐藏

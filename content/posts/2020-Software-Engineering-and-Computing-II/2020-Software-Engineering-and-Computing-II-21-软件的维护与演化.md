@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-21-软件的维护与演化
 date: 2020-07-06 19:21:00
 description: "2020-软件工程与计算II-21-软件的维护与演化"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 软件维护
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","软件维护"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 21
 ---
 
 21-软件的维护与演化

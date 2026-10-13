@@ -2,13 +2,13 @@
 title: 2021-Linux程序设计-Lec3-Linux Programming Prerequisite
 date: 2021-05-03 19:03:00
 description: "2021-Linux程序设计-Lec3-Linux Programming Prerequisite"
-tags: 
-- linux
-- 课程笔记
-- 文件
-- 编译
 categories: [2021-Linux程序设计]
 mathjax: true
+tags: ["Linux","系统编程","编译链接","文件系统"]
+content_type: course
+course: linux-programming-2021
+course_group: lectures
+course_order: 4
 ---
 
 Lec3-Linux Programming Prerequisite

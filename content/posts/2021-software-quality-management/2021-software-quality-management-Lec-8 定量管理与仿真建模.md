@@ -2,14 +2,13 @@
 title: 2021-软件质量管理-Lec-8 定量管理与仿真建模
 date: 2022-01-09 19:08:00
 description: "2021-软件质量管理-Lec-8 定量管理与仿真建模"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 管理
-- 定量
-- 过程
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","软件度量"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 9
 ---
 
 Lec8 定量管理与仿真建模

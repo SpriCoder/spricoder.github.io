@@ -2,11 +2,13 @@
 title: 2020-商务智能-Lecture5-Dimensional Modeling
 date: 2021-01-15 19:05:00
 description: "2020-商务智能-Lecture5-Dimensional Modeling"
-tags: 
-- 商务智能
-- 课程笔记
 categories: [2020-商务智能]
 mathjax: true
+tags: ["商业智能","数据仓库","维度建模"]
+content_type: course
+course: business-intelligence-2020
+course_group: lectures
+course_order: 5
 ---
 
 Lecture5-Dimensional Modeling 多维建模

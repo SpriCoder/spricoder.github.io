@@ -2,13 +2,13 @@
 title: 2021-软件系统设计-Exam2-模式选择
 date: 2021-07-15 19:25:00
 description: "2021-软件系统设计-Exam2-模式选择"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 设计模式
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","设计模式"]
+content_type: course
+course: software-system-design-2021
+course_group: review
+course_order: 3
 ---
 
 # 1. 选择模式

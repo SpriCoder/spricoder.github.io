@@ -2,13 +2,13 @@
 title: 2020-软件工程与计算II-09-软件体系结构基础
 date: 2020-07-06 19:09:00
 description: "2020-软件工程与计算II-09-软件体系结构基础"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 架构
-- 计算机历史
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","软件架构","计算机发展史"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 9
 ---
 
 9-软件体系结构基础

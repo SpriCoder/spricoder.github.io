@@ -2,12 +2,13 @@
 title: 2019-数据结构-数据结构2-algrorithm Analysis
 date: 2020-01-17 19:03:00
 description: "2019-数据结构-数据结构2-algrorithm Analysis"
-tags: 
-- 数据结构
-- 课程笔记
-- 算法复杂度
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","算法复杂度"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 2
 ---
 
 **Algorithm Analysis(算法分析)**  

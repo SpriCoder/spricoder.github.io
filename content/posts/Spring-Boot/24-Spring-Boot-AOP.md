@@ -2,11 +2,10 @@
 title: 24-Spring Boot AOP
 date: 2022-04-13 09:32:41
 description: "Spring-Boot-Spring Boot AOP"
-tags: 
-- spring boot
-- AOP
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","AOP"]
+content_type: practice
 ---
 
 AOP

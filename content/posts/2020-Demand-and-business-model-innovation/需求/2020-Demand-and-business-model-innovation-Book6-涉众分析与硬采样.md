@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book6-涉众分析与硬采样
 date: 2021-01-17 19:12:00
 description: "2020-需求与商业模式分析-Book6-涉众分析与硬采样"
-tags: 
-- 需求
-- 课程笔记
-- 涉众
 categories: [2020-需求与商业模式创新]
 mathjax: true
+tags: ["需求工程","软件工程","涉众分析"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 6
 ---
 
 Book6-涉众分析与硬采样

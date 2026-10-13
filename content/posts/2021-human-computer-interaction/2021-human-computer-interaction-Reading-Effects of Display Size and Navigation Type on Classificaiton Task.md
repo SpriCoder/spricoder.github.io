@@ -2,11 +2,13 @@
 title: 2021-人机交互-Reading-Effects of Display Size and Navigation Type on Classificaiton Task
 date: 2022-01-08 19:00:00
 description: "2021-人机交互-Reading-Effects of Display Size and Navigation Type on Classificaiton Task"
-tags: 
-- 人机交互
-- 课程论文
 categories: [2021-人机交互]
 mathjax: false
+tags: ["人机交互","交互设计","用户研究","可用性评估"]
+content_type: reading
+course: human-computer-interaction-2021
+course_group: supplement
+course_order: 1
 ---
 
 Summary1-Effects of Display Size and Navigation Type on a Classification Task

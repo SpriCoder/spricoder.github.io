@@ -2,15 +2,13 @@
 title: 2020-数据管理基础-ch07-完整性、视图、安全和目录
 date: 2020-07-03 19:07:00
 description: "2020-数据管理基础-ch07-完整性、视图、安全和目录"
-tags: 
-- 数据库
-- 课程笔记
-- 完整性
-- 视图
-- 安全
-- 触发器
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库","数据完整性","数据库视图","安全"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 7
 ---
 
 ch07-完整性、视图、安全和目录

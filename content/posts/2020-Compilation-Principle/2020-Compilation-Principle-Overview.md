@@ -2,14 +2,13 @@
 title: 2020-编译原理-Overview
 date: 2021-01-16 19:00:00
 description: "2020-编译原理-Overview"
-tags: 
-- 编译原理
-- 课程笔记
-- 编译器
-- 语法
-- 语义
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 1
 ---
 
 Lecture1-Overview

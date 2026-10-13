@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-03-completion-evidence/
 title: 与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？
 date: 2026-07-21
-tags: [AI, Agent, 验证, 工作方法, 人机协作]
+tags: ["AI Agent","人机协作","结果验证"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 3. AI 说“完成了”，为什么你还不能相信它？

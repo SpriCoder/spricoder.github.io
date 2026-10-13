@@ -2,12 +2,13 @@
 title: 2020-数据管理基础-ch01-数据库概述
 date: 2020-07-03 19:01:00
 description: "2020-数据管理基础-ch01-数据库概述"
-tags: 
-- 数据库
-- 课程笔记
-- 数据模型
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库","数据模型"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 1
 ---
 
 数据库概述

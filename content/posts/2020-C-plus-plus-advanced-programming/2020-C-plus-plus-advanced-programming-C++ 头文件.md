@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 头文件
 date: 2020-07-01 19:12:00
 description: "2020-C++高级程序设计-C++ 头文件"
-tags: 
-- C++
-- 课程笔记
-- 头文件
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","编译链接"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 13
 ---
 
 C++ 头文件

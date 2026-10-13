@@ -2,12 +2,13 @@
 title: 2021-数据集成-数据集成与大数据
 date: 2021-05-01 19:00:00
 description: "2021-数据集成-数据集成与大数据"
-tags: 
-- 数据集成
-- 课程笔记
-- 互联网
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","大数据"]
+content_type: course
+course: data-integration-2021
+course_group: supplement
+course_order: 2
 ---
 
 Big Data & Data Integration

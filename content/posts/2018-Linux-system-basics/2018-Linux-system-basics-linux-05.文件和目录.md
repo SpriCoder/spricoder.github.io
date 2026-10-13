@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-05.文件和目录
 date: 2018-07-16 19:05:00
 description: "2018-Linux系统基础-linux-05.文件和目录"
-tags: 
-- linux
-- 课程笔记
-- 文件
-- 目录
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","文件系统"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 5
 ---
 
 第五章 文件和目录

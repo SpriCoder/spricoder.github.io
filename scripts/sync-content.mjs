@@ -10,6 +10,8 @@ const root = process.cwd();
 const baseline = JSON.parse(fs.readFileSync('migration/baseline.json', 'utf8'));
 const byId = new Map(baseline.map(post => [post.id, post]));
 const bySlug = new Map(baseline.filter(post => post.published).map(post => [post.slug, post.url]));
+const courses = JSON.parse(fs.readFileSync('src/data/courses.json', 'utf8'));
+const byCourse = new Map(courses.map(course => [course.slug, course]));
 const md = new MarkdownIt({ html: true, linkify: true, typographer: false }).use(mathjax).use(footnote);
 const sha = value => crypto.createHash('sha256').update(value).digest('hex');
 const escape = md.utils.escapeHtml;
@@ -74,7 +76,12 @@ for (const file of walk('content/posts')) {
   const { data, content } = matter(raw);
   if (data.draft === true || data.published === false) continue;
   const hash = sha(raw);
-  const preserved = original?.published && original.markdown_sha256 === hash;
+  const bodyHash = sha(content);
+  const preserved = original?.published && (original.markdown_body_sha256 ? original.markdown_body_sha256 === bodyHash : original.markdown_sha256 === hash);
+  if (data.course) {
+    const course = byCourse.get(data.course);
+    if (!course || !course.groups.some(group => group.id === data.course_group)) throw new Error(`Invalid course or group: ${id}`);
+  }
   const title = String(data.title || original?.title || '');
   if (!title) throw new Error(`Missing title: ${id}`);
   const date = data.pubDate ? dateString(data.pubDate) : original?.date || dateString(data.date);
@@ -93,10 +100,12 @@ for (const file of walk('content/posts')) {
     description: text(String(data.description || original?.description || fallbackDescription)),
     tags: list(data.tags, original?.tags),
     categories: list(data.categories, original?.categories),
+    ...(data.course ? { course: String(data.course), course_group: String(data.course_group), course_order: Number(data.course_order) } : {}),
+    ...(data.content_type ? { content_type: String(data.content_type) } : {}),
     ...(series ? { series: String(series) } : {}),
     ...(Number.isFinite(order) ? { series_order: Number(order) } : {}),
     readingMinutes: original?.readingMinutes || Math.max(1, Math.ceil(plain.length / 350)),
-    html, source: `content/posts/${id}`, markdown_sha256: hash,
+    html, source: `content/posts/${id}`, markdown_sha256: hash, markdown_body_sha256: bodyHash,
     counterPath: original?.legacyUrls?.[0] || url,
     renderMode: preserved ? 'preserved' : 'markdown', headings: headings(html),
   });

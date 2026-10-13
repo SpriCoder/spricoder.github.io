@@ -2,12 +2,10 @@
 title: 41-Lombok
 date: 2022-04-13 09:49:42
 description: "Spring-Boot-Lombok"
-tags: 
-- spring boot
-- 注解
-- lombok
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Lombok","Java注解"]
+content_type: practice
 ---
 
 Lombok

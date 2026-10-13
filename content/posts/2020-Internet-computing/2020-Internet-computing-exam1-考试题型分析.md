@@ -2,11 +2,13 @@
 title: 2020-计算机网络-exam1-考试题型分析
 date: 2020-07-05 19:17:00
 description: "2020-计算机网络-exam1-考试题型分析"
-tags: 
-- 计算机网络
-- 考试
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议"]
+content_type: course
+course: internet-computing-2020
+course_group: review
+course_order: 1
 ---
 
 Exam1-考试题型分析

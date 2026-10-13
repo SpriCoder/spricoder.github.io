@@ -2,13 +2,13 @@
 title: 2020-计算机操作系统-Lecture5-文件管理
 date: 2020-01-18 19:05:00
 description: "2020-计算机操作系统-Lecture5-文件管理"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 文件
-- 目录
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","文件系统"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 6
 ---
 
 Lecture5-文件管理

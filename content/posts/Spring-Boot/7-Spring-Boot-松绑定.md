@@ -2,11 +2,10 @@
 title: 7-Spring Boot 松绑定
 date: 2022-04-13 09:15:42
 description: "Spring-Boot-Spring Boot 松绑定"
-tags: 
-- spring boot
-- 绑定
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot"]
+content_type: practice
 ---
 
 Spring 宽松绑定规则 relaxed binding

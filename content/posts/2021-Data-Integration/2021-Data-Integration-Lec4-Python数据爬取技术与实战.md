@@ -2,12 +2,13 @@
 title: 2021-数据集成-Lec4-Python数据爬取技术与实战
 date: 2021-05-01 19:04:00
 description: "2021-数据集成-Lec4-Python数据爬取技术与实战"
-tags: 
-- 数据集成
-- 课程笔记
-- 数据抓取
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","Python","网络爬虫"]
+content_type: course
+course: data-integration-2021
+course_group: lectures
+course_order: 5
 ---
 
 Lec4-Python数据爬取技术与实战

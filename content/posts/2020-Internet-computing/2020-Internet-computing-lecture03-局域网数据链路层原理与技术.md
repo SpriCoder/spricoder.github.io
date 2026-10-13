@@ -2,13 +2,13 @@
 title: 2020-计算机网络-lecture03-局域网数据链路层原理与技术
 date: 2020-07-05 19:03:00
 description: "2020-计算机网络-lecture03-局域网数据链路层原理与技术"
-tags: 
-- 计算机网络
-- 课程笔记
-- 局域网
-- 数据链路层
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","局域网","数据链路层"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 3
 ---
 
 03-局域网数据链路层原理与技术

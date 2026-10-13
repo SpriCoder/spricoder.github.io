@@ -2,11 +2,10 @@
 title: Datasource AAAAAAAAA was not found? Grafana 面板导出出错解决方案
 description: Datasource AAAAAAAAA was not found? Grafana 面板导出出错解决方案
 date: 2024-01-20 10:00:00
-tags:
-- Apache IoTDB系统监控
-- Grafana
 categories: [Metric]
 mathjax: false
+tags: ["IoTDB","可观测性","Grafana"]
+content_type: practice
 ---
 
 当绘制完成 Grafana 监控面板，选择导出时，我们发现导出的 json 文件名称开头是 undefined，打开文件后发现了如下的内容：

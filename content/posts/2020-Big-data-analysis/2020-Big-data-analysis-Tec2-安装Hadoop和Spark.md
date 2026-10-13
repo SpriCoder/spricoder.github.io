@@ -2,13 +2,13 @@
 title: 2020-大数据分析-Tec2-安装Hadoop和Spark
 date: 2020-11-01 19:02:00
 description: "2020-大数据分析-Tec2-安装Hadoop和Spark"
-tags: 
-- 大数据分析
-- 实验
-- hadoop
-- spark
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","Spark","Hadoop"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 2
 ---
 
 Tec2-安装Hadoop和Spark

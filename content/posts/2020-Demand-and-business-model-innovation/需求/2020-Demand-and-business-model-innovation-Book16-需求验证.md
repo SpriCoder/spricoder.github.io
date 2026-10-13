@@ -2,13 +2,13 @@
 title: 2020-需求与商业模式分析-Book16-需求验证
 date: 2021-01-17 19:22:00
 description: "2020-需求与商业模式分析-Book16-需求验证"
-tags: 
-- 需求
-- 课程笔记
-- 评审
-- 验证
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","软件工程","需求验证","结果验证"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 16
 ---
 
 book16-需求验证

@@ -2,10 +2,10 @@
 title: 19-Spring Boot 时间
 date: 2022-04-13 09:27:42
 description: "Spring-Boot-Spring Boot 时间"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot"]
+content_type: practice
 ---
 
 Spring 时间

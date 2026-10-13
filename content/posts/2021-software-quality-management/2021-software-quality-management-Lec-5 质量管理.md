@@ -2,14 +2,13 @@
 title: 2021-软件质量管理-Lec-5 质量管理
 date: 2022-01-09 19:05:00
 description: "2021-软件质量管理-Lec-5 质量管理"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 评审
-- 质量
-- 缺陷
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","软件度量","缺陷管理"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 6
 ---
 
 Lec-5 质量管理

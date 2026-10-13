@@ -2,12 +2,13 @@
 title: 2020-编译原理-Parser6-Bison
 date: 2021-01-16 19:07:00
 description: "2020-编译原理-Parser6-Bison"
-tags: 
-- 编译原理
-- 课程笔记
-- 优先级
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语法分析","Bison"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 8
 ---
 
 Bison:语法分析器的生成器

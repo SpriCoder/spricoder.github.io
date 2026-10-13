@@ -2,14 +2,13 @@
 title: 2021-软件质量管理-Lec-7 项目支持活动
 date: 2022-01-09 19:07:00
 description: "2021-软件质量管理-Lec-7 项目支持活动"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 配置管理
-- 分析
-- 活动
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","配置管理"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 8
 ---
 
 Lec-7 项目支持活动

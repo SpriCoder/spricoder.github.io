@@ -2,11 +2,13 @@
 title: 2020-编译原理-Semantics2-SDT
 date: 2021-01-16 19:09:00
 description: "2020-编译原理-Semantics2-SDT"
-tags: 
-- 编译原理
-- 课程笔记
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语义分析","语法制导翻译"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 10
 ---
 
 Sematics2-SDT

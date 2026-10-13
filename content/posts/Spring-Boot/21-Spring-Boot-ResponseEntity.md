@@ -2,10 +2,10 @@
 title: 21-Spring Boot ResponseEntity
 date: 2022-04-13 09:29:42
 description: "Spring-Boot-Spring Boot ResponseEntity"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","HTTP"]
+content_type: practice
 ---
 
 Spring ResponseEntity

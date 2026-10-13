@@ -2,11 +2,10 @@
 title: 26-Spring Boot MySDK
 date: 2022-04-13 09:34:44
 description: "Spring-Boot-Spring Boot MySDK"
-tags: 
-- spring boot
-- sdk
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","SDK"]
+content_type: practice
 ---
 
 Spring MySDK

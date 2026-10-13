@@ -2,13 +2,13 @@
 title: 2020-DevOps导论-云原生与容器技术
 date: 2020-07-02 19:00:00
 description: "2020-DevOps导论-云原生与容器技术"
-tags: 
-- DevOps
-- 课程笔记
-- 云原生
-- 容器
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","云原生"]
+content_type: course
+course: devops-2020
+course_group: practice
+course_order: 1
 ---
 
 云原生与容器技术

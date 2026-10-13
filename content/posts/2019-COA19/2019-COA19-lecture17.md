@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture17
 date: 2020-01-16 19:17:00
 description: "2019-计算机组织与结构-lecture17"
-tags: 
-- COA
-- 课程笔记
-- 模块
-- 处理器
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","输入输出"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 18
 ---
 
 Input / Output

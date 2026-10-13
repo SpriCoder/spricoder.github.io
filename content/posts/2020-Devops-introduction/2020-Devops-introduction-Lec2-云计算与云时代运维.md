@@ -2,12 +2,13 @@
 title: 2020-DevOps导论-Lec2-云计算与云时代运维
 date: 2020-07-02 19:02:00
 description: "2020-DevOps导论-Lec2-云计算与云时代运维"
-tags: 
-- DevOps
-- 课程笔记
-- 云计算
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","云计算"]
+content_type: course
+course: devops-2020
+course_group: lectures
+course_order: 3
 ---
 
 lec2-云计算与云时代运维

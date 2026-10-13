@@ -2,11 +2,13 @@
 title: 2020-软件测试-白盒测试
 date: 2020-07-07 19:00:00
 description: "2020-软件测试-白盒测试"
-tags: 
-- 软件测试
-- 白盒测试
 categories: [2020-软件测试]
 mathjax: false
+tags: ["软件测试","白盒测试"]
+content_type: course
+course: software-testing-2020
+course_group: lectures
+course_order: 1
 ---
 
 白盒测试

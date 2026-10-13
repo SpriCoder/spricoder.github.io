@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book2-需求基础
 date: 2021-01-17 19:08:00
 description: "2020-需求与商业模式分析-Book2-需求基础"
-tags: 
-- 需求
-- 课程笔记
-- 需求基础
 categories: [2020-需求与商业模式创新]
 mathjax: true
+tags: ["需求工程","软件工程"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 2
 ---
 
 Book2-需求基础

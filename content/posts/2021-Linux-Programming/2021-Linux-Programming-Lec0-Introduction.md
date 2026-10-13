@@ -2,13 +2,13 @@
 title: 2021-Linux程序设计-Lec0-Introduction
 date: 2021-05-03 19:00:00
 description: "2021-Linux程序设计-Lec0-Introduction"
-tags: 
-- linux
-- 课程笔记
-- 分布式系统
-- unix
 categories: [2021-Linux程序设计]
 mathjax: false
+tags: ["Linux","系统编程","分布式系统","Unix"]
+content_type: course
+course: linux-programming-2021
+course_group: lectures
+course_order: 1
 ---
 
 Lec0-Introduction

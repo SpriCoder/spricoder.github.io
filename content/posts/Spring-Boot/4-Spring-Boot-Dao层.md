@@ -2,11 +2,10 @@
 title: 4-Spring Boot Dao层
 date: 2022-04-13 09:12:41
 description: "Spring-Boot-Spring Boot Dao层"
-tags: 
-- spring boot
-- dao
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","数据访问"]
+content_type: practice
 ---
 
 Spring Dao层

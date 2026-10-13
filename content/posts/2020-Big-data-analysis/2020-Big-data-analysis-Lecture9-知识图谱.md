@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture9-知识图谱
 date: 2020-11-01 19:09:00
 description: "2020-大数据分析-Lecture9-知识图谱"
-tags: 
-- 大数据分析
-- 课程笔记
-- 知识图谱
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","知识图谱"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 9
 ---
 
 Lecture9-知识图谱

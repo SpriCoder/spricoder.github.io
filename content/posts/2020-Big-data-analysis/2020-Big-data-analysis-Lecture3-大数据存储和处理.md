@@ -2,13 +2,13 @@
 title: 2020-大数据分析-Lecture3-大数据存储和处理
 date: 2020-11-01 19:03:00
 description: "2020-大数据分析-Lecture3-大数据存储和处理"
-tags: 
-- 大数据分析
-- 课程笔记
-- 存储
-- hbase
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","HBase"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 3
 ---
 
 Lecture3-大数据存储和处理

@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-04.字符界面
 date: 2018-07-16 19:04:00
 description: "2018-Linux系统基础-linux-04.字符界面"
-tags: 
-- linux
-- 课程笔记
-- shell
-- 命令
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","Shell","命令行工具"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 4
 ---
 
 第四章：Linux字符界面操作

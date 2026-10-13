@@ -2,14 +2,13 @@
 title: 2021-软件系统设计-Lec13-Quality Attributes
 date: 2021-07-15 19:13:00
 description: "2021-软件系统设计-Lec13-Quality Attributes"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 架构
-- 组件
 categories: [2021-软件系统设计]
 mathjax: true
+tags: ["软件设计","软件架构","质量属性"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 13
 ---
 
 lec13-Quality Attributes

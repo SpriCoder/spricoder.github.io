@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-07-multi-agent/
 title: 与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口
 date: 2026-07-22
-tags: [AI, Agent, 多Agent, 协作, 工作流]
+tags: ["AI Agent","多智能体","工作流"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 7. 多 Agent，不是多开几个聊天窗口

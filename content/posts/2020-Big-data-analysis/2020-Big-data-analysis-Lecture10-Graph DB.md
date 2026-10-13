@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture10-Graph DB
 date: 2020-11-01 19:10:00
 description: "2020-大数据分析-Lecture10-Graph DB"
-tags: 
-- 大数据分析
-- 课程笔记
-- 数据库
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","图数据库","数据库"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 10
 ---
 
 Lecture10-Graph DB

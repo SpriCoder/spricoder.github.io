@@ -2,11 +2,13 @@
 title: 2021-服务端开发-Exam0-课程复习
 date: 2021-05-04 19:00:00
 description: "2021-服务端开发-Exam0-课程复习"
-tags: 
-- 服务端开发
-- 考试
 categories: [2021-服务端开发]
 mathjax: false
+tags: ["Java","后端开发","Spring","Spring Boot"]
+content_type: course
+course: server-development-2021
+course_group: review
+course_order: 1
 ---
 
  Exam0-课程复习

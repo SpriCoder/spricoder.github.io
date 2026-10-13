@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-04-permission-gates/
 title: 与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？
 date: 2026-07-21
-tags: [AI, Agent, 权限, 安全, 人机协作]
+tags: ["AI Agent","权限管理","安全","人机协作"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 4.当 AI 可以修改文件和发送消息，权限应该怎样给？

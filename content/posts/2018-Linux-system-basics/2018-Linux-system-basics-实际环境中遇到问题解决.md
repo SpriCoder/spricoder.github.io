@@ -2,12 +2,13 @@
 title: 2018-Linux系统基础-实际环境中遇到问题解决
 date: 2018-07-16 19:00:00
 description: "2018-Linux系统基础-实际环境中遇到问题解决"
-tags: 
-- linux
-- 文件
-- 虚拟内存
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","文件系统","虚拟内存"]
+content_type: course
+course: linux-basics-2018
+course_group: practice
+course_order: 1
 ---
 
 # 1. 物理内存不足，导致进程被Kill

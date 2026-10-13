@@ -2,11 +2,13 @@
 title: 2020-嵌入式系统导论-Homework for uC OS-II
 date: 2020-11-02 19:11:00
 description: "2020-嵌入式系统导论-Homework for uC OS-II"
-tags: 
-- 嵌入式系统导论
-- 作业
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统","μC/OS-II"]
+content_type: course
+course: embedded-systems-2020
+course_group: assignments
+course_order: 1
 ---
 
 Hw01-Homework for uC/OS-II

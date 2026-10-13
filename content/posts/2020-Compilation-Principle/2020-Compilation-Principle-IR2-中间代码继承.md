@@ -2,12 +2,13 @@
 title: 2020-编译原理-IR2-中间代码继承
 date: 2021-01-16 19:13:00
 description: "2020-编译原理-IR2-中间代码继承"
-tags: 
-- 编译原理
-- 课程笔记
-- 中间代码
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","中间代码"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 14
 ---
 
 IR2-中间代码继承

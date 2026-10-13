@@ -2,13 +2,13 @@
 title: 2021-数据集成-Lec3-数据集成框架
 date: 2021-05-01 19:03:00
 description: "2021-数据集成-Lec3-数据集成框架"
-tags: 
-- 数据集成
-- 课程笔记
-- 数据库
-- 数据源
 categories: [2021-数据集成]
 mathjax: true
+tags: ["数据集成","数据库","数据源"]
+content_type: course
+course: data-integration-2021
+course_group: lectures
+course_order: 4
 ---
 
 数据集成

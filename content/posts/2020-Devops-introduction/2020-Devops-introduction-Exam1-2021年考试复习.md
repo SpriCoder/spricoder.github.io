@@ -2,11 +2,13 @@
 title: 2020-DevOps导论-Exam-2021年考试复习
 date: 2020-07-02 19:12:00
 description: "2020-DevOps导论-Exam-2021年考试复习"
-tags: 
-- DevOps
-- 考试
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付"]
+content_type: course
+course: devops-2020
+course_group: review
+course_order: 1
 ---
 
 Exam1-2021年考试复习

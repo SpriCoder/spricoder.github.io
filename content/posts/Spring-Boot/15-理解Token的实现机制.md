@@ -2,12 +2,10 @@
 title: 15-理解Token的实现机制
 date: 2022-04-13 09:23:40
 description: "Spring-Boot-理解Token的实现机制"
-tags: 
-- 认证
-- 服务器
-- token
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","身份认证"]
+content_type: practice
 ---
 
 深入理解Token

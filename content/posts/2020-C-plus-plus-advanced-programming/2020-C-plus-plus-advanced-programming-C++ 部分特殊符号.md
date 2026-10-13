@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 部分特殊符号
 date: 2020-07-01 19:04:00
 description: "2020-C++高级程序设计-C++ 部分特殊符号"
-tags: 
-- C++
-- 课程笔记
-- 特殊符号
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 5
 ---
 
 C++中部分特殊符号

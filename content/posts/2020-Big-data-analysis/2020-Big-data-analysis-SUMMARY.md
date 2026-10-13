@@ -2,12 +2,13 @@
 title: 2020-大数据分析-SUMMARY
 date: 2020-11-01 19:14:00
 description: "2020-大数据分析-SUMMARY"
-tags: 
-- 大数据分析
-- 课程笔记
-- 考试
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析"]
+content_type: course
+course: big-data-analysis-2020
+course_group: overview
+course_order: 1
 ---
 
 # Summary

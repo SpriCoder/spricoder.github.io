@@ -2,13 +2,13 @@
 title: 2020-软件工程与计算II-11-人机交互设计
 date: 2020-07-06 19:11:00
 description: "2020-软件工程与计算II-11-人机交互设计"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 人机交互
-- 设计
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","人机交互"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 11
 ---
 
 11-人机交互设计

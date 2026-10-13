@@ -2,13 +2,13 @@
 title: 2020-DevOps导论-Docker常用命令部分
 date: 2020-07-02 19:01:00
 description: "2020-DevOps导论-Docker常用命令部分"
-tags: 
-- DevOps
-- docker
-- 容器
-- 镜像
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","Docker"]
+content_type: course
+course: devops-2020
+course_group: practice
+course_order: 4
 ---
 
 docker常用命令部分

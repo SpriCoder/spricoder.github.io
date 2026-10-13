@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 继承
 date: 2020-07-01 19:17:00
 description: "2020-C++高级程序设计-C++ 继承"
-tags: 
-- C++
-- OOP
-- 课程笔记
-- 继承
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象","继承"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 7
 ---
 
 继承

@@ -2,11 +2,10 @@
 title: 36-Spring Boot 启动
 date: 2022-04-13 09:44:44
 description: "Spring-Boot-Spring Boot 启动"
-tags: 
-- spring boot
-- 框架启动
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring"]
+content_type: practice
 ---
 
 Spring boot 项目启动

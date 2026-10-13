@@ -2,13 +2,13 @@
 title: 2020-计算机网络-lecture08-Routing Protocols
 date: 2020-07-05 19:08:00
 description: "2020-计算机网络-lecture08-Routing Protocols"
-tags: 
-- 计算机网络
-- 课程笔记
-- 路由协议
-- 路由器
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","路由协议","路由器"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 8
 ---
 
 Lecture 08-Routing Protocols(RIP and OSPF)

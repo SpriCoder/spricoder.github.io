@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-02-软件工程的发展
 date: 2020-07-06 19:02:00
 description: "2020-软件工程与计算II-02-软件工程的发展"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 计算机历史
 categories: [2020-软件工程与计算II]
 mathjax: true
+tags: ["软件工程","计算机发展史"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 2
 ---
 
 02-软件工程的发展

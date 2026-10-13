@@ -2,13 +2,13 @@
 title: 2019-数据结构-数据结构2-递归和迭代
 date: 2020-01-17 19:02:00
 description: "2019-数据结构-数据结构2-递归和迭代"
-tags: 
-- 数据结构
-- 课程笔记
-- 递归
-- 迭代
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","递归","迭代"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 3
 ---
 
 **递归和迭代**

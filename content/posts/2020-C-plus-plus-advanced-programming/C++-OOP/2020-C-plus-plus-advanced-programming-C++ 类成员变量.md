@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 类成员变量
 date: 2020-07-01 19:18:00
 description: "2020-C++高级程序设计-C++ 类成员变量"
-tags: 
-- C++
-- OOP
-- 课程笔记
-- 成员变量
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 5
 ---
 
 类的成员变量

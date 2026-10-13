@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-14-面向对象的模块化
 date: 2020-07-06 19:14:00
 description: "2020-软件工程与计算II-14-面向对象的模块化"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- OOP
-- 耦合
-- 继承
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","模块化","面向对象","耦合"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 14
 ---
 
 14-面向对象的模块化

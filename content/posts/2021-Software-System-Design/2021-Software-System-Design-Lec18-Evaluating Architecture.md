@@ -2,15 +2,13 @@
 title: 2021-软件系统设计-Lec18-Evaluating Architecture
 date: 2021-07-15 19:18:00
 description: "2021-软件系统设计-Lec18-Evaluating Architecture"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 架构
-- 评估
-- 质量
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","架构评估","软件质量"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 18
 ---
 
 lec18-Evaluating Architecture

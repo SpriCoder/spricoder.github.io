@@ -2,11 +2,13 @@
 title: 2020-需求与商业模式分析-Exam-2020
 date: 2021-01-17 19:24:00
 description: "2020-需求与商业模式分析-Exam-2020"
-tags: 
-- 商业模式与需求分析
-- 考试
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","商业模式"]
+content_type: course
+course: requirements-business-model-2020
+course_group: review
+course_order: 1
 ---
 
 # 2020需求与商业模式创新试卷回忆

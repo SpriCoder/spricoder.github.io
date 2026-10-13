@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 核心关键字
 date: 2020-07-01 19:06:00
 description: "2020-C++高级程序设计-C++ 核心关键字"
-tags: 
-- C++
-- 课程笔记
-- 关键字
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 7
 ---
 
 c++核心特殊关键字

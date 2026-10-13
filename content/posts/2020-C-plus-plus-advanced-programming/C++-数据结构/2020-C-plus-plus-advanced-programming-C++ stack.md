@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ stack
 date: 2020-07-01 19:27:00
 description: "2020-C++高级程序设计-C++ stack"
-tags: 
-- C++
-- 数据结构
-- 课程笔记
-- 栈
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","STL","数据结构","栈"]
+content_type: course
+course: advanced-cpp-2020
+course_group: data-structures
+course_order: 3
 ---
 
 c++ stack

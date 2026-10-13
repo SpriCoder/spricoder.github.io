@@ -2,11 +2,13 @@
 title: 2021-软件系统设计-Exam0-往年考试
 date: 2021-07-15 19:23:00
 description: "2021-软件系统设计-Exam0-往年考试"
-tags: 
-- 软件系统设计
-- 考试
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构"]
+content_type: course
+course: software-system-design-2021
+course_group: review
+course_order: 1
 ---
 
 Exam0-往年考试

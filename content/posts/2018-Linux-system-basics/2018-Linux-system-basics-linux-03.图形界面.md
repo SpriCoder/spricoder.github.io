@@ -2,12 +2,13 @@
 title: 2018-Linux系统基础-linux-03.图形界面
 date: 2018-07-16 19:03:00
 description: "2018-Linux系统基础-linux-03.图形界面"
-tags: 
-- linux
-- 课程笔记
-- 系统操作
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 3
 ---
 
 # 1. 第三章：走进Linux图形界面

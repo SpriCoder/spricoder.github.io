@@ -2,13 +2,13 @@
 title: 2020-大数据分析-Lecture1-大数据分析
 date: 2020-11-01 19:01:00
 description: "2020-大数据分析-Lecture1-大数据分析"
-tags: 
-- 大数据分析
-- 课程笔记
-- 模式
-- 价值
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 1
 ---
 
 Lecture1-大数据分析

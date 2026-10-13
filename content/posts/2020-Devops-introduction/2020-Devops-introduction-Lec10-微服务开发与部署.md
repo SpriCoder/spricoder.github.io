@@ -2,12 +2,13 @@
 title: 2020-DevOps导论-Lec10-微服务开发与部署
 date: 2020-07-02 19:10:00
 description: "2020-DevOps导论-Lec10-微服务开发与部署"
-tags: 
-- DevOps
-- 课程笔记
-- 维服务
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","软件架构","微服务"]
+content_type: course
+course: devops-2020
+course_group: lectures
+course_order: 11
 ---
 
 Lec10-微服务开发与部署

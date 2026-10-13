@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/06/
 title: 玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile
 series: 玩转时序数据集
 series_order: 6
+tags: ["时序数据集","TsFile","IoTDB","数据流转"]
+content_type: series
 ---
 
 玩转 TsFile｜06-从 IoTDB 把表带回文件：导出 table-model TsFile

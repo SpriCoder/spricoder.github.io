@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/00/
 title: 玩转 TsFile｜00-专栏导读：AI-Native 的时序数据集
 series: 玩转时序数据集
 series_order: 0
+tags: ["时序数据集","TsFile","IoTDB","TsFile-Cli","时序预测"]
+content_type: series
 ---
 
 玩转 TsFile｜00-专栏导读：AI-Native 的时序数据集

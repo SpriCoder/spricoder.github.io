@@ -2,11 +2,13 @@
 title: 2021-软件质量管理-Exam 2021
 date: 2022-01-09 19:09:00
 description: "2021-软件质量管理-Exam 2021"
-tags: 
-- 软件质量管理
-- 考试
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量"]
+content_type: course
+course: software-quality-management-2021
+course_group: review
+course_order: 1
 ---
 
 Exam 2021

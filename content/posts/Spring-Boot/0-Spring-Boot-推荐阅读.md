@@ -2,10 +2,10 @@
 title: 0-Spring Boot推荐阅读
 date: 2022-04-13 09:52:42
 description: "Spring-Boot-Summary-Spring Boot推荐阅读"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot"]
+content_type: reference
 ---
 
 Summary-Spring Boot推荐阅读方式

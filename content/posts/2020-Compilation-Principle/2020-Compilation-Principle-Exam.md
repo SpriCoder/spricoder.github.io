@@ -2,11 +2,13 @@
 title: 2020-编译原理-Exam
 date: 2021-01-16 19:16:00
 description: "2020-编译原理-Exam"
-tags: 
-- 编译原理
-- 考试
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理"]
+content_type: course
+course: compiler-principles-2020
+course_group: review
+course_order: 1
 ---
 
 Exam

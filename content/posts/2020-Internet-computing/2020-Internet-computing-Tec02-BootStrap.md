@@ -2,12 +2,13 @@
 title: 2020-计算机网络-Tec02-BootStrap
 date: 2020-07-05 19:13:00
 description: "2020-计算机网络-Tec02-BootStrap"
-tags: 
-- 计算机网络
-- 实验
-- BootStrap
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["Web前端","Bootstrap"]
+content_type: course
+course: internet-computing-2020
+course_group: practice
+course_order: 2
 ---
 
 BootStrap

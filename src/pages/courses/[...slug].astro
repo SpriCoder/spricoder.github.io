@@ -1,0 +1,41 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { allPosts } from '../../lib/posts';
+import courses from '../../data/courses.json';
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return courses.map(course => ({
+    params: { slug: course.slug },
+    props: {
+      course,
+      posts: posts.filter(post => post.course === course.slug).sort((a, b) =>
+        (a.course_order ?? Number.MAX_SAFE_INTEGER) - (b.course_order ?? Number.MAX_SAFE_INTEGER)
+        || a.title.localeCompare(b.title, 'zh-CN', { numeric: true })),
+    },
+  }));
+}
+
+const { course, posts } = Astro.props;
+const groups = course.groups.map(group => ({
+  ...group,
+  posts: posts.filter(post => post.course_group === group.id),
+})).filter(group => group.posts.length > 0);
+const ungroupedPosts = posts.filter(post => !course.groups.some(group => post.course_group === group.id));
+if (ungroupedPosts.length > 0) groups.push({ id: 'other', label: '其他笔记', posts: ungroupedPosts });
+---
+<SiteLayout title={`${course.name} · 课程笔记`} description={course.description}>
+  <div class="container">
+    <header class="page-header course-header">
+      <a class="breadcrumb" href="/courses/">← 全部课程</a>
+      <p class="eyebrow">{course.domain} · {course.year ? course.year : '学习笔记'}</p>
+      <h1>{course.name}</h1>
+      <p>{course.description}</p>
+      <div class="collection-summary"><span><strong>{posts.length}</strong> 篇笔记</span><span>按章节与资料类型整理</span></div>
+    </header>
+    <div class="course-layout">
+      <nav class="course-outline" aria-label="课程目录"><p>课程目录</p><ul>{groups.map((group, index) => <li><a href={`#group-${index + 1}`}><span>{group.label}</span><span>{group.posts.length}</span></a></li>)}</ul><a class="course-outline-back" href="/courses/">浏览其他课程 →</a></nav>
+      <div class="course-chapters">{groups.map((group, index) => <section class="course-chapter" aria-labelledby={`group-${index + 1}`}><div class="course-chapter-heading"><h2 id={`group-${index + 1}`}>{group.label}</h2><span>{group.posts.length} 篇笔记</span></div><ol class="course-note-list">{group.posts.map((post, noteIndex) => <li><a class="course-note-link" href={post.url}><span class="course-note-number" aria-hidden="true">{String(noteIndex + 1).padStart(2, '0')}</span><span class="course-note-title">{post.title}</span><span class="course-note-reading">约 {Math.max(1, post.readingMinutes || 1)} 分钟</span><span class="course-note-arrow" aria-hidden="true">↗</span></a></li>)}</ol></section>)}</div>
+    </div>
+  </div>
+</SiteLayout>

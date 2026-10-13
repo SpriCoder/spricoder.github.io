@@ -2,14 +2,13 @@
 title: 2020-嵌入式系统导论-lec04-Memory Architectures
 date: 2020-11-02 19:04:00
 description: "2020-嵌入式系统导论-lec04-Memory Architectures"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 存储
-- 内存
-- 缓存
 categories: [2020-嵌入式系统概论]
 mathjax: true
+tags: ["嵌入式系统","内存管理","缓存"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 5
 ---
 
 lec04-Memory Architectures

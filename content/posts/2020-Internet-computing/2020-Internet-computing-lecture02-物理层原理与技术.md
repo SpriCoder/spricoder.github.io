@@ -2,13 +2,13 @@
 title: 2020-计算机网络-lecture02-物理层原理与技术
 date: 2020-07-05 19:02:00
 description: "2020-计算机网络-lecture02-物理层原理与技术"
-tags: 
-- 计算机网络
-- 课程笔记
-- 物理层
-- 编码
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","物理层","编码"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 2
 ---
 
 lecture02-物理层

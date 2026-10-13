@@ -2,11 +2,10 @@
 title: 37-ServletInitializer的理解
 date: 2022-04-13 09:45:41
 description: "Spring-Boot-ServletInitializer的理解"
-tags: 
-- spring boot
-- 框架启动
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring"]
+content_type: practice
 ---
 
 ServeletIntialzer的理解

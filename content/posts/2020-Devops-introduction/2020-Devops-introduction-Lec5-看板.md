@@ -2,13 +2,13 @@
 title: 2020-DevOps导论-Lec5-看板
 date: 2020-07-02 19:05:00
 description: "2020-DevOps导论-Lec5-看板"
-tags: 
-- DevOps
-- 课程笔记
-- 看板
-- scrum
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","看板","Scrum"]
+content_type: course
+course: devops-2020
+course_group: lectures
+course_order: 6
 ---
 
 Lec5-看板

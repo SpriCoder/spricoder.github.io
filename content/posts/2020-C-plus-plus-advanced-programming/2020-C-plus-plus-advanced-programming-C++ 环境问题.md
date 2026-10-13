@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 环境问题
 date: 2020-07-01 19:07:00
 description: "2020-C++高级程序设计-C++ 环境问题"
-tags: 
-- C++
-- 课程笔记
-- 环境
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 8
 ---
 
 C++ 出现的部分问题

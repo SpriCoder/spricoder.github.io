@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book13-数据建模
 date: 2021-01-17 19:19:00
 description: "2020-需求与商业模式分析-Book13-数据建模"
-tags: 
-- 需求
-- 课程笔记
-- 建模
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","软件工程","数据建模"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 13
 ---
 
 Book13-数据建模

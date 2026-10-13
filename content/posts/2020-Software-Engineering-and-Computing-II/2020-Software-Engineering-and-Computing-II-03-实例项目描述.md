@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-03-实例项目描述
 date: 2020-07-06 19:03:00
 description: "2020-软件工程与计算II-03-实例项目描述"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 用户
-- 系统
-- 项目
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","项目管理","用户管理"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 3
 ---
 
 03-实例项目描述

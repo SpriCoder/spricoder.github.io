@@ -2,13 +2,10 @@
 title: DDIA-Reading3-数据模型与查询语言
 date: 2022-02-19 17:14:41
 description: "DDIA读书笔记3-数据模型与查询语言"
-tags:
-- DDIA
-- 数据模型
-- 数据查询语言
-- 图数据库
 categories: [Designing-Data-Intensive-Applications]
 mathjax: false
+tags: ["数据系统","DDIA","数据模型","查询语言","图数据库"]
+content_type: reading
 ---
 
 第二章：数据模型与查询语言

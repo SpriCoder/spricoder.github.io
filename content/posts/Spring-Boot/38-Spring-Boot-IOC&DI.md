@@ -2,13 +2,10 @@
 title: 38-Spring Boot IOC&DI
 date: 2022-04-13 09:46:42
 description: "Spring-Boot-Spring Boot IOC&DI"
-tags:
-- spring boot 
-- 容器
-- 控制反转
-- 依赖注入
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring","依赖注入"]
+content_type: practice
 ---
 
 Spring IOC 和 DI

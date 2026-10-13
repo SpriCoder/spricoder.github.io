@@ -3,9 +3,9 @@ title: Java并发编程的艺术-Reading-2-Java并发机制的底层实现机制
 description: Java并发编程的艺术-Reading-2-Java并发机制的底层实现机制
 mathjax: false
 date: 2022-02-26 17:40:56
-tags:
-- Java并发编程的艺术
 categories: [Java并发编程的艺术]
+tags: ["Java","并发编程","Java内存模型","并发锁","原子操作"]
+content_type: reading
 ---
 
 Chapter2-Java并发机制的底层实现

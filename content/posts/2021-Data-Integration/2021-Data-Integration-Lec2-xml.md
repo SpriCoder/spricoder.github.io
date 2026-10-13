@@ -2,13 +2,13 @@
 title: 2021-数据集成-Lec2-xml
 date: 2021-05-01 19:02:00
 description: "2021-数据集成-Lec2-xml"
-tags: 
-- 数据集成
-- 课程笔记
-- 文档
-- XML
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","XML"]
+content_type: course
+course: data-integration-2021
+course_group: lectures
+course_order: 3
 ---
 
 lec2-xml

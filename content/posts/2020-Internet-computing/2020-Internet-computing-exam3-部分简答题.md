@@ -2,11 +2,13 @@
 title: 2020-计算机网络-exam3-部分简答题
 date: 2020-07-05 19:19:00
 description: "2020-计算机网络-exam3-部分简答题"
-tags: 
-- 计算机网络
-- 考试
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议"]
+content_type: course
+course: internet-computing-2020
+course_group: review
+course_order: 3
 ---
 
 exam03-部分简答题

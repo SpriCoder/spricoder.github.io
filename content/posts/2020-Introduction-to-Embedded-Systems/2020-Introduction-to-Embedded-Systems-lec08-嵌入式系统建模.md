@@ -2,12 +2,13 @@
 title: 2020-嵌入式系统导论-lec08-嵌入式系统建模
 date: 2020-11-02 19:08:00
 description: "2020-嵌入式系统导论-lec08-嵌入式系统建模"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 系统建模
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统","系统建模"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 9
 ---
 
 Lec08-嵌入式系统建模

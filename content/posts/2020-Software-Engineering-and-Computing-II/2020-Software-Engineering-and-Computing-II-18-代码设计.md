@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-18-代码设计
 date: 2020-07-06 19:18:00
 description: "2020-软件工程与计算II-18-代码设计"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 设计
 categories: [2020-软件工程与计算II]
 mathjax: true
+tags: ["软件工程","软件设计"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 18
 ---
 
 代码设计

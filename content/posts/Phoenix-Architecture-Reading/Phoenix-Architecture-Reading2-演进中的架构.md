@@ -2,11 +2,10 @@
 title: 凤凰架构-Reading2-演进中的架构
 date: 2022-02-18 10:31:57
 description: "凤凰架构读书笔记2-演进中的架构"
-tags:
-- 凤凰架构
-- 计算机历史
 categories: [凤凰架构]
 mathjax: false
+tags: ["软件架构","分布式系统","架构演进"]
+content_type: reading
 ---
 演进中的架构
 ---

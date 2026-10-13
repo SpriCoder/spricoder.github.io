@@ -2,12 +2,13 @@
 title: 2020-编译原理-IR4-函数与补充
 date: 2021-01-16 19:15:00
 description: "2020-编译原理-IR4-函数与补充"
-tags: 
-- 编译原理
-- 课程笔记
-- 函数
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","中间代码"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 16
 ---
 
 IR4-函数与补充

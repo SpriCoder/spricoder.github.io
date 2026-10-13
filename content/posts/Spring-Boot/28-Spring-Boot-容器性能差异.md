@@ -2,11 +2,10 @@
 title: 28-Spring Boot 容器性能差异
 date: 2022-04-13 09:36:44
 description: "Spring-Boot-Spring Boot 容器性能差异"
-tags: 
-- spring boot
-- 容器
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Servlet"]
+content_type: practice
 ---
 
 spring 容器性能

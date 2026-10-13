@@ -2,11 +2,10 @@
 title: 16-Spring Boot 事务
 date: 2022-04-13 09:24:45
 description: "Spring-Boot-Spring Boot 事务"
-tags: 
-- spring boot
-- 事务
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","事务"]
+content_type: practice
 ---
 
 Spring 事务

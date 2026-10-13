@@ -2,13 +2,13 @@
 title: 2021-数据库开发-Lec6-数据库模式设计之层次结构
 date: 2021-05-02 19:06:00
 description: "2021-数据库开发-Lec6-数据库模式设计之层次结构"
-tags: 
-- 数据库
-- 课程笔记
-- 模型
-- 结构
 categories: [2021-数据库开发]
 mathjax: false
+tags: ["数据库","数据库设计"]
+content_type: course
+course: database-development-2021
+course_group: lectures
+course_order: 6
 ---
 
 

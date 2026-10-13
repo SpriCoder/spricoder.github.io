@@ -2,14 +2,13 @@
 title: 2020-软件工程与计算II-web-03-REST和JSON
 date: 2020-07-06 19:26:00
 description: "2020-软件工程与计算II-web-03-REST和JSON"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- web
-- 请求
-- 客户端
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","REST","JSON","HTTP"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: practice
+course_order: 4
 ---
 
 web- 03-REST和JSON

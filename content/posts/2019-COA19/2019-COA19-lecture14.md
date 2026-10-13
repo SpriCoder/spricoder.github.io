@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture14
 date: 2020-01-16 19:14:00
 description: "2019-计算机组织与结构-lecture14"
-tags: 
-- COA
-- 课程笔记
-- 指令
-- 寻址
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","指令集"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 15
 ---
 
 Instruction Sets

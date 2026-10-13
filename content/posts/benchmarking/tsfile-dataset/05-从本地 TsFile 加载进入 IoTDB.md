@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/05/
 title: 玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB
 series: 玩转时序数据集
 series_order: 5
+tags: ["时序数据集","TsFile","IoTDB","数据流转"]
+content_type: series
 ---
 
 玩转 TsFile｜05-一条 LOAD 命令：把本地 TsFile 接入 IoTDB

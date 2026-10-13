@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-09-llm-judge/
 title: 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判
 date: 2026-07-23
-tags: [AI, LLM-as-a-Judge, 评测, 偏差, 人机协作]
+tags: ["AI评测","LLM-as-a-Judge","评测偏差"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判

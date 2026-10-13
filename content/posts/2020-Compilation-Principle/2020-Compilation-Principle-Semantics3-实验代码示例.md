@@ -2,14 +2,13 @@
 title: 2020-编译原理-Semantics3-实验代码示例
 date: 2021-01-16 19:10:00
 description: "2020-编译原理-Semantics3-实验代码示例"
-tags: 
-- 编译原理
-- 课程笔记
-- 类型
-- 表达式
-- 符号表
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语义分析"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 11
 ---
 
 Sematics3-实验代码示例

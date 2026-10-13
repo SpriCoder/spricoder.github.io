@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Tec3-yolo
 date: 2020-11-01 19:03:00
 description: "2020-大数据分析-Tec3-yolo"
-tags: 
-- 大数据分析
-- 实验
-- yolo
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","YOLO","目标检测","计算机视觉"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 3
 ---
 
 Tec3-yolo

@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book17-需求管理
 date: 2021-01-17 19:23:00
 description: "2020-需求与商业模式分析-Book17-需求管理"
-tags: 
-- 需求
-- 课程笔记
-- 需求管理
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","软件工程","需求管理"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 17
 ---
 
 book17-需求管理

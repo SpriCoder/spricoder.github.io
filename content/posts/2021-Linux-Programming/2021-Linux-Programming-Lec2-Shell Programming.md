@@ -2,14 +2,13 @@
 title: 2021-Linux程序设计-Lec2-Shell Programming
 date: 2021-05-03 19:02:00
 description: "2021-Linux程序设计-Lec2-Shell Programming"
-tags: 
-- linux
-- 课程笔记
-- shell
-- 命令
-- 环境变量
 categories: [2021-Linux程序设计]
 mathjax: true
+tags: ["Linux","系统编程","Shell","命令行工具"]
+content_type: course
+course: linux-programming-2021
+course_group: lectures
+course_order: 3
 ---
 
 Lec2-Shell Programming

@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Tec10-基于MovieLens的推荐系统
 date: 2020-11-01 19:10:00
 description: "2020-大数据分析-Tec10-基于MovieLens的推荐系统"
-tags: 
-- 大数据分析
-- 实验
-- 推荐系统
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","推荐系统"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 10
 ---
 
 Tec10-基于MovieLens的推荐系统

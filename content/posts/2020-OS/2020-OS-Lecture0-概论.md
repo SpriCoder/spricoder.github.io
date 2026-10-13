@@ -2,12 +2,13 @@
 title: 2020-计算机操作系统-Lecture0-概论
 date: 2020-01-18 19:00:00
 description: "2020-计算机操作系统-Lecture0-概论"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 抽象
 categories: [2020-计算机操作系统]
 mathjax: false
+tags: ["操作系统"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 1
 ---
 
 Lecture0-概论

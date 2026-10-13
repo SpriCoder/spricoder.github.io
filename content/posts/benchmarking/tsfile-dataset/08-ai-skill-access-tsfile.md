@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/08/
 title: 玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile
 series: 玩转时序数据集
 series_order: 8
+tags: ["时序数据集","TsFile","TsFile-Cli","Agent Skills","AI Agent"]
+content_type: series
 ---
 
 玩转 TsFile｜08-让 AI 少猜一步：用 Skill 可靠访问 TsFile

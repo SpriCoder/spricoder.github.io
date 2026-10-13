@@ -2,11 +2,10 @@
 title: 11-Spring Boot HTTPS
 date: 2022-04-13 09:19:42
 description: "Spring-Boot-Spring Boot HTTPS"
-tags: 
-- spring boot
-- 证书
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","HTTP","HTTPS"]
+content_type: practice
 ---
 
 Spring HTTPS

@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture02
 date: 2020-01-16 19:02:00
 description: "2019-计算机组织与结构-lecture02"
-tags: 
-- COA
-- 课程笔记
-- 总线
-- 中断
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","总线","中断"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 3
 ---
 
 A Top-Level View of Computer Function and Interconnection

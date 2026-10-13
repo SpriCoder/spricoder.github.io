@@ -2,10 +2,10 @@
 title: 凤凰架构-Reading3-访问远程服务
 date: 2022-02-19 17:14:41
 description: "凤凰架构读书笔记3-访问远程服务"
-tags:
-- 凤凰架构
 categories: [凤凰架构]
 mathjax: false
+tags: ["软件架构","分布式系统","RPC","REST"]
+content_type: reading
 ---
 
 访问远程服务

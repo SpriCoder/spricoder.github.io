@@ -2,15 +2,13 @@
 title: 2021-软件系统设计-Lec21-Review Part2
 date: 2021-07-15 19:21:00
 description: "2021-软件系统设计-Lec21-Review Part2"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 模式
-- 对象
-- 抽象
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 21
 ---
 
 lec21-软件系统设计复习

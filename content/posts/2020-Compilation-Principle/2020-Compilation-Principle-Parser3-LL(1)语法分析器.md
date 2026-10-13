@@ -2,14 +2,13 @@
 title: 2020-编译原理-Parser3-LL(1)语法分析器
 date: 2021-01-16 19:04:00
 description: "2020-编译原理-Parser3-LL(1)语法分析器"
-tags: 
-- 编译原理
-- 课程笔记
-- 递归
-- 文法
-- 终结符
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语法分析","LL(1)","递归"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 5
 ---
 
 LL(1)语法分析器

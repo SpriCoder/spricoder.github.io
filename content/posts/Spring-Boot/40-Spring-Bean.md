@@ -2,11 +2,10 @@
 title: 40-Spring Bean
 date: 2022-04-13 09:48:45
 description: "Spring-Boot-Spring Bean"
-tags: 
-- spring boot
-- 动态注入
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Spring","依赖注入"]
+content_type: practice
 ---
 
 spring Bean

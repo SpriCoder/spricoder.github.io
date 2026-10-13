@@ -2,12 +2,13 @@
 title: 2020-数据管理基础-ch05-访问数据库的程序
 date: 2020-07-03 19:05:00
 description: "2020-数据管理基础-ch05-访问数据库的程序"
-tags: 
-- 数据库
-- 课程笔记
-- 事务
 categories: [2020-数据管理基础]
 mathjax: false
+tags: ["数据库","数据库接口","事务"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 5
 ---
 
 ch05-访问数据库的程序

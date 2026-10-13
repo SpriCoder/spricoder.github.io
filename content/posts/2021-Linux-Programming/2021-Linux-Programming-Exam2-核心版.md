@@ -2,11 +2,13 @@
 title: 2021-Linux程序设计-Exam2-核心版
 date: 2021-05-03 19:08:00
 description: "2021-Linux程序设计-Exam2-核心版"
-tags: 
-- linux
-- 考试
 categories: [2021-Linux程序设计]
 mathjax: true
+tags: ["Linux","系统编程"]
+content_type: course
+course: linux-programming-2021
+course_group: review
+course_order: 3
 ---
 
 Exam2-要背的

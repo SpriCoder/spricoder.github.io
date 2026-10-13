@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-summary-重点
 date: 2020-07-06 19:29:00
 description: "2020-软件工程与计算II-summary-重点"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 考试
 categories: [2020-软件工程与计算II]
 mathjax: true
+tags: ["软件工程"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: review
+course_order: 2
 ---
 
 summary

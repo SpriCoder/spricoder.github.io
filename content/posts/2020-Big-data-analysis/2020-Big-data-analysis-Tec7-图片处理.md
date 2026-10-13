@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Tec7-图片处理
 date: 2020-11-01 19:07:00
 description: "2020-大数据分析-Tec7-图片处理"
-tags: 
-- 大数据分析
-- 实验
-- 图片处理
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","图像处理","计算机视觉"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 7
 ---
 
 Python 图片处理

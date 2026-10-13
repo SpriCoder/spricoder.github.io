@@ -2,11 +2,13 @@
 title: 2020-Web前端开发-Exam02-考试题
 date: 2021-01-19 19:01:00
 description: "2020-Web前端开发-Exam02-考试题"
-tags: 
-- Web前端开发
-- 考试
 categories: [2020-Web前端开发]
 mathjax: true
+tags: ["Web前端"]
+content_type: course
+course: web-frontend-2020
+course_group: review
+course_order: 2
 ---
 
 Exam02-考试题分型

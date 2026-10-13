@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book1-商业模式画布
 date: 2021-01-17 19:01:00
 description: "2020-需求与商业模式分析-Book1-商业模式画布"
-tags: 
-- 商业模式
-- 课程笔记
-- 画布
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["商业模式","产品设计","商业模式画布"]
+content_type: course
+course: requirements-business-model-2020
+course_group: business
+course_order: 1
 ---
 
 Book1-商业模式画布

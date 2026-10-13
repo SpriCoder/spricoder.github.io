@@ -2,11 +2,13 @@
 title: 2020-C++高级程序设计-作业总结
 date: 2020-07-01 19:30:00
 description: "2020-C++高级程序设计-作业总结"
-tags: 
-- C++
-- 作业
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++"]
+content_type: course
+course: advanced-cpp-2020
+course_group: assignments
+course_order: 1
 ---
 
 # 1. 第一次作业总结

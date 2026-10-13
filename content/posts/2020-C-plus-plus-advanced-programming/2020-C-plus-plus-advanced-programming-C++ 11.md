@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 11
 date: 2020-07-01 19:01:00
 description: "2020-C++高级程序设计-C++ 11"
-tags: 
-- C++
-- 课程笔记
-- C++ 11
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","C++11"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 2
 ---
 
 C++ 11

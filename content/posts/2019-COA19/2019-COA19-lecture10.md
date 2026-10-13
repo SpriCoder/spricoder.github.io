@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture10
 date: 2020-01-16 19:10:00
 description: "2019-计算机组织与结构-lecture10"
-tags: 
-- COA
-- 课程笔记
-- 计算机错误
-- 奇偶校验
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","错误检测"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 11
 ---
 
 lecture10 Error Correction

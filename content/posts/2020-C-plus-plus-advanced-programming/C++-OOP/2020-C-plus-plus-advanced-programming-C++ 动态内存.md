@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ 动态内存
 date: 2020-07-01 19:16:00
 description: "2020-C++高级程序设计-C++ 动态内存"
-tags: 
-- C++
-- OOP
-- 课程笔记
-- 存储
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象","内存管理"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 2
 ---
 
 动态内存

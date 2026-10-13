@@ -2,15 +2,13 @@
 title: 2020-软件工程与计算II-13-模块化与信息隐藏
 date: 2020-07-06 19:13:00
 description: "2020-软件工程与计算II-13-模块化与信息隐藏"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- OOP
-- 模块
-- 耦合
-- 内聚
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","模块化","面向对象","耦合"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 13
 ---
 
 13-详细设计中的模块化与信息隐藏

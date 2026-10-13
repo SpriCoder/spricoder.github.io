@@ -2,11 +2,10 @@
 title: 如何绘制美观的 Grafana 面板？以Apache IoTDB 监控指标为例
 description: 本文以Apache IoTDB master 分支的 commit Id=eaee1d8d 为例，介绍了 Apache IoTDB 的监控指标通过 Prometheus 格式进行采集，并且使用 Grafana 的方式进行可视化
 date: 2024-01-13 21:46:00
-tags:
-- Apache IoTDB系统监控
-- Grafana
 categories: [Metric]
 mathjax: false
+tags: ["IoTDB","可观测性","Grafana"]
+content_type: practice
 ---
 
 本文以Apache IoTDB master 分支的 commit Id=eaee1d8d 为例，介绍了 Apache IoTDB 的监控指标通过 Prometheus 格式进行采集，并且使用 Grafana 的方式进行可视化。

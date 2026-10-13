@@ -2,11 +2,10 @@
 title: Grafana 面板数据快照导出方法
 description: 为便于线上问题排查和性能调优工作的开展，经过前期调研，本文给出如何导出 Grafana 面板数据快照的方法，后续可以离线导入到其他 Grafana 中进行交互式问题排查。
 date: 2024-01-20 11:00:00
-tags:
-- Apache IoTDB系统监控
-- Grafana
 categories: [Metric]
 mathjax: false
+tags: ["IoTDB","可观测性","Grafana"]
+content_type: practice
 ---
 
 > 为便于线上问题排查和性能调优工作的开展，经过前期调研，本文给出如何导出 Grafana 面板数据快照的方法，后续可以离线导入到其他 Grafana 中进行交互式问题排查。

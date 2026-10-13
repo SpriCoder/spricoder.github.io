@@ -2,12 +2,13 @@
 title: 2020-软件工程与计算II-用例文档例子
 date: 2020-07-06 19:00:00
 description: "2020-软件工程与计算II-用例文档例子"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 用例
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","用例建模"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: practice
+course_order: 7
 ---
 
 # 用例文档的一些问题

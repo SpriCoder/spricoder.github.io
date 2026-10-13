@@ -2,11 +2,13 @@
 title: 2021-Linux程序设计-Exam-2021年考试题
 date: 2021-05-03 19:05:00
 description: "2021-Linux程序设计-Exam-2021年考试题"
-tags: 
-- linux
-- 考试
 categories: [2021-Linux程序设计]
 mathjax: false
+tags: ["Linux","系统编程"]
+content_type: course
+course: linux-programming-2021
+course_group: review
+course_order: 4
 ---
 
 Exam-2021年考试题

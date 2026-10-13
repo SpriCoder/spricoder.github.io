@@ -2,12 +2,13 @@
 title: 2019-数据结构-数据结构4.1-specific Tree
 date: 2020-01-17 19:08:00
 description: "2019-数据结构-数据结构4.1-specific Tree"
-tags: 
-- 数据结构
-- 课程笔记
-- 二叉搜索树
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","二叉搜索树"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 8
 ---
 
 4.1 搜索树

@@ -2,12 +2,13 @@
 title: 2021-软件系统设计-Lec10-Defensive Programming
 date: 2021-07-15 19:10:00
 description: "2021-软件系统设计-Lec10-Defensive Programming"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 防御式编程
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","防御式编程"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 10
 ---
 
 lec10-Defensive Programming

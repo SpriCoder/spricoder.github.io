@@ -2,13 +2,13 @@
 title: 2020-软件工程与计算II-16-设计模式
 date: 2020-07-06 19:16:00
 description: "2020-软件工程与计算II-16-设计模式"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- OOP
-- 设计模式
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","面向对象","设计模式"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 16
 ---
 
 16-设计模式

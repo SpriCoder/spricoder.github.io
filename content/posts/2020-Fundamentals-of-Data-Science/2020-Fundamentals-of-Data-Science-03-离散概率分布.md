@@ -2,12 +2,13 @@
 title: 2020-数据科学基础-03-离散概率分布
 date: 2020-07-04 19:03:00
 description: "2020-数据科学基础-03-离散概率分布"
-tags: 
-- 数据科学
-- 课程笔记
-- 概率分布
 categories: [2020-数据科学基础]
 mathjax: false
+tags: ["数据科学","概率分布"]
+content_type: course
+course: data-science-2020
+course_group: lectures
+course_order: 4
 ---
 
 03-离散概率分布

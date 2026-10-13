@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture01
 date: 2020-01-16 19:01:00
 description: "2019-计算机组织与结构-lecture01"
-tags: 
-- COA
-- 课程笔记
-- 计算机历史
-- 性能
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","计算机发展史","性能分析"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 2
 ---
 
 Computer is Everywhere

@@ -2,14 +2,13 @@
 title: 2020-编译原理-Lexer
 date: 2021-01-16 19:01:00
 description: "2020-编译原理-Lexer"
-tags: 
-- 编译原理
-- 课程笔记
-- 词法
-- 状态
-- 正则表达式
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","词法分析","正则表达式"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 2
 ---
 
 Lecture2-Lexer

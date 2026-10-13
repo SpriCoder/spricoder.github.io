@@ -2,12 +2,13 @@
 title: 2021-软件系统设计-Lec09-Structural Pattern
 date: 2021-07-15 19:09:00
 description: "2021-软件系统设计-Lec09-Structural Pattern"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 设计模式
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","设计模式"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 9
 ---
 
 Lec09-Structual Pattern

@@ -3,9 +3,9 @@ title: Java并发编程的艺术-Reading-1-并发编程的挑战
 description: Java并发编程的艺术-Reading-1-并发编程的挑战
 mathjax: false
 date: 2022-02-26 17:39:41
-tags:
-- Java并发编程的艺术
 categories: [Java并发编程的艺术]
+tags: ["Java","并发编程","上下文切换","死锁"]
+content_type: reading
 ---
 
 Chapter1-并发编程的挑战

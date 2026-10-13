@@ -2,12 +2,13 @@
 title: 2021-人机交互-Lec-4 评估之观察用户
 date: 2022-01-08 19:04:00
 description: "2021-人机交互-Lec-4 评估之观察用户"
-tags: 
-- 人机交互
-- 课程笔记
-- 观察用户
 categories: [2021-人机交互]
 mathjax: false
+tags: ["人机交互","交互设计","可用性评估","用户研究"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: lectures
+course_order: 4
 ---
 
 lec4-评估之观察用户

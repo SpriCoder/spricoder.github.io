@@ -2,11 +2,10 @@
 title: 8-Spring Boot 配置
 date: 2022-04-13 09:16:44
 description: "Spring-Boot-Spring Boot 配置"
-tags: 
-- spring boot
-- 配置
 categories: [Spring-Boot]
 mathjax: true
+tags: ["Java","Spring Boot"]
+content_type: practice
 ---
 
 spring配置

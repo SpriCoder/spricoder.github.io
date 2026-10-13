@@ -2,12 +2,13 @@
 title: 2020-计算机网络-lecture07-路由器和网络
 date: 2020-07-05 19:07:00
 description: "2020-计算机网络-lecture07-路由器和网络"
-tags: 
-- 计算机网络
-- 课程笔记
-- 路由器
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","路由协议","路由器"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 7
 ---
 
 lecture07-Routing and Routers 路由器和网络

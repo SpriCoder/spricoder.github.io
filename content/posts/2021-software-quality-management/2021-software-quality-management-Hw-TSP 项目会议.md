@@ -2,13 +2,13 @@
 title: 2021-软件质量管理-Hw-TSP 项目会议
 date: 2022-01-09 19:00:00
 description: "2021-软件质量管理-Hw-TSP 项目会议"
-tags: 
-- 软件质量管理
-- 作业
-- 计划
-- 估算
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","项目管理","软件估算"]
+content_type: course
+course: software-quality-management-2021
+course_group: assignments
+course_order: 1
 ---
 
 TSP 项目的几次会议

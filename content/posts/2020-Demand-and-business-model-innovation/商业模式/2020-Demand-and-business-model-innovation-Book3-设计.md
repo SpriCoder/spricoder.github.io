@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book3-设计
 date: 2021-01-17 19:03:00
 description: "2020-需求与商业模式分析-Book3-设计"
-tags: 
-- 商业模式
-- 课程笔记
-- 设计
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["商业模式","产品设计"]
+content_type: course
+course: requirements-business-model-2020
+course_group: business
+course_order: 3
 ---
 
 Book3-设计

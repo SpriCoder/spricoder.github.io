@@ -2,12 +2,13 @@
 title: 2020-数据管理基础-ch08-数据库索引
 date: 2020-07-03 19:08:00
 description: "2020-数据管理基础-ch08-数据库索引"
-tags: 
-- 数据库
-- 课程笔记
-- 索引
 categories: [2020-数据管理基础]
 mathjax: true
+tags: ["数据库","数据库索引"]
+content_type: course
+course: data-management-2020
+course_group: lectures
+course_order: 8
 ---
 
 ch08-数据库索引

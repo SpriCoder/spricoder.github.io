@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book1-需求工程导论
 date: 2021-01-17 19:07:00
 description: "2020-需求与商业模式分析-Book1-需求工程导论"
-tags: 
-- 需求
-- 课程笔记
-- 涉众
 categories: [2020-需求与商业模式创新]
 mathjax: true
+tags: ["需求工程","软件工程","涉众分析"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 1
 ---
 
 Book1-需求工程导论

@@ -2,12 +2,13 @@
 title: 2020-计算机网络-lecture01-计算机网络及其参考模型
 date: 2020-07-05 19:01:00
 description: "2020-计算机网络-lecture01-计算机网络及其参考模型"
-tags: 
-- 计算机网络
-- 课程笔记
-- 拓扑
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 1
 ---
 
 lecture01-Computer Network & Network Reference Model(计算机网络及其参考模型)

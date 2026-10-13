@@ -2,11 +2,13 @@
 title: 2020-大数据分析-Tec1-TF-IDF算法
 date: 2020-11-01 19:01:00
 description: "2020-大数据分析-Tec1-TF-IDF算法"
-tags: 
-- 大数据分析
-- 实验
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","TF-IDF"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 1
 ---
 
 Tec1-TF-IDF

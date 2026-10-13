@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-prompt-boundaries/
 title: 与 AI 一起工作 | 2. 一个好的 Prompt，不是更长的命令，而是更清楚的任务边界
 date: 2026-07-14
-tags: [Codex, Prompt, AI编程, 工程实践]
+tags: ["AI编程","提示工程","Codex","人机协作"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 2. 一个好的 Prompt，不是更长的命令，而是更清楚的任务边界

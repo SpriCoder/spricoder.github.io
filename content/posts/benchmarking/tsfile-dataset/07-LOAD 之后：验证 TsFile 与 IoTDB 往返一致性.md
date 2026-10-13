@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/07/
 title: 玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性
 series: 玩转时序数据集
 series_order: 7
+tags: ["时序数据集","TsFile","IoTDB","结果验证"]
+content_type: series
 ---
 
 玩转 TsFile｜07-LOAD 之后继续验证：用闭环脚本验证往返一致性

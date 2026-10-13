@@ -2,12 +2,13 @@
 title: 2021-软件系统设计-Lec11-Table-Driven Methods
 date: 2021-07-15 19:11:00
 description: "2021-软件系统设计-Lec11-Table-Driven Methods"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 表驱动
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","表驱动编程"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 11
 ---
 
 lec11-Table-Driven Methods

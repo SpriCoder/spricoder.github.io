@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ 异常处理
 date: 2020-07-01 19:13:00
 description: "2020-C++高级程序设计-C++ 异常处理"
-tags: 
-- C++
-- 课程笔记
-- 异常处理
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","异常处理"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 14
 ---
 
 C++ 异常处理

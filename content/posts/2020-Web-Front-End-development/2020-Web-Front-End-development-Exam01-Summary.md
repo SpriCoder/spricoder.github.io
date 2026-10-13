@@ -2,11 +2,13 @@
 title: 2020-Web前端开发-Exam01-Summary
 date: 2021-01-19 19:00:00
 description: "2020-Web前端开发-Exam01-Summary"
-tags: 
-- Web前端开发
-- 考试
 categories: [2020-Web前端开发]
 mathjax: true
+tags: ["Web前端"]
+content_type: course
+course: web-frontend-2020
+course_group: review
+course_order: 1
 ---
 
 Exam01-Summary

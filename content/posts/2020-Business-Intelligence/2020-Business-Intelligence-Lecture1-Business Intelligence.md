@@ -2,12 +2,13 @@
 title: 2020-商务智能-Lecture1-Business Intelligence
 date: 2021-01-15 19:01:00
 description: "2020-商务智能-Lecture1-Business Intelligence"
-tags: 
-- 商务智能
-- 课程笔记
-- 数据仓库
 categories: [2020-商务智能]
 mathjax: true
+tags: ["商业智能","数据仓库"]
+content_type: course
+course: business-intelligence-2020
+course_group: lectures
+course_order: 1
 ---
 
 Lecture1-Business Intelligence

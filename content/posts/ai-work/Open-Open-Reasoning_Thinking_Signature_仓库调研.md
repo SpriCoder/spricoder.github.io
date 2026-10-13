@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-open-open-reasoning/
 title: Open-Open-Reasoning 在做什么：Claude Thinking Signature 回放实验核查
 date: 2026-07-16
-tags: [Claude, ExtendedThinking, ChainOfThought, Security, ReverseEngineering]
+tags: ["Claude","扩展思考","安全","逆向工程"]
+content_type: practice
 ---
 
 # Open-Open-Reasoning 在做什么：Claude Thinking Signature 回放实验核查

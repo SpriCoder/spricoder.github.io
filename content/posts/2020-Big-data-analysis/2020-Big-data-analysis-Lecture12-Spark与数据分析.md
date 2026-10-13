@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture12-Spark与数据分析
 date: 2020-11-01 19:12:00
 description: "2020-大数据分析-Lecture12-Spark与数据分析"
-tags: 
-- 大数据分析
-- 课程笔记
-- 分布式
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","Spark","分布式系统"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 12
 ---
 
 lecture12-Spark与数据分析

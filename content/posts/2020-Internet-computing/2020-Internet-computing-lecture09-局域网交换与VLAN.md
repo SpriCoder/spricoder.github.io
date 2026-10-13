@@ -2,13 +2,13 @@
 title: 2020-计算机网络-lecture09-局域网交换与VLAN
 date: 2020-07-05 19:09:00
 description: "2020-计算机网络-lecture09-局域网交换与VLAN"
-tags: 
-- 计算机网络
-- 课程笔记
-- 局域网
-- 交换机
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","VLAN","局域网","交换机"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 9
 ---
 
 lecture09-局域网交换与VLAN

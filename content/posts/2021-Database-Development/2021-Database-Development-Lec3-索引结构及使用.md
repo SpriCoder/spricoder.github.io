@@ -2,13 +2,13 @@
 title: 2021-数据库开发-Lec3-索引结构及使用
 date: 2021-05-02 19:03:00
 description: "2021-数据库开发-Lec3-索引结构及使用"
-tags: 
-- 数据库
-- 课程笔记
-- 索引
-- 查询
 categories: [2021-数据库开发]
 mathjax: true
+tags: ["数据库","数据库索引","数据库查询"]
+content_type: course
+course: database-development-2021
+course_group: lectures
+course_order: 3
 ---
 
 Lec3-索引结构及使用

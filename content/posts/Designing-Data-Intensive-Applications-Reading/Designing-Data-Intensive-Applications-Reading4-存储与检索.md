@@ -2,10 +2,10 @@
 title: DDIA-Reading4-存储与检索
 date: 2022-02-26 17:36:00
 description: "DDIA读书笔记4-存储与检索"
-tags:
-- DDIA
 categories: [Designing-Data-Intensive-Applications]
 mathjax: false
+tags: ["数据系统","DDIA","存储系统","数据库索引","LSM树"]
+content_type: reading
 ---
 第三章：存储与检索
 ---

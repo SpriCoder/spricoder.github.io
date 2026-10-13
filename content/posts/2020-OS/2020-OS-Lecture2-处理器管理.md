@@ -2,15 +2,13 @@
 title: 2020-计算机操作系统-Lecture2-处理器管理
 date: 2020-01-18 19:02:00
 description: "2020-计算机操作系统-Lecture2-处理器管理"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 处理器
-- 进程
-- 中断
-- 调度
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","进程调度","进程管理","中断"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 3
 ---
 
 Lecture2-处理器管理

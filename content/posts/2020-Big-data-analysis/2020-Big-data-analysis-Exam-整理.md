@@ -2,11 +2,13 @@
 title: 2020-大数据分析-Exam-整理
 date: 2020-11-01 19:13:00
 description: "2020-大数据分析-Exam-整理"
-tags: 
-- 大数据分析
-- 考试
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析"]
+content_type: course
+course: big-data-analysis-2020
+course_group: review
+course_order: 1
 ---
 
 Exam-整理

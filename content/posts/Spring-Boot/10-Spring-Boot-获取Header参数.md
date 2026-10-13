@@ -2,10 +2,10 @@
 title: 10-Spring Boot 获取Header参数
 date: 2022-04-13 09:18:45
 description: "Spring-Boot-Spring Boot 获取Header参数"
-tags: 
-- spring boot
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","HTTP"]
+content_type: practice
 ---
 
 Spring 获取Header参数

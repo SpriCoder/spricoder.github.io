@@ -2,13 +2,13 @@
 title: 2021-软件系统设计-Lec03-Factory
 date: 2021-07-15 19:03:00
 description: "2021-软件系统设计-Lec03-Factory"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 设计模式
-- 工厂模式
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","设计模式","工厂模式"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 3
 ---
 
 Lec03-Factory

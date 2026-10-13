@@ -2,11 +2,13 @@
 title: 2020-编译原理-Crash Course Computer Science
 date: 2021-01-16 19:00:00
 description: "2020-编译原理-Crash Course Computer Science"
-tags: 
-- 编译原理
-- 课程笔记
 categories: [2020-编译原理]
 mathjax: false
+tags: ["编译原理"]
+content_type: course
+course: compiler-principles-2020
+course_group: supplement
+course_order: 1
 ---
 
 Crash Course Computer Science

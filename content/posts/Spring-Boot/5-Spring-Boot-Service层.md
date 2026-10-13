@@ -2,11 +2,10 @@
 title: 5-Spring Boot Service层
 date: 2022-04-13 09:13:45
 description: "Spring-Boot-Spring Boot Service层"
-tags: 
-- spring boot
-- service
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","分层架构"]
+content_type: practice
 ---
 
 Spring Service层

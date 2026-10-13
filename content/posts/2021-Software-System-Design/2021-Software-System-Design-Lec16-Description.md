@@ -2,15 +2,13 @@
 title: 2021-软件系统设计-Lec16-Description
 date: 2021-07-15 19:16:00
 description: "2021-软件系统设计-Lec16-Description"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 视图
-- 系统
-- 架构
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构","架构文档","UML","数据库视图"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 16
 ---
 
 lec16-Description

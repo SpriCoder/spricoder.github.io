@@ -2,12 +2,13 @@
 title: 2019-计算机组织与结构-lecture05
 date: 2020-01-16 19:05:00
 description: "2019-计算机组织与结构-lecture05"
-tags: 
-- COA
-- 计算机运算
-- 课程笔记
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","计算机算术"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 6
 ---
 
 Decimal Representation

@@ -2,11 +2,10 @@
 title: 22-Spring Boot Swagger2
 date: 2022-04-13 09:30:42
 description: "Spring-Boot-Spring Boot Swagger2"
-tags: 
-- spring boot
-- swagger2
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Swagger"]
+content_type: practice
 ---
 
 Spring Swagger2

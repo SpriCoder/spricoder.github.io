@@ -2,13 +2,13 @@
 title: 2021-数据集成-消息中间件
 date: 2021-05-01 19:00:00
 description: "2021-数据集成-消息中间件"
-tags: 
-- 数据集成
-- 课程笔记
-- 消息队列
-- 消息传递
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","消息队列"]
+content_type: course
+course: data-integration-2021
+course_group: supplement
+course_order: 3
 ---
 
 消息中间件

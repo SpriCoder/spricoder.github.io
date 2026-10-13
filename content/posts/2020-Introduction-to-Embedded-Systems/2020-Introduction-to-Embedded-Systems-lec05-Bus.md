@@ -2,13 +2,13 @@
 title: 2020-嵌入式系统导论-lec05-Bus
 date: 2020-11-02 19:05:00
 description: "2020-嵌入式系统导论-lec05-Bus"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
-- 中断
-- 总线
 categories: [2020-嵌入式系统概论]
 mathjax: true
+tags: ["嵌入式系统","总线","中断"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 6
 ---
 
 lec05-Bus

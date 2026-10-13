@@ -2,11 +2,10 @@
 title: 27-Spring Boot 注解开关原理
 date: 2022-04-13 09:35:42
 description: "Spring-Boot-Spring Boot 注解开关原理"
-tags: 
-- spring boot
-- 注解
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Java注解"]
+content_type: practice
 ---
 
 Spring 注解开关原理

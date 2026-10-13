@@ -2,7 +2,8 @@
 permalink: ai-work/ai-work-mcp-skills-plugin/
 title: 与 AI 一起工作 | 5. MCP、Skills 与 Plugin 三者的层次与边界
 date: 2026-06-04
-tags: [Claude, MCP, AgentSkills, Plugin, ClaudeCode]
+tags: ["AI Agent","MCP","Agent Skills","插件"]
+content_type: series
 ---
 
 # 与 AI 一起工作 | 5. MCP、Skills 与 Plugin 三者的层次与边界

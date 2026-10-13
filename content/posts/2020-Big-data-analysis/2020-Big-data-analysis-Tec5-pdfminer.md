@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Tec5-pdfminer
 date: 2020-11-01 19:05:00
 description: "2020-大数据分析-Tec5-pdfminer"
-tags: 
-- 大数据分析
-- 实验
-- pdf
 categories: [2020-大数据分析]
 mathjax: false
+tags: ["大数据","数据分析","PDF"]
+content_type: course
+course: big-data-analysis-2020
+course_group: practice
+course_order: 5
 ---
 
 Tec5-pdfminer

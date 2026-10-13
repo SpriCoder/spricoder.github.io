@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-08-用户和组群账户管理
 date: 2018-07-16 19:08:00
 description: "2018-Linux系统基础-linux-08-用户和组群账户管理"
-tags: 
-- linux
-- 课程笔记
-- 用户
-- 组群
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","用户管理"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 8
 ---
 
 用户和组群账户管理

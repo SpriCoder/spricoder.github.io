@@ -10,7 +10,8 @@
     "dev": "node scripts/sync-content.mjs && ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "node scripts/sync-content.mjs && ASTRO_TELEMETRY_DISABLED=1 astro build && pagefind --site dist && node scripts/postbuild.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "verify": "python3 scripts/verify-migration.py"
+    "verify": "python3 scripts/verify-migration.py",
+    "verify:taxonomy": "node scripts/verify-taxonomy.mjs"
   },
   "dependencies": {
     "astro": "7.3.8",

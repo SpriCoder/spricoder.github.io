@@ -2,11 +2,13 @@
 title: 2020-嵌入式系统导论-lec01-嵌入式系统概论
 date: 2020-11-02 19:01:00
 description: "2020-嵌入式系统导论-lec01-嵌入式系统概论"
-tags: 
-- 嵌入式系统导论
-- 课程笔记
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统"]
+content_type: course
+course: embedded-systems-2020
+course_group: lectures
+course_order: 2
 ---
 
 Lec01-嵌入式系统概论

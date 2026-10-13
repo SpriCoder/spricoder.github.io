@@ -2,11 +2,10 @@
 title: 14-Spring Boot Token
 date: 2022-04-13 09:22:42
 description: "Spring-Boot-Spring Boot Token"
-tags: 
-- spring boot
-- token
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","身份认证"]
+content_type: practice
 ---
 
 Spring Token

@@ -2,11 +2,13 @@
 title: 2021-数据集成-Hw3-第三次作业说明
 date: 2021-05-01 19:00:00
 description: "2021-数据集成-Hw3-第三次作业说明"
-tags: 
-- 数据集成
-- 作业
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成"]
+content_type: course
+course: data-integration-2021
+course_group: assignments
+course_order: 2
 ---
 
 阿里妈妈搜索广告转换预测赛题分析

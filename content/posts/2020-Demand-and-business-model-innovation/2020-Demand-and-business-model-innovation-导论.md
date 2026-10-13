@@ -2,13 +2,13 @@
 title: 2020-需求与商业模式分析-导论
 date: 2021-01-17 19:00:00
 description: "2020-需求与商业模式分析-导论"
-tags: 
-- 需求
-- 软件
-- 商业模式
-- model
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","商业模式"]
+content_type: course
+course: requirements-business-model-2020
+course_group: lectures
+course_order: 1
 ---
 
 Lecture1-导论

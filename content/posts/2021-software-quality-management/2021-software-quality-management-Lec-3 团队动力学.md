@@ -2,13 +2,13 @@
 title: 2021-软件质量管理-Lec-3 团队动力学
 date: 2022-01-09 19:03:00
 description: "2021-软件质量管理-Lec-3 团队动力学"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 项目
-- scrum
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","项目管理","Scrum"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 4
 ---
 
 0.1. Lec-3 团队动力学

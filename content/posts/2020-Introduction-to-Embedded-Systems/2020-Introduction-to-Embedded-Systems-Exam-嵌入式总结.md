@@ -2,11 +2,13 @@
 title: 2020-嵌入式系统导论-Exam-嵌入式总结
 date: 2020-11-02 19:12:00
 description: "2020-嵌入式系统导论-Exam-嵌入式总结"
-tags: 
-- 嵌入式系统导论
-- 考试
 categories: [2020-嵌入式系统概论]
 mathjax: false
+tags: ["嵌入式系统"]
+content_type: course
+course: embedded-systems-2020
+course_group: review
+course_order: 1
 ---
 
 Exam-嵌入式总结

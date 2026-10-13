@@ -2,15 +2,13 @@
 title: 2020-DevOps导论-Lec4-敏捷与精益
 date: 2020-07-02 19:04:00
 description: "2020-DevOps导论-Lec4-敏捷与精益"
-tags: 
-- DevOps
-- 课程笔记
-- 敏捷
-- 精益
-- scrum
-- xp
 categories: [2020-DevOps导论]
 mathjax: false
+tags: ["DevOps","软件交付","精益开发","敏捷开发","Scrum"]
+content_type: course
+course: devops-2020
+course_group: lectures
+course_order: 5
 ---
 
 Lec4-敏捷与精益

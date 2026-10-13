@@ -2,12 +2,13 @@
 title: 2020-计算机操作系统-Lecture3-存储管理
 date: 2020-01-18 19:03:00
 description: "2020-计算机操作系统-Lecture3-存储管理"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 存储
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","内存管理"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 4
 ---
 
 Lecture3-存储管理

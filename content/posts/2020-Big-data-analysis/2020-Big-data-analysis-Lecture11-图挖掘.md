@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture11-图挖掘
 date: 2020-11-01 19:11:00
 description: "2020-大数据分析-Lecture11-图挖掘"
-tags: 
-- 大数据分析
-- 课程笔记
-- 社团网络
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","图挖掘"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 11
 ---
 
 Lecture11-图挖掘-动机，应用和算法

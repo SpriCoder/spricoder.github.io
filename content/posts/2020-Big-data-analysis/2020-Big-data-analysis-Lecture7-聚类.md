@@ -2,12 +2,13 @@
 title: 2020-大数据分析-Lecture7-聚类
 date: 2020-11-01 19:07:00
 description: "2020-大数据分析-Lecture7-聚类"
-tags: 
-- 大数据分析
-- 课程笔记
-- 聚类
 categories: [2020-大数据分析]
 mathjax: true
+tags: ["大数据","数据分析","聚类算法","无监督学习"]
+content_type: course
+course: big-data-analysis-2020
+course_group: lectures
+course_order: 7
 ---
 
 Lecture7-聚类

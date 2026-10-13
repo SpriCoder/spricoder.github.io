@@ -1,0 +1,2881 @@
+{
+  "version": 1,
+  "rules": [
+    "每篇使用1至5个可检索的领域与技术标签；概述、考试等文章允许只有1个有效领域标签，不为数量填入泛标签。",
+    "课程身份、年份、章节编号、考试/作业/课程笔记等材料角色由课程专题和内容类型管理，不能混入主题标签。",
+    "只依据既有标题、目录、标签与直接章节标题，不推断未经验证的实验结论。",
+    "课程、阅读、技术实践、作者系列、参考入口使用独立contentType；AI协作是内容主题，由人工智能、人机协作、AI Agent等标签描述。",
+    "别名依上下文规范化，特别区分软件架构与计算机体系结构、数据库索引与数据结构、监督分类与无监督聚类。",
+    "每篇保留第一层领域与具体技术；少量单篇技术名仍可保留，不能为减少标签数而抹去内容差异。",
+    "章节规则先移除课程名称前缀再匹配，不能因文章标题都带软件质量管理而把所有章节误标成软件度量。",
+    "同篇移除明显同义与上下位重复；本库标签数不作为优化目标，有价值的长尾技术名保留。"
+  ],
+  "canonicalAliases": {
+    "linux": "Linux",
+    "shell": "Shell",
+    "unix": "Unix",
+    "spring boot": "Spring Boot",
+    "K8S": "Kubernetes",
+    "docker": "Docker",
+    "hadoop": "Hadoop",
+    "spark": "Spark",
+    "hbase": "HBase",
+    "olap": "OLAP",
+    "jquery": "jQuery",
+    "BootStrap": "Bootstrap",
+    "git": "Git",
+    "python": "Python",
+    "redis": "Redis",
+    "mongodb": "MongoDB",
+    "mybatis": "MyBatis",
+    "lombok": "Lombok",
+    "swagger2": "Swagger",
+    "websocket": "WebSocket",
+    "scrum": "Scrum",
+    "xp": "极限编程",
+    "sdk": "SDK",
+    "COA": "计算机组成",
+    "C++ 11": "C++11",
+    "OOP": "面向对象",
+    "Map Reduce": "MapReduce",
+    "Socket": "Socket",
+    "AI": "人工智能",
+    "Agent": "AI Agent",
+    "多Agent": "多智能体",
+    "AgentSkills": "Agent Skills",
+    "ClaudeCode": "Claude Code",
+    "Prompt": "提示工程",
+    "AI4Science": "科研方法",
+    "Security": "安全",
+    "ReverseEngineering": "逆向工程",
+    "ExtendedThinking": "扩展思考",
+    "ChainOfThought": "思维链",
+    "Plugin": "插件",
+    "IoT": "物联网",
+    "Benchmark": "基准测试",
+    "计算机操作系统": "操作系统",
+    "嵌入式系统导论": "嵌入式系统",
+    "软件工程与计算II": "软件工程",
+    "软件系统设计": "软件设计",
+    "大数据分析": "数据分析",
+    "商务智能": "商业智能",
+    "Web前端开发": "Web前端",
+    "分布式": "分布式系统",
+    "体系结构": "软件架构",
+    "架构": "软件架构",
+    "如何使用 Apache IoTDB 分布式系统监控": "可观测性",
+    "Apache IoTDB系统监控": "可观测性",
+    "维服务": "微服务",
+    "数据抓取": "网络爬虫",
+    "测试": "软件测试",
+    "网络": "计算机网络",
+    "性能测试": "性能测试",
+    "性能对比": "性能测试",
+    "性能评估": "性能测试",
+    "性能复盘": "性能分析",
+    "运输层": "传输层",
+    "跨域": "CORS",
+    "token": "身份认证",
+    "认证": "身份认证",
+    "证书": "HTTPS",
+    "控制反转": "依赖注入",
+    "动态注入": "依赖注入",
+    "数据查询语言": "查询语言",
+    "散列": "哈希",
+    "浮点数": "浮点运算",
+    "数据表示": "数据表示",
+    "数据降维": "降维",
+    "推荐": "推荐系统",
+    "文本分析": "自然语言处理",
+    "图片处理": "图像处理",
+    "yolo": "YOLO",
+    "pdf": "PDF",
+    "鸢尾花": "分类算法",
+    "SVD": "SVD",
+    "分类": "分类算法",
+    "聚类": "聚类算法",
+    "回填": "中间代码",
+    "词法": "词法分析",
+    "文法": "形式文法",
+    "二义性": "形式文法",
+    "归约": "语法分析",
+    "数据流": "数据流图",
+    "需求": "需求工程",
+    "需求基础": "需求工程",
+    "需求分析": "需求分析",
+    "需求获取": "需求获取",
+    "涉众": "涉众分析",
+    "用例": "用例建模",
+    "面谈": "用户访谈",
+    "原型": "原型设计",
+    "画布": "商业模式画布",
+    "敏捷": "敏捷开发",
+    "可伸缩性": "可扩展性",
+    "表驱动": "表驱动编程",
+    "观察用户": "用户研究",
+    "用户测试": "可用性测试",
+    "可用性": "可用性",
+    "消息传递": "消息队列",
+    "消息": "消息队列",
+    "网络请求": "HTTP",
+    "请求": "HTTP",
+    "索引": "数据库索引",
+    "范式": "数据库设计",
+    "规范化": "数据库设计",
+    "视图": "数据库视图",
+    "触发器": "数据库触发器",
+    "完整性": "数据完整性",
+    "查询": "数据库查询",
+    "性能": "性能分析",
+    "计算机运算": "计算机算术",
+    "奇偶校验": "错误检测",
+    "计算机错误": "错误检测",
+    "存储结构": "存储系统",
+    "计算机历史": "计算机发展史",
+    "内存": "内存管理",
+    "虚拟内存": "虚拟内存",
+    "进程": "进程管理",
+    "调度": "进程调度",
+    "软件包": "软件包管理",
+    "分区": "磁盘管理",
+    "磁盘": "磁盘管理",
+    "并发": "并发编程",
+    "用户": "用户管理",
+    "组群": "用户管理",
+    "运维": "系统运维",
+    "环境变量": "Shell",
+    "命令": "命令行工具",
+    "文件": "文件系统",
+    "目录": "文件系统",
+    "服务端开发": "后端开发",
+    "文件上传": "文件上传",
+    "邮件": "邮件服务",
+    "批写": "批量写入",
+    "读写混合": "混合负载",
+    "集群测试": "分布式系统",
+    "写入接口": "数据库接口",
+    "结果归档": "可复现性",
+    "正确性验证": "结果验证",
+    "验证": "结果验证",
+    "评测": "AI评测",
+    "轨迹": "可观测性",
+    "权限": "权限管理",
+    "上下文": "上下文管理",
+    "记忆": "Agent记忆",
+    "知识库": "知识库",
+    "工作流": "工作流",
+    "功能测试": "功能测试",
+    "白盒测试": "白盒测试",
+    "随机测试": "随机测试",
+    "移动应用测试": "移动应用测试",
+    "虚函数": "多态",
+    "微信": "微信开发",
+    "注解": "Java注解",
+    "精益": "精益开发",
+    "模块": "模块化",
+    "漏洞": "安全",
+    "社团网络": "图挖掘",
+    "观测": "可观测性",
+    "批处理": "批量处理",
+    "计算机网络": "计算机网络",
+    "消息队列": "消息队列",
+    "分布式系统": "分布式系统",
+    "IoT Benchmark": "IoT Benchmark",
+    "数据系统": "数据系统",
+    "估算": "软件估算",
+    "计划": "项目管理",
+    "追踪": "可观测性",
+    "软件质量管理": "软件质量",
+    "质量": "软件质量",
+    "缺陷": "缺陷管理",
+    "配置管理": "配置管理",
+    "项目": "项目管理",
+    "安全": "安全",
+    "网络安全": "网络安全",
+    "内核": "Linux内核",
+    "研究方法": "科研方法",
+    "AI科研": "科研方法"
+  },
+  "removedRoles": [
+    "课程笔记",
+    "考试",
+    "作业",
+    "实验",
+    "课程论文",
+    "系列目录"
+  ],
+  "removedGenericOrContextualFragments": [
+    "banner",
+    "controller",
+    "dao",
+    "ieee",
+    "map",
+    "service",
+    "software",
+    "struct",
+    "union",
+    "vector",
+    "交互",
+    "交付",
+    "价值",
+    "优先级",
+    "优化",
+    "作用域",
+    "关键字",
+    "典型",
+    "内置函数",
+    "决策",
+    "分析",
+    "功能",
+    "协作",
+    "原则",
+    "参与者",
+    "友元函数",
+    "可维护性",
+    "命名",
+    "命名空间",
+    "图标",
+    "处理器",
+    "复用",
+    "头文件",
+    "存储",
+    "学习",
+    "定量",
+    "客户端",
+    "容器",
+    "对象",
+    "导论",
+    "属性",
+    "工作方法",
+    "工程实践",
+    "引用",
+    "思考",
+    "总结",
+    "成员变量",
+    "战略",
+    "抽象",
+    "指针",
+    "控制",
+    "推导",
+    "数据类型",
+    "文档",
+    "日志",
+    "服务",
+    "服务器",
+    "框架启动",
+    "检查点",
+    "概述",
+    "模型",
+    "模式",
+    "活动",
+    "流程",
+    "特殊符号",
+    "状态",
+    "环境",
+    "目标",
+    "符号表",
+    "管理",
+    "类型",
+    "系统",
+    "组件",
+    "终结符",
+    "绑定",
+    "缓冲区",
+    "编译",
+    "编译器",
+    "职业",
+    "职责",
+    "表达式",
+    "设备",
+    "设计",
+    "设计原则",
+    "语义",
+    "语法",
+    "语言",
+    "资源",
+    "资源管理",
+    "软件",
+    "过程",
+    "隐藏"
+  ],
+  "oldTagHandling": {
+    "AI": {
+      "canonical": "人工智能",
+      "oldArticleCount": 10,
+      "action": "merge"
+    },
+    "AI4Science": {
+      "canonical": "科研方法",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "AI编程": {
+      "canonical": "AI编程",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "AOP": {
+      "canonical": "AOP",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "Agent": {
+      "canonical": "AI Agent",
+      "oldArticleCount": 8,
+      "action": "merge"
+    },
+    "Agent-Friendly": {
+      "canonical": "Agent-Friendly",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "AgentSkills": {
+      "canonical": "Agent Skills",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Apache IoTDB系统监控": {
+      "canonical": "可观测性",
+      "oldArticleCount": 5,
+      "action": "merge"
+    },
+    "BeanUtils": {
+      "canonical": "BeanUtils",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "Benchmark": {
+      "canonical": "基准测试",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "BootStrap": {
+      "canonical": "Bootstrap",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "C++": {
+      "canonical": "C++",
+      "oldArticleCount": 36,
+      "action": "keep"
+    },
+    "C++ 11": {
+      "canonical": "C++11",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "COA": {
+      "canonical": "计算机组成",
+      "oldArticleCount": 20,
+      "action": "contextual"
+    },
+    "ChainOfThought": {
+      "canonical": "思维链",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Claude": {
+      "canonical": "Claude",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "ClaudeCode": {
+      "canonical": "Claude Code",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Codex": {
+      "canonical": "Codex",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "DDIA": {
+      "canonical": "DDIA",
+      "oldArticleCount": 4,
+      "action": "keep"
+    },
+    "DevOps": {
+      "canonical": "DevOps",
+      "oldArticleCount": 17,
+      "action": "keep"
+    },
+    "DevSecOps": {
+      "canonical": "DevSecOps",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "Docker": {
+      "canonical": "Docker",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "ExtendedThinking": {
+      "canonical": "扩展思考",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Grafana": {
+      "canonical": "Grafana",
+      "oldArticleCount": 3,
+      "action": "keep"
+    },
+    "IoT": {
+      "canonical": "物联网",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "IoT Benchmark": {
+      "canonical": "IoT Benchmark",
+      "oldArticleCount": 16,
+      "action": "merge"
+    },
+    "IoTDB": {
+      "canonical": "IoTDB",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "JDBC": {
+      "canonical": "JDBC",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "Java并发编程的艺术": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "K8S": {
+      "canonical": "Kubernetes",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "LLM-as-a-Judge": {
+      "canonical": "LLM-as-a-Judge",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "MCP": {
+      "canonical": "MCP",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "MIT-6.824": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "Map Reduce": {
+      "canonical": "MapReduce",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "OOP": {
+      "canonical": "面向对象",
+      "oldArticleCount": 14,
+      "action": "merge"
+    },
+    "Plugin": {
+      "canonical": "插件",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Prompt": {
+      "canonical": "提示工程",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "RAID": {
+      "canonical": "RAID",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "REST": {
+      "canonical": "REST",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "ReverseEngineering": {
+      "canonical": "逆向工程",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "SQL": {
+      "canonical": "SQL",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "SVD": {
+      "canonical": "SVD",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Security": {
+      "canonical": "安全",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "Session": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "Socket": {
+      "canonical": "Socket",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "TimechoAI": {
+      "canonical": "TimechoAI",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "TsFile": {
+      "canonical": "TsFile",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "TsFile-Cli": {
+      "canonical": "TsFile-Cli",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "UML": {
+      "canonical": "UML",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "Web前端开发": {
+      "canonical": "Web前端",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "XML": {
+      "canonical": "XML",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "banner": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "controller": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "dao": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "docker": {
+      "canonical": "Docker",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "git": {
+      "canonical": "Git",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "hadoop": {
+      "canonical": "Hadoop",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "hbase": {
+      "canonical": "HBase",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "ieee": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "jquery": {
+      "canonical": "jQuery",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "linux": {
+      "canonical": "Linux",
+      "oldArticleCount": 23,
+      "action": "merge"
+    },
+    "lombok": {
+      "canonical": "Lombok",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "map": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "model": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "mongodb": {
+      "canonical": "MongoDB",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "mybatis": {
+      "canonical": "MyBatis",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "olap": {
+      "canonical": "OLAP",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "pdf": {
+      "canonical": "PDF",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "python": {
+      "canonical": "Python",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "redis": {
+      "canonical": "Redis",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "scrum": {
+      "canonical": "Scrum",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "sdk": {
+      "canonical": "SDK",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "service": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "shell": {
+      "canonical": "Shell",
+      "oldArticleCount": 5,
+      "action": "merge"
+    },
+    "software": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "spark": {
+      "canonical": "Spark",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "spring boot": {
+      "canonical": "Spring Boot",
+      "oldArticleCount": 43,
+      "action": "merge"
+    },
+    "struct": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "swagger2": {
+      "canonical": "Swagger",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "token": {
+      "canonical": "身份认证",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "union": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "unix": {
+      "canonical": "Unix",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "vector": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "web": {
+      "canonical": null,
+      "oldArticleCount": 5,
+      "action": "remove_from_tags"
+    },
+    "websocket": {
+      "canonical": "WebSocket",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "xp": {
+      "canonical": "极限编程",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "yolo": {
+      "canonical": "YOLO",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "上下文": {
+      "canonical": "上下文管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "中断": {
+      "canonical": "中断",
+      "oldArticleCount": 3,
+      "action": "keep"
+    },
+    "中间代码": {
+      "canonical": "中间代码",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "乱序写入": {
+      "canonical": "乱序写入",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "事务": {
+      "canonical": "事务",
+      "oldArticleCount": 3,
+      "action": "keep"
+    },
+    "二义性": {
+      "canonical": "形式文法",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "二叉搜索树": {
+      "canonical": "二叉搜索树",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "二叉树": {
+      "canonical": "二叉树",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "云原生": {
+      "canonical": "云原生",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "云计算": {
+      "canonical": "云计算",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "互联网": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "交互": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "交付": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "交换机": {
+      "canonical": "交换机",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "人机交互": {
+      "canonical": "人机交互",
+      "oldArticleCount": 18,
+      "action": "keep"
+    },
+    "人机协作": {
+      "canonical": "人机协作",
+      "oldArticleCount": 4,
+      "action": "keep"
+    },
+    "价值": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "优先级": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "优化": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "估算": {
+      "canonical": "软件估算",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "体系结构": {
+      "canonical": "软件架构",
+      "oldArticleCount": 13,
+      "action": "contextual"
+    },
+    "作业": {
+      "canonical": null,
+      "oldArticleCount": 7,
+      "action": "remove_from_tags"
+    },
+    "作用域": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "依赖注入": {
+      "canonical": "依赖注入",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "偏差": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "关系模型": {
+      "canonical": "关系模型",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "关键字": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "典型": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "内存": {
+      "canonical": "内存管理",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "内核": {
+      "canonical": "Linux内核",
+      "oldArticleCount": 1,
+      "action": "contextual"
+    },
+    "内置函数": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "内聚": {
+      "canonical": "内聚",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "写入接口": {
+      "canonical": "数据库接口",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "写入负载": {
+      "canonical": "写入负载",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "决策": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "凤凰架构": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "函数": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "分区": {
+      "canonical": "磁盘管理",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "分布式": {
+      "canonical": "分布式系统",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "分布式系统": {
+      "canonical": "分布式系统",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "分析": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "分类": {
+      "canonical": "分类算法",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "功能": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "功能测试": {
+      "canonical": "功能测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "动态注入": {
+      "canonical": "依赖注入",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "协作": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "协议": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "单调栈": {
+      "canonical": "单调栈",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "原则": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "原型": {
+      "canonical": "原型设计",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "参与者": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "友元函数": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "可伸缩性": {
+      "canonical": "可扩展性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "可复现性": {
+      "canonical": "可复现性",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "可用性": {
+      "canonical": "可用性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "可维护性": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "可观测性": {
+      "canonical": "可观测性",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "可靠性": {
+      "canonical": "可靠性",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "命令": {
+      "canonical": "命令行工具",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "命名": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "命名空间": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "商业模式": {
+      "canonical": "商业模式",
+      "oldArticleCount": 8,
+      "action": "keep"
+    },
+    "商业模式与需求分析": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "商务智能": {
+      "canonical": "商业智能",
+      "oldArticleCount": 8,
+      "action": "merge"
+    },
+    "回填": {
+      "canonical": "中间代码",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "图数据库": {
+      "canonical": "图数据库",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "图标": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "图片处理": {
+      "canonical": "图像处理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "图算法": {
+      "canonical": "图算法",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "场景": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "处理器": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "复用": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "多Agent": {
+      "canonical": "多智能体",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "多态": {
+      "canonical": "多态",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "多维分析": {
+      "canonical": "多维分析",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "大数据分析": {
+      "canonical": "数据分析",
+      "oldArticleCount": 24,
+      "action": "merge"
+    },
+    "头文件": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "奇偶校验": {
+      "canonical": "错误检测",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "如何使用 Apache IoTDB 分布式系统监控": {
+      "canonical": "可观测性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "字符串": {
+      "canonical": "字符串",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "存储": {
+      "canonical": null,
+      "oldArticleCount": 12,
+      "action": "contextual"
+    },
+    "存储结构": {
+      "canonical": "存储系统",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "安全": {
+      "canonical": "安全",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "完整性": {
+      "canonical": "数据完整性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "定量": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "实验": {
+      "canonical": null,
+      "oldArticleCount": 13,
+      "action": "remove_from_tags"
+    },
+    "客户端": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "容器": {
+      "canonical": null,
+      "oldArticleCount": 7,
+      "action": "remove_from_tags"
+    },
+    "对象": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "寻址": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "导论": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "封装": {
+      "canonical": "封装",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "局域网": {
+      "canonical": "局域网",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "属性": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "嵌入式系统导论": {
+      "canonical": "嵌入式系统",
+      "oldArticleCount": 13,
+      "action": "merge"
+    },
+    "工作方法": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "工作流": {
+      "canonical": "工作流",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "工厂模式": {
+      "canonical": "工厂模式",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "工程实践": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "并发": {
+      "canonical": "并发编程",
+      "oldArticleCount": 3,
+      "action": "contextual"
+    },
+    "并查集": {
+      "canonical": "并查集",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "广域网": {
+      "canonical": "广域网",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "应用层": {
+      "canonical": "应用层",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "建模": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "异常处理": {
+      "canonical": "异常处理",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "引用": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "归约": {
+      "canonical": "语法分析",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "微信": {
+      "canonical": "微信开发",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "思考": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "性能": {
+      "canonical": "性能分析",
+      "oldArticleCount": 3,
+      "action": "contextual"
+    },
+    "性能复盘": {
+      "canonical": "性能分析",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "性能对比": {
+      "canonical": "性能测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "性能测试": {
+      "canonical": "性能测试",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "性能评估": {
+      "canonical": "性能测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "总线": {
+      "canonical": "总线",
+      "oldArticleCount": 3,
+      "action": "keep"
+    },
+    "情感分析": {
+      "canonical": "情感分析",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "成员变量": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "战略": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "批写": {
+      "canonical": "批量写入",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "批处理": {
+      "canonical": "批量处理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "抽象": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "拓扑": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "指令": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "指针": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "排序": {
+      "canonical": "排序",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "控制": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "控制反转": {
+      "canonical": "依赖注入",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "推导": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "推荐": {
+      "canonical": "推荐系统",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "推荐系统": {
+      "canonical": "推荐系统",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "操作系统": {
+      "canonical": "操作系统",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "敏捷": {
+      "canonical": "敏捷开发",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "散列": {
+      "canonical": "哈希",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据仓库": {
+      "canonical": "数据仓库",
+      "oldArticleCount": 3,
+      "action": "keep"
+    },
+    "数据库": {
+      "canonical": "数据库",
+      "oldArticleCount": 41,
+      "action": "keep"
+    },
+    "数据库选型": {
+      "canonical": "数据库选型",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "数据抓取": {
+      "canonical": "网络爬虫",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据挖掘": {
+      "canonical": "数据挖掘",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "数据查询语言": {
+      "canonical": "查询语言",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据模型": {
+      "canonical": "数据模型",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "数据流": {
+      "canonical": "数据流图",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据源": {
+      "canonical": "数据源",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "数据科学": {
+      "canonical": "数据科学",
+      "oldArticleCount": 4,
+      "action": "keep"
+    },
+    "数据类型": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "数据系统": {
+      "canonical": "数据系统",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据结构": {
+      "canonical": "数据结构",
+      "oldArticleCount": 21,
+      "action": "keep"
+    },
+    "数据表示": {
+      "canonical": "数据表示",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "数据链路层": {
+      "canonical": "数据链路层",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "数据降维": {
+      "canonical": "降维",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "数据集成": {
+      "canonical": "数据集成",
+      "oldArticleCount": 11,
+      "action": "keep"
+    },
+    "数组": {
+      "canonical": "数组",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "文件": {
+      "canonical": "文件系统",
+      "oldArticleCount": 7,
+      "action": "merge"
+    },
+    "文件上传": {
+      "canonical": "文件上传",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "文件系统": {
+      "canonical": "文件系统",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "文本分析": {
+      "canonical": "自然语言处理",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "文档": {
+      "canonical": null,
+      "oldArticleCount": 7,
+      "action": "remove_from_tags"
+    },
+    "文法": {
+      "canonical": "形式文法",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "日志": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "时序数据库": {
+      "canonical": "时序数据库",
+      "oldArticleCount": 9,
+      "action": "keep"
+    },
+    "时序数据集": {
+      "canonical": "时序数据集",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "服务": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "服务器": {
+      "canonical": null,
+      "oldArticleCount": 4,
+      "action": "remove_from_tags"
+    },
+    "服务端开发": {
+      "canonical": "后端开发",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "权限": {
+      "canonical": "权限管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "架构": {
+      "canonical": "软件架构",
+      "oldArticleCount": 8,
+      "action": "contextual"
+    },
+    "查询": {
+      "canonical": "数据库查询",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "查询优化": {
+      "canonical": "查询优化",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "栈": {
+      "canonical": "栈",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "框架启动": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "检查点": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "概率分布": {
+      "canonical": "概率分布",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "概率论": {
+      "canonical": "概率论",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "概述": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "模块": {
+      "canonical": "模块化",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "模型": {
+      "canonical": null,
+      "oldArticleCount": 4,
+      "action": "contextual"
+    },
+    "模式": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "正则表达式": {
+      "canonical": "正则表达式",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "正确性验证": {
+      "canonical": "结果验证",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "死锁": {
+      "canonical": "死锁",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "注解": {
+      "canonical": "Java注解",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "活动": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "流程": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "测试": {
+      "canonical": "软件测试",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "测试工具": {
+      "canonical": null,
+      "oldArticleCount": 17,
+      "action": "remove_from_tags"
+    },
+    "测试方案": {
+      "canonical": "测试方案",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "浏览器": {
+      "canonical": "浏览器",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "浮点数": {
+      "canonical": "浮点运算",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "消息": {
+      "canonical": "消息队列",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "消息传递": {
+      "canonical": "消息队列",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "消息队列": {
+      "canonical": "消息队列",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "涉众": {
+      "canonical": "涉众分析",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "渲染": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "漏洞": {
+      "canonical": "安全",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "物理层": {
+      "canonical": "物理层",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "物联网": {
+      "canonical": "物联网",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "特殊符号": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "状态": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "环境": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "环境变量": {
+      "canonical": "Shell",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "用例": {
+      "canonical": "用例建模",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "用户": {
+      "canonical": "用户管理",
+      "oldArticleCount": 4,
+      "action": "contextual"
+    },
+    "用户测试": {
+      "canonical": "可用性测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "画布": {
+      "canonical": "商业模式画布",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "白盒测试": {
+      "canonical": "白盒测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "目录": {
+      "canonical": "文件系统",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "目标": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "看板": {
+      "canonical": "看板",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "知识图谱": {
+      "canonical": "知识图谱",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "知识库": {
+      "canonical": "知识库",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "磁盘": {
+      "canonical": "磁盘管理",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "社团网络": {
+      "canonical": "图挖掘",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "科研": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "移动应用测试": {
+      "canonical": "移动应用测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "符号表": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "算法复杂度": {
+      "canonical": "算法复杂度",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "管理": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "类型": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "精益": {
+      "canonical": "精益开发",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "系列目录": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "系统": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "系统建模": {
+      "canonical": "系统建模",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "系统操作": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "索引": {
+      "canonical": "数据库索引",
+      "oldArticleCount": 3,
+      "action": "contextual"
+    },
+    "组件": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "组群": {
+      "canonical": "用户管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "终结符": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "绑定": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "结构": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "结构体": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "结果归档": {
+      "canonical": "可复现性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "继承": {
+      "canonical": "继承",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "维服务": {
+      "canonical": "微服务",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "缓冲区": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "缓存": {
+      "canonical": "缓存",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "编码": {
+      "canonical": "编码",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "编译": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "编译原理": {
+      "canonical": "编译原理",
+      "oldArticleCount": 18,
+      "action": "keep"
+    },
+    "编译器": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "contextual"
+    },
+    "缺陷": {
+      "canonical": "缺陷管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "网络": {
+      "canonical": "计算机网络",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "网络安全": {
+      "canonical": "网络安全",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "网络层": {
+      "canonical": "网络层",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "网络请求": {
+      "canonical": "HTTP",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "考试": {
+      "canonical": null,
+      "oldArticleCount": 42,
+      "action": "remove_from_tags"
+    },
+    "耦合": {
+      "canonical": "耦合",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "职业": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "职责": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "聚类": {
+      "canonical": "聚类算法",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "范式": {
+      "canonical": "数据库设计",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "虚函数": {
+      "canonical": "多态",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "虚拟内存": {
+      "canonical": "虚拟内存",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "表达式": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "表驱动": {
+      "canonical": "表驱动编程",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "观察用户": {
+      "canonical": "用户研究",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "观测": {
+      "canonical": "可观测性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "规范化": {
+      "canonical": "数据库设计",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "视图": {
+      "canonical": "数据库视图",
+      "oldArticleCount": 4,
+      "action": "merge"
+    },
+    "触发器": {
+      "canonical": "数据库触发器",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "计划": {
+      "canonical": "项目管理",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "计算机历史": {
+      "canonical": "计算机发展史",
+      "oldArticleCount": 6,
+      "action": "merge"
+    },
+    "计算机操作系统": {
+      "canonical": "操作系统",
+      "oldArticleCount": 9,
+      "action": "merge"
+    },
+    "计算机网络": {
+      "canonical": "计算机网络",
+      "oldArticleCount": 19,
+      "action": "merge"
+    },
+    "计算机运算": {
+      "canonical": "计算机算术",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "计算机错误": {
+      "canonical": "错误检测",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "认证": {
+      "canonical": "身份认证",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "记忆": {
+      "canonical": "Agent记忆",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "设备": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "设计": {
+      "canonical": null,
+      "oldArticleCount": 14,
+      "action": "contextual"
+    },
+    "设计原则": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "设计模式": {
+      "canonical": "设计模式",
+      "oldArticleCount": 11,
+      "action": "keep"
+    },
+    "证书": {
+      "canonical": "HTTPS",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "评估": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "remove_from_tags"
+    },
+    "评审": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "评测": {
+      "canonical": "AI评测",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "词法": {
+      "canonical": "词法分析",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "语义": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "contextual"
+    },
+    "语法": {
+      "canonical": null,
+      "oldArticleCount": 3,
+      "action": "contextual"
+    },
+    "语法分析": {
+      "canonical": "语法分析",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "语言": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "请求": {
+      "canonical": "HTTP",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "读写混合": {
+      "canonical": "混合负载",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "课程笔记": {
+      "canonical": null,
+      "oldArticleCount": 285,
+      "action": "remove_from_tags"
+    },
+    "课程论文": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "调度": {
+      "canonical": "进程调度",
+      "oldArticleCount": 2,
+      "action": "contextual"
+    },
+    "质量": {
+      "canonical": "软件质量",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "资源": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "资源管理": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "跨域": {
+      "canonical": "CORS",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "路由协议": {
+      "canonical": "路由协议",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "路由器": {
+      "canonical": "路由器",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "轨迹": {
+      "canonical": "可观测性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "软件": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "软件包": {
+      "canonical": "软件包管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "软件工程": {
+      "canonical": "软件工程",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "软件工程与计算II": {
+      "canonical": "软件工程",
+      "oldArticleCount": 31,
+      "action": "merge"
+    },
+    "软件构造": {
+      "canonical": "软件构造",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "软件测试": {
+      "canonical": "软件测试",
+      "oldArticleCount": 5,
+      "action": "keep"
+    },
+    "软件系统设计": {
+      "canonical": "软件设计",
+      "oldArticleCount": 25,
+      "action": "contextual"
+    },
+    "软件维护": {
+      "canonical": "软件维护",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "软件质量管理": {
+      "canonical": "软件质量",
+      "oldArticleCount": 14,
+      "action": "merge"
+    },
+    "输入输出": {
+      "canonical": "输入输出",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "过程": {
+      "canonical": null,
+      "oldArticleCount": 4,
+      "action": "remove_from_tags"
+    },
+    "运维": {
+      "canonical": "系统运维",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "运输层": {
+      "canonical": "传输层",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "进程": {
+      "canonical": "进程管理",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "迭代": {
+      "canonical": "迭代",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "追踪": {
+      "canonical": "可观测性",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "递归": {
+      "canonical": "递归",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "邮件": {
+      "canonical": "邮件服务",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "配置": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "配置管理": {
+      "canonical": "配置管理",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "链接": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "链表": {
+      "canonical": "链表",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "镜像": {
+      "canonical": null,
+      "oldArticleCount": 2,
+      "action": "remove_from_tags"
+    },
+    "队列": {
+      "canonical": "队列",
+      "oldArticleCount": 2,
+      "action": "keep"
+    },
+    "防御式编程": {
+      "canonical": "防御式编程",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "随机变量": {
+      "canonical": "随机变量",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "随机测试": {
+      "canonical": "随机测试",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "隐藏": {
+      "canonical": null,
+      "oldArticleCount": 1,
+      "action": "remove_from_tags"
+    },
+    "集群测试": {
+      "canonical": "分布式系统",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "需求": {
+      "canonical": "需求工程",
+      "oldArticleCount": 20,
+      "action": "merge"
+    },
+    "需求分析": {
+      "canonical": "需求分析",
+      "oldArticleCount": 3,
+      "action": "merge"
+    },
+    "需求基础": {
+      "canonical": "需求工程",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "需求管理": {
+      "canonical": "需求管理",
+      "oldArticleCount": 1,
+      "action": "keep"
+    },
+    "需求获取": {
+      "canonical": "需求获取",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "面谈": {
+      "canonical": "用户访谈",
+      "oldArticleCount": 1,
+      "action": "merge"
+    },
+    "项目": {
+      "canonical": "项目管理",
+      "oldArticleCount": 5,
+      "action": "merge"
+    },
+    "验证": {
+      "canonical": "结果验证",
+      "oldArticleCount": 2,
+      "action": "merge"
+    },
+    "鸢尾花": {
+      "canonical": "分类算法",
+      "oldArticleCount": 1,
+      "action": "merge"
+    }
+  },
+  "counts": {
+    "articles": 465,
+    "oldUniqueTags": 416,
+    "newUniqueTags": 323,
+    "contentTypes": {
+      "series": 40,
+      "practice": 56,
+      "reference": 1,
+      "reading": 10,
+      "course": 358
+    }
+  },
+  "newTagArticleCounts": {
+    "软件工程": 63,
+    "Java": 49,
+    "Spring Boot": 46,
+    "C++": 36,
+    "软件架构": 33,
+    "软件设计": 28,
+    "大数据": 25,
+    "数据库": 24,
+    "数据分析": 24,
+    "Linux": 23,
+    "需求工程": 23,
+    "数据结构": 21,
+    "时序数据库": 20,
+    "IoT Benchmark": 20,
+    "基准测试": 20,
+    "计算机组成": 20,
+    "计算机网络": 19,
+    "人机交互": 18,
+    "编译原理": 18,
+    "软件交付": 18,
+    "DevOps": 17,
+    "交互设计": 16,
+    "网络协议": 16,
+    "软件质量": 15,
+    "面向对象": 15,
+    "系统管理": 14,
+    "嵌入式系统": 13,
+    "算法": 13,
+    "IoTDB": 12,
+    "设计模式": 12,
+    "时序数据集": 11,
+    "TsFile": 11,
+    "分布式系统": 11,
+    "数据集成": 11,
+    "Spring": 10,
+    "操作系统": 10,
+    "AI Agent": 9,
+    "软件测试": 9,
+    "系统编程": 9,
+    "商业模式": 9,
+    "可观测性": 8,
+    "存储系统": 8,
+    "项目管理": 8,
+    "文件系统": 8,
+    "商业智能": 8,
+    "数据仓库": 8,
+    "HTTP": 7,
+    "产品设计": 7,
+    "TsFile-Cli": 6,
+    "语法分析": 6,
+    "结果验证": 5,
+    "人机协作": 5,
+    "可用性评估": 5,
+    "Shell": 5,
+    "计算机发展史": 5,
+    "STL": 5,
+    "命令行工具": 4,
+    "安全": 4,
+    "性能测试": 4,
+    "Java注解": 4,
+    "并发编程": 4,
+    "数据系统": 4,
+    "DDIA": 4,
+    "数据库索引": 4,
+    "用户研究": 4,
+    "用户管理": 4,
+    "数据库视图": 4,
+    "磁盘管理": 4,
+    "数据库设计": 4,
+    "Web前端": 4,
+    "中间代码": 4,
+    "语义分析": 4,
+    "内存管理": 4,
+    "数据科学": 4,
+    "输入输出": 4,
+    "计算机算术": 4,
+    "时序预测": 3,
+    "数据模型": 3,
+    "数据流转": 3,
+    "可复现性": 3,
+    "写入负载": 3,
+    "Grafana": 3,
+    "事务": 3,
+    "分层架构": 3,
+    "Docker": 3,
+    "Scrum": 3,
+    "UML": 3,
+    "编译链接": 3,
+    "性能分析": 3,
+    "SQL": 3,
+    "需求分析": 3,
+    "形式文法": 3,
+    "总线": 3,
+    "中断": 3,
+    "模块化": 3,
+    "栈": 3,
+    "进程管理": 3,
+    "Unix": 2,
+    "Agent Skills": 2,
+    "AI评测": 2,
+    "Agent记忆": 2,
+    "人工智能": 2,
+    "数据库接口": 2,
+    "并发控制": 2,
+    "混合负载": 2,
+    "依赖注入": 2,
+    "Python": 2,
+    "Servlet": 2,
+    "数据源": 2,
+    "数据访问": 2,
+    "身份认证": 2,
+    "死锁": 2,
+    "REST": 2,
+    "图数据库": 2,
+    "软件度量": 2,
+    "软件估算": 2,
+    "软件开发过程": 2,
+    "认知心理学": 2,
+    "微服务": 2,
+    "架构文档": 2,
+    "后端开发": 2,
+    "查询优化": 2,
+    "数据库查询": 2,
+    "消息队列": 2,
+    "需求文档": 2,
+    "用例建模": 2,
+    "涉众分析": 2,
+    "递归": 2,
+    "维度建模": 2,
+    "嵌入式软件": 2,
+    "缓存": 2,
+    "Spark": 2,
+    "推荐系统": 2,
+    "降维": 2,
+    "分类算法": 2,
+    "计算机视觉": 2,
+    "自然语言处理": 2,
+    "Hadoop": 2,
+    "迭代": 2,
+    "封装": 2,
+    "耦合": 2,
+    "局域网": 2,
+    "路由协议": 2,
+    "路由器": 2,
+    "概率分布": 2,
+    "敏捷开发": 2,
+    "系统运维": 2,
+    "链表": 2,
+    "数组": 2,
+    "多态": 2,
+    "函数设计": 2,
+    "算法复杂度": 2,
+    "队列": 2,
+    "处理器设计": 2,
+    "虚拟内存": 2,
+    "浮点运算": 2,
+    "数据表示": 2,
+    "元数据": 1,
+    "TimechoAI": 1,
+    "Timer": 1,
+    "工具接口": 1,
+    "LLM-as-a-Judge": 1,
+    "评测偏差": 1,
+    "科研方法": 1,
+    "上下文管理": 1,
+    "知识库": 1,
+    "多智能体": 1,
+    "工作流": 1,
+    "权限管理": 1,
+    "数据库选型": 1,
+    "乱序写入": 1,
+    "批量写入": 1,
+    "Claude": 1,
+    "扩展思考": 1,
+    "逆向工程": 1,
+    "AI编程": 1,
+    "提示工程": 1,
+    "Codex": 1,
+    "MCP": 1,
+    "插件": 1,
+    "字符编码": 1,
+    "二进制数据": 1,
+    "JMeter": 1,
+    "Lombok": 1,
+    "BeanUtils": 1,
+    "MongoDB": 1,
+    "邮件服务": 1,
+    "Redis": 1,
+    "对象存储": 1,
+    "文件上传": 1,
+    "微信开发": 1,
+    "WebSocket": 1,
+    "SDK": 1,
+    "AOP": 1,
+    "应用部署": 1,
+    "Swagger": 1,
+    "JUnit": 1,
+    "MyBatis": 1,
+    "CORS": 1,
+    "HTTPS": 1,
+    "系统监控": 1,
+    "Java内存模型": 1,
+    "并发锁": 1,
+    "原子操作": 1,
+    "上下文切换": 1,
+    "LSM树": 1,
+    "Jenkins": 1,
+    "CI/CD": 1,
+    "RPC": 1,
+    "查询语言": 1,
+    "MapReduce": 1,
+    "可靠性": 1,
+    "可扩展性": 1,
+    "架构演进": 1,
+    "配置管理": 1,
+    "缺陷管理": 1,
+    "交互模型": 1,
+    "可用性测试": 1,
+    "可用性": 1,
+    "ADD": 1,
+    "架构评估": 1,
+    "质量属性": 1,
+    "表驱动编程": 1,
+    "防御式编程": 1,
+    "工厂模式": 1,
+    "Linux内核": 1,
+    "ETL": 1,
+    "批量处理": 1,
+    "网络爬虫": 1,
+    "XML": 1,
+    "Web服务": 1,
+    "需求管理": 1,
+    "需求验证": 1,
+    "数据建模": 1,
+    "数据流图": 1,
+    "原型设计": 1,
+    "用户访谈": 1,
+    "项目范围": 1,
+    "需求获取": 1,
+    "商业模式画布": 1,
+    "语法制导翻译": 1,
+    "Bison": 1,
+    "LR分析": 1,
+    "LL(1)": 1,
+    "词法分析": 1,
+    "正则表达式": 1,
+    "数据挖掘": 1,
+    "多维分析": 1,
+    "OLAP": 1,
+    "μC/OS-II": 1,
+    "物联网": 1,
+    "系统引导": 1,
+    "系统建模": 1,
+    "实时系统": 1,
+    "实时调度": 1,
+    "嵌入式设计": 1,
+    "图挖掘": 1,
+    "知识图谱": 1,
+    "SVD": 1,
+    "scikit-learn": 1,
+    "聚类算法": 1,
+    "无监督学习": 1,
+    "图像处理": 1,
+    "监督学习": 1,
+    "机器学习": 1,
+    "PDF": 1,
+    "链接分析": 1,
+    "情感分析": 1,
+    "HBase": 1,
+    "YOLO": 1,
+    "目标检测": 1,
+    "TF-IDF": 1,
+    "移动应用测试": 1,
+    "随机测试": 1,
+    "功能测试": 1,
+    "白盒测试": 1,
+    "JSON": 1,
+    "浏览器": 1,
+    "软件维护": 1,
+    "软件构造": 1,
+    "Git": 1,
+    "Socket": 1,
+    "网络编程": 1,
+    "Bootstrap": 1,
+    "jQuery": 1,
+    "网络安全": 1,
+    "广域网": 1,
+    "VLAN": 1,
+    "交换机": 1,
+    "应用层": 1,
+    "传输层": 1,
+    "网络层": 1,
+    "数据链路层": 1,
+    "物理层": 1,
+    "编码": 1,
+    "随机变量": 1,
+    "概率论": 1,
+    "数据完整性": 1,
+    "关系模型": 1,
+    "DevSecOps": 1,
+    "Kubernetes": 1,
+    "看板": 1,
+    "精益开发": 1,
+    "云计算": 1,
+    "云原生": 1,
+    "字符串": 1,
+    "继承": 1,
+    "指针与引用": 1,
+    "异常处理": 1,
+    "数据类型": 1,
+    "C++11": 1,
+    "进程调度": 1,
+    "图算法": 1,
+    "并查集": 1,
+    "排序": 1,
+    "哈希": 1,
+    "二叉搜索树": 1,
+    "二叉树": 1,
+    "单调栈": 1,
+    "微程序控制": 1,
+    "指令集": 1,
+    "RAID": 1,
+    "错误检测": 1
+  },
+  "manualEvidenceNotes": [
+    "AI科研篇不推断时序数据库标签；Agent-Friendly数据库篇不泛化成时序数据库。",
+    "TsFile 09 按TimechoAI/Timer与时序预测分类，不称机器学习实验成功。",
+    "大数据聚类章使用无监督学习；分类章使用监督学习，鸢尾花实验使用分类算法。",
+    "计算机组织与结构使用计算机体系结构；软件系统设计使用软件设计、软件架构。",
+    "网络课中的jQuery/Bootstrap实验按前端技能贴标签，但课程专题身份仍归原课程。",
+    "Union/struct属于语言数据类型，不能标记成STL容器。",
+    "最终规范保留具体章节标签，仅删除泛化重复词；概述/考试允许单个领域标签。"
+  ],
+  "contextualRedundancyRules": [
+    {
+      "when": [
+        "编译原理",
+        "编译器"
+      ],
+      "remove": "编译器",
+      "reason": "本库两者同18篇；保留编译原理和词法/语法/语义/中间代码等具体阶段。"
+    },
+    {
+      "when": [
+        "软件工程",
+        "软件开发"
+      ],
+      "remove": "软件开发",
+      "reason": "软件开发过于泛化；保留软件工程及需求、架构、测试等具体知识点。"
+    },
+    {
+      "when": [
+        "C++",
+        "程序设计"
+      ],
+      "remove": "程序设计",
+      "reason": "语言文章无需重复标记泛化程序设计；概述和考试允许只有C++。"
+    },
+    {
+      "when": [
+        "数据库",
+        "数据管理"
+      ],
+      "remove": "数据管理",
+      "reason": "本组数据管理是课程范围，不增加主题检索信息。"
+    },
+    {
+      "when": [
+        "数据库",
+        "数据库开发"
+      ],
+      "remove": "数据库开发",
+      "reason": "以数据库加索引、查询优化、设计或并发等具体知识点取代泛化开发。"
+    },
+    {
+      "when": [
+        "数据集成",
+        "数据工程"
+      ],
+      "remove": "数据工程",
+      "reason": "数据工程是上位主题；本库两者完全同11篇，保留更具体的数据集成。"
+    },
+    {
+      "when": [
+        "计算机组成",
+        "计算机体系结构"
+      ],
+      "remove": "计算机体系结构",
+      "reason": "本库两者同20篇且均属于一门课程，使用计算机组成统一领域；具体指令/处理器/存储标签保留。"
+    },
+    {
+      "when": [
+        "操作系统",
+        "计算机系统"
+      ],
+      "remove": "计算机系统",
+      "reason": "计算机系统是更泛的上位主题；保留操作系统。"
+    },
+    {
+      "when": [
+        "嵌入式系统",
+        "计算机系统"
+      ],
+      "remove": "计算机系统",
+      "reason": "计算机系统是更泛的上位主题；保留嵌入式系统及章节知识点。"
+    },
+    {
+      "when": [
+        "Web前端",
+        "Web开发"
+      ],
+      "remove": "Web开发",
+      "reason": "前端课程使用更具体的Web前端，概述/考试不重复标记Web开发。"
+    },
+    {
+      "when": [
+        "软件测试",
+        "软件质量"
+      ],
+      "remove": "软件质量",
+      "reason": "软件测试已表达领域，保留功能/白盒/随机/移动/性能等具体测试类型。"
+    },
+    {
+      "when": [
+        "Linux内核",
+        "内核"
+      ],
+      "canonical": "Linux内核",
+      "reason": "当前唯一内核标签位于Linux内核驱动课，应统一同义名。"
+    },
+    {
+      "scope": "2020-Fundamentals-of-Data-Science",
+      "remove": "概率统计",
+      "reason": "原规则对全课程附加的上位标签；概率基础用概率论，分布章节用概率分布。"
+    },
+    {
+      "when": [
+        "概率分布",
+        "概率论"
+      ],
+      "remove": "概率论",
+      "reason": "分布章节保留更具体的概率分布及随机变量，避免上位词堆叠。"
+    },
+    {
+      "scope": "AI科研篇",
+      "canonical": [
+        "科研方法",
+        "AI Agent",
+        "可复现性"
+      ],
+      "reason": "科研方法为常用主题词，AI Agent表达技术背景，保留可复现性；不增加成功实验类主张。"
+    }
+  ],
+  "refinement": {
+    "changedArticles": 158,
+    "previousUniqueTags": 335,
+    "currentUniqueTags": 323,
+    "tagCountDistribution": {
+      "1": 33,
+      "2": 141,
+      "3": 174,
+      "4": 98,
+      "5": 19
+    },
+    "removedRedundantAssignments": {
+      "数据库开发": 10,
+      "数据工程": 11,
+      "Web开发": 2,
+      "编译器": 18,
+      "计算机系统": 22,
+      "软件质量": 5,
+      "软件开发": 32,
+      "概率统计": 4,
+      "概率论": 2,
+      "数据管理": 10,
+      "程序设计": 22,
+      "计算机体系结构": 20
+    },
+    "preservedSameMembershipFacets": [
+      "时序数据库、IoT Benchmark、基准测试分别表示对象、产品和方法，不因覆盖文章相同而当成同义词。",
+      "时序数据集、TsFile分别表示对象和文件格式，不合并。",
+      "商业智能、数据仓库表示业务分析主题和基础设施，不全库合并。",
+      "DDIA是具体书名，数据系统是跨书检索主题，不合并。"
+    ]
+  }
+}

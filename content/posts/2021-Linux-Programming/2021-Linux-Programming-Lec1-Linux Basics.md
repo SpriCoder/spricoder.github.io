@@ -2,14 +2,13 @@
 title: 2021-Linux程序设计-Lec1-Linux Basics
 date: 2021-05-03 19:01:00
 description: "2021-Linux程序设计-Lec1-Linux Basics"
-tags: 
-- linux
-- 课程笔记
-- 文件
-- 分区
-- 命令
 categories: [2021-Linux程序设计]
 mathjax: false
+tags: ["Linux","系统编程","文件系统","磁盘管理","命令行工具"]
+content_type: course
+course: linux-programming-2021
+course_group: lectures
+course_order: 2
 ---
 
 Lec1-Linux Basics

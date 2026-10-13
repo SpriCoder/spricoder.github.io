@@ -2,11 +2,13 @@
 title: 2020-商务智能-Exam01-考试讲解
 date: 2021-01-15 19:07:00
 description: "2020-商务智能-Exam01-考试讲解"
-tags: 
-- 商务智能
-- 考试
 categories: [2020-商务智能]
 mathjax: false
+tags: ["商业智能","数据仓库"]
+content_type: course
+course: business-intelligence-2020
+course_group: review
+course_order: 1
 ---
 
 Exam01-考试讲解

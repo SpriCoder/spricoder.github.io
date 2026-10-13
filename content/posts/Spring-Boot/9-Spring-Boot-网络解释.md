@@ -2,11 +2,10 @@
 title: 9-Spring Boot 网络解释
 date: 2022-04-13 09:17:42
 description: "Spring-Boot-Spring Boot 网络解释"
-tags: 
-- spring boot
-- 网络请求
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","HTTP"]
+content_type: practice
 ---
 
 spring 网络解释

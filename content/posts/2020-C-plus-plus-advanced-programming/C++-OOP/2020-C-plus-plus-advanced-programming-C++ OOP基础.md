@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ OOP基础
 date: 2020-07-01 19:22:00
 description: "2020-C++高级程序设计-C++ OOP基础"
-tags: 
-- C++
-- OOP
-- 课程笔记
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","面向对象"]
+content_type: course
+course: advanced-cpp-2020
+course_group: object-oriented
+course_order: 1
 ---
 
 C++ 为什么选择OOP

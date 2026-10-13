@@ -2,13 +2,13 @@
 title: 2020-软件工程与计算II-07-需求文档化与验证
 date: 2020-07-06 19:07:00
 description: "2020-软件工程与计算II-07-需求文档化与验证"
-tags: 
-- 软件工程与计算II
-- 课程笔记
-- 需求
-- 文档
 categories: [2020-软件工程与计算II]
 mathjax: false
+tags: ["软件工程","需求工程"]
+content_type: course
+course: software-engineering-ii-2020
+course_group: lectures
+course_order: 7
 ---
 
 07-需求文档化与验证

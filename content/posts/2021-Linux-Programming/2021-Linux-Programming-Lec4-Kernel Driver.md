@@ -2,12 +2,13 @@
 title: 2021-Linux程序设计-Lec4-Kernel Driver
 date: 2021-05-03 19:04:00
 description: "2021-Linux程序设计-Lec4-Kernel Driver"
-tags: 
-- linux
-- 课程笔记
-- 内核
 categories: [2021-Linux程序设计]
 mathjax: true
+tags: ["Linux","系统编程","Linux内核"]
+content_type: course
+course: linux-programming-2021
+course_group: lectures
+course_order: 5
 ---
 
 Lec4-Kernel Driver

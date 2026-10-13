@@ -2,11 +2,10 @@
 title: 31-Spring Boot OSS
 date: 2022-04-13 09:39:45
 description: "Spring-Boot-Spring Boot OSS"
-tags: 
-- spring boot
-- 文件上传
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","对象存储","文件上传"]
+content_type: practice
 ---
 
 Spring与OSS

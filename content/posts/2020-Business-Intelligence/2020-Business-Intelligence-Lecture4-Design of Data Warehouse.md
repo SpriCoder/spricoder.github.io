@@ -2,13 +2,13 @@
 title: 2020-商务智能-Lecture4-Design of Data Warehouse
 date: 2021-01-15 19:04:00
 description: "2020-商务智能-Lecture4-Design of Data Warehouse"
-tags: 
-- 商务智能
-- 课程笔记
-- 数据仓库
-- 设计
 categories: [2020-商务智能]
 mathjax: false
+tags: ["商业智能","数据仓库","维度建模"]
+content_type: course
+course: business-intelligence-2020
+course_group: lectures
+course_order: 4
 ---
 
 Lecture4-Design of Data Warehouse

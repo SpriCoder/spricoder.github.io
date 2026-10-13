@@ -2,11 +2,10 @@
 title: Apache JMeter 单机与分布式测试
 description: Apache JMeter 是 Apache 基金会下的一款开源软件，可以用于测试静态和动态资源、Web 动态应用程序等的性能。其可以用于模拟服务器、服务器组、网络或对象上的重负载，以测试其强度或分析不同负载下的整体性能。
 date: 2024-01-20 11:00:00
-tags:
-- IoT
-- Benchmark
 categories: [Benchmark]
 mathjax: false
+tags: ["JMeter","性能测试","分布式系统"]
+content_type: practice
 ---
 
 # 1. Apache JMeter 介绍

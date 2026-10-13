@@ -2,11 +2,13 @@
 title: 2019-数据结构-数据结构1-绪论
 date: 2020-01-17 19:01:00
 description: "2019-数据结构-数据结构1-绪论"
-tags: 
-- 数据结构
-- 课程笔记
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 1
 ---
 
 **第一章**

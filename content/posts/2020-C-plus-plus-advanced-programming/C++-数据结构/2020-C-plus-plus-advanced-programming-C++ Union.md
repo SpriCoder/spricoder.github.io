@@ -2,13 +2,13 @@
 title: 2020-C++高级程序设计-C++ Union
 date: 2020-07-01 19:29:00
 description: "2020-C++高级程序设计-C++ Union"
-tags: 
-- C++
-- 数据结构
-- 课程笔记
-- union
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","数据结构"]
+content_type: course
+course: advanced-cpp-2020
+course_group: data-structures
+course_order: 5
 ---
 
 Union

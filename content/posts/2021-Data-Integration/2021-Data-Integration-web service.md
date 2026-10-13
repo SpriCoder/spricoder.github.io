@@ -2,13 +2,13 @@
 title: 2021-数据集成-web service
 date: 2021-05-01 19:00:00
 description: "2021-数据集成-web service"
-tags: 
-- 数据集成
-- 课程笔记
-- 服务
-- 消息
 categories: [2021-数据集成]
 mathjax: false
+tags: ["数据集成","Web服务","消息队列"]
+content_type: course
+course: data-integration-2021
+course_group: supplement
+course_order: 1
 ---
 
 web service

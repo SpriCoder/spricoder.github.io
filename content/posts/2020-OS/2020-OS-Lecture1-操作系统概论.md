@@ -2,13 +2,13 @@
 title: 2020-计算机操作系统-Lecture1-操作系统概论
 date: 2020-01-18 19:01:00
 description: "2020-计算机操作系统-Lecture1-操作系统概论"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 资源管理
-- 计算机历史
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","计算机发展史"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 2
 ---
 
 Lecture1-操作系统概论

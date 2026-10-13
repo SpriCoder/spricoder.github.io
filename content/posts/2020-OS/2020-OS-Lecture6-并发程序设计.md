@@ -2,15 +2,13 @@
 title: 2020-计算机操作系统-Lecture6-并发程序设计
 date: 2020-01-18 19:06:00
 description: "2020-计算机操作系统-Lecture6-并发程序设计"
-tags: 
-- 计算机操作系统
-- 课程笔记
-- 并发
-- 进程
-- 死锁
-- 资源
 categories: [2020-计算机操作系统]
 mathjax: true
+tags: ["操作系统","并发编程","进程管理","死锁"]
+content_type: course
+course: operating-systems-2020
+course_group: lectures
+course_order: 7
 ---
 
 Lecture6-并发程序设计

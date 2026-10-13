@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/04/
 title: 玩转 TsFile｜04-让 TsFile 像 Unix 文件一样进入工具链
 series: 玩转时序数据集
 series_order: 4
+tags: ["时序数据集","TsFile","TsFile-Cli","Unix","命令行工具"]
+content_type: series
 ---
 
 玩转 TsFile｜04-让 TsFile 像 Unix 文件一样进入工具链

@@ -2,12 +2,13 @@
 title: 2020-C++高级程序设计-C++ Cpp
 date: 2020-07-01 19:15:00
 description: "2020-C++高级程序设计-C++ Cpp"
-tags: 
-- C++
-- 课程笔记
-- 编译
 categories: [2020-C++高级程序设计]
 mathjax: false
+tags: ["C++","编译链接"]
+content_type: course
+course: advanced-cpp-2020
+course_group: lectures
+course_order: 16
 ---
 
 Cpp(编译**预**处理)

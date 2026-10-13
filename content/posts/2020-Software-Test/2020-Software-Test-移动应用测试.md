@@ -2,11 +2,13 @@
 title: 2020-软件测试-移动应用测试
 date: 2020-07-07 19:04:00
 description: "2020-软件测试-移动应用测试"
-tags: 
-- 软件测试
-- 移动应用测试
 categories: [2020-软件测试]
 mathjax: false
+tags: ["软件测试","移动应用测试"]
+content_type: course
+course: software-testing-2020
+course_group: lectures
+course_order: 5
 ---
 
 移动应用测试

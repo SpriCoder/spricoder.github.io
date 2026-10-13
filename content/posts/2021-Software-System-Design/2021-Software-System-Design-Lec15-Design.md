@@ -2,13 +2,13 @@
 title: 2021-软件系统设计-Lec15-Design
 date: 2021-07-15 19:15:00
 description: "2021-软件系统设计-Lec15-Design"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 体系结构
-- 设计
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 15
 ---
 
 lec15-Designing Architecture

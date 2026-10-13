@@ -2,14 +2,13 @@
 title: 2021-软件质量管理-Lec-4 估算、计划和跟踪
 date: 2022-01-09 19:04:00
 description: "2021-软件质量管理-Lec-4 估算、计划和跟踪"
-tags: 
-- 软件质量管理
-- 课程笔记
-- 项目
-- 估算
-- 计划
 categories: [2021-软件质量管理]
 mathjax: false
+tags: ["软件工程","软件质量","项目管理","软件估算"]
+content_type: course
+course: software-quality-management-2021
+course_group: lectures
+course_order: 5
 ---
 
 0.1. Lec4-估算、计划和跟踪

@@ -2,12 +2,13 @@
 title: 2019-计算机组织与结构-lecture07
 date: 2020-01-16 19:07:00
 description: "2019-计算机组织与结构-lecture07"
-tags: 
-- COA
-- 课程笔记
-- 存储
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","存储系统"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 8
 ---
 
 Internal Memory

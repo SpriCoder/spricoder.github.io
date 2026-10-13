@@ -2,13 +2,13 @@
 title: 2019-计算机组织与结构-lecture08
 date: 2020-01-16 19:08:00
 description: "2019-计算机组织与结构-lecture08"
-tags: 
-- COA
-- 课程笔记
-- 存储
-- 缓存
 categories: [2019-计算机组成与结构]
 mathjax: false
+tags: ["计算机组成","存储系统","缓存"]
+content_type: course
+course: computer-organization-2019
+course_group: lectures
+course_order: 9
 ---
 
 Cache

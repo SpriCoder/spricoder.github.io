@@ -2,12 +2,10 @@
 title: 3-Spring Boot Controller层
 date: 2022-04-13 09:11:42
 description: "Spring-Boot-Spring Boot Controller层"
-tags: 
-- spring boot
-- 注解
-- controller
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","分层架构","Java注解"]
+content_type: practice
 ---
 
 Spring Controller层

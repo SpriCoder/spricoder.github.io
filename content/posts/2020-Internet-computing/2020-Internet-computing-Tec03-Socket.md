@@ -2,12 +2,13 @@
 title: 2020-计算机网络-Tec03-Socket
 date: 2020-07-05 19:14:00
 description: "2020-计算机网络-Tec03-Socket"
-tags: 
-- 计算机网络
-- 实验
-- Socket
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","Socket","网络编程"]
+content_type: course
+course: internet-computing-2020
+course_group: practice
+course_order: 3
 ---
 
 Socket 编程

@@ -2,10 +2,10 @@
 title: 一文带你使用Apache IoTDB系统监控模块
 description: 从Apache IoTDB 0.13.0版本之后可以启动监控模块对系统进行监控，并且可以使用Prometheus、Grafana等工具进行可视化
 date: 2022-04-06 14:26:29
-tags:
-- Apache IoTDB系统监控
 categories: [Metric]
 mathjax: false
+tags: ["IoTDB","可观测性","系统监控"]
+content_type: practice
 ---
 一文带你使用Apache IoTDB系统监控模块
 ---

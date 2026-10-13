@@ -2,13 +2,13 @@
 title: 2021-软件系统设计-Lec01-Principles of Software Design
 date: 2021-07-15 19:01:00
 description: "2021-软件系统设计-Lec01-Principles of Software Design"
-tags: 
-- 软件系统设计
-- 课程笔记
-- 原则
-- 复用
 categories: [2021-软件系统设计]
 mathjax: false
+tags: ["软件设计","软件架构"]
+content_type: course
+course: software-system-design-2021
+course_group: lectures
+course_order: 1
 ---
 
 lec01-Principles of Software Design 软件设计原理

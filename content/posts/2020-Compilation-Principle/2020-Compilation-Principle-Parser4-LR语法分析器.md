@@ -2,14 +2,13 @@
 title: 2020-编译原理-Parser4-LR语法分析器
 date: 2021-01-16 19:05:00
 description: "2020-编译原理-Parser4-LR语法分析器"
-tags: 
-- 编译原理
-- 课程笔记
-- 文法
-- 归约
-- 状态
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","语法分析","LR分析","形式文法"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 6
 ---
 
 

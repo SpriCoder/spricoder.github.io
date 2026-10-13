@@ -2,11 +2,10 @@
 title: 2-Spring Boot 核心注解
 date: 2022-04-13 09:10:41
 description: "Spring-Boot-Spring Boot 核心注解"
-tags: 
-- spring boot
-- 注解
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Java注解"]
+content_type: practice
 ---
 
 # 1. 核心注解

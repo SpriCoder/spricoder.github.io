@@ -2,13 +2,13 @@
 title: 2018-Linux系统基础-linux-01.简介
 date: 2018-07-16 19:01:00
 description: "2018-Linux系统基础-linux-01.简介"
-tags: 
-- linux
-- 课程笔记
-- 操作系统
-- shell
 categories: [2018-Linux系统基础]
 mathjax: false
+tags: ["Linux","系统管理","操作系统","Shell"]
+content_type: course
+course: linux-basics-2018
+course_group: lectures
+course_order: 1
 ---
 
 # 1. 第一章：linux操作系统简介

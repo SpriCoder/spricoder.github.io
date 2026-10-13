@@ -2,12 +2,13 @@
 title: 2020-需求与商业模式分析-Book15-需求规格说明
 date: 2021-01-17 19:21:00
 description: "2020-需求与商业模式分析-Book15-需求规格说明"
-tags: 
-- 需求
-- 课程笔记
-- 文档
 categories: [2020-需求与商业模式创新]
 mathjax: false
+tags: ["需求工程","软件工程","需求文档"]
+content_type: course
+course: requirements-business-model-2020
+course_group: requirements
+course_order: 15
 ---
 
 book15-需求规格说明

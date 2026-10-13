@@ -2,12 +2,13 @@
 title: 2020-编译原理-IR1-中间代码生成概述
 date: 2021-01-16 19:12:00
 description: "2020-编译原理-IR1-中间代码生成概述"
-tags: 
-- 编译原理
-- 课程笔记
-- 中间代码
 categories: [2020-编译原理]
 mathjax: true
+tags: ["编译原理","中间代码"]
+content_type: course
+course: compiler-principles-2020
+course_group: lectures
+course_order: 13
 ---
 
 IR1-中间代码生成概述

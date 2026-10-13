@@ -2,11 +2,10 @@
 title: 30-Spring Boot 微信
 date: 2022-04-13 09:38:45
 description: "Spring-Boot-Spring Boot 微信"
-tags: 
-- spring boot
-- 微信
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","微信开发"]
+content_type: practice
 ---
 
 Spring 微信

@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/02/
 title: 玩转 TsFile｜02-从元数据到数据行：认识一个 TsFile
 series: 玩转时序数据集
 series_order: 2
+tags: ["时序数据集","TsFile","TsFile-Cli","元数据","数据模型"]
+content_type: series
 ---
 
 玩转 TsFile｜02-从元数据到数据行：认识一个 TsFile

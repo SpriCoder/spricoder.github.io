@@ -6,7 +6,7 @@ const links = [
   { href: '/archives/', label: '归档' },
   { href: '/about/', label: '关于' },
 ];
-const active = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
+const active = (href: string) => href === '/' ? pathname === '/' : href === '/series/' ? pathname.startsWith('/series/') || pathname.startsWith('/courses/') : pathname.startsWith(href);
 ---
 
 <header class="site-header">

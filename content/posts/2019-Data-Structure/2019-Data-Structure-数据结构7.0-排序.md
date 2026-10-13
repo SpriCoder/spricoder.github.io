@@ -2,13 +2,13 @@
 title: 2019-数据结构-数据结构7.0-排序
 date: 2020-01-17 19:11:00
 description: "2019-数据结构-数据结构7.0-排序"
-tags: 
-- 数据结构
-- 课程笔记
-- 排序
-- 算法复杂度
 categories: [2019-数据结构]
 mathjax: false
+tags: ["数据结构","算法","排序","算法复杂度"]
+content_type: course
+course: data-structures-2019
+course_group: lectures
+course_order: 11
 ---
 
 排序

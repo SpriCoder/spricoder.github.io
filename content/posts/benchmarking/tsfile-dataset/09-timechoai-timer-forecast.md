@@ -4,6 +4,8 @@ permalink: benchmarking/tsfile-dataset/09/
 title: 玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型
 series: 玩转时序数据集
 series_order: 9
+tags: ["时序数据集","TsFile","TimechoAI","Timer","时序预测"]
+content_type: series
 ---
 
 <title>玩转 TsFile｜09-从时序数据集到预测：用 TimechoAI / Timer 连接数据与模型</title>

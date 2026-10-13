@@ -2,12 +2,13 @@
 title: 2021-人机交互-Lec-3 评估的基础知识
 date: 2022-01-08 19:03:00
 description: "2021-人机交互-Lec-3 评估的基础知识"
-tags: 
-- 人机交互
-- 课程笔记
-- 评估
 categories: [2021-人机交互]
 mathjax: false
+tags: ["人机交互","交互设计","可用性评估","认知心理学"]
+content_type: course
+course: human-computer-interaction-2021
+course_group: lectures
+course_order: 3
 ---
 
 lec3-评估的基础知识

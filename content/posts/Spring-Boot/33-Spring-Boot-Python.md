@@ -2,11 +2,10 @@
 title: 33-Spring Boot Python
 date: 2022-04-13 09:41:42
 description: "Spring-Boot-Spring Boot Python"
-tags: 
-- spring boot
-- python
 categories: [Spring-Boot]
 mathjax: false
+tags: ["Java","Spring Boot","Python"]
+content_type: practice
 ---
 
 Spring Python

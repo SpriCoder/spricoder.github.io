@@ -2,12 +2,13 @@
 title: 2020-计算机网络-lecture06-应用层
 date: 2020-07-05 19:06:00
 description: "2020-计算机网络-lecture06-应用层"
-tags: 
-- 计算机网络
-- 课程笔记
-- 应用层
 categories: [2020-互联网计算]
 mathjax: false
+tags: ["计算机网络","网络协议","应用层"]
+content_type: course
+course: internet-computing-2020
+course_group: lectures
+course_order: 6
 ---
 
 Lecture06-应用层
