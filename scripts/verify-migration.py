@@ -43,7 +43,7 @@ for item in baseline:
         check(len(body) == 1 and inner(body[0]) == inner(snapshot), f"Rendered body changed: {post['url']}")
         check(document.xpath('string(//h1)') == post['title'], f"Article title mismatch: {post['url']}")
     for url in item['legacyUrls']:
-        check((ROOT / 'dist' / url.lstrip('/')).is_file(), f"Legacy compatibility URL missing: {url}")
+        check((ROOT / 'dist' / url.lstrip('/') / 'index.html').is_file(), f"Legacy compatibility URL missing: {url}")
 
 assets = json.loads((ROOT / 'migration/assets.json').read_text())
 for asset in assets:
