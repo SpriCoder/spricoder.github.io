@@ -58,6 +58,9 @@ p { margin-top: 0; }
 .skip-link:focus { top: 12px; }
 main { min-height: 55vh; outline: none; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--surface); }
+.home-page { scroll-padding-top: 0; }
+.home-content { outline: none; }
+.home-page .site-header { position: absolute; inset: 0 0 auto; z-index: 10; --ink: #ffffff; --muted: #e1e6ee; --accent: #52d9ff; --accent-soft: rgba(255, 255, 255, .12); --line: rgba(255, 255, 255, .2); color: var(--ink); border-bottom-color: var(--line); background: rgba(11, 19, 36, .16); }
 .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 .wordmark { display: inline-flex; align-items: center; gap: 14px; color: var(--ink); }
 .wordmark-symbol { display: block; width: 46px; height: 46px; }
@@ -80,7 +83,7 @@ html[data-theme='dark'] .theme-icon-moon { display: none; }
 .home-intro { position: relative; overflow: hidden; margin-top: 32px; padding: 32px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 6px; background-color: var(--surface); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; }
 .home-intro::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--surface) 0%, var(--surface) 55%, transparent); pointer-events: none; }
 .home-intro > * { position: relative; }
-.home-intro h1 { margin-bottom: 12px; font: 650 clamp(28px, 3vw, 36px)/1.5 var(--sans); }
+.home-intro h1 { margin-bottom: 12px; font: 650 clamp(28px, 3vw, 36px)/1.5 var(--sans); text-wrap: balance; }
 .home-intro p { margin-bottom: 0; color: var(--muted); font-size: 17px; line-height: 1.9; }
 .eyebrow { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
 .text-link { display: inline-flex; gap: 9px; align-items: center; color: var(--ink); font-size: 16px; font-weight: 600; }

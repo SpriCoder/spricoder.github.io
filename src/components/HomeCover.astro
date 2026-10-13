@@ -1,0 +1,86 @@
+<section class="home-cover" aria-label="博客首页">
+  <img
+    class="home-cover-image"
+    src="/img/website.jpg"
+    alt=""
+    width="4256"
+    height="2832"
+    fetchpriority="high"
+  />
+  <p class="home-cover-title">掐指一算，代码完蛋</p>
+  <a class="home-cover-down" href="#home-content" aria-label="查看博客内容">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </a>
+</section>
+
+<style>
+  .home-cover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 5rem 1.5rem;
+    overflow: hidden;
+    color: #fff;
+    background: #0d2540;
+  }
+
+  .home-cover-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .home-cover::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: '';
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+  }
+
+  .home-cover-title {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
+
+  .home-cover-down {
+    position: absolute;
+    bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+
+  .home-cover-down:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .home-cover-down:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+</style>

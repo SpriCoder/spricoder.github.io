@@ -7,6 +7,7 @@ interface Props {
   title?: string;
   description?: string;
   article?: boolean;
+  home?: boolean;
   noindex?: boolean;
 }
 
@@ -14,6 +15,7 @@ const {
   title = 'SpriCoder 的博客',
   description = '记录关于数据库、时序数据、人工智能与软件工程的学习、研究和实践。',
   article = false,
+  home = false,
   noindex = false,
 } = Astro.props;
 const pageTitle = title.startsWith('SpriCoder') ? title : `${title} · SpriCoder`;
@@ -21,7 +23,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class:list={[{ 'home-page': home }]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,7 +59,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
     </script>
   </head>
   <body class:list={[{ 'article-page': article }]}>
-    <a class="skip-link" href="#main-content">跳到正文</a>
+    <a class="skip-link" href={home ? '#home-content' : '#main-content'}>跳到正文</a>
     <Header />
     <main id="main-content" tabindex="-1">
       <slot />

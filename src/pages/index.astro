@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import HomeCover from '../components/HomeCover.astro';
 import { allPosts, seriesSlug } from '../lib/posts';
 import courses from '../data/courses.json';
 const posts = await allPosts();
@@ -23,8 +24,9 @@ const descriptions: Record<string, string> = {
   '基准测试方法与实践': '工作负载设计、测试工具与性能结果分析。',
 };
 ---
-<SiteLayout>
-  <div class="container">
+<SiteLayout home>
+  <HomeCover />
+  <div class="container home-content" id="home-content" tabindex="-1">
     <section class="home-intro">
       <h1>SpriCoder 的博客</h1>
       <p>这里记录我在数据库、时序数据和 AI 工具方面的学习与实践。</p>
