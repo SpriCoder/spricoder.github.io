@@ -8,6 +8,7 @@ export async function getStaticPaths() {
   const paths = posts.map(post => ({ params: { path: post.url.replace(/^\/+|\/+$/g, '') }, props: { post, posts } }));
   const occupied = new Set(posts.map(post => post.url));
   for (const listing of legacyRoutes) {
+    if (listing.kind === 'links') continue;
     if (!occupied.has(listing.url)) paths.push({ params: { path: listing.url.replace(/^\/+|\/+$/g, '') }, props: { listing, posts } });
   }
   for (const kind of ['tags', 'categories', 'archives']) {

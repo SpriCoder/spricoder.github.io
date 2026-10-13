@@ -66,7 +66,7 @@ main { min-height: 55vh; outline: none; }
 .header-navigation, .main-nav, .header-tools { display: flex; align-items: center; }
 .header-navigation { gap: 32px; }
 .main-nav { gap: 28px; font-size: 14px; }
-.main-nav a { padding: 8px 0; position: relative; }
+.main-nav a { padding: 8px 0; position: relative; white-space: nowrap; }
 .main-nav a::after { content: ''; height: 2px; position: absolute; bottom: 0; left: 0; right: 0; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .18s ease; }
 .main-nav a:hover::after, .main-nav a.active::after { transform: scaleX(1); }
 .main-nav a.active { color: var(--ink); font-weight: 600; }
@@ -373,7 +373,7 @@ html[data-theme='dark'] .theme-icon-moon { display: none; }
 @media (max-width: 480px) {
   .header-inner { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .header-navigation { justify-content: space-between; }
-  .main-nav { gap: 27px; }
+  .main-nav { gap: 16px; }
   .header-tools { border: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
