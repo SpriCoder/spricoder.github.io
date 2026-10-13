@@ -36,7 +36,7 @@ const descriptions: Record<string, string> = {
     <nav class="home-courses" aria-label="课程笔记">
       <span class="home-courses-label">课程笔记</span>
       {featuredCourses.map(course => <a href={`/courses/${course.slug}/`}>{course.name.replace(/\s*（\d{4}）$/, '')}</a>)}
-      <a class="home-courses-all" href="/courses/">全部课程 →</a>
+      <a class="home-courses-all" href="/series/#course-collections">全部课程 →</a>
     </nav>
     <section class="home-section" aria-labelledby="latest-posts">
       <div class="section-heading"><h2 id="latest-posts">最新文章</h2><a class="text-link" href="/archives/">全部文章</a></div>
