@@ -29,6 +29,6 @@ const topic = post.courseName || post.series || post.categories?.[0] || post.tag
   {post.description && <p class="post-card-description">{post.description}</p>}
   <div class="post-card-bottom">
     <span class="post-card-reading">约 {Math.max(1, post.readingMinutes || 1)} 分钟阅读</span>
-    <a class="post-card-read" href={post.url} aria-label={`阅读：${post.title}`}>阅读全文 <span aria-hidden="true">↗</span></a>
+    <a class="post-card-read" href={post.url} aria-label={`阅读：${post.title}`}>阅读全文</a>
   </div>
 </article>

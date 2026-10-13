@@ -10,5 +10,5 @@ export async function getStaticPaths() {
 const { name, posts } = Astro.props;
 ---
 <SiteLayout title={name} description={`${name}专题的文章与阅读顺序。`}>
-  <div class="container"><header class="page-header"><a class="breadcrumb" href="/series/">← 全部专题</a><p class="eyebrow">READ IN ORDER</p><h1>{name}</h1><p>{posts.length} 篇文章 · 按系列顺序阅读</p></header><div class="post-list">{posts.map(post => <PostCard post={post} />)}</div></div>
+  <div class="container"><header class="page-header"><a class="breadcrumb" href="/series/">← 全部专题</a><h1>{name}</h1><p>{posts.length} 篇文章</p></header><div class="post-list">{posts.map(post => <PostCard post={post} />)}</div></div>
 </SiteLayout>

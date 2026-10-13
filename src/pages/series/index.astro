@@ -7,21 +7,21 @@ const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as s
 const domains = [...new Set(courses.map(course => course.domain))];
 const courseCounts = new Map(courses.map(course => [course.slug, posts.filter(post => post.course === course.slug).length]));
 const descriptions: Record<string, string> = {
-  '与 AI 一起工作': '从任务、上下文与权限，到 Agent 协作、评测和科研。',
-  '玩转时序数据集': '用 TsFile、IoTDB 与工具链理解、访问和验证时序数据。',
-  '基准测试方法与实践': '工作负载、测试工具与性能结果背后的方法。',
+  '与 AI 一起工作': 'AI 工具、Agent 协作、评测与科研实践。',
+  '玩转时序数据集': 'TsFile、IoTDB、数据访问与常用工具。',
+  '基准测试方法与实践': '工作负载设计、测试工具与性能结果分析。',
 };
 ---
-<SiteLayout title="课程与专题" description="按课程浏览计算机与软件工程笔记，或沿着 AI 协作、时序数据集与基准测试系列阅读。">
+<SiteLayout title="专题" description="数据库、AI 协作与基准测试的技术系列，以及计算机和软件工程课程笔记。">
   <div class="container">
-    <header class="page-header"><p class="eyebrow">COLLECTIONS</p><h1>课程与专题</h1><p>按课程组织学习笔记，按问题组织技术系列。先找到一个方向，再沿章节和资料类型阅读。</p></header>
-    <section aria-labelledby="course-collections">
-      <div class="section-heading"><div><p class="eyebrow">COURSE NOTES</p><h2 id="course-collections">课程笔记</h2></div><a class="text-link" href="/courses/">独立课程目录 →</a></div>
-      <div class="course-directory">{domains.map(domain => <section class="course-domain"><h3>{domain}</h3><ul class="course-directory-list">{courses.filter(course => course.domain === domain).map(course => <li><a class="course-directory-link" href={`/courses/${course.slug}/`}><span class="course-directory-title">{course.name}</span><span class="course-directory-meta"><span>{course.year ? course.year : '学习笔记'}</span><span>{courseCounts.get(course.slug)} 篇</span><span aria-hidden="true">↗</span></span></a></li>)}</ul></section>)}</div>
+    <header class="page-header"><h1>专题</h1><p>技术系列与课程笔记。</p></header>
+    <section aria-labelledby="technical-series">
+      <div class="section-heading"><h2 id="technical-series">技术系列</h2><span class="section-label">{series.length} 个系列</span></div>
+      <div class="series-grid">{series.map(name => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><h3>{name}</h3><p>{descriptions[name]}</p><span class="series-card-meta">{posts.filter(post => post.series === name).length} 篇文章</span></a>)}</div>
     </section>
-    <section class="home-section" aria-labelledby="technical-series">
-      <div class="section-heading"><div><p class="eyebrow">TECHNICAL SERIES</p><h2 id="technical-series">技术系列</h2></div><span class="section-label">{series.length} 个系列</span></div>
-      <div class="series-grid">{series.map((name, index) => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><span class="series-number">{String(index + 1).padStart(2, '0')}</span><h3>{name}</h3><p>{descriptions[name]}</p><span class="series-card-meta">{posts.filter(post => post.series === name).length} 篇文章 <span aria-hidden="true">↗</span></span></a>)}</div>
+    <section class="home-section" aria-labelledby="course-collections">
+      <div class="section-heading"><h2 id="course-collections">课程笔记</h2><a class="text-link" href="/courses/">全部课程</a></div>
+      <div class="course-directory">{domains.map(domain => <section class="course-domain"><h3>{domain}</h3><ul class="course-directory-list">{courses.filter(course => course.domain === domain).map(course => <li><a class="course-directory-link" href={`/courses/${course.slug}/`}><span class="course-directory-title">{course.name}</span><span class="course-directory-meta"><span>{course.year ? course.year : '学习笔记'}</span><span>{courseCounts.get(course.slug)} 篇</span><span aria-hidden="true">↗</span></span></a></li>)}</ul></section>)}</div>
     </section>
   </div>
 </SiteLayout>

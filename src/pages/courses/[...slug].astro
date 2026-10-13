@@ -31,7 +31,7 @@ if (ungroupedPosts.length > 0) groups.push({ id: 'other', label: '其他笔记',
       <p class="eyebrow">{course.domain} · {course.year ? course.year : '学习笔记'}</p>
       <h1>{course.name}</h1>
       <p>{course.description}</p>
-      <div class="collection-summary"><span><strong>{posts.length}</strong> 篇笔记</span><span>按章节与资料类型整理</span></div>
+      <div class="collection-summary"><span><strong>{posts.length}</strong> 篇笔记</span></div>
     </header>
     <div class="course-layout">
       <nav class="course-outline" aria-label="课程目录"><p>课程目录</p><ul>{groups.map((group, index) => <li><a href={`#group-${index + 1}`}><span>{group.label}</span><span>{group.posts.length}</span></a></li>)}</ul><a class="course-outline-back" href="/courses/">浏览其他课程 →</a></nav>

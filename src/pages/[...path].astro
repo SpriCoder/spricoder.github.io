@@ -1,6 +1,5 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import PostCard from '../components/PostCard.astro';
 import { allPosts, dateLabel, seriesSlug, taxonomyUrl, courseOrder } from '../lib/posts';
 import legacyRoutes from '../../migration/legacy-routes.json';
 import baseline from '../../migration/baseline.json';
@@ -64,8 +63,8 @@ const nextCoursePost = courseIndex >= 0 ? coursePosts[courseIndex + 1] : null;
     {post.tags.length > 0 && <div class="tags">{post.tags.map(tag=><a href={taxonomyUrl('tags',tag)}>#{tag}</a>)}</div>}
     {post.course && <section class="series-navigation"><a class="text-link" href={`/courses/${post.course}/`}>返回「{post.courseName}」课程目录 →</a><div class="post-grid">{previousCoursePost && <div><p class="eyebrow">上一篇课程笔记</p><a href={previousCoursePost.url}>{previousCoursePost.title}</a></div>}{nextCoursePost && <div><p class="eyebrow">下一篇课程笔记</p><a href={nextCoursePost.url}>{nextCoursePost.title}</a></div>}</div></section>}
     {post.series && <section class="series-navigation"><a class="text-link" href={`/series/${seriesSlug(post.series)}/`}>查看「{post.series}」完整目录 →</a><div class="post-grid">{previous && <div><p class="eyebrow">上一篇</p><a href={previous.url}>{previous.title}</a></div>}{next && <div><p class="eyebrow">下一篇</p><a href={next.url}>{next.title}</a></div>}</div></section>}
-    <section class="comments" aria-label="文章评论"><h2>交流与讨论</h2><script is:inline src="https://utteranc.es/client.js" repo="SpriCoder/spricoder-blog-comment" issue-term={post.counterPath !== post.url ? encodeURI(post.counterPath) : 'pathname'} theme="preferred-color-scheme" crossorigin="anonymous" async></script></section>
-  </div> : <div class="container"><header class="page-header"><p class="eyebrow">THE ARCHIVE</p><h1>{listingTitle}</h1><p>{taxonomy ? `${labels.length} 个${taxonomy === 'tags' ? '标签' : '分类'}` : `${selected.length} 篇文章`} · 保存学习与实践的足迹</p><div class="archive-nav"><a href="/archives/">全部文章</a><a href="/categories/">按分类</a><a href="/tags/">按标签</a></div></header>{taxonomy ? <div class="tags taxonomy-tags">{labels.map(label=><a href={taxonomyUrl(taxonomy,label)}>{label} <span>{posts.filter(item=>item[taxonomy].includes(label)).length}</span></a>)}</div> : <div class="post-list">{selected.map(item=><PostCard post={item}/>)}</div>}</div>}
+    <section class="comments" aria-label="文章评论"><h2>评论</h2><script is:inline src="https://utteranc.es/client.js" repo="SpriCoder/spricoder-blog-comment" issue-term={post.counterPath !== post.url ? encodeURI(post.counterPath) : 'pathname'} theme="preferred-color-scheme" crossorigin="anonymous" async></script></section>
+  </div> : <div class="container"><header class="page-header"><h1>{listingTitle}</h1><p>{taxonomy ? `${labels.length} 个${taxonomy === 'tags' ? '标签' : '分类'}` : `${selected.length} 篇文章`}</p><div class="archive-nav"><a href="/archives/">全部文章</a><a href="/categories/">按分类</a><a href="/tags/">按标签</a></div></header>{taxonomy ? <div class="tags taxonomy-tags">{labels.map(label=><a href={taxonomyUrl(taxonomy,label)}>{label} <span>{posts.filter(item=>item[taxonomy].includes(label)).length}</span></a>)}</div> : <ul class="archive-list">{selected.map(item=><li><time datetime={item.date}>{dateLabel(item.date)}</time><a href={item.url}>{item.title}</a></li>)}</ul>}</div>}
 </SiteLayout>
 <script>
   const content = document.querySelector('.article-content');
