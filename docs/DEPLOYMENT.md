@@ -2,6 +2,8 @@
 
 新博客源码保存在 `astro-source`，由 `.github/workflows/pages.yml` 构建并发布。原 `master` 保存 Hexo 的已发布产物，不用 Astro 产物覆盖它。本地旧方案保存在 `/Users/zhanghongyin/code/blog/SpriCoder-Blog/`，包括正文、配置、主题与部署目录。
 
+当前默认分支为 `astro-source`，Pages 使用 `workflow` 发布，HTTPS 保持启用。`github-pages` 环境只允许 `astro-source` 与保留的 `master` 两个分支部署。首次上线提交为 `8bc6da489bd244eb939410663eeb3a784042ada3`，[部署任务](https://github.com/SpriCoder/spricoder.github.io/actions/runs/38384988562)的构建和发布均已通过。
+
 ## 迁移前基线
 
 以下是 2026-10-13 的只读核验结果，切换状态以发布后的交付记录为准。
@@ -23,7 +25,7 @@
 
 1. 使用 Node.js 24 安装锁定的依赖、构建静态站并完成文章、旧网址、图片与统计配置核验。保留 `package-lock.json`；输出使用默认 `dist/`。
 2. 核对远端 `master` 仍为上表中的 SHA。创建独立 `astro-source`，提交 Astro 源码与正文，不修改 `master`，不提交本地凭据和 `node_modules/`。
-3. 把 Pages 的发布方式改成 GitHub Actions，然后推送 `astro-source`，由其 `push` 事件触发工作流。此设置可以在仓库 Settings → Pages → Source 中修改，也可以使用下方命令。
+3. 把 Pages 的发布方式改成 GitHub Actions，确认 `github-pages` 环境允许 `astro-source` 发布，并保留 `master` 的回退资格。然后推送 `astro-source`，由其 `push` 事件触发工作流。Pages 来源可以在仓库 Settings → Pages → Source 中修改，也可以使用下方命令。
 4. 等待 build 与 deploy 两个作业成功，并核对 workflow 的 `headSha` 与本地提交一致。回读首页、旧文章地址、资源与页脚；仅推送成功不能视为发布成功。
 5. 如需 GitHub 网页上的手动运行入口，把默认分支改成 `astro-source`。此操作只改变默认分支设置，不改变 `master` 的提交；若默认分支仍为 `master` 且其中没有工作流，网页可能没有 Run workflow 按钮。日常推送到 `astro-source` 不依赖默认分支变更。
 
