@@ -3,6 +3,11 @@ import legacyRoutes from '../../migration/legacy-routes.json';
 import courses from '../data/courses.json';
 const byCourse = new Map(courses.map(course => [course.slug, course]));
 
+export const ARCHIVE_PAGE_SIZE = 10;
+export function archivePageUrl(baseUrl: string, page: number) {
+  return page === 1 ? baseUrl : `${baseUrl}page/${page}/`;
+}
+
 export async function allPosts() {
   const entries = await getCollection('posts');
   return entries.map(entry => ({ id: entry.id, ...entry.data, ...(entry.data.course ? { courseName: byCourse.get(entry.data.course)?.name } : {}) })).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'zh-CN'));

@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { allPosts, dateLabel, seriesSlug, taxonomyUrl, courseOrder } from '../lib/posts';
+import ArchivePagination from '../components/ArchivePagination.astro';
+import { allPosts, dateLabel, seriesSlug, taxonomyUrl, courseOrder, ARCHIVE_PAGE_SIZE, archivePageUrl } from '../lib/posts';
 import legacyRoutes from '../../migration/legacy-routes.json';
 import baseline from '../../migration/baseline.json';
 export async function getStaticPaths() {
@@ -8,11 +9,11 @@ export async function getStaticPaths() {
   const paths = posts.map(post => ({ params: { path: post.url.replace(/^\/+|\/+$/g, '') }, props: { post, posts } }));
   const occupied = new Set(posts.map(post => post.url));
   for (const listing of legacyRoutes) {
-    if (listing.kind === 'links') continue;
+    if (listing.kind === 'links' || listing.kind === 'archives') continue;
     if (!occupied.has(listing.url)) paths.push({ params: { path: listing.url.replace(/^\/+|\/+$/g, '') }, props: { listing, posts } });
   }
-  for (const kind of ['tags', 'categories', 'archives']) {
-    if (!legacyRoutes.some(route => route.url === `/${kind}/`)) paths.push({ params: { path: kind }, props: { listing: { url: `/${kind}/`, kind, title: kind === 'tags' ? '标签' : kind === 'categories' ? '分类' : '文章归档' }, posts } });
+  for (const kind of ['tags', 'categories']) {
+    if (!legacyRoutes.some(route => route.url === `/${kind}/`)) paths.push({ params: { path: kind }, props: { listing: { url: `/${kind}/`, kind, title: kind === 'tags' ? '标签' : '分类' }, posts } });
   }
   const existing = new Set(paths.map(item => item.params.path));
   for (const kind of ['tags', 'categories'] as const) {
@@ -26,10 +27,35 @@ export async function getStaticPaths() {
       }
     }
   }
+  const archiveGroups = new Map([['/archives/', posts]]);
+  for (const post of posts) {
+    const date = dateLabel(post.date);
+    for (const prefix of [date.slice(0, 4), date.slice(0, 7).replace('-', '/')]) {
+      const baseUrl = `/archives/${prefix}/`;
+      if (!archiveGroups.has(baseUrl)) archiveGroups.set(baseUrl, []);
+      archiveGroups.get(baseUrl).push(post);
+    }
+  }
+  for (const [baseUrl, members] of archiveGroups) {
+    const totalPages = Math.max(1, Math.ceil(members.length / ARCHIVE_PAGE_SIZE));
+    const period = baseUrl.replace(/^\/archives\//, '').replace(/\/$/, '').replace('/', '-');
+    for (let page = 1; page <= totalPages; page++) {
+      const url = archivePageUrl(baseUrl, page);
+      const route = url.replace(/^\/+|\/+$/g, '');
+      if (!existing.has(route)) {
+        paths.push({ params: { path: route }, props: {
+          listing: { url, kind: 'archives', title: period ? `${period} · 文章归档` : '归档' },
+          posts,
+          archive: { baseUrl, currentPage: page, totalPages, totalItems: members.length, items: members.slice((page - 1) * ARCHIVE_PAGE_SIZE, page * ARCHIVE_PAGE_SIZE) },
+        } });
+        existing.add(route);
+      }
+    }
+  }
   return paths;
 }
-const { post, listing, posts } = Astro.props;
-let selected = posts;
+const { post, listing, posts, archive } = Astro.props;
+let selected = archive?.items ?? posts;
 let listingTitle = listing?.title;
 if (listing?.kind === 'tags' || listing?.kind === 'categories') {
   const prefix = listing.kind === 'tags' ? '标签' : '分类';
@@ -42,10 +68,7 @@ if (listing?.kind === 'tags' || listing?.kind === 'categories') {
     }
   }
 }
-if (listing?.kind === 'archives') {
-  const match = listing.url.match(/^\/archives\/(\d{4})(?:\/(\d{2}))?/);
-  if (match) { const prefix = match[1] + (match[2] ? `-${match[2]}` : ''); selected = posts.filter(item => dateLabel(item.date).startsWith(prefix)); listingTitle = `${prefix} · 文章归档`; }
-}
+const pageTitle = archive?.currentPage > 1 ? `${listingTitle} · 第 ${archive.currentPage} 页` : listingTitle;
 const taxonomy = listing?.url === '/tags/' ? 'tags' : listing?.url === '/categories/' ? 'categories' : null;
 const labels = taxonomy ? [...new Set(posts.flatMap(item => item[taxonomy]))].sort((a,b)=>a.localeCompare(b,'zh-CN')) : [];
 const inSeries = post?.series ? posts.filter(item => item.series === post.series).sort((a,b)=>(a.series_order??999)-(b.series_order??999)||a.title.localeCompare(b.title,'zh-CN')) : [];
@@ -57,7 +80,7 @@ const courseIndex = post ? coursePosts.findIndex(item => item.url === post.url) 
 const previousCoursePost = courseIndex > 0 ? coursePosts[courseIndex - 1] : null;
 const nextCoursePost = courseIndex >= 0 ? coursePosts[courseIndex + 1] : null;
 ---
-<SiteLayout title={post?.title || listingTitle} description={post?.description || 'SpriCoder 的文章归档与分类。'} article={Boolean(post)}>
+<SiteLayout title={post?.title || pageTitle} description={post?.description || 'SpriCoder 的文章归档与分类。'} article={Boolean(post)}>
   {post ? <div class="container article-container">
     <header class="article-header"><a class="breadcrumb" href={post.course ? `/courses/${post.course}/` : post.series ? `/series/${seriesSlug(post.series)}/` : '/archives/'}>← {post.courseName || post.series || '文章归档'}</a><h1>{post.title}</h1><div class="article-meta"><time datetime={post.date}>{dateLabel(post.date)}</time><span>约 {post.readingMinutes} 分钟阅读</span><span id="leancloud-page-views-container" data-counter-path={post.counterPath}>阅读 <span id="leancloud-page-views">—</span> 次</span></div></header>
     <div class="article-layout"><article class="article-content" data-pagefind-body data-pagefind-meta={`title:${post.title}`} set:html={post.html}></article>{post.headings.length > 0 && <aside class="article-toc" aria-label="文章目录"><details><summary>本文目录</summary><nav>{post.headings.map(heading=><a class:list={[{'toc-sub':heading.level===3}]} href={`#${heading.id}`}>{heading.text}</a>)}</nav></details></aside>}</div>
@@ -65,7 +88,7 @@ const nextCoursePost = courseIndex >= 0 ? coursePosts[courseIndex + 1] : null;
     {post.course && <section class="series-navigation"><a class="text-link" href={`/courses/${post.course}/`}>返回「{post.courseName}」课程目录 →</a><div class="post-grid">{previousCoursePost && <div><p class="eyebrow">上一篇课程笔记</p><a href={previousCoursePost.url}>{previousCoursePost.title}</a></div>}{nextCoursePost && <div><p class="eyebrow">下一篇课程笔记</p><a href={nextCoursePost.url}>{nextCoursePost.title}</a></div>}</div></section>}
     {post.series && <section class="series-navigation"><a class="text-link" href={`/series/${seriesSlug(post.series)}/`}>查看「{post.series}」完整目录 →</a><div class="post-grid">{previous && <div><p class="eyebrow">上一篇</p><a href={previous.url}>{previous.title}</a></div>}{next && <div><p class="eyebrow">下一篇</p><a href={next.url}>{next.title}</a></div>}</div></section>}
     <section class="comments" aria-label="文章评论"><h2>评论</h2><script is:inline src="https://utteranc.es/client.js" repo="SpriCoder/spricoder-blog-comment" issue-term={post.counterPath !== post.url ? encodeURI(post.counterPath) : 'pathname'} theme="preferred-color-scheme" crossorigin="anonymous" async></script></section>
-  </div> : <div class="container"><header class="page-header"><h1>{listingTitle}</h1><p>{taxonomy ? `${labels.length} 个${taxonomy === 'tags' ? '标签' : '分类'}` : `${selected.length} 篇文章`}</p><div class="archive-nav"><a href="/archives/">全部文章</a><a href="/categories/">按分类</a><a href="/tags/">按标签</a></div></header>{taxonomy ? <div class="tags taxonomy-tags">{labels.map(label=><a href={taxonomyUrl(taxonomy,label)}>{label} <span>{posts.filter(item=>item[taxonomy].includes(label)).length}</span></a>)}</div> : <ul class="archive-list">{selected.map(item=><li><time datetime={item.date}>{dateLabel(item.date)}</time><a href={item.url}>{item.title}</a></li>)}</ul>}</div>}
+  </div> : <div class="container"><header class="page-header"><h1>{listingTitle}</h1><p>{taxonomy ? `${labels.length} 个${taxonomy === 'tags' ? '标签' : '分类'}` : `${archive?.totalItems ?? selected.length} 篇文章`}{archive && <span> · 第 {archive.currentPage} / {archive.totalPages} 页</span>}</p><div class="archive-nav"><a href="/archives/">全部文章</a><a href="/categories/">按分类</a><a href="/tags/">按标签</a></div></header>{taxonomy ? <div class="tags taxonomy-tags">{labels.map(label=><a href={taxonomyUrl(taxonomy,label)}>{label} <span>{posts.filter(item=>item[taxonomy].includes(label)).length}</span></a>)}</div> : <ul class="archive-list">{selected.map(item=><li><time datetime={item.date}>{dateLabel(item.date)}</time><a href={item.url}>{item.title}</a></li>)}</ul>}{archive && <ArchivePagination currentPage={archive.currentPage} totalPages={archive.totalPages} baseUrl={archive.baseUrl} />}</div>}
 </SiteLayout>
 <script>
   const content = document.querySelector('.article-content');
