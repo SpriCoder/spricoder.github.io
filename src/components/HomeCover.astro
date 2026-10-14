@@ -7,7 +7,13 @@
     height="2832"
     fetchpriority="high"
   />
-  <p class="home-cover-title"><span>把问题想清楚，</span><span>把代码写明白</span></p>
+  <div class="home-cover-content">
+    <p class="home-cover-title"><span>把问题想清楚，</span><span>把代码写明白</span></p>
+    <nav class="home-cover-links" aria-label="选择阅读内容">
+      <a href="#technical-series">技术系列</a>
+      <a href="#course-notes">课程笔记</a>
+    </nav>
+  </div>
   <a class="home-cover-down" href="#home-content" aria-label="查看博客内容">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -49,9 +55,12 @@
     pointer-events: none;
   }
 
-  .home-cover-title {
+  .home-cover-content {
     position: relative;
     z-index: 2;
+  }
+
+  .home-cover-title {
     margin: 0;
     color: #fff;
     font-size: clamp(1.6rem, 5vw, 2rem);
@@ -78,6 +87,34 @@
   .home-cover-title span {
     display: inline-block;
     white-space: nowrap;
+  }
+
+  .home-cover-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .home-cover-links a {
+    padding: .6rem 1.4rem;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 4px;
+    background: rgba(13, 37, 64, .45);
+    text-decoration: none;
+  }
+
+  .home-cover-links a:hover {
+    background: rgba(13, 37, 64, .75);
+  }
+
+  .home-cover-links a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
   }
 
   .home-cover-down:hover {

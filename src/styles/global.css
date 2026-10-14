@@ -179,6 +179,11 @@ html[data-theme='dark'] .theme-icon-moon { display: none; }
 .article-description { color: var(--muted); font-size: 18px; line-height: 1.9; }
 .article-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; font-size: 15px; color: var(--muted); }
 .article-meta time { font-family: var(--mono); }
+.article-context { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: -8px 0 30px; padding: 16px 20px; border-left: 3px solid var(--accent); background: var(--accent-soft); font-size: 15px; }
+.article-context > div { min-width: 0; }
+.article-context dt { color: var(--muted); font-size: 13px; }
+.article-context dd { margin: 2px 0 0; color: var(--ink); overflow-wrap: anywhere; }
+.article-resources-note { margin-bottom: 28px; padding: 14px 20px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font-size: 15px; }
 .tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; }
 .tag, .tags a, .tags span { padding: 3px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--code-bg); font-size: 14px; color: var(--muted); }
 .tag:hover, .tags a:hover { background: var(--accent-soft); color: var(--accent); }

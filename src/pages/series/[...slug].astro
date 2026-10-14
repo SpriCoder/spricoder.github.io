@@ -2,13 +2,70 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { allPosts, seriesSlug } from '../../lib/posts';
+import { seriesGuides } from '../../data/series';
 export async function getStaticPaths() {
   const posts = await allPosts();
   const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as string[];
   return series.map(name => ({ params: { slug: seriesSlug(name) }, props: { name, posts: posts.filter(post => post.series === name).sort((a, b) => (a.series_order ?? 999) - (b.series_order ?? 999) || a.title.localeCompare(b.title, 'zh-CN')) } }));
 }
 const { name, posts } = Astro.props;
+const guide = seriesGuides[name];
+const byId = new Map(posts.map(post => [post.id, post]));
+function resolvePost(id: string) {
+  const post = byId.get(id);
+  if (!post) throw new Error(`阅读路线文章未找到：${id}`);
+  return post;
+}
+const startPost = guide && resolvePost(guide.startId);
+const stages = guide?.stages.map(stage => ({ ...stage, posts: stage.postIds.map(resolvePost) }));
 ---
-<SiteLayout title={name} description={`${name}专题的文章与阅读顺序。`}>
-  <div class="container"><header class="page-header"><a class="breadcrumb" href="/series/">← 全部专题</a><h1>{name}</h1><p>{posts.length} 篇文章</p></header><div class="post-list">{posts.map(post => <PostCard post={post} />)}</div></div>
+<SiteLayout title={name} description={guide?.description || `${name}专题的文章与阅读顺序。`}>
+  <div class="container">
+    <header class="page-header"><a class="breadcrumb" href="/series/">← 全部专题</a><h1>{name}</h1><p>{posts.length} 篇文章</p></header>
+    {guide && startPost && (
+      <section class="reading-guide" aria-labelledby="reading-guide-title">
+        <h2 id="reading-guide-title">从哪里开始读</h2>
+        <dl class="reading-guide-summary">
+          <div><dt>适合谁</dt><dd>{guide.audience}</dd></div>
+          <div><dt>需要什么基础</dt><dd>{guide.prerequisites}</dd></div>
+          <div><dt>读完能做什么</dt><dd>{guide.goal}</dd></div>
+        </dl>
+        <p class="recommended-start">推荐起点：<a href={startPost.url}>{startPost.title}</a></p>
+        <div class="reading-stages">{stages?.map((stage, index) => (
+          <section class="reading-stage" aria-labelledby={`reading-stage-${index}`}>
+            <h3 id={`reading-stage-${index}`}>{stage.label}</h3>
+            <p>{stage.description}</p>
+            <ol>{stage.posts.map(post => <li><a href={post.url}>{post.title}</a></li>)}</ol>
+          </section>
+        ))}</div>
+      </section>
+    )}
+    <section aria-labelledby="all-series-posts">
+      <div class="section-heading"><h2 id="all-series-posts">完整目录</h2></div>
+      <div class="post-list">{posts.map(post => <PostCard post={post} />)}</div>
+    </section>
+  </div>
 </SiteLayout>
+
+<style>
+  .reading-guide { margin-bottom: 48px; }
+  .reading-guide h2 { margin: 0 0 20px; font-size: 25px; }
+  .reading-guide-summary { display: grid; gap: 14px; margin: 0; }
+  .reading-guide-summary div { display: grid; grid-template-columns: 8em minmax(0, 1fr); gap: 16px; }
+  .reading-guide-summary dt { font-weight: 600; }
+  .reading-guide-summary dd { margin: 0; color: var(--muted); }
+  .recommended-start { margin: 24px 0; padding: 18px 20px; background: var(--accent-soft); border-left: 3px solid var(--accent); }
+  .recommended-start a { color: var(--accent); }
+  .reading-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+  .reading-stage { padding: 22px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .reading-stage h3 { margin: 0; font-size: 19px; line-height: 1.6; }
+  .reading-stage p { color: var(--muted); font-size: 15px; line-height: 1.8; margin: 12px 0 18px; }
+  .reading-stage ol { margin: 0; padding-left: 1.3em; font-size: 15px; line-height: 1.8; }
+  .reading-stage li + li { margin-top: 12px; }
+  .reading-stage a:hover { color: var(--accent); }
+  @media (max-width: 900px) { .reading-stages { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    .reading-guide-summary div { grid-template-columns: 1fr; gap: 4px; }
+    .reading-guide h2 { font-size: 22px; }
+  }
+</style>

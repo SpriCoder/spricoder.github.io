@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { seriesSlugs } from '../lib/posts';
+import { shareImageFor } from '../lib/share-image';
 import '../styles/global.css';
 
 interface Props {
@@ -9,6 +11,15 @@ interface Props {
   article?: boolean;
   home?: boolean;
   noindex?: boolean;
+  canonicalPath?: string;
+  post?: {
+    title: string;
+    date: string;
+    updated?: string;
+    series?: string;
+    tags?: string[];
+    image?: string;
+  };
 }
 
 const {
@@ -17,9 +28,30 @@ const {
   article = false,
   home = false,
   noindex = false,
+  canonicalPath = Astro.url.pathname,
+  post,
 } = Astro.props;
 const pageTitle = title.startsWith('SpriCoder') ? title : `${title} · SpriCoder`;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const site = Astro.site ?? new URL('https://spricoder.github.io/');
+const canonical = new URL(canonicalPath, site);
+const pageSeries = post?.series ?? Object.entries(seriesSlugs).find(([, slug]) => Astro.url.pathname === `/series/${slug}/`)?.[0];
+const shareImage = shareImageFor(pageSeries);
+const shareImageUrl = new URL(shareImage.path, site).href;
+const structuredData = post ? JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description,
+  author: { '@type': 'Person', name: 'SpriCoder', url: new URL('/about/', site).href },
+  datePublished: post.date,
+  ...(post.updated ? { dateModified: post.updated } : {}),
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical.href },
+  url: canonical.href,
+  inLanguage: 'zh-CN',
+  ...(post.series ? { articleSection: post.series } : {}),
+  ...(post.tags?.length ? { keywords: post.tags } : {}),
+  ...(post.image ? { image: new URL(post.image, site).href } : {}),
+}).replaceAll('<', '\\u003c') : undefined;
 ---
 
 <!doctype html>
@@ -42,9 +74,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(shareImage.width)} />
+    <meta property="og:image:height" content={String(shareImage.height)} />
+    <meta property="og:image:alt" content={shareImage.alt} />
+    {post && <meta property="article:published_time" content={post.date} />}
+    {post?.updated && <meta property="article:modified_time" content={post.updated} />}
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImageUrl} />
+    <meta name="twitter:image:alt" content={shareImage.alt} />
+    {structuredData && <script is:inline type="application/ld+json" set:html={structuredData} />}
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {

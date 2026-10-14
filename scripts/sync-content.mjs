@@ -5,8 +5,10 @@ import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
 import mathjax from 'markdown-it-mathjax3';
 import footnote from 'markdown-it-footnote';
+import { loadReferenceRepairs, applyReferenceRepairs } from './lib/reference-repairs.mjs';
 
 const root = process.cwd();
+const referenceRepairs = loadReferenceRepairs(root);
 const baseline = JSON.parse(fs.readFileSync('migration/baseline.json', 'utf8'));
 const byId = new Map(baseline.map(post => [post.id, post]));
 const bySlug = new Map(baseline.filter(post => post.published).map(post => [post.slug, post.url]));
@@ -84,9 +86,10 @@ for (const file of walk('content/posts')) {
   }
   const title = String(data.title || original?.title || '');
   if (!title) throw new Error(`Missing title: ${id}`);
+  if (!original && !String(data.description || '').trim()) throw new Error(`New posts require a description: ${id}`);
   const date = data.pubDate ? dateString(data.pubDate) : original?.date || dateString(data.date);
   const url = original?.url || '/' + String(data.permalink || data.slug || id.replace(/\.md$/, '')).replace(/^\/+|\/+$/g, '') + '/';
-  const html = preserved ? fs.readFileSync(original.snapshot, 'utf8') : renderMarkdown(content);
+  const html = applyReferenceRepairs(id, preserved ? fs.readFileSync(original.snapshot, 'utf8') : renderMarkdown(content), referenceRepairs);
   const plain = text(html);
   const fallbackDescription = (plain.startsWith(title) ? plain.slice(title.length) : plain).trim().slice(0, 170);
   let series = data.series || original?.series;
@@ -97,6 +100,10 @@ for (const file of walk('content/posts')) {
   posts.push({
     id, title, url, date,
     updated: data.updated ? dateString(data.updated) : original?.updated || date,
+    ...(data.reviewed ? { reviewed: dateString(data.reviewed) } : {}),
+    ...(data.applicable_versions ? { applicable_versions: String(data.applicable_versions) } : {}),
+    ...(data.verified_environment ? { verified_environment: String(data.verified_environment) } : {}),
+    ...(data.image ? { image: String(data.image) } : {}),
     description: text(String(data.description || original?.description || fallbackDescription)),
     tags: list(data.tags, original?.tags),
     categories: list(data.categories, original?.categories),

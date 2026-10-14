@@ -2,8 +2,24 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 ---
 <SiteLayout title="搜索文章" noindex>
-  <div class="container"><header class="page-header"><h1>搜索文章</h1><p>搜索标题与正文，或浏览<a href="/series/">专题</a>。</p></header><div id="search"></div><noscript>搜索需要浏览器启用 JavaScript。你也可以浏览<a href="/archives/">文章归档</a>。</noscript></div>
+  <div class="container"><header class="page-header"><h1>搜索文章</h1><p>搜索标题与正文，再按内容类型、技术专题或课程缩小范围。也可以浏览<a href="/series/">全部专题</a>。</p></header><div id="search"></div><noscript>搜索需要浏览器启用 JavaScript。你也可以浏览<a href="/archives/">文章归档</a>。</noscript></div>
   <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
   <script is:inline src="/pagefind/pagefind-ui.js" defer></script>
-  <script is:inline>window.addEventListener('DOMContentLoaded',()=>{if(window.PagefindUI)new PagefindUI({element:'#search',showSubResults:true,translations:{placeholder:'输入关键词，例如 TsFile、数据库、Agent',zero_results:'没有找到相关文章',searching:'正在搜索…',clear_search:'清除',load_more:'显示更多'}});});</script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        openFilters: ['内容类型', '专题'],
+        translations: {
+          placeholder: '输入关键词，例如 TsFile、数据库、Agent',
+          zero_results: '没有找到相关文章，请尝试其他关键词或调整筛选。',
+          searching: '正在搜索…',
+          clear_search: '清除',
+          load_more: '显示更多',
+        },
+      });
+    });
+  </script>
 </SiteLayout>

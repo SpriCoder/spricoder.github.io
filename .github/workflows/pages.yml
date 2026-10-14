@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Check out Astro source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Install, build, and upload static site
+      - name: Install, build, verify content, and upload static site
         uses: withastro/action@3eafd002e65cc31b4f0eae0bb05450d521562247 # v6
         with:
           node-version: '24'

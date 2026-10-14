@@ -8,10 +8,11 @@
   },
   "scripts": {
     "dev": "node scripts/sync-content.mjs && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "build": "node scripts/sync-content.mjs && ASTRO_TELEMETRY_DISABLED=1 astro build && pagefind --site dist && node scripts/postbuild.mjs",
+    "build": "node scripts/sync-content.mjs && ASTRO_TELEMETRY_DISABLED=1 astro build && pagefind --site dist && node scripts/postbuild.mjs && npm run verify:site",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "verify": "python3 scripts/verify-migration.py",
-    "verify:taxonomy": "node scripts/verify-taxonomy.mjs"
+    "verify:taxonomy": "node scripts/verify-taxonomy.mjs",
+    "verify:site": "python3 scripts/verify-site.py"
   },
   "dependencies": {
     "astro": "7.3.8",

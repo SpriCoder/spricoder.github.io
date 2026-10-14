@@ -4,6 +4,7 @@ import json
 import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
+from html import unescape
 
 from lxml import html
 
@@ -15,6 +16,7 @@ if draft_file.exists():
     baseline += json.loads(draft_file.read_text())
 posts = json.loads((ROOT / 'src/data/posts.json').read_text())
 by_id = {post['id']: post for post in posts}
+reference_repairs = json.loads((ROOT / 'content/reference-repairs.json').read_text())
 failures = []
 
 def sha(path):
@@ -46,6 +48,12 @@ for item in baseline:
         document = html.fromstring(output.read_bytes())
         body = document.xpath('//*[@data-pagefind-body]')
         snapshot = html.fragment_fromstring((ROOT / item['snapshot']).read_text(), create_parent='div')
+        # Preserve the publication snapshot except for individually documented link repairs.
+        for repair in reference_repairs['repairs']:
+            if repair['id'] == item['id']:
+                for node in snapshot.iter(repair['tag']):
+                    if node.get(repair['attribute']) == unescape(repair['url']):
+                        node.set(repair['attribute'], repair['replacement'])
         check(len(body) == 1 and inner(body[0]) == inner(snapshot), f"Rendered body changed: {post['url']}")
         check(document.xpath('string(//h1)') == post['title'], f"Article title mismatch: {post['url']}")
     for url in item['legacyUrls']:

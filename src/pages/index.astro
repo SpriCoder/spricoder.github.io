@@ -4,8 +4,15 @@ import PostCard from '../components/PostCard.astro';
 import HomeCover from '../components/HomeCover.astro';
 import { allPosts, seriesSlug } from '../lib/posts';
 import courses from '../data/courses.json';
+import { seriesGuides } from '../data/series';
 const posts = await allPosts();
 const series = [...new Set(posts.map(post => post.series).filter(Boolean))] as string[];
+const byId = new Map(posts.map(post => [post.id, post]));
+const featuredPosts = Object.entries(seriesGuides).map(([name, guide]) => {
+  const post = byId.get(guide.featuredId);
+  if (!post || post.series !== name) throw new Error(`精选文章未找到：${guide.featuredId}`);
+  return { post, reason: guide.featuredReason };
+});
 const representativeDirectories = [
   '2020-Fundamentals-of-Data-Management',
   '2020-OS',
@@ -18,11 +25,6 @@ const featuredCourses = representativeDirectories.flatMap(directory => {
   const course = courses.find(course => course.sourceDirectory === directory);
   return course ? [course] : [];
 });
-const descriptions: Record<string, string> = {
-  '与 AI 一起工作': 'AI 工具、Agent 协作、评测与科研实践。',
-  '玩转时序数据集': 'TsFile、IoTDB、数据访问与常用工具。',
-  '基准测试方法与实践': '工作负载设计、测试工具与性能结果分析。',
-};
 ---
 <SiteLayout home>
   <HomeCover />
@@ -33,16 +35,38 @@ const descriptions: Record<string, string> = {
     </section>
     <section class="home-section" aria-labelledby="technical-series">
       <div class="section-heading"><h2 id="technical-series">技术系列</h2><a class="text-link" href="/series/">全部专题</a></div>
-      <div class="series-grid">{series.map(name => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><h3>{name}</h3><p>{descriptions[name]}</p><span class="series-card-meta">{posts.filter(post => post.series === name).length} 篇文章</span></a>)}</div>
+      <div class="series-grid">{series.map(name => <a class="series-card" href={`/series/${seriesSlug(name)}/`}><h3>{name}</h3><p>{seriesGuides[name]?.description}</p><span class="series-card-meta">{posts.filter(post => post.series === name).length} 篇文章 · 查看阅读路线 →</span></a>)}</div>
     </section>
-    <nav class="home-courses" aria-label="课程笔记">
+    <nav class="home-courses" id="course-notes" aria-label="课程笔记">
       <span class="home-courses-label">课程笔记</span>
       {featuredCourses.map(course => <a href={`/courses/${course.slug}/`}>{course.name.replace(/\s*（\d{4}）$/, '')}</a>)}
       <a class="home-courses-all" href="/series/#course-collections">全部课程 →</a>
     </nav>
+    <section class="home-section" aria-labelledby="featured-posts">
+      <div class="section-heading"><h2 id="featured-posts">精选文章</h2><p>手工推荐 · 每个系列选一篇</p></div>
+      <div class="featured-grid">{featuredPosts.map(({ post, reason }) => (
+        <article class="featured-card">
+          <p class="featured-series">{post.series}</p>
+          <h3><a href={post.url}>{post.title}</a></h3>
+          <p>{reason}</p>
+          <a class="featured-read" href={post.url} aria-label={`阅读：${post.title}`}>阅读全文 →</a>
+        </article>
+      ))}</div>
+    </section>
     <section class="home-section" aria-labelledby="latest-posts">
       <div class="section-heading"><h2 id="latest-posts">最新文章</h2><a class="text-link" href="/archives/">全部文章</a></div>
       <div class="post-list">{posts.slice(0, 10).map(post => <PostCard post={post} />)}</div>
     </section>
   </div>
 </SiteLayout>
+
+<style>
+  #technical-series, #course-notes { scroll-margin-top: 6rem; }
+  .featured-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .featured-card { display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .featured-card h3 { margin: 0; font-size: 20px; line-height: 1.7; }
+  .featured-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+  .featured-card .featured-series { color: var(--accent); font-size: 14px; }
+  .featured-read { margin-top: auto; padding-top: 6px; color: var(--accent); font-size: 14px; }
+  @media (max-width: 800px) { .featured-grid { grid-template-columns: 1fr; gap: 16px; } }
+</style>

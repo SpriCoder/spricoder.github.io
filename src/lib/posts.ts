@@ -10,7 +10,7 @@ export function archivePageUrl(baseUrl: string, page: number) {
 
 export async function allPosts() {
   const entries = await getCollection('posts');
-  return entries.map(entry => ({ id: entry.id, ...entry.data, ...(entry.data.course ? { courseName: byCourse.get(entry.data.course)?.name } : {}) })).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'zh-CN'));
+  return entries.map(entry => ({ id: entry.id, ...entry.data, ...(entry.data.course ? { courseName: byCourse.get(entry.data.course)?.name, courseYear: byCourse.get(entry.data.course)?.year } : {}) })).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title, 'zh-CN'));
 }
 
 export function courseOrder(a, b) {
