@@ -31,7 +31,7 @@ TsFile 为时序数据提供统一载体；IoTDB 承接数据库管理与在线�
 
 | 任务 | 首选 | 原因 |
 |-|-|-|
-| 查看一个本地文件的模型、schema 和少量数据 | TsFile-Cli | 可直接使用命令行完成，可以直接启动服务和编写 Reader |
+| 查看一个本地文件的模型、schema 和少量数据 | TsFile-Cli | 可直接使用命令行完成，无需启动服务或编写 Reader |
 | 创建一个明确 schema 的单个表模型文件 | TsFile-Cli write | 目标窄、可回读、提交边界清楚 |
 | 查看 marker、Chunk、Page 和偏移 | TsFile-Cli sketch / 格式调试工具 | 面向物理布局排障 |
 | 复杂程序内读写、变换或嵌入应用 | TsFile SDK/API | 控制力更完整 |
@@ -75,7 +75,7 @@ FROM tsfile_cli_demo.sensors
 GROUP BY site, rack;
 ```
 
-TsFile 解决数据怎样被携带，IoTDB 解决数据怎样被持续服务。`LOAD` 把两者连接起来，但 `LOAD` 属于 IoTDB，属于 IoTDB 命令，TsFile-Cli 专注文件操作。
+TsFile 解决数据怎样被携带，IoTDB 解决数据怎样被持续服务。`LOAD` 把两者连接起来，但 `LOAD` 属于 IoTDB 命令，TsFile-Cli 专注文件操作。
 
 协作分析完成后，可以通过 IoTDB 导出工具生成 table-model TsFile，再交给 TsFile-Cli 回读。该场景说明数据如何由文件交付转为在线协作，再返回文件形态；四行样例仅验证基本操作，应据此推断生产规模下的性能。
 
@@ -97,7 +97,7 @@ TsFile 是 IoTDB 原生认识的数据载体，但只有目标实例成功执行
 
 ### 误区三：AI Skill 会消除工具边界
 
-Skill 能告诉 AI 先执行什么命令、怎样解释输出、失败时何时停止，但TsFile-Cli 专注文件操作，SQL、服务管理和文件修复由对应工具承担。AI 负责理解任务，确定性工具负责执行，边界仍然存在。
+Skill 能告诉 AI 先执行什么命令、怎样解释输出、失败时何时停止，但 TsFile-Cli 专注文件操作，SQL、服务管理和文件修复由对应工具承担。AI 负责理解任务，确定性工具负责执行，边界仍然存在。
 
 ## 一个简单判断法
 

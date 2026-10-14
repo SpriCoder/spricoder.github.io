@@ -1,12 +1,12 @@
 ---
 permalink: ai-work/ai-work-09-llm-judge/
-title: 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判
+title: 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判？
 date: 2026-07-23
-tags: ["AI评测","LLM-as-a-Judge","评测偏差"]
+tags: ["AI评测","LLM-as-a-Judge","评测偏差","人机协作"]
 content_type: series
 ---
 
-# 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判
+# 与 AI 一起工作 | 9. LLM-as-a-Judge 能不能给 AI 当裁判？
 
 让人评价一万条开放式回答，昂贵而缓慢；用关键词、字符串匹配或传统自动指标，又很难判断一段解释是否清楚、完整、切题。
 
@@ -14,8 +14,8 @@ content_type: series
 
 问题是：一个会犯错、会受提示影响的模型，能不能评价另一个模型？
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/692bbc37262648be8ce5d55ee897c443.png)
- 答案是：**可以用，但不能迷信。LLM 评委是一种可扩展的评价工具，不是客观真理来源。** 它擅长处理开放式质量判断，却不应替代确定性检查、原始证据和高风险场景中的人工决策。
+![LLM 评委的位置、冗长和自我偏好等偏差控制](https://i-blog.csdnimg.cn/direct/692bbc37262648be8ce5d55ee897c443.png)
+答案是：**可以用，但不能迷信。LLM 评委是一种可扩展的评价工具，不是客观真理来源。** 它擅长处理开放式质量判断，却不应替代确定性检查、原始证据和高风险场景中的人工决策。
 
 ### LLM 评委实际在做什么
 

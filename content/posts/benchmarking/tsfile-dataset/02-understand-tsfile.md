@@ -20,7 +20,7 @@ content_type: series
 ls → meta → schema → stats / count → head / cat
 ```
 
-这一顺序将结构检查与明细读取分开，使每一步对应一个明确问题。统计和计数的读取成本取决于文件结构与实现，应统一视为可以直接扫描数据的操作。
+这一顺序将结构检查与明细读取分开，使每一步对应一个明确问题。统计和计数的读取成本取决于文件结构与实现，应统一视为可能触发数据扫描的操作。
 
 ## 1. 先知道 TsFile 里的两种模型
 
@@ -89,7 +89,7 @@ tsfile-cli count -t sensors -f table sensors.tsfile
 
 stats 查看 FIELD 的计数、时间范围和可用值统计，并通过 stats_source 标识来源。缺少可用统计时，部分路径会扫描数据以补充时间线或计数；无法提供的值级统计仍可能为空。应结合字段和来源解释结果，避免将所有统计项视为由元数据直接给出。
 
-`count` 关注数量，但不同模型和对齐方式的计数口径可能不同：非 aligned 序列通常统计实际存在的点；aligned 数据还可能需要根据时间列和 bitmap 计算包含空值位置的逻辑行数。因此，看见 `count` 的数字时，要连同命令输出口径一起解释，应将 FIELD 非空点数与逻辑行数当成同一个概念。
+`count` 关注数量，但不同模型和对齐方式的计数口径可能不同：非 aligned 序列通常统计实际存在的点；aligned 数据还可能需要根据时间列和 bitmap 计算包含空值位置的逻辑行数。因此，看见 `count` 的数字时，要连同命令输出口径一起解释，不要将 FIELD 非空点数与逻辑行数当成同一个概念。
 
 需要检查物理布局时，再使用下一节的 `sketch`。
 
@@ -99,7 +99,7 @@ stats 查看 FIELD 的计数、时间范围和可用值统计，并通过 stats_
 tsfile-cli sketch sensors.tsfile
 ```
 
-`sketch` 面向 marker、Chunk、Page、metadata、文件头和文件尾部等物理布局信息。它更像格式排障工具，而主要用于格式排障：想知道有哪些表和列，先用 `ls` 和 `schema`；想知道有多少行、时间覆盖多久，用 `count` 和 `stats`；想知道哪个偏移附近的物理结构可疑，再用 `sketch`。
+`sketch` 面向 marker、Chunk、Page、metadata、文件头和文件尾部等物理布局信息。它主要用于格式排障：想知道有哪些表和列，先用 `ls` 和 `schema`；想知道有多少行、时间覆盖多久，用 `count` 和 `stats`；想知道哪个偏移附近的物理结构可疑，再用 `sketch`。
 
 `sketch`
 

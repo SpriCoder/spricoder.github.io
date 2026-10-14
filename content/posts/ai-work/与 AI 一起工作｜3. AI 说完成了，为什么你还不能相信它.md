@@ -16,7 +16,7 @@ content_type: series
 
 AI 未必是在故意夸大。更常见的情况是，它只能根据自己看见的文件、命令输出和局部反馈判断状态，而我们真正关心的目标可能存在于它没有观察到的地方：页面是否真的恢复正常，引用是否真的支持结论，消息是否发给了正确的人，迁移后的数据是否仍然完整。
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/202bf4127c7d4fdabb29f72e1ca017a9.png)
+![AI 修改与独立验证的完成证据](https://i-blog.csdnimg.cn/direct/202bf4127c7d4fdabb29f72e1ca017a9.png)
 
 ### “完成”其实有四层含义
 

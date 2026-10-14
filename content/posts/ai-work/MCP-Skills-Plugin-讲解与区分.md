@@ -2,7 +2,7 @@
 permalink: ai-work/ai-work-mcp-skills-plugin/
 title: 与 AI 一起工作 | 5. MCP、Skills 与 Plugin 三者的层次与边界
 date: 2026-06-04
-tags: ["AI Agent","MCP","Agent Skills","插件"]
+tags: ["MCP","Agent Skills","插件","Claude Code","工具接口"]
 content_type: series
 ---
 
@@ -36,7 +36,7 @@ MCP 全称 Model Context Protocol，是 Anthropic 于 2024 年 11 月开源的�
 
 server 主要对外暴露三类原语：tools（模型可调用的动作，如查询数据库、发起请求、读取文件，使用最为频繁）、resources（可供读取的上下文数据）与 prompts（预置的提示模板）。多数场景下开发者主要与 tools 交互，另外两类相对少用。
 
-传输方式上有一处需要注意。当前协议标准仅保留两种：本地子进程使用 stdio，远程 server 使用 Streamable HTTP。早期独立的 SSE 传输已被废弃，其能力并入了 Streamable HTTP 的流式通道。Claude Code 出于兼容性仍接受 sse，但新接入不宜再选用，以免徒增后续迁移成本。
+传输方式上有一处需要注意。当前协议标准仅保留两种：本地子进程使用 stdio，远程 server 使用 Streamable HTTP。早期独立的 SSE 传输已被废弃，其能力并入了 Streamable HTTP 的流式通道。Claude Code 出于兼容性仍接受配置值 `sse`，但新接入不宜再选用，以免徒增后续迁移成本。
 
 在 Claude Code 中配置有两种途径：执行 `claude mcp add`，或直接编写 `.mcp.json`。其作用域分为三档——仅在本机当前项目生效的 local、随仓库提交并可供团队共享的 project，以及对当前用户所有项目均生效的 user。一份最简的远程配置如下：
 

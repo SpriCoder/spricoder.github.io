@@ -2,7 +2,7 @@
 permalink: ai-work/ai-work-series/
 title: 与 AI 一起工作｜系列目录
 date: 2026-07-21
-tags: ["人工智能","人机协作"]
+tags: ["人工智能","AI Agent","人机协作"]
 content_type: series
 ---
 

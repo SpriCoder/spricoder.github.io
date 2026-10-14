@@ -84,7 +84,7 @@ cd "$IOTDB_DIST"
 "$TSFILE_CLI" count -t sensors -f csv "$SOURCE_TSFILE"
 ```
 
-应看到 table-model、`sensors` 表，以及 4 行数据对应的字段计数。若 `meta` 或 `schema` 已经失败，请直接继续排查 IoTDB；先回到创建 TsFile 的步骤。
+应看到 table-model、`sensors` 表，以及 4 行数据对应的字段计数。若 `meta` 或 `schema` 已经失败，请不要继续排查 IoTDB，先回到创建 TsFile 的步骤。
 
 ## 3. 创建目标数据库
 
@@ -120,7 +120,7 @@ table-model 的 LOAD 需要目标数据库。以下使用专用演示数据库�
 
 交互式场景也可以先 `USE tsfile_cli_demo`，再执行 `LOAD '<path>'`。在脚本中显式写出 `database` 可减少当前会话状态造成的目标选择错误。
 
-如果 IoTDB 在远程主机或集群中运行，`SOURCE_TSFILE` 必须是服务端可达的路径。把本机的 `/Users/...` 路径直接传给远端服务，应算完成加载；应先放到服务端共享存储或目标节点可见的目录。
+如果 IoTDB 在远程主机或集群中运行，`SOURCE_TSFILE` 必须是服务端可达的路径。把本机的 `/Users/...` 路径直接传给远端服务，不应算完成加载；请先放到服务端共享存储或目标节点可见的目录。
 
 ## 5. 验证表结构和数据
 

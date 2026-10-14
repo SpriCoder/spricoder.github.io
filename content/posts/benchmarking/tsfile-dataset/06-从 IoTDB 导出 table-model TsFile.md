@@ -68,7 +68,7 @@ EXPORT_DIR=$(mktemp -d "$DEMO_DIR/export.XXXXXX")
   -e "show tables from tsfile_cli_demo"
 ```
 
-如果这里缺少 `sensors`，先回到“从本地 TsFile 加载进入 IoTDB”一文完成导入，请将一个空目录误判成导出工具故障。
+如果这里缺少 `sensors`，先回到“从本地 TsFile 加载进入 IoTDB”一文完成导入，请不要将一个空目录误判成导出工具故障。
 
 ## 2. 用 export-data.sh 导出表模型 TsFile
 
@@ -160,14 +160,14 @@ IoTDB 目录中还可能看到 `tools/export-tsfile.sh`。它走的是 Subscript
 
 ## 5. 导出的文件到底是什么
 
-`export-data.sh` 的 table 分支会先执行 `select * from sensors`，再根据查询结果和现有表 schema 构造 `Tablet`，最后用 TsFile writer 写出新文件。它是一次**逻辑重建**，属于逻辑 IoTDB 内部某个物理 TsFile 原样复制出来。
+`export-data.sh` 的 table 分支会先执行 `select * from sensors`，再根据查询结果和现有表 schema 构造 `Tablet`，最后用 TsFile writer 写出新文件。它是一次**逻辑重建**，不是将 IoTDB 内部某个物理 TsFile 原样复制出来。
 
 这带来几个实际含义：
 
 - 导出文件拥有 table-model 的表名、列类别和类型，可被 TsFile-Cli 或另一个 IoTDB 实例读取；
 - 文件的压缩、页组织、分块边界和内部布局可以与原始文件不同；
-- 导出范围由 SQL、时间条件和表参数决定，应将导出文件默认当成数据库全量物理备份；
-- 聚合 SQL 适用范围有限 TsFile 导出输入，工具会拒绝包含 `count`、`sum`、`avg` 等聚合的查询，因为聚合结果已继续对应原始明细行。
+- 导出范围由 SQL、时间条件和表参数决定，不应将导出文件默认当成数据库全量物理备份；
+- 聚合 SQL 适用范围有限 TsFile 导出输入，工具会拒绝包含 `count`、`sum`、`avg` 等聚合的查询，因为聚合结果已不再对应原始明细行。
 
 按时间范围导出时，先核对 `-start_time` 和 `-end_time` 的支持及端点含义。导出后用 `cat` 检查实际记录，用 `stats` 查看时间范围，并核对筛选条件。
 

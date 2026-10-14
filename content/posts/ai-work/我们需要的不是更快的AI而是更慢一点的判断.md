@@ -2,7 +2,7 @@
 permalink: ai-work/ai-work-slower-judgment/
 title: 与 AI 一起工作 | 1. 我们需要的不是更快的 AI，而是更慢一点的判断
 date: 2026-07-14
-tags: ["人工智能","人机协作"]
+tags: ["人工智能","人机协作","结果验证"]
 content_type: series
 ---
 

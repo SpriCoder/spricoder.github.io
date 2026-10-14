@@ -2,7 +2,7 @@
 permalink: benchmarking/benchmarking-workload-design/
 title: 怎样让基准测试更像业务：用 IoT Benchmark 设计写入工作负载
 date: 2026-07-14
-tags: ["时序数据库","IoT Benchmark","基准测试"]
+tags: ["时序数据库","IoT Benchmark","基准测试","写入负载"]
 content_type: series
 ---
 

@@ -16,7 +16,7 @@ content_type: series
 
 TsFile 将表名、列类别、数据类型和编码等信息与观测记录保存在一起。接收方可以从文件中读取这些信息，再选择要分析的数据。
 
-本文使用 TsFile-Cli，将一份 CSV 写成表模型（table model）TsFile，再读回文件检查结构与记录。创建和检查都在本地完成，可直接完成 IoTDB。
+本文使用 TsFile-Cli，将一份 CSV 写成表模型（table model）TsFile，再读回文件检查结构与记录。创建和检查都在本地完成，无需启动 IoTDB。
 
 ## 1. “自描述”具体描述了什么
 
