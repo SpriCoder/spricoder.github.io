@@ -11,6 +11,16 @@
 - 关于页原稿：`content/about/index.md`。
 - 图片：放入 `public/images/`，文章中使用 `/images/文件名`。
 
+## 内容分层
+
+- `content/posts/` 是全部公开文章的唯一源，`ai-work/`、`benchmarking/` 和课程目录都在这里统一管理。
+- `content/drafts/` 只保存未发布草稿，构建脚本不会把它们加入文章集合。
+- `docs/` 保存计划、飞书映射、发表检查、历史合并稿和部署说明，不参与公开文章集合。
+- `content/legacy/` 是旧站正文快照，用于保留历史 URL 和未改正文的渲染结果。
+- 根目录 `.archive/2026-10-15-root-topic-mirrors/` 是迁移前重复副本的恢复档案，不是编辑源。
+
+目录职责与迁移后的单一内容源见 [`docs/BLOG_STRUCTURE.md`](docs/BLOG_STRUCTURE.md)。
+
 新文章至少填写 `title`、`date`（或 `pubDate`）、`description`。推荐填写 `tags`、`categories`；系列文章填写 `series`、`series_order`。新文章可以用 `permalink` 固定网址。
 
 首页精选与技术系列的推荐起点、阅读路线位于 `src/data/series.ts`，用文章稳定文件标识关联。搜索支持按内容类型、技术专题与课程筛选。
