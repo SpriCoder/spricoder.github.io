@@ -11,6 +11,7 @@ const root = process.cwd();
 const referenceRepairs = loadReferenceRepairs(root);
 const baseline = JSON.parse(fs.readFileSync('migration/baseline.json', 'utf8'));
 const byId = new Map(baseline.map(post => [post.id, post]));
+const pathMoves = JSON.parse(fs.readFileSync('migration/path-moves.json', 'utf8')).moves;
 const bySlug = new Map(baseline.filter(post => post.published).map(post => [post.slug, post.url]));
 const courses = JSON.parse(fs.readFileSync('src/data/courses.json', 'utf8'));
 const byCourse = new Map(courses.map(course => [course.slug, course]));
@@ -72,7 +73,8 @@ function renderMarkdown(content) {
 
 const posts = [];
 for (const file of walk('content/posts')) {
-  const id = path.relative('content/posts', file).split(path.sep).join('/');
+  const physicalId = path.relative('content/posts', file).split(path.sep).join('/');
+  const id = pathMoves[physicalId] || physicalId;
   const raw = fs.readFileSync(file, 'utf8');
   const original = byId.get(id);
   const { data, content } = matter(raw);
@@ -83,6 +85,7 @@ for (const file of walk('content/posts')) {
   if (data.course) {
     const course = byCourse.get(data.course);
     if (!course || !course.groups.some(group => group.id === data.course_group)) throw new Error(`Invalid course or group: ${id}`);
+    if (course.contentDirectory && !physicalId.startsWith(`${course.contentDirectory}/`)) throw new Error(`Course article outside content directory: ${physicalId}`);
   }
   const title = String(data.title || original?.title || '');
   if (!title) throw new Error(`Missing title: ${id}`);
@@ -112,7 +115,7 @@ for (const file of walk('content/posts')) {
     ...(series ? { series: String(series) } : {}),
     ...(Number.isFinite(order) ? { series_order: Number(order) } : {}),
     readingMinutes: original?.readingMinutes || Math.max(1, Math.ceil(plain.length / 350)),
-    html, source: `content/posts/${id}`, markdown_sha256: hash, markdown_body_sha256: bodyHash,
+    html, source: `content/posts/${physicalId}`, markdown_sha256: hash, markdown_body_sha256: bodyHash,
     counterPath: original?.legacyUrls?.[0] || url,
     renderMode: preserved ? 'preserved' : 'markdown', headings: headings(html),
   });

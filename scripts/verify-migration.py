@@ -16,6 +16,8 @@ if draft_file.exists():
     baseline += json.loads(draft_file.read_text())
 posts = json.loads((ROOT / 'src/data/posts.json').read_text())
 by_id = {post['id']: post for post in posts}
+path_moves = json.loads((ROOT / 'migration/path-moves.json').read_text())['moves']
+physical_by_logical = {logical: physical for physical, logical in path_moves.items()}
 reference_repairs = json.loads((ROOT / 'content/reference-repairs.json').read_text())
 failures = []
 
@@ -30,7 +32,8 @@ def inner(node):
     return (node.text or '') + ''.join(html.tostring(child, encoding='unicode', with_tail=True) for child in node)
 
 for item in baseline:
-    copied = ROOT / 'content' / ('posts' if item['published'] else 'drafts') / item['id']
+    physical_id = physical_by_logical.get(item['id'], item['id'])
+    copied = ROOT / 'content' / ('posts' if item['published'] else 'drafts') / physical_id
     if item['published'] and item.get('markdown_body_sha256'):
         match = re.match(r'^\ufeff?---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)([\s\S]*)$', copied.read_text())
         digest = hashlib.sha256(match.group(1).encode()).hexdigest() if match else None

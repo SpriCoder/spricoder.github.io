@@ -30,6 +30,7 @@ for (const original of baseline) {
   if (post.course) {
     const course = byCourse.get(post.course);
     check(course?.sourceDirectory === post.id.split('/')[0], `Wrong course membership: ${post.id}`);
+    check(course?.contentDirectory && post.source.startsWith(`content/posts/${course.contentDirectory}/`), `Course source outside content directory: ${post.id}`);
     check(course?.groups.some(group => group.id === post.course_group) && Number.isInteger(post.course_order), `Wrong course group/order: ${post.id}`);
   }
 }

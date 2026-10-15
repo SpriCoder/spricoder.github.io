@@ -17,11 +17,12 @@
 
 ## 主题组织
 
+- `content/posts/courses/<course-slug>/`：全部带 `course` 元数据的课程笔记，物理目录按课程 slug 组织。
 - `content/posts/ai-work/`：与 AI 一起工作系列。
 - `content/posts/benchmarking/`：基准测试方法、IoT Benchmark 和玩转时序数据集系列。
 - 课程笔记按课程目录保留在各自目录，并通过 `course`、`course_group` 和 `course_order` 归属课程专题。
 
-文章的稳定接口是 Frontmatter 中的 `permalink`；文件路径用于内容组织和系列索引，移动文章时必须保留 permalink、更新系列入口，并回读内链和图片路径。
+文章的稳定接口是 Frontmatter 中的 `permalink`；文件路径用于内容组织。课程文章的物理路径使用 `courses/<course-slug>/`，但 `migration/path-moves.json` 保留旧逻辑 ID，使 taxonomy、系列入口和旧网址基线不随物理移动改变。移动文章时必须更新迁移映射，并回读内链和图片路径。
 
 ## 非公开材料
 

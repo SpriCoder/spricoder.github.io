@@ -3,10 +3,12 @@ import matter from 'gray-matter';
 
 const assignments = JSON.parse(fs.readFileSync('taxonomy/course-assignments.json', 'utf8'));
 const tags = JSON.parse(fs.readFileSync('taxonomy/post-tags.json', 'utf8'));
+const pathMoves = JSON.parse(fs.readFileSync('migration/path-moves.json', 'utf8')).moves;
+const physicalByLogical = new Map(Object.entries(pathMoves).map(([physical, logical]) => [logical, physical]));
 const managed = new Set(['tags', 'course', 'course_group', 'course_order', 'content_type']);
 let changed = 0;
 for (const [id, metadata] of Object.entries(tags)) {
-  const file = `content/posts/${id}`;
+  const file = `content/posts/${physicalByLogical.get(id) || id}`;
   const original = fs.readFileSync(file, 'utf8');
   const match = original.match(/^(\uFEFF?---\r?\n)([\s\S]*?)(\r?\n---(?:\r?\n|$))([\s\S]*)$/);
   if (!match) throw new Error(`Missing YAML frontmatter: ${id}`);

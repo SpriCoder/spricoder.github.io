@@ -6,14 +6,14 @@
 
 ## 写作与预览
 
-- 已发布 Markdown：`content/posts/`，保留原有目录与文件名。
+- 已发布 Markdown：`content/posts/`；课程笔记按 `courses/<course-slug>/` 归档，文件名和旧逻辑 ID 通过迁移映射保留。
 - 原草稿：`content/drafts/`，仅保留在本地，已排除 Git 和网站发布。
 - 关于页原稿：`content/about/index.md`。
 - 图片：放入 `public/images/`，文章中使用 `/images/文件名`。
 
 ## 内容分层
 
-- `content/posts/` 是全部公开文章的唯一源，`ai-work/`、`benchmarking/` 和课程目录都在这里统一管理。
+- `content/posts/` 是全部公开文章的唯一源；课程笔记位于 `courses/<course-slug>/`，`ai-work/`、`benchmarking/` 等非课程内容保留主题目录。
 - `content/drafts/` 只保存未发布草稿，构建脚本不会把它们加入文章集合。
 - `docs/` 保存计划、飞书映射、发表检查、历史合并稿和部署说明，不参与公开文章集合。
 - `content/legacy/` 是旧站正文快照，用于保留历史 URL 和未改正文的渲染结果。
